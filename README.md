@@ -1,0 +1,4 @@
+hatex
+=====
+
+Homework, assignments tex
