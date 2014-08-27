@@ -151,16 +151,16 @@
 
 \problemAnswer{ % Answer
 At the start of the tournament we have $2^n$ players to begin with. At
-each round there will be one winner emerging from the pair and 
-one being 'knocked out'. One possible configuration for first round would be: Player1 v/s Player2; Player3 v/s Player4;...;, Player($2^n$-1) v/s Player($2^n$). Now at the end of first round, there are exactly $\frac{2^n}{2}=2^{n-1}$ winners and an equal number of knocked out players. 
+each round there will be \textbf{one} winner emerging from each of the pairs while the other gets 'knocked out'. One possible configuration for the first round of the tournament would be: $Player_1$ v/s $Player_2$; $Player_3$ v/s $Player_4$;...;, $Player_(2^n-1)$ v/s $Player(2^n)$. At the end of first round, there are exactly $\frac{2^n}{2}=2^{n-1}$ winners and an equal number of knocked out players. 
 
-At round 1 the set of $2^n-1$ pairs can be represented as :$P_1, P_2, P_3, P_4, .., P_{2^{n}-1}$. The total number of such pairs is $2^n$ divided by $2$ since each pair has 2 players. Now each of these pairs can take either of the two values contained in them depending on who amongst the two players is the winner. Thus total number of such configurations for the round 1 would be $2 x 2 x 2...(2^n-1)$ times 
+At round 1 the set of $2^n-1$ pairs can be represented as :$P_1, P_2, P_3, P_4, .., P_{2^{n}-1}$. The total number of such pairs is $2^n$ divided by $2$ since each pair has 2 players. The outcome of first round can generate two values for each of these pairs depending on who amongst the two players is the winner. For e.g. $Player_1$ can win while playing in $P_1$ or $Player_2$ can, Thus total number of such configurations for the round 1 would be $2 * 2 * 2 *...* (2^n-1)$ times 
 which is equal to $2^{2^{n-}}$. 
 Now at round 2 we would have $2^{n-2}$ pairs of players to play with and the possible configuration for choosing a winner of such a configuration is $2^{2^{n-2}}$
 
 Thus, the sample space representing how the winners are chosen (or the knocked out persons are knocked out) can be calculated by multiplying configurations as obtained in $round_1$ $round_2$, ... $round_n$ by the \textbf{rule of product} as:
-$2^{2^{n-1}} * 2^{2^{n-2}} *....* 2^{1}$ = $X$
+$2^{2^{n-1}} * 2^{2^{n-2}} * .... * 2^{1}$ = $X$
 
+\begin{center}
 \begin{math}
 log_2 X = 2^{n-1} + 2^{n-2} + ... + 1
 \end{math}
@@ -169,6 +169,7 @@ log_2 X = 2^{n-1} + 2^{n-2} + ... + 1
 log_2 X = \frac{2^{n-1+1}-1}{2-1}
 \end{math}
 
+\end{center}
 Thus $X$ = $2^{2^n-1}$
 %The possible numbe
 }
@@ -176,10 +177,17 @@ Thus $X$ = $2^{2^n-1}$
 
 %--------------------------------------------
 
-\begin{homeworkSection}{(b)} % Section within problem
-\problemAnswer{ % Answer
-\lipsum[6]
-}
+\begin{homeworkSection}{(5)} % Section within problem
+
+\begin{homeworkSection}{\homeworkProblemName:~(a)} % Using the problem name elsewhere
+	\problemAnswer{ % Answer
+		\begin{math}
+		A \cup (B \cap C) = (A\cup B) \cap (A\cup C)
+		\end{math}
+		
+		Let $x \in A \cup (B \cap C) $ {\tiny }
+	}
+\end{homeworkSection}
 \end{homeworkSection}
 
 %--------------------------------------------
