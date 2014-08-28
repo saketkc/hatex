@@ -268,40 +268,57 @@ Thus $X$ = $2^{2^n-1}$
 		
 		\textbf{which will only be true if $A \subseteq C$.}
 	}
+\end{homeworkSection}
 	
+\begin{homeworkSection}{\homeworkProblemName:~(d)}
+	\problemAnswer{
+		\begin{math}
+			\label{5d1}
+			(A \backslash (B \cap C)) = (A \backslash B) \cup (A \backslash C)
+		\end{math} %\newline
+		
+		$X \backslash Y=$ $X$ but not $Y$ $\implies$
+		$X \cap (X\cap(X\cap Y)^C)$
+		
+		Thus \ref{5d1} can be expanded as follows:
+		\begin{math}
+			\label{5d2}
+			A \cap (A \cap (B \cap C))^C = (A \cap (A \cap B)^C) \cup (A \cap (A \cap C)^C)
+		\end{math}
+		
+		Expanding $L.H.S$ using results from above probles (5b) we get
+		\begin{math}
+			L.H.S = A  \cap (A \cap (B \cap C))^C = A \cap (A \cap B \cap  C)^C = A \cap (A^C \cup B^C \cup C^C)
+		\end{math}
+		
+		Again using distribution of union over intersection property :
+		\begin{math}
+			L.H.S = (A \cap ( A^C )) \cup (A \cap ( B^C )) \cup (A \cap ( C^C )) = (A \cap B^C) \cup (A \cap C^C)
+		\end{math}
+		
+		Expanding $R.H.S$ similarly we get:
+		\begin{math}
+			R.H.S = (A \cap (A \cap B)^C) \cup (A \cap (A \cap C)^C)
+			= (A \cap (A^C \cup B^C)) \cup (A \cap (A^C \cup C^C))
+			= (A \cap A^C \cup A \cap B^C) \cup (A \cap A^C \cup A \cap C^C)
+			= (A \cap B^C) \cup (A \cap C^C)
+		\end{math}
+		
+		Thus $L.H.S=R.H.S=(A \cap B^C) \cup (A \cap C^C)$
+	}	
 \end{homeworkSection}
 
-
-
-
-%\end{homeworkSection}
 \end{homeworkProblem}
 %--------------------------------------------
 
-\begin{homeworkProblem}[Exercise \# 1.3] % Custom section title
-
-\begin{homeworkProblem}[1]
-	\problemAnswer{}
-\end{homeworkProblem}
-
-\begin{homeworkProblem}[3]
-	\problemAnswer{}
-\end{homeworkProblem}
-
-\begin{homeworkProblem}[5]
-	\problemAnswer{}
-\end{homeworkProblem}
-
-
-\end{homeworkProblem}
 
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Exercise \# 1.4] % Custom section title
+\begin{homeworkProblem}[Exercise \# 1.3] % Custom section title
 	
-	\begin{homeworkProblem}[2]
-		\problemAnswer{\textbf{Given:} P(A) = $\frac{3}{4}$ 
-			P(B) = $\frac{1}{3}$ \\
+	\begin{homeworkProblem}[1]
+		\problemAnswer{\textbf{Given:} $P(A) = \frac{3}{4}$ 
+			$P(B) = \frac{1}{3}$ \\
 			\textbf{To Prove:} $\frac{1}{12} \leq P(A\cap B) \leq \frac{1}{3}$ \\
 			
 			\textbf{Solution:} $P(A\cap B)$ has an upper bound coming from either $A$ or $B$ depending on whichever is a smaller set. Thus : \\
@@ -313,7 +330,7 @@ Thus $X$ = $2^{2^n-1}$
 			
 			Now consider $P(A \cup B)$ :
 			$P(A \cup B) = P(A) + P(B) - P(A\cap B)$. Also, from the law of probability: \\
-			$P(A \cup B) \leq 1$ $\implies$ $P(A \cap B) \geq P(A) + P(B) - 1 $ $\iimplies$ $P(A \cap B) \geq \frac{13}{12}-1$.
+			$P(A \cup B) \leq 1$ $\implies$ $P(A \cap B) \geq P(A) + P(B) - 1 $ $\implies$ $P(A \cap B) \geq \frac{13}{12}-1$.
 			Thus 
 			\begin{math}
 				\label{13c2}
@@ -326,14 +343,150 @@ Thus $X$ = $2^{2^n-1}$
 			$\frac{1}{12} \leq P(A\cap B) \leq \frac{1}{3}$
 			
 			
-			Now for $P(A \cup B)$
+			Now for $P(A \cup B)$:
 			
+			By law of probability, the upper bound is:
+			$P( A \cup B) \leq 1$.
+			
+			For lower bound consider:
+			\begin{math}
+				\label{13c3}
+				P(A \cup B) = P(A) + P(B) - P(A \cap B)
+			\end{math}
+			and 
+			\begin{math}
+				\label{13c4}
+				\frac{-1}{12} \geq - P(A \cap B) \geq \frac{-1}{3}
+			\end{math}
+			
+			From \ref{13c3} and \ref{13c4}:
+			\begin{math}
+				P(A \cup B) \geq P(A) + P(B) - \frac{1}{3}
+			\end{math}
+			
+			$\implies$:
+			$P(A \cup B) \geq \frac{3}{4}$
+			
+	\textbf{$1 \geq P(A \cup B) \geq \frac{3}{4}$}
+	}
+	\end{homeworkProblem}
+	
+		\begin{homeworkProblem}[3]
+			\problemAnswer{2red, 2white, 2stars pairs of (cup, saucer). Probablity that no cup is on the saucer of the same pan.
+				E.g configuration: (Cup Color, Saucer Color):
+				(R,W), (R,S), (W,R),(W,S), (S,R), (S,W)
+				
+				Here 'corresponding saucer'$=$ 
+				
+				P(no cup on same color saucer) = 1 - P(one cup on same color saucer) + P(two cups on two corresponding colored saucers) - P(three cups on three corresponding saucers) + P(four cups on four correpsonding saucers)
+		
+		
+		
+		
+		}
+		\end{homeworkProblem}
+		
+		\begin{homeworkProblem}[4]
+			\problemAnswer{
+				
+				To Prove: 
+				\begin{math}
+					\label{4c1}
+				P(\cup_{i=1}^n A_i) = \sum_{i}^{n}P(A_i) - \sum_{i<j}P(A_i \cap A_j) + \sum_{i<j<k}P(A_i \cap A_j \cap A_k))...+(-1)^{n+1}P(A_1 \cap A_2...\cap A_n)
+				\end{math}
+				\ref{4c1} clearly holds for $n=1$.
+				Also for $n=2$:
+				\begin{math}
+					\label{4c2}
+					P(A \cup B) = P(A) + P(B) - P(A \cap B)
+				\end{math}
+				
+				
+				
+				Assume \ref{4c1} holds for $n=s$: \\
+				\begin{math}
+					\label{4c3}
+					P(\cup_{i=1}^s A_i) = \sum_{i}^{s}P(A_i) - \sum_{i<j}P(A_i \cap A_j) + \sum_{i<j<k}P(A_i \cap A_j \cap A_k))...+(-1)^{s+1}P(A_1 \cap A_2...\cap A_n)
+				\end{math}
+				
+			Now for $n=s+1$, using results from \ref{4c3}: \\
+				\begin{math}
+					\label{4c4}
+					P(\cup_{i=1}^{s+1} A_i) = P(\cup_{i=1}^s A_i \cup A_{s+1}) = P(\cup_{i=1}^s A_i) + P(A_{s+1}) - P(\cup_{i=1}^s A_i \cap A_{s+1})
+				\end{math}
+			
+			Consider
+			\begin{math}
+				\label{4c5}
+				P(\cup_{i=1}^s A_i \cap A_{s+1}) = 
+				P(\cup_{i=1}^s (A_i \cap A_{s+1}))
+			\end{math} 
+			
+			Expanding \ref{4c4} using \ref{4c3} we get:
+			\begin{math}
+				\label{4c6}
+					P(\cup_{i=1}^s (A_i \cap A_{s+1})) = \sum_{i=1}^{n}P(A_i \cap A_{s+1}) - \sum_{i<j}^{n}P(A_i \cap A_j \cap A_{s+1})
+			\end{math}
+			}
+			
+			Now e
+			
+		\end{homeworkProblem}
+		
+	
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Exercise \# 1.4] % Custom section title
+	
+
+	\begin{homeworkProblem}[2]
+		\problemAnswer{To Prove: 
+			\begin{math}
+				\label{152c1}
+				P(A_1 \cap A_2 \cap A_3.. \cap A_n) = P(A_1)P(A_2 | A_1)P(A_3 | A_1 \cap A_2).....P(A_n| A_1 \cap A_2 \cap A_3 .. \cap A_{n-1})
+				\end{math}
+
+			From the definition of conditional probability:
+			\begin{math}
+				\label{152c2}
+				P(A_1 \cap A_2) = P(A_1 | A_2)P(A_2)			
+			\end{math}
+			
+			Expanding the $LHS$ of \ref{152c1} using results from \ref{152c2} we get: 
+			\begin{math}
+				\label{152c3}
+				P(A_1 \cap A_2 \cap A_3 .... \cap A_n) = P(X \cap A_n)
+				= P(A_n | X)P(X)
+			\end{math}
+			
+			where $X$ = $A_1 \cap A_2 \cap A_3 ...\cap A_{n-1}$
+			Thus from \ref{152c3}  and definition of $X$ we get:
+			
+			\begin{math}
+				\label{152c5}
+					P(A_1 \cap A_2 \cap A_3 .... \cap A_n)  = P(A_1 \cap A_2 ...\cap A_{n-1}) P(A_n| A_1 \cap A_2 ...\cap A_{n-1})
+			\end{math}
+			
+			
+			The RHS of \ref{152c5} can be similarly expanded as:
+			\begin{math}
+				\label{152c6}
+				P(A_1 \cap A_2 \cap A_3 .... \cap A_{n-1})  = P(A_1 \cap A_2 ...\cap A_{n-2}) P(A_{m-1}| A_1 \cap A_2 ...\cap A_{n-2})
+			\end{math}
+			
+			Hence combining \ref{152c5} and \ref{152c6} and doing similar such operations we get: \\
+			
+				\begin{math}
+					\label{152c7}
+					P(A_1 \cap A_2 \cap A_3.. \cap A_n) = P(A_1)P(A_2 | A_1)P(A_3 | A_1 \cap A_2).....P(A_n| A_1 \cap A_2 \cap A_3 .. \cap A_{n-1})
+				\end{math}
 			
 			}
 	\end{homeworkProblem}
 	
 	
-	
 \end{homeworkProblem}
+
 
 \end{document}
