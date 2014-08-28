@@ -28,6 +28,7 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 
 \usepackage{amsmath}
+%\usepackage{multline}
 
 % Margins
 \topmargin=-0.45in
@@ -151,7 +152,7 @@
 
 \problemAnswer{ % Answer
 At the start of the tournament we have $2^n$ players to begin with. At
-each round there will be \textbf{one} winner emerging from each of the pairs while the other gets 'knocked out'. One possible configuration for the first round of the tournament would be: $Player_1$ v/s $Player_2$; $Player_3$ v/s $Player_4$;...;, $Player_(2^n-1)$ v/s $Player(2^n)$. At the end of first round, there are exactly $\frac{2^n}{2}=2^{n-1}$ winners and an equal number of knocked out players. 
+each round there will be \textbf{one} winner emerging from each of the pairs while the other gets 'knocked out'. One possible configuration for the first round of the tournament would be: $Player_1$ v/s $Player_2$; $Player_3$ v/s $Player_4$;...;, $Player_{(2^n-1)}$ v/s $Player_{(2^n)}$. At the end of first round, there are exactly $\frac{2^n}{2}=2^{n-1}$ winners and an equal number of knocked out players. 
 
 At round 1 the set of $2^n-1$ pairs can be represented as :$P_1, P_2, P_3, P_4, .., P_{2^{n}-1}$. The total number of such pairs is $2^n$ divided by $2$ since each pair has 2 players. The outcome of first round can generate two values for each of these pairs depending on who amongst the two players is the winner. For e.g. $Player_1$ can win while playing in $P_1$ or $Player_2$ can, Thus total number of such configurations for the round 1 would be $2 * 2 * 2 *...* (2^n-1)$ times 
 which is equal to $2^{2^{n-}}$. 
@@ -161,16 +162,17 @@ Thus, the sample space representing how the winners are chosen (or the knocked o
 $2^{2^{n-1}} * 2^{2^{n-2}} * .... * 2^{1}$ = $X$
 
 \begin{center}
-\begin{math}
+\begin{equation}
 log_2 X = 2^{n-1} + 2^{n-2} + ... + 1
-\end{math}
+\end{equation}
 
-\begin{math}
+\begin{equation}
 log_2 X = \frac{2^{n-1+1}-1}{2-1}
-\end{math}
+\end{equation}
 
 \end{center}
-Thus $X$ = $2^{2^n-1}$
+
+\textbf{Thus $X$ = $2^{2^n-1}$}
 %The possible numbe
 }
 \end{homeworkSection}
@@ -182,15 +184,17 @@ Thus $X$ = $2^{2^n-1}$
 
 \begin{homeworkSection}{\homeworkProblemName:~(a)} % Using the problem name elsewhere
 	\problemAnswer{ % Answer
-		\begin{math}
+		\begin{equation}
 			A \cup (B \cap C) = (A\cup B) \cap (A\cup C)
-		\end{math}
+		\end{equation}
 		
-		Let $x \in A \cup (B \cap C) $ $\implies$ $x \in A$ $OR$ $x \in B \cap C$.
-		Case 1: $x in A$
+		Let $x \in A \cup (B \cap C) $ $\implies$ $x \in A$ $OR$ $x \in B \cap C$.\\
+		
+		
+		Case 1: $x \in A$
 		Then $x \in (A \cup B)$ $AND$ $x \in (A \cup C)$. That is given $x$ is contained in $A$ it is for sure contained
 		in union of $A$ and $B$, and also in the union of $A$ with $C$. From the definition of intersection, this would imply: 
-		$x \in (A\cup B) \cap (A\cup C)$ 
+		$x \in (A\cup B) \cap (A\cup C)$ \\
 		
 		Case 2: $x \in (B \cap C)$
 		Then $x \in B$  $AND$ $x \in C$ $\implies$ $x \in (A \cap B)$ $AND$ $x \in (A \cap C)$ where 
@@ -214,13 +218,14 @@ Thus $X$ = $2^{2^n-1}$
 		
 		Thus from both the cases we draw the same conclusion:
 		$x \in (A \cup (B \cap C))$ $\implies$ 
-		\begin{math}
+		\begin{equation}
 		\label{5a2}
 		 (A\cup B) \cap (A\cup C)	\subseteq	A \cup (B \cap C) 
-		\end{math}
+		\end{equation}
 		
 		From \ref{5a1} and \ref{5a2}, it is implied that:\\
 				$A \cup (B \cap C) = (A\cup B) \cap (A\cup C)$
+				\\
 		\textbf{Ans. TRUE}
 	}
 \end{homeworkSection}
@@ -231,7 +236,7 @@ Thus $X$ = $2^{2^n-1}$
 		
 		Let $x \in (A \cap (B \cap C))$ $\implies$ $x \in A$ $AND$ $x \in B$ $AND$ $x in C$, which can be easily regrouped as $()x \in A $ $AND$ $ x \in B)$ $AND$ $ x \in C$, which is same as $x \in (A \cap B) \cap C$.
 		
-		Another approach would be what we used in part (a) above to show that the $L.H.S$ and $R.H.S$ are subsets of each other. However the $AND$ solution is straight forward, since there are no $OR's$ involved.   
+		Another approach would be what we used in part (a) above to show that the $L.H.S$ and $R.H.S$ are subsets of each other. However the $AND$ solution is straight forward, since there are no $OR's$ involved.  \\ 
 		
 		\textbf{Ans. TRUE}
 	}
@@ -242,69 +247,70 @@ Thus $X$ = $2^{2^n-1}$
 \begin{homeworkSection}{\homeworkProblemName:~(c)}
 	
 	\problemAnswer{
-		\begin{math}
+		\begin{equation}
 			\label{5c1}
 			(A \cup B) \cap C = A \cup (B \cap C)
-		\end{math}
+		\end{equation}
 		
 		From part (a) of this problem, we proved that the following equation is true: \\
-		\begin{math}
+		\begin{equation}
 			\label{5c2}
 			A \cup (B \cap C) = (A\cup B) \cap (A\cup C)
-		\end{math}
+		\end{equation}
 		
 		Substituting the $R.H.S$ of \ref{5c1} as the $L.H.S$ of \ref{5c2} we get:
 		
-		\begin{math}
+		\begin{equation}
 			\label{5c3}
 			(A \cup B) \cap C = (A\cup B) \cap (A\cup C)
-		\end{math}
+		\end{equation}
 		
 		Comparing \ref{5c1} and \ref{5c3} we see, that for \ref{5c1} to be always true, the following should hold: \\
-		\begin{math}
+		\begin{equation}
 			\label{5c4}
 			C = A \cup C
-		\end{math}
+		\end{equation} \\
 		
-		\textbf{which will only be true if $A \subseteq C$.}
+		\textbf{which will only be TRUE iff $A \subseteq C$.}
 	}
 \end{homeworkSection}
 	
 \begin{homeworkSection}{\homeworkProblemName:~(d)}
 	\problemAnswer{
-		\begin{math}
+		\begin{equation}
 			\label{5d1}
 			(A \backslash (B \cap C)) = (A \backslash B) \cup (A \backslash C)
-		\end{math} %\newline
+		\end{equation} %\newline
 		
 		$X \backslash Y=$ $X$ but not $Y$ $\implies$
 		$X \cap (X\cap(X\cap Y)^C)$
 		
 		Thus \ref{5d1} can be expanded as follows:
-		\begin{math}
+		\begin{equation}
 			\label{5d2}
 			A \cap (A \cap (B \cap C))^C = (A \cap (A \cap B)^C) \cup (A \cap (A \cap C)^C)
-		\end{math}
+		\end{equation}
 		
 		Expanding $L.H.S$ using results from above probles (5b) we get
-		\begin{math}
+		\begin{equation}
 			L.H.S = A  \cap (A \cap (B \cap C))^C = A \cap (A \cap B \cap  C)^C = A \cap (A^C \cup B^C \cup C^C)
-		\end{math}
+		\end{equation}
 		
 		Again using distribution of union over intersection property :
-		\begin{math}
+		\begin{equation}
 			L.H.S = (A \cap ( A^C )) \cup (A \cap ( B^C )) \cup (A \cap ( C^C )) = (A \cap B^C) \cup (A \cap C^C)
-		\end{math}
+		\end{equation}
 		
 		Expanding $R.H.S$ similarly we get:
-		\begin{math}
-			R.H.S = (A \cap (A \cap B)^C) \cup (A \cap (A \cap C)^C)
-			= (A \cap (A^C \cup B^C)) \cup (A \cap (A^C \cup C^C))
-			= (A \cap A^C \cup A \cap B^C) \cup (A \cap A^C \cup A \cap C^C)
+		\begin{multline*}
+			R.H.S = (A \cap (A \cap B)^C) \cup (A \cap (A \cap C)^C) \\
+			= (A \cap (A^C \cup B^C)) \cup (A \cap (A^C \cup C^C)) \\
+			= (A \cap A^C \cup A \cap B^C) \cup (A \cap A^C \cup A \cap C^C) 
 			= (A \cap B^C) \cup (A \cap C^C)
-		\end{math}
+		\end{multline*}\\
 		
-		Thus $L.H.S=R.H.S=(A \cap B^C) \cup (A \cap C^C)$
+		Thus $L.H.S=R.H.S=(A \cap B^C) \cup (A \cap C^C)$\\
+		\textbf{Ans. TRUE}
 	}	
 \end{homeworkSection}
 
@@ -323,24 +329,24 @@ Thus $X$ = $2^{2^n-1}$
 			
 			\textbf{Solution:} $P(A\cap B)$ has an upper bound coming from either $A$ or $B$ depending on whichever is a smaller set. Thus : \\
 			$P(A \cap B) \leq max(P(A), P(B))$ where $max()$ represents the maximum function. $max(P(A), P(B))=P(B) = \frac{1}{3}$ $\implies$ 
-			\begin{math}
+			\begin{equation}
 				\label{13c1}
 				P(A \cap B) \leq \frac{1}{3}
-			\end{math}
+			\end{equation}
 			
 			Now consider $P(A \cup B)$ :
 			$P(A \cup B) = P(A) + P(B) - P(A\cap B)$. Also, from the law of probability: \\
 			$P(A \cup B) \leq 1$ $\implies$ $P(A \cap B) \geq P(A) + P(B) - 1 $ $\implies$ $P(A \cap B) \geq \frac{13}{12}-1$.
 			Thus 
-			\begin{math}
+			\begin{equation}
 				\label{13c2}
 				P(A\cap B) \geq \frac{1}{12}
-			\end{math}
+			\end{equation}
 			
 			 
-			 From \ref{13c1} and \ref{13c2}
+			 From \ref{13c1} and \ref{13c2} \\
 			
-			$\frac{1}{12} \leq P(A\cap B) \leq \frac{1}{3}$
+	\textbf{$\frac{1}{12} \leq P(A\cap B) \leq \frac{1}{3}$}
 			
 			
 			Now for $P(A \cup B)$:
@@ -349,38 +355,55 @@ Thus $X$ = $2^{2^n-1}$
 			$P( A \cup B) \leq 1$.
 			
 			For lower bound consider:
-			\begin{math}
+			\begin{equation}
 				\label{13c3}
 				P(A \cup B) = P(A) + P(B) - P(A \cap B)
-			\end{math}
+			\end{equation}
 			and 
-			\begin{math}
+			\begin{equation}
 				\label{13c4}
 				\frac{-1}{12} \geq - P(A \cap B) \geq \frac{-1}{3}
-			\end{math}
+			\end{equation}
 			
 			From \ref{13c3} and \ref{13c4}:
-			\begin{math}
+			\begin{equation}
 				P(A \cup B) \geq P(A) + P(B) - \frac{1}{3}
-			\end{math}
+			\end{equation}
 			
-			$\implies$:
-			$P(A \cup B) \geq \frac{3}{4}$
+			$\implies$
+			$P(A \cup B) \geq \frac{3}{4}$ \\
+			\begin{center}
+				
 			
-	\textbf{$1 \geq P(A \cup B) \geq \frac{3}{4}$}
+	\textbf{Ans. $1 \geq P(A \cup B) \geq \frac{3}{4}$ \\
+				$\frac{1}{12} \leq P(A\cap B) \leq \frac{1}{3}$
+		}
+	\end{center}
 	}
 	\end{homeworkProblem}
 	
 		\begin{homeworkProblem}[3]
-			\problemAnswer{2red, 2white, 2stars pairs of (cup, saucer). Probablity that no cup is on the saucer of the same pan.
-				E.g configuration: (Cup Color, Saucer Color):
-				(R,W), (R,S), (W,R),(W,S), (S,R), (S,W)
+			\problemAnswer{\textbf{Given:} 2 red, 2 white, 2 stars pairs of (cup, saucer). Probablity that no cup is on the saucer of the same pan.
 				
-				Here 'corresponding saucer'$=$ 
+				\textbf{Assumption:} Same colored cups are not identical and hence the total number of possible configurations is $6!$ 
 				
-				P(no cup on same color saucer) = 1 - P(one cup on same color saucer) + P(two cups on two corresponding colored saucers) - P(three cups on three corresponding saucers) + P(four cups on four correpsonding saucers)
-		
-		
+			Consider the 6 saucers. Let same colored saucers first choose same colored cups. So red saucers pair up with whites, white saucers can then pair up with only star cups and star saucers choose red cups. This an be done in
+			$2*2*2=8$ ways.(Treating same colored cups as non identical)
+			
+			An alternate configuration would require red saucers pair up with stars, stars with white and white with red. Again $2*2*2=8$ possible ways.
+			
+			Lastly, let white saucers choose red cup and star cup,
+			red saucers choose white cup and star cup, star saucers choose white and red cups.
+			
+			The first white saucer has 4 cups to choose from(2  red, 2 star) and once it chooses the second white saucer can choose from  only remaining 2(either red or white), next two white cups can have $2*2$ possible configuarations (choosing between two reds and one star for each so $2*1*2$) and next now that everything is already chosen the remaining two star saucers can just permute the red and white cups amongst themselves so $2$ ways. In total:
+			$4*2*2*1*2*2=64$ ways for this entire case.
+			
+			Thus total such configurations where the saucer and cup are of not the same color = $8+8+64=80$ and hence the required probability is $\frac{80}{720}=\frac{1}{9}$
+			
+			 
+		\begin{center}
+\textbf{			Ans. $\frac{1}{9}$}
+		\end{center}
 		
 		
 		}
@@ -390,46 +413,91 @@ Thus $X$ = $2^{2^n-1}$
 			\problemAnswer{
 				
 				To Prove: 
-				\begin{math}
+				\begin{equation}
 					\label{4c1}
 				P(\cup_{i=1}^n A_i) = \sum_{i}^{n}P(A_i) - \sum_{i<j}P(A_i \cap A_j) + \sum_{i<j<k}P(A_i \cap A_j \cap A_k))...+(-1)^{n+1}P(A_1 \cap A_2...\cap A_n)
-				\end{math}
+				\end{equation}
 				\ref{4c1} clearly holds for $n=1$.
 				Also for $n=2$:
-				\begin{math}
+				\begin{equation}
 					\label{4c2}
 					P(A \cup B) = P(A) + P(B) - P(A \cap B)
-				\end{math}
+				\end{equation}
 				
 				
 				
 				Assume \ref{4c1} holds for $n=s$: \\
-				\begin{math}
+				\begin{equation}
 					\label{4c3}
 					P(\cup_{i=1}^s A_i) = \sum_{i}^{s}P(A_i) - \sum_{i<j}P(A_i \cap A_j) + \sum_{i<j<k}P(A_i \cap A_j \cap A_k))...+(-1)^{s+1}P(A_1 \cap A_2...\cap A_n)
-				\end{math}
+				\end{equation}
 				
-			Now for $n=s+1$, using results from \ref{4c3}: \\
-				\begin{math}
+			Now for $n=s+1$, using results from \ref{4c3}  and \ref{4c2} we get: \\
+				\begin{equation}
 					\label{4c4}
 					P(\cup_{i=1}^{s+1} A_i) = P(\cup_{i=1}^s A_i \cup A_{s+1}) = P(\cup_{i=1}^s A_i) + P(A_{s+1}) - P(\cup_{i=1}^s A_i \cap A_{s+1})
-				\end{math}
+				\end{equation}
 			
 			Consider
-			\begin{math}
+			\begin{equation}
 				\label{4c5}
 				P(\cup_{i=1}^s A_i \cap A_{s+1}) = 
 				P(\cup_{i=1}^s (A_i \cap A_{s+1}))
-			\end{math} 
+			\end{equation} 
 			
-			Expanding \ref{4c4} using \ref{4c3} we get:
-			\begin{math}
+			Expanding \ref{4c5} using \ref{4c3} we get:
+			\begin{multline}
 				\label{4c6}
-					P(\cup_{i=1}^s (A_i \cap A_{s+1})) = \sum_{i=1}^{n}P(A_i \cap A_{s+1}) - \sum_{i<j}^{n}P(A_i \cap A_j \cap A_{s+1})
-			\end{math}
+					P(\cup_{i=1}^s (A_i \cap A_{s+1})) = \sum_{i=1}^{n}P(A_i \cap A_{s+1}) - \sum_{i<j}^{n}P(A_i \cap A_j \cap A_{s+1}) + .. + (-1)^{s+1}P(A_i \cap A_j \cap A_k ... \cap A_s \cap A_{s+1})
+			\end{multline}
+			
+			Expanding $\sum_{i}^{s}P(A_i)$ in \ref{4c4} using \ref{4c3} we get:
+			\begin{multline}
+			\label{4c7}
+			P(\cup_{i=1}^{s+1} A_i) = \sum_{i}^{s}P(A_i) - \sum_{i<j}P(A_i \cap A_j) + \sum_{i<j<k}P(A_i \cap A_j \cap A_k))... \\ + (-1)^{s+1}P(A_1 \cap A_2...\cap A_n) ) + P(A_{s+1}) - (\sum_{i=1}^{n}P(A_i \cap A_{s+1}) \\ - \sum_{i<j}^{n}P(A_i \cap A_j \cap A_{s+1}) + .. + (-1)^{s+1}P(A_i \cap A_j \cap A_k ... \cap A_s \cap A_{s+1}))
+			\end{multline}
+		
+		Rearranging \ref{4c7} we get:
+			\begin{multline*}
+			\label{4c7}
+			RHS  = (  \sum_{i}^{s}P(A_i) + P(A_{s+1}) -
+			 (\sum_{i<j}{s}P(A_i \cap A_j) \\+ \sum_{i=1}{s}P(A_i \cap A_{s+1}) .... +(-1)^{s+1}P(A_i \cap A_j \cap A_k ... \cap A_s) - (-1)^{s}P(A_i \cap A_j \cap A_k ..\cap A_s \cap A_{s+1}) 
+			\end{multline*}
+		
+		\ref{4c7} is same as $P(\cup_{i=1}^{s+1} A_i)$
+		
+		Hence proved.
 			}
 			
-			Now e
+			
+			
+		\end{homeworkProblem}
+		
+			\begin{homeworkProblem}[4]
+				\problemAnswer{
+		\textbf{Corn flakes problem: }
+		Consider the vice chancellors to be $V_1, V_2, V_3, V_4, V_5$
+		Given 6 boxes, with each containing packet for $V_i$ with probability $\frac{1}{5}$
+		
+		\textbf{To Find: } Probability that each of $V_3$, $V_4$ and $V_5$ packets show up inside the corn flakes boxes.
+		
+		$P(X)$ = $P(V_3, V_4, V_5$ packets show up$)$ = 1 - $P(V_3/V_4/V_5$ is missing $)$  $+P($ any two of $V_3,V_4,V_5$ $)$ $-P(V_3,V_4,V_5 $ all missing$)$
+		\newpage
+		
+		Consider: \\
+		$P(V_3$ is missing$)$ = $(1-\frac{1}{5})^6 = (\frac{4}{5})^6$ \\
+		$P(V_3+V_4$ missing$)$ = $(1-\frac{1}{5}-\frac{1}{5})^6 = (\frac{3}{5})^6$ \\
+		$P(V_3+V_4+V_5$ missing$)$ = $(1-\frac{1}{5}-\frac{1}{5} - \frac{1}{5})^6 = (\frac{2}{5})^6 $ \\
+		Thus, $P(X)=1- \binom{3}{1}(\frac{4}{5})^6 + \binom{3}{2}(\frac{3}{5})^6 - \binom{3}{3}(\frac{2}{5})^6  $
+		
+
+			
+		
+		
+		
+			}
+			
+
 			
 		\end{homeworkProblem}
 		
@@ -442,46 +510,48 @@ Thus $X$ = $2^{2^n-1}$
 
 	\begin{homeworkProblem}[2]
 		\problemAnswer{To Prove: 
-			\begin{math}
+			\begin{equation}
 				\label{152c1}
 				P(A_1 \cap A_2 \cap A_3.. \cap A_n) = P(A_1)P(A_2 | A_1)P(A_3 | A_1 \cap A_2).....P(A_n| A_1 \cap A_2 \cap A_3 .. \cap A_{n-1})
-				\end{math}
+				\end{equation}
 
 			From the definition of conditional probability:
-			\begin{math}
+			\begin{equation}
 				\label{152c2}
 				P(A_1 \cap A_2) = P(A_1 | A_2)P(A_2)			
-			\end{math}
+			\end{equation}
 			
 			Expanding the $LHS$ of \ref{152c1} using results from \ref{152c2} we get: 
-			\begin{math}
+			\begin{equation}
 				\label{152c3}
 				P(A_1 \cap A_2 \cap A_3 .... \cap A_n) = P(X \cap A_n)
 				= P(A_n | X)P(X)
-			\end{math}
+			\end{equation}
 			
 			where $X$ = $A_1 \cap A_2 \cap A_3 ...\cap A_{n-1}$
 			Thus from \ref{152c3}  and definition of $X$ we get:
 			
-			\begin{math}
+			\begin{equation}
 				\label{152c5}
 					P(A_1 \cap A_2 \cap A_3 .... \cap A_n)  = P(A_1 \cap A_2 ...\cap A_{n-1}) P(A_n| A_1 \cap A_2 ...\cap A_{n-1})
-			\end{math}
+			\end{equation}
 			
 			
 			The RHS of \ref{152c5} can be similarly expanded as:
-			\begin{math}
+			\begin{multline}
 				\label{152c6}
 				P(A_1 \cap A_2 \cap A_3 .... \cap A_{n-1})  = P(A_1 \cap A_2 ...\cap A_{n-2}) P(A_{m-1}| A_1 \cap A_2 ...\cap A_{n-2})
-			\end{math}
+			\end{multline}
 			
 			Hence combining \ref{152c5} and \ref{152c6} and doing similar such operations we get: \\
 			
-				\begin{math}
+				\begin{equation}
 					\label{152c7}
 					P(A_1 \cap A_2 \cap A_3.. \cap A_n) = P(A_1)P(A_2 | A_1)P(A_3 | A_1 \cap A_2).....P(A_n| A_1 \cap A_2 \cap A_3 .. \cap A_{n-1})
-				\end{math}
+				\end{equation}
+			as required.\\
 			
+			Hence proved.
 			}
 	\end{homeworkProblem}
 	
