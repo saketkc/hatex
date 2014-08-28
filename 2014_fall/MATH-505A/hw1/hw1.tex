@@ -175,63 +175,136 @@ Thus $X$ = $2^{2^n-1}$
 }
 \end{homeworkSection}
 
+\end{homeworkProblem}
 %--------------------------------------------
-
-\begin{homeworkSection}{(5)} % Section within problem
+\begin{homeworkProblem}[5]
+%\begin{homeworkSection}{(5)} % Section within problem
 
 \begin{homeworkSection}{\homeworkProblemName:~(a)} % Using the problem name elsewhere
 	\problemAnswer{ % Answer
 		\begin{math}
-		A \cup (B \cap C) = (A\cup B) \cap (A\cup C)
+			A \cup (B \cap C) = (A\cup B) \cap (A\cup C)
 		\end{math}
 		
-		Let $x \in A \cup (B \cap C) $ {\tiny }
+		Let $x \in A \cup (B \cap C) $ $\implies$ $x \in A$ $OR$ $x \in B \cap C$.
+		Case 1: $x in A$
+		Then $x \in (A \cup B)$ $AND$ $x \in (A \cup C)$. That is given $x$ is contained in $A$ it is for sure contained
+		in union of $A$ and $B$, and also in the union of $A$ with $C$. From the definition of intersection, this would imply: 
+		$x \in (A\cup B) \cap (A\cup C)$ 
+		
+		Case 2: $x \in (B \cap C)$
+		Then $x \in B$  $AND$ $x \in C$ $\implies$ $x \in (A \cap B)$ $AND$ $x \in (A \cap C)$ where 
+		$A$ can be any set, since $ B \subseteq (A \cap B)$
+		
+		Thus from both the cases we get:
+			$x \in (A\cup B) \cap (A\cup C)$ 
+			
+		This implies 
+		\begin{equation}
+			\label{5a1}
+			A \cup (B \cap C) \subseteq (A\cup B) \cap (A\cup C)
+		\end{equation}
+		Now consider a $y \in (A\cup B) \cap (A\cup C)$ $\implies$ $y \in (A\cup B)$ $AND$ $ y \in (A \cup C)$. 
+		This implies $x$ belongs to $A$ $OR$ $B$ $AND$ $A$ $OR$ $C$
+		Two cases again:
+		Case 1: $x \in A$ $\implies$ $x \in A \cup (B \cap C)$ as 
+		$A \subseteq (A \cup (B \cap C))$
+		
+		Case 2: $x \in B$ $AND$ $ x \in C$ $\implies$ $x \in (B \cap C)  \cup A$ as $ (B \cap C) \subseteq (A \cup (B \cap C))$
+		
+		Thus from both the cases we draw the same conclusion:
+		$x \in (A \cup (B \cap C))$ $\implies$ 
+		\begin{math}
+		\label{5a2}
+		 (A\cup B) \cap (A\cup C)	\subseteq	A \cup (B \cap C) 
+		\end{math}
+		
+		From \ref{5a1} and \ref{5a2}, it is implied that:\\
+				$A \cup (B \cap C) = (A\cup B) \cap (A\cup C)$
+		\textbf{Ans. TRUE}
 	}
 \end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName:~(b)} % Using the problem name elsewhere
+	\problemAnswer{ % 
+		$A \cap (B \cap C) = (A \cap B) \cap C$
+		
+		Let $x \in (A \cap (B \cap C))$ $\implies$ $x \in A$ $AND$ $x \in B$ $AND$ $x in C$, which can be easily regrouped as $()x \in A $ $AND$ $ x \in B)$ $AND$ $ x \in C$, which is same as $x \in (A \cap B) \cap C$.
+		
+		Another approach would be what we used in part (a) above to show that the $L.H.S$ and $R.H.S$ are subsets of each other. However the $AND$ solution is straight forward, since there are no $OR's$ involved.   
+		
+		\textbf{Ans. TRUE}
+	}
 \end{homeworkSection}
 
+
+
+\begin{homeworkSection}{\homeworkProblemName:~(c)}
+	
+	\problemAnswer{
+		\begin{math}
+			\label{5c1}
+			(A \cup B) \cap C = A \cup (B \cap C)
+		\end{math}
+		
+		From part (a) of this problem, we proved that the following equation is true: \\
+		\begin{math}
+			\label{5c2}
+			A \cup (B \cap C) = (A\cup B) \cap (A\cup C)
+		\end{math}
+		
+		Substituting the $R.H.S$ of \ref{5c1} as the $L.H.S$ of \ref{5c2} we get:
+		
+		\begin{math}
+			\label{5c3}
+			(A \cup B) \cap C = (A\cup B) \cap (A\cup C)
+		\end{math}
+		
+		Comparing \ref{5c1} and \ref{5c3} we see, that for \ref{5c1} to be always true, the following should hold: \\
+		\begin{math}
+			\label{5c4}
+			C = A \cup C
+		\end{math}
+		
+		\textbf{which will only be true if $A \subseteq C$.}
+	}
+	
+\end{homeworkSection}
+
+
+
+
+%\end{homeworkSection}
+\end{homeworkProblem}
 %--------------------------------------------
+
+\begin{homeworkProblem}[Exercise \# 1.3] % Custom section title
+
+\begin{homeworkProblem}[1]
+	\problemAnswer{}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[3]
+	\problemAnswer{}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[5]
+	\problemAnswer{}
+\end{homeworkProblem}
+
 
 \end{homeworkProblem}
 
 %----------------------------------------------------------------------------------------
-%	PROBLEM 3
-%----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Prob. \Roman{homeworkProblemCounter}] % Roman numerals
-
-%--------------------------------------------
-
-\begin{homeworkSection}{\homeworkProblemName:~(a)} % Using the problem name elsewhere
-\problemAnswer{ % Answer
-\lipsum[7]
-}
-\end{homeworkSection}
-
-%--------------------------------------------
-
-\begin{homeworkSection}{\homeworkProblemName:~(b)}
-\lipsum[8]\vspace{10pt} % Question
-
-\problemAnswer{ % Answer
-\lipsum[9]
-}
-\end{homeworkSection}
-
-%--------------------------------------------
-
+\begin{homeworkProblem}[Exercise \# 1.4] % Custom section title
+	
+	\begin{homeworkProblem}[2]
+		\problemAnswer{}
+	\end{homeworkProblem}
+	
+	
+	
 \end{homeworkProblem}
-
-%----------------------------------------------------------------------------------------
-%	PROBLEM 4
-%----------------------------------------------------------------------------------------
-
-\begin{homeworkProblem}[Prob. \Roman{homeworkProblemCounter}] % Roman numerals
-\problemAnswer{ % Answer
-\lipsum[10]
-}
-\end{homeworkProblem}
-
-%----------------------------------------------------------------------------------------
 
 \end{document}
