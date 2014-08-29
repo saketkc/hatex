@@ -226,8 +226,9 @@ log_2 X = \frac{2^{n-1+1}-1}{2-1}
 				x \in (A \cup (B \cap C)) \implies  (A\cup B) \cap (A\cup C)	\subseteq	A \cup (B \cap C) 
 		\end{equation}
 		
-		From \ref{5a1} and \ref{5a2}, it is implied that, since LHS and RHS are subsets of each other:\\
-				$A \cup (B \cap C) = (A\cup B) \cap (A\cup C)$
+		From \ref{5a1} and \ref{5a2}, it is implied that:\\
+				\center $A \cup (B \cap C) = (A\cup B) \cap (A\cup C)$ \\
+				, since LHS and RHS are subsets of each other.
 				\\
 		\center \textbf{Ans. TRUE}
 	}
@@ -335,15 +336,17 @@ log_2 X = \frac{2^{n-1+1}-1}{2-1}
 			\textbf{To Prove:} $\frac{1}{12} \leq P(A\cap B) \leq \frac{1}{3}$ \\
 			
 			\textbf{Solution:} $P(A\cap B)$ has an upper bound coming from either $A$ or $B$ depending on whichever is a smaller set. Thus : \\
-			$P(A \cap B) \leq max(P(A), P(B))$ where $max()$ represents the maximum function. $max(P(A), P(B))=P(B) = \frac{1}{3}$ $\implies$ 
+			$P(A \cap B) \leq max(P(A), P(B))$ where $max()$ represents the maximum function.\\
+			 
 			\begin{equation}
 				\label{13c1}
-				P(A \cap B) \leq \frac{1}{3}
+			max(P(A), P(B))=P(B) = \frac{1}{3} \implies 	P(A \cap B) \leq \frac{1}{3}
 			\end{equation}
 			
-			Now consider $P(A \cup B)$ :
-			$P(A \cup B) = P(A) + P(B) - P(A\cap B)$. Also, from the law of probability: \\
-			$P(A \cup B) \leq 1$ $\implies$ $P(A \cap B) \geq P(A) + P(B) - 1 $ $\implies$ $P(A \cap B) \geq \frac{13}{12}-1$.
+			Now consider $P(A \cup B)$ : \\
+			$P(A \cup B) = P(A) + P(B) - P(A\cap B)$.\\
+			Also, from the law of probability: \\
+			$P(A \cup B) \leq 1$ $\implies$ $P(A \cap B) \geq P(A) + P(B) - 1 $ $\implies$ $P(A \cap B) \geq \frac{13}{12}-1$.\\
 			Thus 
 			\begin{equation}
 				\label{13c2}
@@ -396,7 +399,7 @@ log_2 X = \frac{2^{n-1+1}-1}{2-1}
 				\textbf{Assumption:} Same colored cups are not identical and hence the total number of possible configurations is $6!$ 
 				
 			Consider the 6 saucers. Let same colored saucers first choose same colored cups. So red saucers pair up with whites, white saucers can then pair up with only star cups and star saucers choose red cups. This an be done in
-			$2*2*2=8$ ways.(Treating same colored cups as non identical)
+			$2*2*2=8$ ways.(Treating same colored cups as non identical) Since each pair of same colored saucers can get paired with some other colored cup in 2 possible ways and there are total of 3 such pairs.
 			
 			An alternate configuration would require red saucers pair up with stars, stars with white and white with red. Again $2*2*2=8$ possible ways.
 			
@@ -489,7 +492,9 @@ log_2 X = \frac{2^{n-1+1}-1}{2-1}
 		
 		\textbf{To Find: } Probability that each of $V_3$, $V_4$ and $V_5$ packets show up inside the corn flakes boxes.
 		
-		$P(X)$ = $P(V_3, V_4, V_5$ packets show up$)$ = 1 - $P(V_3/V_4/V_5$ is missing $)$  $+P($ any two of $V_3,V_4,V_5$ $)$ $-P(V_3,V_4,V_5 $ all missing$)$
+		Inclusion-Exclusion: 
+		
+		$P(X)$ = $P(V_3, V_4, V_5$ packets show up$)$ = 1 - $P(V_3/V_4/V_5$ is missing $)$  $+P($any two of $V_3,V_4,V_5$missing $)$ $-P(V_3,V_4,V_5 $ all missing$)$
 		\newpage
 		
 		Consider: \\
