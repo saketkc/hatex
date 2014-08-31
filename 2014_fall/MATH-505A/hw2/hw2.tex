@@ -76,7 +76,7 @@
 \newcommand{\homeworkProblemName}{}
 \newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
 \stepcounter{homeworkProblemCounter} % Increase counter for number of problems
-\renewcommand{\homeworkProblemName}{#2} % Assign \homeworkProblemName the name of the problem
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
 \section{\homeworkProblemName} % Make a section in the document with the custom problem count
 \enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
 }{
@@ -100,8 +100,8 @@
 %	NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
 
-\newcommand{\hmwkTitle}{Homework\ \# 1 } % Assignment title
-\newcommand{\hmwkDueDate}{Friday,\ September \ 5,\ 2014} % Due date
+\newcommand{\hmwkTitle}{Homework\ \# 2 } % Assignment title
+\newcommand{\hmwkDueDate}{Friday,\ September \ 4,\ 2014} % Due date
 \newcommand{\hmwkClass}{MATH-505A} % Course/class
 \newcommand{\hmwkClassTime}{10:30am} % Class/lecture time
 \newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
@@ -250,7 +250,11 @@
 				}
 				
 			\end{homeworkSection}
-			
+			\begin{homeworkSection}{(6)} % Section within problem
+				
+				\problemAnswer{ % Answer
+					
+				}
 				
 			\end{homeworkSection}	
 			\begin{homeworkSection}{(7)} % Section within problem
