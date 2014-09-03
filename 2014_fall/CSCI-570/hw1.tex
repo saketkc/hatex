@@ -28,8 +28,12 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 
 \usepackage{amsmath}
+%\usepackage[]{algorithm2e}
+%\usepackage{algpseudocode}
+\usepackage{verbatim}
+%\usepackage{algorithm}
+%\usepackage[noend]{algpseudocode}
 \usepackage[]{algorithm2e}
-\usepackage{algpseudocode}
 
 
 % Margins
@@ -107,6 +111,7 @@
 \newcommand{\hmwkClass}{CSCI-570} % Course/class
 \newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
 \newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+\newcommand{\hmwkAuthorEmail}{skchoudh@usc.edu} % Teacher/lecturer
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -120,6 +125,7 @@
 }
 
 \author{\textbf{\hmwkAuthorName} \\
+	\textbf{\hmwkAuthorEmail}\\
 	\textbf{\hmwkAuthorID}
 	}
 \date{} % Insert date here if you want it to appear below your name
@@ -145,36 +151,122 @@
 %	PROBLEM 2
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Exercise \# 1] % Custom section title
+\begin{homeworkProblem}[HW1] % Custom section title
 
 
-\begin{homeworkSection}{(1)} % Section within problem
+\begin{homeworkSection}{(2: Ch\#1 Ex\#1)} 
+\problemAnswer{
+		\textbf{False}
+		Consider the following example: \\
+		$m$ ranks women as: $rank_w > rank_{w'}$ \\
+		$m'$ ranks women as: $rank_w' > rank_w$ \\
+		$w$ ranks men as: $rank_{m'} > rank_m$\\
+		$w'$ ranks men as: $rank_m > rank_{m'}$\\
+		
+		In such a case there is no possible stable matching where the men $m$ or $m'$ can be paired up with their top preferences.  
+		 
+}
+\end{homeworkSection}
+
+\begin{homeworkSection}{(3: Ch\#1 Ex\#2)} %
+	\problemAnswer{
+			\textbf{True}
+			Consider the statement to be false. In that case
+			$m$ pairs up with woman $w'$ such that $w'\neq w$ and hence $w$ pairs up with $m'$ such that $m' \neq m$. Now
+			preference wise $m$ is ranked at the top for $w$ and vice-versa(in on of the instances, preferences do not change with instances). So given that the pairs in this instance are $(m,w')$ and $(m',w)$ man $m$ would have preferred $w'$ over $w$ and $w$ would have preferred $m'$ over $m$. But this contradicts the fact that $m$ and $w$ are at the top of each other's list. 
+			  
+		}
+	
+\end{homeworkSection}	
+
+\begin{homeworkSection}{(4)} %
+	\problemAnswer{
+		\textbf{False}
+		
+		Consider this case: \\
+		
+		$m$ $\longrightarrow w > w'$\\
+		$m'\longrightarrow w' > w$\\
+		$w \longrightarrow m' > m$\\
+		$w' \longrightarrow m > m'$\\
+		
+		There is one possible pairing: $(m,w); (m',w')$ if men 
+		propose. However if women propose $(m',w); (m, w')$ is also
+		one possible configuration. So the $G-S$ algorithm still gives
+		\textbf{unique} solutions if \textbf{only men} or \textbf{only women} propose. So even though the male and female versions produce two independent outputs, the output from either of them is still unique!
+		
+		}
+\end{homeworkSection}
+
+\begin{homeworkSection}{(5)}
+	\problemAnswer{
+			A stable matching will not always exist. Consider the case of simple cyclic permutations: \\
+			$a \longrightarrow b > c > d$\\
+			
+			$b \longrightarrow c > d > a$\\
+			
+			$c \longrightarrow d > a > b$\\
+			
+			$d \longrightarrow a > b > c$\\
+			
+			
+			They cannot settle down with their first choices since 
+			$(a,b); (c,d)$ is unstable as $b$ prefers $c$ to be its room mate and $d$ prefers $a$ followed by $b$ to be its roommate.   
+		}
+\end{homeworkSection}
+
+\begin{homeworkSection}{(6: Ch\#1, Ex\#3 )} % Section within problem
 %\lipsum[4]\vspace{10pt} % Question
 
-\problemAnswer{ % Answer
-\begin{algorithm}[H]
-	\KwData{this text}
-	\KwResult{how to write algorithm with \LaTeX2e }
-	initialization\;
-	\While{not at end of this document}{
-		read current\;
-		\eIf{understand}{
-			go to next section\;
-			current section becomes this one\;
-		}{
-		go back to the beginning of current section\;
-	}
-}
-\caption{How to write algorithms}
-\end{algorithm}
+\problemAnswer{ 
+	Let the n shows of $A$ have a rating given by $\{A_1,A_2,....,A_n\}$ and that of $B$ have $\{B_1, B_2, ...,B_n\}$. 
+	Consider a simpler case $A_1,A_2,A_3$, and $B_1,B_2,B_3$ such that $A=\{1,3,5\}$ and $B=\{2,4,6\}$ would result in a configuration as $B,B,A$ and if however B now changes it configuration to $\{4,2,6\}$ the new configuration would be $\{B,A,B\}$ clearly violating the requirements of stability.
+	
+
 }
 
 \end{homeworkSection}
 
 %--------------------------------------------
 
-\begin{homeworkSection}{(2)} % Section within problem
-\problemAnswer{ % Answer
+\begin{homeworkSection}{(7: Ch\#1, Ex\#4 )} % Section within problem
+\problemAnswer{
+	Let $H$ represent the set of hospitals and $S$ represent the set of students
+\begin{algorithm}[H]
+\While{there is a hospital $h \epsilon H$ with atleast one spot empty that hasn't been offered to $s \epsilon E$}{
+	hire the next best valid student $s'$ as in the preference list of $h$
+	\eIf{$s'$ free}{
+		$s'$ gets hired by $h$, number of open spots reduce by $1$	 
+	}{
+		\eIf{$s'$ ranks $h$ higher to its current employer $h'$}{
+			$s'$ leaves $h'$\;$h$ becomes occupied; $h'$ has 1 less student 
+		}{
+			$s'$ remaiins with originla $h'$ and $h$ is still free and moves on to the next student on its preference list
+		}
+	}
+}
+
+To prove it's correctness: \\
+
+First type of instability: \\
+$s$ is assigned $h$, $s'$ is assigned no hospital and $h$ prefers $s'$: \\
+
+Let as assume First type of staibility exists. Since $h$ prefers $s'$, it must have tried to hire $s'$ before it hired $s$, but $s'$ could have refused since there was another hospital $h''$ which was higher ranked than $s'$ But at the end $s'$ lands up with no hospital which is a CONTRADICTION.
+
+Second Type of instability: \\
+$s$ assigned $h$; $s'$ assigned $h'$, $h$ prefers $s'$ to $s$ and $s'$ prefers $h$ to $h'$.
+
+Let us assume such an instability exists. Since $h$ prefers $s$ to $s'$, it must have tried to hire $s'$ at some point to which $s'$ refused leading to hire of $s$ or alternative $s'$ was hired but later on waas asked by another hospital $h''$ which was higher on its prefernce list leading to $s'$ leaving $h$, But now it is with $h'$ which is lower ranked than $h$ which is clearly a CONTRADICTION since $s'$ is supposed to be shifting to higher ranked hospitals(like the women in the G-S problem/solution) 
+
+
+
+%\State $i\gets 0$
+%\Else
+%\If {$i+k\leq maxval$}
+%\State $i\gets i+k$
+%\EndIf
+%\EndIf
+\end{algorithm}
 
 }
 
@@ -183,5 +275,16 @@
 %--------------------------------------------
 
 \end{homeworkProblem}
+
+\begin{homeworkSection}{(8)}
+	\problemAnswer{After stable matching terminated man $m1$ changed his mind to marry woman $w2$ though he was already married to $w1$ 
+		Original preference list : $w1 > w2$
+		New preference list: $w2 > w1$
+		Let the original pairing be $(m1,w1)$ and $(m2,w2)$. New pairings : $?$\\
+			Case1: If $w2$ prefers $m2$ over $w1$ the change in preference of $m1$ does not matter, as even if he now asks $w2$ he would be refused since she is already engaged with a person ranked higher.\\
+			
+			Case2: If $w2$ prefers $m1$ over $m2$ and now $m1$ also prefers $w2$ over $m1$, then when it is $m1$'s turn he would ask $w2$ instead of $w1$ and stands a chance to get engaged initially(when $w2$ divorves $m2$) Now $m2$ is free, $w1$ is free and the G-S algorithm starts to run again with $m2$. $m2$ will not stsrt from the top of his list but should make an efficient choice to start from where he was left off by $w2$, because he is going to go further down the ladder(he would be rejected again by all women who were above $w2$ in his list even if he chososes to ask them again) so he 'initiates' the 'G-S' by asking a woman $w'$ who was ranked just below to $w2$. The procedure then otherwise contiues like normal G-S, though $w1$ is free and would get engaged as soon as $m2$ or any other person proposes her. 
+		}
+\end{homeworkSection}
 
 \end{document}
