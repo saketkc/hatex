@@ -200,7 +200,18 @@
 			\begin{homeworkSection}{(3)} 
 				
 				\problemAnswer{ % Answer
+					To Prove: \\
 					
+					(a) outcomes of coin tosses are independent \\
+					(b) Given a sequence of length m of heads and tails the chance of it occuring in first m tosses i s $2^-m$.
+					
+					In order to prove (a) and (b) are equivalent it is sufficient to prove that if $a \implies b$ and $b \implies a$. 
+					
+					If the outcomes are independent, probability of a head or tail in a sequence is $\frac{1}{2}$. Consider $m$ tosses, since they are independent the probability of seeing any string of H and T is given by $\frac{1}{2}*\frac{1}{2}*...*(m )times = \frac{1}{2^m} = 2^{-m}$. Hence $\ \implies b$.
+					
+					Now consider if $b$ is true, then : P(m) = $2^{-m}$ $\implies P(m+1) = 2^{-(m+1)}$, . The $P(m+1)$ case is similar to $P(m)$ with an extra toss. $P(m+1)=2^{-m} * \frac{1}{2}$ . The extra half factor is accounted by the extra toss that is performed which must be independent wit respect to the m tosses for yielding such a relation for $P(m+1)$ $\implies$ $a$ is true
+					
+					and hence $a \impliedby b$ and $a \implies b$		
 				}
 				
 			\end{homeworkSection}
@@ -246,17 +257,27 @@
 			\begin{homeworkSection}{(5)} % Section within problem
 				
 				\problemAnswer{ % Answer
+					$P(A,B | C) = \frac{P(A, B,C)}{P(C)} = P(A | B,C)*\frac{P(B,C)}{P(C)} = {P(A | B,C)}*{P(B|C)} $
 					
+					For which event C, are A and B(for all A,B)  independent iff they are cconditionaly independent given C: $?$
+					
+					If $A,B$ are independent : $P(A|B)=P(A)$
+					
+					Given: $P(A, B |C) = P(A|C)P(B|C)$  for all A,B.
+					
+					For $P(A|B) =P(A)$ can be made true if we set P(C)$P(A, B |C) = P(A|C)P(B|C)$
+					
+					\center \textbf{Thus $P(C)=1$}
 				}
 				
 			\end{homeworkSection}
-			\begin{homeworkSection}{(6)} % Section within problem
+			%\begin{homeworkSection}{(6)} % Section within problem
 				
-				\problemAnswer{ % Answer
+			%	\problemAnswer{ % Answer
 					
-				}
+			%	}
 				
-			\end{homeworkSection}	
+			%\end{homeworkSection}	
 			\begin{homeworkSection}{(7)} % Section within problem
 				
 				\problemAnswer{ % Answer
