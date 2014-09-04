@@ -101,7 +101,7 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\hmwkTitle}{Homework\ \# 2 } % Assignment title
-\newcommand{\hmwkDueDate}{Friday,\ September \ 4,\ 2014} % Due date
+\newcommand{\hmwkDueDate}{Friday,\ September \ 5,\ 2014} % Due date
 \newcommand{\hmwkClass}{MATH-505A} % Course/class
 \newcommand{\hmwkClassTime}{10:30am} % Class/lecture time
 \newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
@@ -146,7 +146,7 @@
 		
 		\problemAnswer{ % Answer
 				\textbf{Given:} $A,B$ are independent \\
-				\textbf{To Prove:} $A^C,B$; $A^C, B^C$ are independent \\
+				\textbf{To Prove:} $(A^C,B)$; $(A^C, B^C)$ are independent \\
 				
 				Since $A,B$ are independent: \\
 				\begin{equation}
@@ -165,7 +165,7 @@
 					P(B)P(A^C) = P(B) - P(A\cap B) 
 				\end{equation}
 				
-				
+				$P(B)-P(A \cap B)$ signifies \textbf{'in $B$ but not in $A$ $AND$ $B'$.} Thus, it should belong to $A^C $ $AND$ $B$ 
 				\begin{equation}
 					\label{1c4}
 					P(B) - P(A \cap B) = P(A^C \cap B) = P(A^C)P(B)
@@ -179,19 +179,22 @@
 	\begin{homeworkSection}{(2)} % Section within problem
 		
 		\problemAnswer{ % Answer
-			$A_{ij} = i^{th}$ and $j^{th}$ rolls produce the same number
-			For any $i \neq j$, total outcome are $6*6=36$ and facourable outcomes are $\binom{6}{1} * 1 = 6$, thus
+			$A_{ij} = i^{th}$ and $j^{th}$ rolls produce the same number.\\
+			For any $i \neq j$, total outcome are $6*6=36$ and number  of favourable outcomes are $\binom{6}{1} * 1 = 6$, thus \\
 			$p(A_{ij}) = \frac{6}{36} = \frac{1}{6} $ \\
 			Consider $P(A_{ij} \cap A_{kj})$, such that $i \neq j \neq k$, then : \\
+			\center $P(A_ij \cap A_jk) $ refers to the probability when $i^{th}, j^{th}$ and $k^{th}$ rolls show the same number, which can be caluclated as:
 			$P(A_{ij} \cap A_{kj}) = \frac{\binom{6}{1} * 1 * 1}{6 * 6 * 6}= \frac{1}{36} = P(A_{ij})P(A_{kj}) $
 				
-				Thu, $A_{ij}$ are pairwise independent.
+				Thus, $A_{ij}$ are pairwise independent as it is true for any choice of $i,j, k$ as long as $i \neq j \neq k$
 				
 				Consider:
 				
-				$P(A_ij \cap A_jk \cap A_kl ) =  \frac{\binom{6}{1} * 1 * 1 * 1}{6*6*6} = \frac{1}{36} \neq P(A_{ij}) P(A_{jk}) P(A_{kl}) $
+			\center	$P(A_ij \cap A_jk \cap A_kl ) =  \frac{\binom{6}{1} * 1 * 1 * 1}{6*6*6} = \frac{1}{36} \neq P(A_{ij}) P(A_{jk}) P(A_{kl}) $
 				
-				Since 	$P(A_ij \cap A_jk \cap A_kl ) \neq P(A_{ij}) P(A_{jk})$, it will not be true in general consider other $A_{lm}$.
+				Since 	$P(A_ij \cap A_jk \cap A_kl ) \neq P(A_{ij}) P(A_{jk})P(A_{kl})$, it will not be true in general.
+				
+				And since the independence criterion is not satisfied for the above case, it will not be true for a case for all $A_{ij}$ are considered togethter for all values of $i,j$.
 			}
 			
 			
@@ -200,10 +203,10 @@
 			\begin{homeworkSection}{(3)} 
 				
 				\problemAnswer{ % Answer
-					To Prove: \\
+					\textbf{To Prove: }
 					
 					(a) outcomes of coin tosses are independent \\
-					(b) Given a sequence of length m of heads and tails the chance of it occuring in first m tosses i s $2^-m$.
+					(b) Given a sequence of length m of heads and tails the chance of it occuring in first m tosses i s $2^-m$.\\
 					
 					In order to prove (a) and (b) are equivalent it is sufficient to prove that if $a \implies b$ and $b \implies a$. 
 					
@@ -218,8 +221,8 @@
 			\begin{homeworkSection}{(4)} % Section within problem
 				
 				\problemAnswer{ 
-					\textbf{Given:} $\omega = \{1,2,3,...p\}$ where $p$ is prime. $F$ is set of all subsets of $\omega$; $P(A)=\frac{|A|}{p}$
-					\textbf{To Prove:} $A$ 'or' $B$ is a null set or is the set $omega$ 
+					\textbf{Given:} $\Omega = \{1,2,3,...p\}$ where $p$ is prime. $F$ is set of all subsets of $\omega$; $P(A)=\frac{|A|}{p}$
+					\textbf{To Prove:} $A$ 'or' $B$ is a null set or is the set $Omega$ 
 					
 					\begin{math}
 						P(A) = \frac{|A|}{p}
@@ -246,10 +249,11 @@
 					\begin{equation}
 					\label{4c3}
 					p |A \cap B | = |A||B| \implies
-					|A||B|\  mod p = 0
-					\end{equation}
+					|A||B|\  mod\ p = 0
+					\end{equation} where $mod$ operator gives the remainder.
 					
-					and $ 0 \leq  |A|, |B| \leq p $ $\implies$ $|A| or |B| = p OR |A|, |B| =0$ $\implies$ A,B are either null or full sets.
+					and 
+					\center $ 0 \leq  |A|, |B| \leq p $ $\implies$ $|A| or |B| = p OR |A|, |B| =0$ $\implies$ A,B are either null or complet sets(with $|A|,|B|=|\Omega|$).
 					
 				}
 				
@@ -257,14 +261,28 @@
 			\begin{homeworkSection}{(5)} % Section within problem
 				
 				\problemAnswer{ % Answer
-					$P(A,B | C) = \frac{P(A, B,C)}{P(C)} = P(A | B,C)*\frac{P(B,C)}{P(C)} = {P(A | B,C)}*{P(B|C)} $
+
 					
-					For which event C, are A and B(for all A,B)  independent iff they are cconditionaly independent given C: $?$
+					\textbf{	Given: 
+						\begin{equation}
+						\label{5c1}
+						P(A, B |C) = P(A|C)P(B|C)
+						\end{equation}
+						  for all A,B.}
+					For which event C, are A and B(for all A,B)  independent \textbf{iff} they are conditionaly independent given C: $?$
 					
-					If $A,B$ are independent : $P(A|B)=P(A)$
+					If $A,B$ are independent : 
+					\begin{equation}
+						\label{5c2}
+						P(A|B)=P(A)
+					\end{equation}
 					
-					Given: $P(A, B |C) = P(A|C)P(B|C)$  for all A,B.
+					\begin{equation}
+						\label{5c3}
+						P(A,B | C) = \frac{P(A, B,C)}{P(C)} = P(A | B,C)*\frac{P(B,C)}{P(C)} = {P(A | B,C)}*{P(B|C)} 
+					\end{equation}
 					
+					Comparing \ref{5c1} and \ref{5c3}, we need to prove that $P(A|C)=P(A|B,C)$ given that $P(A|B)=P(A)$
 					For $P(A|B) =P(A)$ can be made true if we set P(C)$P(A, B |C) = P(A|C)P(B|C)$
 					
 					\center \textbf{Thus $P(C)=1$}
