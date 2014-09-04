@@ -269,8 +269,7 @@
 						P(A, B |C) = P(A|C)P(B|C)
 						\end{equation}
 						  for all A,B.}
-					For which event C, are A and B(for all A,B)  independent \textbf{iff} they are conditionaly independent given C: $?$
-					
+				
 					If $A,B$ are independent : 
 					\begin{equation}
 						\label{5c2}
@@ -282,9 +281,17 @@
 						P(A,B | C) = \frac{P(A, B,C)}{P(C)} = P(A | B,C)*\frac{P(B,C)}{P(C)} = {P(A | B,C)}*{P(B|C)} 
 					\end{equation}
 					
-					Comparing \ref{5c1} and \ref{5c3}, we need to prove that $P(A|C)=P(A|B,C)$ given that $P(A|B)=P(A)$
-					For $P(A|B) =P(A)$ can be made true if we set P(C)$P(A, B |C) = P(A|C)P(B|C)$
+					Hence the conditional independence of A and B given C is dependent on conditional independence of A given B and C and B given C and neither implies $P(A|B)=P(A)$ nor is implied by this.\\
 					
+						
+						\textbf{Part2:} \\
+						
+						For which event C, are A and B(for all A,B)  independent \textbf{iff} they are conditionaly independent given C: $?$
+						
+					
+					%Comparing \ref{5c1} and \ref{5c3}, we need to prove that $P(A|C)=P(A|B,C)$ given that %$P(A|B)=P(A)$
+					%For $P(A|B) =P(A)$ can be made true if we set %P(C)$P(A, B |C) = P(A|C)P(B|C)$
+					If $P(A,B|C)=P(A|C)*P(B|C)$ $\implies$ $P(A|B)=P(A)$ then what is $C?$. This relation can be set to true for all values of A,B if $P(C)$ is set to 1. because that would automatically imply $P(A,B)=P(A)P(B)$
 					\center \textbf{Thus $P(C)=1$}
 				}
 				
@@ -303,11 +310,11 @@
 					$B$ = $\{$ there is at most one boy $\}$ \\
 					$C$ = $\{$ one boy and one girl included $\}$ \\
 					
-					$P(A) = P($ all boys $) + P($all girls$)$ $=\frac{1}{2}*\frac{1}{2}*\frac{1}{2}*2 = \frac{1}{4}$ \\
+					$P(A) = P($ all boys $) + P($all girls$)$ $=(\frac{1}{2}*\frac{1}{2}*\frac{1}{2})*2 = \frac{1}{4}$ \\
 					
-					$P(B) = P($ 0 boys $)+P($+$1 boy)$ =  $\frac{1}{8} + 3*\frac{1}{8} = \frac{1}{2}$ \\
+					$P(B) = P($ 0 boys $)+P(1 boy)$ =  ($\frac{1}{8}) + 3*(\frac{1}{8}) = \frac{1}{2}$ \\
 					
-					$P(C) = P($1 boy + 1 girl  $)= 2*\frac{1}{2} * ]frac{1}{2}*\frac{1}{2}*3 = \frac{3}{4}$\\
+					$P(C) = P($1 boy + 1 girl  $)= 2*(\frac{1}{2} * \frac{1}{2}*\frac{1}{2})*3 = \frac{3}{4}$\\
 					
 					\textbf{Part a): } A is independent of B and B is independent of C
 					
@@ -325,15 +332,15 @@
 					
 					$P(A \cap C)$ = the family includes boy and girl AND all children are of same sex \\
 					
-					Clearky $P(A \cap B) = \phi$ and hence A,B are not necessarily independent!
+					Clearky $P(A \cap B) = \phi$ and hence A,B are NOT necessarily independent!(null intersection does not imply independence)
 					
 					\textbf{Part c): } Do the results hold if boys and girls are not equally likely? 
 					
-					NO. Since
+					NO. if the girls and boys are not likely these events will have different probabilitie
 					
 					\textbf{Part d):} Do these results hold if there are 4 children?
 					
-					Yes, the calculaions are independent of the number of children since independence relations are not dependent on the number.
+					No, the results might not necessarily be valid for 4 children as the numberof permutations would be tbe 
 			}
 				
 			\end{homeworkSection}			
