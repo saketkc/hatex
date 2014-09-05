@@ -172,7 +172,13 @@
 				\end{equation}
 				From \ref{1c3} and \ref{1c4} : $A^C.B $ are independent.
 				
-				Similiary to prove $A^C, B^C$ are independent, we perform substitute $B^C$ in $P(B \cap A^C)$
+				Similiary to prove $A^C, B^C$ are independent, we perform substitute $B^C$ in $P(B \cap A^C)$, since \ref{1c4} is true to obtain: \\
+				\begin{equation}
+					\label{1c5}
+					P(B^C \cap A^C) = P(A^C)P(B^C)
+				\end{equation}
+				
+				
 			}
 	
 	\end{homeworkSection}
@@ -183,18 +189,18 @@
 			For any $i \neq j$, total outcome are $6*6=36$ and number  of favourable outcomes are $\binom{6}{1} * 1 = 6$, thus \\
 			$p(A_{ij}) = \frac{6}{36} = \frac{1}{6} $ \\
 			Consider $P(A_{ij} \cap A_{kj})$, such that $i \neq j \neq k$, then : \\
-			\center $P(A_ij \cap A_jk) $ refers to the probability when $i^{th}, j^{th}$ and $k^{th}$ rolls show the same number, which can be caluclated as:
-			$P(A_{ij} \cap A_{kj}) = \frac{\binom{6}{1} * 1 * 1}{6 * 6 * 6}= \frac{1}{36} = P(A_{ij})P(A_{kj}) $
+			\center $P(A_{ij} \cap A_{jk}) $ refers to the probability when $i^{th}, j^{th}$ and $k^{th}$ rolls show the same number, which can be caluclated as:
+			$P(A_{ij} \cap A_{kj}) = \frac{\binom{6}{1} * 1 * 1}{6 * 6 * 6}= \frac{1}{36} = P(A_{ij})P(A_{jk}) $
 				
 				Thus, $A_{ij}$ are pairwise independent as it is true for any choice of $i,j, k$ as long as $i \neq j \neq k$
 				
 				Consider:
 				
-			\center	$P(A_ij \cap A_jk \cap A_kl ) =  \frac{\binom{6}{1} * 1 * 1 * 1}{6*6*6} = \frac{1}{36} \neq P(A_{ij}) P(A_{jk}) P(A_{kl}) $
+			\center	$P(A_{ij} \cap A_{jk} \cap A_{kl} ) =  \frac{\binom{6}{1} * 1 * 1 * 1}{6*6*6} = \frac{1}{36} \neq P(A_{ij}) P(A_{jk}) P(A_{kl}) $
 				
 				Since 	$P(A_ij \cap A_jk \cap A_kl ) \neq P(A_{ij}) P(A_{jk})P(A_{kl})$, it will not be true in general.
 				
-				And since the independence criterion is not satisfied for the above case, it will not be true for a case for all $A_{ij}$ are considered togethter for all values of $i,j$.
+				And since the independence criterion is not satisfied for the above case, it will not be true for the case when  $A_{ij}$ are considered togethter for all values of $i,j$.
 			}
 			
 			
@@ -212,9 +218,9 @@
 					
 					If the outcomes are independent, probability of a head or tail in a sequence is $\frac{1}{2}$. Consider $m$ tosses, since they are independent the probability of seeing any string of H and T is given by $\frac{1}{2}*\frac{1}{2}*...*(m )times = \frac{1}{2^m} = 2^{-m}$. Hence $\ \implies b$.
 					
-					Now consider if $b$ is true, then : P(m) = $2^{-m}$ $\implies P(m+1) = 2^{-(m+1)}$, . The $P(m+1)$ case is similar to $P(m)$ with an extra toss. $P(m+1)=2^{-m} * \frac{1}{2}$ . The extra half factor is accounted by the extra toss that is performed which must be independent wit respect to the m tosses for yielding such a relation for $P(m+1)$ $\implies$ $a$ is true
+					Now consider if $b$ is true, then : P(m) = $2^{-m}$ $\implies P(m+1) = 2^{-(m+1)}$, . The $P(m+1)$ case is similar to $P(m)$ with an extra toss. $P(m+1)=2^{-m} * \frac{1}{2}$ . The extra half factor is accounted by the extra toss that is performed which must be independent with respect to the m tosses for yielding such a relation for $P(m+1)$ $\implies$ $a$ is true and this is true for any m. This inductive hypothesis proves that the tosses must be indepedent($P(1)=\frac{1}{2}$ is trivially true)
 					
-					and hence $a \impliedby b$ and $a \implies b$		
+					and hence $a \impliedby b$ and $a \implies b$	so $a$ and $b$ are equivalent statements.
 				}
 				
 			\end{homeworkSection}
@@ -232,7 +238,7 @@
 						P(B) = \frac{|B|}{p}
 					\end{math}
 					
-					Now, by definition: \\
+					Now, from the definition of $P(A)$: \\
 					\begin{equation}
 					\label{4c1}
 					P(A \cap B) = \frac{|A \cap B|}{p}
@@ -248,12 +254,12 @@
 					Thus: \\
 					\begin{equation}
 					\label{4c3}
-					p |A \cap B | = |A||B| \implies
+					 p*|A \cap B | = |A||B| \implies
 					|A||B|\  mod\ p = 0
 					\end{equation} where $mod$ operator gives the remainder.
 					
 					and 
-					\center $ 0 \leq  |A|, |B| \leq p $ $\implies$ $|A| or |B| = p OR |A|, |B| =0$ $\implies$ A,B are either null or complet sets(with $|A|,|B|=|\Omega|$).
+					\center $ 0 \leq  |A|, |B| \leq p $ $\implies$ $(|A|\  or |B| = p)\ OR\ (|A|\ OR\ |B| = 0)$ $\implies$ A,B are either null or complete sets(with $|A|,|B|=|\Omega|$).
 					
 				}
 				
