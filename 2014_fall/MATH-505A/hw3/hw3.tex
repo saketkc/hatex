@@ -142,12 +142,106 @@
 \begin{homeworkProblem}[Exercise \# 1.7] % Custom section title
 	\begin{homeworkSection}{(1)} % Section within problem
 		\problemAnswer{ % Answer
+			\textbf{Given:} Two roads $r1_{AB}$, $r2_{AB}$ connectinng points A and B and $s1_{BC}$, $s2_{BC}$ connecting B and C. 
+			%$p(X)$ denotes the probability that the road X is blocked. Then, $p(r1_{AB}) = p(r2_{AB}) = p(s1_{AB}) = p(s2_{AB}) = p$.
+			
+			Let $p(AB)$ denote the probability that path between A$\longrightarrow$B is open and let $p({AB}^c)$ denote the probability that there is no open road b/w A and B.
+			Alternativels $p(AB)$ denotes that road(s) between A and B are open.
+			\textbf{To find:}$Y=P(AB | AC^c)$.
+			
+		Y is equal to the probability that road between A and B is open AND still the path between A and C is closed $\implies$ Path between B and C is closed AND between A and B is open
+		
+		p(AB) $=$ Path b/w A,B is open $=$ 1 - Path b/w A,B is closed $=$  $1 - p*p$
+		
+		Thus \begin{equation}
+		\label{1c1}
+		p(AB) = 1 - p^2
+		\end{equation}
+		Also, 
+		\begin{equation}
+		\label{1c2}
+			p(AB) = p(BC)
+		\end{equation}
+		
+		
+		
+		$p(AC^C) = $ 1 - Probability A,C is open = 1 - Probability AB is open AND BC is open. % = $1-p(AB)*p(BC)$
+		Thus,
+			\begin{equation}
+			\label{1c3}
+			p(AC^c) = 1- p(AB)p(AC) = 1-(1-p^2)^2
+			\end{equation}
+			
+			
+		\begin{equation}
+		\label{1c4}
+		p(AB \cap AC^C) = p(AC^C | AB)p(AB) = p(BC^C)p(AB) = p^2(1-p^2)
+		\end{equation}
+			
+		\begin{equation}
+		\label{1c5}
+		p(AB|AC^c) = \frac{P(AB \cap AC^c)}{p(AC^c)} = \frac{p(AC^C | AB)p(AB)}{p(AC^c)} = \frac{p^2(1-p^2)}{1-(1-p^2)^2} 
+		\end{equation}
+		
+		\textbf{Part 2:} Additional direct road from A to C. Find $p(AB | AC^c)$: \\
+		$p(AC^c|AB) = $ Probability that A,C is closed given A,B are open = Probability A,C(direct) are closed AND B,C are closed
+		
+		\begin{equation}
+		\label{1c6}
+		p(AC^C|AB) = p*p(BC^c)p(AB)
+		\end{equation}
+		
+		where the extra p in \ref{1c6} as compared to \ref{1c4} is because the direct path A,C should be blocked too.
+		
+		\begin{equation}
+		\label{1c7}
+				p(AC^c) =  1 - (1-p^2)^2(1-p)
+		\end{equation}
+		
+		where the extra $(1-p)$ factor in \ref{1c7} as compared to \ref{1c3} accounts for the fact that direct path AC is open.
+		
+		Thus, for part 2:
+		
+		\begin{equation}
+		\label{1c8}
+		p(AB|AC^c) = \frac{p^3(1-p^2)}{1-(1-p^2)^2(1-p)}
+		\end{equation}
+
+		
+		 
 		}
-	\end{homeworkSection}			
+	\end{homeworkSection}
+		\begin{homeworkSection}{(2)} % Section within problem
+			\problemAnswer{ % Answer
+				\begin{equation}
+					p(2K \cap 1A ) = \frac{\binom{4}{2} * \binom{4}{1} * \binom{52-4-4}{10}}{\binom{52}{13}}
+					= \frac{24 * 44! * 13!}{10! * 52!} = 1.357*10^{-9}
+			\end{equation}
+				
+				$p(1A | 2K) = \frac{p(1A \cap 2K)}{p(2K)}$
+				
+				\begin{equation}
+					\label{2c2}
+						p(2K ) = \frac{\binom{4}{2}*\binom{52-4}{11}}{\binom{52}{13}}
+				\end{equation}
+
+				
+			}
+		\end{homeworkSection}	
+		
+			\begin{homeworkSection}{(4)} % Section within problem
+				\problemAnswer{ % Answer
+				}
+			\end{homeworkSection}	
+			
+			\begin{homeworkSection}{(5)} % Section within problem
+				\problemAnswer{ % Answer
+				}
+			\end{homeworkSection}				
 \end{homeworkProblem}
 
 \begin{homeworkProblem}[Exercise \# 1.8] % Custom section title
-	\begin{homeworkSection}{(1)} % Section within problem
+	\begin{homeworkSection}{()} % Section within problem
 		\problemAnswer{ % Answer
 		}
 	\end{homeworkSection}			
