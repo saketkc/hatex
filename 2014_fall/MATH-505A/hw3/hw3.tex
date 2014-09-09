@@ -293,7 +293,7 @@
 			\end{homeworkSection}				
 \end{homeworkProblem}
 
-\begin{homeworkProblem}[Exercise \# 1.8] % Custom section title
+\begin{homeworkSection}[Exercise \# 1.8] % Custom section title
 	\begin{homeworkProblem}[1] % Section within problem
 		\begin{homeworkSection}{(a)} % Section within problem
 			\problemAnswer{ % Answer
@@ -347,11 +347,110 @@
 		\begin{homeworkSection}{(a)} % Section within problem
 			\problemAnswer{ % Answer
 				Head appears the first time on $n^{th}$ throw.
+				Thus a series of $n-1$ consecutive tails followed by head.
+				
+				$p= \frac{1}{2^{n-1}}*\frac{1}{2} = \frac{1}{2^n}$ 
 			}
 		\end{homeworkSection}			
+		\begin{homeworkSection}{(b)} % Section within problem
+			\problemAnswer{ % Answer
+				The number of heads and dates to date are equal:
+				
+				Case1: $n$ is odd.
+				
+				Clearly the probability of heads and tails being equal in this case is zero!
+				
+				Case2: $n$ is even.
+				
+				A series of H,T such that $|H| = |T|$. Since the probability of occurence of either a H or a T is $\frac{1}{2}$, the result will still be: \\
+				$ p = \frac{1}{2^n}$
+			}
+		\end{homeworkSection}
+		\begin{homeworkSection}{(c)} % Section within problem
+			\problemAnswer{ % Answer
+				Exactly two heads have appeared together.
+				
+				So exactly at two consecutive positions there is a H,H. The rest positions either alternate with H,T or only T.
+				
+				$p = \frac{1}{2} * \frac{1}{2} * \frac{1}{2^{n-2}}$
+}
+		\end{homeworkSection}
+		\begin{homeworkSection}{(d)} % Section within problem
+			\problemAnswer{ % Answer
+				At least two heads have appeared.
+				
+				This is same as the one minus probability that 0 or 1 heads have appeared so far:
+				
+				$p = 1 - p(0\ heads) - p(1\ head\ only)$
+				$p = 1 - \binom{n}{0}\frac{1}{2^0}\frac{1}{2^n} - \binom{n}{1}\frac{1}{2}\frac{1}{2^n-1} = 1 - \frac{1}{2^n} - \frac{n}{2^n} $
+				
+				
+			}
+		\end{homeworkSection}
 	\end{homeworkProblem}			
 	
+	
+	\begin{homeworkProblem}[4] % Section within problem
+		\begin{homeworkSection}{(a)} 
+			\problemAnswer{
+			\textbf{Biased coin tossed three times:}
+			\textbf{Sample space}: HHH,HHT,HTH,HTT,THH,THT,TTH,TTT
+		}
+		\end{homeworkSection}
+		\begin{homeworkSection}{(b)} 
+			\problemAnswer{
+			\textbf{Balls drawn without replacement from 2U,2V balls}
+			\textbf{Sample space}: $(U1,V1),(U2,V1),(V1,U1), (V1, U2), (U1,V2), (U2,V2), (V2,U1), (V2,U2)$
+		}
+		\end{homeworkSection}
+		\begin{homeworkSection}{(c)}
+			\problemAnswer{
+\textbf{			Biased coin tossed till H tunrs up}
+Sample Space: \\
+ 		$\{H\}, \{T,H\}, \{T,T,H\}, \{T,T,T,H\}.....\{T,T,T,....,T,H\}$
+ 	}
+		\end{homeworkSection}
+		
+	\end{homeworkProblem}
+	\newpage
+	\begin{homeworkSection}{5}
+		\problemAnswer{
+			\textbf{To find:} Probablity that exactly one of A,B occurs\\
 			
-\end{homeworkProblem}
+			Probability that exactly one of A,B occurs is equal to the probability that either \textbf{only A} occurs or \textbf{only B} occurs. This is simply given by:
+			
+			$P(A \cup B) - P(A \cap B)$. That is either of A,B occurs removing the portion when both A,B occur.
+		
+			Thus, the probability that exactly one of A,B occurs is : \\
+			$ p(A \cup b )-p(A\cap B) = p(A) + p(B) - p(A \cap B) - p(A \cap B) = p(A) + p(B) - 2p(A \cap B)$
+		}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{6}
+		\problemAnswer{
+			\textbf{To Prove:} $P(A\cup B \cup C) = 1 - P(A^C | B^C \cap C^C) p(B^C | C^C) p(C^C)$
+			$
+			RHS = 1 - P(A^C | B^C \cap C^C)P(B^C | C^C) p(C^C)
+			$
+			
+			$ RHS = 1 - P(A^C | B^C \cap C^C)\frac{P(B^C \cap C^C)}{p(C^C)}p(C^C) $
+			
+			Thus, expanding further $p(A^C | B^C \cap C^C) = \frac{p(A^C \cap B^C \cap C^C)}{p(B^C \cap C^C)}$
+				
+			Thus,
+			
+			$ RHS = 1 - \frac{p(A^C \cap B^C \cap C^C)}{p(B^C \cap C^C)} * \frac{P(B^C \cap C^C )}{p(C^C)}*p(C^C) 
+			$
+			
+			$ RHS = 1 - P(A^C \cap B^C \cap C^C) $ which is same as $LHS$ 
+			}
+	\end{homeworkSection}
+			
+			\begin{homeworkSection}{8}
+				\problemAnswer{
+					}
+			\end{homeworkSection}
+			
+\end{homeworkSection}
 
 \end{document}
