@@ -151,7 +151,7 @@
 %	PROBLEM 2
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[HW1] % Custom section title
+\begin{homeworkProblem}[HW2] % Custom section title
 
 
 \begin{homeworkSection}{(2: Ch\#2 Ex\#3)} 
@@ -251,6 +251,23 @@
 \begin{homeworkSection}{(5: Ch\#2 Ex\#6)}
 	\problemAnswer{
 		
+		$g1= 2^{sqrt{log n}}; g2 = 2^n; g3 = n(log n)^3; g4 = n^{\frac{4}{3}}; g5 = n^{log n}; g6 = 2^{2^n}; g7 = 2^{n^2}$
+		
+		Since exponentials grow faster than polynomials:
+		$g1, g2, g6, g7$ are definitely asymptotically larger than the rest.
+		
+		$2^{2^n} > 2^{n^2} > 2^{n} > 2^{\sqrt{log n}}$
+		
+		Considering $g3, g4, g5$: \\
+		
+		$n^{log n} > n^{\frac{4}{3}} > n(log n)^3$
+		
+		Thus: \\
+		
+		$g6 > g7 > g2 > g1 > g5 > g4 > g3 $
+		
+		 
+		
 		}
 \end{homeworkSection}
 
@@ -258,8 +275,50 @@
 %\lipsum[4]\vspace{10pt} % Question
 
 \problemAnswer{ 
-
+	\textbf{Given:} $f(n) = O(g(n)) \implies f(n) \leq cg(n) for\  c>0, \forall n \neq n_0$
 	
+	\textbf{Part (a): }  $log_2(f(n))\ is\ O(log_2(g(n)))$
+	
+	$f(n) \leq cg(n) for\ c>0, \forall n \neq n_0$
+	
+	As $g(n)$ is positiev defnite, a lesser strict bound on f(n) is given by: \\
+	
+	%$f(n) \leq g(n)^d for\ d > 1, \forall n > n_0$. Taking %logarithm(since it is a monotonic function) on both sides we get: \\
+	
+	Taking logarithm on both sides: 
+		$ log_2 (f(n)) \leq log_2(g(n)) + log_2(c)$  for  $c>0, \forall n > n_0$
+		
+		if $|g(n)| > 2$ the RHS would be positive definite, and
+		$log_2(f(n))= O(log_2(g(n)))$  would be true. But this is not true in general($|g(n)| <2 $)
+		
+	
+	$ log_2 (f(n)) \leq log_2(g(n)^d)$ $\implies$ $ log_2(f(n)) \leq d log_2(g(n))$, for some $d>1, \forall n > n_0$
+	
+	Which clearly proves Part (a).
+	
+	
+	\textbf{Part (b)} $2^{f(n)}\ is\ O(2^{g(n)})$
+	
+%	Since, 	$f(n) \leq cg(n) for\ c>0, \forall n \neq n_0$,
+%	taking exponentials on both sides: \\
+%		$ 2^{f(n)} \leq 2^{cg(n)} for\ c>0, \forall n \neq n_0$ 
+%		$\implies$ 		$ 2^{f(n)} \leq {2^{g(n)}c} for\ c>0, \forall n \neq n_0$ 
+		
+		% TODO
+		
+		Consider $f(n) = 2n^2$, and $g(n) = n^2$, then 
+		$2^{f(n)} = 2^{2n^2}$ while $2^{g(n)} = 2^{n^2}$, which clearly does not satisfy the given relation.
+		
+		Hence FALSE.
+		
+	\textbf{Part (c)} 
+	
+		Since, 	$f(n) \leq cg(n) for\ c>0, \forall n \neq n_0$,
+		squaring both sides: \\
+		$f(n)^2 \leq c^2g(n)^2 for\ c>0, \forall n \neq n_0$
+		 $\implies$ $f(n)^2 \leq c'g(n)^2 for\ c'>0, \forall n \neq n_0$
+		 
+		\textbf{Thus Part(C) is TRUE.}
 
 }
 
