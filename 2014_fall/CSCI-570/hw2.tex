@@ -106,7 +106,7 @@
 %	NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
 
-\newcommand{\hmwkTitle}{Homework\ \# 1 } % Assignment title
+\newcommand{\hmwkTitle}{Homework\ \# 2 } % Assignment title
 \newcommand{\hmwkDueDate}{Friday,\ September\ 12 ,\ 2014} % Due date
 \newcommand{\hmwkClass}{CSCI-570} % Course/class
 \newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
@@ -156,20 +156,95 @@
 
 \begin{homeworkSection}{(2: Ch\#2 Ex\#3)} 
 \problemAnswer{
+	\textbf{Part (a)} $n^2$
+	
+	Doubling the input size make it slower by $\frac{(2n)^2}{n^2} = 4$
+	
+	Consider increasing input size by 1: $ \frac{(n+1)^2}{n^2} = \frac{n^2+2n+1}{n^2} = 1 + \frac{1}{n} + \frac{1}{n^2}$
+	
+	For $\lim_{n\to\infty}$, $1 + \frac{1}{n} + \frac{1}{n^2} = 1$, Thus the algorithm with $n+1$ input is as slow as with input size $n$ for $n\to \infty$.
+	
+	
+	\textbf{Part (b): } $n^3$
+	
+	Doubling the input size: $\frac{(2n)^3}{n^3} = 8$, thus it is 8 times slower.
+	
+	Increasing the input size by 1: $\frac{(n+1)^3}{n^3} = \frac{n^3+3n^2+3n+1}{n^3} = 1 + \frac{3}{n} + \frac{3}{n^2} + \frac{1}{n^3} $.
+	
+	For $\lim_{n\to\infty}$, $1 + \frac{3}{n} + \frac{3}{n^2} + \frac{1}{n^3} = 1$.
+	
+	\textbf{Part (c):} This is similar to Part(a), since the factor of 100 is common. The solution is exactly similar to Part(a)
+	
+	\textbf{Part (d): } $n log n$
+	
+	Doubling the input size: $\frac{2n log 2n}{n log n} = \frac{2 log 2n }{log n}$. For  $\lim_{n\to\infty}$, this would blow up.
+	
+	Increasing the input size by 1: $\frac{n+1 log (n+1)}{n log n} $.
+	
+	For $\lim_{n\to\infty}$, $\frac{n+1 log (n+1)}{n log n}  = 1$.
+	
+	Hence input with $n+1$ is as slow as $n$ $\lim_{n\to\infty}$
+	
+	\textbf{Part (e):} $2^n$
+	
+	Doubling the input size: $\frac{2^{2n}}{2^n} = 2^n$, which blows up as $\lim_{n\to\infty}$.
+	
+	Increasing the input size by 1 : $\frac{2^(n+1)}{2^n} = 2$. 
+	
+	Thus increasing the input size by 1 causes it to be 2 times slower.
+	
+	
 	 
 }
 \end{homeworkSection}
 
 \begin{homeworkSection}{(3: Ch\#2 Ex\#4)} %
 	\problemAnswer{
+			  \textbf{Given:} Operating speed = $10^10$ operations per second. 
 			  
+			  \textbf{To Find: }Maximum possible n, for 3600s operation
+			  
+			  \textbf{Part (a): } $n^2$
+			  
+			  $n^2 = 36 * 10^12$ $\implies$ $n = 6 * 10^6$
+			  
+			  \textbf{Part (b):} $n^3$
+			  
+			  $n^3 = 36*10^12$ $\implies$ $ n= (36)^0.333 * 10^4 $
+			  
+			  \textbf{Part (c):} $100n^2$
+			  
+			  $100n^2 = 36 * 10^12 \implies n = 6*10^5$
+			  
+			  \textbf{Part (d):} $n log n$
+			  
+			  $log (n^n) = 36*10^12$ %TODO
+			  
+			  \textbf{Part (e):} $2^{2^n}$
+			  
+			  $2^{2^n} = 36 * 10^12 \implies n = log_2(log_2(36*10^12))$
+			  
+			   
 		}
 	
 \end{homeworkSection}	
 
 \begin{homeworkSection}{(4: Ch\#2 Ex\#5)} %
 	\problemAnswer{
-	
+		$f1=n^2.5, f2=\sqrt{2n}, f3=n+10, f4=10^n, f5=100^n, f6=n^2logn$
+		
+		Consider the square of $f_i$: \\
+		
+		$f1'= n^5; f2 = 2n; f3 = (n+10)^2; f4=10^{2n}; f5=100^{2n};
+		f6 = n^4 (log n)^2$
+		
+		Since exponentials always grow faster than polynomials, in the order of running time complexity higher to lower:
+		
+		$100^2n > 10^2n > n^5 > n^4 (log n)^2 > (n+2)^2 > n2n$
+
+		Thus:
+		
+		$ f5 > f4 > f1 > f6 > f3 > f2 $
 		}
 \end{homeworkSection}
 
