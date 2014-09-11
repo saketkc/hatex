@@ -145,14 +145,16 @@
 			\textbf{Given:} Two roads $r1_{AB}$, $r2_{AB}$ connectinng points A and B and $s1_{BC}$, $s2_{BC}$ connecting B and C. 
 			%$p(X)$ denotes the probability that the road X is blocked. Then, $p(r1_{AB}) = p(r2_{AB}) = p(s1_{AB}) = p(s2_{AB}) = p$.
 			
-			Let $p(AB)$ denote the probability that path between A$\longrightarrow$B is open and let $p({AB}^c)$ denote the probability that there is no open road b/w A and B.
-			Alternativels $p(AB)$ denotes that road(s) between A and B are open.
+			Let $p(AB)$ denote the probability that path between A$\longrightarrow$B is open and let $p({AB}^c)$ denote the probability that there is(are)  no path open  b/w A and B.
+			%Alternatively $p(AB)$ denotes that road(s) between A and B are open.
+			
 			\textbf{To find:}$Y=P(AB | AC^c)$.
 			
-		Y is equal to the probability that road between A and B is open AND still the path between A and C is closed $\implies$ Path between B and C is closed AND between A and B is open
+		Y is equal to the probability that path between A and B is open AND(given that) the path between A and C is closed $\implies$ Path between B and C is closed AND between A and B is open
 		
 		p(AB) $=$ Path b/w A,B is open $=$ 1 - Path b/w A,B is closed $=$  $1 - p*p$
 		
+		$p(AC^C|AB)$ = Path b/w A,C is closed given A,B is open = Path b/w B,C is closed given A,B is open. =  $p(BC^C)$\\
 		Thus \begin{equation}
 		\label{1c1}
 		p(AB) = 1 - p^2
@@ -184,7 +186,7 @@
 		\end{equation}
 		
 		\textbf{Part 2:} Additional direct road from A to C. Find $p(AB | AC^c)$: \\
-		$p(AC^c|AB) = $ Probability that A,C is closed given A,B are open = Probability A,C(direct) are closed AND B,C are closed
+		$p(AC^c|AB) = $ Probability that path b/w A,C is closed given path b/w A,B are open = Probability path b/w A,C(direct) are closed AND path b/w B,C are closed
 		
 		\begin{equation}
 		\label{1c6}
@@ -195,16 +197,17 @@
 		
 		\begin{equation}
 		\label{1c7}
-				p(AC^c) =  1 - (1-p^2)^2(1-p)
+				p(AC^c) =  1 - (p(1-p^2)^2 - (1-p))
 		\end{equation}
 		
-		where the extra $(1-p)$ factor in \ref{1c7} as compared to \ref{1c3} accounts for the fact that direct path AC is open.
+		where the second term is the probability that direct A $\longrightarrow$ C is blocked, but A $\longleftrightarrow$ B and $B \longrightarrow$ is open(both). The third term represents the probaility that A $\longrightarrow$ C is open directly(does not matter if the other paths are open or blocked), 
+		%where the extra $(1-p)$ factor in \ref{1c7} as compared to \ref{1c3} accounts for the fact that direct path AC is open.
 		
 		Thus, for part 2:
 		
 		\begin{equation}
 		\label{1c8}
-		p(AB|AC^c) = \frac{p^3(1-p^2)}{1-(1-p^2)^2(1-p)}
+		p(AB|AC^c) = \frac{p^3(1-p^2)}{1-(1-p^2)^2-(1-p)} = \frac{p^2(1-p^2)}{1-(1-p^2)^2} 
 		\end{equation}
 
 		
@@ -215,15 +218,19 @@
 			\problemAnswer{ % Answer
 				\begin{equation}
 					p(2K \cap 1A ) = \frac{\binom{4}{2} * \binom{4}{1} * \binom{52-4-4}{10}}{\binom{52}{13}}
-					= \frac{24 * 44! * 13!}{10! * 52!} = 1.357*10^{-9}
+					%= \frac{24 * 44! * 13!}{10! * 52!} = 1.357*10^{-9}
 			\end{equation}
 				
 				$p(1A | 2K) = \frac{p(1A \cap 2K)}{p(2K)}$
 				
 				\begin{equation}
 					\label{2c2}
-						p(2K ) = \frac{\binom{4}{2}*\binom{52-4}{11}}{\binom{52}{13}}
+						p(2K ) = \frac{\binom{4}{2}*\binom{52-4}{11}}{\binom{52}{13}} = \frac{6 * 48! * 13!}{52! * 11!} = \frac{6 * 12 * 13}{49 * 50 * 51 * 52} = 2.52*10^-4
 				\end{equation}
+				
+				Thus,
+				
+				$p(1A | 2K ) = \frac{ \binom{4}{2} * \binom{4}{1} * \binom{44}{10}}{\binom{4}{2} * \binom{48}{11} }= \frac{4*11*37!}{46*47*48*34!} = 0.0399$
 
 				
 			}
@@ -356,23 +363,23 @@
 			\problemAnswer{ % Answer
 				The number of heads and dates to date are equal:
 				
-				Case1: $n$ is odd.
+				\textbf{Case1:} $n$ is odd.
 				
 				Clearly the probability of heads and tails being equal in this case is zero!
 				
-				Case2: $n$ is even.
+			    \textbf{Case2:} $n$ is even.
 				
 				A series of H,T such that $|H| = |T|$. Since the probability of occurence of either a H or a T is $\frac{1}{2}$, the result will still be: \\
-				$ p = \frac{1}{2^n}$
+				$ p = \binom{n}{n/2}\frac{1}{2^n}$
 			}
 		\end{homeworkSection}
 		\begin{homeworkSection}{(c)} % Section within problem
 			\problemAnswer{ % Answer
-				Exactly two heads have appeared together.
+				Exactly two heads have appeared altogether.
 				
-				So exactly at two consecutive positions there is a H,H. The rest positions either alternate with H,T or only T.
+			
 				
-				$p = \frac{1}{2} * \frac{1}{2} * \frac{1}{2^{n-2}}$
+				$p = \binom{n}{2} * \frac{1}{2^2} * \frac{1}{2^{n-2}}$
 }
 		\end{homeworkSection}
 		\begin{homeworkSection}{(d)} % Section within problem
@@ -393,19 +400,19 @@
 	\begin{homeworkProblem}[4] % Section within problem
 		\begin{homeworkSection}{(a)} 
 			\problemAnswer{
-			\textbf{Biased coin tossed three times:}
-			\textbf{Sample space}: HHH,HHT,HTH,HTT,THH,THT,TTH,TTT
+			\textbf{Biased coin tossed three times:} \\
+			{Sample space}: HHH,HHT,HTH,HTT,THH,THT,TTH,TTT
 		}
 		\end{homeworkSection}
 		\begin{homeworkSection}{(b)} 
 			\problemAnswer{
-			\textbf{Balls drawn without replacement from 2U,2V balls}
+			\textbf{Balls drawn without replacement from 2U,2V balls} \\
 			\textbf{Sample space}: $(U1,V1),(U2,V1),(V1,U1), (V1, U2), (U1,V2), (U2,V2), (V2,U1), (V2,U2)$
 		}
 		\end{homeworkSection}
 		\begin{homeworkSection}{(c)}
 			\problemAnswer{
-\textbf{			Biased coin tossed till H tunrs up}
+\textbf{			Biased coin tossed till H tunrs up} \\
 Sample Space: \\
  		$\{H\}, \{T,H\}, \{T,T,H\}, \{T,T,T,H\}.....\{T,T,T,....,T,H\}$
  	}
@@ -448,6 +455,46 @@ Sample Space: \\
 			
 			\begin{homeworkSection}{14}
 				\problemAnswer{
+					
+				Consider only two events: A,$B_j$. 
+				
+				From the definition of conditional probability: \\
+				\begin{equation}
+				\label{14c1}
+				 p(A_j|B) = \frac{p(A_j \cap B)}{p(B)}
+				\end{equation}
+				 
+				Also: \\
+				\begin{equation}
+				\label{14c2}
+				p(B|A_j) = \frac{p(A_j \cap B)}{p(A_j)}
+				\end{equation}
+				
+				 Substituing for $p( A_j\cap B)$ from \ref{14c1} in \ref{14c2}: \\
+				 
+				 \begin{equation}
+				 \label{14c3}
+				 p(B|A_j) = \frac{p(A_j|B)p(B)}{p(A_j)}
+				 \end{equation}
+				
+				or equivalently,
+				
+				 \begin{equation}
+				 \label{14c4}
+				 p(A_j|B) = \frac{p(B|A_j)p(A_j)}{p(B)}
+				 \end{equation}
+				 
+				 where p(B) can be expressed as(using the law of partition): \\
+				 \begin{equation}
+				 \label{14c5}
+				 p(B) = p(B|A_1)P(A_1) + P(B|A_2)P(A_2) + ...+P(B | A_n)P(A_n)
+				 \end{equation}
+				 
+				 Thus $p(B) = \sum_{1}^{n}p(B|A_i)p(A_i)$
+				
+				Ans hence,
+				
+				\center $p(A_j|B) = \frac{p(B|A_j)p(A_j)}{\sum_{1}^{n}p(B|A_i)p(A_i)}$
 					}
 			\end{homeworkSection}
 			
