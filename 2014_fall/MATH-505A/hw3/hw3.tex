@@ -308,7 +308,7 @@
 				The dice on which 6 should appear is choosen in $\binom{2}{1}$ way and has just one option(6) while the other has $6-1=5$  options. Total outcomes = $6*6=36$
 				
 				Thus: \\
-				$ p = \frac{\binom{2}{1}*1*5}{36} = \frac{5}{18} $
+				$ p = \frac{1*5}{36} = \frac{5}{36} $
 			}
 		\end{homeworkSection}	
 		\begin{homeworkSection}{(b)} % Section within problem
@@ -356,7 +356,7 @@
 				Head appears the first time on $n^{th}$ throw.
 				Thus a series of $n-1$ consecutive tails followed by head.
 				
-				$p= \frac{1}{2^{n-1}}*\frac{1}{2} = \frac{1}{2^n}$ 
+				$p= \binom{n}{1}\frac{1}{2^{n-1}}*\frac{1}{2} = \frac{n}{2^n}$ 
 			}
 		\end{homeworkSection}			
 		\begin{homeworkSection}{(b)} % Section within problem
@@ -379,7 +379,7 @@
 				
 			
 				
-				$p = \binom{n}{2} * \frac{1}{2^2} * \frac{1}{2^{n-2}}$
+				$p = \binom{n}{2} * \frac{1}{2^2} * \frac{1}{2^{n-2}} = \binom{n}{2} * \frac{1}{2^n}$
 }
 		\end{homeworkSection}
 		\begin{homeworkSection}{(d)} % Section within problem
@@ -497,7 +497,6 @@ Sample Space: \\
 				\center $p(A_j|B) = \frac{p(B|A_j)p(A_j)}{\sum_{1}^{n}p(B|A_i)p(A_i)}$
 					}
 			\end{homeworkSection}
-			
 \end{homeworkSection}
 
 

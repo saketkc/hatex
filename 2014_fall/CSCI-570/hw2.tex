@@ -153,6 +153,7 @@
 
 \begin{homeworkProblem}[HW2] % Custom section title
 
+\begin{comment}
 
 \begin{homeworkSection}{(2: Ch\#2 Ex\#3)} 
 \problemAnswer{
@@ -228,8 +229,8 @@
 		}
 	
 \end{homeworkSection}	
-
-\begin{homeworkSection}{(4: Ch\#2 Ex\#5)} %
+\end{comment}
+\begin{homeworkSection}{(2: Ch\#2 Ex\#3)} %
 	\problemAnswer{
 		$f1=n^2.5, f2=\sqrt{2n}, f3=n+10, f4=10^n, f5=100^n, f6=n^2logn$
 		
@@ -248,7 +249,7 @@
 		}
 \end{homeworkSection}
 
-\begin{homeworkSection}{(5: Ch\#2 Ex\#6)}
+\begin{homeworkSection}{(3: Ch\#2 Ex\#4)}
 	\problemAnswer{
 		
 		$g1= 2^{sqrt{log n}}; g2 = 2^n; g3 = n(log n)^3; g4 = n^{\frac{4}{3}}; g5 = n^{log n}; g6 = 2^{2^n}; g7 = 2^{n^2}$
@@ -271,7 +272,7 @@
 		}
 \end{homeworkSection}
 
-\begin{homeworkSection}{(6: Ch\#3, Ex\#2 )} % Section within problem
+\begin{homeworkSection}{(4: Ch\#3, Ex\#5 )} % Section within problem
 %\lipsum[4]\vspace{10pt} % Question
 
 \problemAnswer{ 
@@ -294,7 +295,8 @@
 	
 	$ log_2 (f(n)) \leq log_2(g(n)^d)$ $\implies$ $ log_2(f(n)) \leq d log_2(g(n))$, for some $d>1, \forall n > n_0$
 	
-	Which clearly proves Part (a).
+	Which clearly proves Part (a), but is a special case and 
+	hence \textbf{(a) is FALSE in general.}
 	
 	
 	\textbf{Part (b)} $2^{f(n)}\ is\ O(2^{g(n)})$
@@ -309,7 +311,7 @@
 		Consider $f(n) = 2n^2$, and $g(n) = n^2$, then 
 		$2^{f(n)} = 2^{2n^2}$ while $2^{g(n)} = 2^{n^2}$, which clearly does not satisfy the given relation.
 		
-		Hence FALSE.
+	\textbf{	Hence FALSE.}
 		
 	\textbf{Part (c)} 
 	
@@ -326,14 +328,45 @@
 
 %--------------------------------------------
 
-\begin{homeworkSection}{(7: Ch\#3, Ex\#6 )} % Section within problem
+\begin{homeworkSection}{(5: Ch\#2, Ex\#6 )} % Section within problem
 \problemAnswer{
+\textbf{Part (a, b): } There is one loop involved besides the for i,j loop that calculates the sum of A[i] through A[j], which is equal to $\sum_i \sum_j (j-i)$ = $\sum_i^{n} \sum_{j=i+1}{n} (j-i) = \sum_i^{n} n(n+1)/2 = O(n^3)$
+
+\textbf{Part (c):} To avoid summing A[i] through A[j], we rely on $B[i,j] = B[i, j-1] + A[j]$ initialising B[1,1] as A[1].
 
 
 }
 
 \end{homeworkSection}
+\begin{homeworkSection}{(6: Ch\#3, Ex\#4 )}
+	\problemAnswer{
+		We assume the given statement to be true.
+		Consider n nodes with two children each and m leaves. The Binary tree is not necessarily balanced. $n-m \leq 1$
+		
+		Adding one more node to this tree will lead to $n+1$ nodes. Now there are two scenarios:
+		
+		\textbf{Case1 :} The binary tree was balanced and adding one node lead to an imbalanced tree.
+		
+		This will cause the number of leaves to remain same,'m' as the new node is entirely at a new level(depth), thus accounting for one leave and the nodes at the penultimate level are all leaves except the one whose child is this new node. So we have $m'=1 + m-1=m$ leaves and $n'=n$ nodes with two children. Since $n-m \leq 1 \implies n'-m' \leq 1$. Adding a new leaf to a balanced binary tree does not lead to either more leaves or more nodes with two children.(the added leaf's parent has a single child!)
+		
+		\textbf{Case2} The binary tree was imbalanced so the new node is added to the same level as the leaves were. Thus the number of leaves go up by 1. The node to which this is added may transform into a parent with two or one child and so $n'= n\ OR\ n+1$ depending on where the new leaf is added. and $m'=m+1$ in either cases. Since $n-m \leq 1 \implies (n-(m+1) \leq 0$; $(n+1-(m+1) \leq 1)$, Thus $n'-m' \leq 1$
+		
+		Hence Proved.
+		  }
+\end{homeworkSection}
 
+\begin{homeworkSection}{(7: Ch\#3, Ex\#6 )}
+	\problemAnswer{
+		Let $(x, y) \in G$ be an edge such that $(x,y) \not\in T$, G rooted at $u$. Since $(x, y)$ are connected they must occur in some layer of $T$. 
+		Since $T$ is a DFS tree, ${x,y}$ must be ancestor of each other. Say $x$ is an ancesotr of $y$. At the same time $T$ is a BFS tree, and hence the difference of distance of $(s,x)$
+and $(s,y)$ can differ at maximum by $1$ and they are ancestors, so they should be connected in $T$ via an edge too. 	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{(8)}
+	\problemAnswer{
+		Let the depth of DFS tree $T$ be less than that of BFS tree $U$. Now consider the leaf of $T$ can then be reached from $v$ in a shorter distance than in $U$ since the depth of $T$ is smaller, which is a contradiction to $BFS$ tree property of providing the shortest distances.
+		}
+\end{homeworkSection}
 %--------------------------------------------
 
 \end{homeworkProblem}
