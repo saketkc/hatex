@@ -150,35 +150,35 @@
 			\textbf{Given:} $X$ is a random variable $\implies$
 			\begin{equation}
 			\label{1c1}
-				\{\omega \in \Omega: X(\omega) \leq x\} \forall x \in R
+				\{\omega \in \Omega: X(\omega) \leq x\} \in \mathcal{F}\  \forall x \in R
 			\end{equation}
 			 
 			
 			\textbf{Part A)} To Prove: $aX$ is a random variable
 			
-			Consider $Y = aX$, then since \ref{1c1} holds:
+			Consider $Y = aX$, then since equation \ref{1c1} holds:
 			
 			\textbf{Case1: $a \geq 0$}
 			
-			Then  $\{\omega \in \Omega: aX(\omega) \leq x'\} \forall x' \in R$ where $x' = ax$
+			Then  $\{\omega \in \Omega: aX(\omega) \leq x'\} \in \mathcal{F}\  \forall x' \in R$ where $x' = ax$
 			
 			\textbf{Case2: $a \leq 0$} 
 			
-			Then $\{\omega \in \Omega: aX(\omega) \geq x'\} \forall x' \in R$ where $x' = ax$ $\implies$ $\cup\{\{\omega \in \Omega: aX(\omega) \leq x''\}\}^c$ where $x'' = x'$ 
+			Then $\{\omega \in \Omega: aX(\omega) \geq x'\} \forall x' \in R$ where $x' = ax$ $\implies$ $\cup\{\{\omega \in \Omega: aX(\omega) \leq x''\}\}^c \in \mathcal{F}$ where $x'' = x'$ 
 			
-			\textbf{Case3: $a is\ 0$}
+			\textbf{Case3: $a\ is\ 0$}
 			
 			Then, $aX=0$
 			
-			\textbf{Case 1: $ x < 0$ }
+			\textbf{Case i: $ x < 0$ }
 			
-			$\{\omega \in \Omega: aX(\omega) = \phi \}$ 
+			$\{\omega \in \Omega: aX(\omega) = \phi \} \in \mathcal{F}$ 
 			
-			\textbf{Case 2: $ x \geq 0$}
+			\textbf{Case ii: $ x \geq 0$}
 			
-			$\{\omega \in \Omega: aX(\omega) = \Omega \}$ 
+			$\{\omega \in \Omega: aX(\omega) = \Omega \} \in \mathcal{F}$ 
 			
-			
+			Thus from all the above cases, 
 						
 		}
 		
@@ -188,12 +188,13 @@
 		\problemAnswer{ % Answer
 			
 			For part 1, $Y' = aX$ is also a random variable:
+			
 			\textbf{To Prove:} $Y = Y' + b$ is a ranodm variable where $Y'$ is a random variable and $b$ is a constant.
 			
-			Since $Y'$ is a random variable: $\{\omega \in \Omega: Y(\omega) \leq y\} \forall y \in R$ and so,
-			$\{\omega \in \Omega: Y(\omega) + b \leq y'\} \forall y' \in R$ where $y' = y + b$
+			Since $Y'$ is a random variable: $\{\omega \in \Omega: Y(\omega) \leq y\} \in \mathcal{F} \ \forall y \in R$ and so,
+			$\{\omega \in \Omega: Y(\omega) + b \leq y'\} \in \mathcal{F}\  \forall y' \in R$ where $y' = y + b$
 			
-			Hence $Y'+b$ is a random variable $\implies$ $aX + b$ is a random variable
+			Since $\{\omega \in \Omega: Y(\omega) + b \leq y'\} \in \mathcal{F}\  \forall y' \in R$, $Y' + b$ is a random variable $\implies$ $aX + b$ is a random variable
 			
 		}
 		
@@ -204,9 +205,10 @@
 			
 			$p(H) = p$; $p(T) = 1-p$
 			
-			Tossing a coin $n$ times is a binomial process(each individual toss is a bernoulli process) and let A be the event such that $k$ out of $n$ tosses are heads: \\
+			Tossing a coin $n$ times is a binomial process(each individual toss is a bernoulli process) and let A be the event such that $k$ out of $n$ tosses are heads and this can occur in $\binom{n}{k}$ ways with probability $p^k$. There would also be $n-k$ tails  and the probability for that is $(1-p)^{n-k}$. Thus,: \\ 
+			$p(A) = \binom{n}{k} p^{k}*(1-p)^{n-k}$ 
 			
-			$p(A) = \binom{n}{k} p^{k}*(1-p)$
+			For a fair coin, $p = \frac{1}{2}$ and hence p(A) = $\binom{n}{k} (\frac{1}{2})^k (\frac{1}{2})^{n-k}$ = $\binom{n}{k} (\frac{1}{2})^n$ 
 		}
 		
 	\end{homeworkSection}
