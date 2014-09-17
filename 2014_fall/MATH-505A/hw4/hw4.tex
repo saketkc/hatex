@@ -226,24 +226,43 @@
 	\begin{homeworkSection}{(4)} % Section within problem
 		
 		\problemAnswer{ % Answer
-			
+				A distribution function satisfies the following set of properties: \\
+				
+				a) $\lim_{x\rightarrow- \infty}\ F(x)=0$, $\lim_{x\rightarrow\infty}\ F(x)=1$
+				
+				b) if $x<y$ then $F(x) \leq F(y)$,
+				
+				c) F is right continuous, $ c < x < c + \delta$ then
+				$|F(x)-F(c)| < \epsilon$ for $\epsilon>0, \delta > 0$
+				
+				Consider $Y = \lambda F + (1-\lambda)G$, Both G,F satisfy $a,b,c$
+				Then $\lim_{x \rightarrow -\infty}Y(x) = \lambda \lim_{x \rightarrow -\infty} F(x) + (1-\lambda) \lim_{x \rightarrow -\infty} G(x)$ $\implies$ 
+				$\lim_{x \rightarrow -\infty}Y(x) = 0$
+				
+				Similarly considering limit as $x \rightarrow \infty$:
+				Then $\lim_{x \rightarrow \infty}Y(x) = \lambda \lim_{x \rightarrow \infty} F(x) + (1-\lambda) \lim_{x \rightarrow \infty} G(x)$ $\implies$ 
+				$\lim_{x \rightarrow -\infty}Y(x) = \lambda * 1 + (1-\lambda)*1 = 1$
+				
+				Since for $x < y $, then $F(x) < F(y)$; $G(x) < G(y)$
+				$\implies$ $\lambda F(x) < \lambda F(y)$; $(1-\lambda)G(x) < (1-\lambda)G(y)$ since $ 0 \leq \lambda \leq 1$
+				
+				Adding the two inequalities we get: \\
+				
+				$\lambda F(x) + (1-\lambda)G(x) < \lambda F(y) + (1-\lambda)G(y)$ $\implies$ $Y(x) < Y(y)$.
+				
+				Since F,G are right continuous, any linear combination of these would be right continuous too.
+				
+				
+				Hence $Y=\lambda F + (1-\lambda)G$ satisfies all the 3 required properties and is a distribution function.
+				
 		}
 		
 	\end{homeworkSection}
 	\begin{homeworkSection}{(5)} % Section within problem
 		
 		\problemAnswer{ % Answer
-			A distribution function satisfies the following set of properties: \\
-			
-			a) $\lim_{x\rightarrow- \infty}\ F(x)=0$, $\lim_{x\rightarrow\infty}\ F(x)=1$
-					
-			b) if $x<y$ then $F(x) \leq F(y)$,
-			
-			c) F is right continuous, $ c < x < c + \delta$ then
-			$|F(x)-F(c)| < \epsilon$ for $\epsilon>0, \delta > 0$
-			
-			Consider $Y = \lambda F + (1-\lambda)G$, Both G,F satisfy $a,b,c$
-			Then $\lim_{x \rightarrow -\infty}Y(x) = \lambda \lim_{x \rightarrow -\infty} F(x) + (1-\lambda) \lim_{x \rightarrow -\infty} G(x)$
+		
+		
 		}
 		
 
