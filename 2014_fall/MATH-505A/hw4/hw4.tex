@@ -262,7 +262,35 @@
 		
 		\problemAnswer{ % Answer
 		
+		Since F is a distribution function: \\
+		(i) $\lim_{x \rightarrow - \infty}F(x) = 0; \lim_{x \rightarrow \infty} = 1$
 		
+		(ii) If $x<y$ then, $F(x) < F(y)$
+		
+		(iii) F is right continuous
+		
+		\textbf{Part a)} $F(x)^r$
+		(i) $\lim_{x \rightarrow - \infty}F(x)^r = 0$ since $\lim_{x \rightarrow -\infty}F(x) = 0 $ and $ r > 0$
+		
+		(ii) If $ x< y$ as $F(x) < F(y) and r > 0$ $\implies$ $F(x)^r < F(y)^r $
+		
+		(iii) Since $r > 0$ and $F(x)$ is right-continuous $F(x)^r$ is right continuous. (One possible case ehere $F(x)^r$ would not have been right continuous is for $r<0$ say r = -1 where $F(x)^-1$ is not right continuous at all $x_0$ such that $F(x_0)=0$.
+		
+		\textbf{Part b)} $1 - (1-F(x))^r$
+		
+		(i) $; \lim_{x \rightarrow -\infty}(1-(1-F(x))^r)) = 1 - \lim_{x \rightarrow - \infty}(1-F(x))^r = 1 - (1-0)^r = 0$
+		
+		Similarly for $; \lim_{x \rightarrow \infty} (1-(1-F(x))^r) = 1- (1-1)^r = 1$
+		
+		(ii) If $ x < y$, $F(x) < F(y) \implies -F(x) > -F(y) \implies 1 - F(x) > 1 - F(y) \implies (1-F(x))^r > (1-F(y))^r \forall r > 0$
+		Thus, $1 - (1-F(x))^r < 1 - (1-F(y))^r$ 
+		
+		(iii) Since F(x) is right continuous, $1-F(x)$ is right continuous $\implies$ $(1-F(x))^r$ is right continuous(since ($r>0$) $implies$ $1 - (1-F(x))^r$ is right continuous
+		
+		\textbf{Part c} $F(x) + (1-F(x))log(1-F(x))$
+		
+				
+		 
 		}
 		
 
