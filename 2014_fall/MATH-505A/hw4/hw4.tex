@@ -289,7 +289,37 @@
 		
 		\textbf{Part c} $F(x) + (1-F(x))log(1-F(x))$
 		
-				
+		(i) $\lim_{x \rightarrow -\infty} (F(x) + (1-F(x))log(1-F(x))) =  \lim_{x \rightarrow -\infty} F(x) + \lim_{x \rightarrow -\infty} (1-F(x))log(1-F(x)) = 0 + (1-0)log(1-0) = 0 $
+
+			Consider $\lim_{x \rightarrow \infty} (F(x) + (1-F(x))log(1-F(x))) = \lim_{x \rightarrow \infty} F(x) + \lim_{x \rightarrow \infty} (1-F(x))log(1-F(x)) = 1 + (1-1) log(1-1) = 0 $
+			
+		(ii) If $x < y$ then $F(x) < F(y) \implies 1 - F(x) > 1- F(y)$ . Since log is a monotonic non-increasing function in $[0, 1]$ and is in fact negative definite: 
+			$log(1-F(x)) < log (1-F(y))$ and $1-F(x) > 1-F(y)$ $\implies$ $-F(x)log(1-F(x)) < -F(y)log(1-F(y))$ (This holds only because log is negative definite in $[0,1]$)	
+			
+			Thus, $F(x) -F(x)log(1-F(x)) < F(y)-F(y)log(1-F(y))$
+			
+		(iii) $F(x) -F(x)log(1-F(x))$ is right continuous as log(1-F(x)) is right continuous
+		
+		
+		\textbf{Part d)} $(F(x)-1)e + exp(1-F(x))$
+		
+		(i) $\lim_{x \rightarrow -\infty} (F(x)-1)e + exp(1-F(x)) = \lim_{x \rightarrow - \infty} (F(x)-1)e + exp(\lim_{x \rightarrow - \infty} (1-F(x))) = (0-1)e + exp(1-0) = -e + e = 0$
+		
+		$\lim_{x \rightarrow \infty} (F(x)-1)e + exp(1-F(x)) = \lim_{x \rightarrow \infty} (F(x)-1)e + exp(\lim_{x \rightarrow  \infty} (1-F(x))) = (1-1)e + exp(1-1) = 0 + 1 =1 $
+		
+		(ii) if $ x < y$ , $F(x) < F(y)$ $\implies$ $F(x)-1 < F(y)-1$ $\implies$ $(F(x) -1)e < (F(y)-1)e$
+		Also, $ 1-F(x) > 1-F(y)$
+		
+		Since $exp$ is a non-increasing function in $[0,1]$
+		$exp(1-F(x)) < exp(1-F(y))$ 
+		
+		Thus,
+		
+		$(F(x)-1)e + exp(1-F(x)) < (F(y)-1)e + exp(1-F(y))$   
+		
+		(iii) $(F(x)-1)e + exp(1-F(x))$ is right continuous as $exp$ is right continuous.
+		
+		
 		 
 		}
 		
