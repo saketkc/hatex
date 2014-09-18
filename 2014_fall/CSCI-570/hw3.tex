@@ -156,7 +156,13 @@
 
 \begin{homeworkSection}{(2)} %
 	\problemAnswer{
-		A) The intersections can be viwe	
+		A) The intersections can be viewed as the nodes of a directed graph. An intersection $I_i$ can be reached from $I_j$ given that there is an edge incident from $I_j$ to $I_i$ that is $ (I_j, I_i) \in E$ where E= set of edges of Graph $G(V,E)$
+		
+		If such a directed graph allows to reach from any point to any other point, it needs to be strongly connected implying there is a path from $I_i$ to $I_j$ and from $I_j$ to $I_i$. Checking if a path from $I_j$ exists to $I_i$ will involve reversing the edge directions in the directed graph and  checking if $I_i$ can be reached from $I_j$. So if the mayor is right, it should be possible to traverse from $I_j$ to $I_i$ with the edges inverted.
+		
+		Such a strongly connected directed graph can be traversed in linear time using DFS with a run time of O(n+m)	
+		
+		B) Since the mayor's original claim is false $\implies$ G is not strongly connected. However the focus shifts to the town hall being "strongly connected" with the rest of the nodes. In order for this to happen the node for town hall say T must be a sink of a strongly connected component. The approach would involve determining all such components containing T such that they are strongly connected. Next run a DFS in $O(n+m)$ to determine all nodes reachable from T if all these nodes belong to to same strongly connected component, it should be possible to travel from T to these and back. 
 		}
 \end{homeworkSection}
 
