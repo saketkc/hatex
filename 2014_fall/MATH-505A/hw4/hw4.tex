@@ -290,14 +290,14 @@
 		\textbf{Part c} $F(x) + (1-F(x))log(1-F(x))$
 		
 		(i) $\lim_{x \rightarrow -\infty} (F(x) + (1-F(x))log(1-F(x))) =  \lim_{x \rightarrow -\infty} F(x) + \lim_{x \rightarrow -\infty} (1-F(x))log(1-F(x)) = 0 + (1-0)log(1-0) = 0 $
-
-			Consider $\lim_{x \rightarrow \infty} (F(x) + (1-F(x))log(1-F(x))) = \lim_{x \rightarrow \infty} F(x) + \lim_{x \rightarrow \infty} (1-F(x))log(1-F(x)) = 1 + (1-1) log(1-1) = 0 $
-			
+		
+		Consider $\lim_{x \rightarrow \infty} (F(x) + (1-F(x))log(1-F(x))) = \lim_{x \rightarrow \infty} F(x) + \lim_{x \rightarrow \infty} (1-F(x))log(1-F(x)) = 1 + (1-1) log(1-1) = 0 $
+		
 		(ii) If $x < y$ then $F(x) < F(y) \implies 1 - F(x) > 1- F(y)$ . Since log is a monotonic non-increasing function in $[0, 1]$ and is in fact negative definite: 
-			$log(1-F(x)) < log (1-F(y))$ and $1-F(x) > 1-F(y)$ $\implies$ $-F(x)log(1-F(x)) < -F(y)log(1-F(y))$ (This holds only because log is negative definite in $[0,1]$)	
-			
-			Thus, $F(x) -F(x)log(1-F(x)) < F(y)-F(y)log(1-F(y))$
-			
+		$log(1-F(x)) < log (1-F(y))$ and $1-F(x) > 1-F(y)$ $\implies$ $-F(x)log(1-F(x)) < -F(y)log(1-F(y))$ (This holds only because log is negative definite in $[0,1]$)	
+		
+		Thus, $F(x) -F(x)log(1-F(x)) < F(y)-F(y)log(1-F(y))$
+		
 		(iii) $F(x) -F(x)log(1-F(x))$ is right continuous as log(1-F(x)) is right continuous
 		
 		
@@ -321,7 +321,16 @@
 		
 		
 		
-		FG is  a density 
+		FG is also a  density  function since it satisfies: \\
+		(i) $\lim_{x \rightarrow -\infty} F(x)G(x) = \lim_{x \rightarrow - \infty} F(x) * \lim_{x \rightarrow - \infty}G(x) = 0$
+		
+		And  $\lim_{x \rightarrow \infty} F(x)G(x) = \lim_{x \rightarrow  \infty} F(x) * \lim_{x \rightarrow \infty}G(x) = 1$ 
+		
+		(ii) If $x<y$, $F(x)<F(y)$ and $G(x)<G(y)$ $\implies$ $F(x)G(x)<F(y)G(y)$
+		
+		(iii) Since $F(x), G(x)$ are right continuous
+		
+		
 		
 		 
 		}
@@ -338,34 +347,93 @@
 	\begin{homeworkSection}{(1)} % Section within problem
 		
 		\problemAnswer{ % Answer
+			\textbf{Given:} $\lim_{m \rightarrow -\infty} a_{m} \rightarrow -\infty$ and $\lim_{m \rightarrow \infty} a_{m} \rightarrow \infty$; $G(x) = P(X \leq a_m)$ when $a_{m-1} \leq x \leq a_{m}$; $a_m$ is a strictly increasing sequence.
 			
+			Sequence $a$ is chosen so that $sup_m | a_m - a_{m-1}|$ becomes smaller and smaller so even though the sequence is increasing the successive difference between the terms keep on decreasing essentially indicating $a_m$ saturates as $m \rightarrow \infty $
+			
+			
+			
+		
 		}
 		
 	\end{homeworkSection}
 	\begin{homeworkSection}{(2)} % Section within problem
 		
 		\problemAnswer{ % Answer
+			\textbf{Given:} $g(x)$ is continuous and strictly increasing, X is a random variable: \\
 			
+			Since g(X) is continuous and strictly increasing $\implies g^{-1}$ exists. 
+			
+			Consider $\{Y \leq y\}$ $\implies \{g(X) \leq y\} $. Since $g^{-1}$ exists, such a set is equivalent to: $\{X \leq g^{-1}(y)\}$ which belongs to $\mathcal{F}$ as $g : R \rightarrow R$
+		
+				
 		}
 		
 	\end{homeworkSection}
 	\begin{homeworkSection}{(3)} % Section within problem
 		
 		\problemAnswer{ % Answer
-			
+			\begin{math}
+				F(x) = P(X \leq x) = 
+				\begin{cases}
+					0 & if x \leq 0,\\
+					x & if 0 < x \leq 1, \\
+					1 & if x>1,
+					 
+				\end{cases}
+			\end{math}
+			\textbf{To Prove:} $Y = F^{-1}(x)$ is a random variable:
+			Consider $\{Y \leq y\} = \{F^{-1}(x) \leq y\}$ . Since F is continuous and strictly increasing $\implies$ $F^{-1}(x)$ exists in $R$ so $\{Y \leq y\} = \{F^{-1}(x) \leq y\} = \{(x) \leq F(y)\} = \{x \leq P(X\leq y)\} \in \mathcal{F}$
+
+	
+			$F$ should necessarily be continuous and monotonic for the inverse to exist! 
 		}
 		
 	\end{homeworkSection}
 	\begin{homeworkSection}{(4)} % Section within problem
 		
 		\problemAnswer{ % Answer
+			$f,g$ are density functions: \\
+			$\int_{-\infty}^{\infty}f(x) = 1$ and $\int_{-\infty}^{\infty}g(x) = 1$	
 			
+			Consider $y(x) = \lambda f(x) + (1-\lambda)g(x)$  
+			Thus, $\int_{-\infty}^{\infty} y(x)dx =  \int_{-\infty}^{\infty} \lambda f(x)dx + \int_{-\infty}^{\infty}(1-\lambda)g(x)dx =  \lambda * \int_{-\infty}^{\infty}  f(x)dx + (1-\lambda) * \int_{-\infty}^{\infty}g(x)dx  = \lambda*1 + (1-\lambda)*1 = 1$
+			
+			Thus $\lambda f(x) + (1-\lambda)g(x)$ is a density function too.
+			
+			
+			Now consider $y(x) = f(x)g(x)$, then : \\
+			$\int_{-\infty}^{\infty} y(x)dx =\int_{-\infty}^{\infty}f(x)g(x)dx $
+			Clearly this is nor neceesarily equal to 1 so $fg$ is not a density function!
 		}
 		
 	\end{homeworkSection}
 	\begin{homeworkSection}{(5)} % Section within problem
 		
 		\problemAnswer{ % Answer
+			\textbf{Part a)}
+			\begin{math}
+				f(x) =
+				\begin{cases}
+				cx^{-d} & x>1,\\
+				0 & otherwise,
+				\end{cases}
+			\end{math}
+			
+			$F(x) = \int_{-\infty}^{\infty}f(c)dx = \int_{1}^{\infty}cx^{-d} = 1$
+			$\implies$ $\frac{-c}{-d+1} =1$ $\implies$ $c = d-1$
+			
+			\textbf{Part b)}
+			\begin{math}
+				f(x) = ce^x(1+e^x)^{-2} x \in R
+			\end{math}  
+			
+			$F(x) = \int_{-\infty}^{infty} ce^x(1+e^x)^{-2}$ 
+			Let $t = e^x+1$ then $e^xdx = dt$
+			$F(x) = \int_{1}^{\infty}ct^{-2} dt $
+			$F(x=1) = -(c*0 - c) = 1$
+			
+			Thus $c=1$. 
 			
 		}
 		
