@@ -180,19 +180,26 @@
 
 \begin{homeworkSection}{(4)} %
 	\problemAnswer{
-		Distance between neighboring gas stations is $p$ miles. Let's stop at stations $\{s_1,s_2,....s_k\} $. To minimise the number of stops, we need to stop only if the distance to the next station is larger than what can be covered with the petrol in the car at present. As long as we can reach the $(i+1)^{th}$ petrol station, we should not stop at $i^{th}$.
+		Distance between neighboring gas stations is $p$ miles. Let's stop at stations $\{s_1,s_2,....s_k\} $. To minimise the number of stops, we need to stop only if the distance to the next station(s) is larger than what can be covered with the petrol in the car at present. Hence we should avoid stopping at $I_i$ if distance to be travelled till $I_{i+1}, I_{i+2}...$ is less than p. 
 		
-		Consider $\{s'_1, s'_2, s'_3,....s'_k\} $ to be the optimal solution 
+		Consider $\{s'_1, s'_2, s'_3,....s'_k\} $ to be some other optimal solution. 
+		If $s_1$ comes before $s'_1$ that means greedy worked at step 1. If it does not then $s'_1$ can be avoided and replaced with $s_1$. Now since $s_1$ and $s'_1$ both were first steps they are each at least as far from starting point as the other, so this is an allowed solution. Now travelling from $s_1$ to last point and $s'_1$ to last point can be greedily solved and thus this would be an idnducitve    process. Thus $\{s_1,s_2,....s_k\} $ is an optimal solution.
+		
+		The running time is O(n) as we search for all vertices till the distance does not exceed $p$ and as such there can be at worse $n-1$ stations coming up.
+		\
 	}
 \end{homeworkSection}
 
 \begin{homeworkSection}{(5: Ch\#4 Ex\#3)} %
 	\problemAnswer{
-	Let the optimal solution be O such that $k<n$ trucks are used while the current solution uses $n$ trucks.  
-	
-	We try to show that $\forall r \geq 1 $ $r^{th}$ truck in present case is atleast as much loaded as the optimal $r^{th}$. Then this is true for the case when only 1 truck is used as then trucks in either case would be equally full.
-	
-	Let $w(i_r)$ be weights in the trucks $i_r$ for present case and $w(j_r)$ for the optimal case. Then $w(i_{r-1} \leq w(j_{r-1)$ Then consider the $r^{th}$ request.
+		Consider that the greedy algorithm in use makes use of $k$ trucks  loading boxes $b_1, b_2, ...b_i$ and the optimal algorithm uses $k$ trucks to load $b_1, b_2, ... b_j$ . If the greedy algorithm stays ahead it should ensure $i \geq j$
+		
+		
+		Consider k = 1, then the greedy algorithm fits as many boxes as the optimal solution  
+		
+		Then consider the case that it holds true for k = r-1, so the greedy algorithm fits $i'$ and the optimal algorithm  fits $j'$ such that $i' \geq j'$. Then for the $k=r$ truck, greedy algorithm can pack $b_{i'+1}, b_{i'+2}...b_{i}$ and the other algo packs $b_{j'+1}, b_{j'+2}, ...b_{j}$ but $ i' > j'$ and $ i > j$  so essentially greedy algo is able to pack all boxes from $b_{i'+1}...b_j$ and the other algo packs $b_{j'+1}...b_j$ but greedy can pack more since it covers box till $b_j$ as ( $ i >j$)  but can go upto $i$
+		
+		 
 
 	 
 	}
@@ -211,8 +218,15 @@
 	 
 	 It is easy to rule out Case 4, since it would the smallest possible product.
 	 The case maximising the payoff is Case 1  since the product is maximised when the individual terms are masimised which is possible if the larges number has the largest exponent.
+	 So $a_1 > a_2 $ and $b_1 > b_2$ then we consider $P$=$a_1^{b_1}*a_2^{b_2}$
 	 
-	 It 
+	 Consider an alternate optimal arrangement where $a_1$ is paired with $b_2 \neq b_1$
+	 Then $P' = a_1^{b_2}*a_2*{b_1}$
+	 Then $\frac{P'}{P} = (\frac{a_1}{a_2})^{-b_1+ b_2} < 1$
+	 This can be extended to be true for n term product and hence greedy algorithm yields optimal solution.
+	 
+	 The sorting is possible in $O(n log n)$ and  the assuming multiplication and exponentiation to be elementary operations, the complexity would be $O(n log n)$
+	  
 	 % if $a > b$ $ \implies$ $log a > log b$ $ \forall a,b >1$
 	 %Consider $a^b > b^a$ $\implies$ Take  
 	}
@@ -230,7 +244,22 @@
 
 \begin{homeworkSection}{(8)} %
 	\problemAnswer{
+		Choose the largest denomination of (25,10,1) such that $(n-max_denomination)$ is positive
+		and then keep doing this until n = 0. This is also equivalent to adding $n / max_denomination$ as the coin count and the new amount being $n mod max_denomination$
 		
+		
+	%	If the first choice is 1 pence then $n$ can be atmost 4, since other 5 cents would habe been a viable option.
+		
+	%	If the first choice is 5 pence then $n$ can be between  10 and 24.
+		
+	%	If the first choice is 25c then the $n$ is atleast 25		
+	
+	Let the first choice of greedy be $n1$ value of coins of denomination $d1$. If a set $G$ represents this greedy solution for $n$ coins then $G-\{d1\}$ is a greedy solution for $n-n1$ Let another optimal solutiuon for this be  $O$, then $U \cup \{d1\}$ should contains fewer coins than $G$, that would mean a total of $n$ is possible in fewer than $d1$ (max possible) value coins which is a contradiction. Hence $G$ is the optimal solution $O$
+	
+	\textbf{Part b)} Consider $n=6$ and denominations = 1,3,4
+	Then greedy gives : $1,1,4$ while the optimal is $3,3$
+	
+	
 	}
 \end{homeworkSection}
 
