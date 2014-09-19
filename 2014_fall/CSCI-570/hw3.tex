@@ -170,20 +170,31 @@
 	\problemAnswer{
 	
 		
+		 For outputting a cycle G(if any) in G, we perform a BFS and keep track of nodes visited in an array. Initially $visitied[i] = 0 \forall i \in V$ and change the status of this array as we traverse the nodes checking $if\ visited[i] = 1;\ then\ cycle\ exists$ else we follow the following algorithm for creating a topological ordering.
 		 
+		 BSF traversal takes O(n+m) and so does topological ordering
+		 % we make use of two pointers starting from any two connected nodes and run a BFS using these two nodes, At each step pointer 1 moves via 1 edge and pointer 2 by two edges. We maintain two separate arrays to track if any node has been visited by  If any of these pointers ever 
 		
 		}
 \end{homeworkSection}
 
 \begin{homeworkSection}{(4)} %
 	\problemAnswer{
-		A) The intersections can be viewed as nodes of a directed 	
+		Distance between neighboring gas stations is $p$ miles. Let's stop at stations $\{s_1,s_2,....s_k\} $. To minimise the number of stops, we need to stop only if the distance to the next station is larger than what can be covered with the petrol in the car at present. As long as we can reach the $(i+1)^{th}$ petrol station, we should not stop at $i^{th}$.
+		
+		Consider $\{s'_1, s'_2, s'_3,....s'_k\} $ to be the optimal solution 
 	}
 \end{homeworkSection}
 
 \begin{homeworkSection}{(5: Ch\#4 Ex\#3)} %
 	\problemAnswer{
-		A) The intersections can be viwe	
+	Let the optimal solution be O such that $k<n$ trucks are used while the current solution uses $n$ trucks.  
+	
+	We try to show that $\forall r \geq 1 $ $r^{th}$ truck in present case is atleast as much loaded as the optimal $r^{th}$. Then this is true for the case when only 1 truck is used as then trucks in either case would be equally full.
+	
+	Let $w(i_r)$ be weights in the trucks $i_r$ for present case and $w(j_r)$ for the optimal case. Then $w(i_{r-1} \leq w(j_{r-1)$ Then consider the $r^{th}$ request.
+
+	 
 	}
 \end{homeworkSection}
 
@@ -191,17 +202,17 @@
 	\problemAnswer{
 	 Given two sets A and B, each containing n positive integers. Perform reordering maximising $\Pi_{i=1}^{n}a_i^{b_i}$.
 	 
-	 There are 4 ways to proceed.
-	 Consider: $A=1,2,3; B = 4,5,6$
+	 There are 4 ways to proceed. \\
+%	 Consider: $A=1,2,3; B = 4,5,6$ \\
 	 1. Larger values of $a$ raised to larger values of $b$ \\ 
 	 2. Smaller values of $a$ raised to larger values of $b$ \\
 	 3. Larger values of $a$ raised to smaller values of $b$\\
 	 4. Smaller values of $a$ raised to smaller values of $b$ \\
 	 
 	 It is easy to rule out Case 4, since it would the smallest possible product.
-	 The case maximising the payoff is Case 1.
+	 The case maximising the payoff is Case 1  since the product is maximised when the individual terms are masimised which is possible if the larges number has the largest exponent.
 	 
-	 It
+	 It 
 	 % if $a > b$ $ \implies$ $log a > log b$ $ \forall a,b >1$
 	 %Consider $a^b > b^a$ $\implies$ Take  
 	}
@@ -219,7 +230,7 @@
 
 \begin{homeworkSection}{(8)} %
 	\problemAnswer{
-		A) The intersections can be viwe	
+		
 	}
 \end{homeworkSection}
 
