@@ -189,13 +189,31 @@
 
 \begin{homeworkSection}{(6)} %
 	\problemAnswer{
-		A) The intersections can be viwe	
+	 Given two sets A and B, each containing n positive integers. Perform reordering maximising $\Pi_{i=1}^{n}a_i^{b_i}$.
+	 
+	 There are 4 ways to proceed.
+	 Consider: $A=1,2,3; B = 4,5,6$
+	 1. Larger values of $a$ raised to larger values of $b$ \\ 
+	 2. Smaller values of $a$ raised to larger values of $b$ \\
+	 3. Larger values of $a$ raised to smaller values of $b$\\
+	 4. Smaller values of $a$ raised to smaller values of $b$ \\
+	 
+	 It is easy to rule out Case 4, since it would the smallest possible product.
+	 The case maximising the payoff is Case 1.
+	 
+	 It
+	 % if $a > b$ $ \implies$ $log a > log b$ $ \forall a,b >1$
+	 %Consider $a^b > b^a$ $\implies$ Take  
 	}
 \end{homeworkSection}
 
 \begin{homeworkSection}{(7: Ch\#4 Ex\#4)} %
 	\problemAnswer{
-		A) The intersections can be viwe	
+	Given two sequence $S'$ of size m and $S$ of size n, to determine if $ S' \subset S$
+	
+	$S'$ can be  visualised as a DAG or more specifically as a topological ordering.
+	Also treat S as a DAG. We keep two pointers, one for $S'$ and one for $S$ and perform a DFS on $S$ till we hit a element from $S'$ starting with $S'[0]$, once $S'[0]$ is found in $S$ we start a DFS again after deleting all preceding elements of $S$ now continuing till we find $S[1]$ and deleting the intermediate hits if any.
+	
 	}
 \end{homeworkSection}
 
