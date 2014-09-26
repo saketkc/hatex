@@ -1,0 +1,379 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{latexsym}
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{amsmath}
+%\usepackage{multline}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Homework\ \# 5 } % Assignment title
+\newcommand{\hmwkDueDate}{Friday,\ September \ 26,\ 2014} % Due date
+\newcommand{\hmwkClass}{MATH-505A} % Course/class
+\newcommand{\hmwkClassTime}{10:30am} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+%\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+	\textbf{\hmwkAuthorID}
+	}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+\begin{homeworkProblem}[Exercise \# 2.7] % Custom section title
+
+
+	\begin{homeworkSection}{(1)} % Section within problem
+		
+		\problemAnswer{ % Answer
+		Coin toss shows head with probability = $p$
+		\textbf{To Find:} $P(X > m)$
+		
+		By definition $P(X>m) = 1 - P(X<m)$
+		
+		$P(X<m)$ = $P(head\ comes\ on\ toss\ 1) + P(head\ comes\ on\ toss\ 2) + .. + P(head\ comes\ on\ toss\ m-1) =  p + (1-p)p + (1-p)^2p + ... + (1-p)^(m-1)p = p(\frac{1-(1-p)^{m-1+1}}{1-(1-p)}) = 1-(1-p)^m$
+		
+		Thus $P(X>m) = 1 - 1-(1-p)^m = (1-p)^m$
+		
+		The distribution function of $X$ is given by: \\
+		\begin{math}
+			F(x) = 	
+			\begin{cases}
+	  			  1 - (1-p)^x & x \leq 0 \\
+				  0 & otherwise	 
+			\end{cases}
+		\end{math}
+		
+		given that $x$ takes only integer values$[$$X$ is a discrete random variable$]$
+}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{(2 a)}
+	\problemAnswer{
+	$X$ is a  random variable.
+	Let $\Omega$= $\{x1, x2, ...., x_n\}$
+	Define a indicator random variables $I_j(x_j)$ such that: \\
+	\begin{math}
+	I_j(x) = 
+	\begin{cases}
+		1 & if x = x_j\\
+		0 & otherwise
+	
+	\end{cases}
+	\end{math}
+	
+	Thus $X$ can be now expressed as : \\
+	\begin{math}
+	X = \sum_{j=1}^{n}x_j I_j(x_j)
+	\end{math}
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{(2 c)}
+	\problemAnswer{
+		Consider the set of events $X=\{X_1, X_2, X_3, ... , X_n\}$
+		such that $X_1(\omega) < X_2(\omega) < ... < X_m(\omega) \forall \omega in \Omega$
+		
+		In order to prove if $X$ is a random variable  we consider $\{X(\omega) \leq x \}$
+		which is equivalent to $\{X_i(\omega) \leq x \} \forall i \in [1, n]]$
+		which is equivalent to $\{min X(\omega) \leq x\}$ where $min X$ refers to $min(X_i)$
+		
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{(4)}
+	\problemAnswer{
+	\begin{math}
+		F(x) = \begin{cases}
+		0 & if x < 0 \\
+		\frac{1}{2}x & if 0 < x < 2, \\
+		1 & if x > 2
+		\end{cases}
+	\end{math}
+	
+	Thus  $f(x) = F'(x)$ : \\
+	\begin{math}
+			f(x) = \begin{cases}
+			0 & if x < 0 \\
+			\frac{1}{2} & if 0 < x < 2, \\
+			0 & if x > 2
+			\end{cases}
+		\end{math}
+		
+	
+	\textbf{Part a: $P(\frac{1}{2} \leq X \leq \frac{3}{2})$ }
+	$P(\frac{1}{2} \leq X \leq \frac{3}{2}) = \int_{\frac{1}{2}}^{\frac{3}{2}}f(x)dx = \int_{\frac{1}{2}}^{\frac{3}{2}}\frac{1}{2}dx = \frac{1}{2} $\\
+	
+	\textbf{Part b: $P(1 \leq X \leq 2)$}  
+	$P(1 \leq X \leq 2) = \int_{1}{2}\frac{1}{2}dx = \frac{1}{2}$\\
+	
+	\textbf{Part c: $P(Y \leq X)$}
+	$P(Y \leq X) = P(X^2 \leq X) = P(X^2-X \leq 0) = P(X^2-X \leq 0) = P(X(X-1) \leq 0 ) $
+	Since $X(X-1) \leq 0 \implies 0 \leq X \leq 1$\\
+	
+	Thus, 	$P(Y \leq X) = P(0 \leq X \leq 1 ) = \int_{0}^{1}\frac{1}{2} dx = \frac{1}{2} $\\
+	
+	\textbf{Part d: $P(Y \leq 2X)$}
+	$P(Y \leq 2X) = p(X \leq 2X^2) = P(X(1-2X) \leq 0) = P(X(2X-1) \geq 0) = P(X \geq \frac{1}{2}) \cup P(X \leq 0 ) = P(X \geq \frac{1}{2}) + 0 = \int_{\frac{1}{2}}^{2} \frac{1}{2} dx + \int_{2}^{\infty} 0 dx = \frac{3}{4}$
+	
+	
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{(5)}
+	\problemAnswer{
+		\vspace*{200px}
+
+		\begin{math}
+			F(x) = \begin{cases}
+			0 & if x < -1 \\
+			1-p & if 0 \leq x < 1, \\
+			1-p+\frac{1}{2}xp & if  0 \geq x < 2\\
+			1 & x \geq 2\\
+			\end{cases}
+		\end{math}
+		
+		Thus  $f(x) = F'(x)$ : \\
+		\begin{math}
+				f(x) = \begin{cases}
+				0 & if x < -1 \\
+						0 & if 0 \leq x < 1, \\
+						\frac{1}{2}p & if  0 \geq x < 2\\
+						0 & x \geq 2\\
+				\end{cases}
+			\end{math}		
+
+		\textbf{Part a} $P(X=-1)$ \\
+		$P(X=-1)$ = $f(x=-1)= 0$ \\
+		
+		\textbf{Part b} $P(X=0)$ \\
+		$P(X=0)$ = $f(x=0)= 0$ \\ 
+		
+		\textbf{Part c}$P(X \geq 1)$ \\
+		$P(X \geq 1)$ = $\int_{1}^{2}(\frac{1}{2}p)dx + \int_{1}0dx = \frac{1}{2}p$
+	}
+	
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{(7)}
+	\problemAnswer{
+	p(Teeny Weeny is overbooked) = p(All 10 passengers turn up) = $(\frac{9}{10})^10 = 0.34$
+	
+	p(Blockbuster airways is overbooked) = p(19 or 20 passengers turn up) = 
+	$\binom{20}{19}(\frac{1}{10})(\frac{9}{10})^19 + \binom{20}{2}(\frac{1}{10})^2(\frac{9}{10})^18 = .39$
+	
+	Thus blockbuster ariways is overbooked on average.
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{(9)}
+	\problemAnswer{
+		\textbf{Part a}\\
+	$X^+ = max(0, X)$: \\
+	As $F(x)$ is positive definite: \\
+	\begin{math}
+		P(X^+ \leq x) = \begin{cases}
+		
+		0 & x \leq 0 \\
+		F(x) & x\geq 0
+		
+		\end{cases}
+	\end{math}
+		\textbf{Part b}\\
+	For $X^- = -min(0, X)$: \\
+	$P(X^- \leq x) = P((0 \leq x) \cup (-X \leq 0)) = P((0 \leq x) \cup (X \geq -x)) = P(0 \leq x) + P(X \geq -x) = P(0 \leq x) + (1-P(X \leq -x)) $
+	
+	Thus,
+	\begin{math}
+		P(X^- \leq x) = \begin{cases}
+		0 & x \leq 0\\
+		1-F(-x) & x \geq 0\\
+		\end{cases}
+	\end{math}
+	
+	\textbf{Part c}\\
+	
+	$|X| = X^+ + X^-$
+	
+	Thus $P(|X| \leq x) = P((X^+ \leq x) \cup P(X^- \leq -x)) = P(X^+ \leq x) + P(X^- \leq -x) - P((X^+ \leq x) \cap P(X^- \leq -x))$
+	
+	\textbf{Part d}
+
+	$-X$
+	
+	$P(-X \leq x) = P(-X \geq x) = 1-P(X \leq -x) = 1-F(-x)$
+	  
+	
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{11}
+	\problemAnswer{
+	\textbf{Given:} Median $m$ = $\lim_{y \rightarrow \infty} F(y) \leq \frac{1}{2} \leq F(m)$
+	\textbf{To Prove:} Every distribution of F has a median and it is a closed interval
+	
+	Since $F$ is a continuous function with range $[0,1]$ applying intermediate values theorem: \\
+	$F$ will take all values between its extremum.
+ so every distribution of F has a median and is closed under $[0,1] $
+ 
+ 
+	}
+	\end{homeworkSection}
+	
+	
+	\begin{homeworkSection}{(12)}
+	
+	\problemAnswer{
+	Consider the outcomes of the dice to be $X1, X2$ and the sum to be $S=X1+X2$.
+	Let us assume the outcomes that $S=2$ to $S=12$ are equally likely
+	Then let: \\
+	$ S=2: A=\{(1,1)\}\\
+	  S=9: A=\{(3,6), (4,5), (5,4), (6,3)\}
+	$
+	
+	Thus for $S=2,9$ , $A=1,4$ the number of favourable events are unequal $\implies$ the initial assumption is false!
+	
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{(15)}
+	\problemAnswer{
+	If the user is searching for book $B_x$ the 
+	}
+	\end{homeworkSection}
+	
+	
+	\begin{homeworkSection}{(18)}
+	\problemAnswer{
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{(18)}
+	\problemAnswer{
+	}
+	\end{homeworkSection}
+
+\end{homeworkProblem}
+
+\end{document}
