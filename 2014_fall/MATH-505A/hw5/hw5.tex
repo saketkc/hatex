@@ -237,6 +237,11 @@
 	\textbf{Part d: $P(Y \leq 2X)$}
 	$P(Y \leq 2X) = p(X \leq 2X^2) = P(X(1-2X) \leq 0) = P(X(2X-1) \geq 0) = P(X \geq \frac{1}{2}) \cup P(X \leq 0 ) = P(X \geq \frac{1}{2}) + 0 = \int_{\frac{1}{2}}^{2} \frac{1}{2} dx + \int_{2}^{\infty} 0 dx = \frac{3}{4}$
 	
+	\textbf{Part e: $P(X+X^2 \leq \frac{3}{4})$}
+	$P(X+X^2 \leq \frac{3}{4}) = P((X+0.5)^2 \leq 1) = P(X \leq 0.5) = \int_{0.5}^{1}\frac{1}{2} = \frac{1}{4}$
+	
+	\textbf{Part f: $P(\sqrt X \leq z)$}
+	 $P(\sqrt X \leq z) = P(X\leq z^2)$ = $\frac{1}{2}z^2\ if 0 \leq z \leq \sqrt{(2)}$ $0$ otherwise
 	
 	}
 	\end{homeworkSection}
@@ -248,8 +253,8 @@
 		\begin{math}
 			F(x) = \begin{cases}
 			0 & if x < -1 \\
-			1-p & if 0 \leq x < 1, \\
-			1-p+\frac{1}{2}xp & if  0 \geq x < 2\\
+			1-p & if -1 \leq x < 0, \\
+			1-p+\frac{1}{2}xp & if  0 \leq x < 2\\
 			1 & x \geq 2\\
 			\end{cases}
 		\end{math}
@@ -258,14 +263,14 @@
 		\begin{math}
 				f(x) = \begin{cases}
 				0 & if x < -1 \\
-						0 & if 0 \leq x < 1, \\
-						\frac{1}{2}p & if  0 \geq x < 2\\
+						0 & if -1 \leq x < 0, \\
+						\frac{1}{2}p & if  0 \leq x < 2\\
 						0 & x \geq 2\\
 				\end{cases}
 			\end{math}		
 
-		\textbf{Part a} $P(X=-1)$ \\
-		$P(X=-1)$ = $f(x=-1)= 0$ \\
+		\textbf{Part a} $P(X=-1)$
+		$P(X=-1) = 1-p$
 		
 		\textbf{Part b} $P(X=0)$ \\
 		$P(X=0)$ = $f(x=0)= 0$ \\ 
@@ -316,7 +321,8 @@
 	
 	$|X| = X^+ + X^-$
 	
-	Thus $P(|X| \leq x) = P((X^+ \leq x) \cup P(X^- \leq -x)) = P(X^+ \leq x) + P(X^- \leq -x) - P((X^+ \leq x) \cap P(X^- \leq -x))$
+	%Thus $P(|X| \leq x) = P((X^+ \leq x) \cup P(X^- \leq -x)) = P(X^+ \leq x) + P(X^- \leq -x) - P((X^+ \leq x) \cap P(X^- \leq -x))$
+	Thus, $P(|X| \leq x) = P(-x \leq X \leq x) = F(x) - F(-x)$
 	
 	\textbf{Part d}
 
@@ -359,21 +365,111 @@
 	
 	\begin{homeworkSection}{(15)}
 	\problemAnswer{
-	If the user is searching for book $B_x$ the 
-	}
-	\end{homeworkSection}
-	
-	
-	\begin{homeworkSection}{(18)}
-	\problemAnswer{
-	}
-	\end{homeworkSection}
-	
-	\begin{homeworkSection}{(18)}
-	\problemAnswer{
-	}
-	\end{homeworkSection}
 
+	}
+	\end{homeworkSection}
+	
+	
+	\begin{homeworkSection}{(18)}
+	\problemAnswer{
+	Total ways to arrange 8 pawns on a chessboard = $\binom{64}{8} $
+	
+	Number of ways of being in straight line = Number of ways they are in same row + Number of ways they are in same column + Number of ways they are in same diagonal
+	= $\binom{8}{1} + \binom{8}{1} + \binom{2}{1}$
+	p(pawns are in straight line) 	= $\frac{\binom{8}{1}+ \binom{8}{1} + \binom{2}{1}}{\binom{64}{8} } = \frac{18}{\binom{64}{8}}$
+	
+	Number of ways that pawns are not in the same row or column =
+	First pawn has 8 rows/columns to choose from, then the second pawn will have 7 rows/columns to choose from and so on.
+	At each step the row taken by the pawn at earlier step is removed from choice of consideration
+	
+	Thus 	Number of ways that pawns are not in the same row or column = $8*7*6...=8!$
+	
+	Thus p(	Number of ways that pawns are not in the same row or column ) = $\frac{8!}{\binom{64}{8}}$
+	
+	
+	}
+	\end{homeworkSection}
+	\begin{homeworkSection}{(19)}
+		\problemAnswer{
+			\textbf{Part a} 
+			
+			\begin{math}
+				F(x) = \begin{cases}
+				1- e^{-x^2} & x \geq 0 \\
+				0 & otherwise \\
+				\end{cases}
+			\end{math}
+			$F(\infty) = 1$ and $F(-\infty) = 0$
+			
+			Differentiating $F(x)$ we get: \\
+			\begin{math}
+				f(x) = \begin{cases}
+					2xe^{-x^2} & x \geq 0 \\
+					0 & otherwise \\
+				\end{cases}
+			\end{math}
+				F is a distribution function\\
+			
+			\textbf{Part b} 
+			
+			\begin{math}
+				F(x) = \begin{cases}
+				e^{-\frac{1}{x}} & x > 0 \\
+				0 & otherwise \\
+				\end{cases}
+			\end{math}
+			$F(\infty) = 1$ and $F(-\infty) = 0$
+			
+			Differentiating $F(x)$ we get: \\
+			\begin{math}
+				f(x) = \begin{cases}
+				   \frac{e^{-\frac{1}{x}}}{x^2} & x > 0 \\
+					0 & otherwise \\
+				\end{cases}
+			\end{math}	
+			F is a distribution function\\
+			
+			\textbf{Part c} 
+			
+			\begin{math}
+				F(x) = \begin{cases}
+			\frac{e^x}{e^x+ e^{-x}} & x \geq 0 \\
+				0 & otherwise \\
+				\end{cases}
+			\end{math}
+			$F(\infty) = 1$ and $F(-\infty) = 0$
+			
+			Differentiating $F(x)$ we get: \\
+			\begin{math}
+				f(x) = \begin{cases}
+					\frac{2}{(e^x+e^-x)^2}& x \geq 0 \\
+					0 & otherwise \\
+				\end{cases}
+			\end{math}
+				F is a distribution function\\
+			\textbf{Part d} 
+			
+			\begin{math}
+				F(x) = \begin{cases}
+			e^{-x^2} + \frac{e^x}{e^x+ e^{-x}} & x \geq 0 \\
+				0 & otherwise \\
+				\end{cases}
+			\end{math}
+			$F(\infty) = 1$ and $F(-\infty) = 0$
+		
+			
+			Differentiating $F(x)$ we get: \\
+			\begin{math}
+				f(x) = \begin{cases}
+					-2xe^{-x^2} + \frac{2}{(e^x+e^-x)^2}  & x \geq 0 \\
+					0 & otherwise \\
+				\end{cases}
+			\end{math}
+			F is NOT a distribution function as $f$ can take in negative values.
+		}
+	\end{homeworkSection}
+	
+	
 \end{homeworkProblem}
 
 \end{document}
