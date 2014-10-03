@@ -306,30 +306,50 @@
 \begin{homeworkProblem}[Exercise \# 3.2]
 	\begin{homeworkSection}{2}
 	\problemAnswer{
-	}
-	\end{homeworkSection}
-	\begin{homeworkSection}{2}
-	\problemAnswer{
 		\textbf{Part a $P(min(X,Y) \leq x )$}
+		= $1-P(X>x \cup Y>y)=1-P(X>x)P(Y>y)=1-4^{-x}$
 		
 		\textbf{Part b $P(Y > x )$}
-		
+		=$\frac{1}{3}$ by symmetery of $P(X>Y)=P(X<Y)=P(X=Y)$
 		\textbf{Part c $P(X=Y)$}
+		=$\frac{1}{3}$ as in (b)
 		
 		\textbf{Part d $P(X \geq y )$}
+		=$\frac{1}{3}$ as in (b)
 		
 		\textbf{Part e $P(X\ divides Y )$}
+		=$P(Y=kX)=P(Y=kx,X=x)=P(Y=kx)P(X=x)=\sum2^{-kx}2^{-x}=\sum_{k=1}{k=\infty}\frac{1}{2^{k+1}-1}=$
+		
 		
 		\textbf{Part f $P(X = rY )$}
+		=$P(X=ry, Y=y)=\sum {2^{-ry}}2^{-y}=2^{-r-1}(2)=2^{-r}$
 				
 		
 	}
+		\begin{homeworkSection}{4}
+		\problemAnswer{
+		Consider three possibilities:
+		1. A rolls a 6, B,C do not\\
+		2. A and B roll a 6\\
+		3. No one rolls 6\\
+		
+		$p=\frac{1}{6}(\frac{5}{6})^2P(B<C)+\frac{1}{6}\frac{1}{6} + (\frac{5}{6})^3 p$
+		
+		$P(B<C)=\frac{5}{6}\frac{5}{6}P(B<C)+\frac{1}{6} \implies P(B<C)=\frac{6}{11}$
+		
+		$p(1-\frac{125}{216})=\frac{25}{216}\frac{6}{11}+\frac{6}{216}$
+		
+		$p(\frac{91}{216})=\frac{216}{216*11}=\frac{216}{1001}$
+		%$ $
+		}
+		\end{homeworkSection}
+	
 	\end{homeworkSection}
 \end{homeworkProblem}
 
 
 \begin{homeworkProblem}[Exercise \# 3.3]
-	\begin{homeworkSection}{4}
+	\begin{homeworkSection}{1}
 	\problemAnswer{
 
 	$E(\frac{1}{X}) = \sum p(x)(\frac{1}{x})$\\
@@ -344,7 +364,11 @@
 	\end{math}
 	}
 	\end{homeworkSection}
-	
+	\begin{homeworkSection}{2}
+	\problemAnswer{
+	Given there are $c$ objects with $j$ chosen. The probability to select a new 'distinct' component given j are already selected is $\frac{c-j}{c}$ . Thus the distribution  is geometric with parameter $p=\frac{c-j}{c}$ and the mean being $\frac{1}{p}=\frac{c}{c-j}$
+	}
+	\end{homeworkSection}
 	\begin{homeworkSection}{5}
 	\problemAnswer{
 	\begin{math}
@@ -360,7 +384,7 @@
 	and hence:
 	$E(X^\alpha) = \sum \frac{1}{x^{2-\alpha}+x^(1-\alpha)}$
 	and hence ${x^{2-\alpha}+x^(1-\alpha)}$ should be converging $\implies$
-	$\alpha \leq 2$
+	$\alpha \leq 1$
 		
 	}
 	\end{homeworkSection}
