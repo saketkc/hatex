@@ -304,9 +304,24 @@
 \end{homeworkProblem}
 
 \begin{homeworkProblem}[Exercise \# 3.2]
-	\begin{homeworkSection}{4}
+	\begin{homeworkSection}{2}
+	\problemAnswer{
+	}
+	\end{homeworkSection}
+	\begin{homeworkSection}{2}
 	\problemAnswer{
 		\textbf{Part a $P(min(X,Y) \leq x )$}
+		
+		\textbf{Part b $P(Y > x )$}
+		
+		\textbf{Part c $P(X=Y)$}
+		
+		\textbf{Part d $P(X \geq y )$}
+		
+		\textbf{Part e $P(X\ divides Y )$}
+		
+		\textbf{Part f $P(X = rY )$}
+				
 		
 	}
 	\end{homeworkSection}
@@ -317,9 +332,9 @@
 	\begin{homeworkSection}{4}
 	\problemAnswer{
 
-	$E(1\\X) = \sum p(x)(1\\x)$\\
-	$1\\E(X) = \sum p(x)(x)$ \\
-	For $E(X) = E(1\\X)	$: $\sum(p(x)(x-1\\x)=0$
+	$E(\frac{1}{X}) = \sum p(x)(\frac{1}{x})$\\
+	$\frac{1}{E(X)}) = \sum p(x)(x)$ \\
+	For $E(X) = E(\frac{1}{X})	$: $\sum(p(x)(x-\frac{1}{x})=0$
 	The above equation might not true be in general. However one possible case where this is true is  for this distribution: \\
 	\begin{math}
 	p(x) = \begin{cases}
@@ -327,6 +342,26 @@
 	0 & otherwise	
 	\end{cases}
 	\end{math}
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{5}
+	\problemAnswer{
+	\begin{math}
+	f(x) = \begin{cases}
+	\frac{1}{x(x+1)} & x=1,2,...\\
+	0 & otherwise
+
+	\end{cases}
+	\end{math}
+	
+	$E(X^\alpha) = \sum \frac{x^{\alpha-1}}{x+1}$
+	For $E(X^\alpha) < \infty$, the above sequence should not be diverging.
+	and hence:
+	$E(X^\alpha) = \sum \frac{1}{x^{2-\alpha}+x^(1-\alpha)}$
+	and hence ${x^{2-\alpha}+x^(1-\alpha)}$ should be converging $\implies$
+	$\alpha \leq 2$
+		
 	}
 	\end{homeworkSection}
 \end{homeworkProblem}
