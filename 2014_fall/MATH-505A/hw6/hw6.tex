@@ -30,6 +30,7 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 
 \usepackage{amsmath}
+
 %\usepackage{multline}
 
 % Margins
@@ -147,35 +148,52 @@
 	
 	\begin{homeworkSection}{1}
 	\problemAnswer{
-	 \textbf{Part a: $f(x) = C2^-x$}
+	 \textbf{Part a: $f(x) = C2^{-x}$}
 	 
 	 For f(x) to be a mass function $\sum_{1}^{\infty} C2^-i=1$
 	 $C(\frac{1}{2} + \frac{1}{2^2} + \frac{1}{2^3} +....) = C \frac{1}{2} * \frac{1}{1-\frac{1}{2}} = 1$ $\implies$ $C=1$
 	 
-	 \textbf{Part b: $f(x) = \frac{C2^-x}{x}$
-	 $\sum_{1}^{\infty} \frac{C}{2^ii}=1$ Approximating summation by a definite integral: \\
-	 $\int_{1}^{\infty} Cx{2^-x}=1 \implies C\int_{1}^{\infty}x2^-xdx =1$
-	 Let $t =2^-x \implies dt = -2^-x ln 2 dt ; x = -\frac{ln t}{2} $
-	 
-	 
-	 
-	 \textbf{ Part c: $f(x) = Cx^-2$}
-	 $\sum_{1}^{\infty} \frac{C}{x^2} = 1$
-	 
-	 Besel sum: \\
-	 $\sum_{1}^{n}\frac{1}{i^2} = $
-	 
-	 Using taylor expansion of $sin x$ and the fact that $\frac{sin x}{x}$ has roots at $x=\pi, 2\pi, 3\pi.....$  : \\
-	 
-	 $\frac{sin x}{x} = 1-\frac{x^2}{3!}+\frac{x^4}{5!}+...... = (1-\frac{x}{\pi})(1-\frac{x}{2\pi})(1-\frac{x}{3\pi})....(1-\frac{x}{\pi})$
-	 
-	 
-	 The product of productions of $\frac{sin x}{x}$ is given the the coefficient of $x^2$ in the original and hence $-\frac{1}{3!} = -\pi^2{\sum_{1}^{\infty} i^2$
-	 
-	 
-	 Thus 	 $\sum_{1}^{\infty} \frac{C}{x^2} = C*\frac{\pi^2}{6}$.
-	 Thus C=$\frac{6}{\pi^2}$
-	 
+	 \textbf{Part b: $f(x) = \frac{C2^{-x}}{x}$}
+	 	 $\sum_{1}^{\infty} \frac{C}{2^ii}=1$ 
+	 	 %\begin{comment}
+	 	 %Approximating summation by a definite integral: \\
+	 	 %$\int_{1}^{\infty} C\frac{2^{-x}}{x}=1 \implies C\int_{1}^{\infty}\frac{2^{-x}}{x}dx = 1$
+	 	 %Let $t =2^{-x} \implies dt = -2^{-x}\ ln\ 2\ dx ; x = -\frac{ln\ t}{ln\ 2} $
+	 	 %Thus $\int_{1}^{\infty}\frac{2^{-x}}{x}dx = \int_{\frac{1}{2}}^{0} \frac{-dt}{-ln\ t} $
+	 	 %\end{comment}
+	 	 
+	 	 %$\sum_{1}^{\infty} \frac{C}{2^ii} = -C\sum_{1}^{\infty} \frac{2^{-i}}{-i} = -C e^-2$ Thus  
+	 	 
+	 	 
+	 	 Notice $ln(1+x) =x + \frac{x^2}{2} + \frac{x^3}{3} +...$.
+	 	 
+	 	 Hence $C\sum_{1}^{\infty} \frac{(\frac{1}{2})^i}{i}=C\ ln(1+1/2)=1 \implies C=\frac{1}{ln 1.5}$
+	 	  
+	 	 
+	 	 
+	 	 
+	 	 \textbf{ Part c: $f(x) = Cx^-2$}
+	 	 	 	 $\sum_{1}^{\infty} \frac{C}{x^2} = 1$
+	 	 	 	 
+	 	 	 	 Besel sum: \\
+	 	 	 	 $\sum_{1}^{n}\frac{1}{i^2} = $
+	 	 	 	 
+	 	 	 	 Using taylor expansion of $sin x$ and the fact that $\frac{sin x}{x}$ has roots at $x=\pi, 2\pi, 3\pi.....$  : \\
+	 	 	 	 
+	 	 	 	 $\frac{sin x}{x} = 1-\frac{x^2}{3!}+\frac{x^4}{5!}+...... = (1-\frac{x}{\pi})(1-\frac{x}{2\pi})(1-\frac{x}{3\pi})....(1-\frac{x}{\pi})$
+	 	 	 	 
+	 	 	 	 
+	 	 	 	 The product of productions of $\frac{sin x}{x}$ is given the the coefficient of $x^2$ in the original and hence $-\frac{1}{3!} = -\pi^2\sum_{1}^{\infty} i^2$
+	 	 	 	 
+	 	 	 	 
+	 	 	 	 Thus 	 $\sum_{1}^{\infty} \frac{C}{x^2} = C*\frac{\pi^2}{6}$.
+	 	 	 	 Thus C=$\frac{6}{\pi^2}$
+	 	 	 	 
+	 	 	 
+	 	 \textbf{Part d: $C2^x/x!$}
+	 	 $\sum_{1}^{\infty}C2^i/i!= C\sum_{1}^{\infty}2^i/i! = Ce^2 \implies C = \frac{1}{e^2}$
+	 	 
+	 	 
 	 
 	 
 	 	
@@ -183,9 +201,133 @@
 	}
 	\end{homeworkSection}
 	
+	\begin{homeworkSection}{2(i)}
+	\problemAnswer{
+	\textbf{Part a} $P(X>1) = \sum_{2}^{\infty}{2^{-i}} = \frac{1}{4}*2 = \frac{1}{2}$
+	
+	\textbf{Part b} $P(X>1) = \frac{1}{1.5}\sum_{2}^{\infty}\frac{(\frac{1}{2})^i}{i} = 1 - ln(1.5)/2$
+	
+	\textbf{Part c $P(X>1)$} = $1-\frac{6}{\pi^2}1^{-2} = 1-\frac{6}{\pi^2}$
+	
+	\textbf{Part d $P(X>1)$} = $1-\frac{1}{e^2}2 = 1 - \frac{2}{e^2} $
+		 	
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{2 (iii)}
+	\problemAnswer{
+	Probability that X is even = $P(X=2k)\ for\ k=1,2,3...$
+	
+	\textbf{ Part a}
+	$P(X=2k) = 2^{-2k}$
+	Summing up over all k: $P=\frac{1}{2^2} + \frac{1}{2^4} + \frac{1}{2^6} + ....$ = $\frac{1}{4}\frac{1}{1-\frac{1}{4}} = \frac{1}{3}$
+	
+	\textbf{Part b}
+	$ P(X=2k) = ln(3.5)\frac{\frac{1}{2}^{2k}}{2k} = ln(3.5)\frac{1}{2}\frac{(\frac{1}{4})^k}{k} = \frac{ln(3.5)}{2}e^{1.25}$
+	
+	\textbf{Part c}
+	
+	$P(X=2k) = \frac{6}{\pi^2}{4k^2} = \frac{3}{2\pi^2}*\frac{\pi^2}{6}=\frac{1}{4}$
 
+	\textbf{Part d}
+	
+	$P(X=2k) = \frac{1}{e^2}\frac{2^{2k}}{(2k)!} $
+		
+	
+	}
+	\end{homeworkSection}
+	
+	
+	\begin{homeworkSection}{3}
+	\problemAnswer{
+	Since the coin tosses are independent, the choice can be represented by two successive coin tosses with probability of heads being $p*p$.
+	Thus $P(X=k) = \binom{n}{k}p^{2k}(1-p^2)^{n-k}$
+	}
+	\end{homeworkSection}
+	
+
+	\begin{homeworkSection}{5a}
+	 \problemAnswer{
+	 	\textbf{For Binomial: $f(k) = \binom{n}{k}p^k(1-p)^{n-k}$}
+	 	Consider $LHS=f(k-1)*f(k+1) $
+	 	$LHS=\binom{n}{k-1}p^{k-1}(1-p)^{n-k-1}+\binom{n}{k+1}p^{k+1}(1-p)^{n-k-1} = 
+	 	\binom{n}{k-1}\binom{n}{k+1}(p^{k}(1-p)^{n-k})^2 $
+	 	$RHS = \binom{n}{k}^2$
+	 	We now focus on $\binom{n}{k-1}\binom{n}{k+1}$
+	 	Let $y=	 	\frac{\binom{n}{k-1}\binom{n}{k+1}}{\binom{n}{k}^2}$
+	 	Expanding: $y=\frac{n!n!(n-k)!(n-k)!k!k!}{(k-1)!(k+1)!(n-k+1)!(n-k-1)!} = \frac{k(n-k)}{(k+1)(n-k+1)}$
+	 	$\frac{k}{k+1}\leq1$ and $\frac{n-k}{n-k+1}\leq1$ $\forall k$
+	 	
+	 	Hence $y \leq 1  $
+
+		Thus 	 	$LHS \leq RHS$
+		
+		
+		\textbf{For Poisson}
+				$f(k) = e^{-\lambda}\frac{\lambda^k}{k!}$
+				$LHS = f(k-1)f(k+1) = \frac{ e^{-2\lambda} \lambda^{2k} }{ (k+1)! (k-1)!}$
+				%$RHS = f(k)^2 = \frac{e^{2k}\lambda^{2k}}{k!k!}$
+				
+				%$y=LHS/RHS = \frac{k!k!}{(k+1)!(k-1)!} = \frac{k}{k+1} \leq 1$
+				Thus $LHS \leq RHS$
+		
+		
+		}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{5b}
+	\problemAnswer{
+	$f(k)=\frac{90}{(\pi k)^4} $
+	$LHS=f(k+1)f(k-1) = \frac{90^2}{\pi^8(k+1)^4(k-1)^4}$
+	$RHS=f(k+1)^2 = \frac{90^2}{\pi^8(k)^8} $
+	
+	$y=LHS/RHS = \frac{k^8}{(k+1)^4(k-1)^4} = (\frac{k}{(k+1)}\frac{k}{(k-1)})^4 = (\frac{k^2}{k^2-1})^4 \geq 1$
+	
+
+	Thus $LHS \geq RHS$
+	
+	}
+	
+	\begin{homeworkSection}{5c}
+	\problemAnswer{
+		Any function of the form $P(x=k) = \frac{1}{n}$ satisfies $f(k)f(k-1) = f(k)^2$
+		Note: We aren't explicitly talking about countably many case.
+	}
+	\end{homeworkSection}
+	
+	\end{homeworkSection}
+	
+	
+		
 	
 	
 \end{homeworkProblem}
 
+\begin{homeworkProblem}[Exercise \# 3.2]
+	\begin{homeworkSection}{4}
+	\problemAnswer{
+		\textbf{Part a $P(min(X,Y) \leq x )$}
+		
+	}
+	\end{homeworkSection}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}[Exercise \# 3.3]
+	\begin{homeworkSection}{4}
+	\problemAnswer{
+
+	$E(1\\X) = \sum p(x)(1\\x)$\\
+	$1\\E(X) = \sum p(x)(x)$ \\
+	For $E(X) = E(1\\X)	$: $\sum(p(x)(x-1\\x)=0$
+	The above equation might not true be in general. However one possible case where this is true is  for this distribution: \\
+	\begin{math}
+	p(x) = \begin{cases}
+	1/2 & x=1 or x=-1\\
+	0 & otherwise	
+	\end{cases}
+	\end{math}
+	}
+	\end{homeworkSection}
+\end{homeworkProblem}
 \end{document}
