@@ -26,6 +26,7 @@
 \usepackage{extramarks} % Required for headers and footers
 \usepackage{graphicx} % Required to insert images
 \usepackage{latexsym}
+\usepackage{mathtools}
 
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 
@@ -101,11 +102,12 @@
 %----------------------------------------------------------------------------------------
 %	NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
-
-\newcommand{\hmwkTitle}{Homework\ \# 5 } % Assignment title
-\newcommand{\hmwkDueDate}{Friday,\ September \ 26,\ 2014} % Due date
-\newcommand{\hmwkClass}{MATH-505A} % Course/class
-\newcommand{\hmwkClassTime}{10:30am} % Class/lecture time
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\hmwkTitle}{Homework\ \# 1 } % Assignment title
+\newcommand{\hmwkDueDate}{Wednesday,\ February \ 11,\ 2015} % Due date
+\newcommand{\hmwkClass}{MATH-501} % Course/class
+\newcommand{\hmwkClassTime}{11:00am} % Class/lecture time
 \newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
 \newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
 %----------------------------------------------------------------------------------------
@@ -141,23 +143,49 @@
 \tableofcontents
 \newpage
 
-\begin{homeworkProblem}[Exercise \# 2.7] % Custom section title
 
 
-	\begin{homeworkSection}{(1)} % Section within problem
-		
-	\end{homeworkSection}
+
+\begin{homeworkSection}{Problem \# 1} % Section within problem
+
+\begin{homeworkSection}{1a}
+\problemAnswer{
+	$f(x)=atan(x)$ on interval $[a,b] = [-4.9,5.1]$
 	
-	\begin{homeworkSection}{(2 a)}
-	\end{homeworkSection}
+	$f(a)=atan(-4.9) = 0.7854$ and $f(b) = atan(5.1)=-1.3695$
 	
-	\begin{homeworkSection}{(2 c)}
-	\end{homeworkSection}
-	
-	\begin{homeworkSection}{(4)}
-	\end{homeworkSection}
+	Since $atan(x)\ \epsilon\ C[-4.9, 5.1]$ and $f(-4.9)f(5.1)<0$ the conditions required for bisection method
+	to converge are satisfied.
 	
 	
-\end{homeworkProblem}
+	The Number of iterations is given by $M = \ceil*{log_2(\frac{b-a}{2\delta})}$ where $\delta$ = Absolute error = $10^-2$
+	
+	Hence $M=\ceil*{log_2(\frac{10}{2*10^-2})} = 9$
+	
+	
+	}	
+\end{homeworkSection}
+
+\begin{homeworkSection}{1b}
+\problemAnswer{
+	$c_0=\frac{a+b}{2} =  0.1$ and $f(c_0)=0.0997$ $\implies f(c_0)f(b)<0$
+	Hence $c_1=\frac{c_0+b}{2}=2.5$ and $f(c_1)=1.2036$ $\implies f(c_1)f(b)<0$\\
+	Hence $c_2=\frac{c_1+b}{2}=3.85$ and again $f(c_2)f(b)<0$ so\\
+	$c_3=\frac{c_2+b}{2}=4.475$ and $f(c_3)=1.3509$ and still $f(c_3)f(b)<0$
+	
+	}	
+\end{homeworkSection}
+
+
+\begin{homeworkSection}{1c}
+\problemAnswer{
+	
+	
+	}	
+
+\end{homeworkSection}
+
+
+\end{homeworkSection}
 
 \end{document}
