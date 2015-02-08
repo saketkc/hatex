@@ -10,21 +10,14 @@ while(abs(x2-x1)>=delta && abs(feval(gx,x2)-x2)>=deltaf && k<=M-1)
     x2=feval(gx,x1);
     x1=x2temp;
     k=k+1;
-    
+
     %Set flag to return if this condition fails
     if (abs(feval(gx,x2)-x2)<deltaf)
         shouldReturn=1;
     end
-    
-    fprintf('Iteration : %d ||  x2 = %f || x1 = %f \n ', k, x2, x1); 
+
+    fprintf('Iteration : %d ||  x2 = %g || x1 = %g \n ', k, x2, x1); 
     if shouldReturn
         return
     end
 end
-        
-    
-    
-
-
-
-    
