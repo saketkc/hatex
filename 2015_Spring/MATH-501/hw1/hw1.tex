@@ -168,10 +168,12 @@
 
 \begin{homeworkSection}{1b}
 \problemAnswer{
-	$c_0=\frac{a+b}{2} =  0.1$ and $f(c_0)=0.0997$ $\implies f(c_0)f(b)<0$
-	Hence $c_1=\frac{c_0+b}{2}=2.5$ and $f(c_1)=1.2036$ $\implies f(c_1)f(b)<0$\\
-	Hence $c_2=\frac{c_1+b}{2}=3.85$ and again $f(c_2)f(b)<0$ so\\
-	$c_3=\frac{c_2+b}{2}=4.475$ and $f(c_3)=1.3509$ and still $f(c_3)f(b)<0$
+    f(-4.9) = -1.369\\
+    f(5,1) = 1.377\\
+	$c_0=\frac{a+b}{2} =  0.1$ and $f(c_0)=0.0997$ $\implies f(c_0)f(a)<0$
+	Hence $c_1=\frac{c_0+a}{2}=-2.4$ and $f(c_1)=-1.176$ $\implies f(c_1)f(c_0)<0$\\
+	Hence $c_2=\frac{c_1+c_0}{2}=-1.15$ and $f(c_2)=-0.855$ $\implies$ $f(c_2)f(c_0)<0$ so\\
+	$c_3=\frac{c_2+c_0}{2}=-0.525$ and $f(c_3)=-0.05254$ and $f(c_3)f(c_0)<0$
 	
 	}	
 \end{homeworkSection}
@@ -179,7 +181,17 @@
 
 \begin{homeworkSection}{1c}
 \problemAnswer{
-	
+\begin{tabular}{c |c| c| c}
+	 \rule[-2ex]{0pt}{5.5ex} $\epsilon$ & Number of iteration & Solution  & k=$\ceil*{log_2(\frac{b-a}{2\delta})}$  \\ 
+	 \rule[-2ex]{0pt}{5.5ex} $10^{-2}$ & 9  & 0.00234375  & 9 \\ 
+	 \rule[-2ex]{0pt}{5.5ex} $10^{-4}$  & 12   &  -9.76562500003553e-05 & 12 \\ 
+	 \rule[-2ex]{0pt}{5.5ex} $10^{-8}$  & 22 & 9.53674312853536e-08 & 22  \\ 
+	 \rule[-2ex]{0pt}{5.5ex} $10^{-16}$ & 52 & -4.44089209850063e-16  & 52  \\ 
+	 \rule[-2ex]{0pt}{5.5ex} $10^{-32}$  & 104  &  -9.86076131526265e-32 & 104 \\ 
+	 \rule[-2ex]{0pt}{5.5ex} $10^{-64}$  & 212  &  -3.03858167864314e-64 & 212  \\ 
+	 \rule[-2ex]{0pt}{5.5ex} $10^{-128}$  & 424  & -4.61648930889287e-128  & 424 \\  
+	\hline 
+\end{tabular} 
 	
 	}	
 
@@ -187,5 +199,188 @@
 
 
 \end{homeworkSection}
+
+\begin{homeworkSection}{2}
+\begin{homeworkSection}{2a}
+	\problemAnswer{
+		$x0 = 5$
+		
+		Iteration : 1 ||  x2 = 3.6266 || x1 = 2.32486 \\
+		Iteration : 2 ||  x2 = 1.16027 || x1 = 3.6266  \\
+		Iteration : 3 ||  x2 = 2.32486 || x1 = 1.16027 \\
+		Iteration : 4 ||  x2 = 0.300819 || x1 = 2.32486 \\
+		Iteration : 5 ||  x2 = 1.16027 || x1 = 0.300819 \\
+		Iteration : 6 ||  x2 = 0.00861099 || x1 = 1.16027 \\
+		Iteration : 7 ||  x2 = 0.300819 || x1 = 0.00861099 \\
+		Iteration : 8 ||  x2 = 2.12823e-07 || x1 = 0.300819 \\
+		
+		$x_s=2.12823149138563e-07$
+		
+		$g(x_s)=x_s-atan(x_s)=3.20284333180532e-21$
+	
+		x0 =	-5
+		
+		Iteration : 1 ||  x2 = -3.6266 || x1 = -2.32486 \\
+		Iteration : 2 ||  x2 = -1.16027 || x1 = -3.6266 \\
+		Iteration : 3 ||  x2 = -2.32486 || x1 = -1.16027 \\
+		Iteration : 4 ||  x2 = -0.300819 || x1 = -2.32486 \\
+		Iteration : 5 ||  x2 = -1.16027 || x1 = -0.300819 \\
+		Iteration : 6 ||  x2 = -0.00861099 || x1 = -1.16027 \\
+		Iteration : 7 ||  x2 = -0.300819 || x1 = -0.00861099\\ 
+		Iteration : 8 ||  x2 = -2.12823e-07 || x1 = -0.300819 \\
+		
+		$x_s =	-2.12823149138563e-07$
+		$g(x_s)=x_s-atan(x_s)=-3.20284333180532e-21$
+		
+	
+		x0 =	1
+		
+		Iteration : 1 ||  x2 = 0.214602 || x1 = 0.00320628 \\
+		Iteration : 2 ||  x2 = 1.0987e-08 || x1 = 0.214602 \\
+		
+		$x_s =	1.09870240240853e-08$ \\
+		$g(x_s)=x_s-atan(x_s)=0$
+		
+	
+		
+		$x0 = -1$
+		
+		Iteration : 1 ||  x2 = -0.214602 || x1 = -0.00320628 \\
+		Iteration : 2 ||  x2 = -1.0987e-08 || x1 = -0.214602 \\
+		
+	
+		
+		
+		$x0 = 0.1$
+		
+		
+		$x_s = 1.21263429527819e-11$
+		$g(x_s)=x_s-atan(x_s)=0$
+		
+	
+		
+		}
+\end{homeworkSection}
+
+\begin{homeworkSection}{2b}
+\problemAnswer{
+	The number of iterations reduce as we approach the exact solution.
+	
+	TODO: Expand
+	
+	}
+\end{homeworkSection}
+
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{3}
+	\begin{homeworkSection}{3a}
+	
+	\problemAnswer{
+		
+		$|x_{k+1}-\sqrt{a}| \leq \frac{1}{2}|x_k-\sqrt{a}|$
+		
+		Extending we get.
+		
+		$|x_{k+1}-\sqrt{a}| \leq \frac{1}{2}|x_k-\sqrt{a}| \leq \frac{1}{4}|x_{k-1}-\sqrt{a}| ... \leq \frac{1}{2^{k+1}}|x_0-\sqrt{a}|$
+		}
+
+		\end{homeworkSection}
+		
+		\begin{homeworkSection}{3b}
+			\problemAnswer{
+				
+				$x0 = 1.1$
+				
+				Iteration : 1 ||  x2 = 1.00455 || x1 = 1.00001  \\
+				
+				$x_s = 1.00454545454545$
+				
+				
+			
+				
+				$x_0 =	2$
+				
+				Iteration : 1 ||  x2 = 1.25 || x1 = 1.025  \\
+				Iteration : 2 ||  x2 = 1.0003 || x1 = 1.25  \\
+				Iteration : 3 ||  x2 = 1.025 || x1 = 1.0003  \\
+				Iteration : 4 ||  x2 = 1 || x1 = 1.025  \\
+				
+
+				
+				$x_s = 1.00000004646115$ \\
+				
+				
+			
+				
+				$x0 = 5$ \\
+				
+				Iteration : 1 ||  x2 = 2.6 || x1 = 1.49231  \\
+				Iteration : 2 ||  x2 = 1.08121 || x1 = 2.6  \\
+				Iteration : 3 ||  x2 = 1.49231 || x1 = 1.08121  \\
+				Iteration : 4 ||  x2 = 1.00305 || x1 = 1.49231  \\
+				Iteration : 5 ||  x2 = 1.08121 || x1 = 1.00305  \\
+				Iteration : 6 ||  x2 = 1 || x1 = 1.08121  \\
+				
+				
+				
+				$x_s=1.00000463565079$
+				
+				
+			
+				$x0 = 10$
+				
+				Iteration : 1 ||  x2 = 5.05 || x1 = 2.62401  \\
+				Iteration : 2 ||  x2 = 1.50255 || x1 = 5.05  \\
+				Iteration : 3 ||  x2 = 2.62401 || x1 = 1.50255  \\
+				Iteration : 4 ||  x2 = 1.08404 || x1 = 2.62401  \\
+				Iteration : 5 ||  x2 = 1.50255 || x1 = 1.08404  \\
+				Iteration : 6 ||  x2 = 1.00326 || x1 = 1.50255  \\
+				Iteration : 7 ||  x2 = 1.08404 || x1 = 1.00326  \\
+				Iteration : 8 ||  x2 = 1.00001 || x1 = 1.08404  \\
+				
+				
+				
+				$x_s=1.00000528956427$ \\
+				
+				
+			
+				$x0 = 50$ \\
+				
+				Iteration : 1 ||  x2 = 25.01 || x1 = 12.525 \\
+				Iteration : 2 ||  x2 = 6.30242 || x1 = 25.01   \\
+				Iteration : 3 ||  x2 = 12.525 || x1 = 6.30242  \\
+				Iteration : 4 ||  x2 = 3.23054 || x1 = 12.525  \\
+				Iteration : 5 ||  x2 = 6.30242 || x1 = 3.23054  \\
+				Iteration : 6 ||  x2 = 1.77004 || x1 = 6.30242  \\
+				Iteration : 7 ||  x2 = 3.23054 || x1 = 1.77004  \\
+				Iteration : 8 ||  x2 = 1.1675 || x1 = 3.23054  \\
+				Iteration : 9 ||  x2 = 1.77004 || x1 = 1.1675  \\
+				Iteration : 10 ||  x2 = 1.01202 || x1 = 1.77004  \\
+				
+				
+				
+				$x_s=1.01201564410353$
+				
+				
+			The best convergence is obtained in just one iteration when $x_0=1.1$ which is self-explanatory since the
+			exact solution is $1$. As the value of $x_0$ moves away from 1, the number of iterations increase too.
+				
+				}
+			
+		\end{homeworkSection}
+	
+\end{homeworkSection}
+
+\begin{homeworkSection}{4}
+\begin{homeworkSection}{1}
+\problemAnswer{
+	
+	}
+\end{homeworkSection}
+\end{homeworkSection}
+
+
 
 \end{document}
