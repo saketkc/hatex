@@ -19,7 +19,7 @@ while(abs(x2-x1)>=delta && k<=M-1)
         shouldReturn=1;
     end
     
-    fprintf('Iteration : %d ||  x2 = %f || x1 = %f \n ', k, x2, x1); 
+    fprintf('Iteration : %d ||  x2 = %g || x1 = %g \n ', k, x2, x1); 
     if shouldReturn
         return
     end
