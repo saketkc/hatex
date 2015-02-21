@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{latexsym}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\begin{document}
+\begin{equation}
+\begin{split}
+	\sum {(X_i-\bar{X})^2} = \sum {(X_i-\mu + \mu-\bar{X} )^2} \\
+	= \sum(X_i-\mu)^2+\sum(\mu-\bar{X})^2 + 2\sum{(X_i-\mu)(\mu-\bar{X})} \\
+	= A + B + C	
+	\end{split}
+\end{equation}
+\linebreak\linebreak\linebreak\linebreak
+\begin{equation}
+\begin{split}
+	C = 2(\sum{X_i\mu -X_i\bar{X} - \mu^2 - \mu \bar{X} }) \\
+	= 2(n\bar{X}\mu -n\bar{X}^2 -n\mu^2 - n\mu\bar{X})\\
+	=-2n(\mu^2+\bar{X}^2)
+		\end{split}
+\end{equation}
+
+\begin{equation}
+	B+C=n(\mu^2+\bar{X}^2-2\mu\bar{X})-2n(\mu^2+\bar{X}^2)\\
+	=-n(\mu-\bar{X})^2
+\end{equation}
+
+\begin{align*}
+\sum {(X_i-\bar{X})^2} = \sum(X_i-\mu)^2 -n(\mu-\bar{X})^2 \\
+\frac{\sum {(X_i-\bar{X})^2}}{\sigma^2} = \frac{\sum(X_i-\mu)^2}{\sigma^2} -\frac{n(\mu-\bar{X})^2}{\sigma^2}\\
+Q=R-T\\
+R=Q+T
+\end{align*}
+Now, $R \sim \chi^2(n)$ and $T=\chi^2(1)$ and 
+$M_{\chi^2(n)}(t)=\frac{1}{(1-2t)^{\frac{n}{2}}}$
+
+Using independence of Q and T(proved in theorem's part a in class) we have
+$M_R=M_Q.M_T$ and so $M_Q=\frac{M_R}{M_T}$ giving:
+$M_Q=\frac{(1-2n)^{\frac{-n}{2}}} {{(1-2n)}^{\frac{-1}{2}}} = (1-2n)^{\frac{-(n-1)}{2}}$
+Thus $Q=\frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)$
+\end{document}

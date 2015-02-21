@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{latexsym}
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{amsmath}
+
+\begin{document}
+$Var(X)=1, Var(Y)=4, Var(Z)=25$
+
+Consider $var(X+Y)$ which can be written as $var(X+Y)= var(X)+var(Y) + 2 cov(X,Y)$
+
+
+
+Thus
+\begin{equation}
+var(X) + var(Y) - 2 \sqrt{(Var(x)Var(y)} \leq var(X+Y) \leq var(X) + var(Y) + 2  \sqrt{(Var(x)Var(y)}  
+\label{first}
+\end{equation}
+
+$\implies $
+\begin{equation}
+1 \leq Var(X+Y) \leq 9
+\label{zero}
+\end{equation}
+
+Now consider
+\begin{equation}
+Var(X+Y+Z) = Var((X+Y)+Z) = Var(X+Y) + Var(Z) + 2cov(X+Y,Z)
+\label{second}
+\end{equation} 
+
+Fact(From Cauchy Schwartz:): 
+\begin{equation}
+2cov(X+Y,Z) \geq - 2\sqrt{Var(X+Y)Var(Z)}
+\label{third}
+\end{equation}
+
+Substituting \ref{third} in \ref{second}: 
+\begin{equation}
+Var((X+Y)+Z) \geq Var(X+Y) + Var(Z) - 2\sqrt{Var(X+Y)Var(Z)}
+\label{fourth}
+\end{equation}
+
+Let $Var(X+Y) = p$ then \ref{fourth} can be rewritten as : \\
+\begin{equation}
+Var((X+Y)+Z) \geq p + Var(Z) - 2\sqrt{pVar(Z)}
+\end{equation}
+
+$Var(Z)$ is a constant so we minimize $y=p-2\sqrt{(pVar(Z))}$
+
+$y' = 0 = 1-\frac{\sqrt{Var(z)}}{\sqrt{(p)}} \implies  p = Var(Z) $
+
+This is indeed a minima as $y''=\frac{1}{2}\frac{1}{p^{1.5}} > 0$
+
+This would require $p$ to attain a value of $p=Var(Z)=25$ which we see from  \ref{zero} is not allowed. However this y is still a decreasing function and hence we could minimize by selecting the max value of $p$ which is $9$ which gives:\\
+$Var((X+Y)+Z) \geq 9 + 25 - 2\sqrt{3*5} = 4$
+
+But the indicated answer in the class was 2.
+
+
+\end{document}
