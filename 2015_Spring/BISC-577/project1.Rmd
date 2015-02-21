@@ -1,0 +1,104 @@
+---
+title: "Human PPI Analysis"
+author: "Saket Choudhary"
+date: "02/20/2015"
+output: html_document
+---
+
+## Load Data
+```{r, cache=TRUE}
+data <- read.table("HPRD_Release9_062910/BINARY_PROTEIN_PROTEIN_INTERACTIONS.txt", 
+                   header = F, 
+                   sep ="\t",
+                   col.names=c("GS1","HID1","Ref1","GS2","HID2","Ref2", "ExpT", "PID"))
+#NOTE: The column names are as specified in README
+#1. Interactor 1 Gene symbol
+#2. Interactor 1 HPRD id
+#3. Interactor 1 RefSeq id
+#4. Interactor 2 Gene symbol
+#5. Interactor 2 HPRD id
+#6. Interactor 2 RefSeq id
+#7. Experiment type (in vivo, in vitro and yeast 2-hybrid)
+#8. Pubmed id
+
+
+```
+
+
+## Data Processing
+
+```{r, echo=TRUE, cache=TRUE}
+# Sort By Interactior 1 HPRD id followed by Interator 2 HPRD id
+# Some gene symbols are missing so we rely on HPRD id
+data <- data[order(data[,2], data[,5]),]
+# Total nodes = Union of Unique IDs found in Interactor 1 or 2
+totalNodes <- length(union(unique(data$HID1), unique(data$HID2)))
+# Total edges = Number of rows in dataset(each row represents one edge, but not necessarily two nodes)
+totalEdges <- nrow(data)
+
+            
+```
+
+```{r, results='asis' }
+cat( paste("Total Nodes ", totalNodes, collapse=":") )
+cat( paste("Total Edges ", totalEdges, collapse=":") )
+```
+
+## Calculate Out and In Degrees
+
+```{r}
+transformed <- transform(data, OutDegree = ave(seq(nrow(data)), HID1, FUN=length))
+transformed <- transform(transformed, InDegree = ave(seq(nrow(data)), HID2, FUN=length))
+
+outDegrees <- transformed$OutDegree[!duplicated(transformed$HID1)]
+inDegrees <- transformed$InDegree[!duplicated(transformed$HID2)]
+```
+
+
+```{r, results='asis'}
+cat( paste("Average out degree ", mean(outDegrees), collapse = ":") )
+cat( paste("Average in degree ", mean(inDegrees), collapse = ":") )
+cat( paste("Max in degree ", max(inDegrees), collapse = ":") )
+cat( paste("Max out degree ", max(outDegrees), collapse = ":") )
+cat( paste("Min in degree ", min(inDegrees), collapse = ":") )
+cat( paste("Min out degree ", min(outDegrees), collapse = ":") )
+```
+
+## Distribution of Out Degrees
+
+```{r, results='markup'}
+od <- as.data.frame(table(outDegrees))
+od$x<-as.numeric(od$outDegrees)
+od$y<-od$Freq
+#print(od, row.names=FALSE)
+```
+
+```{r, echo=FALSE}
+lm_eqn = function(df){
+    m = lm(y ~ x, df);
+    eq <- substitute(italic(y) == a + b %.% italic(x)*","~~italic(r)^2~"="~r2, 
+         list(a = format(coef(m)[1], digits = 2), 
+              b = format(coef(m)[2], digits = 2), 
+             r2 = format(summary(m)$r.squared, digits = 3)))
+    as.character(as.expression(eq));                 
+}
+```
+
+```{r}
+library(ggplot2)
+ggplot(od, aes(x=as.numeric(od$outDegrees), y=od$Freq/sum(od$Freq))) + geom_point(shape=20) +xlab("log10(Degree)") + ylab("log10(Pr(Degree)") + scale_y_log10() + scale_x_log10() + geom_text(aes(x = 20, y = 50, label = lm_eqn(od)), parse = TRUE)
+```
+
+## Distribution of In Degrees
+
+```{r, results='markup'}
+id <- as.data.frame(table(inDegrees))
+id$x<-as.numeric(id$inDegrees)
+id$y<-id$Freq
+#print(id, row.names=FALSE)
+```
+
+
+```{r}
+ggplot(id, aes(x=as.numeric(id$inDegrees), y=id$Freq/sum(id$Freq))) + geom_point(shape=20) +xlab("log10(Degree)") + ylab("log10(Pr(Degree)") + scale_y_log10() + scale_x_log10() + geom_text(aes(x = 20, y = 50, label = lm_eqn(id)), parse = TRUE)
+```
