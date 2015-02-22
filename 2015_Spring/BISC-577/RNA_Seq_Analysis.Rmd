@@ -1,0 +1,230 @@
+---
+title: "RNA-Seq Analysis"
+author: "Saket Choudhary"
+date: "February 3, 2015"
+output: html_document
+---
+
+
+### Note
+From the following papers I read, it lloks like RPKM is not the best choice when comparing two different samples. TPM might be a better choice.
+
+See 
+[1] http://link.springer.com/article/10.1007/s12064-012-0162-3
+
+[2] http://bioinformatics.oxfordjournals.org/content/26/4/493.abstract
+
+## Downloading Data
+
+```{r, cache=TRUE}
+fileLocation <- "https://dl.dropboxusercontent.com/u/14340754/rna_seq_summaries.tar.gz"
+download.file(fileLocation, destfile="rna_seq_summaries.tar.gz", method="curl")
+untar("rna_seq_summaries.tar.gz", exdir="rna_seq_summaries")
+
+```
+All our data is now in `rna_seq_summaries` folder.
+
+## Data Massaging 
+```{r, cache=TRUE}
+unSortedFiles <- list.files(path="rna_seq_summaries/")
+path <- "rna_seq_summaries/processed"
+cols <- c("gene_id", "gene_coordinates")
+dir.create(path, showWarnings = T)
+
+for (file in unSortedFiles){
+  fp <- paste("rna_seq_summaries", file, sep = "/")
+  processedFile <- paste(path, strsplit(file, ".txt")[1], sep ="/")
+  processedFile <- paste(processedFile, "processed", "txt", sep=".")
+  reader <- read.csv(fp, sep="\t", header=T)
+  reader$XY <- apply(reader[, cols], 1, paste, collapse="_")
+  reader <- reader[, c("XY", "RPKM")]
+  ##Sort
+  reader <- reader[order(reader[,1]),]
+  write.table(reader, file=processedFile, row.names=FALSE, col.names=c("ID", paste("RPKM", substr(file,1,5), sep="_" )  ))
+}
+
+```
+
+## Join
+
+###NOTE: Hardcoded file names ahead
+```{r, cache=TRUE}
+sortedFiles <- list.files(path="rna_seq_summaries/processed")
+# Merge first three to Piwi and last 3 to WT
+
+
+
+for (WTfiles in sortedFiles){
+  if(!exists("dataset")){
+      dataset <- read.table(paste(path, WTfiles, sep="/"), header=T)
+  }
+  else{
+      data <- read.table(paste(path, WTfiles, sep="/"), header=T)
+      dataset<-merge(dataset, data, by="ID")
+      rm(data)
+  }
+}
+
+write.table(dataset, file=paste(path, "merged.txt", sep="/"), row.names=FALSE, col.names=TRUE)
+#rm(dataset)
+```
+
+Correlation between Wt1, Wt2:
+```{r, echo=FALSE}
+print(cor(dataset$RPKM_WT1_O, dataset$RPKM_WT2_O))
+```
+
+```{r}
+library(ggplot2)
+#plot(log(dataset$RPKM_WT1_O)/log(10), log(dataset$RPKM_WT2_O)/log(10), pch=".",
+
+ggplot(dataset, aes(x=log2(dataset$RPKM_WT1_O), y=log2(dataset$RPKM_WT2_O))) + geom_point(shape=20)   +   geom_smooth(method=lm)  +  xlab("log(WT1_RPKM)") + ylab("log(WT2_RPKM)") 
+
+
+
+```
+
+### MA Plot
+
+
+
+```{r, echo=FALSE}
+m <- log2(dataset$RPKM_WT1_O) - log2(dataset$RPKM_WT2_O)
+a <- 0.5*(log2(dataset$RPKM_WT1_O) + log2(dataset$RPKM_WT2_O))
+
+d <- data.frame(x=a, y=m)
+ggplot(d, aes(x=x, y=y)) + geom_point(shape=20) +  xlab("A") + ylab("M") + geom_hline(aes(y=0), colour="red")
+
+```
+
+
+### Scaling
+```{r, cache=TRUE}
+genes <- dataset$ID
+print(median(dataset$RPKM_WT2_O/dataset$RPKM_WT1_O, na.rm=TRUE))
+print(median(dataset$RPKM_WT3_O/dataset$RPKM_WT1_O, na.rm=TRUE))
+
+rwt1 <- dataset$RPKM_WT1_O
+rwt2 <- median(dataset$RPKM_WT2_O/dataset$RPKM_WT1_O, na.rm=TRUE)*dataset$RPKM_WT2_O
+rwt3 <- median(dataset$RPKM_WT3_O/dataset$RPKM_WT1_O, na.rm=TRUE)*dataset$RPKM_WT3_O
+
+rm1 <- dataset$RPKM_Piwi1
+rm2 <- median(dataset$RPKM_Piwi2/dataset$RPKM_Piwi1, na.rm=TRUE)*dataset$RPKM_Piwi2
+rm3 <- median(dataset$RPKM_Piwi3/dataset$RPKM_Piwi1, na.rm=TRUE)*dataset$RPKM_Piwi3
+
+```
+
+
+### Replace by Average
+
+```{r}
+WT <- (rwt1+rwt2+rwt3)/3
+M <- (rm1+rm2+rm3)/3
+M_var <- ((rm1-M)*(rm1-M) + (rm2-M)*(rm2-M)+ (rm3-M)*(rm3-M))
+WT_var <- (rwt1-WT)*(rwt1-WT) + (rwt2-WT)*(rwt2-WT) + (rwt3-WT)*(rwt3-WT)
+```
+
+
+Covariance between WT and M:
+
+```{r}
+print(cor(WT,M))
+print(mean(M, na.rm=TRUE))
+print(mean(WT, na.rm=TRUE))
+```
+
+## Relation Between biological replicates
+```{r, echo=FALSE}
+ggplot(dataset, aes(x=log2(rwt1), y=log2(rwt2))) + geom_point(shape=20)   +   geom_smooth(method=lm)  +  xlab("log2(RWT1_RPKM)") + ylab("log(RWT2_RPKM)") 
+
+
+
+```
+
+## Mutant vs Wild type
+```{r, echo=FALSE}
+ggplot(dataset, aes(x=log2(WT), y=log2(M))) + geom_point(shape=20)   +   geom_smooth(method=lm)  +  xlab("log2(WT_RPKM)") + ylab("log(M_RPKM)") 
+```
+
+## Scaling Again
+```{r, cache=FALSE}
+med <- median(M/WT, na.rm=TRUE)
+M <- M/med
+
+M_mean <- M#(mt) #mean(M, na.rm=TRUE)
+WT_mean <- WT#mean(WT, na.rm=TRUE)
+M_var <-  M_var/med^2#(M-M_mean)*(M-M_mean) #var(M, na.rm=TRUE)
+WT_var <- WT_var/med^2#(WT-WT_mean)*(WT-WT_mean)#var(WT, na.rm=TRUE)
+```
+
+
+## t-test
+
+```{r}
+diff_var <- M_var + WT_var
+diff <- M_mean - WT_mean
+```
+
+```{r}
+df <- data.frame(genes, rm1, rm2, rm3, rwt1, rwt2, rwt3, M_mean, WT_mean, diff_var )
+df$p <- 0
+for(i in 1:length(rwt1)){
+  df$p[i] <- 1;
+  if(is.na(df$diff_var[i])){
+    df$diff_var[i]=0;
+  }
+  if(df$diff_var[i] > 0.0001){
+    y <- c(df$rwt1[i], df$rwt2[i], df$rwt3[i])
+    x <- c(df$rm1[i], df$rm2[i], df$rm3[i])
+    t <- t.test(y,x, var.equal=FALSE, paired=FALSE)
+    df$p[i] <- t$p.value
+  }
+}
+
+df$mask <- 0
+
+thresh =0.001;
+for(i in 1:length(rwt1)){
+  
+  df$mask[i] <- 0;
+  if(df$p[i]<thresh){
+    if(mean(df$rwt1[i], df$rwt2[i], df$rwt3[i]) < mean(df$rm1[i], df$rm2[i], df$rm3[i]) ){
+      df$mask[i] <- 1
+    }
+    else{
+      df$mask[i] <- -1
+    }
+  }
+}
+genes_up <- subset(df, df$mask==1);
+dim(genes_up)
+genes_down <- subset(df, df$mask==-1);
+dim(genes_down)
+genes_no_change <- subset(df, df$mask==0)
+dim(genes_no_change)
+```
+
+###Genes with no change
+
+```{r, echo=FALSE}
+ggplot(genes_no_change, aes(x=log2(WT_mean), y=log2(M_mean))) + geom_point(shape=20)   #+   geom_smooth(method=lm)  +  xlab("log2(WT_RPKM)") + ylab("log(M_RPKM)") 
+
+```
+
+
+### Up regulated genes
+
+```{r, echo=FALSE}
+ggplot(genes_up, aes(x=log2(WT_mean), y=log2(M_mean))) + geom_point(shape=20)   #+   geom_smooth(method=lm)  +  xlab("log2(WT_RPKM)") + ylab("log(M_RPKM)") 
+
+```
+
+### Down regulated genes
+```{r, echo=FALSE}
+ggplot(genes_down, aes(x=log2(WT_mean), y=log2(M_mean))) + geom_point(shape=20)   #+   geom_smooth(method=lm)  +  xlab("log2(WT_RPKM)") + ylab("log(M_RPKM)") 
+```
+
+```{r}
+write.table(genes_up, file="genes_up.txt", quote=FALSE)
+write.table(genes_down, file="genes_down.txt", quote=FALSE)
+```
