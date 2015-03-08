@@ -1,0 +1,314 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{latexsym}
+\usepackage{mathtools}
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+%\usepackage[]{algorithm2e}
+%\usepackage{algorithmicx}
+%\usepackage{algorithm}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+%\usepackage{algcompatible}
+
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{algorithmicx}
+
+
+%\usepackage{algpseudocode}
+
+%\usepackage{algpseudocode}
+
+%\usepackage[noend]{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\algorithmicbreak}{\textbf{break}}
+\newcommand{\algorithmicgiven}{\textbf{Given:}}
+\newcommand{\BREAK}{\STATE \algorithmicbreak}
+\newcommand{\GIVEN}{\STATEx \algorithmicgiven}
+%\def\NoNumber#1{{\def\alglinenumber##1{}\State #1}\addtocounter{ALG@line}{-1}}
+
+\usepackage{amsmath}
+%\usepackage{multline}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\hmwkTitle}{Homework\ \# 1 } % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ March \ 10,\ 2015} % Due date
+\newcommand{\hmwkClass}{MATH-578A} % Course/class
+\newcommand{\hmwkClassTime}{11:00am} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+%\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+	\textbf{\hmwkAuthorID}
+	}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+
+
+
+\begin{homeworkSection}{Question \# 1} % Section within problem
+
+\problemAnswer{
+	Definition: $SP(i)$ = max $k < i$ such that $P[1..k] = P[i-k+1..i]$\\
+	
+	String: CACGCAACGA
+	
+	NOTE: Iteration indexed at 0. So SP[0] = 0(By Definition) and hence the loop iterations start from 1 and go till n-1=9 ;
+	
+	
+	\centering
+
+		\begin{tabular}{|c|c|c|c|}
+			\hline Iteration  & $SP[i]$  & All other SP values examined  & \# of times inner while loop executed \\ 
+			\hline 1 & 0 & -  & 0  \\ 
+			\hline 2 & 1 & - & 0  \\ 
+			\hline 3 & 0 & $SP[0]$  & 1  \\ 
+			\hline 4 & 1 & -  & 0  \\ 
+			\hline 5 & 2  & -  & 0  \\ 
+			\hline 6 & 1 & $SP[0]$ & 1  \\ 
+			\hline 7 & 1 & - & 0  \\ 
+			\hline 8 & 1 & $SP[0]$ & 1  \\ 
+			\hline 9 & 0 & - & 0  \\ 
+			\hline 
+		\end{tabular} 
+
+	
+}
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{Question \#2}
+	\problemAnswer{
+		$S = CACGGCACGG$
+		
+		NOTE: Indexing starts from 0. By definition $Z[0]=|S|=10 $
+		
+		The 'cases' are choosen out of:
+		
+		Case 1. $k>r$. The index for which $Z$ value is being calculated is greater than the right most ending of all the previous(till $k-1$) $Z$ boxes calculated. Since this is as good as having no pre-calculated $Z$ scores, this case leads to explicit character comparison(starting at $k$) till a mismatch occurs.
+		
+		Case 2.	$k\leq r$ The current position $k$ is inside one of the previoulsy calculated $Z$ boxes. Hence there exists a correpsonding position $k'=k-l+1$ where $l$ is the left ending of the $Z$ box with it's right ending at $r$, such that $S[k`]=S[k]$. There is a corresponding one to one match for $S[k'..r-l+1]$ with $S[k..r]$ and we define this to be another box $\beta$ with $\beta=r-k+1$ and hence  $Z[k]$ can be caculated utilising this information. 
+		
+		The following three cases arise:
+			
+			Case 2a. $Z_k' < |\beta|$ 
+				So starting at $k'$ the length of largest substring that matches the prefix of S is less than size of that $\beta$ box starting at $k'$. Since this $\beta$ box appears starting from $k$ too and $Z_k'<|\beta|$ implies $Z_k = Z_k'$. Total comparisons:
+				\begin{enumerate}
+					\item Comparison: $k\leq r$
+					\item Assignment/Calculation: $k'=k-l+1$
+					\item Lookup: $Z_k'$
+					\item Assignment/Caculation: $|\beta| = r-k+1$
+					\item Comparison: $Z_k' < |\beta|$
+					\item Assigment: $Z_k = Z_k'$
+				\end{enumerate}
+				No character comparisons are involved.
+				
+			Case 2b. $Z_k' > |\beta|$ 
+				So the substring starting at $k'$ matches a prefix of S and has length equal to the $\beta$ box. If we call the box with it's leftmost end=$l$ and rightmost end=$r$ as $\alpha$, then we know that 
+				$S[r+1]\neq S[|\alpha|+1]$ otherwise $\alpha$ would not have been the largest such box. Thus, $Z_k = \beta$
+				Thus no character comparisons involved in this case too.
+				
+				The comparisons involved: 
+				\begin{enumerate}
+					\item Comparison: $k\leq r$
+					\item Assignment/Calculation: $k'=k-l+1$
+					\item Lookup: $Z_k'$
+					\item Assignment/Caculation: $|\beta| = r-k+1$
+					\item Comparison: $Z_k' > |\beta|$
+					\item Assigment: $Z_k = Z_k'$
+				\end{enumerate}
+			
+				
+				 
+			Case 2c. $Z_k' = |\beta|$
+			
+				The substring starting at $k$ might have a matching prefix in S, and hence explicit character 
+				comparions are required from $r+1$ to $q\geq r+1$ till the first mismatch occurs. These iterations
+				are bound by  $O(|S|)$ since the maximum possible mismatches are $O(|S|)$. 
+				
+				The comparisons involved: 
+				\begin{enumerate}
+					\item Comparison: $k\leq r$
+					\item Assignment/Calculation: $k'=k-l+1$
+					\item Lookup: $Z_k'$
+					\item Assignment/Caculation: $|\beta| = r-k+1$
+					\item Comparison: $Z_k' == |\beta|$
+					\item Iteration for explicit character comparison: $while(Z_[r+1]==Z[\alpha+1])...$, bounded by O(|S|)
+				\end{enumerate}
+				
+		
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline $i$ & $Z[i]$  & $l_i$  &  $r_i$ & Case  \\ 
+			\hline 1 & 2 & 1 & 0 & 1 \\ 
+			\hline 2 & 3 & 3 & 1 & 1 \\ 
+			\hline 3 & 4 & 3 & 0 & 1 \\ 
+			\hline 4 & 5 & 4 & 0 & 1 \\ 
+			\hline 5 & 6 & 10 & 5 & 1 \\ 
+			\hline 6 & 6 & 10 & 0 & 2a \\ 
+			\hline 7 & 6 & 10 & 1 & 2a \\ 
+			\hline 8 & 6 & 10 & 0 & 2a \\ 
+			\hline 9 & 6 & 10 & 0 & 2a \\ 
+
+			\hline 
+		\end{tabular} 
+		}
+\end{homeworkSection}
+
+\begin{homeworkSection}{Question \# 3}
+	%\problemAnswer{
+		
+	
+		
+
+	
+	%\begin{algorithm}
+	%	\caption{My algorithm}\label{euclid}
+
+	%	\begin{algorithmic}[1]
+	%	   \Statex {}
+		  %\STATEx \textbf{Input:}
+		  %\STATEx \textbf{Output:} Determine if $\alpha$ is a circular rotation of $\beta$
+		%\end{algorithmic}
+	%\end{algorithm}
+	
+	\begin{algorithm}                      % enter the algorithm environment
+		\caption{Calculate $y = x^n$}          % give the algorithm a caption
+		\label{alg1}                           % and a label for \ref{} commands later in the document
+		\begin{algorithmic} 
+			\REQUIRE r
+			\ENSURE f
+		\end{algorithmic}
+	\end{algorithm}
+	
+		%	}
+	
+\end{homeworkSection}
+
+
+\end{document}
