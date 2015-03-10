@@ -203,7 +203,7 @@
 
 \end{homeworkSection}
 
-\begin{homeworkSection}{Question \#2}
+\begin{homeworkSection}{Question \# 2}
 	\problemAnswer{
 		$S = CACGGCACGG$
 		
@@ -211,9 +211,9 @@
 		
 		The 'cases' are choosen out of:
 		
-		Case 1. $k>r$. The index for which $Z$ value is being calculated is greater than the right most ending of all the previous(till $k-1$) $Z$ boxes calculated. Since this is as good as having no pre-calculated $Z$ scores, this case leads to explicit character comparison(starting at $k$) till a mismatch occurs.
+		Case 1. $k>r$. The index for which $Z$ value is being calculated is greater than the right most ending of all the previous(till $k-1$) $Z$ boxes calculated. Since this is as good as having no pre-calculated $Z$ scores, this case leads to explicit character comparison(starting at $k$) till a mismatch occurs.\\
 		
-		Case 2.	$k\leq r$ The current position $k$ is inside one of the previoulsy calculated $Z$ boxes. Hence there exists a correpsonding position $k'=k-l+1$ where $l$ is the left ending of the $Z$ box with it's right ending at $r$, such that $S[k`]=S[k]$. There is a corresponding one to one match for $S[k'..r-l+1]$ with $S[k..r]$ and we define this to be another box $\beta$ with $\beta=r-k+1$ and hence  $Z[k]$ can be caculated utilising this information. 
+		Case 2.	$k\leq r$ The current position $k$ is inside one of the previoulsy calculated $Z$ boxes. Hence there exists a correpsonding position $k'=k-l+1$ where $l$ is the left ending of the $Z$ box with it's right ending at $r$, such that $S[k`]=S[k]$. There is a corresponding one to one match for $S[k'..r-l+1]$ with $S[k..r]$ and we define this to be another box $\beta$ with $\beta=r-k+1$ and hence  $Z[k]$ can be caculated utilising this information. \\
 		
 		The following three cases arise:
 			
@@ -227,7 +227,7 @@
 					\item Comparison: $Z_k' < |\beta|$
 					\item Assigment: $Z_k = Z_k'$
 				\end{enumerate}
-				No character comparisons are involved.
+				No character comparisons are involved. All the above 'comparisons' are constant time.
 				
 			Case 2b. $Z_k' > |\beta|$ 
 				So the substring starting at $k'$ matches a prefix of S and has length equal to the $\beta$ box. If we call the box with it's leftmost end=$l$ and rightmost end=$r$ as $\alpha$, then we know that 
@@ -244,8 +244,8 @@
 					\item Assigment: $Z_k = Z_k'$
 				\end{enumerate}
 			
-				
-				 
+			Again, all the operations are constant time.}
+		\problemAnswer{			\newpage
 			Case 2c. $Z_k' = |\beta|$
 			
 				The substring starting at $k$ might have a matching prefix in S, and hence explicit character 
@@ -261,7 +261,7 @@
 					\item Comparison: $Z_k' == |\beta|$
 					\item Iteration for explicit character comparison: $while(Z_[r+1]==Z[\alpha+1])...$, bounded by O(|S|)
 				\end{enumerate}
-				
+				Except character comparison step, rest all steps are constant time.
 		
 		\begin{tabular}{|c|c|c|c|c|}
 			\hline $i$ & $Z[i]$  & $l_i$  &  $r_i$ & Case  \\ 
@@ -281,21 +281,22 @@
 \end{homeworkSection}
 
 \begin{homeworkSection}{Question \# 3}
-	%\problemAnswer{
+	\problemAnswer{
 		
-	
+		In order to determine if $\alpha$ is a circular rotation of $\beta$, we make the following observations:
+		\begin{enumerate}
+			\item All $|\beta|+1$ possible length $|\beta|$ substrings  possible  of length    $\beta\beta$ represents all possible circular rotations of $\beta$. This is intuitive, since a cicular rotation would involve concatenating the start of string to it's end
+			\item The next step involves searching for $P$ in $TT$. This is possible in linear time using either $Z$ algorithm or any other 
+			linear time exact matching algorithm. 
+			\item If P appears in $TT$, the $Z$ values the indices of it's start/end can be determined by querying all those
+			points in the $Z$ value array, which exceed $|\alpha|$
+		\end{enumerate}
 		
-
+		The psuedocode is listed as Algorithm \ref{alg1}.
+		
+	}
 	
-	%\begin{algorithm}
-	%	\caption{My algorithm}\label{euclid}
 
-	%	\begin{algorithmic}[1]
-	%	   \Statex {}
-		  %\STATEx \textbf{Input:}
-		  %\STATEx \textbf{Output:} Determine if $\alpha$ is a circular rotation of $\beta$
-		%\end{algorithmic}
-	%\end{algorithm}
 	
 	\begin{algorithm}                      % enter the algorithm environment
 		\caption{Find circular rotation}          % give the algorithm a caption
@@ -322,13 +323,16 @@
 \end{homeworkSection}
 
 \begin{homeworkSection}{Question \# 4}
+
+
 	\problemAnswer{
+	\textbf{Question 7:}\\
 		Case 2b of $Z$ algorithm can be split into following sub cases:
 			Case 2b $Z_k' > |\beta|$ \\
 			Case 2c $Z_k' = |\beta|$\\
 		Let $r$ denote the right most edge of the $Z$ box(call it $\alpha$)
 		such that $k\leq r$. $l$ denotes the left most edge of this $Z$ box.
-		When $Z_k' > \beta$, let $S[r+1]=X$ Let $k'=k-l+1$ denote the cooresponding position in the prefix of S,
+		When $Z_k' > \beta$, let $S[r+1]=X$ Let $k'=k-l+1$ denote the cooresponding position(there is an $\alpha$ box that appears as the prefix of $S$ by definition) in the prefix of S,
 		such that $S[1...k']$ matches $S[l...k]$  and also $S[1...r-l+1]$ matches $S[l..r]$
 		
 		Consider $r'=r-l+1$ let $S[r'+1]=Y$, then $X\neq Y$, else the $Z$ box would have been longer than $|\alpha|$,
@@ -338,8 +342,9 @@
 		 that $S[Z_k'+1]=S[r'+1] = Y$ because $Z_k'$ will be at least $|\beta| +1$ in size.
 		
 		Since $X \neq Y$, $Z_k = |\beta|$, because $|\beta|$ is the length of longest matching prefix given $S[|\beta|+1] = S[r'+1] \neq S[r+1]$ 
-			
-			Question 7.
+		}
+		\problemAnswer{
+		\textbf{Question 7:}\\
 			
 			No. there is no extra speedup if we take into consideration all comparisons.
 			
@@ -347,14 +352,24 @@
 			Case 2a,2b,2c appraich: Comparison required: 1 integer comparison $Z_k == |\beta|$
 			 
 		}
+
 \end{homeworkSection}
 
+\newpage
+
 \begin{homeworkSection}{Question \# 5}
-	%\problemAnswer{
-		Solution: 
-		1. The first occurence of parameters is very flexible, since they can be made to match to any other parameter.
-		2. Any parameter appearing more than once arises a constraint
-		
+	\problemAnswer{
+			\textbf{Observations:} \\
+			\begin{enumerate}
+				\item The first occurence of parameters is very flexible, since they can be made to match to any other parameter.
+				\item Any parameter appearing more than once arises a constraint
+			\end{enumerate}
+			
+			\textbf{Complexity:} \\
+			
+			\textbf{Correctness:} \\
+	
+	}
 		Approach:
 		
 		\begin{algorithm}                      % enter the algorithm environment
@@ -398,8 +413,19 @@
 		
 		
 \end{homeworkSection}
-
+\newpage
 \begin{homeworkSection}{Question \# 6}
+	\problemAnswer{
+		\textbf{Observations:} \\
+		\begin{enumerate}
+			\item
+		\end{enumerate}
+		
+		\textbf{Complexity:} \\
+		
+		\textbf{Correctness:} \\
+		
+		}
 \begin{algorithm}                      % enter the algorithm environment
 	\caption{Find multisets}          % give the algorithm a caption
 	\label{alg2}                           % and a label for \ref{} commands later in the document
@@ -458,7 +484,16 @@
 
 
 \begin{homeworkSection}{Question \# 7}
-	%\problemAnswer{
+	\problemAnswer{
+			\textbf{Observations:} \\
+			\begin{enumerate}
+				\item
+			\end{enumerate}
+			
+			\textbf{Complexity:} \\
+			
+			\textbf{Correctness:} \\
+		}
 			\begin{algorithm}                      % enter the algorithm environment
 				\caption{Find occurence of P in T in linear time using sp values}          % give the algorithm a caption
 				\label{alg3}                           % and a label for \ref{} commands later in the document
