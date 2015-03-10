@@ -350,14 +350,53 @@
 \end{homeworkSection}
 
 \begin{homeworkSection}{Question \# 5}
-	\problemAnswer{
+	%\problemAnswer{
 		Solution: 
 		1. The first occurence of parameters is very flexible, since they can be made to match to any other parameter.
 		2. Any parameter appearing more than once arises a constraint
 		
+		Approach:
+		
+		\begin{algorithm}                      % enter the algorithm environment
+			\caption{Find multisets}          % give the algorithm a caption
+			\label{alg2}                           % and a label for \ref{} commands later in the document
+			\begin{algorithmic}  
+				\REQUIRE {String P, T} 
+				\ENSURE {Find all p-matches of P in T in $O(P+T)$}
+				\STATE{$m \Leftarrow |P|$}
+				\STATE{$n \Leftarrow |T|$}
+				\STATE{$lastParameterMap$}
+				\STATE{$parametersTotal$}
+				%\STATE{$numSymbols \Leftarrow []$}
+				\STATE{$P' \Leftarrow null$}
+				\STATE{$S=P\$T$}
+				
+				\FOR{$i \Leftarrow 1\ to\ m+n$}
+					\IF{$isParameter(S[i])$}
+						\IF{$P[i]\ in\ lastParameterMap$}
+							\STATE{$parametersTotal[i] \Leftarrow parametersTotal[i-1]+1$}
+							\STATE {$lastOccurenceAt \Leftarrow lastParameterMap[P[i]]$}
+							\STATE {$numParamsFromLastOccurnce \Leftarrow parametersTotal[i]-parametersTotal[lastOccuredAt]$}
+							\STATE {$P' \Leftarrow concat(P', numFromLastOccurence)$}
+						\ELSE
+							\STATE $lastParameterMap[P[i]]=i$
+						\ENDIF
+					\ELSE
+						\STATE $P' \Leftarrow concat(P', S[i])$
+					\ENDIF
+				\ENDFOR
+				
+				
+				$z_values \Leftarrow ZAlgorithm(P')$
+				\STATE return all positions where $z_values \geq m$ 
+				%$return [z_values[i] for z_values[i]$
+			\end{algorithmic}
+		\end{algorithm}
+				
+		Example: XYabCaCXZddbW
+		%}
 		
 		
-		}
 \end{homeworkSection}
 
 \begin{homeworkSection}{Question \# 6}
@@ -366,7 +405,53 @@
 	\label{alg2}                           % and a label for \ref{} commands later in the document
 	\begin{algorithmic}  
 		\REQUIRE {String S, T} 
-		\ENSURE {}
+		\ENSURE {Find all substrings of T that are formed by characters of S}
+		\STATE $patternMap \Leftarrow CreateFrequencyOfCharacters(S)$
+		\STATE $longestSubstringPossible \Leftarrow []$
+		\STATE $m \Leftarrow |S|$
+		\STATE $n \Leftarrow |T|$
+		\STATE $i \Leftarrow 2$
+		\STATE $sum \Leftarrow 0$
+		%\STATE $sequenceMap \LeftArrow CreateFrequencyOFCharaceters(S[1..m])$
+		%\STATE $previousChar \LeftArrow  S[1]$
+		\WHILE{$i\leq m$}
+			\IF{$S[i] in sequenceMap.keys()$}
+				\STATE{$sequenceMap[S[i]] \Leftarrow sequenceMap[S[i]]+1$}
+			\ENDIF
+				
+			\IF{$patternMap[S[i]]>=1 and sequenceMap[S[i]] < sequenceMap[S[i]] $}
+				\STATE{$sum \Leftarrow sum+1$}
+				\ELSE
+					\STATE{$sum \Leftarrow sum-1$}
+			\ENDIF
+			
+			\STATE{$i \Leftarrow i+1$}
+			
+			\FOR{$i \Leftarrow 2\ to\ n-m$}
+			\STATE {$next \Leftarrow S[i+m]$}
+			\IF{$sequenceMap[previous] > patternMap[previous] $}
+			\STATE{$sum \Leftarrow sum+1$}
+			\ELSE
+			\STATE{$sum \Leftarrow sum-1$}
+			\ENDIF
+			
+			\IF{$patternMap[next]>=1 and sequenceMap[next]] < sequenceMap[S[i]] $}
+			\STATE{$sum \Leftarrow sum+1$}
+			\ELSE
+			\STATE{$sum \Leftarrow sum-1$}
+			\ENDIF
+			
+			\STATE{$longestSubstringPossible[i]=sum$}
+			\STATE{$previous \Leftarrow S[i]$}
+			
+			\ENDFOR
+			
+			
+		\ENDWHILE
+		
+		\STATE{$longestSubstringPossible[1]=sum$}
+		\STATE{$previous \Leftarrow S[1]$}
+	
 	\end{algorithmic}
 \end{algorithm}
 \end{homeworkSection}
@@ -387,7 +472,7 @@
 					\STATE $P_{occurences} = []$
 					\WHILE{$N \geq |P|+1$}
 					\IF{$sp_{values}[i]\geq |P|$}
-						\IF{S[N]==P[|P|] and S[N-|P|]==P[1]}}
+						\IF{$S[N]==P[|P|] and S[N-|P|]==P[1]$}
 							\STATE $P_{occurences}.push(i)$
 							\STATE $ N \Leftarrow N-|P|$
 						\ELSE
