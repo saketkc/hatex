@@ -213,9 +213,9 @@
 		
 		\textbf{Case 1:} $k>r$. The index for which $Z$ value is being calculated is greater than the right most ending of all the previous(till $k-1$) $Z$ boxes calculated. Since this is as good as having no pre-calculated $Z$ scores, this case leads to explicit character comparison(starting at $k$) till a mismatch occurs.\\
 		
-		\textbf{Case 2:}	$k\leq r$ The current position $k$ is inside one of the previoulsy calculated $Z$ boxes. Hence there exists a correpsonding position $k'=k-l+1$ where $l$ is the left ending of the $Z$ box with it's right ending at $r$, such that $S[k`]=S[k]$. n short, there is a corresponding $Z$ box that occurs in the prefix of S, by definition. There is a corresponding one to one match for $S[k'..r-l+1]$ with $S[k..r]$ and we define this to be another box $\beta$ with $\beta=r-k+1$ .  $Z[k]$ can be caculated utilising the previoulsy calculated $Z$ scores. \\
+		\textbf{Case 2:}	$k\leq r$ The current position $k$ is inside one of the previoulsy calculated $Z$ boxes. Hence there exists a correpsonding position $k'=k-l+1$ where $l$ is the left ending of the $Z$ box with its right ending at $r$, such that $S[k`]=S[k]$. In short, there is a corresponding $Z$ box that occurs in the prefix of S, by definition. There is a corresponding one to one match for $S[k'..r-l+1]$ with $S[k..r]$ and we define this to be another box $\beta$ with $|\beta|=r-k+1$ .  $Z[k]$ can be caculated utilising the previoulsy calculated $Z$ scores. \\
 		
-		The following three cases arise(we list down explicit comparisons for each case):
+		The following three cases arise(we list down explicit comparisons invloved for each case):
 			
 			\textbf{Case 2a:} $Z_k' < |\beta|$ 
 				Starting at $k'$ the length of largest substring that matches the prefix of S is less than size of that $\beta$ box starting at $k'$. Since this $\beta$ box appears starting from $k$ too and $Z_k'<|\beta|$ implies $Z_k = Z_k'$. This is easy to see, since the character appearing at position $k'+1$ does not have a matching character in the prefix of S impllying this is also the case with the character appearing at $k$.
@@ -234,7 +234,6 @@
 				The ubstring starting at $k'$ matches a prefix of S and has length equal to the $\beta$ box. If we call the box with it's leftmost end=$l$ and rightmost end=$r$ as $\alpha$, then we know that 
 				$S[r+1]\neq S[|\alpha|+1]$ otherwise $\alpha$ would not have been the largest such box. Thus, $Z_k = \beta$
 				Thus no character comparisons involved in this case too.
-				
 				Comparisons involved: 
 				\begin{enumerate}
 					\item Comparison: $k\leq r$
@@ -244,12 +243,11 @@
 					\item Comparison: $Z_k' > |\beta|$
 					\item Assigment: $Z_k = Z_k'$
 				\end{enumerate}
-			
 			Again, all the operations are constant time.}
 		\problemAnswer{			\newpage
 			\textbf{Case 2c:} $Z_k' = |\beta|$
 			
-				The substring starting at $k$ might have a matching prefix in S, and hence explicit character 
+				The substring starting at $k$ \textit{might} have a matching prefix in S, and hence explicit character 
 				comparions are required from $r+1$ to $q\geq r+1$ till the first mismatch occurs. These iterations
 				are bound by  $O(|S|)$ since the maximum possible mismatches are $O(|S|)$. 
 				
@@ -292,10 +290,10 @@
 			
 			\item The next step involves searching for $P$ in $TT$. This is possible in linear time using either $Z$ algorithm or any other 
 			linear time exact matching algorithm. 
-			\item If P appears in $TT$, then P appears atleast twice in $P\$TT$. The $Z$ start/end indices of occurence of P in $P\$TT$ can be determined by querying all those points in the $Z$ value array, which exceed $|\alpha|$.
+			\item If P appears in $TT$, then P should appear atleast twice in $P\$TT$. The $Z$ start indices of occurence of P in $P\$TT$ can be determined by querying all those points in the $Z$ value array, which exceed $|\alpha|$.
 		\end{enumerate}
 		
-		The psuedocode is listed as Algorithm \ref{alg1}.
+		The psuedocode is listed as Algorithm \ref{alg1}. It is bounded by $O(|\alpha| + 2|\beta|)$
 		
 	}
 	
@@ -309,13 +307,14 @@
 			\REQUIRE {Two string $\alpha$, $\beta$ and a linear time algorithm say $Z$ algorithm to solve exact string matching problem in linear time} \\ 
 			\ENSURE Determine if $\alpha$ is a circular rotation of $\beta$
 			\STATE $S \Leftarrow \alpha\$\beta\beta$
-			\STATE $Z_{values} \Leftarrow  Z(S)$
+			\STATE $Z_{values} \Leftarrow  getZValues(S)$
 			\STATE $N \Leftarrow |S|$
 			
 			\WHILE{$N \neq 3|S|+1$}
 				\IF{$Z_{values}[i]\geq |\alpha|$}
 					\STATE {return $true$}
 				\ENDIF
+				\STATE{$N \Leftarrow N+1$}
 			\ENDWHILE
 			\STATE return $false$
 		\end{algorithmic}
@@ -332,13 +331,13 @@
 	\textbf{Question 6:}\\
 	
 	
-		Case 2b of $Z$ algorithm can be split into following sub cases:
-			Case 2b $Z_k' > |\beta|$ \\
-			Case 2c $Z_k' = |\beta|$\\
+		\textbf{Case 2b} of $Z$ algorithm can be split into following sub cases:\\
+		\textbf{Case 2b} $Z_k' > |\beta|$ \\
+			\textbf{Case 2c} $Z_k' = |\beta|$\\
 		Let $r$ denote the right most edge of the $Z$ box(call it $\alpha$)
-		such that $k\leq r$. $l$ denotes the left most edge of this $Z$ box.
-		When $Z_k' > \beta$, let $S[r+1]=X$ Let $k'=k-l+1$ denote the cooresponding position(there is an $\alpha$ box that appears as the prefix of $S$ by definition) in the prefix of S,
-		such that $S[1...k']$ matches $S[l...k]$  and also $S[1...r-l+1]$ matches $S[l..r]$
+		such that $k\leq r$. Let $l$ denote the left most edge of this $Z$ box.
+		When $Z_k' > \beta$, let $S[r+1]=X$ and $k'=k-l+1$ denote the cooresponding position(there is an $\alpha$ box that appears as the prefix of $S$ by definition) in the prefix of S,
+		such that $S[1...k']$ matches $S[l...k]$  and also $S[1...r-l+1]$ matches $S[l..r]$(The $\alpha$ box)
 		
 		Consider $r'=r-l+1$ let $S[r'+1]=Y$, then $X\neq Y$, else the $Z$ box would have been longer than $|\alpha|$,
 		 contrary to the definition. 
@@ -353,8 +352,9 @@
 			
 			No. there is no extra speedup if we take into consideration all comparisons.
 			
-			Case 2a, 2b approach: Comparison required: 1 character comparison on failore of conditional check $Z_k < |\beta|$
-			Case 2a,2b,2c appraich: Comparison required: 1 integer comparison $Z_k == |\beta|$
+			Case 2a, 2b approach: Comparison required: 1 character comparison(at max) on failure of conditional check $Z_k < |\beta|$ \\
+			
+			Case 2a,2b,2c approach: Comparison required: 1 integer comparison $Z_k == |\beta|$
 			 
 		}
 
@@ -367,53 +367,79 @@
 			\textbf{Observations:} \\
 			\begin{enumerate}
 				\item The first occurence of parameters is very flexible, since they can be made to match to any other parameter.
-				\item Any parameter appearing more than once arises a constraint
+				\item Any parameter appearing more than is as good as a constraint
 			\end{enumerate}
 			
-			\textbf{Complexity:} \\
+			\textbf{Approach:}
+			\begin{enumerate}
+				\item In one pass, store the indexes where parameters appear and the total number of parameters appearing till each index
+				\item The first appearance of any parameter in the string is marked 0
+				\item All subsequent appearances of a parameter are changed to an integer denoting the number of parameters that appeared since it's last occurence(see Example). The tokens are left as is while the parameters get mapped to integers.
+				\item These steps are run on $P$ and $T$ individually and gives back $P'$  and $T'$ such that tokens remain the same while the parameters have been converted to an integer equivalent. This can be done in $O(|P|+|T|)$ time. This is done by $parameterEncoder()$ method in Algorithm 3.
+				\item In another $O(|P|+|T|)$ pass we run traditional  $Z$ algorithm, calculating the $Z_i^p$ values on  the modified string $S'$
+				\item A $p-match$ is equivalent to having $Z_i^p$ values equal to $|P|$. This is done in Algorithm $2$
+			\end{enumerate}
 			
-			\textbf{Correctness:} \\
+			\textbf{Complexity:} \\ $O(|P|+|T|)$ for converting the string $P$ to $P'$, $T$ to $T'$. This is linear time and space since every parameter is accessed just once. And, $O(|P|+|T|)$ for running $Z$ algorithm on $S=P\$T$. Thus in total bounded by $O(|P|+|T|)$
+			
+			\textbf{Correctness:} The first occurence of parameters can be matched to any other parameter and hence this is reflected by assigning the same value of '$0$' to all such first occurences. Everytime a parameter appears again, 
+			Consider $S1=abXab$ and $S2=baXba$
+			Then $S1$ gets mapped to $00X22$ and $S2$ gets mapped to $00X22$. NOTE: The '2' appears counting the total number of parameters \textbf{including} the one at $i$ itself. It is easy to see that $S1$ and $S2$ get converted to the same string by $parameterEncoder()$. The main property being exploited in this algorithm is that the first appearance of parameters can be mapped to any parameter, but all subsequent occurences have a fixed mapping and it is fixed by the number of  parameters between two consequent occurences of  a parameter.
+			
+			Another example:\\
+			$S1=XYabCaCXZddbW$ and\\
+			 $S2=XYdxCdCXZccxW$ so\\ $parameterEncoder(S1)=XY00C2CXZ014W$ and\\ $parameterEncoder(S2)=XY00C2CXZ014W$
+		
+			
 	
 	}
-		Approach:
+
 		
 		\begin{algorithm}                      % enter the algorithm environment
-			\caption{Find multisets}          % give the algorithm a caption
+			\caption{Find p-matches of P in T}          % give the algorithm a caption
 			\label{alg2}                           % and a label for \ref{} commands later in the document
 			\begin{algorithmic}  
 				\REQUIRE {String P, T} 
 				\ENSURE {Find all p-matches of P in T in $O(P+T)$}
 				\STATE{$m \Leftarrow |P|$}
 				\STATE{$n \Leftarrow |T|$}
-				\STATE{$lastParameterMap$}
-				\STATE{$parametersTotal$}
-				%\STATE{$numSymbols \Leftarrow []$}
-				\STATE{$P' \Leftarrow null$}
-				\STATE{$S=P\$T$}
 				
-				\FOR{$i \Leftarrow 1\ to\ m+n$}
-					\IF{$isParameter(S[i])$}
-						\IF{$P[i]\ in\ lastParameterMap$}
-							\STATE{$parametersTotal[i] \Leftarrow parametersTotal[i-1]+1$}
-							\STATE {$lastOccurenceAt \Leftarrow lastParameterMap[P[i]]$}
-							\STATE {$numParamsFromLastOccurnce \Leftarrow parametersTotal[i]-parametersTotal[lastOccuredAt]$}
-							\STATE {$P' \Leftarrow concat(P', numFromLastOccurence)$}
-						\ELSE
-							\STATE $lastParameterMap[P[i]]=i$
-						\ENDIF
-					\ELSE
-						\STATE $P' \Leftarrow concat(P', S[i])$
-					\ENDIF
-				\ENDFOR
+				\STATE{$P' \Leftarrow parameterEncoder(P)$}
+				\STATE{$T' \Leftarrow parameterEncoder(T)$}
+				\STATE{$S \Leftarrow P'\$T'$}
 				
-				
-				$z_values \Leftarrow ZAlgorithm(P')$
-				\STATE return all positions where $z_values \geq m$ 
-				%$return [z_values[i] for z_values[i]$
+				\STATE{$z_{values} \Leftarrow getZValues(S')$}
+				\STATE return all positions where $z_{values} == m$ 
+
 			\end{algorithmic}
 		\end{algorithm}
 				
-		Example: XYabCaCXZddbW
+		\begin{algorithm}
+			\begin{algorithmic}
+				\caption{parameterEncoder(P, lastPa)}
+				\STATE{$m \Leftarrow |P|$}
+				\STATE{$P' \Leftarrow null$}
+				\STATE{$lastParameterMap \Leftarrow \{\}$}
+				\STATE{$parametersTotal \Leftarrow []$}
+				\FOR{$i \Leftarrow 1\ to\ m$}
+				\IF{$isParameter(P[i])$}
+					\IF{$P[i]\ in\ lastParameterMap$}
+						\STATE{$parametersTotal[i] \Leftarrow 		parametersTotal[i-1]+1$}
+						\STATE {$lastOccurenceAt \Leftarrow lastParameterMap[P[i]]$}
+						\STATE {$numParamsFromLastOccurnce \Leftarrow parametersTotal[i]-parametersTotal[lastOccuredAt]$}
+						\STATE {$P' \Leftarrow concat(P', numFromLastOccurence)$}
+					\ELSE
+						\STATE $lastParameterMap[P[i]]=i$
+					\ENDIF
+				
+				\ELSE
+					\STATE $P' \Leftarrow concat(P', P[i])$
+				\ENDIF
+				\ENDFOR
+				\STATE{return P'}
+				
+			\end{algorithmic}
+		\end{algorithm}
 		%}
 		
 		
@@ -421,22 +447,33 @@
 \newpage
 \begin{homeworkSection}{Question \# 6}
 	\problemAnswer{
-		\textbf{Observations:} \\
+		\textbf{Observations:}
 		\begin{enumerate}
-			\item
+			\item Any substring in $T$ that can be formed from characters in $S$ must have the same number of characters of each type. 
 		\end{enumerate}
 		
-		\textbf{Complexity:} \\
+		\textbf{Complexity:} \\ $O(|S|)$ to create frequency table of characters in $S$. $O(|S|)$ to create the frequency table of first $|S|$ characters in $T$ and then another $O(|S|-|T|)$ to loop through the rest of characters in $T$(This is done to maintain an aray of maximum possible length of substring that can be formed out of $T[i]$).
 		
-		\textbf{Correctness:} \\
 		
-		}
+		
+		\textbf{Correctness:} \\ The only criteria for a substring to be made of characters in $S$ is that the substring should have an exact match with the frequency map of characters in S, or the total sum of these frequencies matches(ensuring the sum is over the same keys for both $S$ and substring in $T$). We iterate through first $S$ characters in $T$ to create an initial map, while maintaining a sum(initially set to 0). If the incoming character belongs to the frequency map of $S$ and the current frequency of this incoming character is less than what it is in S, say $f_x$, we increment the count. On other hand, if it exceeds $f_x$ we penalise the sum by subtracting one. Also, as the loop iterates through $i$, the $i+|S|$ element is being added to the frequency map, while the $i-|S|$ is being removed. Depending on whether the elements being added and deleted are present/absent in the frequency map of $S$, the sum is increased/decreased and is maintained in an array. This array stores the length of maximum possible substrings possible(such that its characters belong to $S$) at each $i$. The $sum$ stored at each iteration is correctly updated, and hence returns the maximum length of substring possible at each position $i$.
+		
+		The algorithm correctly finds occurence of all substrings of $T$ that can be formed from bag of characters in $S$.
+	}
+	%\newpage
+	\problemAnswer{
+		\textbf{Implementation:} 
+		\begin{enumerate}
+			\item $createFrequencyOfCharacters$ method in Algorithm \ref{alg2} takes a string and creates a hash table out of it where the keys represent unique characters and the associated value represents the frequency of occurence.
+		\end{enumerate}
+		
+		} 
 \begin{algorithm}                      % enter the algorithm environment
 	\caption{Find multisets}          % give the algorithm a caption
 	\label{alg2}                           % and a label for \ref{} commands later in the document
 	\begin{algorithmic}  
 		\REQUIRE {String S, T} 
-		\ENSURE {Find all substrings of T that are formed by characters of S}
+		\ENSURE {Find all substrings of T that are formed by characters of S. For each position in T, the maximum possible length substring that can be formed using character in $S$}
 		\STATE $patternMap \Leftarrow CreateFrequencyOfCharacters(S)$
 		\STATE $longestSubstringPossible \Leftarrow []$
 		\STATE $m \Leftarrow |S|$
@@ -446,17 +483,21 @@
 		%\STATE $sequenceMap \LeftArrow CreateFrequencyOFCharaceters(S[1..m])$
 		%\STATE $previousChar \LeftArrow  S[1]$
 		\WHILE{$i\leq m$}
-			\IF{$S[i] in sequenceMap.keys()$}
+			\IF{$S[i]\ in\ sequenceMap.keys()$}
 				\STATE{$sequenceMap[S[i]] \Leftarrow sequenceMap[S[i]]+1$}
 			\ENDIF
 				
-			\IF{$patternMap[S[i]]>=1 and sequenceMap[S[i]] < sequenceMap[S[i]] $}
+			\IF{$patternMap[S[i]]>=1\ and\ sequenceMap[S[i]] < sequenceMap[S[i]] $}
 				\STATE{$sum \Leftarrow sum+1$}
 				\ELSE
 					\STATE{$sum \Leftarrow sum-1$}
 			\ENDIF
 			
 			\STATE{$i \Leftarrow i+1$}
+			\ENDWHILE
+			
+			\STATE{$longestSubstringPossible[1]=sum$}
+			\STATE{$previous \Leftarrow S[1]$}
 			
 			\FOR{$i \Leftarrow 2\ to\ n-m$}
 			\STATE {$next \Leftarrow S[i+m]$}
@@ -466,7 +507,7 @@
 			\STATE{$sum \Leftarrow sum-1$}
 			\ENDIF
 			
-			\IF{$patternMap[next]>=1 and sequenceMap[next]] < sequenceMap[S[i]] $}
+			\IF{$patternMap[next]>=1\ and\ sequenceMap[next]] < sequenceMap[S[i]] $}
 			\STATE{$sum \Leftarrow sum+1$}
 			\ELSE
 			\STATE{$sum \Leftarrow sum-1$}
@@ -478,10 +519,7 @@
 			\ENDFOR
 			
 			
-		\ENDWHILE
 		
-		\STATE{$longestSubstringPossible[1]=sum$}
-		\STATE{$previous \Leftarrow S[1]$}
 	
 	\end{algorithmic}
 \end{algorithm}
@@ -492,12 +530,22 @@
 	\problemAnswer{
 			\textbf{Observations:} \\
 			\begin{enumerate}
-				\item
+				\item $Z=PT$ can have $Z$ values greater than $|P|$ in case of multiple repeats.
+				\item If $sp$ value of any index is greater than $|S|$ then, it for sure has a $P$ occuring in the prefix, by definition.
+				\item If the start and end of a substring in $PT$ have $sp$ values $ \geq |P|$ and they can be matched to $P[1]$ and $P[|P]$, then this substring in $T$ is an exact match of $P$
 			\end{enumerate}
+			\textbf{Code} Attached. It is a modification of the $kmp_algorithm.cpp$ that was provided.
 			
-			\textbf{Complexity:} \\
+			\textbf{Complexity:} \\ $O(|P|+|T|)$ for running the $sp$ algorithm on $PT$ and another pass over $|P|+|T|$ values to determine which $i$ are greater than or equal to $|P|$ such that $S[i]==P[|P]$ and $S[i-|P|]==P[1]$.
 			
-			\textbf{Correctness:} \\
+			\textbf{Correctness:} \\ Anywhere along the string $S=PT$, if $sp$ value at position $i$ is greater than equal to  $|P|$, it implies there exists a substring in $S[|P|...i]$ that is an exact match to $P$. If it is exactly equal to $|P|$, then $P$ occurs in T(by definition). but if it is strictly greater, then we need at most 2 character comparisons to check if the substring is indeed $P$. $sp$ values can be strictly greater, given that there is no separator between $P$ and $T$.
+			
+			Example: \\
+			 $P=abc$, \\
+			 $T =bcabcbabcabcbcabc$ \\
+			 $PT = abcabcbabcabcbcabc$\\
+			$sp\  = 00123012312345678$ \\
+			In SP consider positions $14,15,16[bca]$ with sp values $4,5,6$ $sp_{16} > |P|$. But $S[16]=a\neq P[3]=c$ and hence this can be disregarded for occurence of $P$ in $T$.
 		}
 			\begin{algorithm}                      % enter the algorithm environment
 				\caption{Find occurence of P in T in linear time using sp values}          % give the algorithm a caption
@@ -516,10 +564,10 @@
 							\STATE $P_{occurences}.push(i)$
 							\STATE $ N \Leftarrow N-|P|$
 						\ELSE
-							\STATE $N \Leftrightarrow N-1$
+							\STATE $N \Leftarrow N-1$
 						\ENDIF
 					\ELSE
-						\STATE $N \Leftrightarrow N-1$
+						\STATE $N \Leftarrow N-1$
 					\ENDIF
 					\ENDWHILE
 					\STATE return $P_{occurences}$
