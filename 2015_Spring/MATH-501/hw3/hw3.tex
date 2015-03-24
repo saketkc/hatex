@@ -249,22 +249,22 @@ Similarly using Leibnitz's ruke  on \ref{1a2}:
 \begin{homeworkSection}{3}
 	\problemAnswer{
 		By Weierstrass' approxmiation theorem for $\epsilon > 0$ there exists a polynomial $p(x)$ such that 
-		$\left \|p-f\| \right_{\infty} = max|f(x)-p(x)| < \epsilon$ while $ a \leq x \leq b$
-		
+		$\| \left. p-f \right \|_{\infty} = max|f(x)-p(x)| < \epsilon$ while $ a \leq x \leq b$
 		$|E_n(f)| = |E_n(f) - E_n(p)|\\
 		= |\int_0^1 f(x) dx - \sum_{i=1}^{n}w_i f(x_i)|\\
 		= |\int_0^1 f(x) dx - \int_0^1 p(x) dx + \sum_{i=1}^{n}w_i p(x_i) - \sum_{i=1}^{n}w_i f(x_i)|\\
 		= |\int_0^1 (f(x) - p(x)) dx + \sum_{i=1}^{n}w_i (p(x_i) - f(x_i))|$\\
 		Thus,\\
-		$|E_n(f)| = |\int_0^1 (f(x) - p(x)) dx + \sum_{i=1}^{n}w_i (p(x_i) - f(x_i))|$
+		$|E_n(f)| = |\int_0^1 (f(x) - p(x)) dx + \sum_{i=1}^{n}w_i (p(x_i) - f(x_i))|$ (Since, $E_n(P)=0$
 		
 		Applying triangular inequality,\\
 		$E_n(f) \leq = \int_0^1 |(f(x) - p(x))| dx + \sum_{i=1}^{n}w_i |(p(x_i) - f(x_i))|
-		\approx \left. \|p-f\| \right_{\infty} + \left. \|p-f\| \right_{\infty} 
+		\approx\| \left. p-f \right \|_{\infty} + \| \left. p-f \right \|_{\infty} 
 		\leq \epsilon $\\
 		Thus,\\ 
 		
-		 $\left. \|p-f\| \right_{\infty} \leq \frac{\epsilon}{2}$ and hence there exists a $N > 0$ such that $|E_n(f)| < \epsilon$  when $n > N$
+		$\| \left. p-f \right \|_{\infty} \leq \frac{\epsilon}{2}$ and hence there exists a $N > 0$ such that $|E_n(f)| < \epsilon$  when $n > N$
+		
 		
 		}
 \end{homeworkSection}
