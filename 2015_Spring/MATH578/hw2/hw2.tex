@@ -211,7 +211,13 @@
 \begin{homeworkSection}{Question \# 6} % Section within problem
 
 \problemAnswer{
-	Identifying longest common occuring substring, Travel to the deepest node that has a suffix link!
+	Identifying longest substring starting at each position of T that occurs in P. 
+    This requires creating a suffix tree for the pattern and not the text. Consider first m characters of text $T$
+    and do a traversal of the suffix tree of pattern $P$. The last visited node's node edge depth will give the length 
+    of longest substring match in $T[1..m]$ to some corresponding substring in $P$. Now consider finding sucha  substring
+    that starts from position 2 of $T$ i.e $T[2..m]$ . This would now make use of the suffix link property. If the deepest possible
+    visited during first step has path label $x\alpha$ then, the prefix of $T[2..m+1]$ is $\alpha$ which infact is just the suffix link 
+    and this saves explicit character matches. Explicit matches are now performed from the suffix link node.
 }
 
 \end{homeworkSection}
