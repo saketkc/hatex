@@ -227,7 +227,8 @@ at the application layer.
 		pbzip2 time: \\		
 		
 		
-		 
+		 Reference based compression makes use of a sliding window to first store the start position and offsets of reads as aligned to the reference. Mismatches positions and calls are stored explicitly.
+		 While decompressing these offsets are then used to retrieve the original sequence.
 		}
 	
 \end{homeworkSection}
