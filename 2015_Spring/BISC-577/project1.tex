@@ -1,0 +1,261 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{latexsym}
+\usepackage{mathtools}
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+%\usepackage[]{algorithm2e}
+%\usepackage{algorithmicx}
+%\usepackage{algorithm}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+%\usepackage{algcompatible}
+
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{algorithmicx}
+
+
+%\usepackage{algpseudocode}
+
+%\usepackage{algpseudocode}
+
+%\usepackage[noend]{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\algorithmicbreak}{\textbf{break}}
+\newcommand{\algorithmicgiven}{\textbf{Given:}}
+\newcommand{\BREAK}{\STATE \algorithmicbreak}
+\newcommand{\GIVEN}{\STATEx \algorithmicgiven}
+%\def\NoNumber#1{{\def\alglinenumber##1{}\State #1}\addtocounter{ALG@line}{-1}}
+
+\usepackage{amsmath}
+%\usepackage{multline}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\hmwkTitle}{Homework\ \# 1 } % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ March \ 31,\ 2015} % Due date
+\newcommand{\hmwkClass}{BISC-577} % Course/class
+\newcommand{\hmwkClassTime}{11:00am} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+%\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+	\textbf{\hmwkAuthorID}
+	}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+
+
+
+\begin{homeworkSection}{Question \# 1} % Section within problem
+
+\problemAnswer{
+SRA is a publically available archive of biological sequencing datasets.
+By making raw data and the associated metadata available, SRA aims to make genomics reproducible.
+New discoveries are possible using the existing datasets.
+}
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{Question \# 2}
+	\problemAnswer{ FASTQ is ASCII-based format for storing sequences along with their quality scores. 
+		FASTQ originated from FASTA format. FASTA files do not store quality scores.
+		Eash FASTQ record consists of typically four lines and a .fastq/.fq file is typically a collection of different records.  
+		The first line consists of a unique identifier. The second line is sequence[A/T/C/G/N] where N stands for base not sequenced. The third line is a separator '+' and the fourth line is simply ascii encoded quality scores. These scores are an indicative of how sure the sequencer is that a particular base is infact that and not anything else or noise.
+		}
+\end{homeworkSection}
+
+
+\begin{homeworkSection}{Question \# 3}
+	\problemAnswer{
+		Accession: SRR1287226
+		Run: SRR1287226	
+		Metadata associated includes the the experimental design, platform used and library preparation strategy.
+		This sample seems to be missing information about the experimental design. It is not evident if the samples came from "before" or "after" correction as mentioned in the abstract.
+		}
+\end{homeworkSection}
+
+
+\begin{homeworkSection}{Question \# 4}
+	\problemAnswer{
+
+Aspera took close to 1260 seconds while wget/ftp took close to 2740 seconds. wget/ftp relies on a 'handshaking' method(TCP)
+to ensure reliable data transfer. Metadata exchanges take place at different points to ensure the packet transmiited is
+received by the client. Aspera relies on UDP, avoiding the 'handshake' overhead though still maintaining data integrity 
+at the application layer.
+		
+		}
+\end{homeworkSection}
+
+\begin{homeworkSection}{Question \# 5}
+	\problemAnswer{
+		SRA filesize: 2919274711 byes\\
+		FastQ size: 12965100984\\
+		
+		 
+		}
+	
+\end{homeworkSection}
+ 
+ 
+  \begin{homeworkSection}{Question \# 6}
+  	\problemAnswer{
+  		
+  	}
+ 
+ \begin{homeworkSection}{Question \# 7}
+ 	\problemAnswer{
+ 		Sequencing adapters are known sequenced used for making the DNA fragments ligate to primers and bind to the flow channel more efficiently.
+ 		The sequencer might often treats the ligated sequence as a shotgun sequence.
+ 		
+ 		To remove sequencing adapters, $cutadapt$ {https://github.com/marcelm/cutadapt}
+ 	
+	 	cutadapt was used to performe trimming both $5'$ and $3'$ trimming:
+	 	$5'$ adapter sequence: AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT
+	 	
+	 	$s'$ adapter sequence:
+	 	CAAGCAGAAGACGGCATACGAGCTCTTCCGATCT
+	 	
+	 	The plot generated using `fastqc` didn't show presence of any sequencing adapters, though there were a few overrepresented sequences and hence trimming resulted in all the reads passing the filter.
+	 	$cutadapt$ produces additional statistics about the presence of nucleotides in percentage preceeding the adapter and uses a partial matching scheme to search for possible primers. The trimming was performed with at most $10\%$ error in paired-end mode. 
+	 	Though the whole of adapter was not present($0$ reads contained the whole adapter sequence), some 3 length sequences were over-represented and were trimmed resulting in few output reads being less than 100bp long.  A total of 660417 + 18529 reads had overrepreented 3-mer coming from the adapter and were trimmed.
+	 	 $cutadapt$ takes into consideration over-representation by taking the base case to be the probability of observing that $k-mer$ in a random sequence.
+	 	 
+	 	 The nucleotide bar plot will change drastically if all the reads have some part of the adapter sequence. The 'C' and 'G' plot in particular should ideally decrease in height post trimming, since they seem to be abundant in the adapters.
+	 	
+	 	
+ 	}
+ 	
+ \end{homeworkSection}
+ 
+ 
+
+ 	
+ \end{homeworkSection}
+
+\end{document}
