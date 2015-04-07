@@ -1,0 +1,302 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{latexsym}
+\usepackage{mathtools}
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+%\usepackage[]{algorithm2e}
+%\usepackage{algorithmicx}
+%\usepackage{algorithm}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+%\usepackage{algcompatible}
+
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{algorithmicx}
+
+
+%\usepackage{algpseudocode}
+
+%\usepackage{algpseudocode}
+
+%\usepackage[noend]{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\algorithmicbreak}{\textbf{break}}
+\newcommand{\algorithmicgiven}{\textbf{Given:}}
+\newcommand{\BREAK}{\STATE \algorithmicbreak}
+\newcommand{\GIVEN}{\STATEx \algorithmicgiven}
+%\def\NoNumber#1{{\def\alglinenumber##1{}\State #1}\addtocounter{ALG@line}{-1}}
+
+\usepackage{amsmath}
+%\usepackage{multline}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\hmwkTitle}{Homework\ \# 1 } % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ March \ 31,\ 2015} % Due date
+\newcommand{\hmwkClass}{BISC-577} % Course/class
+\newcommand{\hmwkClassTime}{11:00am} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+%\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+	\textbf{\hmwkAuthorID}
+	}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+
+
+
+\begin{homeworkSection}{Question \# 1} % Section within problem
+
+\problemAnswer{
+
+\textbf{Uniquely mappable reads}: Reads that map to a unique position in the reference genome. These reads cannot come from repeated regions of DNA.  \\
+\textbf{Ambiguously mapping reads}: A read may often map to more than one positions in the reference genome. This is often true for reads coming 
+from the region of say short tandem repeats. It is also possible to get more than one mapping positions for a read if mismatches are allowed.
+With increasing number of allowed mismatches, the number of positions that read gets mapped to also increases. \\
+\textbf{PCR duplicate reads}: Upon ligation with adapters, the fragments are PCR amplified so that they are enough to be detected
+by the flow channel. Multiple PCR copies of the same fragment if sequenced in two different wells. \\
+\textbf{Concordantly mapped paired-end reads}: In a paired end/ mate pair experiment, a fragment is sequenced from both the ends. Thus while mapping, there is an 'expectation' that these 'mates' 1 and 2 will have certain orientation. These mates are expected to be separated by an 'insert size'. However it is possible that the sequenced read comes from say a structural variation, in which the sequence is likely to map in a flipped manner, resulting in discordant mapping. \\
+\textbf{Sequenced fragment length}: The sequenced fragment length refers to the  'piece' of chunked sequence that is sequnced at single or both ends post ligation and PCR amplification \\
+\textbf{Uniquely mappable part of a genome}: Genome sans the repeats(Tandem repeats, interspersed repeats)\\
+ 
+}
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{Question \# 2}
+	\problemAnswer{ 
+		Single End: http://www.ncbi.nlm.nih.gov/sra/SRX175791[accn] \\
+		SRA size: 2.7G \\
+		FastQ size : 20G \\
+		Paired End: http://www.ncbi.nlm.nih.gov/sra/SRX109558[accn] \\
+		SRA size: 9.7G\\
+		FastQ size : 25G + 25G = 50G \\
+		}
+\end{homeworkSection}
+
+
+\begin{homeworkSection}{Question \# 3}
+	\problemAnswer{
+		Organism: Homo Sapiens\\
+		The reference was downloaded as a $2 \ bit$ file from UCSC 
+		%\url{http://hgdownload-test.cse.ucsc.edu/goldenPath/hg19/bigZips/}
+		
+		Build: hg19 \\
+		Reference camse as a single $2 \ bit$ file and was converted to FASTA using `twoBitToFa` utility available on UCSC.
+		
+		Besides the 22 automosomes and the two sex chromosomes, the FASTA contains few scaffolds for some chromosomes and the mitochondrial sequence.
+		
+	Given that these datasets come from a WGS study, it would make sense to include all sequences(including scaffolds, mitrochondrial) for mapping. The overhead of having extra sequences in the reference is  going to result in incresased  time required for searching.
+		
+		
+		}
+\end{homeworkSection}
+
+
+\begin{homeworkSection}{Question \# 4}
+	\problemAnswer{
+
+ time bowtie2-build -f hg19.fa hg19 1>>bowtie2build.log 2>>bowtie2build.err
+
+real    96m38.714s
+user    95m56.664s
+sys     0m28.580s
+
+ time bwa index hg19.fa 1>>bwa.log 2>>bwa.err
+
+real    60m55.489s
+user    59m17.654s
+sys     0m20.558s
+
+
+		
+		}
+\end{homeworkSection}
+
+\begin{homeworkSection}{Question \# 5}
+	\problemAnswer{
+		Mapping results are presented in SAM format. SAM stands for Sequence Alignment/Map and is a generic format for storing alignments.
+		
+		SAM contains reference sequence name, the leftmost positions where the aligment starts, the query sequence(read sequence), it's quality sequence. Match, mismatch information is encoded in CIGAR format. CIGAR is a space efficient way to store matches, mismatches.
+		 
+		 
+		$bwa$ does not  print out the number of concordant/discordant reads that were mapped explicitly, $bowtie2$ does. $bwa$ does not explicitly print out number of reads that are ambigulosuly mapped. Both print the total number of reads.\\
+		
+		\textbf{Paired End:} \\
+		\textbf{bwa:}  107m48s for 79367217 reads \\
+		\textbf{bowtie2:} 69m19s for 79367217 reads  \\
+		
+		\textbf{Single End} \\
+		\textbf{bwa:} 37m54s for 86574968 reads\\
+		\textbf{bowtie2:} 16m37s for 86574968 reads\\
+
+		Memory requirement was bounded by 16GB for both bwa and bowtie2.
+		
+		}
+	
+\end{homeworkSection}
+ 
+ 
+  \begin{homeworkSection}{Question \# 6}
+  	\problemAnswer{
+	  	\textbf{SAM size}
+  		\textbf{Paired End:} \\
+  		\textbf{bwa:}  17G \\
+  		\textbf{bowtie2:} 17G  \\
+  		
+  		\textbf{Single End} \\
+  		\textbf{bwa:} 50G\\
+  		\textbf{bowtie2:} 49G\\
+  	
+  	}
+ 
+ \begin{homeworkSection}{Question \# 7}
+ 	\problemAnswer{
+ 		BAM size:\\
+ 		
+		\textbf{Paired End:} \\
+		\textbf{bwa:}  17G \\
+		\textbf{bowtie2:} 17G  \\
+		
+		\textbf{Single End} \\
+		\textbf{bwa:} 50G\\
+		\textbf{bowtie2:} 49G\\
+ 		
+	 	
+ 	}
+ 	
+ \end{homeworkSection}
+ 
+ 
+
+ 	
+ \end{homeworkSection}
+
+\end{document}
