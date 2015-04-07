@@ -130,8 +130,8 @@
 %----------------------------------------------------------------------------------------
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-\newcommand{\hmwkTitle}{Homework\ \# 1 } % Assignment title
-\newcommand{\hmwkDueDate}{Tuesday,\ March \ 31,\ 2015} % Due date
+\newcommand{\hmwkTitle}{Project\ \# 2 } % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ April \ 7,\ 2015} % Due date
 \newcommand{\hmwkClass}{BISC-577} % Course/class
 \newcommand{\hmwkClassTime}{11:00am} % Class/lecture time
 \newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
@@ -211,7 +211,7 @@ by the flow channel. Multiple PCR copies of the same fragment if sequenced in tw
 		Build: hg19 \\
 		Reference camse as a single $2 \ bit$ file and was converted to FASTA using `twoBitToFa` utility available on UCSC.
 		
-		Besides the 22 automosomes and the two sex chromosomes, the FASTA contains few scaffolds for some chromosomes and the mitochondrial sequence.
+		Besides the 22 automosomes and the two sex chromosomes, the FASTA contains few scaffolds for some chromosomes and the mitochondrial sequence. In total there are 93 chromosomes with total base size 3,137,161,264.
 		
 	Given that these datasets come from a WGS study, it would make sense to include all sequences(including scaffolds, mitrochondrial) for mapping. The overhead of having extra sequences in the reference is  going to result in incresased  time required for searching.
 		
@@ -223,17 +223,13 @@ by the flow channel. Multiple PCR copies of the same fragment if sequenced in tw
 \begin{homeworkSection}{Question \# 4}
 	\problemAnswer{
 
- time bowtie2-build -f hg19.fa hg19 1>>bowtie2build.log 2>>bowtie2build.err
+ \textbf{Building index:} \\
+\textbf{bowtie2:} 96m38.714s \\
 
-real    96m38.714s
-user    95m56.664s
-sys     0m28.580s
+\textbf{bwa} 60m55.489s \\
 
- time bwa index hg19.fa 1>>bwa.log 2>>bwa.err
-
-real    60m55.489s
-user    59m17.654s
-sys     0m20.558s
+bwa's suffix-array and bwt files are 1.5G and 3G respectively.
+bowtie2 createx indexes[for hg19 4 forward, 2 reverse] in mutiple files totaling 3.5G as well.
 
 
 		
@@ -257,7 +253,7 @@ sys     0m20.558s
 		\textbf{bwa:} 37m54s for 86574968 reads\\
 		\textbf{bowtie2:} 16m37s for 86574968 reads\\
 
-		Memory requirement was bounded by 16GB for both bwa and bowtie2.
+		Memory requirement was bounded by 16GB for both bwa and bowtie2, not measured explicitly.
 		
 		}
 	
@@ -267,13 +263,13 @@ sys     0m20.558s
   \begin{homeworkSection}{Question \# 6}
   	\problemAnswer{
 	  	\textbf{SAM size}
-  		\textbf{Paired End:} \\
-  		\textbf{bwa:}  17G \\
-  		\textbf{bowtie2:} 17G  \\
+  		\textbf{Single End:} \\
+  		\textbf{bwa:}  17354752 \\
+  		\textbf{bowtie2:} 18234575912  \\
   		
-  		\textbf{Single End} \\
-  		\textbf{bwa:} 50G\\
-  		\textbf{bowtie2:} 49G\\
+  		\textbf{Paired End} \\
+  		\textbf{bwa:} 53215198684\\
+  		\textbf{bowtie2:} 52379271708\\
   	
   	}
  
@@ -281,15 +277,11 @@ sys     0m20.558s
  	\problemAnswer{
  		BAM size:\\
  		
-		\textbf{Paired End:} \\
-		\textbf{bwa:}  17G \\
-		\textbf{bowtie2:} 17G  \\
-		
-		\textbf{Single End} \\
-		\textbf{bwa:} 50G\\
-		\textbf{bowtie2:} 49G\\
+		\textbf{Paired End} \\
+		\textbf{bwa:} 16107276016\\
+		\textbf{bowtie2:} 16250076788\\
  		
-	 	
+	 	samtools recognizes multiple reads that map to the same coordinates as potential PCR duplicates. However if the mate pairs are mapped discordantly(for paired end experiments) and say mate pair 1 shares the same coordinate with some other read, they are NOT regarded as duplicates. single-end duplication is treated as defined earlier.
  	}
  	
  \end{homeworkSection}
