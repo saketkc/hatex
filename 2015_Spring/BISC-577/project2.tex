@@ -262,26 +262,106 @@ bowtie2 createx indexes[for hg19 4 forward, 2 reverse] in mutiple files totaling
  
   \begin{homeworkSection}{Question \# 6}
   	\problemAnswer{
-	  	\textbf{SAM size}
+	  	\textbf{SAM size} \\
   		\textbf{Single End:} \\
-  		\textbf{bwa:}  17354752 \\
+  		\textbf{bwa:}  18095631253 \\
   		\textbf{bowtie2:} 18234575912  \\
   		
   		\textbf{Paired End} \\
   		\textbf{bwa:} 53215198684\\
   		\textbf{bowtie2:} 52379271708\\
+  	  %6375810 aligned concordantly 0 times
+  	  %63732179 aligned concordantly exactly 1 time
+  	  %9259228  aligned concordantly >1 times
+  	  
+  	  
+  	  To determine the distribution of length of sequenced fragments, one can extract $ISIZE$ from the samfile. This will give the insert size. $FragmentSize = ISIZE + 2*ReadLength$ for paired end. Alternatiely using the location of mapping of mate pairs. The sequence fragment would be $Mate2LeftMostPosition-Mate1RightMostPosition+2*ReadLength$ Sequence fragment length is determined by the library preparation strategy(restriction enzymes used for example).
   	
+  	
+	  	\textbf{Single End} \\
+	  	\textbf{Bowtie:}
+	  	
+	  	Reads mapped with 0 mismatches('XM:0'): 74834880  \\
+	  	Number of mismatches(Extracted from 'XM' tag of mapped reads in SAM file): 16218708 \\
+		  	Total Mapped Reads: 85083473 \\
+	  	Average number of mismatches: $\frac{16218708}{85083473}$ = 0.19 per mapped read = 19 mismatched bases per 100 bases mapped\\
+
+	  	Fraction of reads uniquely mapped:  $\frac{83670496}{85083473} =$ 98.3\%  \\ 
+
+	  	
+	  	
+	  	\textbf{BWA:}
+	  	
+	  	Reads mapped with 0 mismatches('XM:0'): 74751241  \\
+	  	Number of mismatches(Extracted from 'XM' tag of mapped reads in SAM file): 12686684 \\
+	  	Total number of reads that map:  84561944 \\
+	  	Average number of mismatches: $\frac{12686684}{84561944}$ = 0.15 per mapped read = 15 mismatched bases per 100 bases mapped \\
+
+	  	Fraction of reads uniquely mapped: $\frac{74588324}{84561944} =$ 88.2\% \\ 
+
+	  	
+	  	 
+	  	\textbf{Paired End} \\
+	  	\textbf{Bowtie:} \\
+	  	
+	  	Reads mapped with 0 mismatches('XM:0'): 104436920  \\
+	  	Number of mismatches(Extracted from 'XM' tag of mapped reads in SAM file): 11814602\\
+	  	Average number of mismatches: $\frac{11814602}{72991407}=0.16$ = 16 mismatches per 100 bases mapped  \\
+	  	Total Mapped reads: 153358953\\
+	  	Fraction of reads uniquely mapped: $\frac{151486001}{153358953} = 98.7\% $ \\ 
+	  	Fraction of reads mapped concordantly:  $\frac{151210022}{153358953} = 98.5\% $ \\
+	  	
+	  }
+	  \newpage
+	  	\problemAnswer{
+	  	
+	  	
+  	
+	  	Illumina's sequencing error rate = 1 in 1000 \\
+	  	Thus comparing the average number of mismatched base pairs (around 15 per 100 or 150 per 1000) they are much higher than the sequencing error rate. Thus, a higher error rate at the experiemnt end is well adjusted for by controlling the allowed number of maximum mismatches.(This was left to default)
   	}
  
  \begin{homeworkSection}{Question \# 7}
  	\problemAnswer{
+ 		
+ 		
  		BAM size:\\
  		
-		\textbf{Paired End} \\
-		\textbf{bwa:} 16107276016\\
-		\textbf{bowtie2:} 16250076788\\
  		
-	 	samtools recognizes multiple reads that map to the same coordinates as potential PCR duplicates. However if the mate pairs are mapped discordantly(for paired end experiments) and say mate pair 1 shares the same coordinate with some other read, they are NOT regarded as duplicates. single-end duplication is treated as defined earlier.
+		\textbf{Single End} \\
+		\textbf{bwa:} 4836918016 v/s 18095631253[SAM]\\
+		\textbf{bowtie2:} 4866929520 v/s 18234575912[SAM]\\
+		
+		\textbf{Paired End} \\
+		\textbf{bwa:} 16107276016 v/s 53215198684[SAM]\\
+		\textbf{bowtie2:} 16250076788 v/s 52379271708[SAM]\\
+ 		
+	 	samtools recognizes multiple reads that map to the same coordinates as potential PCR duplicates. However if the mate pairs are mapped discordantly(for paired end experiments) and say mate pair 1 shares the same coordinate with some other read, they are NOT regarded as duplicates. single-end duplication is treated as defined earlier. It is easier to mark reads as duplicate for paired end experiments since the evidence is higher.
+	 	
+\textbf{For paired end:} \\
+	 
+	 	
+ 		\textbf{bwa}
+ 		
+ 		Total mapped reads before removing duplicates: 152113718  \\
+ 		Total mapped reads after removing duplicates: 149227033\\
+ 		Mapped reads removed:2886685 = 1.89\%  \\
+	 	
+	 	
+	 \textbf{	For single end:\\}
+	 	\textbf{Bowtie}\\
+	 	Total mapped reads before removing duplicates: 85083473 \\
+	 	Total mapped reads after removing duplicates: 79941660\\
+		Mapped reads removed: 5141813 = 6\% \\
+		
+		\textbf{Bwa}\\
+		Total mapped reads before removing duplicates: 84561944 \\
+		Total mapped reads after removing duplicates: 63365044\\
+		Mapped reads removed: 21196900 = 25\% \\
+		
+		Around 6\% mapped reads are removed for the single end experiment when mapped with bowtie and 25\% for bwa, which is strange. One possible reason is that bowtie allows lmore mismatches than bwa(19 v/s 14 per 100 bp mapped as in Q6 above) thus allowing reads to map at different locations while bwa is more stringent(using default paramters). The experiment did not involve significant level of duplication though.
+	 	
+	 	
  	}
  	
  \end{homeworkSection}

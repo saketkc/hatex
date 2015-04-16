@@ -1,0 +1,138 @@
+\documentclass{article}
+\usepackage[margin=0.5in]{geometry}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+%\SweaveOpts{concordance=TRUE}
+\title{HW\#3 ||  MDS  Eigen Decomposition using pairwise distances of US cities}
+\author{Saket Choudhary}
+\maketitle
+
+<<>>=
+library(graphics)
+library(ggplot2)
+@
+
+\textbf{Read Data:}
+<<>>=
+distanceMatrix <- read.csv("distance_matrix.csv", header=T)
+distanceMatrix
+@
+
+\section{MDS}
+\begin{figure}
+
+<<fig=TRUE, width=8>>=
+mds <- cmdscale(distanceMatrix)
+mdsPlot  <- qplot(x=mds[,1], 
+                  y=-mds[,2], 
+                  label=colnames(distanceMatrix)) 
+mdsPlot + 
+  geom_point(color='red') + 
+  geom_text(hjust=-.15) + 
+  xlab("X1") + ylab("X2") + 
+  ggtitle("MDS plot using 2 dimensions")
+@
+\caption{MDS plot(2D)}
+\end{figure}
+
+Coordinates of points are given by:
+<<>>=
+rownames(mds) <- colnames(distanceMatrix)
+colnames(mds) <- c("X1", "X2")
+print(mds)
+@
+%\end{figure}
+
+\section{EigenValue Decomoposition}
+\subsection{Using similarity matrix}
+
+<<>>=
+similarityMatrix <- apply(distanceMatrix, 1, function(x) exp(-x^2/3000.0^2))
+similarityMatrix
+@
+
+Perform PCA an similarityMatrix: 
+\begin{figure}
+<<fig=TRUE, width=8>>=
+similarityMatrix.prcomp <- prcomp(similarityMatrix, scale.=T)
+similarityMatrix.PCA <- similarityMatrix.prcomp$x[,1:2]
+similarityMatrix.plot <- qplot(x=similarityMatrix.PCA[,1],
+                          y=similarityMatrix.PCA[,2], 
+                          label=colnames(distanceMatrix))
+similarityMatrix.plot +
+  geom_point(color='red') +
+  geom_text(hjust=-.15) +
+  xlab("PC1") + ylab("PC2")+
+  ggtitle("First 2 principle components of similarity Matrix")
+@
+\caption{PCA using gaussian kernel(using similarity matrix)}
+\end{figure}
+
+\subsubsection{EigenValues}
+
+<<>>=
+print(similarityMatrix.prcomp$sdev)
+@
+
+\subsubsection{EigenVectors}
+<<>>=
+print(similarityMatrix.prcomp$rotation[,1:2])
+@
+
+\subsubsection{Principle  Components(Scaled and Centered)}
+<<>>=
+print(similarityMatrix.prcomp$x[,1:2])
+@
+
+
+
+
+\subsection{Using distance matrix}
+
+Perform PCA an distanceMatrix: 
+\begin{figure}
+<<fig=TRUE, width=8>>=
+distanceMatrix
+distanceMatrix.prcomp <- prcomp(distanceMatrix, scale.=T)
+distanceMatrix.PCA <- distanceMatrix.prcomp$x[,1:2]
+distanceMatrix.plot <- qplot(x=distanceMatrix.PCA[,1],
+                          y=distanceMatrix.PCA[,2], 
+                          label=colnames(distanceMatrix))
+distanceMatrix.plot +
+  geom_point(color='red') +
+  geom_text(hjust=-.15) +
+  xlab("PC1") + ylab("PC2") +
+  ggtitle("First 2 principle components of distanceMatrix")
+@
+\caption{PCA without using gaussian kernel(using distance matrix)}
+\end{figure}
+
+\subsubsection{EigenValues}
+
+<<>>=
+print(distanceMatrix.prcomp$sdev)
+@
+
+\subsubsection{EigenVectors}
+<<>>=
+print(distanceMatrix.prcomp$rotation[,1:2])
+@
+
+
+
+\subsubsection{Principle  Components(Scaled and Centered)}
+
+<<>>=
+print(distanceMatrix.prcomp$x[,1:2])
+@
+
+\section{Discussion}
+
+As evident from Figure 1 and Figure 2, transforming original data from pairwise distances to pairwise similairties using gaussian kernel does not seem to have effect on the resulting PCA plots. The most probable reasoning is because the data is linearly separable in its original 9 dimensions. With the gaussian kernel trick each row being a 9-D vector is transformed to a infinite-dimensional space(a function for example satisfies all operations that a vector satisfies: addition/multiplication in 'higher' dimensions and with a gaussian kernel with fixed $\sigma^2$ each original vector is sent to a 'higher' dimensional gaussian blob centered at that point. If any two points in original 9-D space were close, their guassian transformation would lead to the resulting vectors having small angle in the 'higher' dimensional space), assuming that higher dimensions would guarantee linear separation. But in this case, linear separation is guaranteed in the original 9-dimensions itself.
+
+\subsection{Equivalence of MDS and PCA?}
+MDS and PCA are expected to have same results when eucliden distances are used.
+[Cox, Trevor F., and Michael AA Cox. Multidimensional scaling. CRC Press, 2000.]
+
+\end{document}
