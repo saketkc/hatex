@@ -1,0 +1,338 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{latexsym}
+\usepackage{mathtools}
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+%\usepackage[]{algorithm2e}
+%\usepackage{algorithmicx}
+%\usepackage{algorithm}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+%\usepackage{algcompatible}
+
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{algorithmicx}
+
+
+%\usepackage{algpseudocode}
+
+%\usepackage{algpseudocode}
+
+%\usepackage[noend]{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\algorithmicbreak}{\textbf{break}}
+\newcommand{\algorithmicgiven}{\textbf{Given:}}
+\newcommand{\BREAK}{\STATE \algorithmicbreak}
+\newcommand{\GIVEN}{\STATEx \algorithmicgiven}
+%\def\NoNumber#1{{\def\alglinenumber##1{}\State #1}\addtocounter{ALG@line}{-1}}
+
+\usepackage{amsmath}
+%\usepackage{multline}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\hmwkTitle}{Project\ \# 4 } % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ Mayl \ 05,\ 2015} % Due date
+\newcommand{\hmwkClass}{BISC-577} % Course/class
+\newcommand{\hmwkClassTime}{11:00am} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+%\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+	\textbf{\hmwkAuthorID}
+	}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+
+
+
+\begin{homeworkSection}{Question \# 1} % Section within problem
+
+\problemAnswer{
+
+\textbf{Chip-Seq Experiments:} Chip-Seq experiment couples chromatin immunoprecipitation with high throughput DNA sequencing.
+It is used for identifying  binding sites of transcription factors and for idetifying histone related modifications. 'Chip' step
+involves cross-linking proteins and DNA making the proteins immobile. This is followed by fragmentation  through sonication/endonucleases, generatiing 100-300bp fragments. The protein of interest is then enriched using a specific antibody that is know to bind selectively to just this
+protein. The separated fragments contain(mostly) of the protein bound DNA sequences. DNA can be separated by reversing the cross-links which can then be analyzed for its abundance, computationally. To obtain sufficient signal, $large$(10M+) number of cells are required.
+ 
+Of the two protocols Nano-Chip-Seq and LinDA, the difference exists at the amplification stage. Nano-Chip-Seq
+makes use of custom primers during PCR amplification containing a specific restriction site that permits direct addition of illumina sequencing adapters 
+These primers form a hairpin structure preventing self-annealing.
+
+LinDA on the other hand makes use of an RNA polymerase from the T7 bacteriophage. 
+
+Since Nano-Chip-Seq relies on PCR amplification and custom primers, these experiments might have technical bias or probably even
+overrepresentation of primer sequnces which should be checked for in the data analysis stage.
+
+ 
+ 
+}
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{Question \# 2}
+	\problemAnswer{ 
+	One of the major sources of bias in Chip-Seq studies arises due to the fragmentation step. Fragmentation is necessary to ensure
+	only fragments bound to protein are purified. Sonication is known to be more effective in open chromatin regions and hence 
+	regions flainkin euchromatin  will shear easily than heterochromatin regions. Transcription factors bind more easily to the open chromatin region which also shears easily and hence gives rise to preferential bias.
+	
+	"Input" Dna protocol involves isolation of sample that has been crosslinked and sonicated but not immunoprecipitated. 
+	The "IgG" control is a "mock" Chip 	reaction that is guranteed to be random. It works by using a 'control' antibody that will bind to non-nuclear proteins randomly.
+	
+	Presence of controls("input" or "IgG") can be used to estimate 'background' rate of non-specific binding for transcription factors/histones
+	which then can be used to filter out the false positive peaks from the analysis samples.
+	
+	%\textbf{Accession:} \url{http://www.ncbi.nlm.nih.gov/sra/SRX541599[accn]}
+	
+	The control dataset is an "input" control	drawn from the human esophageal epithelial cell line and thus was islotaed post 
+	sonification(without immunoprecipitating)
+	
+		}
+\end{homeworkSection}
+
+
+\begin{homeworkSection}{Question \# 3}
+	\problemAnswer{
+	\textbf{H3K9Me3}: http://www.ncbi.nlm.nih.gov/sra/SRX849433[accn] \\
+	\textbf{Run}: SRR1768294\\
+	\textbf{SRA size}: 349M\\
+	\textbf{FastQ size}: 2.6G\\
+	Single End reads of 36bp size.\\
+
+	\textbf{Total Reads}:  18400047\\
+	
+	\textbf{H3K4Me3}: http://www.ncbi.nlm.nih.gov/sra/SRX849427[accn] \\
+	\textbf{Run}: SRR1768267	\\
+	\textbf{SRA size}: 439M\\
+		\textbf{FastQ size}: 3.4G\\
+	Single End reads of 36bp size.\\
+\textbf{	Total Reads}: 23514026\\
+	
+	\textbf{Project Name}: Conserved epigenomic signatures between mouse and human elucidate immune basis of Alzheimer's disease (house mouse)
+	http://www.ncbi.nlm.nih.gov/bioproject/PRJNA273302
+	
+	\textbf{Organism}: Mouse
+
+		}
+\end{homeworkSection}
+
+
+\begin{homeworkSection}{Question \# 4}
+	\problemAnswer{
+		\textbf{SRR1768267.fastq} \\
+	Total Reads:  23514026\\
+Unaligned Reads: 1426753 (6.07\%)% aligned 0 times \\
+Aligend Reads(Exactly once): 17620103 (74.93\%)\\ aligned exactly 1 time\\
+Aligend Reads(Aligned more than once): 4467170 (19.00\%) aligned >1 times\\
+Total alignment rate: 93.93\% overall alignment rate\\
+Time: 18m1.391s \\
+Sam file size: 4G \\
+
+
+ \textbf{SRR1768294.fastq} \\
+  Total reads: 18400047\\
+ Unaligned Reads: 1440302 (7.83\%)\\% aligned 0 times
+ Aligend Reads(Exactly once): 9027568 (49.06\%) aligned exactly 1 time \\
+ Aligend Reads(Aligned more than once): 7932177 (43.11\%) aligned >1 times \\
+ Total alignment rate: 92.17\% overall alignment rate \\
+Time    21m3.115s\\
+Sam file size: 3.1G \\
+
+
+Mapped to mm10.
+		
+		}
+\end{homeworkSection}
+
+\begin{homeworkSection}{Question \# 5}
+	\problemAnswer{
+	Program used: MACS(v1.4)\\
+	
+	Parameters comnfigurable:\\
+	
+	1. $gsize$: Genome size of the organism. This is made use in the $p-value$ calculations and hence may impact
+	the number of peaks depending on the threshold. It is more likely to see peaks in a smaller genome than a large one. \\
+	
+	2. $pvalue$: $p-value$ cut-off for defining a peak. Default is $10^{-5}$, but more stringent cut-offs might be required for noisier datasets\\
+	
+	3. $nolambda$: MACS models reads distribution as poisson distribution. A "control" if present can be used to estimate the 'background' $\lambda$. If no control is present, the background $\lambda$ is fixed.\\
+	
+	4. $nomodel$: MACS models the shifting size of Chip-Seq tags(which often are shifted to $3'$ end, this size being unknown) to precisely locate the binding sites, which might be difficult to model in case of Chip-Seq's broad peaks. So though a precise location is possible by enabling $nomodel$, the data might not necessarily show bimodal pattern.\\
+
+
+Each file tool around one minute to run. The output were bedGraph and bed files.
+
+Bedgraph files are tab delimited files that stores in each row the chromosome number, start position, end position and the read count mapping to these positions. These positions are a superset of the positions appearing in the bed files.
+
+Bed files are also tab delimited with the first column as the chromosome positions the next two as the start and end positions of peak in that chromosome
+and the fourth column as the $-10 \log(10pvalue)$. The summits file has the height information for peaks.
+	
+	
+	
+	
+	
+		}
+	
+\end{homeworkSection}
+ 
+ 
+  \begin{homeworkSection}{Question \# 6}
+  	\problemAnswer{
+  		\textbf{H3K9Me3}\\
+  		Number of peaks: 3338\\
+  		Mean peak length: 1185.777\\
+  		Median peak length: 814.5\\
+  		Max: 46335 (Could be all noise)\\
+  		
+  		\textbf{H3K4Me3}\\
+		NMumber of peaks: 28823\\
+		Mean peak length: 1981.701\\
+		Median peak length: 1594\\
+		Max: 54633 (Could be all noise)\\
+		
+		The number of peaks detected in H3K9Me3 state are less than that in
+		H3K4Me3, thus pointing that H3K9Me3 impacts the heterochromatin(compact) region while H3K4Me3 must be associated with 
+		euchromatin	thus indicating H3K4Me should be associated with actication while H3K9Me3 might be asociated with repression.
+		The datasets do not seem to be high quality because of the inherent noise and 'low peaks' present.
+		Mthfs was one of the genes showing a peak for H3K4Me3, pointing that the gene is probably upregulated.
+		
+  	}
+\end{homeworkSection}
+
+ 
+ 	
+% \end{homeworkSection}
+ 
+ 
+
+ 	
+ %\end{homeworkSection}
+
+\end{document}
+p
