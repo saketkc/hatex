@@ -1,0 +1,29 @@
+\documentclass{article}
+%\usepackage[margin=0.5in]{geometry}
+
+\begin{document}
+	
+\title{HW\#4 || Graph Clustering Algorithms}
+\author{Saket Choudhary}
+\maketitle
+
+\section{Markov Clustering}
+
+Markov clustering makes use of stochastic flows in a graph. The underlying idea is
+that a random walk on a dense cluster is likely to stay on the vertices of this cluster before
+jumping to other cluster. This property is made use by simulating a stochastic flow on the graph
+such that the flow be promoted wherever the current is strong and downweighted otherwise. This can 
+thus be formulated as a Markcov graph. The flows are modelled by calculating successive powers of the matrix.
+
+\section{Restricted Neighborhood Search}
+RNS clustering tries to minimises a cost function that captures the weight of
+inter and intra cluster edges. With a random initial value, RNSC iteratively assigns
+a node to other cluster if that leads to a local minima. Termination can be defined based on number of iterations
+or convergence of the cost function.
+
+\section{Molecular Complex Detection}
+Molecular complex detection assigns a weight to each vertex that is proportional
+to the number of neighbors. Starting from the heaviest vertex it iteratively moves out
+assigning each vertex to the cluster if it is above a certain threshold.
+\section{Comparison}
+\end{document}
