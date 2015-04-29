@@ -189,19 +189,44 @@
 
 \begin{homeworkSection}{Question \# 2}
 	\problemAnswer{ 
-		Gene ID: 3569 [IL6 interleukin 6]
+		Gene ID: 3569 [IL6 interleukin 6]\\
 		HUGO: HGNC:HGNC:6018 \\
 		
-		B) http://www.ncbi.nlm.nih.gov/gene/3569#geneGenomic regions, transcripts, and products
+		B) 
+		$http://www.ncbi.nlm.nih.gov/gene/3569#geneGenomic regions, transcripts, and products$
 		
-		XM_011515390.1 → XP_011513692.1   57 → 210
+\textbf{Exon count: $6$}
+	\textbf{From RefSeq:}	
+			\begin{tabular}{|c|c|c|}
+				\hline Transcript  & Length(nucleotides bp)  & $#$ of exons \\ 
+				\hline $XM_011515390.1$ & 2555  & - \\ 
+				\hline $XM_005249745.3$ &  1969 & - \\ 
+				\hline $XM_011515391.1$ & 978 & -\\
+			\end{tabular} 
+	
+	I was not able to locate the number of exons on NCBI. So the number of exons is not indicated.
+		
+\textbf{From Ensembl:}
+		
+	
+			\begin{tabular}{|c|c|c|}
+				\hline Transcript  & Length(nucleotides bp)  & $#$ of exons \\ 
+				\hline $XM_005249745.2$ & 1412  & 3 \\ 
+				\hline $NM_000600.3$ & 1184 & 5 \\ 
+				\hline 
+			\end{tabular} 
+		
+	
+	\textbf{(C)} None of the transcripts have the same number of exons as the original gene(6). This is expected, since the mature mRNA
+	is a result of alternative splicing resulting in few exons being assembled while the introns are chunked off.\\
+	
+	\textbf{(D)} Ensembl. The transcipts do not match. The $XM_*$ comes from NCBI's automated eukaryotic genome annotation pipeline and are 'predicted' transcripts while the $NM_*$ are the curated ones. This likely seems to differ, because the $XM_*$ predicted transcripts arerefresshed periodically and the change might not reflect on Ensembl at the same time.
 
-		XM_005249745.3 → XP_005249802.1  111 → 212
+
 		
-		XM_011515391.1 → XP_011513693.1  1 → 134
+
 	
 	
-	TSA is an archive of computationally assembled sequences from primary data such as ESTs, traces and Next Generation Sequencing Technologies.
 		}
 \end{homeworkSection}
 
@@ -213,9 +238,14 @@
 		Human HCC1954 breast cancer cell http://www.ncbi.nlm.nih.gov/sra/SRX470401[accn]
 		
 		
-		%http://www.ncbi.nlm.nih.gov/sra?term=SRP042212
+		$http://www.ncbi.nlm.nih.gov/sra?term=SRP042212$
 		
-		%http://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=262825
+		$http://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=262825$
+		
+		\textbf{A} Splicing leads to removal of introns resulting in joining of exons. This process 
+		van suffer a lot of variation and hence mapping to a single reference as in the case of DNA is often not possible.
+		
+		\textbf{B} Project:
 		}
 \end{homeworkSection}
 
