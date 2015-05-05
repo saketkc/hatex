@@ -199,9 +199,9 @@
 	\textbf{From RefSeq:}	
 			\begin{tabular}{|c|c|c|}
 				\hline Transcript  & Length(nucleotides bp)  & No. of exons \\ 
-				\hline $XM_011515390.1$ & 2555  & - \\ 
-				\hline $XM_005249745.3$ &  1969 & - \\ 
-				\hline $XM_011515391.1$ & 978 & -\\
+				\hline $XM\_011515390.1$ & 2555  & - \\ 
+				\hline $XM\_005249745.3$ &  1969 & - \\ 
+				\hline $XM\_011515391.1$ & 978 & -\\
 			\end{tabular} 
 	
 	I was not able to locate the number of exons on NCBI. So the number of exons is not indicated.
@@ -210,8 +210,8 @@
 	
 			\begin{tabular}{|c|c|c|}
 				\hline Transcript  & Length(nucleotides bp)  & No. of exons \\ 
-				\hline $XM_005249745.2$ & 1412  & 3 \\ 
-				\hline $NM_000600.3$ & 1184 & 5 \\ 
+				\hline $XM\_005249745.2$ & 1412  & 3 \\ 
+				\hline $NM\_000600.3$ & 1184 & 5 \\ 
 				\hline 
 			\end{tabular} 
 		
@@ -219,7 +219,7 @@
 	\textbf{(C)} None of the transcripts have the same number of exons as the original gene(6). This is expected, since the mature mRNA
 	is a result of alternative splicing resulting in few exons being assembled while the introns are chunked off.\\
 	
-	\textbf{(D)} Ensembl. The transcipts do not match. The $XM_*$ comes from NCBI's automated eukaryotic genome annotation pipeline and are 'predicted' transcripts while the $NM_*$ are the curated ones. This likely seems to differ, because the $XM_*$ predicted transcripts arerefresshed periodically and the change might not reflect on Ensembl at the same time.
+	\textbf{(D)} Ensembl. The transcipts do not match. The $XM\_*$ comes from NCBI's automated eukaryotic genome annotation pipeline and are 'predicted' transcripts while the $NM\_*$ are the curated ones. This likely seems to differ, because the $XM\_*$ predicted transcripts arerefresshed periodically and the change might not reflect on Ensembl at the same time.
 
     }
 \end{homeworkSection}
@@ -227,14 +227,6 @@
 
 \begin{homeworkSection}{Question \# 3}
 	\problemAnswer{
-		Human HCC1954 breast cancer cell line under trastuzumab treatment: http://www.ncbi.nlm.nih.gov/sra/SRX470402[accn]
-		
-		Human HCC1954 breast cancer cell http://www.ncbi.nlm.nih.gov/sra/SRX470401[accn]
-		
-		
-		$http://www.ncbi.nlm.nih.gov/sra?term=SRP042212$
-		
-		$http://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all\&from_uid=262825$
 		
 		\textbf{A} Splicing leads to removal of introns resulting in joining of exons. This process 
 		van suffer a lot of variation and hence mapping to a single reference as in the case of DNA is often not possible.
@@ -257,31 +249,25 @@
         unmapped reads and then infers the splice site regions. Bowtie2 cannot handle aligniing reads by splitting(allowing very large gaps)\\
 
         \textbf{E} 
-        "sort -k5,5 junctions.bed | tail" \\ 
+        $sort\ -k5,5\ junctions.bed\ \| tail$ \\ 
         SP1: "chr2    216243994       216245583       JUNC00073269    9995    -       216243994       216245583       255,0,0 2       46,50   0,1539"\\
         SP2: "chr19   55897756        55897987        JUNC00054766    999     +       55897756        55897987        255,0,0 2       50,50   0,181"\\
-        \begin{tabular}
-            \hline
-            Fastq & Number of Splice Sites & Splice Junction with max reads & Number of reads\\
-            SRR1533801 & SP1 & 9995\\
-            \hline
-            SRR1533805 & SP2 & 999\\
-            \hline
-        \end{tabular}
+        SRR1533801: \\
+        Number of splice sites: 125761\\
+        Splice junction with max reads: SP1(above)\\
+        Number of reads at SP1: 9995\\
+
+        SRR1533804: \\
+        Number of splice sites: 95823\\
+        Splice junction with max reads: SP2(above)\\
+        Number of reads at SP1: 999\\
+
+        
         \textbf{F}
-        $awk '{printf\ "\%s\t\%d\t\%d\t\%d\t\%d\n",\$1,\$3-\$2,\$5,\$2,\$3}'\ junctions.bed\ |\ sort -k2,2\ |\ tail$
-        SP1: "chr4    9999    7       186231930       186241929"\\
-        SP2: "chr5    9999    40      168139310       168149309"\\
+        $awk '{printf\ "\%s\%d\%d\%d\%d",\$1,\$3-\$2,\$5,\$2,\$3}'\ junctions.bed\ |\ sort -k2,2\ |\ tail$
+            SRR1533801 longest junction site(SP1): "chr4    9999    7       186231930       186241929"\\
+            SRR1533805 longest junction site(SP2): "chr5    9999    40      168139310       168149309"\\
         $[chr][length][numer bf reads][start][end]$
-        \begin{tabular}
-            \hline
-            Fastq & Longest Junction site\\ %& Junction site that occurs max times & Number of times junction site occurs & Most frequent no. of reads & Second most frequent no. of reads\\
-            \hline
-            SRR1533801 & SP1 \\
-            \hline
-            SRR1533805 & SP2 \\
-            \hline
-        \end{tabular}
 
     }
 \end{homeworkSection}
@@ -292,19 +278,20 @@
         \textbf{A} Cufflinks takes an alignment file, assembles the transcript and estimates their abundance testing for 
         differential expression.
 
-        \textbf{B} "chr7    unknown stop_codon      22771190        22771192        .       +       .       gene_id "IL6"; gene_name "IL6"; p_id "P4693"; transcript_id "NM_000600"; tss_id "TSS3170";" 
+        %\textbf{B} "chr7    unknown stop\\_codon      22771190        22771192        .       +       .       gene\_id "IL6"; gene\_name "IL6"; p\_id "P4693"; transcript\_id "NM\_000600"; tss\_id "TSS3170";" 
 
-        Command used: grep -r 'IL6' genes.gtf | grep NM
-        The 'genes.gtf' was downloaded from tophat's website and came bundled with other indices[iGenome bundle]
+        Command used: $grep\ -r\ 'IL6'\ genes.gtf\ \| grep NM$
+        The 'genes.gtf' was downloaded from tophat's website and came bundled with other indices(iGenome bundle)
 
         \textbf{C} FPKM measures the abundance of transcripts(RPKM for single end reads) is a normalized count to measure the abundance.
         Normalization is essential to adjust for the number of sequenced and mapped reads.
-        
+
         SRR1533804.fastq gene: "CUFF.8926       -       -       CUFF.8926       -       -       chr14:24702148-24702409 -       -       9.99986 4.20454 15.7952 OK"\\
         SRR1533804.fastq transcript: CUFF.8926.1     -       -       CUFF.8926       -       -       chr14:24702148-24702409 261     9.13859 9.99986 4.20454 15.7952 OK"\\
 
-        SRR1533801.fastq gene: "" 
+        The $10^{th}$ column indicates the abundance which are 9.99 and 9.12 respectively for gene and transcript of SRR1533804
 
+        
     }
 
 \end{homeworkSection}
@@ -312,8 +299,19 @@
 \begin{homeworkSection}{Question \# 5}
     \problemAnswer{
 
+        \textbf{A} "cuffdiff transcripts.gtf SRR1533801.bam SRR1533804.bam"
 
+        \textbf{B} 
+       "SERPINA9        SERPINA9        -       chr14:94929057-94942670 q1      q2      OK      0       0.555802        inf     -nan    0.00015 0.0408021   y" 
+       The logFC tunrs out to be inf, probably indicating a novel transcript not found in the original gtf file.
 
+        Command: "sort -k10,10 genediff | head"
+
+    \textbf{C} Given  a control and treatement experiment, the differences can arise due to multiple attributes.
+    As the number of attributes increase the probability of difference between control and experiment groups
+    will tend to increase. Correcting for multiple testing adjusts this probability for those multiple attributes
+    to reflect the corrected probability.
+    \textbf{D} 
 
 
     }
@@ -321,7 +319,13 @@
 
 \begin{homeworkSection}{Question \# 6}
     \problemAnswer{
-    }
+
+        \textbf{A} I did not get any output for differential splicing, splicingdiff was empty. I think I did the 'cuffdiff' part incorrect. I tried merging
+        the gtf for control and treatment, but it seemed to fail with an invalid transcript id error. 
+\textbf{B} cuffdiff finds significant changes in transcript levels. Given two samples and the number of reads
+mapping to each transcript, cuffduff's performs a hypothesis test, of how likely the change is due to the difference
+in two groups rather than just by chance
+}.
 \end{homeworkSection}
 
 
