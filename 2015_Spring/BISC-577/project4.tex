@@ -188,17 +188,17 @@
 \end{homeworkSection}
 
 \begin{homeworkSection}{Question \# 2}
-	\problemAnswer{ 
+	\problemAnswer{
 		Gene ID: 3569 [IL6 interleukin 6]\\
 		HUGO: HGNC:HGNC:6018 \\
 		
 		B) 
-		$http://www.ncbi.nlm.nih.gov/gene/3569#geneGenomic regions, transcripts, and products$
+		$http://www.ncbi.nlm.nih.gov/gene/3569geneGenomic regions, transcripts, and products$
 		
 \textbf{Exon count: $6$}
 	\textbf{From RefSeq:}	
 			\begin{tabular}{|c|c|c|}
-				\hline Transcript  & Length(nucleotides bp)  & $#$ of exons \\ 
+				\hline Transcript  & Length(nucleotides bp)  & No. of exons \\ 
 				\hline $XM_011515390.1$ & 2555  & - \\ 
 				\hline $XM_005249745.3$ &  1969 & - \\ 
 				\hline $XM_011515391.1$ & 978 & -\\
@@ -207,10 +207,9 @@
 	I was not able to locate the number of exons on NCBI. So the number of exons is not indicated.
 		
 \textbf{From Ensembl:}
-		
 	
 			\begin{tabular}{|c|c|c|}
-				\hline Transcript  & Length(nucleotides bp)  & $#$ of exons \\ 
+				\hline Transcript  & Length(nucleotides bp)  & No. of exons \\ 
 				\hline $XM_005249745.2$ & 1412  & 3 \\ 
 				\hline $NM_000600.3$ & 1184 & 5 \\ 
 				\hline 
@@ -222,12 +221,7 @@
 	
 	\textbf{(D)} Ensembl. The transcipts do not match. The $XM_*$ comes from NCBI's automated eukaryotic genome annotation pipeline and are 'predicted' transcripts while the $NM_*$ are the curated ones. This likely seems to differ, because the $XM_*$ predicted transcripts arerefresshed periodically and the change might not reflect on Ensembl at the same time.
 
-
-		
-
-	
-	
-		}
+    }
 \end{homeworkSection}
 
 
@@ -240,48 +234,96 @@
 		
 		$http://www.ncbi.nlm.nih.gov/sra?term=SRP042212$
 		
-		$http://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=262825$
+		$http://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all\&from_uid=262825$
 		
 		\textbf{A} Splicing leads to removal of introns resulting in joining of exons. This process 
 		van suffer a lot of variation and hence mapping to a single reference as in the case of DNA is often not possible.
 		
-		\textbf{B} Project:
-		}
+        \textbf{B} Project Accession: $http://www.ncbi.nlm.nih.gov/bioproject/PRJNA257207$
+        There are 2 types of samples, investigating the reorganization of  nuclear architecture ofhuman fobroblasts and 
+        MSCs. One type of samples come from early passage of replicative senescence while the other set 
+        are in late passage. r
+        %the efficiency of trastuzumab efficiency: cancer cell line,
+        %trastuzumab resistant version of the cell line and cell line under trastuzumab treatment.
+       There are three biological replicates for the 2 type of conditions but no technical replicates(single run in each experiment)\\
+
+        \textbf{C}  SRR1533801.fastq: 34507899 \\
+           SRR1533801.fastq: 31246550 \\
+
+        \textbf{D} Tophat is essentially an aligner that internally uses bowtie2. Reads from RNA-seq experiment
+        will involve spliced regions. Hence a single read could have originally originated from two regions(exons) that are far apart
+        on the genome(the reference sequence). Tophat first aligns the reads to the references, some of the reads will remain unmapped, possibly
+        due to the alternative splicing(other reason might be contamination, mutations etc) in which case Tophat takes these
+        unmapped reads and then infers the splice site regions. Bowtie2 cannot handle aligniing reads by splitting(allowing very large gaps)\\
+
+        \textbf{E} 
+        "sort -k5,5 junctions.bed | tail" \\ 
+        SP1: "chr2    216243994       216245583       JUNC00073269    9995    -       216243994       216245583       255,0,0 2       46,50   0,1539"\\
+        SP2: "chr19   55897756        55897987        JUNC00054766    999     +       55897756        55897987        255,0,0 2       50,50   0,181"\\
+        \begin{tabular}
+            \hline
+            Fastq & Number of Splice Sites & Splice Junction with max reads & Number of reads\\
+            SRR1533801 & SP1 & 9995\\
+            \hline
+            SRR1533805 & SP2 & 999\\
+            \hline
+        \end{tabular}
+        \textbf{F}
+        $awk '{printf\ "\%s\t\%d\t\%d\t\%d\t\%d\n",\$1,\$3-\$2,\$5,\$2,\$3}'\ junctions.bed\ |\ sort -k2,2\ |\ tail$
+        SP1: "chr4    9999    7       186231930       186241929"\\
+        SP2: "chr5    9999    40      168139310       168149309"\\
+        $[chr][length][numer bf reads][start][end]$
+        \begin{tabular}
+            \hline
+            Fastq & Longest Junction site\\ %& Junction site that occurs max times & Number of times junction site occurs & Most frequent no. of reads & Second most frequent no. of reads\\
+            \hline
+            SRR1533801 & SP1 \\
+            \hline
+            SRR1533805 & SP2 \\
+            \hline
+        \end{tabular}
+
+    }
 \end{homeworkSection}
 
 
 \begin{homeworkSection}{Question \# 4}
-	\problemAnswer{
-	
-		}
+    \problemAnswer{
+        \textbf{A} Cufflinks takes an alignment file, assembles the transcript and estimates their abundance testing for 
+        differential expression.
+
+        \textbf{B} "chr7    unknown stop_codon      22771190        22771192        .       +       .       gene_id "IL6"; gene_name "IL6"; p_id "P4693"; transcript_id "NM_000600"; tss_id "TSS3170";" 
+
+        Command used: grep -r 'IL6' genes.gtf | grep NM
+        The 'genes.gtf' was downloaded from tophat's website and came bundled with other indices[iGenome bundle]
+
+        \textbf{C} FPKM measures the abundance of transcripts(RPKM for single end reads) is a normalized count to measure the abundance.
+        Normalization is essential to adjust for the number of sequenced and mapped reads.
+        
+        SRR1533804.fastq gene: "CUFF.8926       -       -       CUFF.8926       -       -       chr14:24702148-24702409 -       -       9.99986 4.20454 15.7952 OK"\\
+        SRR1533804.fastq transcript: CUFF.8926.1     -       -       CUFF.8926       -       -       chr14:24702148-24702409 261     9.13859 9.99986 4.20454 15.7952 OK"\\
+
+        SRR1533801.fastq gene: "" 
+
+    }
+
 \end{homeworkSection}
 
 \begin{homeworkSection}{Question \# 5}
-	\problemAnswer{
-	
-	
-	
-	
-	
-		}
-	
-\end{homeworkSection}
- 
- 
-  \begin{homeworkSection}{Question \# 6}
-  	\problemAnswer{
-  	
-  	}
+    \problemAnswer{
+
+
+
+
+
+    }
 \end{homeworkSection}
 
- 
- 	
-% \end{homeworkSection}
- 
- 
+\begin{homeworkSection}{Question \# 6}
+    \problemAnswer{
+    }
+\end{homeworkSection}
 
- 	
- %\end{homeworkSection}
 
 \end{document}
 p
