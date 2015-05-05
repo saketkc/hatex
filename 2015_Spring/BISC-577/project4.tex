@@ -278,9 +278,9 @@
         \textbf{A} Cufflinks takes an alignment file, assembles the transcript and estimates their abundance testing for 
         differential expression.
 
-        %\textbf{B} "chr7    unknown stop\\_codon      22771190        22771192        .       +       .       gene\_id "IL6"; gene\_name "IL6"; p\_id "P4693"; transcript\_id "NM\_000600"; tss\_id "TSS3170";" 
+        \textbf{B} "chr7    unknown stop\_codon      22771190        22771192        .       +       .       gene\_id IL6; gene\_name 'IL6'; p\_id 'P4693'; transcript\_id 'NM\_000600'; tss\_id 'TSS3170';"
 
-        Command used: $grep\ -r\ 'IL6'\ genes.gtf\ \| grep NM$
+Command used: $grep\ -r\ 'IL6'\ genes.gtf\ \| grep NM$\\
         The 'genes.gtf' was downloaded from tophat's website and came bundled with other indices(iGenome bundle)
 
         \textbf{C} FPKM measures the abundance of transcripts(RPKM for single end reads) is a normalized count to measure the abundance.
@@ -299,20 +299,18 @@
 \begin{homeworkSection}{Question \# 5}
     \problemAnswer{
 
-        \textbf{A} "cuffdiff transcripts.gtf SRR1533801.bam SRR1533804.bam"
+        \textbf{A} "cuffdiff transcripts.gtf SRR1533801.bam SRR1533804.bam"\\
 
         \textbf{B} 
        "SERPINA9        SERPINA9        -       chr14:94929057-94942670 q1      q2      OK      0       0.555802        inf     -nan    0.00015 0.0408021   y" 
        The logFC tunrs out to be inf, probably indicating a novel transcript not found in the original gtf file.
 
-        Command: "sort -k10,10 genediff | head"
+        Command: "sort -k10,10 genediff | head"\\
 
     \textbf{C} Given  a control and treatement experiment, the differences can arise due to multiple attributes.
     As the number of attributes increase the probability of difference between control and experiment groups
     will tend to increase. Correcting for multiple testing adjusts this probability for those multiple attributes
     to reflect the corrected probability.
-    \textbf{D} 
-
 
     }
 \end{homeworkSection}
@@ -322,6 +320,7 @@
 
         \textbf{A} I did not get any output for differential splicing, splicingdiff was empty. I think I did the 'cuffdiff' part incorrect. I tried merging
         the gtf for control and treatment, but it seemed to fail with an invalid transcript id error. 
+        \\
 \textbf{B} cuffdiff finds significant changes in transcript levels. Given two samples and the number of reads
 mapping to each transcript, cuffduff's performs a hypothesis test, of how likely the change is due to the difference
 in two groups rather than just by chance
