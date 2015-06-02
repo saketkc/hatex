@@ -41,3 +41,16 @@ dividing data into q-equal sized datasets.
 ## Power transformation
 - $x’ = x^p$ for $x’$ to be normally distributed
 - Box-Cox transform is a method to determine optimal p
+
+## CLT
+
+- Means of samples from normally distributed samples are themselves normal(Proved too many times)
+
+## CI
+
+- CI: True value of a parameter lies within certain bounds
+- $\alpha$: Priobability of rejecting null hypothesis where the null hypothesis implies no difference
+when the null is true, thus making a wrong decision
+- $1-\alpha$: Probabilty of rejecting the nul hypothesis when the null is true.
+
+- Cases differ when the population variance aree knwn or unknown
