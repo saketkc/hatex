@@ -61,3 +61,20 @@ SELECT distinct(golferID) FROM round WHERE round.course = 'WILSON';
 */
 
 
+
+
+
+
+
+
+/*
+Query 10
+*/
+SELECT AVG(score) FROM round WHERE round.course = 'WILSON';
+/*
++------------+
+| AVG(score) |
++------------+
+|    88.1622 |
++------------+
+*/
