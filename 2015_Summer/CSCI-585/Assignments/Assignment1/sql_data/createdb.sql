@@ -36,6 +36,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `golfer`;
 CREATE TABLE `golfer` (
   `ID` varchar(40) NOT NULL,
+  `name` varchar(60) NOT NULL DEFAULT '',
   `home_course` varchar(40) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -91,6 +92,6 @@ UNLOCK TABLES;
 
 LOAD DATA INFILE '/home/saket/hatex/2015_Summer/CSCI-585/Assignments/Assignment1/sql_data/courses_null.csv' IGNORE INTO TABLE course FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (name,greenfee);
 LOAD DATA INFILE '/home/saket/hatex/2015_Summer/CSCI-585/Assignments/Assignment1/sql_data/tees_null.csv' IGNORE INTO TABLE tee FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (course_name,name, course_rating, slope_rating,yardage);
-LOAD DATA INFILE '/home/saket/hatex/2015_Summer/CSCI-585/Assignments/Assignment1/sql_data/golfers_null.csv' IGNORE INTO TABLE golfer FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (ID, home_course);
+LOAD DATA INFILE '/home/saket/hatex/2015_Summer/CSCI-585/Assignments/Assignment1/sql_data/golfers_null.csv' IGNORE INTO TABLE golfer FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (ID, name, home_course);
 LOAD DATA INFILE '/home/saket/hatex/2015_Summer/CSCI-585/Assignments/Assignment1/sql_data/rounds_null.csv' IGNORE INTO TABLE round FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES (golferID,day, course, tee, score );
 
