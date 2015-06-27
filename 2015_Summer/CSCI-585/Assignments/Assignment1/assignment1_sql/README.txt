@@ -18,8 +18,10 @@ creates another 'cleaned' csv.
 
 The '*_null.csv' are generated using the foresaid
 python script and are input to 'createdb.sql'.
+To run: $ python courses.csv
+It will create a file courses_null.csv in the same directory.
 
-I am also not sure, if MySQL takes local paths for
+NOTE: I am also not sure, if MySQL takes local paths for
 reading files, but `createdb.sql` mentions
 them as hardcoded paths which MUST be changed
 before running it. I do not know of a cleaner
