@@ -48,6 +48,81 @@
     $StatusCode \longrightarrow TaskStatusText$\\
 
     \subsection{Part3}
-    \textbf{Part3} 3NF Form:
-    \begin{table}
+    \textbf{Part3} 3NF Form:	\newline
+    TaskStatus
+	\begin{tabular}{|c|c|c|c|}
+	\hline \underline{TID} & \underline{StatusCode}  & ReqDept  & TaskStatusTime  \\ 
+	\hline  &  &  &  \\ 
+	\hline 
+	\end{tabular} 
+	\newline
+	$Dept\_Charge$
+	\begin{tabular}{|c|c|}
+		\hline \underline{ReqDept}  & Charge   \\ 
+		\hline  &    \\ 
+		\hline 
+	\end{tabular} 
+	\newline	
+	$Code_Text$
+	\begin{tabular}{|c|c|}
+		\hline \underline{StatusCode}  & TaskStatusText   \\ 
+		\hline  &    \\ 
+		\hline 
+	\end{tabular} 
+
+		
+\section{{Question \#2}}
+\subsection{Part 1}
+    Primary Key: $\underline{EID}$ 
+    
+    \textbf{Part1} Functional Dependencies
+	None
+	
+\subsection{Part 2}
+This is in neither of 1NF,2NF,3NF. The last column 'Especialities' is not atomic, and hence it is not even 1NF.
+\subsection{Part 3}
+    Employees
+	\begin{tabular}{|c|c|c|}
+	\hline \underline{EID} & \underline{Ename}  & EDeskNum  \\ 
+	\hline  &  &    \\ 
+	\hline 
+	\end{tabular} 
+	\newline
+	$EID\_EPecialities$
+	\begin{tabular}{|c|c|}
+		\hline \underline{EID}  & \underline{ESpecialities}   \\ 
+		\hline  &    \\ 
+		\hline 
+	\end{tabular} 
+	\newline	
+
+
+
+\section{{Question \#3}}
+\subsection{Part 1}
+    Primary Key: $(\underline{CustID},\underline{EID})$ 
+    
+    \textbf{Part1} Functional Dependencies
+	None
+	
+\subsection{Part 2}
+This is in neither of 1NF,2NF,3NF. The last column 'Especialities' is not atomic, and hence it is not even 1NF.
+\subsection{Part 3}
+    Employees
+	\begin{tabular}{|c|c|c|}
+	\hline \underline{EID} & \underline{Ename}  & EDeskNum  \\ 
+	\hline  &  &    \\ 
+	\hline 
+	\end{tabular} 
+	\newline
+	$EID\_EPecialities$
+	\begin{tabular}{|c|c|}
+		\hline \underline{EID}  & \underline{ESpecialities}   \\ 
+		\hline  &    \\ 
+		\hline 
+	\end{tabular} 
+	\newline	
+	
+
+
 \end{document}
