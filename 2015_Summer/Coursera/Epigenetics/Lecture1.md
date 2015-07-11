@@ -121,4 +121,32 @@ during cell division
 		- Gag and Pol needs to be active
 		- If LTR2 active: Downstream expressed: NOT required, need to methykate CpG on LTR2
 		- mutation of repeats to prevent transposition
-		- 
+		- Avoids transcriptional interference from strong promoters
+        -   Prevent illegitimate recombination
+
+- Methlylationa and Cancer
+    - Historically, the first one found was hypomethylation at intergenic regions
+    - More consistent thatn just mutation profile
+    - DNA demethylation occurs in early development, in primoridual germ cell development
+    and later at specific stages of differentiation
+    - Indepdent of DNA replication(indepedent of  DNMT1) => Active demethylation
+
+- Passive demethylation
+    - Dilution of DNA methylation with cell division when DNMT1 is absent
+
+- Active demethylation
+    - C-C is difficult to remove so it must be the enzymes that remove the C-C group through a lot of intermediates
+
+## Summary
+-   Occurs at CpG dinucleotides
+-  Gene silencer
+- Genomic stability
+- DNMT1 for maintaining, 3a3b for de-novo
+- Mitotically heritable due to DNMT1 maintainer
+- Can be reoved actively/passively involving TET proteins
+- Essential for viability [DNMT1 null leads to death]
+
+## Heritability of DNA Methylation
+- DNMT1 recognises hemi-methylated DNA: restores methylation on relicated strand
+- TET proteins, rarely expressed, are involved in dna demethylation
+

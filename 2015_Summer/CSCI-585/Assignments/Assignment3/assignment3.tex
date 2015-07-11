@@ -1,0 +1,53 @@
+\documentclass[a4paper,11pt,x11names]{article}
+
+\usepackage{hyperref}
+
+\newcommand{\hmwkTitle}{Assignment\ \# 1 } % Assignment title
+\newcommand{\hmwkDueDate}{Friday,\ July \ 10,\ 2015} % Due date
+\newcommand{\hmwkClass}{CSCI-585} % Course/class
+\newcommand{\hmwkClassTime}{11:00pm} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+%\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+	\textbf{\hmwkAuthorID}
+	}
+\date{} % Insert date here if you want it to appear below your name
+
+
+\begin{document}
+\maketitle
+\clearpage
+\section{Question \# 1} % Section within problem
+    \subsection{Part1}
+    Primary Key: $(\underline{TID},\underline{StatusCode})$ 
+    
+    \textbf{Part1} Functional Dependencies
+    \newline
+   
+    \textbf{Partial Dependencies:} \\
+    $StatusCode \longrightarrow TaskStatusText$\\
+
+    \textbf{Transitive Dependencies:} \\
+    $ReqDept \longrightarrow Charge$
+    
+    \subsection{Part2}
+    \textbf{Part2} Satisfies 1NF but not 2NF or 3NF
+    All the rows are unique considering all the attributes(which are atomic). However  it is not 2NF. since there is a partial dependency involved: 
+    $StatusCode \longrightarrow TaskStatusText$\\
+
+    \subsection{Part3}
+    \textbf{Part3} 3NF Form:
+    \begin{table}
+\end{document}
