@@ -2,7 +2,7 @@
 
 \usepackage{hyperref}
 
-\newcommand{\hmwkTitle}{Assignment\ \# 1 } % Assignment title
+\newcommand{\hmwkTitle}{Assignment\ \# 3 } % Assignment title
 \newcommand{\hmwkDueDate}{Friday,\ July \ 10,\ 2015} % Due date
 \newcommand{\hmwkClass}{CSCI-585} % Course/class
 \newcommand{\hmwkClassTime}{11:00pm} % Class/lecture time
@@ -30,14 +30,12 @@
 \maketitle
 \clearpage
 \section{Question \# 1} % Section within problem
-    \subsection{Part1}
+    \subsection{Part1 Functional Dependencies}
     Primary Key: $(\underline{TID},\underline{StatusCode})$ 
     
-    \textbf{Part1} Functional Dependencies
-    \newline
    
     \textbf{Partial Dependencies:} \\
-    $StatusCode \longrightarrow TaskStatusText$\\
+    $\underline{StatusCode} \longrightarrow TaskStatusText$\\
 
     \textbf{Transitive Dependencies:} \\
     $ReqDept \longrightarrow Charge$
@@ -45,11 +43,11 @@
     \subsection{Part2}
     \textbf{Part2} Satisfies 1NF but not 2NF or 3NF
     All the rows are unique considering all the attributes(which are atomic). However  it is not 2NF. since there is a partial dependency involved: 
-    $StatusCode \longrightarrow TaskStatusText$\\
+    $\underline{StatusCode} \longrightarrow TaskStatusText$\\
 
     \subsection{Part3}
     \textbf{Part3} 3NF Form:	\newline
-    TaskStatus
+    $TaskStatus$
 	\begin{tabular}{|c|c|c|c|}
 	\hline \underline{TID} & \underline{StatusCode}  & ReqDept  & TaskStatusTime  \\ 
 	\hline  &  &  &  \\ 
@@ -63,7 +61,7 @@
 		\hline 
 	\end{tabular} 
 	\newline	
-	$Code_Text$
+	$Code\_Text$
 	\begin{tabular}{|c|c|}
 		\hline \underline{StatusCode}  & TaskStatusText   \\ 
 		\hline  &    \\ 
@@ -72,25 +70,24 @@
 
 		
 \section{{Question \#2}}
-\subsection{Part 1}
+\subsection{Part 1 Functional Dependencies}
     Primary Key: $\underline{EID}$ 
     
-    \textbf{Part1} Functional Dependencies
-	None
+	Functional Dependencies: None
 	
 \subsection{Part 2}
 This is in neither of 1NF,2NF,3NF. The last column 'Especialities' is not atomic, and hence it is not even 1NF.
 \subsection{Part 3}
-    Employees
+    $Employees$
 	\begin{tabular}{|c|c|c|}
 	\hline \underline{EID} & \underline{Ename}  & EDeskNum  \\ 
 	\hline  &  &    \\ 
 	\hline 
 	\end{tabular} 
 	\newline
-	$EID\_EPecialities$
+	$EID\_ESpecialities$
 	\begin{tabular}{|c|c|}
-		\hline \underline{EID}  & \underline{ESpecialities}   \\ 
+		\hline \underline{EID}  & {ESpecialities}   \\ 
 		\hline  &    \\ 
 		\hline 
 	\end{tabular} 
@@ -99,30 +96,35 @@ This is in neither of 1NF,2NF,3NF. The last column 'Especialities' is not atomic
 
 
 \section{{Question \#3}}
-\subsection{Part 1}
+\subsection{Part 1 Functional Dependencies}
     Primary Key: $(\underline{CustID},\underline{EID})$ 
     
-    \textbf{Part1} Functional Dependencies
-	None
+    \textbf{Partial Dependencies:} \\
+	$\underline{CustID} \longrightarrow CustDept$\\
+    
+        \textbf{Transitive Dependencies:} \\
+None
+        
+
+	
+	
 	
 \subsection{Part 2}
-This is in neither of 1NF,2NF,3NF. The last column 'Especialities' is not atomic, and hence it is not even 1NF.
+This is 1NF, but not 2NF or 3NF. All columns are atomic, no two rows contain repeating data. It is not 2NF because of the presence of partial dependency:
+	$CustID \longrightarrow CustDept$\\(A customer is an employee first, and hence is connected to one department('CustDept'))(It's not really clear what CustDept is, I am assuming it is the dept that the employee who is a customer belongs to)	
+	
 \subsection{Part 3}
-    Employees
-	\begin{tabular}{|c|c|c|}
-	\hline \underline{EID} & \underline{Ename}  & EDeskNum  \\ 
-	\hline  &  &    \\ 
+    $Review$:
+	\begin{tabular}{|c|c|c|c|}
+	\hline \underline{CustID} & \underline{EID}  &  Rating & Comments  \\ 
+	\hline  &  &  &   \\ 
 	\hline 
-	\end{tabular} 
-	\newline
-	$EID\_EPecialities$
+	\end{tabular} \\
+	$CustID\_Dept$:
 	\begin{tabular}{|c|c|}
-		\hline \underline{EID}  & \underline{ESpecialities}   \\ 
+		\hline \underline{CustID}  & {CustDept}   \\ 
 		\hline  &    \\ 
 		\hline 
 	\end{tabular} 
 	\newline	
-	
-
-
 \end{document}
