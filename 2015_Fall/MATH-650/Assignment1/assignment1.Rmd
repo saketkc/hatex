@@ -2,7 +2,7 @@
 title: "MATH-650 Assignment-1"
 author: "Saket Choudhary"
 date: "08/25/2015"
-output: pdf_document
+output: html_document
 ---
 
 ### Generate $x$,$y$ $\sim$ $N(0,1)$
@@ -47,7 +47,7 @@ print(difference_of_mean_xy)
 
 Difference of mean of $x$, $y$ is: `r difference_of_mean_xy`
 
-### t-test for $x,y \sim N(0,1)$
+### t-test for $x \sim N(0,1)$,$y \sim N(2,1)$
 ```{r}
 t_test <- t.test(x,y)
 print(t_test)
