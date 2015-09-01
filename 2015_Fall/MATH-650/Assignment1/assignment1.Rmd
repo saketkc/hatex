@@ -1,8 +1,8 @@
 ---
 title: "MATH-650 Assignment-1"
-author: "Saket Choudhary"
+author: 'Saket Choudhary (USCID: 21270058637) (skchoudh@usc.edu)'
 date: "08/25/2015"
-output: pdf_document
+output: html_document
 ---
 
 ### Generate $x$,$y$ $\sim$ $N(0,1)$
