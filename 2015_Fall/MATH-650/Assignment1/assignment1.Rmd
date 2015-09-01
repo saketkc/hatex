@@ -2,7 +2,7 @@
 title: "MATH-650 Assignment-1"
 author: "Saket Choudhary"
 date: "08/25/2015"
-output: html_document
+output: pdf_document
 ---
 
 ### Generate $x$,$y$ $\sim$ $N(0,1)$
@@ -28,7 +28,7 @@ t_test <- t.test(x,y)
 print(t_test)
 ```
 
-From the t-test results with degrees of freedom = `r t_test$df` and a p-value of `r t_test$p.value` and using a threshold level of significance of $\alpha = 0.01$, we FAIL to reject the null hypothesis that the means of two samples, $x$ and $y$ are equal. [Since p-value < $\alpha$]
+From the t-test results with degrees of freedom `r (t_test$paramter)` and a p-value of $`r (t_test$p.value)`$ and using a threshold level of significance of $\alpha = 0.01$, we *FAIL to reject* the null hypothesis that the means of two samples, $x$ and $y$ are equal. [Since p-value < $\alpha$]
 
 ### Generate $x \sim N(0,1)$,$y \sim N(2,1)$
 
@@ -53,7 +53,7 @@ t_test <- t.test(x,y)
 print(t_test)
 ```
 
-From the t-test results with degrees of freedom = `r t_test$df` and a p-value of `r t_test$p.value` and using a threshold level of significance of $\alpha = 0.01$, we reject the null hypothesis that the means of two samples, $x$ and $y$ are equal.[Since p-value of `r t_test$p.value` < $\alpha$]
+From the t-test results with degrees of freedom `r (t_test$parameter)` and a p-value of $`r (t_test$p.value)`$ and using a threshold level of significance of $\alpha = 0.01$, we *reject* the null hypothesis that the means of two samples, $x$ and $y$ are equal.[Since p-value of $`r t_test$p.value` < \alpha$]
 
 
 
