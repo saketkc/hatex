@@ -1,0 +1,687 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Homework1}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \subsection{Problem 1}\label{problem-1}
+
+    The transition matrix is given by: \[
+\begin{bmatrix}
+1-\alpha & \alpha\\
+\beta & 1-\beta
+\end{bmatrix}
+\]
+
+\subsubsection{Part (a)}\label{part-a}
+
+$\eta = min(n>0, X_n=1)$ given $X_0=0$
+
+\emph{To Prove} $\eta \sim Geom(\alpha)$
+
+$\eta = P(X_0=0,X_1=0, \dots X_{n-1}=1, X_n=1)$
+
+Using the Markov property this can be written as:
+
+\[
+\eta = P(X_0=0)P(X_1=0|X_0=0)P(X_2=0|X_1=0)P(X_3=0|X_2=0) \dots P(X_{n-1}=0|X_{n-2}=0)P(X_{n}=1|X_{n-1}=0)
+\]
+
+And being time-homogenous, this simplifies to:
+
+\[
+\eta = P(X_0=0)\big(P(X_1=0|X_0)\big)^{n-1}\times P(X_1=1|X_0=0)
+\]
+
+$\implies$
+
+\[
+\eta = P(X_0=0)\big(1-\alpha)^{n-1}\alpha = \big(1-\alpha)^{n-1}\alpha
+\]
+
+And hence $\eta \sim Geom(\alpha)$
+
+\subsubsection{Part (b)}\label{part-b}
+
+Spectral decomposition of $P$ and value for $P(X_n=1|X_0=0)$
+
+Spectral decomposition of $P$:
+
+\[
+det\begin{bmatrix}
+\alpha-\lambda & 1-\alpha\\
+1-\beta & \beta-\lambda
+\end{bmatrix} = 0
+\]
+
+\[
+\lambda^2 +(\alpha + \beta-2) \lambda + (1-\alpha -\beta) = 0
+\]
+
+Thus, $\lambda_1 = 1$ and $\lambda_2 = 1-\alpha-\beta$
+
+Eigenvectors are given by:
+
+$v_1^T = \big( x_1\ x_1 \big)\ \forall\ x_1 \in R$
+
+and for $\lambda_2$ , $v_2 = \big( x_1\ \frac{-\beta x_1}{\alpha} \big)$
+
+Now using Markov property: $P(X_n=1|X_0=0) = (P^n)_{01}$
+
+Now,
+
+$P^n = VD^nV^{-1}$
+
+where: \[
+V = \begin{bmatrix}
+1 & 1\\
+1 & \frac{-\beta}{\alpha}
+\end{bmatrix}
+\]
+
+and
+
+\[
+D = \begin{bmatrix}
+1 & 0 \\
+0 & (1-\alpha-\beta)
+\end{bmatrix}
+\]
+
+\[
+V^{-1} = \frac{-1}{\frac{\beta}{\alpha}+1}\begin{bmatrix}
+-\frac{\beta}{\alpha} & -1 \\
+-1 & 1
+\end{bmatrix}
+\]
+
+Thus,
+
+\[
+P^n = \begin{bmatrix}
+1 & 1\\
+1 & \frac{-\beta}{\alpha}
+\end{bmatrix} \times \begin{bmatrix}
+1 & 0 \\
+0 & (1-\alpha-\beta)^n
+\end{bmatrix} \times \frac{-1}{\frac{\beta}{\alpha}+1}\begin{bmatrix}
+-\frac{\beta}{\alpha} & -1 \\
+-1 & 1
+\end{bmatrix}
+\]
+
+\[
+P^n = \frac{1}{\alpha+\beta} \begin{bmatrix}
+\beta + \alpha(1-\alpha-\beta)^n & \alpha-\alpha(1-\alpha-\beta)^n\\
+\beta - \beta(1-\alpha-\beta)^n & \alpha + \beta(1-\alpha-\beta)^n
+\end{bmatrix}
+\]
+
+\subsection{Part (c)}\label{part-c}
+
+When $\alpha+\beta=1$, the eigen values are $\lambda_1=1$ and
+$\lambda_2=0$ and hence
+
+\[
+P^n = \begin{bmatrix}
+\beta & \alpha \\
+\beta & \alpha
+\end{bmatrix}
+\]
+
+\emph{Check:}
+
+Also consider the following identifiy: $P^{n+1}=PP^n$
+
+then:
+
+\[
+\begin{bmatrix}
+p_{00}^{n+1} & p_{01}^{n+1}\\
+p_{10}^{n+1} & p_{11}^{n+1}\\
+\end{bmatrix} = \begin{bmatrix} 
+p_{00}^n & p_{01}^n\\
+p_{10}^n & p_{11}^n
+\end{bmatrix} \times \begin{bmatrix}
+1-\alpha & \alpha\\
+\beta & 1-\beta
+\end{bmatrix}
+\]
+
+$\implies$
+
+\[
+\begin{align}
+p_{11}^{n+1} &= p_{10}^n(\alpha) + p_{11}^n(1-\beta)\\
+ &= (1-p_{11}^n)(\alpha) +(p_{11}^n)(1-\beta)\\
+ &= \alpha + (1-\alpha-\beta)p_{11}^n
+\end{align}
+\]
+
+Consider the recurrence:
+
+\[
+x_{n+1} = \alpha+(1-\alpha-\beta)x_n
+\]
+
+Constant solution $x_n=x_{n+1}=x$ is given by:
+$x=\frac{\alpha}{\alpha+\beta}$
+
+Now let $y_n = x_n-x=x_n-\frac{\alpha}{\alpha+\beta}$ then,
+
+$y_{n+1} = (1-\alpha-\beta)y_n$ and hence $y_n=(1-\alpha-\beta)^n y_0$
+
+Thus,
+\[p_{11}^{n} = (1-\alpha-\beta)^np_{11}^0 +\frac{\alpha}{\alpha+\beta}\]
+
+Given $P_{00}=\frac{\beta}{\alpha+\beta}$ and $\alpha+\beta=1$ and
+hence:
+
+$p_{11}^n = \frac{\alpha}{\alpha+\beta} = \alpha$
+
+and hence, $p_{10}^n = \beta$
+
+Similary,
+
+$p_{00}^n = \beta$ and $p_{01}^n = \alpha$
+
+    \subsection{Problem 2}\label{problem-2}
+
+$P(X_1=0) \frac{\beta}{\alpha+\beta}$ and hence
+$P(X_1=1) = \frac{\alpha}{\alpha+\beta}$
+
+$X=X_1X_2\dots X_n$ and $Y=Y_1Y_2\dots Y_n$ representes the reverse
+string $Y_k=X_{n+k-1}$
+
+\subsubsection{Part (a)}\label{part-a}
+
+Given string of digits: $a_1,a_2,a_3 \dots a_n $ to find:
+$P(Y_1=a_1,Y_2=a_2,Y_3=a_3\dots Y_n=a_n)$
+
+\[
+\begin{align}
+P(Y_1=a_1,Y_2=a_2,Y_3=a_3\dots Y_n=a_n) &= P(X_1=a_n,X_2=a_{n-1}, \dots X_n=a_1) \\
+&= P(X_1=a_n)P(X_2=a_{n-1}|X_1=a_n)P(X_3=a_{n-2}|X_2=a_{n-1})\dots P(X_n=a_1|X_{n-1}=a_2) \\
+&= P(X_1=a_n)(P_{a_n a_{n-1}})(P_{a_{n-1} a_{n-2}}) \dots (P_{a_2 a_1})
+\end{align}
+\]
+
+The problem asked about not using spectral decomposition, but I was not
+sure how spectral decomposition would have come in handy if the states
+$a_i$ are not specified explicitly.
+
+\subsubsection{Part (b)}\label{part-b}
+
+\[
+z=\begin{cases}
+X & if \theta = H\\
+Y & otherwise
+\end{cases}
+\]
+
+Given function f such that, $f :\{0,1\}^n \longrightarrow \{H,T\}$ To
+show: $P(f(Z)=\theta)=0.5$
+
+$P(\theta=H) = P(\theta=T) = 0.5$
+
+Given Z, guess $\theta$:
+
+$P(\theta=H|Z=X) = \frac{P(\theta=H, Z=X)}{P(Z=X)}$
+
+Z, has only two possible values: $H$ and $T$ and hence assuming the
+guess function is unbiased:
+
+$P(f(Z)=H) = P(f(Z)=T)=0.5$
+
+    \subsection{Problem 3}\label{problem-3}
+
+\[
+\tau = min\{ n \geq 0: X_n=\dagger\}
+\]
+
+\[
+E[\tau] = E_a[E_a[\tau|X_n=a]\ where\ a \in \{\phi, \alpha, \beta, \alpha+\beta, pol, \dagger\}
+\]
+
+Let $S=\{\phi, \alpha, \beta, \alpha+\beta, pol, \dagger\}$
+
+Consider for $a\neq \dagger$: \[
+h(a) = E[\tau|X_0=a] = \sum_{s \in S}P_{as} \times (1) + P_{as}\times E[\tau|X_0=s) 
+\]
+
+$\implies$
+
+\[
+h(a) = ((I-P_{-})^{-1})_a
+\]
+
+where $P_{-}$ represents the matrix with the row and column representng
+$X_i=\dagger$ removed.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}59}]:} \PY{k+kn}{from} \PY{n+nn}{\PYZus{}\PYZus{}future\PYZus{}\PYZus{}} \PY{k+kn}{import} \PY{n}{division}
+         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+         \PY{n}{k\PYZus{}a}\PY{o}{=}\PY{l+m+mf}{0.2}
+         \PY{n}{k\PYZus{}b}\PY{o}{=}\PY{l+m+mf}{0.2}
+         \PY{n}{k\PYZus{}p} \PY{o}{=} \PY{l+m+mf}{0.5}
+         \PY{n}{P} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}p}\PY{p}{,}\PY{n}{k\PYZus{}p}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+         \PY{n}{q} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{o}{+}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{o}{+}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{o}{+}\PY{n}{k\PYZus{}b}\PY{o}{+}\PY{n}{k\PYZus{}p}\PY{p}{,}\PY{n}{k\PYZus{}p}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}
+         \PY{n}{qq} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{q}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}60}]:} \PY{n}{iq} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linalg}\PY{o}{.}\PY{n}{inv}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{eye}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{qq}\PY{p}{)}
+\end{Verbatim}
+
+    Define, $h(a) = E[\tau|X_0=a]$ then
+$h(a)=\sum_b p_{ab}(1+E[\tau|x_0=b])$ $\implies$ d
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}61}]:} \PY{n}{iq\PYZus{}phi} \PY{o}{=} \PY{n}{iq}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{k}{print}\PY{p}{(}\PY{n}{iq\PYZus{}phi}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1.66666666667
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{n}{iq\PYZus{}alpha} \PY{o}{=} \PY{n}{iq}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}
+         \PY{k}{print}\PY{p}{(}\PY{n}{iq\PYZus{}alpha}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+7.77777777778
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{n}{iq\PYZus{}beta} \PY{o}{=} \PY{n}{iq}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}
+         \PY{k}{print}\PY{p}{(}\PY{n}{iq\PYZus{}beta}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+2.22222222222
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{n}{iq\PYZus{}alphabeta} \PY{o}{=} \PY{n}{iq}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}
+         \PY{k}{print}\PY{p}{(}\PY{n}{iq\PYZus{}alphabeta}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+43.3333333333
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}65}]:} \PY{n}{iq\PYZus{}pol} \PY{o}{=} \PY{n}{iq}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}
+         \PY{k}{print}\PY{p}{(}\PY{n}{iq\PYZus{}pol}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1.0
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}66}]:} \PY{n}{a}\PY{o}{=}\PY{p}{[}\PY{p}{[}\PY{n}{k\PYZus{}a}\PY{o}{+}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{]}
+         \PY{n}{b}\PY{o}{=}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}
+         \PY{n}{x}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{linalg}\PY{o}{.}\PY{n}{solve}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{)}
+         \PY{k}{print}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[ 0.16666667  0.16666667  0.16666667  0.16666667]
+    \end{Verbatim}
+
+    Stationary state is given by
+$\pi = (0.1667, 0.1667, 0.1667, 0.1667, 0.1667, 0.1667)$ We solve only
+for $\pi_i, \pi_2, \pi_3, \pi_4$ as $\pi_4=\pi_5=\pi_6$ and the mean
+number of visits per unit time to $\dagger$ are $\frac{1}{\pi_6} = 6$
+
+    \subsection{Part (c)}\label{part-c}
+
+Simulating the chain:
+
+General strategy: Generate a random number $\longrightarrow$ Select a
+state $\longrightarrow$ Jump to state $\longrightarrow$ Repeat
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}67}]:} \PY{c}{\PYZsh{}\PYZsh{} phi}
+         \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{a}\PY{o}{=}\PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{uniform}\PY{p}{(}\PY{n}{high}\PY{o}{=}\PY{l+m+mf}{1.4}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}68}]:} \PY{k}{print}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+         
+         \PY{n}{P} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+         \PY{n}{P}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{phi}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{n}{P}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{alpha}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{n}{P}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{beta}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{n}{P}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{ab}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{k\PYZus{}b}\PY{p}{,}\PY{n}{k\PYZus{}a}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}a}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}b}\PY{o}{\PYZhy{}}\PY{n}{k\PYZus{}p}\PY{p}{,}\PY{n}{k\PYZus{}p}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{n}{P}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{pol}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}
+         \PY{n}{P}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{d}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+         
+         \PY{n}{states} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{phi}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{alpha}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{beta}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{ab}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{pol}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{d}\PY{l+s}{\PYZsq{}}\PY{p}{]}
+         \PY{k}{def} \PY{n+nf}{accumulate}\PY{p}{(}\PY{n}{lis}\PY{p}{)}\PY{p}{:}
+             \PY{n}{total} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{lis}\PY{p}{:}
+                 \PY{n}{total} \PY{o}{+}\PY{o}{=} \PY{n}{x}
+                 \PY{k}{yield} \PY{n}{total}
+         
+         \PY{n}{C}\PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+         \PY{k}{for} \PY{n}{key}\PY{p}{,}\PY{n}{value} \PY{o+ow}{in} \PY{n}{P}\PY{o}{.}\PY{n}{iteritems}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             \PY{n}{C}\PY{p}{[}\PY{n}{key}\PY{p}{]} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{accumulate}\PY{p}{(}\PY{n}{value}\PY{p}{)}\PY{p}{)}
+             
+         \PY{k}{print}\PY{p}{(}\PY{n}{C}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+0.583830806584
+\{'phi': [0.6000000000000001, 0.8, 1.0, 1.0, 1.0, 1.0], 'ab': [0, 0.2, 0.4, 0.5000000000000001, 1.0, 1.0], 'd': [0, 0, 0, 1, 1, 1], 'pol': [0, 0, 0, 0, 0, 1], 'beta': [0.2, 0.2, 0.8, 0.8, 0.8], 'alpha': [0.2, 0.8, 0.8, 1.0, 1.0, 1.0]\}
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}86}]:} \PY{c}{\PYZsh{}\PYZsh{}For \PYZdl{}h(\PYZbs{}phi)\PYZdl{}}
+         \PY{n}{x0}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{phi}\PY{l+s}{\PYZsq{}}
+         \PY{n}{x}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{phi}\PY{l+s}{\PYZsq{}}
+         \PY{k}{def} \PY{n+nf}{h}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+             \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{0}
+             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{10000}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{uniform}\PY{p}{(}\PY{p}{)}
+                 \PY{n}{probs} \PY{o}{=} \PY{n}{P}\PY{p}{[}\PY{n}{x}\PY{p}{]}
+                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{probs}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                     \PY{k}{if} \PY{n}{i}\PY{o}{==}\PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n}{a}\PY{o}{\PYZlt{}}\PY{n}{probs}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{:}
+                         \PY{c}{\PYZsh{}\PYZsh{} No state change}
+                         \PY{k}{continue}
+                     \PY{k}{if} \PY{n}{i}\PY{o}{\PYZlt{}}\PY{n+nb}{len}\PY{p}{(}\PY{n}{probs}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{:}
+                         \PY{k}{if} \PY{n+nb}{int}\PY{p}{(}\PY{n}{probs}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{==}\PY{l+m+mi}{1} \PY{o+ow}{and} \PY{n+nb}{int}\PY{p}{(}\PY{n}{probs}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{o}{==}\PY{l+m+mi}{1}\PY{p}{:}
+                             \PY{k}{continue}
+                         \PY{k}{if} \PY{n}{a}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{n}{probs}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o+ow}{and} \PY{n}{a}\PY{o}{\PYZlt{}}\PY{n}{probs}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
+                             \PY{n}{x}\PY{o}{=}\PY{n}{states}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]}
+                             
+                     \PY{k}{if} \PY{n}{a}\PY{o}{\PYZlt{}}\PY{o}{=}\PY{n}{probs}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{:}
+                         \PY{n}{x}\PY{o}{=}\PY{n}{states}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                     
+         
+                 \PY{n}{index} \PY{o}{=} \PY{n}{states}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}
+                 \PY{c}{\PYZsh{}print index}
+                 \PY{n}{s}\PY{o}{+}\PY{o}{=}\PY{n}{index}
+             \PY{k}{return} \PY{n}{s}\PY{o}{/}\PY{l+m+mi}{10000}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+2.9997
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}90}]:} \PY{k}{print}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}h(}\PY{l+s}{\PYZbs{}}\PY{l+s}{phi)\PYZdl{}: From calculation: \PYZob{}\PYZcb{}; From simulation: \PYZob{}\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{h}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{phi}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{,}\PY{n}{iq\PYZus{}phi}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\$h(\textbackslash{}phi)\$: From calculation: 2.9987; From simulation: 1.66666666667
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}91}]:} \PY{k}{print}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}h(}\PY{l+s}{\PYZbs{}}\PY{l+s}{alpha)\PYZdl{}: From calculation: \PYZob{}\PYZcb{}; From simulation: \PYZob{}\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{h}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{alpha}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{,}\PY{n}{iq\PYZus{}alpha}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\$h(\textbackslash{}alpha)\$: From calculation: 4.7572; From simulation: 7.77777777778
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}92}]:} \PY{k}{print}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}h(}\PY{l+s}{\PYZbs{}}\PY{l+s}{beta)\PYZdl{}: From calculation: \PYZob{}\PYZcb{}; From simulation: \PYZob{}\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{h}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{beta}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{,}\PY{n}{iq\PYZus{}beta}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\$h(\textbackslash{}beta)\$: From calculation: 2.9997; From simulation: 2.22222222222
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}94}]:} \PY{k}{print}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}h(}\PY{l+s}{\PYZbs{}}\PY{l+s}{alpha+}\PY{l+s}{\PYZbs{}}\PY{l+s}{beta)\PYZdl{}: From calculation: \PYZob{}\PYZcb{}; From simulation: \PYZob{}\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{h}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ab}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{,}\PY{n}{iq\PYZus{}alphabeta}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\$h(\textbackslash{}alpha+\textbackslash{}beta)\$: From calculation: 4.7488; From simulation: 43.3333333333
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}95}]:} \PY{k}{print}\PY{p}{(}\PY{l+s}{r\PYZsq{}}\PY{l+s}{\PYZdl{}h(}\PY{l+s}{\PYZbs{}}\PY{l+s}{pol)\PYZdl{}: From calculation: \PYZob{}\PYZcb{}; From simulation: \PYZob{}\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{h}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{pol}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{,}\PY{n}{iq\PYZus{}pol}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\$h(\textbackslash{}pol)\$: From calculation: 4.7432; From simulation: 1.0
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
