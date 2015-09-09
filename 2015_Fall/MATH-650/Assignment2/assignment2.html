@@ -70,17 +70,15 @@ img {
 
 <pre class="r"><code>ex0112&lt;-read.csv('ex0112.csv')
 fishoil.diet &lt;- ex0112[ex0112$Diet=='FishOil',]
-regularoil.diet &lt;- ex0112[ex0112$Diet=='RegularOil',]
-n1 &lt;- nrow(fishoil.diet)
+regularoil.diet &lt;- ex0112[ex0112$Diet=='RegularOil',]</code></pre>
+<div id="parta" class="section level2">
+<h2>Part(a)</h2>
+<pre class="r"><code>n1 &lt;- nrow(fishoil.diet)
 n2 &lt;- nrow(regularoil.diet)
 mu1 &lt;- mean(fishoil.diet$BP)
 mu2 &lt;- mean(regularoil.diet$BP)
 s1 &lt;- sd(fishoil.diet$BP)
-s2 &lt;- sd(regularoil.diet$BP)
-sp &lt;- sqrt( ( (n1-1)*s1^2 + (n2-1)*s2^2 ) / (n1+n2-2) )
-se &lt;- sp*sqrt(1/n1+1/n2)</code></pre>
-<div id="parta" class="section level2">
-<h2>Part(a)</h2>
+s2 &lt;- sd(regularoil.diet$BP)</code></pre>
 <p>Average of group with diet ‘FishOil’: <span class="math">\(\mu_f=\)</span> 6.5714286</p>
 <p>Standard deviation of group with diet ‘FishOil’: <span class="math">\(\sigma_f=\)</span> 5.8554004</p>
 <p>Average of group with diet ‘RegularOil’: <span class="math">\(\mu_r=\)</span> -1.1428571</p>
@@ -88,12 +86,81 @@ se &lt;- sp*sqrt(1/n1+1/n2)</code></pre>
 </div>
 <div id="partb" class="section level2">
 <h2>Part(b)</h2>
+<pre class="r"><code>sp &lt;- sqrt( ( (n1-1)*s1^2 + (n2-1)*s2^2 ) / (n1+n2-2) )</code></pre>
 <p>Pooled standard deviation = <span class="math">\(s_P=\sqrt{\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{(n_1+n_2-2)}}\)</span></p>
 <p><span class="math">\(s_P=\)</span> 4.7132033</p>
 </div>
 <div id="part-c" class="section level2">
 <h2>Part (c)</h2>
+<pre class="r"><code>se &lt;- sp*sqrt(1/n1+1/n2)</code></pre>
 <p>Standard error <span class="math">\(SE(\bar{Y_2}-\bar{Y_1})=\)</span> 2.5193132</p>
+</div>
+<div id="part-d" class="section level2">
+<h2>Part (d)</h2>
+<pre class="r"><code>df &lt;- n1+n2-2
+qt975 &lt;- qt(c(.975), df=df)</code></pre>
+<p>Degrees of freedom = <span class="math">\(n_1+n_2-2\)</span>= 12</p>
+<p><span class="math">\(97.5^{th}\)</span> percentile of <span class="math">\(t-distribution\)</span> (<span class="math">\(df=\)</span> 12): 2.1788128</p>
+</div>
+<div id="part-e" class="section level2">
+<h2>Part (e)</h2>
+<pre class="r"><code>alpha &lt;- 0.05
+t &lt;- qt(1-alpha/2,df)
+CI_l &lt;- (mu2-mu1)-t*se
+CI_h &lt;- (mu2-mu1)+t*se</code></pre>
+<p><span class="math">\(95\%\)</span> CI for <span class="math">\(\mu_2-\mu_1\)</span>: <span class="math">\([\)</span>-13.2033975,-2.2251739<span class="math">\(]\)</span></p>
+</div>
+<div id="part-f" class="section level2">
+<h2>Part (f)</h2>
+<pre class="r"><code>T &lt;- (mu2-mu1)/se
+p &lt;-  pt(T, df=df)</code></pre>
+<p>The t-statistic is given by: <span class="math">\(t=\)</span> -3.0620591 with <span class="math">\(df=\)</span> 12</p>
+</div>
+<div id="part-g" class="section level2">
+<h2>Part (g)</h2>
+<p>The appropriate one sided p-value is(since <span class="math">\(t&lt;0\)</span>): 0.9975347</p>
+<pre class="r"><code>ttest &lt;- t.test(fishoil.diet$BP, regularoil.diet$BP, var.equal=F)
+ttest</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  fishoil.diet$BP and regularoil.diet$BP
+## t = 3.0621, df = 9.2643, p-value = 0.01308
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   2.039893 13.388678
+## sample estimates:
+## mean of x mean of y 
+##  6.571429 -1.142857</code></pre>
+</div>
+<div id="problem-19" class="section level1">
+<h1>Problem 19</h1>
+<div id="part-19a" class="section level2">
+<h2>Part (19a)</h2>
+<pre class="r"><code>n2 &lt;- nrow(regularoil.diet)
+mu2 &lt;- mean(regularoil.diet$BP)
+s2 &lt;- sd(regularoil.diet$BP)
+df2 &lt;- n2-1</code></pre>
+<p>Average=: -1.1428571 Standard Devaiation: 3.1847853 Degree of Freedom: 6</p>
+</div>
+<div id="part-19b" class="section level2">
+<h2>Part (19b)</h2>
+<pre class="r"><code>se2 &lt;- s2/sqrt(n2)</code></pre>
+<p>Standard error of the average: 1.2037357</p>
+</div>
+<div id="part-19c" class="section level2">
+<h2>Part (19c)</h2>
+<pre class="r"><code>qt975_2 &lt;- qt(c(.975), df=df2)
+CI_l2 &lt;- mu2 - qt975_2*se2
+CI_h2 &lt;- mu2 + qt975_2*se2</code></pre>
+<p>CI: <span class="math">\([\)</span>-4.0882922,1.802578<span class="math">\(]\)</span></p>
+</div>
+<div id="part-19d" class="section level2">
+<h2>Part 19(d)</h2>
+<pre class="r"><code>T2 &lt;- mu2/se2
+p2 &lt;- pt(T2, df=df2)</code></pre>
+<p>p-value: 0.1895308</p>
+</div>
 </div>
 
 
