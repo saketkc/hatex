@@ -1,8 +1,9 @@
 ---
 title: "MATH-650 Assignment 2"
-author: 'Saket Choudhary (USCID: 21270058637) (skchoudh@usc.edu)'
+author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
 date: "09/08/2015"
 output:
+  pdf_document: default
   html_document:
     keep_md: yes
 ---
@@ -29,15 +30,15 @@ s1 <- sd(fishoil.diet$BP)
 s2 <- sd(regularoil.diet$BP)
 ```
 
-Average of group with diet 'FishOil': $\mu_f=$ `r mean(fishoil.diet$BP)`
+Average of group with diet 'FishOil': $\mu_f=$ `r mu1`
 
-Standard deviation  of group with diet 'FishOil': $\sigma_f=$ `r sd(fishoil.diet$BP)`
+Standard deviation  of group with diet 'FishOil': $\sigma_f=$ `r s1`
 
 
 
-Average of group with diet 'RegularOil': $\mu_r=$ `r mean(regularoil.diet$BP)`
+Average of group with diet 'RegularOil': $\mu_r=$ `r mu2`
 
-Standard deviation  of group with diet 'RegularOil': $\sigma_r=$ `r sd(regularoil.diet$BP)`
+Standard deviation  of group with diet 'RegularOil': $\sigma_r=$ `r s2`
 
 
 ## Part(b)
@@ -76,6 +77,7 @@ CI_l <- (mu2-mu1)-t*se
 CI_h <- (mu2-mu1)+t*se
 ```
 $95\%$ CI for $\mu_2-\mu_1$: $[$`r CI_l`,`r CI_h`$]$
+$t=$ `r t`
 
 ## Part (f)
 
@@ -88,13 +90,15 @@ The t-statistic is given by: $t=$ `r T` with $df=$ `r df`
 
 
 ## Part (g)
-
 The appropriate one sided p-value is(since $t<0$): `r 1-p/2`
 
+# Problem (14)
+
 ```{r}
-ttest <- t.test(fishoil.diet$BP, regularoil.diet$BP, var.equal=F)
+ttest <- t.test( regularoil.diet$BP, fishoil.diet$BP, alternative="greater", var.equal=F)
 ttest
 ```
+p-value from 't.test' = `r ttest$p.value`
 
 # Problem 19
 
@@ -137,3 +141,5 @@ T2 <- mu2/se2
 p2 <- pt(T2, df=df2)
 ```
 p-value: `r p2`
+
+t-statistics: `r T2`

@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
-<meta name="author" content="Saket Choudhary (USCID: 21270058637) (skchoudh@usc.edu)" />
+<meta name="author" content="Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)" />
 
 <meta name="date" content="2015-09-08" />
 
@@ -63,7 +63,7 @@ img {
 
 <div id="header">
 <h1 class="title">MATH-650 Assignment 2</h1>
-<h4 class="author"><em>Saket Choudhary (USCID: 21270058637) (<a href="mailto:skchoudh@usc.edu">skchoudh@usc.edu</a>)</em></h4>
+<h4 class="author"><em>Saket Choudhary (USCID: 2170058637) (<a href="mailto:skchoudh@usc.edu">skchoudh@usc.edu</a>)</em></h4>
 <h4 class="date"><em>09/08/2015</em></h4>
 </div>
 
@@ -108,7 +108,7 @@ qt975 &lt;- qt(c(.975), df=df)</code></pre>
 t &lt;- qt(1-alpha/2,df)
 CI_l &lt;- (mu2-mu1)-t*se
 CI_h &lt;- (mu2-mu1)+t*se</code></pre>
-<p><span class="math">\(95\%\)</span> CI for <span class="math">\(\mu_2-\mu_1\)</span>: <span class="math">\([\)</span>-13.2033975,-2.2251739<span class="math">\(]\)</span></p>
+<p><span class="math">\(95\%\)</span> CI for <span class="math">\(\mu_2-\mu_1\)</span>: <span class="math">\([\)</span>-13.2033975,-2.2251739<span class="math">\(]\)</span> <span class="math">\(t=\)</span> 2.1788128</p>
 </div>
 <div id="part-f" class="section level2">
 <h2>Part (f)</h2>
@@ -119,19 +119,23 @@ p &lt;-  pt(T, df=df)</code></pre>
 <div id="part-g" class="section level2">
 <h2>Part (g)</h2>
 <p>The appropriate one sided p-value is(since <span class="math">\(t&lt;0\)</span>): 0.9975347</p>
-<pre class="r"><code>ttest &lt;- t.test(fishoil.diet$BP, regularoil.diet$BP, var.equal=F)
+</div>
+<div id="problem-14" class="section level1">
+<h1>Problem (14)</h1>
+<pre class="r"><code>ttest &lt;- t.test( regularoil.diet$BP, fishoil.diet$BP, alternative=&quot;greater&quot;, var.equal=F)
 ttest</code></pre>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
-## data:  fishoil.diet$BP and regularoil.diet$BP
-## t = 3.0621, df = 9.2643, p-value = 0.01308
-## alternative hypothesis: true difference in means is not equal to 0
+## data:  regularoil.diet$BP and fishoil.diet$BP
+## t = -3.0621, df = 9.2643, p-value = 0.9935
+## alternative hypothesis: true difference in means is greater than 0
 ## 95 percent confidence interval:
-##   2.039893 13.388678
+##  -12.31752       Inf
 ## sample estimates:
 ## mean of x mean of y 
-##  6.571429 -1.142857</code></pre>
+## -1.142857  6.571429</code></pre>
+<p>p-value from ‘t.test’ = 0.993458</p>
 </div>
 <div id="problem-19" class="section level1">
 <h1>Problem 19</h1>
@@ -160,6 +164,7 @@ CI_h2 &lt;- mu2 + qt975_2*se2</code></pre>
 <pre class="r"><code>T2 &lt;- mu2/se2
 p2 &lt;- pt(T2, df=df2)</code></pre>
 <p>p-value: 0.1895308</p>
+<p>t-statistics: -0.9494253</p>
 </div>
 </div>
 

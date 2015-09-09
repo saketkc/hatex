@@ -1,5 +1,5 @@
 # MATH-650 Assignment 2
-Saket Choudhary (USCID: 21270058637) (skchoudh@usc.edu)  
+Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)  
 09/08/2015  
 
 
@@ -73,6 +73,7 @@ CI_l <- (mu2-mu1)-t*se
 CI_h <- (mu2-mu1)+t*se
 ```
 $95\%$ CI for $\mu_2-\mu_1$: $[$-13.2033975,-2.2251739$]$
+$t=$ 2.1788128
 
 ## Part (f)
 
@@ -86,12 +87,13 @@ The t-statistic is given by: $t=$ -3.0620591 with $df=$ 12
 
 
 ## Part (g)
-
 The appropriate one sided p-value is(since $t<0$): 0.9975347
+
+# Problem (14)
 
 
 ```r
-ttest <- t.test(fishoil.diet$BP, regularoil.diet$BP, var.equal=F)
+ttest <- t.test( regularoil.diet$BP, fishoil.diet$BP, alternative="greater", var.equal=F)
 ttest
 ```
 
@@ -99,15 +101,16 @@ ttest
 ## 
 ## 	Welch Two Sample t-test
 ## 
-## data:  fishoil.diet$BP and regularoil.diet$BP
-## t = 3.0621, df = 9.2643, p-value = 0.01308
-## alternative hypothesis: true difference in means is not equal to 0
+## data:  regularoil.diet$BP and fishoil.diet$BP
+## t = -3.0621, df = 9.2643, p-value = 0.9935
+## alternative hypothesis: true difference in means is greater than 0
 ## 95 percent confidence interval:
-##   2.039893 13.388678
+##  -12.31752       Inf
 ## sample estimates:
 ## mean of x mean of y 
-##  6.571429 -1.142857
+## -1.142857  6.571429
 ```
+p-value from 't.test' = 0.993458
 
 # Problem 19
 
@@ -154,3 +157,5 @@ T2 <- mu2/se2
 p2 <- pt(T2, df=df2)
 ```
 p-value: 0.1895308
+
+t-statistics: -0.9494253
