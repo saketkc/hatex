@@ -122,10 +122,10 @@
 %       PROBLEM 2
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Exercise \# 1] % Custom section title
+\begin{homeworkProblem}[Problem \# 1] % Custom section title
 
 
-\begin{homeworkSection}{(1a)} % Section within problem
+\begin{homeworkSection}{\homeworkProblemName:~(a)} % Section within problem
 %\lipsum[4]\vspace{10pt} % Question
 
 \problemAnswer{ % Answer
@@ -164,7 +164,7 @@ Minima at $\hat{\alpha} =  \frac{n}{\sum_{i=1}^n log(1/x_i)}$ is guaranteed due 
 
 %--------------------------------------------
 
-\begin{homeworkSection}{(1b)} % Section within problem
+\begin{homeworkSection}{\homeworkProblemName:~(b)} % Section within problem
 \problemAnswer{ % Answer
 Given: $x_i \sim N(\theta, \theta)$ i.e $f(x_i)= (2\pi \theta)^{-\frac{1}{2}} e^{-\frac{(x_i-\theta)^2}{2\theta}}$
 MLE estimate for $\theta$:
@@ -193,23 +193,56 @@ Since, $\hat{\theta} \geq 0$, $\hat{\theta} = \frac{-N + \sqrt{N^2+4N\sum_{i=1}^
 %       PROBLEM 3
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Prob. \Roman{homeworkProblemCounter}] % Roman numerals
+\begin{homeworkProblem}[Problem 2] % Roman numerals
 
 %--------------------------------------------
 
 \begin{homeworkSection}{\homeworkProblemName:~(a)} % Using the problem name elsewhere
 \problemAnswer{ % Answer
-\lipsum[7]
+Given: $\hat{f(x)}=\frac{1}{n}\sum_{i=1}^n \frac{1}{h}K(\frac{x-X_i}{h})$
+To show: $E_{X_1,X_2, \dots X_n}[\hat{f(x)}]=\frac{1}{h}\int K(\frac{x-t}{h})f(t)dt $
+
+Proof:\\
+\begin{align}
+E[\hat{f(x)}] &= E[\frac{1}{n}\sum_{i=1}^n \frac{1}{h}K(\frac{x-X_i}{h})]\\
+&=\frac{1}{nh}E[K(\frac{x-X_i}{h})]\\
+&=\frac{1}{h}E[K(\frac{x-X_1}{h})]
+&=\frac{1}{h}E[K(\frac{x-t}{h})]
+\end{align}
+
+where the penultimate equality comes from the fact that $X_i$ are iid for all $i \in [1,n]$.
+and $t ~ X$%E_{X_1,X_2, \dots X_n}[\hat{f(x)}] = \int \hat{f(x)}f(x)dx
+
+and hence.
+\begin{align}
+E[\hat{f(x)}]&=\frac{1}{h}E[K(\frac{x-X_1}{h})]
+&=\frac{1}{h}\int K(\frac{x-t}{h}) f(t)dt
+& = RHS  
+\end{align}
+
 }
 \end{homeworkSection}
 
 %--------------------------------------------
 
 \begin{homeworkSection}{\homeworkProblemName:~(b)}
-\lipsum[8]\vspace{10pt} % Question
-
 \problemAnswer{ % Answer
-\lipsum[9]
+Consider $z = \frac{x-t}{h}$ $\implies$ $t=x-hu$
+
+Then, \begin{align}
+E[\hat{f(x)}] &= \frac{1}{h} \int K(z)f(x-hz)dz\\
+ \end{align}
+ 
+ $f(x-hz) = f(x) - f'(x)hz + \frac{1}{2}f''(x)\frac{(hz)^2}{2} - \frac{1}{3}f'''(x)\frac{(hz)^3}{3!} + \dots + (-1)^{n}\frac{1}{n!}f^{(n)}(x)(\frac{(hu)^n}{n!})$
+
+
+By definition, $\int k(z)dz =1$.
+Also define an auxilllary variable $M_j=\int k(z)z^j dz$ for the $j^{th}$ moment of the kernel function, 
+and hence,
+$\int  K(z)f(x-hz)dz=f(x)-hf'(x)M_1+\frac{1}{2}(h^2)f^{''}(x)M_2+\dots+(-1)^n\frac{1}{n!}f^{(n)}M_n$
+Now, $Bias = E[\hat{f(x)}]-f(x)=-hf'(x)M_1+\frac{1}{2}(h^2)f^{''}(x)M_2+\dots+(-1)^n\frac{1}{n!}f^{(n)}M_n$
+
+And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 }
 \end{homeworkSection}
 
