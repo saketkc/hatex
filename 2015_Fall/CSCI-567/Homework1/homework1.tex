@@ -1,24 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Structured General Purpose Assignment
-% LaTeX Template
-%
-% This template has been downloaded from:
-% http://www.latextemplates.com
-%
-% Original author:
-% Ted Pavlic (http://www.tedpavlic.com)
-%
-% Note:
-% The \lipsum[#] commands throughout this template generate dummy text
-% to fill the template out. These commands should all be removed when 
-% writing assignment content.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%----------------------------------------------------------------------------------------
-%       PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
 \documentclass{article}
 
 \usepackage{fancyhdr} % Required for custom headers
@@ -99,7 +78,7 @@
 %       NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
 
-\newcommand{\hmwkTitle}{Assignment\ \# } % Assignment title
+\newcommand{\hmwkTitle}{Assignment\ \#1 } % Assignment title
 \newcommand{\hmwkDueDate}{Tuesday,\ September\ 23,\ 2015} % Due date
 \newcommand{\hmwkClass}{CSCI-567} % Course/class
 \newcommand{\hmwkClassTime}{} % Class/lecture time
@@ -143,22 +122,66 @@
 %       PROBLEM 2
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Exercise \# 1.2] % Custom section title
+\begin{homeworkProblem}[Exercise \# 1] % Custom section title
 
 
-\begin{homeworkSection}{(3)} % Section within problem
+\begin{homeworkSection}{(1a)} % Section within problem
 %\lipsum[4]\vspace{10pt} % Question
 
 \problemAnswer{ % Answer
-\lipsum[5]
+Given: $X_i \sim Beta(\alpha, 1)$
+MLE for $\alpha$:
+
+Consider $X=(X_1,X_2, \dots, X_n)$
+Likelihood function: $L(\alpha|X)$
+$L(\alpha | X) = \Pi_{i=1}^n f(x_i)$
+where
+\begin{align}
+ f(x_i)&=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1} = \frac{\Gamma(\alpha +1)}{\Gamma(\alpha)\Gamma(1)}x^{\alpha-1}\\
+ &=\frac{\alpha \Gamma(\alpha)}{\Gamma(\alpha)} x^{\alpha-1}
+ &=\alpha x^{\alpha-1}	
+\end{align}
+
+\begin{align}
+L(\alpha|X)&=\big(\frac{\Gamma(\alpha+1)}{\Gamma(\alpha)\Gamma(1)}\big)^n \Pi_{i=1}^n (x_i)^{\alpha-1}
+\end{align}
+
+\begin{align}
+LL=\log(L(\alpha | X)) &= n \log(\alpha) + (\alpha -1)\sum_{i=1}^n x_i \\
+\frac{dLL}{d\alpha} &= \frac{n}{\alpha} + \sum_{i=1}^n{\log(x_i)}\\
+\frac{dLL}{d\alpha} &= 0 \implies \hat{\alpha} =  \frac{n}{\sum_{i=1}^n log(1/x_i)}
+\end{align}
+Minima at $\hat{\alpha} =  \frac{n}{\sum_{i=1}^n log(1/x_i)}$ is guaranteed due to $\log$ being a concave function.
+
+
+
 }
+
+
+
+
 \end{homeworkSection}
 
 %--------------------------------------------
 
-\begin{homeworkSection}{(b)} % Section within problem
+\begin{homeworkSection}{(1b)} % Section within problem
 \problemAnswer{ % Answer
-\lipsum[6]
+Given: $x_i \sim N(\theta, \theta)$ i.e $f(x_i)= (2\pi \theta)^{-\frac{1}{2}} e^{-\frac{(x_i-\theta)^2}{2\theta}}$
+MLE estimate for $\theta$:
+
+\begin{align}
+L(\theta|X) &=  (2\pi \theta)^{-\frac{N}{2}} e^{-\sum_{i=1}^n\frac{(x_i-\theta)^2}{2\theta}}\\
+LL=\log(L(\theta|X)) &= -\frac{N}{2} \log((2\pi \theta)) -\sum_{i=1}^n\frac{(x_i-\theta)^2}{2\theta} \\
+\frac{dLL}{d\theta} &= -\frac{N}{2}(\frac{1}{\theta})+\frac{\sum_{i=1}^n x_i^2}{2\theta^2}-\frac{N\theta}{2}\\
+\frac{dLL}{d\theta} &=0 \implies N\theta^2+N\theta-\sum_{i=1}^n x_i^2 =0
+\end{align}
+The above equation is a audratic and will have two solutions,
+Since, $\theta \geq 0$ (a constraint that comes from $\theta$ being the variance), the 
+
+$\theta = \frac{-N\pm \sqrt{N^2+4N\sum_{i=1}^nx_i^2}}{2N}$
+
+Since, $\hat{\theta} \geq 0$, $\hat{\theta} = \frac{-N + \sqrt{N^2+4N\sum_{i=1}^nx_i^2}}{2N}$
+
 }
 \end{homeworkSection}
 
