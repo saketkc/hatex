@@ -3,33 +3,33 @@ title: "MATH-650 Assignment 3"
 author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
 date: "09/15/2015"
 output:
+  pdf_document: default
   html_document:
     keep_md: yes
-  pdf_document: default
 ---
+# Problem 24: Sex Discrimination
 
+### Part (a)
 ```{r}
 salary.data <- read.csv('data_24.csv')
 head(salary.data)
 salary.female <- salary.data[salary.data$Sex=="Female",]$Salary
 salary.male <- salary.data[salary.data$Sex=="Male",]$Salary
 ```
-
+#### Boxplot of Salary *without* log adjustment
 ```{r}
 boxplot(Salary~Sex,data=salary.data, main="Starting Salary for US 32 males and 61 female clerical hires at a bank", log="",
     xlab="Sex", ylab="Salary in US$")
 ```
 
-### Log transformed salary
-
-
+#### Boxplot of log transformed salary
 ```{r}
 boxplot(log10(Salary)~Sex,data=salary.data, main="Starting Salary for US 32 males and 61 female clerical hires at a bank", log = "y",
     xlab="Sex", ylab="log(Salary) in US$")
 ```
 
 
-### Part(b)
+### Part (b)
 
 ```{r}
 tt<-t.test(log10(salary.male), log10(salary.female), alternative = "greater")
@@ -38,10 +38,15 @@ dm <- unname(dm)
 CI1<-tt$conf.int[1]
 CI2<-2*dm-CI1
 ```
+Difference of log means of Male-Female salaries: `r dm`
+Null hypothesis: mean of log transformed salary of males is the same as that of feamles
+Alternative hypothesis: Mean of log transformed salary of males is greater than that of females
+t-statistic: `r tt$statistic`
+p-value: `r tt$p.value`
+CI of ratio of  population medians: [`r CI1`, `r CI2`]
 
-p-value `r tt$p.value`
-CI of mean difference: [`r CI1`, `r CI2`]
 
+### Part (c)
 
 ```{r, echo=TRUE}
 estimate <- exp(dm)
@@ -51,23 +56,36 @@ estimate
 lower.ci
 upper.ci
 ```
+95% Confidence interval for ratio of population medians: [`r lower.ci`, `r upper.ci`]
+At a significance level of 0.05, we can reject the null hypothesis that the mean salary of males is the same as that of females. The associated p-value is $`r tt$p.value`$
 
 
-## Problem 25
+# Problem 25
 
 ```{r}
 data <- read.csv('data_25.csv')
 vietnam <- data[data$Veteran=="Vietnam",]$Dioxin
 other <- data[data$Veteran=="Other",]$Dioxin
-
-vietnam.without <- vietnam[c(1:644)]
+vietnam.without1 <- vietnam[c(1:645)]
+vietnam.without2 <- vietnam[c(1:644)]
 
 tt.with <- t.test(vietnam, other, alternative="greater")
 tt.with
 ```
 
-```{r}
-tt.with <- t.test(vietnam.without, other, alternative="greater")
-tt.with
+Doing a independent two sample t-test  for equal population means for all observations, the associated p-value: `r tt.with$p.value`(matches the value of 0.40 as in Display 3.7)
 
+
+```{r}
+tt.without1 <- t.test(vietnam.without1, other, alternative="greater")
+tt.without1
 ```
+
+Doing a independent two sample t-test  for equal population means by exluding the last outlier points(646), the associated p-value: `r tt.without1$p.value` (matches the value of 0.48 as in Display 3.7)
+
+```{r}
+tt.without2 <- t.test(vietnam.without2, other, alternative="greater")
+tt.without2
+```
+Doing a independent two sample t-test  for equal population means by exluding the last two outlier points(645, 646), the associated p-value: `r tt.without2$p.value` (matches the value of 0.54 as in Display 3.7)
+
