@@ -1,0 +1,73 @@
+---
+title: "MATH-650 Assignment 3"
+author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
+date: "09/15/2015"
+output:
+  html_document:
+    keep_md: yes
+  pdf_document: default
+---
+
+```{r}
+salary.data <- read.csv('data_24.csv')
+head(salary.data)
+salary.female <- salary.data[salary.data$Sex=="Female",]$Salary
+salary.male <- salary.data[salary.data$Sex=="Male",]$Salary
+```
+
+```{r}
+boxplot(Salary~Sex,data=salary.data, main="Starting Salary for US 32 males and 61 female clerical hires at a bank", log="",
+    xlab="Sex", ylab="Salary in US$")
+```
+
+### Log transformed salary
+
+
+```{r}
+boxplot(log10(Salary)~Sex,data=salary.data, main="Starting Salary for US 32 males and 61 female clerical hires at a bank", log = "y",
+    xlab="Sex", ylab="log(Salary) in US$")
+```
+
+
+### Part(b)
+
+```{r}
+tt<-t.test(log10(salary.male), log10(salary.female), alternative = "greater")
+dm <- tt$estimate[1]-tt$estimate[2]
+dm <- unname(dm)
+CI1<-tt$conf.int[1]
+CI2<-2*dm-CI1
+```
+
+p-value `r tt$p.value`
+CI of mean difference: [`r CI1`, `r CI2`]
+
+
+```{r, echo=TRUE}
+estimate <- exp(dm)
+lower.ci <- exp(CI1)
+upper.ci <- exp(CI2)
+estimate
+lower.ci
+upper.ci
+```
+
+
+## Problem 25
+
+```{r}
+data <- read.csv('data_25.csv')
+vietnam <- data[data$Veteran=="Vietnam",]$Dioxin
+other <- data[data$Veteran=="Other",]$Dioxin
+
+vietnam.without <- vietnam[c(1:644)]
+
+tt.with <- t.test(vietnam, other, alternative="greater")
+tt.with
+```
+
+```{r}
+tt.with <- t.test(vietnam.without, other, alternative="greater")
+tt.with
+
+```
