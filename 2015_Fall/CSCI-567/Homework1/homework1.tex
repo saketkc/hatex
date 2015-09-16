@@ -125,7 +125,7 @@
 \begin{homeworkProblem}[Problem \# 1] % Custom section title
 
 
-\begin{homeworkSection}{\homeworkProblemName:~(a)} % Section within problem
+\begin{homeworkSection}{\homeworkProblemName:~(a) 1} % Section within problem
 %\lipsum[4]\vspace{10pt} % Question
 
 \problemAnswer{ % Answer
@@ -164,7 +164,7 @@ Minima at $\hat{\alpha} =  \frac{n}{\sum_{i=1}^n log(1/x_i)}$ is guaranteed due 
 
 %--------------------------------------------
 
-\begin{homeworkSection}{\homeworkProblemName:~(b)} % Section within problem
+\begin{homeworkSection}{\homeworkProblemName:~(a) 1} % Section within problem
 \problemAnswer{ % Answer
 Given: $x_i \sim N(\theta, \theta)$ i.e $f(x_i)= (2\pi \theta)^{-\frac{1}{2}} e^{-\frac{(x_i-\theta)^2}{2\theta}}$
 MLE estimate for $\theta$:
@@ -175,7 +175,7 @@ LL=\log(L(\theta|X)) &= -\frac{N}{2} \log((2\pi \theta)) -\sum_{i=1}^n\frac{(x_i
 \frac{dLL}{d\theta} &= -\frac{N}{2}(\frac{1}{\theta})+\frac{\sum_{i=1}^n x_i^2}{2\theta^2}-\frac{N\theta}{2}\\
 \frac{dLL}{d\theta} &=0 \implies N\theta^2+N\theta-\sum_{i=1}^n x_i^2 =0
 \end{align}
-The above equation is a audratic and will have two solutions,
+The above equation is a quadratic and will have two solutions,
 Since, $\theta \geq 0$ (a constraint that comes from $\theta$ being the variance), the 
 
 $\theta = \frac{-N\pm \sqrt{N^2+4N\sum_{i=1}^nx_i^2}}{2N}$
@@ -187,17 +187,8 @@ Since, $\hat{\theta} \geq 0$, $\hat{\theta} = \frac{-N + \sqrt{N^2+4N\sum_{i=1}^
 
 %--------------------------------------------
 
-\end{homeworkProblem}
 
-%----------------------------------------------------------------------------------------
-%       PROBLEM 3
-%----------------------------------------------------------------------------------------
-
-\begin{homeworkProblem}[Problem 2] % Roman numerals
-
-%--------------------------------------------
-
-\begin{homeworkSection}{\homeworkProblemName:~(a)} % Using the problem name elsewhere
+\begin{homeworkSection}{\homeworkProblemName:~(b) 1} % Using the problem name elsewhere
 \problemAnswer{ % Answer
 Given: $\hat{f(x)}=\frac{1}{n}\sum_{i=1}^n \frac{1}{h}K(\frac{x-X_i}{h})$
 To show: $E_{X_1,X_2, \dots X_n}[\hat{f(x)}]=\frac{1}{h}\int K(\frac{x-t}{h})f(t)dt $
@@ -225,7 +216,7 @@ E[\hat{f(x)}]&=\frac{1}{h}E[K(\frac{x-X_1}{h})]
 
 %--------------------------------------------
 
-\begin{homeworkSection}{\homeworkProblemName:~(b)}
+\begin{homeworkSection}{\homeworkProblemName:~(b) 2}
 \problemAnswer{ % Answer
 Consider $z = \frac{x-t}{h}$ $\implies$ $t=x-hu$
 
@@ -254,10 +245,13 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 %       PROBLEM 4
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Prob. \Roman{homeworkProblemCounter}] % Roman numerals
-\problemAnswer{ % Answer
-\lipsum[10]
-}
+\begin{homeworkProblem}[Problem 2] % Roman numerals
+
+\begin{homeworkSection}{\homeworkProblemName:~(c)}
+	\problemAnswer{
+	}
+\end{homeworkSection}
+
 \end{homeworkProblem}
 
 %----------------------------------------------------------------------------------------
