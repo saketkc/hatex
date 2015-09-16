@@ -39,10 +39,15 @@ CI1<-tt$conf.int[1]
 CI2<-2*dm-CI1
 ```
 Difference of log means of Male-Female salaries: `r dm`
+
 Null hypothesis: mean of log transformed salary of males is the same as that of feamles
+
 Alternative hypothesis: Mean of log transformed salary of males is greater than that of females
+
 t-statistic: `r tt$statistic`
-p-value: `r tt$p.value`
+
+p-value: $`r tt$p.value`$
+
 CI of ratio of  population medians: [`r CI1`, `r CI2`]
 
 

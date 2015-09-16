@@ -54,10 +54,15 @@ CI1<-tt$conf.int[1]
 CI2<-2*dm-CI1
 ```
 Difference of log means of Male-Female salaries: 0.0638168
+
 Null hypothesis: mean of log transformed salary of males is the same as that of feamles
+
 Alternative hypothesis: Mean of log transformed salary of males is greater than that of females
+
 t-statistic: 6.0538724
-p-value: 5.0434814\times 10^{-8}
+
+p-value: $5.0434814\times 10^{-8}$
+
 CI of ratio of  population medians: [0.0462048, 0.0814288]
 
 
