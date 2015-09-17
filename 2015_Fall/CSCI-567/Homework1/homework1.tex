@@ -247,8 +247,31 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 
 \begin{homeworkProblem}[Problem 2] % Roman numerals
 
+\begin{homeworkSection}{\homeworkProblemName:~(a)}
+\problemAnswer{
+	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName:~(b)}
+	\problemAnswer{
+	}
+\end{homeworkSection}
+
+
 \begin{homeworkSection}{\homeworkProblemName:~(c)}
 	\problemAnswer{
+		Total points: $N$
+		
+		Total points with label class $c$: $N_c$
+		
+		Given: $p(x|Y=c)=\frac{K_c}{N_cV}$ and $\sum K_c=K$
+		Class prior: $p(Y=c)=\frac{N_c}{N}$
+		
+		Unconditional density $p(x)=\sum_c p(x|Y=c)p(Y=c) = \sum_c \frac{K_c}{N_cV} \times \frac{N_c}{N}= \sum_c \frac{K_c}{NV} = \frac{K}{NV}$
+		
+		Posterior $P(Y=c|x)=\frac{P(x|Y=c)\times P(Y=c)}{ P(x) } = \frac{\frac{K_c}{N_cV} \times \frac{N_c}{N} }{\frac{K}{NV}} =\frac{K_c}{K} $
+		
+		
 	}
 \end{homeworkSection}
 
