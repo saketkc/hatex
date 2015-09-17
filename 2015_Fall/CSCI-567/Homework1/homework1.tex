@@ -249,16 +249,73 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 
 \begin{homeworkSection}{\homeworkProblemName:~(a)}
 \problemAnswer{
+
+	
+		Mean $\bar{x} = \frac{1}{N}\sum x = \frac{1}{10}\sum_{i=1}^{10}x_i = 8.6$
+		
+		Mean $\bar{y} = \frac{1}{N}\sum y = \frac{1}{10}\sum_{i=1}^{10}y_i = 19.6$
+		
+		Standard deviation $x_{sd} = \sqrt{\frac{\sum_{i=1}^{10} (x_i-\bar{x})^2}{10-1}} = 21.3269$ 
+		
+		Standard deviation $y_{sd} = \sqrt{\frac{\sum_{i=1}^{10} (x_i-\bar{x})^2}{10-1}} = 25.1960$ 
+		
+		Student with unknown major: $(9,18)$: 
+		
+		Normalised to : $(0.0187, -0.0635)$ 
+		
+\begin{center}
+
+
+		 \begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline \rule[-2ex]{0pt}{5.5ex} ID & x  & y & $x_n$ & $y_n$ & L1 & L2\\ 
+			\hline \rule[-2ex]{0pt}{5.5ex} M1 & 10 & 49 & 0.0623 & 1.107  & \underline{1.2117} & 1.168\\ 
+			\hline \rule[-2ex]{0pt}{5.5ex} M2 & -12 & 38 & -0.9163 & 0.6928  & 1.6871 & 1.1998 \\ 
+			\hline \rule[-2ex]{0pt}{5.5ex} M3 & -9 & 47 & -0.7829 & 1.0317 & 1.8926 & 1.354 \\ 
+			\hline \rule[-2ex]{0pt}{5.5ex} EE1 & 29 & 19 & 0.9074 & -0.0226 & \underline{0.9272} & \underline{0.8904}\\ 
+			\hline \rule[-2ex]{0pt}{5.5ex} EE2 & 32 & 31 & 1.0409 & 0.4292 & 1.5125 & \underline{1.1341}\\ 
+			\hline \rule[-2ex]{0pt}{5.5ex} EE3 & 37 & 38 & 1.2633 & 0.6928 & 1.9985 & 1.4554\\
+			\hline \rule[-2ex]{0pt}{5.5ex} CS1 & 8 & 9 & -0.0267 & -0.3991 & \underline{0.3834} & \underline{0.3418} \\ 
+			\hline \rule[-2ex]{0pt}{5.5ex} CS2 & 30 & -28 & 0.9519 & -1.7922 & 2.6661 & 1.9678 \\ 
+			\hline \rule[-2ex]{0pt}{5.5ex} CS3 & -18 & -19 & -1.1832 & -1.4534 & 2.5942 & 1.8394 \\ 
+			\hline \rule[-2ex]{0pt}{5.5ex} CS4 & -21 & 12 & -1.3167 & -0.2862 & 1.5605 & 1.3535 \\ 
+			\hline 
+		\end{tabular} 
+\end{center}		
+	Procedure: We first normalise the data point with unknown major using the mean and standard deviation of the known points, and then calculated the L1 and L2 distances.
+	L1 distance between two points $(x_1,y_1)$ and $(x_0,y_0$) is defined as : $L1 = |x_1-x_0| +  |y_1-y_0|$
+	
+	L2 distance is defined as $L2 = \sqrt{(x_1-x_0)^2 + (y_1-y_0)^2}$
+		\textbf{For $L1$}:
+		
+		\textbf{$K=1$}: For $K=1$ the nearest neighbor is CS1 and hence the unknown sample 'could' be a computer science
+		
+		\textbf{$K=3$}: For $K=3$ the nearest neighbors are M1, EE1, CS1 and hence there is a 'tie'. Choosing the label of the least distance would again result in CS1 as $CS1 < EE1 <M1$.
+		
+		\textbf{For $L2$}:
+		
+		\textbf{$K=1$}: For $K=1$ the nearest neighbor is CS1 and hence the unknown sample 'could' be a computer science
+		
+		\textbf{$K=3$}: For $K=3$ the nearest neighbors are M1, EE1, EE2. Since two nearest neighbors are from EE, we assign it the unknwon sample to be from Electrical engineering.
+		
+		\textbf{Comparison} For $K=1$, both $L1$ and $L2$ distance metric give the same results, however for $K=3$, the $L1$ metric yields a tie, since the distances are similar but $L2$ metric being a square quantity of a number smaller than 1 further reduces the distances and .....
+		TODO
+		
+		
+		
+		
+		 
+		
+
+			
+		
+			
+
+		
 	}
 \end{homeworkSection}
+
 
 \begin{homeworkSection}{\homeworkProblemName:~(b)}
-	\problemAnswer{
-	}
-\end{homeworkSection}
-
-
-\begin{homeworkSection}{\homeworkProblemName:~(c)}
 	\problemAnswer{
 		Total points: $N$
 		
