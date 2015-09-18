@@ -7,6 +7,8 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 
 \usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{trees}
 
 % Margins
 \topmargin=-0.45in
@@ -102,6 +104,9 @@
 \date{} % Insert date here if you want it to appear below your name
 
 %----------------------------------------------------------------------------------------
+\tikzstyle{level 1}=[level distance=1.5cm, sibling distance=2.5cm]
+\tikzstyle{level 2}=[level distance=1cm, sibling distance=2cm]
+\tikzstyle{level 3}=[level distance=1cm, sibling distance=1.5cm]
 
 \begin{document}
 
@@ -351,9 +356,129 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 
 			
 			\textbf{Temperature}
+
 			
 			
 		}
+
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+		\problemAnswer{
+			By default the rightmost branch correspoonds to the parent condition being a YES[FIX ME]
+			
+			
+			\textbf{a}:
+			\begin{center}
+
+
+					\begin{tikzpicture}
+					\tikzstyle{every node}=[draw,rectangle]
+					
+					\node {$X1>x$}
+					[style=edge from parent fork down]
+
+					child {
+						node {$X2>y$}
+						child { node {$\circ$} }
+						child { node {$\Delta$} }
+					}
+					child { node {$\Delta$} }
+					;
+					
+					\end{tikzpicture}
+			\end{center}
+					
+					
+			\textbf{b}:
+			\begin{center}
+				
+				
+				\begin{tikzpicture}
+				\tikzstyle{every node}=[draw,rectangle]
+				
+				\node {$X1>x$}
+				[style=edge from parent fork down]
+				
+				child {
+					node {$X2>y$}
+					child { node {$\circ$} }
+					child { node {$\Delta$} }
+				}
+				child { 
+					node {$X2>y$}
+					child { node {$\Delta$} }
+					child { node {$\circ$} }
+				 }
+				;
+				
+				\end{tikzpicture}
+			\end{center}
+			
+			
+				\textbf{c}:
+				\begin{center}
+					
+					
+					\begin{tikzpicture}
+					\tikzstyle{every node}=[draw,rectangle]
+					
+					\node {$X1>x$}
+					[style=edge from parent fork down]
+					
+					child {
+						node {$\circ$}
+					}
+					child { 
+						node {$X2>y$}
+						child { node {$\circ$} }
+						child { node {$\Delta$} }
+					}
+					;
+					
+					\end{tikzpicture}
+				\end{center}
+				
+				
+				
+				
+					\textbf{d}:
+					\begin{center}
+						
+						
+						\begin{tikzpicture}
+						\tikzstyle{every node}=[draw,rectangle]
+						
+						\node {$X1>x2$}
+						[style=edge from parent fork down]
+						
+						child { 
+							node {$X1>x1$}
+							child { node {$\Delta$} }
+							child { 
+								node {$X2>y2$} 
+								child {
+									child{node {$\Delta$}}
+									child{node {$Y>y1$}
+										child{
+											child { node {$\circ$} }
+											child { node {$\Delta$} }
+										}
+									}
+								}
+							}
+						}
+						child {
+							node {$\Delta$}
+						}
+						;
+						
+						\end{tikzpicture}
+					\end{center}
+			
+			
+			
+			}
 
 	\end{homeworkSection}
 \end{homeworkProblem}
