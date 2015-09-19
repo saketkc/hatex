@@ -482,6 +482,32 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 
 	\end{homeworkSection}
 \end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 4]
+	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
+			\problemAnswer{
+				 Given a random variable $X \in \mathbb{R}^D$ and $Y \in [C]$ naive bayes defines the joint distribution:
+				$P(X=x,Y=y)=P(Y=y)P(X=x|Y=y)=P(Y=y)\Pi_{i=1}^D P(X_d=x_d|Y=y)$
+				
+			Given: $P (x_j |Y=y_k )\sim N(\mu_{jk}, \sigma_{jk})$
+			Y is a categorical variable with $P(Y=k)=p_k$ for $k in [1,K]$
+			
+			For all $j\neq j'$ $x_j,X_{j'}$ are independent attributes.
+			
+			Naive bayes: $P(X=x,Y=y_k)=P(Y=y_k)\Pi_{i=1}^DP(X=x_{i}|Y=y_k)$
+			Consider the likelihood function 
+			\begin{align}
+			L(\mu,\sigma,p|(X,Y)) &= \log(\Pi_{1}^N P(Y=y_i)\times \Pi_{j=1}^D P(X=x_{ij}|Y=y_i)\\
+			&= \sum_{i=1}^N \log(p_i) +\sum_{i=1}^N \sum_{j=1}^D \log(P(X=x_{ij}|Y=y_{i}))
+			\end{align}
+			Constraint $\sum_k p_k =1$
+			
+		Given $K$ number of classes, the above constraint the MLE estimate of $p_k$ is given by: $\frac{N_k}{N}$
+		
+		
+				}
+	\end{homeworkSection}
+\end{homeworkProblem}
 %----------------------------------------------------------------------------------------
 
 \end{document}
