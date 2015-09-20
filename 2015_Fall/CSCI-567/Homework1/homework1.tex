@@ -139,7 +139,7 @@ MLE for $\alpha$:
 
 Consider $X=(X_1,X_2, \dots, X_n)$
 Likelihood function: $L(\alpha|X)$
-$L(\alpha | X) = \Pi_{i=1}^n f(x_i)$
+$L(\alpha | X) = \prod_{i=1}^n f(x_i)$
 where
 \begin{align}
  f(x_i)&=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1} = \frac{\Gamma(\alpha +1)}{\Gamma(\alpha)\Gamma(1)}x^{\alpha-1}\\
@@ -148,7 +148,7 @@ where
 \end{align}
 
 \begin{align}
-L(\alpha|X)&=\big(\frac{\Gamma(\alpha+1)}{\Gamma(\alpha)\Gamma(1)}\big)^n \Pi_{i=1}^n (x_i)^{\alpha-1}
+L(\alpha|X)&=\big(\frac{\Gamma(\alpha+1)}{\Gamma(\alpha)\Gamma(1)}\big)^n \prod_{i=1}^n (x_i)^{\alpha-1}
 \end{align}
 
 \begin{align}
@@ -486,26 +486,78 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 \begin{homeworkProblem}[Problem 4]
 	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 			\problemAnswer{
-				 Given a random variable $X \in \mathbb{R}^D$ and $Y \in [C]$ naive bayes defines the joint distribution:
-				$P(X=x,Y=y)=P(Y=y)P(X=x|Y=y)=P(Y=y)\Pi_{i=1}^D P(X_d=x_d|Y=y)$
-				
-			Given: $P (x_j |Y=y_k )\sim N(\mu_{jk}, \sigma_{jk})$
-			Y is a categorical variable with $P(Y=k)=p_k$ for $k in [1,K]$
-			
-			For all $j\neq j'$ $x_j,X_{j'}$ are independent attributes.
-			
-			Naive bayes: $P(X=x,Y=y_k)=P(Y=y_k)\Pi_{i=1}^DP(X=x_{i}|Y=y_k)$
-			Consider the likelihood function 
-			\begin{align}
-			L(\mu,\sigma,p|(X,Y)) &= \log(\Pi_{1}^N P(Y=y_i)\times \Pi_{j=1}^D P(X=x_{ij}|Y=y_i)\\
-			&= \sum_{i=1}^N \log(p_i) +\sum_{i=1}^N \sum_{j=1}^D \log(P(X=x_{ij}|Y=y_{i}))
-			\end{align}
-			Constraint $\sum_k p_k =1$
-			
-		Given $K$ number of classes, the above constraint the MLE estimate of $p_k$ is given by: $\frac{N_k}{N}$
-		
-		
+				 Given a random variable $X \in \mathbf{R}^D$ and $Y \in [C]$ naive bayes defines the joint distribution:
+				 \begin{align*}
+					P(X=x,Y=y)&=P(Y=y)P(X=x|Y=y)\\
+					&=P(Y=y)\prod_{d=1}^D P(X_d=x_d|Y=y)
+				 \end{align*}
+				 
+					Y is a categorical variable with $P(Y=k)=p_k$ for $k \in [1,K]$
+					
+					Given: $P (x_j |Y=y_k )\sim N(\mu_{jk}, \sigma_{jk})$ $\implies$
+					
+					\begin{equation}
+						\log(P(x_j|Y=k)) = -\frac{\log(2\pi \sigma_{jk})}{2} - \frac{(x_j-x_{jk})^2}{2\sigma_{jk}}
+					\end{equation}
+					
+					
+
+					
+					For all $j\neq j'$ $x_j,X_{j'}$ are independent attributes.
+					
+					Naive bayes: 
+					\begin{align*}
+						P(X_i=\vec{x},Y_i=y)&=P(Y_i=y)P(X_{i1}=x_1,X_{i2}=x_2\dots X_{iD}=x_D|Y=y_k)\\
+						&=P(Y_i=y) \prod_{j=1}^D P(X_{ij}=x_j|Y=y_i)\ \text{Assuming independence of attributes $x_i$}
+					\end{align*}
+					Each $Y_i$ belongs to one of the $K$ classes, thus $\sum_{k=1}^K p_k=1$ for any $Y_i$
+					
+					Let $N_k$ represent the number of elements in class $k$ for $k \in [1,K]$
+					
+					
+					Then, $\sum_{i=1}^N \log(Y_i=y_i) = \sum_{k=1}^K P(Y=k) \times N_k $
+					
+					Consider the likelihood function 
+					\begin{align}
+						L(\mu,\sigma,p|(X,Y)) &=  \prod_{1}^N P(Y_i=y_i)\times \prod_{j=1}^D P(X_i=x_{ij}|Y=y_i)\\
+						\log(L)&= \sum_{i=1}^N \log(P(Y_i=y_i)) +\sum_{i=1}^N \sum_{j=1}^D \log(P(X_i=x_{ij}|Y=y_{i}))\\
+						&= \sum_{i=1}^N \log(P(Y_i=y_i)) +\sum_{i=1}^N \sum_{j=1}^D \log(P(X_{ij}=x_{ij}|Y=y_{i}))\\
+						&=\sum_{k=1}^K P(Y=k) \times N_k + \sum_{k=1}^K \sum_{j=1}^D \log(P(X_{ij}=x_{ij}|Y=k)) \times N_k
+					\end{align}
+					
+					Now, 
+					\begin{align}
+					\label{rho1}\frac{\partial{LL}}{\partial{p_k}}&=0\\
+					\label{rho2}\frac{\partial{LL}}{\partial{\mu_{jk}}}&=0\\
+					\label{rho3}\frac{\partial{LL}}{\partial{\sigma{jk}}}&=0\\
+					\end{align}
 				}
+				\clearpage
+				\problemAnswer{
+					For for equation \ref{rho1} and constraint $\sum_k p_k =1$, we get: $p_k \frac{N_k}{N}$
+					\clearpage
+					For equation \ref{rho2},
+					\begin{align*}
+						\frac{\partial{\sum_{k=1}^K \sum_{j=1}^D \log(P(X_i=x_{ij}|Y=k)) \times N_k}}{\partial \mu_{jk}} &=0\\
+						\frac{\sum_{i;Y_i=k}(x_{ij}-\mu_{jk})}{\sigma_{jk}}=0\\
+						%-\frac{\sum_{k=1}^KN_k(x_j-\mu_{jk})}{\sigma_{jk}} &=0\\
+						\hat{\mu_{jk}} = \frac{\sum_{i;Y_i=k}x_{ij}}{N_k}
+					\end{align*}
+					
+					For equation \ref{rho3},
+					\begin{align*}
+						\frac{\partial{\sum_{k=1}^K \sum_{j=1}^D \log(P(X_i=x_{ij}|Y=k)) \times N_k}}{\partial \sigma_{jk}} &=0\\
+						\frac{\partial}{\partial{\sigma_{jk}}}\sum_{i;Y_i=k}\big(-\frac{\log(2\pi \sigma_{jk})}{2} - \frac{(x_{ij}-x_{jk})^2}{2\sigma_{jk}}\big)=0\\
+						\frac{\partial}{\partial{\sigma_{jk}}}\sum_{i;Y_i=k}\big(-\frac{1}{\sigma_{jk}} + \frac{(x_{ij}-x_{jk})^2}{2\sigma_{jk}^2}\big)=0\\
+						\hat{\sigma_{jk}}=\frac{\sum_{i;Y_i=k}(x_{ij}-\hat{\mu_{jk}})^2}{N_k}
+					\end{align*}
+					Constraint $\sum_k p_k =1$
+					Given $K$ number of classes, the above constraint the MLE estimate of $p_k$ is given by: $\frac{N_k}{N}$
+				}
+				
+				
+				
+				
 	\end{homeworkSection}
 \end{homeworkProblem}
 %----------------------------------------------------------------------------------------
