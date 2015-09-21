@@ -141,16 +141,100 @@
 
 \begin{homeworkProblem}[Problem 1] % Roman numerals
 %--------------------------------------------
-
+		$(X,Y) \in {R}^d \times \{\pm 1\}$
+		\begin{align*}
+		P(Y=1) &= \pi_+\\
+		P(Y=-1) &= \pi_-
+		P(dx|Y=1) &= p_{+}(x)\\
+		P(dx|Y=-1) &= p_{-}(x)
+		\end{align*}
 \begin{homeworkSection}{\homeworkProblemName: (a)} % Section within problem
+	
 \problemAnswer{ % Answer
 
+Expression for bayes classifier:
+
+\begin{align*}
+P(Y=1|x)= \frac{P(x|Y=1)P(Y=1)}{P(x|Y=1)P(Y=1)+P(x|Y=-1)P(Y=-1)}\\
+P(Y=1|x) = \frac{\pi_+ p_{+}(x)}{\pi_+ p_{+}(x)+\pi_-p_{-}(x)}
+\end{align*}
+
+\begin{align*}
+P(Y=-1|x)= \frac{P(x|Y=-1)P(Y=1)}{P(x|Y=-1)P(Y=-1)+P(x|Y=-1)P(Y=-1)}\\
+P(Y=-1|x) = \frac{\pi_- p_{-}(x)}{\pi_+ p_{+}(x)+\pi_-p_{-}(x)}
+\end{align*}
+
+Define $\eta(x) =  E[Y|x] = 1\times P(Y=1|x) + -1 \times P(Y=1|x) $
+
+Now, 
+
+\begin{align*}
+P(error|x) = \begin{cases}
+P(Y=1|x) & \text{if actual class for x is -1}\\
+P(Y=-11|x) & \text{if actual class for x is 1}\\
+\end{cases}
+\end{align*}
+
+Intuitively to minimise the error, we choose class '1' for $x$ when
+$P(Y=1|x)>P(Y=-1|X)$
+
+and hence, the bayes classifier $g_*(x)$ is given by:\\
+\begin{align*}
+g_*(x) = \begin{cases}
+1 & \pi_+p_+(x) \geq \pi_{-}p_-(x)\\
+-1 & \text{otherwise}
+\end{cases}
+\end{align*}
 }
+
+and the total probability of making an error is given by:
+$P(error|x) = min(P(Y=1|x),P(Y=-1|x))$
+
+The loss function $L(\alpha_i,\omega_j)$ is the 'loss' incurred for taking action $\alpha_i$ instead of $\omega_j$
+
 \end{homeworkSection}
 
 
+
+\begin{homeworkSection}{\homeworkProblemName: (b)} % Section within problem
+	\problemAnswer{
+		Bayes risk
+		}
+\end{homeworkSection}
+
 \end{homeworkProblem}
 
-
-
+\begin{homeworkProblem}[Problem 4]
+	\problemAnswer{Assume the sufficient condition exists, i.e.:
+		There exist $a_1,a_2, \dots a_k \geq 0$ and binary classifiers $g_1, g_2, \dots g_k$ such that $\forall 1 \leq i \leq n$:
+		$Y_i\sum_{j=1}^k a_jg_j(X_i) \geq 2\gamma$
+		
+		
+		$Y_i$ is given by the widghted sum of predictions $g_j$ : $Y_i = sign(\sum_{j=1}^k a_jg_j(X_i))$
+		Taking expectations:
+		\begin{align*}
+		E[Y_i\sum_{j=1}^k a_jg_j(X_i)] \geq 2\gamma \\
+		\sum_{j=1}^k a_j E[Y_ig_j(X_i)] \geq 2\gamma
+		\end{align*}
+		
+		Since, $\sum_j a_j =1$ and $a_j \geq 0$ for $j= \{1,2,\dots,k\}$ and $\sum_{j=1}^k a_j E[Y_ig_j(X_i)] \geq 2\gamma$ then there exists a $g_j$ such that:
+		
+		$E[Y_ig_j(X_i)] \geq 2\gamma$
+		
+		\begin{align*}
+		E[Y_ig_j(X_i)] &= 1\times P[Y_i=g_j(X_i)] + -1 \times P(Y_i \neq g_j(X_i))\\
+		&= 1- 2P(Y_i \neq  g_j(X_i))\\
+		\implies P(Y_i \neq  g_j(X_i)) = \frac{1-E[Y_ig_j(X_i)]}{2} \\
+		P(Y_i \neq  g_j(X_i)) \leq \frac{1-2\gamma}{2}
+		\end{align*}
+		
+		Now for weights, $w_1, w_2, \dots w_j$ such that $\sum_j w_j=1$:
+		
+		\begin{align*}
+		\sum_{j=1}^n P(Y_j \neq g(X-j)) \leq \frac{1}{2}-\gamma \\
+		\sum_{j=1}^n E[I(Y_j \neq g(X-j))] \leq \frac{1}{2}-\gamma \\
+		\sum_{j=1}^n I(Y_j \neq g(X-j)) \leq \frac{1}{2}-\gamma \\
+		\end{align*}
+		}
+\end{homeworkProblem}
 \end{document}
