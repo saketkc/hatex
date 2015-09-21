@@ -99,7 +99,7 @@
 %       NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
 
-\newcommand{\hmwkTitle}{Assignment\ \# } % Assignment title
+\newcommand{\hmwkTitle}{Assignment\ \# 1} % Assignment title
 \newcommand{\hmwkDueDate}{Monday,\ September\ 21,\ 2015} % Due date
 \newcommand{\hmwkClass}{MATH-547} % Course/class
 \newcommand{\hmwkClassTime}{} % Class/lecture time
@@ -144,7 +144,7 @@
 		$(X,Y) \in {R}^d \times \{\pm 1\}$
 		\begin{align*}
 		P(Y=1) &= \pi_+\\
-		P(Y=-1) &= \pi_-
+		P(Y=-1) &= \pi_-\\
 		P(dx|Y=1) &= p_{+}(x)\\
 		P(dx|Y=-1) &= p_{-}(x)
 		\end{align*}
@@ -168,12 +168,12 @@ Define $\eta(x) =  E[Y|x] = 1\times P(Y=1|x) + -1 \times P(Y=1|x) $
 
 Now, 
 
-\begin{align*}
-P(error|x) = \begin{cases}
-P(Y=1|x) & \text{if actual class for x is -1}\\
-P(Y=-11|x) & \text{if actual class for x is 1}\\
-\end{cases}
-\end{align*}
+%\begin{align*}
+%P(error|x) = \begin{cases}
+%P(Y=1|x) & \text{if actual class for x is -1}\\
+%P(Y=-11|x) & \text{if actual class for x is 1}\\
+%\end{cases}
+%\end{align*}
 
 Intuitively to minimise the error, we choose class '1' for $x$ when
 $P(Y=1|x)>P(Y=-1|X)$
@@ -185,12 +185,23 @@ g_*(x) = \begin{cases}
 -1 & \text{otherwise}
 \end{cases}
 \end{align*}
+
+Where, $ \pi_+p_+(x) \geq \pi_{-}p_-(x)$ is given by:
+
+\begin{align*}
+\log(\pi_+p_+(x))  \geq \log(\pi_{-}p_-(x))\\
+\log(\pi_+) + \log(p_+(x))  \geq \log(\pi_{-}) + 
+log(p_-(x))\\
+\log(\pi_+)  + \sqrt{\frac{1}{2\pi}} \mathbf{\sigma}^{-1} (x-\vec{a_+})\mathbf{\sigma}^{-1}(x-\vec{a_+})^T \geq \log(\pi_-) + \sqrt{\frac{1}{2\pi}} \mathbf{\sum}^{-1} (x-\vec{a_-})\mathbf{\sum}^{-1}(x-\vec{a_-})^T
+\end{align*}
+
+
 }
 
-and the total probability of making an error is given by:
-$P(error|x) = min(P(Y=1|x),P(Y=-1|x))$
+%and the total probability of making an error is given by:
+%$P(error|x) = min(P(Y=1|x),P(Y=-1|x))$
 
-The loss function $L(\alpha_i,\omega_j)$ is the 'loss' incurred for taking action $\alpha_i$ instead of $\omega_j$
+%The loss function $L(\alpha_i,\omega_j)$ is the 'loss' incurred for taking action %$\alpha_i$ instead of $\omega_j$
 
 \end{homeworkSection}
 
@@ -198,11 +209,161 @@ The loss function $L(\alpha_i,\omega_j)$ is the 'loss' incurred for taking actio
 
 \begin{homeworkSection}{\homeworkProblemName: (b)} % Section within problem
 	\problemAnswer{
-		Bayes risk
+		Bayes risk: $R(f) = E[l(yf(x))]$ where $l(t) = I\{t \leq 0\}$
+		
+		For 0-1 loss, the conditional risk is:
+		
+		
+		$R(i|x) = \sum_{j=0}^{k-1} L(j,i)p(j|x) \sum_{j \neq i} p(j|x) = 1-p(i|x)$
+		
+		
+		Thus, $R(i|x)$ is the probability of $x$ not belonging to class $i$
+		
+		
+		Bayes classifier found in previous part $g^*(x)$ is essentially: $g^{*}(x) = arg\ min_i R(i|x) = arg max_i p(i|x)$ which gave us the $\pi_+ p_+(x) \geq \pi_i p_-(x)$
+		
+		
+		Conditional risk of Bayes classifier(binary):
+		$R(g^*(x)|x) = min(1-p(0|x),1-p(1|x) = min(p(0|x), p(1|x))$
+		
+		and hence the bayes risk is given by:
+		$R^* = \int min(p(0|x),p(1|x)) dF(x) $
+		
+		and hence in this case,
+		$R^* = \int min(\pi_+ p_+(x), \pi_ip_-(x))dx $
 		}
 \end{homeworkSection}
 
+\begin{homeworkSection}{\homeworkProblemName: (c)} % Section within problem
+\problemAnswer{
+	\begin{align*}
+	\pi_+ = \frac{\sum_{i=1}^n I \{Y_i=1\}}{n}\\
+  \pi_- = \frac{\sum_{i=1}^n I \{Y_i=-1\}}{n}
+  \end{align*}
+  We need to know $p(dx|Y=1)$ and $p(dx|Y=-1)$ so we need estimators for $a_+$, $a_-$, $\sigma$ and $\sum$
+  
+  We can choose MLE estimators for multivariate guassian(derivation skipped):
+  
+  \begin{align*}
+  \hat{(a_+)} = \frac{\sum I\{Y_i=1\}}{n}\\
+  \hat{(a_-)} = \frac{\sum I\{Y_i=-1\}}{n}\\
+  \hat{\sigma} = \frac{\sum_{i;Y_i=1} (x_i-\hat{a_+})(x_i-\hat{a_+})^T}{\sum I\{Y_i=1\}}\\
+  \hat{\sum} = \frac{\sum_{i;Y_i=-1} (x_i-\hat{a_-})(x_i-\hat{a_-})^T}{\sum I\{Y_i=1\}}\\
+  \end{align*}
+  
+  And a suitable estimator of bayes classifier is :
+  
+  \begin{align*}
+  \hat{g_*(x)} = \begin{cases}
+  1 & \hat{\pi_+}\hat{p_+(x)} \geq \hat{\pi_{-}}\hat{p_-(x)}\\
+  -1 & \text{otherwise}
+  \end{cases}
+  \end{align*}
+  
+  where $d$ is given by:
+  \begin{align*}
+  \log(\hat{\pi_+})  + \sqrt{\frac{1}{2\pi}} \mathbf{\hat{\sigma}}^{-1} (x-\vec{\hat{a_+}})\mathbf{\hat{\sigma}}^{-1}(x-\vec{\hat{a_+}})^T \geq \log(\hat{pi_-}) + \sqrt{\frac{1}{2\pi}} \mathbf{\hat{\sum}}^{-1} (x-\hat{{a_-}})\mathbf{\hat{\sum}}^{-1}(x-\hat{a_-})^T
+\end{align*}
+  
+  
+ 	}
+\end{homeworkSection}
+
 \end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 2]
+	
+\begin{homeworkSection}{\homeworkProblemName: (a)} % Section within problem
+	\problemAnswer{
+		$F(x)$ is 3 times differentiable.
+		Consider taylor expansion of $F(x+h)$ and $F(x-h)$
+		\begin{align*}
+		F(x+h) = F(x) + F'(x)h + F''(x)\frac{h^2}{2} + F'''(x)\frac{h^3}{6} 
+		\end{align*}
+		
+		\begin{align*}
+		F(x-h) = F(x) - F'(x)h + F''(x)\frac{h^2}{2} - F'''(x)\frac{h^3}{6} 
+		\end{align*}
+		
+		Thus,
+		\begin{align*}
+		F(x+h)-F(x-h) = 2F'(x)h + 2F'''(x)\frac{h^3}{6} \\
+		\frac{F(x+h)-F(x-h)}{2h} = F'(x) + F'''(\epsilon)\frac{h^2}{12}\text{ for some $\epsilon$ in [x-h,x+h]}\\
+		|F'(x)-\frac{F(x+h)-F(x-h)}{2h}| \leq |F'''(\epsilon)\frac{h^2}{12}|
+		\end{align*}
+		
+	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: (b)} % Section within problem
+	\problemAnswer{
+		Nadaraya-Watson Estimator $\eta_\eta(x) = E[Y|X=x] = \frac{\int yf(x,y)dy}{\int f(x,y)dy}$
+		
+		Now,
+		 
+		$f(x,y) = \frac{1}{nh_xh_y} \sum_{i=1}^n K(\frac{x-x_i}{h_x}) \times K(\frac{y-y_i}{h_y})$
+		
+		\begin{align*}
+		\int yf(x,y) dy = \frac{1}{n} \int y \sum_{i=1}^n \frac{1}{h_xh_y} K(\frac{x-x_i}{h_x}) \times K(\frac{y-y_i}{h_y})
+		\end{align*}
+		
+		
+		
+		Now, $\int y \frac{1}{h_y} K(\frac{y-y_i}{h_y})dy = y$
+		
+		Hence,
+		\begin{align}
+				\label{2a}
+				\int yf(x,y) dy = \frac{1}{nh_x} \sum_{i=1}^n K(\frac{x-x_i})y_i
+		\end{align}
+
+		
+		Consider $\int f(x,y) dy$:
+		
+		\begin{align}
+		\label{2b}
+		\int f(x,y) dy &= \frac{1}{nh_x} \sum_{i=1}^n K(\frac{x-x_i}{h_x}) \times \int K(\frac{y-y_i}{h_y})dy\\
+		&= \frac{1}{nh_x} \sum_{i=1}^n K(\frac{x-x_i}{h_x}) \times 1 \text{ since  $\int K_{h_y} dy =1$}
+		\end{align}
+		
+		Thus,
+		using \ref{2a}, \ref{2a} we get:
+		
+		\begin{align*}
+		\eta_\eta(x) = \frac{\frac{1}{nh_x} \sum_{i=1}^n K(\frac{x-x_i})y_i}{\frac{1}{nh_x} \sum_{i=1}^n K(\frac{x-x_i}{h_x})}\\
+		\eta_\eta(x) = \frac{\sum_{i=1}^n y_iK(\frac{x-x_i})}{ \sum_{i=1}^n K(\frac{x-x_i}{h_x})}
+		\end{align*}
+	}
+		
+\end{homeworkSection}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 3]
+	\problemAnswer{
+		$L(g) := P(Y \neq g(X)) = E[I\{Yf(X)<0\}]$
+		Consider $f(y)= max(1-y,0)$
+		
+		$L(g) = E[I\{Yf(X)<0\}] = E[E[max(1-f(x),0)|x=x]] = \int_S max(1-f(x),0) \times \frac{1-\eta(x)}{2} + max(1+f(x),0) \times \frac{1+\eta(x),2} d\pi$
+		
+		We need to minimise the integrand: $max(1-f(x),0) \times \frac{1-\eta(x)}{2} + max(1+f(x),0) \times \frac{1+\eta(x)}{2}$ 
+		
+			%	$ \frac{\eta(x)}{2}(max(1+f(x),0)-max(1-f(x),0) + \frac{1}{2}(max(1+f(x),0)+max(1-f(x),0))$ 
+		
+		%Minimise:
+		
+		%	$ \frac{\eta(x)}{2}(max(1+f(x),0)-max(-f(x),-1) + \frac{1}{2}(max(1+f(x),0)+max(1-f(x),0))$ 
+		
+		%Minimise:
+			
+			%$ \frac{\eta(x)}{2}(max(1+f(x),0)+max(f(x),1) + \frac{1}{2}(max(1+f(x),0)+max(1-f(x),0))$ 
+
+		Which is to minimise: $max(1+tf(x))(1+t\eta(x))$ and is given by:
+		
+		$f(x)= sign(\eta(x)) = g^*(x)$ [Bayes classifier] 
+			
+
+		}
+\end{homeworkProblem}	
 
 \begin{homeworkProblem}[Problem 4]
 	\problemAnswer{Assume the sufficient condition exists, i.e.:
