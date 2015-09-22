@@ -591,12 +591,12 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 			
 			\begin{equation}
 			\label{log4b}
-			\log(P(X_j|Y=0) - \log(P(X_j|Y=1)) = x_j\log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j2}(1-\theta_{j0})}) + \log\frac{(1-\theta_{j0})}{(1-\theta_{j1})}
+			\log(P(X_j|Y=0) - \log(P(X_j|Y=1)) = x_j\log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}) + \log\frac{(1-\theta_{j0})}{(1-\theta_{j1})}
 			\end{equation}
 			
-			And hence $\vec{w_j} = \log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j2}(1-\theta_{j0})})$ 	
+			And hence $\vec{w_j} = \log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})})$ 	
 			
-			$w_0= -\log(\frac{\pi}{1-\pi})$
+			$w_0= \log(\frac{1-\pi}{\pi} \times (\frac{1-\theta_{j1}}{1-\theta_{j0}})^D)$
 		}
 		
 		\end{homeworkSection}	
