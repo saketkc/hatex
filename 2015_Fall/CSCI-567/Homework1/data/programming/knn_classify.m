@@ -3,8 +3,8 @@ new_data_size = length(new_label);
 train_data_size = length(train_label);
 % Standardise
 
-mean_train_data = mean(train_data)
-std_train_data = mean(train_data)
+mean_train_data = mean(train_data);
+std_train_data = mean(train_data);
 
 standardise_new_data = bsxfun(@minus, new_data, mean_train_data );
 standardise_new_data = bsxfun(@rdivide, standardise_new_data, std_train_data);
@@ -14,19 +14,24 @@ standardise_new_data = bsxfun(@rdivide, standardise_new_data, std_train_data);
 standardise_train_data = bsxfun(@minus, new_data, mean_train_data );
 standardise_train_data = bsxfun(@rdivide, standardise_train_data, std_train_data);
 
-test_label = []
-all_distances = {}
+test_label = [];
+all_distances = {};
 for i =1:new_data_size
-    distances = []
-    sample = standardise_new_data(i)
+    distances = [];
+    sample = standardise_new_data(i);
     for j=1:train_data_size
-        distances(end+1) = norm(sample-standardise_train_data(j))
+        distances(end+1) = norm(sample-standardise_train_data(j));
     end
-    all_distances{i} = distances
+    all_distances{i} = distances;
 end
-        
-new_accu = 1
-train_accu = 1
+
+for i=1:new_data_size
+    sorted= flipud(unique(sort(all_distances(i))));
+    label_indices=flipud(sortrows([all_distances(i)(ind) ind],1));
+end
+    
+new_accu = 1;
+train_accu = 1;
 end
 
 % k-nearest neighbor classifier
