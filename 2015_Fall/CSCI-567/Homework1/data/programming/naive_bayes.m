@@ -11,21 +11,24 @@ priors = priors/sum(priors); %It should be a probability
 % We use a gaussian kernel for estimating the likelihood,
 % its parameters being the mean and standard deviation of that class.
 
-averages = ones(length(alluniquelabels), size(train_data,2));
-stddevs = ones(length(alluniquelabels), size(train_data,2));
 test_label = [];
-
+p_x_giveny = [];
 for j=1:length(alluniquelabels)        
-    averages(j,:) = mean(train_data(train_label == alluniquelabels(j),:));
-    stddevs(j,:) = std(train_data(train_label == alluniquelabels(j),:));
+    label = alluniquelabels(j);
+    indices = find(train_label == label)';
+    labeldata = train_data(indices,:);
+    labelsize = size(labeldata,1);
+    lp = labelsize / train_data_size;
+    lf = sum(labeldata);
+    p_x_giveny(end+1,:) = lf/labelsize;
 end
-stddevs(stddevs(:,:) == 0) = 1;%;sqrt((train_data_size-1)/12);
-
+p_x_giveny(p_x_giveny(:,:) == 0) = 0.1;
+p_x_giveny(p_x_giveny(:,:) >= 1) = 0.99;
 
 for j=1:test_data_size
    for i=1:length(alluniquelabels)
        prior = priors(i);
-       likelihood = pdf('normal',new_data(j,:),averages(i,:), stddevs(i,:));
+       likelihood = p_x_giveny(i);  %pdf('normal',new_data(j,:),averages(i,:), stddevs(i,:));
        posterior(i) = prior*prod(likelihood);
    end
    [max_posterior, class_ind] = max(posterior);
@@ -42,7 +45,7 @@ new_label=[];
 for j=1:train_data_size
    for i=1:length(alluniquelabels)
        prior = priors(i);
-       likelihood = pdf('normal',train_data(j,:),averages(i,:), stddevs(i,:));
+       likelihood = p_x_giveny(i);
        posterior(i) = prior*prod(likelihood);
    end
    [max_posterior, class_ind] = max(posterior);
