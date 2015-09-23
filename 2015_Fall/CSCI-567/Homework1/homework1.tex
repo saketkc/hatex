@@ -141,24 +141,26 @@ Consider $X=(X_1,X_2, \dots, X_n)$
 Likelihood function: $L(\alpha|X)$
 $L(\alpha | X) = \prod_{i=1}^n f(x_i)$
 where
-\begin{align}
+\begin{align*}
  f(x_i)&=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1} = \frac{\Gamma(\alpha +1)}{\Gamma(\alpha)\Gamma(1)}x^{\alpha-1}\\
- &=\frac{\alpha \Gamma(\alpha)}{\Gamma(\alpha)} x^{\alpha-1}
+ &=\frac{\alpha \Gamma(\alpha)}{\Gamma(\alpha)} x^{\alpha-1}\\
  &=\alpha x^{\alpha-1}	
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
 L(\alpha|X)&=\big(\frac{\Gamma(\alpha+1)}{\Gamma(\alpha)\Gamma(1)}\big)^n \prod_{i=1}^n (x_i)^{\alpha-1}
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
 LL=\log(L(\alpha | X)) &= n \log(\alpha) + (\alpha -1)\sum_{i=1}^n x_i \\
 \frac{dLL}{d\alpha} &= \frac{n}{\alpha} + \sum_{i=1}^n{\log(x_i)}\\
 \frac{dLL}{d\alpha} &= 0 \implies \hat{\alpha} =  \frac{n}{\sum_{i=1}^n log(1/x_i)}
-\end{align}
+\end{align*}
 Minima at $\hat{\alpha} =  \frac{n}{\sum_{i=1}^n log(1/x_i)}$ is guaranteed due to $\log$ being a concave function.
 
-
+Thus, 
+\centering
+$\boxed{\hat{\alpha_{MLE}} =  \frac{n}{\sum_{i=1}^n log(1/x_i)}}$
 
 }
 
@@ -174,18 +176,23 @@ Minima at $\hat{\alpha} =  \frac{n}{\sum_{i=1}^n log(1/x_i)}$ is guaranteed due 
 Given: $x_i \sim N(\theta, \theta)$ i.e $f(x_i)= (2\pi \theta)^{-\frac{1}{2}} e^{-\frac{(x_i-\theta)^2}{2\theta}}$
 MLE estimate for $\theta$:
 
-\begin{align}
+\begin{align*}
 L(\theta|X) &=  (2\pi \theta)^{-\frac{N}{2}} e^{-\sum_{i=1}^n\frac{(x_i-\theta)^2}{2\theta}}\\
 LL=\log(L(\theta|X)) &= -\frac{N}{2} \log((2\pi \theta)) -\sum_{i=1}^n\frac{(x_i-\theta)^2}{2\theta} \\
 \frac{dLL}{d\theta} &= -\frac{N}{2}(\frac{1}{\theta})+\frac{\sum_{i=1}^n x_i^2}{2\theta^2}-\frac{N\theta}{2}\\
 \frac{dLL}{d\theta} &=0 \implies N\theta^2+N\theta-\sum_{i=1}^n x_i^2 =0
-\end{align}
+\end{align*}
 The above equation is a quadratic and will have two solutions,
 Since, $\theta \geq 0$ (a constraint that comes from $\theta$ being the variance), the 
 
-$\theta = \frac{-N\pm \sqrt{N^2+4N\sum_{i=1}^nx_i^2}}{2N}$
+\begin{align*}
+\theta = \frac{-N\pm \sqrt{N^2+4N\sum_{i=1}^nx_i^2}}{2N}
+\end{align*}
 
-Since, $\hat{\theta} \geq 0$, $\hat{\theta} = \frac{-N + \sqrt{N^2+4N\sum_{i=1}^nx_i^2}}{2N}$
+
+Since, $\hat{\theta} \geq 0$ $\implies$
+\centering
+ $\boxed{\hat{\theta_{MLE}} = \frac{-N + \sqrt{N^2+4N\sum_{i=1}^nx_i^2}}{2N}}$
 
 }
 \end{homeworkSection}
@@ -199,22 +206,22 @@ Given: $\hat{f(x)}=\frac{1}{n}\sum_{i=1}^n \frac{1}{h}K(\frac{x-X_i}{h})$
 To show: $E_{X_1,X_2, \dots X_n}[\hat{f(x)}]=\frac{1}{h}\int K(\frac{x-t}{h})f(t)dt $
 
 Proof:\\
-\begin{align}
+\begin{align*}
 E[\hat{f(x)}] &= E[\frac{1}{n}\sum_{i=1}^n \frac{1}{h}K(\frac{x-X_i}{h})]\\
 &=\frac{1}{nh}E[K(\frac{x-X_i}{h})]\\
-&=\frac{1}{h}E[K(\frac{x-X_1}{h})]
+&=\frac{1}{h}E[K(\frac{x-X_1}{h})]\\
 &=\frac{1}{h}E[K(\frac{x-t}{h})]
-\end{align}
+\end{align*}
 
 where the penultimate equality comes from the fact that $X_i$ are iid for all $i \in [1,n]$.
 and $t ~ X$%E_{X_1,X_2, \dots X_n}[\hat{f(x)}] = \int \hat{f(x)}f(x)dx
 
 and hence.
-\begin{align}
-E[\hat{f(x)}]&=\frac{1}{h}E[K(\frac{x-X_1}{h})]
-&=\frac{1}{h}\int K(\frac{x-t}{h}) f(t)dt
+\begin{align*}
+E[\hat{f(x)}]&=\frac{1}{h}E[K(\frac{x-X_1}{h})]\\
+&=\frac{1}{h}\int K(\frac{x-t}{h}) f(t)dt\\
 & = RHS  
-\end{align}
+\end{align*}
 
 }
 \end{homeworkSection}
@@ -225,18 +232,35 @@ E[\hat{f(x)}]&=\frac{1}{h}E[K(\frac{x-X_1}{h})]
 \problemAnswer{ % Answer
 Consider $z = \frac{x-t}{h}$ $\implies$ $t=x-hu$
 
-Then, \begin{align}
+Then, \begin{align*}
 E[\hat{f(x)}] &= \frac{1}{h} \int K(z)f(x-hz)dz\\
- \end{align}
- 
- $f(x-hz) = f(x) - f'(x)hz + \frac{1}{2}f''(x)\frac{(hz)^2}{2} - \frac{1}{3}f'''(x)\frac{(hz)^3}{3!} + \dots + (-1)^{n}\frac{1}{n!}f^{(n)}(x)(\frac{(hu)^n}{n!})$
-
+f(x-hz) &= f(x) - f'(x)hz + \frac{1}{2}f''(x)\frac{(hz)^2}{2} - \frac{1}{3}f'''(x)\frac{(hz)^3}{3!} + \dots + (-1)^{n}\frac{1}{n!}f^{(n)}(x)(\frac{(hu)^n}{n!})
+ \end{align*}
 
 By definition, $\int k(z)dz =1$.
-Also define an auxilllary variable $M_j=\int k(z)z^j dz$ for the $j^{th}$ moment of the kernel function, 
+
+Also define an auxillary variable $M_j=\int k(z)z^j dz$ for the $j^{th}$ moment of the kernel function, 
 and hence,
-$\int  K(z)f(x-hz)dz=f(x)-hf'(x)M_1+\frac{1}{2}(h^2)f^{''}(x)M_2+\dots+(-1)^n\frac{1}{n!}f^{(n)}M_n$
-Now, $Bias = E[\hat{f(x)}]-f(x)=-hf'(x)M_1+\frac{1}{2}(h^2)f^{''}(x)M_2+\dots+(-1)^n\frac{1}{n!}f^{(n)}M_n$
+
+\begin{align*}
+\int  K(z)f(x-hz)dz=f(x)-hf'(x)M_1+\frac{1}{2}(h^2)f^{''}(x)M_2+\dots+(-1)^n\frac{1}{n!}f^{(n)}M_n
+\end{align*}
+
+Now, 
+
+\begin{align*}
+Bias = E[\hat{f(x)}]-f(x)=-hf'(x)M_1+\frac{1}{2}(h^2)f^{''}(x)M_2+\dots+(-1)^n\frac{1}{n!}f^{(n)}M_n
+\end{align*}
+
+
+
+\centering $M_1 = \int xK(x)dx =0$
+
+Hence,
+\begin{align*}
+\boxed{E[\hat{f(x)}]-f(x)=\frac{1}{2}(h^2)f^{''}(x)M_2+\dots+(-1)^n\frac{1}{n!}f^{(n)}M_n\ \ \text{where $M_j=\int k(z)z^j dz$}}
+\end{align*}
+
 
 And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 }
@@ -305,6 +329,9 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 		\textbf{$K=1$}: For $K=1$ the nearest neighbor is CS1 and hence the unknown sample 'could' be a computer science
 		
 		\textbf{$K=3$}: For $K=3$ the nearest neighbors are M1, EE1, EE2. Since two nearest neighbors are from EE, we assign it the unknown sample to be from Electrical engineering.
+	}
+	\clearpage
+	\problemAnswer{
 		
 		\textbf{Comparison} For $K=1$, both $L1$ and $L2$ distance metric give the same results, however for $K=3$, the $L1$ metric yields a tie, since the distances are similar but $L2$ metric being a square quantity of a number smaller than 1 further reduces the distances. The fact to realise is that $|x+y|$ is similar to $\sqrt{x^2+y^2}$ when $x,y << 1$ that is when the points are close, but when $x,y$ are large, the L2 metric is going to be higher, and hence L2 norm applies more 'penalty' to distant points in the sense that they are larger. 
 		
@@ -336,7 +363,7 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 		
 		Unconditional density $p(x)=\sum_c p(x|Y=c)p(Y=c) = \sum_c \frac{K_c}{N_cV} \times \frac{N_c}{N}= \sum_c \frac{K_c}{NV} = \frac{K}{NV}$
 		
-		Posterior $P(Y=c|x)=\frac{P(x|Y=c)\times P(Y=c)}{ P(x) } = \frac{\frac{K_c}{N_cV} \times \frac{N_c}{N} }{\frac{K}{NV}} =\frac{K_c}{K} $
+		Posterior $\boxed{P(Y=c|x)=\frac{P(x|Y=c)\times P(Y=c)}{ P(x) } = \frac{\frac{K_c}{N_cV} \times \frac{N_c}{N} }{\frac{K}{NV}} =\frac{K_c}{K} }$
 		
 		
 	}
@@ -348,26 +375,96 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 \begin{homeworkProblem}[Problem 3] % Roman numerals
 	
 	\begin{homeworkSection}{\homeworkProblemName:~(a)}
-		\problemAnswer{
+		%\problemAnswer{
 			Information gain $G=H[Y]-H[Y|X]$ where $Y$ is the outcome variable and $X$ is an attribute to be split. 
 			In our case $Y$= 'Rains or not' In order to maximise gain for a fixed $Y$ we need to minimise the conditional entropy $H[Y|X]$
 			$p_{rain}=\frac{9+5+6+3+7+2+3+1}{80}=frac{36}{80}=0.9$ and hence $p_{no-rain}=0.1$
-			\begin{align}
+			\begin{align*}
 					H[Y]&=-p_{rain}\log(p_rain)-p_{no-rain}\log(p_{no-rain})\\
-						&= -(0.9\log_2(0.9)+0.1\log_2(0.1)
-			\end{align}
+						&= -(0.9\log_2(0.9)+0.1\log_2(0.1)\\
+						&= 0.99277
+			\end{align*}
 			
+			Instead of maximising gains, it is sufficient to simply minimise the conditional entropy $H[Y|X]$ in this case.
 			
+			\textbf{For Temperature}
+			
+			\begin{align*}
+			\text{H[Rainy or Not rainy | Temperature]} &= -p_{hot}\times (p_{rain,hot}\log(p_{rain,hot}) + p_{norain, hot}\log(p_{norain,hot})\\ 
+			&- p_{cold} \times (p_{rain,cold}\log(p_{rain,cold}) + p_{norain,cold}\log(p_{norain,cold}))\\
+			&= -\frac{1}{2} \times (\frac{23}{40}\log(\frac{23}{40}) + \frac{13}{40}\log(\frac{13}{40}) )\\
+			&-\frac{1}{2} \times (\frac{13}{40}\log(\frac{13}{40}) + \frac{27}{40}\log(\frac{27}{40}))\\
+			& = 0.9467
+			\end{align*}
 
+			Similarly,
 			
-			\textbf{Temperature}
+			\begin{align*}
+			\text{H[Rain or Not rainy | Sky]} &= \frac{1}{2}\text{H[Rainy or Not rainy | Sky=Cloudy]}\\
+			& + \frac{1}{2}\text{H[Rainy or Not rainy | Sky=Clear]}\\
+			&= 0.9015
+			\end{align*}
+			
+			Similarly,
+			
+			\begin{align*}
+			\text{H[Rain or Not rainy | Humidity]} &= \frac{1}{2}\text{H[Rainy or Not rainy | Humidity=High]}\\
+			 &+ \frac{1}{2}\text{H[Rainy or Not rainy | Humidity=Low]}\\
+			&= 0.9467
+			\end{align*}
 
+			We choose $Sky$ as the *root* because $H[Rain or Not rainy | Sky]$ is minimum.
+			
+			Further on,
+			\begin{align*}
+			\text{H[Rainy or not|Cloudy,Temperature]} &= -\frac{1}{2}(\frac{15}{20}\log(\frac{15}{20})+\frac{5}{20}\log(\frac{5}{20}))\\
+			&			 -\frac{1}{2}(\frac{10}{20}\log(\frac{10}{20})+\frac{10}{20}\log(\frac{10}{20}))\\
+			&=0.9056
+			\end{align*}
 			
 			
-		}
+			\begin{align*}
+			\text{H[Rainy or not|Cloudy,Humidity]} &= -\frac{1}{2}(\frac{16}{20}\log(\frac{16}{20})+\frac{4}{20}\log(\frac{4}{20}))\\
+			&			 -\frac{1}{2}(\frac{9}{20}\log(\frac{9}{20})+\frac{11}{20}\log(\frac{11}{20}))\\
+			&=0.8574
+			\end{align*}
+		
+		Thus, we choose condition Humidity for Cloudy Sky.
+		
+		Further more, 
+		\begin{align*}
+		\text{H[Rainy or not|Clear,Temperature]} &= 0.7903\\
+		\text{H[Rainy or not|Clear,Humidity]} &= 0.8280\\
+		\end{align*}
+		
+		So we choose $Temperature$ condition for Clear Sky.
+		Now for $Temperature=Hot, Sky=Clear$ we have $p_{rain}=\frac{8}{20}$, and $p_{norain}=\frac{12}{20}$. So we choose 'Not Rainy' for $Temperature=Hot$ branch.
+		
+		For, $Temperature=Cold, Sky=Clear$ we have $p_{rain}=\frac{3}{20}$ and hence once again we choose 'Not Rainy' for $Temperature=Cold$ branch.
+		
+		For $Humidity=High,Sky=Cloudy$, $p_{rain}=\frac{16}{20}$ and hence we choose $Rain$ for $Humidity=High,Sky=Cloudy$
+		
+		And, finally for $Humidity=Low,Sky=Cloudy$ , $p_{rain}=\frac{9}{20}$ and hence we choose $Not\ Rainy$ .
+		
+		The decision and the pruned decision tree is shown in Figure 1,2.
+		
+			
+	%	}
 
+	\begin{figure}
+		\includegraphics[scale=0.5]{dt}
+		\caption{Problem 3 Decision Tree}
+	\end{figure}
+	
+	\begin{figure}
+		\includegraphics[scale=0.5]{dt2}
+		\caption{Problem 3 Pruned Decision Tree}
+	\end{figure}
+	
+	
+	
 	\end{homeworkSection}
-		\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+		\begin{homeworkSection}{\homeworkProblemName: ~(b)}
 			\problemAnswer{
 				Consider $f(p_k)=(1-p_k)-(- \log p_k)$ 
 				We know that $0 \leq p_k \leq 1$
@@ -539,12 +636,12 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 					Then, $\sum_{i=1}^N \log(Y_i=y_i) = \sum_{k=1}^K P(Y=k) \times N_k $
 					
 					Consider the likelihood function 
-					\begin{align}
+					\begin{align*}
 						L(\mu,\sigma,p|(X,Y)) &=  \prod_{1}^N P(Y_i=y_i)\times \prod_{j=1}^D P(X_i=x_{ij}|Y=y_i)\\
 						\log(L)&= \sum_{i=1}^N \log(P(Y_i=y_i)) +\sum_{i=1}^N \sum_{j=1}^D \log(P(X_i=x_{ij}|Y=y_{i}))\\
 						&= \sum_{i=1}^N \log(P(Y_i=y_i)) +\sum_{i=1}^N \sum_{j=1}^D \log(P(X_{ij}=x_{ij}|Y=y_{i}))\\
 						&=\sum_{k=1}^K P(Y=k) \times N_k + \sum_{k=1}^K \sum_{j=1}^D \log(P(X_{ij}=x_{ij}|Y=k)) \times N_k
-					\end{align}
+					\end{align*}
 					
 					Now, 
 					\begin{align}
@@ -572,8 +669,8 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 						\frac{\partial}{\partial{\sigma_{jk}}}\sum_{i;Y_i=k}\big(-\frac{1}{\sigma_{jk}} + \frac{(x_{ij}-x_{jk})^2}{2\sigma_{jk}^2}\big)=0\\
 						\hat{\sigma_{jk}}=\frac{\sum_{i;Y_i=k}(x_{ij}-\hat{\mu_{jk}})^2}{N_k}
 					\end{align*}
-					Constraint $\sum_k p_k =1$
-					Given $K$ number of classes, the above constraint the MLE estimate of $p_k$ is given by: $\frac{N_k}{N}$
+					Constraint $\boxed{\sum_k p_k =1}$
+					Given $K$ number of classes, the above constraint the MLE estimate of $p_k$ is given by: $\boxed{\frac{N_k}{N}}$
 				}
 	\end{homeworkSection}
 		\begin{homeworkSection}{\homeworkProblemName: ~(b)}
@@ -611,7 +708,7 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 			Hence,
 			
 			\begin{equation}
-			\label{log4b}
+			\label{log4d}
 			\log(P(X_j|Y=0) - \log(P(X_j|Y=1)) = x_j\log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}) + \log\frac{(1-\theta_{j0})}{(1-\theta_{j1})}
 			\end{equation}
 			$\implies$
@@ -629,9 +726,11 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 			&= \sum_{j=1}^D x_j\log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}) +\\ &+
 			\big(\log(\frac{(1-\theta_{j0})}{(1-\theta_{j1})}+(\log(\frac{(1-\pi)}{\pi}))\big)			
 			\end{align*}
-			And hence $\vec{w_j} = \log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})})$ 	
+			And hence 
+			\centering
+			$\boxed{\vec{w_j} = \log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})})}$ 	
 			
-			$w_0= -\log(\frac{1-\pi}{\pi} \times (\frac{1-\theta_{j0}}{1-\theta_{j1}})^D)$
+			$\boxed{w_0= -\log(\frac{1-\pi}{\pi} \times (\frac{1-\theta_{j0}}{1-\theta_{j1}})^D)}$
 		}
 		
 		\end{homeworkSection}	
@@ -652,13 +751,13 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 		\begin{figure}
 			\includegraphics[scale=0.7]{variance}
 			\label{fig:var}
-			\caption{Variance distribution with respect to h for various kernels}
+			\caption{Integrated Variance distribution with respect to h for various kernels}
 		\end{figure}
 		
 		
 		
 		\problemAnswer{
-			From figure 1\ref{fig:var} we see that Gaussian kernel guarantees the minal variance for all values of $h$. Histogram consistently leads to higher variance and Epanechnikov kernels' variance is bounded between the former two. And hence we conclude Gaussian kernel outperforms Epanechnikov kernel which outperforms histogram for kernel density estimation(based on the criteria of minimising the variance)
+			From figure 3\ref{fig:var} we see that Gaussian kernel guarantees the minal variance for all values of $h$. Histogram consistently leads to higher variance and Epanechnikov kernels' variance is bounded between the former two. And hence we conclude Gaussian kernel outperforms Epanechnikov kernel which outperforms histogram for kernel density estimation(based on the criteria of minimising the variance)
 			
 			An optimum value of $h$ is found at the $knee$ of the graph and is approximately $h=0.1$. Selecting the $knee$ guarantees minimal varaince and an optimum choice for a smaller $h$, because higher $h$ are guaranteed to minimise the variance.
 				
@@ -668,6 +767,8 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 	\begin{homeworkSection}{\homeworkProblemName: ~(5.2d)}
 		\problemAnswer{
 			\begin{center}
+				%\begin{table}
+				Accurcy table for k-nn\\
 			\begin{tabular}{|c|c|c|c|}
 				\hline \rule[-2ex]{0pt}{5.5ex}  K &  Training Accuracy & Validation Accuracy & Testing Accuracy
 				\\ 
@@ -682,34 +783,58 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 				\hline \rule[-2ex]{0pt}{5.5ex}  K=15&  0.817490 & 0.782407 & 0.762791  \\ 
 				\hline 
 			\end{tabular} 
-			
-
-			\begin{tabular}{|c|c|c|c|c|c|c|}
-				\hline  MinLeaf& Training(GDI) & Training(deviance)  & Validation(GDI) & Validation(deviance) & Testing(GDI)  & Testing(deviance)  \\ 
-				1.000000 & 0.950664 & 0.950664 & 0.870370 & 0.842593 & 0.860465 
+			\newline
+			\newline
+			\vspace{20pt}
+			\textit{Based on the maximum training accuracy, we can choose K to be 11}
+			%\caption{Accuracy for different values of K for k-nn}
+			%\end{table}
+			\newline
+		\footnotesize
+		Gini Index = GDI\\
+		Cross Entropy = DEV\\
+		Accuracy table for Decision Tree\\
+			\begin{tabular}{|l|l|l|l|l|l|l|}
+				\hline  MinLeaf& Training(GDI) & Training(DEV)  & Validation(GDI) & Validation(DEV) & Testing(GDI)  & Testing(DEV)  \\ 
+				\hline
+				1 & 0.950664 & 0.950664 & 0.870370 & 0.842593 & 0.860465 
 				& 0.865116\\ \hline
-				2.000000 & 0.950664 & 0.950664 & 0.870370 & 0.842593 & 0.860465 
+				2 & 0.950664 & 0.950664 & 0.870370 & 0.842593 & 0.860465 
 				& 0.865116\\ \hline  
-				3.000000 & 0.950664 & 0.950664 & 0.870370 & 0.842593 & 0.860465 
+				3 & 0.950664 & 0.950664 & 0.870370 & 0.842593 & 0.860465 
 				& 0.865116\\ \hline 
-				4.000000 & 0.948767 & 0.948767 & 0.875000 & 0.847222 & 0.883721 
+				4 & 0.948767 & 0.948767 & 0.875000 & 0.847222 & 0.883721 
 				& 0.883721\\ \hline  
-				5.000000 & 0.941176 & 0.939279 & 0.875000 & 0.856481 & 0.874419 
+				5 & 0.941176 & 0.939279 & 0.875000 & 0.856481 & 0.874419 
 				& 0.869767  \\ \hline  
-				6.000000 & 0.935484 & 0.933586 & 0.861111 & 0.842593 & 0.888372 
+				6 & 0.935484 & 0.933586 & 0.861111 & 0.842593 & 0.888372 
 				& 0.883721 \\ \hline
-				7.000000 & 0.927894 & 0.925996 & 0.870370 & 0.851852 & 0.897674 
+				7 & 0.927894 & 0.925996 & 0.870370 & 0.851852 & 0.897674 
 				& 0.893023\\ \hline
-				8.000000 & 0.920304 & 0.918406 & 0.856481 & 0.837963 & 0.897674 
+				8 & 0.920304 & 0.918406 & 0.856481 & 0.837963 & 0.897674 
 				& 0.893023 \\ \hline
-				9.000000 & 0.914611 & 0.882353 & 0.879630 & 0.824074 & 0.860465 
+				9 & 0.914611 & 0.882353 & 0.879630 & 0.824074 & 0.860465 
 				& 0.823256 \\ \hline
-				10.000000 & 0.912713 & 0.880455 & 0.856481 & 0.800926 & 0.888372 
+				10 & 0.912713 & 0.880455 & 0.856481 & 0.800926 & 0.888372 
 				& 0.851163 \\ \hline
 				\hline 
 			\end{tabular} 
 			
 		\end{center}
+					\vspace{20pt}
+		\textbf{Naive Bayes Classifier}
+\begin{tabular}{|c|c|c|c|}
+	\hline Dataset & Training Accuracy & Validation Accuracy & Testing Accuracy \\ 
+	\hline  Nursery & 0.9065 & 0.9059 & 0.8970\\ 
+	\hline  TTT& 0.7827 & 0.7130 & 0.7302\\
+	\hline 
+\end{tabular}\\ 
+\newline
+\newline
+%%\vspace*{20pt}
+As evident from the results for Naive Bayes, it performs pretty good on Nursery dataset, since its attributes can be treated to be independent. On the other hand, tic tac toe dataset has an inherent dependence built in that decides the labels. For example, a XXX is a 'Positive' for sure and XXO can never be. This violates the inherent assumption of independence of features in Naive Bayes and hence the lower accuracy.
+			
+		
 			}
 	\end{homeworkSection}	
 	
@@ -722,7 +847,7 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 		
 	\end{tabular}
 	\problemAnswer{
-		As ecident from the plots above, increasing $K$ results in more smooth boundaries. This is expected,because $k$ increasing leads to more neihbors being weighted for deciding the final label, and this will often involve neighbors that are far apart, thus creating the soft boundaries}
+		As evident from the plots above, increasing $K$ results in more smooth boundaries. This is expected,because $k$ increasing leads to more neihbors being weighted for deciding the final label, and this will often involve neighbors that are far apart, thus creating the soft boundaries}
 	\end{homeworkSection}	
 	
 \end{homeworkProblem}
