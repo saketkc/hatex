@@ -628,6 +628,95 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 		
 		\end{homeworkSection}	
 \end{homeworkProblem}
+\clearpage
+
+\begin{homeworkProblem}[Problem 5]
+	\begin{homeworkSection}{\homeworkProblemName: ~(5.1)}
+		%\problemAnswer{
+		
+		\begin{tabular}{ll}
+			\includegraphics[scale=0.45]{KDE_h_01} & \includegraphics[scale=0.45]{KDE_h05}\\
+			\includegraphics[scale=0.45]{KDE_h7} & \includegraphics[scale=0.45]{KDE_h09}\\
+				\includegraphics[scale=0.45]{KDE_h_1} & \includegraphics[scale=0.45]{KDE_h_5}\\
+		\end{tabular}
+		%	}
+		
+		\begin{figure}
+			\includegraphics[scale=0.7]{variance}
+			\label{fig:var}
+			\caption{Variance distribution with respect to h for various kernels}
+		\end{figure}
+		
+		
+		
+		\problemAnswer{
+			From figure 1\ref{fig:var} we see that Gaussian kernel guarantees the minal variance for all values of $h$. Histogram consistently leads to higher variance and Epanechnikov kernels' variance is bounded between the former two. And hence we conclude Gaussian kernel outperforms Epanechnikov kernel which outperforms histogram for kernel density estimation(based on the criteria of minimising the variance)
+			
+			An optimum value of $h$ is found at the $knee$ of the graph and is approximately $h=0.1$. Selecting the $knee$ guarantees minimal varaince and an optimum choice for a smaller $h$, because higher $h$ are guaranteed to minimise the variance.
+				
+			}
+	\end{homeworkSection}	
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(5.2d)}
+		\problemAnswer{
+			\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline \rule[-2ex]{0pt}{5.5ex}  K &  Training Accuracy & Validation Accuracy & Testing Accuracy
+				\\ 
+				\hline \rule[-2ex]{0pt}{5.5ex}  K=1 &  0.788973 & 0.759259 & 0.776744
+				  \\ 
+				\hline \rule[-2ex]{0pt}{5.5ex}  K=3 &  0.768061 & 0.717593 & 0.744186  \\ 
+				\hline \rule[-2ex]{0pt}{5.5ex}  K=5&  0.798479 & 0.782407 & 0.753488  \\ 
+				\hline \rule[-2ex]{0pt}{5.5ex}  K=7&  0.861217 & 0.842593 & 0.809302  \\ 
+				\hline \rule[-2ex]{0pt}{5.5ex}  K=9&  0.897338 & 0.902778 & 0.865116 \\ 
+				\hline \rule[-2ex]{0pt}{5.5ex}  K=11& 0.908745 & 0.907407 & 0.883721   \\ 
+				\hline \rule[-2ex]{0pt}{5.5ex}  K=13& 0.866920 & 0.861111 & 0.823256  \\ 
+				\hline \rule[-2ex]{0pt}{5.5ex}  K=15&  0.817490 & 0.782407 & 0.762791  \\ 
+				\hline 
+			\end{tabular} 
+			
+
+			\begin{tabular}{|c|c|c|c|c|c|c|}
+				\hline  MinLeaf& Training(GDI) & Training(deviance)  & Validation(GDI) & Validation(deviance) & Testing(GDI)  & Testing(deviance)  \\ 
+				1.000000 & 0.950664 & 0.950664 & 0.870370 & 0.842593 & 0.860465 
+				& 0.865116\\ \hline
+				2.000000 & 0.950664 & 0.950664 & 0.870370 & 0.842593 & 0.860465 
+				& 0.865116\\ \hline  
+				3.000000 & 0.950664 & 0.950664 & 0.870370 & 0.842593 & 0.860465 
+				& 0.865116\\ \hline 
+				4.000000 & 0.948767 & 0.948767 & 0.875000 & 0.847222 & 0.883721 
+				& 0.883721\\ \hline  
+				5.000000 & 0.941176 & 0.939279 & 0.875000 & 0.856481 & 0.874419 
+				& 0.869767  \\ \hline  
+				6.000000 & 0.935484 & 0.933586 & 0.861111 & 0.842593 & 0.888372 
+				& 0.883721 \\ \hline
+				7.000000 & 0.927894 & 0.925996 & 0.870370 & 0.851852 & 0.897674 
+				& 0.893023\\ \hline
+				8.000000 & 0.920304 & 0.918406 & 0.856481 & 0.837963 & 0.897674 
+				& 0.893023 \\ \hline
+				9.000000 & 0.914611 & 0.882353 & 0.879630 & 0.824074 & 0.860465 
+				& 0.823256 \\ \hline
+				10.000000 & 0.912713 & 0.880455 & 0.856481 & 0.800926 & 0.888372 
+				& 0.851163 \\ \hline
+				\hline 
+			\end{tabular} 
+			
+		\end{center}
+			}
+	\end{homeworkSection}	
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(5.2e)}
+	\begin{tabular}{ll}
+		\includegraphics[scale=0.4]{boundary_k1} & 		\includegraphics[scale=0.4]{boundary_k5}\\
+		\includegraphics[scale=0.4]{boundary_k15} &
+						\includegraphics[scale=0.4]{boundary_k25}
+				
+		
+	\end{tabular}
+	\end{homeworkSection}	
+	
+\end{homeworkProblem}
+\
 %----------------------------------------------------------------------------------------
 
 \end{document}
