@@ -362,10 +362,23 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 		}
 
 	\end{homeworkSection}
+		\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+			\problemAnswer{
+				Consider $f(p_k)=(1-p_k)-(- \log p_k)$ 
+				We know that $0 \leq p_k \leq 1$
+				Then $f'(p_k) = -1+\frac{1}{p_k} = -\frac{1-p_k}{p_k} \leq 0 \forall p_k \in[0,1]$
+				
+				And hence $f'(p_k)$ is a non-increasing function which $\implies$ $f(p_k) \geq f(1) \forall p_k \in (0,1]$
+				and hence, $(1-p_k)-(- \log p_k) \geq 0$ $\implies$ $p_k(1-p_k)-(-p_k \log p_k) \geq 0$ $\implies$
+				$p_k(1-p_k) \geq -p_k\log p_k$  $\implies$  $\sum_{k=1}^K p_k(1-p_k) \geq \sum_{k=1}^K-p_k\log p_k$ $\implies$ Gini index is less than corresponding value of Cross Entropy
+				
+			}
+			
+		\end{homeworkSection}
 	
-	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+	\begin{homeworkSection}{\homeworkProblemName: ~(c)}
 		\problemAnswer{
-			By default the rightmost branch correspoonds to the parent condition being a YES[FIX ME]
+			By default the rightmost branch corresponds to the parent condition being a YES[FIX ME]
 			
 			
 			\textbf{a}:
@@ -418,25 +431,25 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 			
 				\textbf{c}:
 				\begin{center}
+					The only case where it is not possible to have a depth 6 decision tree is case (c). The decision boundary in this case is a 'zig-zag' ladder and hence the depth of decision tree is unbounded.
 					
-					
-					\begin{tikzpicture}
-					\tikzstyle{every node}=[draw,rectangle]
-					
-					\node {$X1>x$}
-					[style=edge from parent fork down]
-					
-					child {
-						node {$\circ$}
-					}
-					child { 
-						node {$X2>y$}
-						child { node {$\circ$} }
-						child { node {$\Delta$} }
-					}
-					;
-					
-					\end{tikzpicture}
+%					\begin{tikzpicture}
+%					\tikzstyle{every node}=[draw,rectangle]
+%					
+%					\node {$X1>x$}
+%					[style=edge from parent fork down]
+%					
+%					child {
+%						node {$\circ$}
+%					}
+%					child { 
+%						node {$X2>y$}
+%						child { node {$\circ$} }
+%						child { node {$\Delta$} }
+%					}
+%					;
+%					
+%					\end{tikzpicture}
 				\end{center}
 				
 				
@@ -593,10 +606,24 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 			\label{log4b}
 			\log(P(X_j|Y=0) - \log(P(X_j|Y=1)) = x_j\log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}) + \log\frac{(1-\theta_{j0})}{(1-\theta_{j1})}
 			\end{equation}
+			$\implies$
 			
+			\begin{equation}
+			\log(P(X|Y=0) - \log(P(X|Y=1)) = \sum_{j=1}^D x_j\log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}) + \sum_{j=1}^D\log\frac{(1-\theta_{j0})}{(1-\theta_{j1})}
+			\end{equation}
+		}			\newpage
+		\problemAnswer{
+
+			\begin{align*}
+			-(\log(\frac{P(Y=1)}{P(Y=0)})) + \log(P(X|Y=0) - \log(P(X|Y=1)) &= \sum_{j=1}^D x_j\log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}) +\\ &+ \big(\log(\frac{(1-\theta_{j0})}{(1-\theta_{j1})}+-(\log(\frac{P(Y=1)}{P(Y=0)}))\big)\\
+			&= \sum_{j=1}^D x_j\log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}) +\\ &+
+			\big(\log(\frac{(1-\theta_{j0})}{(1-\theta_{j1})}+(\log(\frac{P(Y=0)}{P(Y=1)}))\big)\\
+			&= \sum_{j=1}^D x_j\log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})}) +\\ &+
+			\big(\log(\frac{(1-\theta_{j0})}{(1-\theta_{j1})}+(\log(\frac{(1-\pi)}{\pi}))\big)			
+			\end{align*}
 			And hence $\vec{w_j} = \log(\frac{\theta_{j0}(1-\theta_{j1})}{\theta_{j1}(1-\theta_{j0})})$ 	
 			
-			$w_0= \log(\frac{1-\pi}{\pi} \times (\frac{1-\theta_{j1}}{1-\theta_{j0}})^D)$
+			$w_0= \log(\frac{1-\pi}{\pi} \times (\frac{1-\theta_{j0}}{1-\theta_{j1}})^D)$
 		}
 		
 		\end{homeworkSection}	
