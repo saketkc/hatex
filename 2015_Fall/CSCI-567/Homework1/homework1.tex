@@ -290,7 +290,10 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 	L1 distance between two points $(x_1,y_1)$ and $(x_0,y_0$) is defined as : $L1 = |x_1-x_0| +  |y_1-y_0|$
 	
 	L2 distance is defined as $L2 = \sqrt{(x_1-x_0)^2 + (y_1-y_0)^2}$
+	
+	
 		\textbf{For $L1$}:
+		
 		
 		\textbf{$K=1$}: For $K=1$ the nearest neighbor is CS1 and hence the unknown sample 'could' be a computer science
 		
@@ -298,13 +301,15 @@ And as $h \longrightarrow 0$, $Bias \longrightarrow 0$
 		
 		\textbf{For $L2$}:
 		
+		
 		\textbf{$K=1$}: For $K=1$ the nearest neighbor is CS1 and hence the unknown sample 'could' be a computer science
 		
-		\textbf{$K=3$}: For $K=3$ the nearest neighbors are M1, EE1, EE2. Since two nearest neighbors are from EE, we assign it the unknwon sample to be from Electrical engineering.
+		\textbf{$K=3$}: For $K=3$ the nearest neighbors are M1, EE1, EE2. Since two nearest neighbors are from EE, we assign it the unknown sample to be from Electrical engineering.
 		
-		\textbf{Comparison} For $K=1$, both $L1$ and $L2$ distance metric give the same results, however for $K=3$, the $L1$ metric yields a tie, since the distances are similar but $L2$ metric being a square quantity of a number smaller than 1 further reduces the distances and .....
-		TODO
+		\textbf{Comparison} For $K=1$, both $L1$ and $L2$ distance metric give the same results, however for $K=3$, the $L1$ metric yields a tie, since the distances are similar but $L2$ metric being a square quantity of a number smaller than 1 further reduces the distances. The fact to realise is that $|x+y|$ is similar to $\sqrt{x^2+y^2}$ when $x,y << 1$ that is when the points are close, but when $x,y$ are large, the L2 metric is going to be higher, and hence L2 norm applies more 'penalty' to distant points in the sense that they are larger. 
 		
+		\textit{ This also implies that in case of outliers, while $L1$ norm will not penalise, $L2$ norm will penalise in the sense that $\sqrt{x^2+y^2}$ will be high.
+			In case of outliers $L2$ is more robust. In this example, 'M1' is likely an outlier. }
 		
 		
 		
