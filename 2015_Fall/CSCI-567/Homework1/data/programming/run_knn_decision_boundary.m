@@ -22,7 +22,7 @@ for i=1:4
     xlabel('X');
     ylabel('Y');
     title(sprintf('k=%f',k));
-    textstr = sprintf('boundary_k%f',k);
+    textstr = sprintf('boundary_k%f.png',k);
     print(textstr, '-dpng')
 
 end
