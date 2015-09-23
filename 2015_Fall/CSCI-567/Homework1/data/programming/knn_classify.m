@@ -60,7 +60,9 @@ for i =1:train_data_size
     distances = [];
     sample = standardise_train_data(i,:);
     for j=1:train_data_size
-        distances(end+1) = norm(sample-standardise_train_data(j,:));
+        if i ~= j
+            distances(end+1) = norm(sample-standardise_train_data(j,:));
+        end
     end
     all_distances{i} = distances;
 end
@@ -93,7 +95,7 @@ for  i=1:train_data_size
     end
 end
 
-train_accu = train_accu/train_data_size;      
+train_accu = train_accu/(train_data_size-1);      
 
 
 end
