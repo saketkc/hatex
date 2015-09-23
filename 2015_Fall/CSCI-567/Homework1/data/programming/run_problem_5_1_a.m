@@ -23,4 +23,7 @@ for i=1:length(H)
     tl = sprintf('KDE for bandwidth h=%f',h);
     title(tl);
     print(tl, '-dpng');
+    
+    %%%%%%%%%%% Shuffle data
+    
 end
