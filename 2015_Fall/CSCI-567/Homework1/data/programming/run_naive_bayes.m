@@ -1,6 +1,6 @@
 clear all;
-disp('************ Problem 5.2(d) Naive Bayes Start*******************')
-disp('Problem 5.2(d)')
+%disp('************ Problem 5.2(d) Naive Bayes Start*******************')
+%disp('Problem 5.2(d)')
 [train_data, train_label] = preprocessing_ttt('hw1ttt_train.data');
 [valid_data, valid_label] = preprocessing_ttt('hw1ttt_valid.data');
 [test_data, test_label] = preprocessing_ttt('hw1ttt_test.data');
@@ -21,4 +21,4 @@ disp(textstr)
 [test_accu, train_accu] = naive_bayes(train_data, train_label, test_data, test_label);
 [valid_accu, train_accu] = naive_bayes(train_data, train_label, valid_data, valid_label);
 
-disp('************ Problem 5.2(d) Naive Bayes End*******************')
+%disp('************ Problem 5.2(d) Naive Bayes End*******************')

@@ -95,7 +95,7 @@ for  i=1:train_data_size
     end
 end
 
-train_accu = train_accu/(train_data_size-1);      
+train_accu = train_accu/(train_data_size);      
 
 
 end

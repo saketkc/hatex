@@ -1,3 +1,4 @@
+clear all;
 load('hw1boundary.mat');
 %new_data = unifrnd(0,1,100,100);
 new_x = linspace(0,1,100);
@@ -26,3 +27,4 @@ for i=1:4
     print(textstr, '-dpng')
 
 end
+disp('Generated plots, nothing to output');

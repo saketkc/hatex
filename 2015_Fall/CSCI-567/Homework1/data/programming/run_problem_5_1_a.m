@@ -1,3 +1,4 @@
+clear all;
 load('hw1progde.mat');
 H = [0.01,0.05,0.07,0.09,0.1,0.5];
 for i=1:length(H)
@@ -106,6 +107,7 @@ for i=1:length(H)
 end
 
 plot(H,var_g,H,var_e,H,var_h);
+disp('Generated plots, stored as pngs');
 legend('Gaussian Kernel','Epanechnikov Kernel', 'Histogram');
 title('Distribution of Variance with h')
 xlabel('Bandwidth (h)')
