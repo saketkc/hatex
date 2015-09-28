@@ -1,0 +1,79 @@
+---
+title: "MATH-650 Assignment 5"
+author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
+date: "09/28/2015"
+output:
+  pdf_document: default
+  html_document:
+    keep_md: yes
+---
+
+## Problem 20
+
+```{r}
+data <- read.csv('case0501.csv')
+labels <- unique(data$Diet)
+sp <- 0
+N <- 0
+out <- (paste("Group", "n", "SD", "\n", sep="\t\t"))
+for (x in labels){
+  d <- data[data$Diet == x, ]$Lifetime
+  n <- length(d)
+  s <- sd(d)
+  sp <- (n-1)*s*s+sp
+  out <- (paste(out , "\n", x,n,s,sep="\t\t"))
+  N <- N+n-1
+}
+cat(out)
+sp <- sqrt(sp/N)
+```
+
+Pooled variance: $s_p=`r sp`$ and $df=`r N`$
+
+```{r}
+estimator <- function(a,b){
+  x <- data[data$Diet == a,]$Lifetime
+y <- data[data$Diet == b,]$Lifetime
+n1 <- length(x)
+n2 <- length(y)
+se <- sp*sqrt(1/n1+1/n2)
+estimate <- mean(x)-mean(y)
+CI <- c(estimate-1.96*se, estimate+1.96*se)
+tstat <- estimate/se
+out <- (paste('Confidence Interval Low', CI[1], sep="\t"))
+out <- (paste(out , '\n', 'Confidence Interval High', CI[2], sep="\t"))
+out <- paste(out, '\n', 'Estimate', estimate, sep='\t')
+out <- paste(out, '\n', 'SE', se,sep='\t')
+out <- paste(out, '\n', 't-stat',tstat, sep='\t')
+cat(out)
+}
+```
+## N/R50 vs N/N85
+```{r}
+#N/R50 vs N/N85
+estimator('N/R50', 'N/N85')
+```
+
+## R/R50 vs N/R50
+```{r}
+#R/R50 vs N/R50
+estimator('R/R50', 'N/R50')
+```
+
+## N/R40 vs N/R50
+```{r}
+#N/R40 vs N/R50
+estimator('N/R40', 'N/R50')
+```
+
+## N/R50 lopro vs N/R50
+```{r}
+#N/R50 lopro vs N/R50
+estimator('lopro', 'N/R50')
+```
+
+## N/N85 vs NP
+```{r}
+##N/N85 vs NP
+estimator('N/N85', 'NP')
+```
