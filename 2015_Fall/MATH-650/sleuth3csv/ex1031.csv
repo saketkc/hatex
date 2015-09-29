@@ -1,0 +1,444 @@
+CommonName,Genus,Species,Group,BodyMass,ClutchVolume
+Mallard,Anas ,platyrhynchos ,Mat,1.14E+00,5.42E+05
+Greylag Goose,Anser ,anser,Mat,3.31E+00,7.97E+05
+Mute Swan,Cygnus,olor ,Mat,1.07E+01,1.75E+06
+Common Eider,Somateria ,mollissima ,Mat,2.07E+00,4.75E+05
+Southern Screamer,Chauna ,torquata,BiP,4.40E+00,5.13E+05
+Alpine Swift,Tachymarptis ,melba ,BiP,1.03E-01,1.24E+04
+Crested Treeswift,Hemiprocne,coronata,BiP,2.90E-02,3.61E+03
+Rufous Hummingbird,Selasphorus ,rufus,Mat,3.50E-03,9.21E+02
+Eurasian Nightjar,Caprimulgus ,europaeus,BiP,6.70E-02,1.56E+04
+Jungle Nightjar,Caprimulgus ,indicus ,BiP,9.18E-02,1.48E+04
+Large-tailed Nightjar,Caprimulgus ,macrurus,BiP,6.62E-02,1.44E+04
+Lesser Nighthawk,Chordeiles ,acutipennis ,Mat,4.85E-02,1.08E+04
+Pennant-winged Nightjar,Macrodipteryx ,vexillarius,Mat,7.24E-02,9.64E+03
+Common Potoo,Nyctibius ,griseus,BiP,1.73E-01,1.63E+04
+Tawny Frogmouth,Podargus,strigoides,BiP,3.10E-01,5.11E+04
+Oilbird,Steatornis,caripensis ,BiP,4.08E-01,5.95E+04
+Southern Cassowary,Casuarius ,casuarius,Pat,4.51E+01,3.22E+06
+Emu,Dromaius ,novaehollandiae ,Pat,3.42E+01,5.14E+06
+Razorbill,Alca,torda,BiP,7.26E-01,8.22E+04
+Dovekie,Alle ,alle ,BiP,1.81E-01,2.69E+04
+Black Guillemot,Cepphus ,grylle ,BiP,3.78E-01,9.23E+04
+Rhinocerous Auklet,Cerorhinca,monocerata,BiP,4.83E-01,7.55E+04
+Atlantic Puffin,Fratercula ,arctica,Mat,6.52E-01,5.62E+04
+Ancient Murrelet,Synthliboramphus,antiquus,BiP,2.07E-01,7.04E+04
+Common Murre,Uria ,aalge,BiP,9.92E-01,1.01E+05
+Eurasian Thick-knee,Burhinus ,oedicnemus ,BiP,4.59E-01,9.32E+04
+Common Ringed Plover,Charadrius ,hiaticula ,BiP,6.41E-02,4.58E+04
+Snowy Plover,Charadrius ,alexandrinus ,BiP,4.23E-02,2.76E+04
+Eurasian Dotterel,Charadrius ,morinellus ,Pat,1.20E-01,5.89E+04
+Eurasian Golden-Plover,Pluvialis,apricaria ,BiP,2.14E-01,1.16E+05
+Northern Lapwing,Vanellus ,vanellus,BiP,2.19E-01,1.02E+05
+Snowy Sheathbill,Chionis ,alba,BiP,6.77E-01,9.86E+04
+Cream-colored Courser,Cursorius ,cursor,Mat,1.38E-01,2.19E+04
+Collared Pratincole,Glareola,pratincola ,BiP,8.49E-02,2.78E+04
+Egyptian Plover,Pluvianus,aegyptius,BiP,8.20E-02,2.22E+04
+Double-banded Courser,Rhinoptilus,africanus ,BiP,8.75E-02,8.81E+03
+Eurasian Oystercatcher,Haematopus,ostralegus,BiP,5.26E-01,1.61E+05
+Ibisbill,Ibidorhyncha ,struthersii ,BiP,2.94E-01,1.35E+05
+Pheasant-tailed Jacana,Hydrophasianus ,chirurgus,Pat,1.64E-01,5.79E+04
+Wattled Jacana,Jacana ,jacana,Pat,1.50E-01,3.80E+04
+Bronze-winged Jacana,Metopidius ,indicus,Pat,1.55E-01,4.47E+04
+Black-headed Gull,Larus,ridibundus ,BiP,2.84E-01,1.49E+05
+Herring Gull,Larus,argentatus ,BiP,1.09E+00,2.59E+05
+Glaucous Gull,Larus ,hyperboreus ,BiP,1.54E+00,3.57E+05
+Great Black-backed Gull,Larus ,marinus ,BiP,1.66E+00,3.86E+05
+Little Gull,Larus ,minutus ,BiP,1.18E-01,8.19E+04
+Ross' Gull,Rhodosthethia ,rosea,BiP,1.87E-01,5.50E+04
+Black-legged Kittiwake,Rissa,tridactyla ,BiP,4.08E-01,9.54E+04
+Plains-wanderer,Pedionomus ,torquatus ,Pat,6.32E-02,4.18E+04
+Black-winged Stilt,Himantopus,himantopus,BiP,1.61E-01,8.53E+04
+Pied Avocet,Recurvirostra,avosetta ,BiP,3.04E-01,1.19E+05
+Black Skimmer,Rhynchops ,niger,Mat,3.02E-01,1.25E+05
+Greater Painted-Snipe,Rostratula,benghalensis,Pat,1.21E-01,4.12E+04
+Common Sandpiper,Actitis,hypoleucos ,BiP,4.80E-02,4.78E+04
+Spotted Sandpiper,Actitis ,macularius,Pat,4.04E-02,3.76E+04
+Ruddy Turnstone,Arenaria ,interpres,BiP,1.36E-01,6.95E+04
+Upland Sandpiper,Bartramia ,longicauda ,BiP,1.59E-01,1.04E+05
+Baird's Sandpiper,Calidris ,bairdii,BiP,4.11E-02,3.16E+04
+Subantarctic Snipe,Coenocorypha ,aucklandica ,BiP,1.09E-01,3.76E+04
+Great Snipe,Gallinago,media,Mat,1.71E-01,7.63E+04
+Black-tailed Godwit,Limosa ,limosa,BiP,2.91E-01,1.97E+05
+Eurasian Curlew,Numenius ,arquata,BiP,8.06E-01,3.66E+05
+Wilson's Phalarope,Phalaropus,tricolor,Pat,6.00E-02,3.25E+04
+Red Phalarope,Phalaropus ,fulicarius,Pat,5.60E-02,3.01E+04
+Red-necked Phalarope,Phalaropus ,lobatus,Pat,4.00E-02,2.90E+04
+Ruff,Philomachus ,pugnax,Mat,1.36E-01,6.99E+04
+American Woodcock,Scolopax,minor,BiP,1.98E-01,6.30E+04
+Eurasian Woodcock,Scolopax ,rusticola ,Mat,3.10E-01,1.15E+05
+Common Redshank,Tringa,totanus,BiP,1.29E-01,8.54E+04
+Great Skua,Catharacta,skua,BiP,1.34E+00,1.68E+05
+Long-tailed Jaeger,Stercorarius ,longicaudus ,BiP,2.89E-01,8.47E+04
+Brown Noddy,Anous ,stolidus ,BiP,1.78E-01,3.37E+04
+Black Tern,Chlidonias,niger,BiP,6.53E-02,3.21E+04
+Whiskered Tern,Chlidonias,hybrida,BiP,8.39E-02,4.68E+04
+White Tern,Gygis,alba,BiP,1.11E-01,2.07E+04
+Gull-gilled Tern,Sterna,nilotica,BiP,2.21E-01,1.15E+05
+Common Tern,Sterna ,hirundo ,BiP,1.30E-01,5.34E+04
+Lesser Crested Tern,Thalasseus ,bengalensis,BiP,2.09E-01,3.57E+04
+Rufous-bellied Seedsnipe,Attagis,gayi ,BiP,3.11E-01,1.05E+05
+Gray-breasted Seedsnipe,Thinocorus,orbignyanus,BiP,1.15E-01,5.20E+04
+Great Blue Heron,Ardea ,herodias ,BiP,2.30E+00,2.72E+05
+Squacco Heron,Ardeola,ralloides,BiP,2.87E-01,4.95E+04
+Great Bittern,Botaurus ,stellaris ,Mat,1.33E+00,1.83E+05
+Cattle Egret,Bubulcus,ibis,BiP,3.66E-01,7.75E+04
+Little Bittern,Ixobrychus,minutus ,BiP,1.01E-01,8.57E+04
+Shoebill,Balaeniceps ,rex ,BiP,5.98E+00,2.97E+05
+White Stork,Ciconia ,ciconia ,BiP,3.45E+00,3.87E+05
+Hamerkop,Scopus ,umbretta,BiP,4.72E-01,1.11E+05
+Roseate Spoonbill,Ajaia ,ajaja,BiP,1.49E+00,2.20E+05
+Hadada Ibis,Bostrychia,hagedash,BiP,1.24E+00,1.35E+05
+Scarlet Ibis,Eudocimus ,ruber,BiP,6.65E-01,1.25E+05
+Waldrapp,Geronticus ,eremita ,BiP,1.20E+00,1.59E+05
+Glossy Ibis,Plegadis,falcinellus,BiP,6.34E-01,1.20E+05
+Sacred Ibis,Threskiornis,aethiopicus,BiP,1.50E+00,1.44E+05
+Speckled Mousebird,Colius,striatus ,BiP,5.11E-02,8.75E+03
+Common Wood-Pigeon,Columba ,palumbus ,BiP,4.90E-01,3.48E+04
+Namaqua Dove,Oena,capensis,BiP,4.06E-02,5.48E+03
+Common Kingfisher,Alcedo ,atthis,BiP,3.14E-02,2.01E+04
+Rufous-necked Hornbill,Aceros ,nipalensis,Mat,2.39E+00,8.43E+04
+Indian Roller,Coracias,benghalensis ,BiP,1.58E-01,4.83E+04
+Blue-tailed Bee-eater,Merops,philippinus,BiP,3.40E-02,2.73E+04
+Russet-crowned Motmot,Momotus,mexicanus,BiP,7.57E-02,2.50E+04
+Green Woodhoopoe,Phoeniculus ,purpureus,Mat,7.43E-02,1.34E+04
+Jamaican Tody,Todus,todus,BiP,6.40E-03,5.04E+03
+Eurasian Hoopoe,Upupa ,epops,Mat,6.71E-02,2.69E+04
+Greater Coucal,Centropus,sinensis ,BiP,2.83E-01,5.40E+04
+Yellow-billed Cuckoo,Coccyzus ,americanus,Mat,6.40E-02,3.60E+04
+Smooth-billed Ani,Crotophaga ,ani ,BiP,1.12E-01,5.00E+04
+Brown Kiwi,Apteryx ,australis,Pat,2.33E+00,6.17E+05
+Little Spotted Kiwi,Apteryx ,owenii,Pat,1.11E+00,3.17E+05
+Eurasian Sparrowhawk,Accipiter ,nisus,Mat,2.38E-01,9.22E+04
+Northern Goshawk,Accipiter ,gentilis,Mat,9.02E-01,1.80E+05
+Shikra,Accipiter ,badius,Mat,1.32E-01,8.38E+04
+Cinereous Vulture,Aegypius,monachus ,BiP,9.63E+00,2.11E+05
+Golden Eagle,Aquila ,chrysaetos,Mat,4.26E+00,2.71E+05
+Rough-legged Hawk,Buteo ,lagopus,Mat,9.56E-01,1.97E+05
+Short-toed Eagle,Circaetus ,gallicus ,Mat,1.70E+00,1.26E+05
+Montagu's Harrier,Circus ,pygargus,Mat,3.16E-01,1.39E+05
+Black-shouldered Kite,Elanus ,caeruleus ,Mat,2.61E-01,7.40E+04
+Lammergeier,Gypaetus,barbatus ,BiP,5.70E+00,2.54E+05
+Eurasian Griffon,Gyps,fulvus,BiP,7.44E+00,2.32E+05
+Bald Eagle,Haliaeetus ,leucocephalus,BiP,4.74E+00,2.19E+05
+Brahminy Kite,Haliastur ,indus,Mat,5.29E-01,1.09E+05
+Red Kite,Milvus ,milvus,Mat,1.08E+00,1.71E+05
+Egyptian Vulture,Neophron,percnopterus,BiP,2.08E+00,1.60E+05
+European Honey-Buzzard,Pernis ,apivorus,BiP,7.58E-01,8.92E+04
+African Harrier-Hawk,Polyboroides,typus,BiP,6.38E-01,1.03E+05
+Crested Serpent-Eagle,Spilornis ,cheela ,Mat,6.28E-01,9.49E+04
+Lappet-faced Vulture,Torgos ,tracheliotus,BiP,6.97E+00,2.27E+05
+Turkey Vulture,Cathartes,aura,BiP,1.72E+00,1.60E+05
+Black Vulture,Coragyps ,atratus,BiP,1.90E+00,1.91E+05
+King Vulture,Sarcorhamphus ,papa ,BiP,3.40E+00,1.87E+05
+Andean Condor,Vultur ,gryphus,BiP,1.13E+01,2.78E+05
+Crested Caracara,Caracara ,cheriway ,BiP,8.94E-01,1.87E+05
+Peregrine Falcon,Falco,peregrinus,BiP,7.83E-01,1.27E+05
+Red-footed Falcon,Falco,vespertinus,BiP,1.53E-01,5.75E+04
+Lesser Kestrel,Falco ,naumanni ,BiP,1.53E-01,6.43E+04
+Gyrfalcon,Falco ,rusticolus ,Mat,1.46E+00,2.72E+05
+Pygmy Falcon,Polihierax ,semitorquatus,Mat,6.15E-02,1.87E+04
+Osprey,Pandion,haliaetus ,BiP,1.49E+00,1.93E+05
+Secretary-bird,Sagittarius ,serpentarius ,Mat,4.02E+00,3.35E+05
+Swallow-wing,Chelidoptera,tenebrosa ,BiP,3.59E-02,7.34E+03
+Rufous-tailed Jacamar,Galbula ,ruficauda ,Mat,2.65E-02,9.84E+03
+Great Currasow,Crax ,rubra ,Mat,4.13E+00,3.58E+05
+Australian Brush Turkey,Alectura ,lathami,Pat,2.34E+00,2.58E+06
+Malleefowl,Leipoa ,ocelata,Pat,1.80E+00,2.71E+06
+Wild Turkey,Meleagris ,gallopavo ,Mat,6.05E+00,8.75E+05
+Vulturine Guineafowl,Acryllium ,vulturinum,Mat,1.33E+00,5.85E+05
+Gambel's Quail,Callipepla ,gambelii ,Mat,1.66E-01,1.04E+05
+Northern Bobwhite,Colinus ,virginianus,BiP,1.78E-01,1.12E+05
+Rock Partridge,Alectoris ,graeca,Mat,6.15E-01,1.99E+05
+See-see Partridge,Ammoperdix ,griseogularis ,Mat,2.03E-01,8.71E+04
+Great Argus,Argusianus ,argus ,Mat,1.99E+00,1.34E+05
+Common Quail,Coturnix,coturnix ,Mat,9.70E-02,8.98E+04
+Blue-breasted Quail,Coturnix ,chinensis ,Mat,4.20E-02,2.76E+04
+Black Francolin,Francolinus ,francolinus ,Mat,4.53E-01,1.40E+05
+Red Junglefowl,Gallus ,gallus ,Mat,7.80E-01,1.58E+05
+Himalayan Monal,Lophophorus ,impejanus,Mat,2.08E+00,3.71E+05
+Jungle Bush-Quail,Perdicula ,asiatica,Mat,7.00E-02,3.18E+04
+Gray Partridge,Perdix ,perdix,Mat,4.06E-01,1.52E+05
+Ring-necked Pheasant,Phasianus ,colchicus  1.14E+00 3.00E+05 ,Mat,1.14E+00,3.00E+05
+Koklass Pheasant,Pucrasia ,macrolopha,Mat,1.06E+00,2.18E+05
+Sage Grouse,Centrocercus ,urophasianus ,Mat,2.21E+00,3.16E+05
+Spruce Grouse,Falcipennis ,canadensis ,Mat,4.74E-01,2.08E+05
+Willow Ptarmigan,Lagopus ,lagopus,Mat,5.71E-01,2.08E+05
+Capercaillie,Tetrao ,urogallus,Mat,2.95E+00,3.12E+05
+Greater Prairie-Chicken,Tympanuchus,cupido ,Mat,8.76E-01,2.88E+05
+Common Loon,Gavia ,immer,BiP,4.98E+00,3.17E+05
+Limpkin,Aramus ,guarauna ,BiP,1.08E+00,3.52E+05
+Red-legged Seriema,Cariama,cristata ,BiP,1.40E+00,1.43E+05
+Black Crowned-Crane,Balearica ,pavonina ,BiP,3.59E+00,3.22E+05
+Common Crane,Grus,grus ,BiP,5.50E+00,3.82E+05
+Sarus Crane,Grus ,antigone,BiP,5.96E+00,3.96E+05
+Subdesert Mesite,Monias ,benschi,Pat,1.38E-01,2.29E+04
+Houbara Bustard,Chlamydotis ,undulata ,Mat,1.56E+00,1.95E+05
+Red-crested Bustard,Eupodotis,ruficrista ,Mat,7.14E-01,8.32E+04
+Bengal Florican,Houbaropsis,bengalensis ,Mat,2.03E+00,1.30E+05
+Stanley Bustard,Neotis,denhami,Mat,4.83E+00,2.25E+05
+Little Bustard,Tetrax ,tetrax,Mat,8.34E-01,1.52E+05
+Corn Crake,Crex ,crex ,Mat,1.56E-01,1.33E+05
+Eurasian Coot,Fulica,atra,BiP,7.34E-01,2.60E+05
+Common Moorhen,Gallinula ,chloropus,BiP,3.44E-01,1.67E+05
+Slaty-breasted Rail,Gallirallus ,striatus ,BiP,1.16E-01,8.33E+04
+Purple Swamphen,Porphyrio ,porphyrio ,BiP,7.94E-01,1.61E+05
+Sora,Porzana,carolina ,BiP,7.48E-02,7.65E+04
+Little Crake,Porzana ,parva,BiP,4.97E-02,5.06E+04
+Ruddy-breasted Crake,Porzana ,fusca ,BiP,5.76E-02,6.27E+04
+Kagu,Rhynochetus ,jubata,BiP,8.60E-01,6.49E+04
+Small Buttonquail,Turnix ,sylvatica,Pat,5.40E-02,1.80E+04
+Great Blue Turaco,Corythaeola ,cristata,BiP,9.65E-01,6.77E+04
+Long-tailed Tit,Aegithalos ,caudatus ,BiP,8.60E-03,7.87E+03
+Common Iora,Aegithina ,tiphia,BiP,1.20E-02,4.07E+03
+Sky Lark,Alauda ,arvensis,Mat,3.75E-02,1.12E+04
+Rufous-tailed Lark,Ammomanes ,phoenicurus ,BiP,2.56E-02,7.23E+03
+Red-capped Lark,Calandrella,cinerea ,BiP,2.37E-02,8.79E+03
+Spike-heeled Lark,Chersomanes,albofasciata,BiP,4.94E-02,5.88E+03
+Horned Lark,Eremophila,alpestris ,Mat,3.35E-02,1.18E+04
+Crested Lark,Galerida ,cristata,Mat,4.28E-02,1.22E+04
+Woodlark,Lullula ,arborea ,Mat,2.69E-02,9.01E+03
+Ashy Woodswallow,Artamus ,fuscus ,BiP,3.98E-02,7.98E+03
+Bohemian Waxwing,Bombycilla,garrulus ,Mat,5.45E-02,1.70E+04
+Saddleback,Creadion ,carunculatus ,BiP,7.50E-02,1.77E+04
+Northern Cardinal,Cardinalis ,cardinalis,Mat,4.27E-02,1.34E+04
+Dickcissel,Spiza ,americana,Mat,2.63E-02,1.00E+04
+Eurasian Treecreeper,Certhia,familiaris ,BiP,9.00E-03,7.05E+03
+Spotted Creeper,Salpornis ,spilonotus ,BiP,1.48E-02,4.18E+03
+White-throated Dipper,Cinclus ,cinclus ,Mat,6.17E-02,2.15E+04
+Zitting Cisticola,Cisticola ,juncidis ,BiP,6.90E-03,5.06E+03
+Graceful Prinia,Prinia,gracilis,BiP,7.10E-03,2.92E+03
+Plain Prinia,Prinia,inornata ,BiP,7.00E-03,4.30E+03
+Tawny-flanked Prinia,Prinia,subflava ,BiP,8.70E-03,3.54E+03
+Western Scrub Jay,Aphelocoma,californica ,Mat,8.62E-02,2.09E+04
+Cape Crow,Corvus,capensis ,BiP,5.53E-01,7.31E+04
+Eurasian Jackdaw,Corvus,monedula ,Mat,2.46E-01,4.95E+04
+Common Raven,Corvus ,corax,Mat,9.41E-01,1.48E+05
+Blue Jay,Cyanocitta ,cristata ,Mat,8.80E-02,2.24E+04
+Bushy-crested Jay,Cyanocorax,melanocyaneus ,Mat,1.01E-01,2.24E+04
+San Blas Jay,Cyanocorax,sanblasiana ,Mat,1.09E-01,2.69E+04
+Azure-winged Magpie,Cyanopica,cyana ,Mat,9.60E-02,3.86E+04
+Eurasian Jay,Garrulus ,glandarius,BiP,1.68E-01,4.57E+04
+Eurasian Nutcracker,Nucifraga,caryocatactes,BiP,1.83E-01,2.83E+04
+Siberian Jay,Perisoreus ,infaustus ,Mat,8.44E-02,3.25E+04
+Eurasian Magpie,Pica ,pica,Mat,2.18E-01,6.43E+04
+Turkestan Ground-Jay,Podoces ,panderi,Mat,9.11E-02,2.13E+04
+Red-billed Chough,Pyrrhocorax ,pyrrhocorax ,Mat,2.78E-01,5.59E+04
+Rufous-tailed Plantcutter,Phytotoma,rara,Mat,4.70E-02,1.24E+04
+Guianan Cock-of-the-rock,Rupicola ,rupicola ,Mat,1.95E-01,4.30E+04
+Scimitar-billed Woodcreeper,Drymornis ,bridgesii,BiP,9.40E-02,2.11E+04
+Black Drongo,Dicrurus,macrocercus,BiP,4.83E-02,1.56E+04
+Bronzed Drongo,Dicrurus,aeneas ,BiP,2.65E-02,1.23E+04
+Fork-tailed Drongo,Dicrurus ,adsimilis ,BiP,4.03E-02,9.16E+03
+Hair-crested Drongo,Dicrurus ,hottentottus,BiP,7.92E-02,2.21E+04
+Lapland Longspur,Calcarius ,lapponicus,BiP,2.79E-02,1.18E+04
+Corn Bunting,Emberiza ,calandra,Mat,4.88E-02,1.47E+04
+Yellowhammer,Emberiza ,citrinella,Mat,2.97E-02,9.60E+03
+Snow Bunting,Plectrophenax ,nivalis,Mat,4.22E-02,1.35E+04
+Chipping Sparrow,Spizella ,passerina,Mat,1.22E-02,6.03E+03
+White-rumped Munia,Lonchura ,striata ,BiP,1.23E-02,4.22E+03
+Long-tailed Broadbill,Psarisomus ,dalhousiae,BiP,6.70E-02,2.59E+04
+Silver-breasted Broadbill,Serilophus,lunatus ,BiP,3.40E-02,1.77E+04
+Streak-chested Antpitta,Hylopezus ,perspicillatus ,BiP,4.30E-02,1.11E+04
+European Goldfinch,Carduelis ,carduelis,Mat,1.60E-02,6.57E+03
+Common Rosefinch,Carpodacus ,erythrinus,Mat,2.40E-02,1.02E+04
+Hawfinch,Coccothraustes ,coccothraustes,Mat,5.67E-02,1.02E+04
+Blue Chaffinch,Fringilla ,teydea ,Mat,3.03E-02,4.70E+03
+Chaffinch,Fringilla ,coelebs,Mat,2.40E-02,9.65E+03
+Red Crossbill,Loxia ,curvirostra ,Mat,3.85E-02,9.22E+03
+Pine Grosbeak,Pinicola ,enucleator,Mat,5.64E-02,1.53E+04
+Eurasian Bullfinch,Pyrrhula ,pyrrhula ,Mat,2.44E-02,9.00E+03
+European Serin,Serinus ,serinus,Mat,1.12E-02,4.55E+03
+Barn Swallow,Hirundo ,rustica,Mat,1.80E-02,8.16E+03
+Red-winged Blackbird,Agelaius ,phoeniceus ,Mat,5.24E-02,1.47E+04
+Bullock's Oriole,Icterus ,bullockii,Mat,3.79E-02,1.24E+04
+Asian Fairy-Bluebird,Irena ,puella,Mat,6.49E-02,1.18E+04
+Red-backed Shrike,Lanius ,collurio ,Mat,2.85E-02,1.58E+04
+Woodchat Shrike,Lanius ,senator,Mat,3.60E-02,1.95E+04
+Southern Boubou,Laniarius,ferrugineus,BiP,4.68E-02,9.37E+03
+Black-crowned Tchagra,Tchagra ,senegala,Mat,5.35E-02,1.10E+04
+Superb Fairywren,Malurus ,cyaneus ,Mat,1.01E-02,4.74E+03
+New Zealand Bellbird,Anthornis ,melanura ,Mat,2.72E-02,1.21E+04
+Tui,Prosthemadera ,novaeseelandiae,Mat,1.07E-01,2.56E+04
+Superb Lyrebird,Menura ,novaehollandiae ,Mat,9.80E-01,5.85E+04
+Gray Catbird,Dumetella ,carolinensis ,Mat,3.55E-02,1.31E+04
+Northern Mockingbird,Mimus ,polyglottos,Mat,4.85E-02,1.59E+04
+California Thrasher,Toxostoma ,redivivum ,BiP,8.44E-02,1.90E+04
+Black-naped Monarch,Hypothymis ,azurea ,BiP,1.11E-02,5.28E+03
+Asian Paradise-Flycatcher,Terpsiphone ,paradisi ,BiP,1.85E-02,7.69E+03
+Australasian Pipit,Anthus ,novaeseelandiae,Mat,2.41E-02,1.40E+04
+Tree Pipit,Anthus ,trivialis ,Mat,2.34E-02,1.23E+04
+Yellow-throated Longclaw,Macronyx ,croceus ,Mat,4.71E-02,1.02E+04
+Gray Wagtail,Motacilla ,cinerea,BiP,1.72E-02,9.50E+03
+Yellow Wagtail,Motacilla ,flava ,Mat,1.77E-02,1.04E+04
+Wrentit,Chamaea ,fasciata,BiP,1.48E-02,7.40E+03
+Spotted Flycatcher,Muscicapa ,striata,BiP,1.59E-02,7.74E+03
+Rufous-bellied Niltava,Niltava ,sundara,BiP,2.11E-02,9.41E+03
+Little Spiderhunter,Arachnothera,longirostra ,BiP,1.26E-02,3.10E+03
+Streaked Spiderhunter,Arachnothera,magna ,BiP,3.07E-02,4.93E+03
+Eastern Olive-Sunbird,Cyanomitra ,olivacea,Mat,9.90E-03,2.64E+03
+Golden Whistler,Pachycephala,pectoralis ,BiP,3.03E-02,7.18E+03
+Huon Astrapia,Astrapia ,rothschildi ,Mat,1.83E-01,1.28E+04
+Superb Bird-of-paradise,Lophorina ,superba,Mat,7.70E-02,7.07E+03
+Trumpet Manucode,Manucodia,keraudrenii ,BiP,1.56E-01,2.20E+04
+Lesser Bird-of-paradise,Paradisaea ,minor,Mat,2.14E-01,1.93E+04
+Paradise Riflebird,Ptiloris ,paradiseus ,Mat,1.21E-01,1.89E+04
+Twelve-wired Bird-of-paradise,Seleucides,melanoleuca,Mat,1.75E-01,1.41E+04
+Bearded Reedling,Panurus,biarmicus,BiP,1.39E-02,9.20E+03
+Great Tit,Parus ,major,Mat,1.58E-02,1.08E+04
+Yellow Warbler,Dendroica ,petechia,Mat,9.60E-03,6.40E+03
+Prothonotary Warbler,Protonaria ,citrea,Mat,1.43E-02,9.92E+03
+White-winged Snowfinch,Montifringilla,nivalis,BiP,3.69E-02,1.50E+04
+House Sparrow,Passer ,domesticus ,Mat,2.60E-02,9.64E+03
+White-bearded Manakin,Manacus ,manacus,Mat,1.92E-02,5.02E+03
+Blue-naped Pitta,Pitta,nipalensis,BiP,1.24E-01,3.13E+04
+Grosbeak Weaver,Ambylospiza ,albifrons ,Mat,4.20E-02,8.27E+03
+Black-winged Bishop,Euplectes ,hordeaceus ,Mat,1.94E-02,4.52E+03
+Crested Matlimbe,Malimbus ,malimbicus ,Mat,3.62E-02,6.80E+03
+Asian Golden Weaver,Ploceus ,hypoxanthus,Mat,1.86E-02,4.65E+03
+Cape Weaver,Ploceus ,capensis,Mat,4.42E-02,9.60E+03
+Red-billed Quelea,Quelea,quelea,BiP,1.86E-02,4.91E+03
+Cardinal Quelea,Quelea ,cardinalis,Mat,1.27E-02,3.03E+03
+Blue-gray Gnatcatcher,Polioptila,caerulea,BiP,5.80E-03,3.89E+03
+Cape Sugarbird,Promerops,cafer,Mat,3.49E-02,7.77E+03
+Dunnock,Prunella ,modularis,Mat,2.03E-02,8.77E+03
+Phainopepla,Phainopepla ,nitens,BiP,2.21E-02,7.18E+03
+Regent Bowerbird,Sericulus ,chrysocephalus,Mat,1.00E-01,2.39E+04
+Great Bowerbird,Chlamydera ,nuchalis ,Mat,2.01E-01,1.72E+04
+Sombre Bulbul,Andropadus ,importunus,Mat,2.74E-02,6.01E+03
+Red-vented Bulbul,Pycnonotus,cafer,BiP,4.30E-02,6.74E+03
+Red-whiskered Bulbul,Pycnonotus ,jocosus,BiP,2.96E-02,6.59E+03
+Goldcrest,Regulus ,regulus,Mat,5.60E-03,5.85E+03
+Eurasian Penduline-Tit,Remiz ,pendulinus,Mat,9.30E-03,5.53E+03
+Magellanic Tapaculo,Scytalopus ,magellanicus,BiP,1.36E-02,6.85E+03
+White-throated Fantail,Rhipidura,albicollis ,BiP,1.29E-02,3.64E+03
+Eurasian Nuthatch,Sitta ,europaea,Mat,2.26E-02,1.66E+04
+Red-billed Oxpecker,Buphagus,erythrorhynchus ,BiP,5.08E-02,8.16E+03
+Greater Blue-eared Glossy-Starling,Lamprotornis ,chalybaeus ,Mat,8.70E-02,1.97E+04
+Red-winged Starling,Onychognathus ,morio,Mat,1.33E-01,2.56E+04
+Eurasian Starling,Sturnus ,vulgaris,BiP,7.41E-02,4.05E+04
+Marsh Warbler,Acrocephalus ,palustris ,BiP,1.15E-02,7.37E+03
+Cetti's Warbler,Cettia ,cetti,Mat,1.34E-02,6.69E+03
+African Yellow Warbler,Chloropeta,natalensis ,BiP,1.17E-02,2.26E+03
+Booted Warbler,Hippolais ,caligata ,Mat,8.90E-03,4.70E+03
+White-browed Tit-Warbler,Leptopoecile ,sophiae,BiP,6.90E-03,4.47E+03
+Savi's Warbler,Locustella ,luscinioides,Mat,1.39E-02,8.55E+03
+Common Tailorbird,Orthotomus ,sutorius ,BiP,7.50E-03,3.14E+03
+Willow Warbler,Phylloscopus,trochilus,Mat,8.70E-03,6.80E+03
+Wood Warbler,Phylloscopus ,sibilatrix,Mat,9.20E-03,7.64E+03
+Garden Warbler,Sylvia,borin,BiP,1.82E-02,9.65E+03
+Blackcap,Sylvia ,atricapilla,BiP,1.67E-02,1.05E+04
+Orophean Warbler,Sylvia ,hortensis,BiP,2.19E-02,9.65E+03
+Great Antshrike,Taraba,major,BiP,5.92E-02,1.60E+04
+Wallcreeper,Tichodroma ,muraria,Mat,1.76E-02,9.41E+03
+Silver-eared Mesia,Leiothrix ,argentauris ,BiP,2.84E-02,9.01E+03
+Red-faced Liocichla,Liocichla ,phoenicea ,BiP,4.90E-02,1.13E+04
+Streaked Wren-Babbler,Napothera ,brevicaudata,BiP,1.95E-02,9.82E+03
+White-browed Scimitar-Babbler,Pomatorhinus ,schisticeps ,BiP,4.30E-02,1.45E+04
+Common Babbler,Turdoides,caudatus,BiP,3.97E-02,1.09E+04
+Cactus Wren,Campylorhynchus,brunneicapillus ,Mat,3.89E-02,1.47E+04
+Marsh Wren,Cistothorus ,palustris,Mat,1.08E-02,5.12E+03
+Black-capped Donacobius,Donacobius ,atricapillus ,Mat,3.68E-02,6.63E+03
+Rock Wren,Salpinctes ,obsoletus,Mat,1.64E-02,1.06E+04
+Winter Wren,Troglodytes ,troglodytes,Mat,9.80E-03,8.81E+03
+Lesser Shortwing,Brachypteryx ,leucophrys,BiP,1.58E-02,7.88E+03
+Karoo Scrub-Robin,Cercotrichas ,coryphaeus ,Mat,2.04E-02,6.54E+03
+Rufous-tailed Scrub-Robin,Cercotrichas ,galactotes,Mat,2.03E-02,1.29E+04
+White-capped Water-Redstart,Chaimarrornis ,leucocephalus,Mat,3.04E-02,1.14E+04
+White-tailed Robin,Cinclidium ,leucurum ,BiP,2.70E-02,1.09E+04
+Oriental Magpie-Robin,Copsychus,saularis,BiP,3.60E-02,1.41E+04
+Red-capped Robin-Chat,Cossypha,natalensis ,Mat,3.41E-02,8.81E+03
+European Robin,Erithacus ,rubecula,Mat,1.77E-02,1.23E+04
+White-bellied Redstart,Hodgsonius ,phoenicuroides,Mat,2.11E-02,8.09E+03
+Common Nightingale,Luscinia ,megarhynchos,Mat,1.96E-02,1.06E+04
+Indian Blue Robin,Luscinia ,brunnea ,Mat,1.75E-02,7.80E+03
+Blue-capped Rock-Thrush,Monticola ,cinclorhynchus,BiP,3.60E-02,1.55E+04
+Rufous-tailed Rock-Thrush,Monticola ,saxatilis,Mat,5.03E-02,2.00E+04
+Black Redstart,Phoenicurus ,ochruros,Mat,1.65E-02,9.75E+03
+Common Redstart,Phoenicurus ,phoenicurus,Mat,1.46E-02,1.03E+04
+Plumbeous Redstart,Rhyacornis ,fuliginosus,Mat,2.04E-02,7.60E+03
+Gray Bushchat,Saxicola ,ferrea,Mat,1.49E-02,7.87E+03
+Red-flanked Bluetail,Tarsiger ,cyanurus ,Mat,1.35E-02,7.00E+03
+Mistle Thrush,Turdus,viscivorus ,Mat,1.18E-01,2.96E+04
+Song Thrush,Turdus ,philomelos,BiP,6.78E-02,2.60E+04
+American Robin,Turdus ,migratorius,Mat,7.85E-02,2.33E+04
+Eurasian Blackbird,Turdus ,merula,Mat,1.03E-01,2.65E+04
+Yellow-bellied Elaenia,Elaenia ,flavogaster ,Mat,2.48E-02,4.70E+03
+Great Crested Flycatcher,Myiarchus ,crinitus ,Mat,3.21E-02,1.60E+04
+Tropical Kingbird,Tyrannus ,melancholicus,Mat,3.74E-02,1.65E+04
+Hook-billed Vanga,Vanga ,curvirostris,BiP,6.45E-02,1.31E+04
+Oriental White-eye,Zosterops ,palpebrosa,BiP,8.60E-03,3.04E+03
+Anhinga,Anhinga ,anhinga ,BiP,1.24E+00,1.53E+05
+Magnificent Frigatebird,Fregata ,magnificens ,BiP,1.41E+00,1.17E+05
+Great White Pelican,Pelecanus,onocrotalus ,BiP,9.52E+00,3.16E+05
+Red-billed Tropicbird,Phaethon,aethereus ,BiP,7.50E-01,5.17E+04
+Great Cormorant,Phalacrocorax,carbo,BiP,2.57E+00,1.81E+05
+Northern Gannet,Sula,bassanus,BiP,3.00E+00,8.57E+04
+Greater Flamingo,Phoenicopterus ,ruber,BiP,3.07E+00,1.34E+05
+Blue-throated Barbet,Megalaima ,asiatica ,BiP,9.05E-02,2.20E+04
+Black Woodpecker,Dryocopus ,martius ,BiP,3.21E-01,5.13E+04
+Great Crested Grebe,Podiceps,cristatus,BiP,6.74E-01,1.43E+05
+Wandering Albatross,Diomedea ,exulans ,BiP,7.05E+00,4.47E+05
+European Storm-Petrel,Hydrobates ,pelagicus,BiP,2.52E-02,5.89E+03
+Common Diving-Petrel,Pelecanoides,urinatrix ,BiP,1.41E-01,1.91E+04
+Bulwer's Petrel,Bulweria,bulwerii,BiP,9.90E-02,2.02E+04
+Northern Fulmar,Fulmarus,glacialis,BiP,6.13E-01,8.88E+04
+Rose-ringed Parakeet,Psittacula ,krameri ,BiP,1.17E-01,3.64E+04
+Painted Sandgrouse,Pterocles,indicus ,BiP,1.79E-01,2.91E+04
+Pin-tailed Sandgrouse,Pterocles,alchata,BiP,2.85E-01,5.51E+04
+Pallas' Sandgrouse,Syrrhaptes ,paradoxus,BiP,2.57E-01,5.66E+04
+King Penguin,Aptenodytes,patagonica,BiP,1.18E+01,2.86E+05
+Eurasian Eagle-Owl,Bubo ,bubo,Mat,2.69E+00,2.87E+05
+Barn Owl,Tyto ,alba,Mat,4.18E-01,1.14E+05
+Greater Rhea,Rhea ,americana,Pat,2.30E+01,6.60E+06
+Lesser Rhea,Rhea ,pennata,Pat,2.39E+01,1.42E+07
+Ostrich,Struthio ,camelus,Pat,1.11E+02,2.21E+07
+Brazilian Tinamou,Crypturellus,strigulosus,Pat,4.31E-01,1.36E+05
+Little Tinamou,Crypturellus ,soui,Pat,2.07E-01,4.36E+04
+Small-billed Tinamou,Crypturellus ,parvirostris,Pat,2.20E-01,7.44E+04
+Tataupa Tinamou,Crypturellus ,tataupa,Pat,2.20E-01,9.38E+04
+Thicket Tinamou,Crypturellus ,cinnamomeus,Pat,4.22E-01,2.24E+05
+Undulated Tinamou,Crypturellus ,undulatus,Pat,5.67E-01,2.10E+05
+Variegated Tinamou,Crypturellus ,variegatus ,Pat,3.17E-01,3.04E+04
+Elegant Crested Tinamou,Eudromia,elegans,Pat,7.04E-01,2.63E+05
+Highland Tinamou,Nothocercus ,bonapartei,Pat,9.25E-01,6.37E+05
+Brushland Tinamou,Nothoprocta,cinerascens,Pat,5.26E-01,3.25E+05
+Chilean Tinamou,Nothoprocta,perdicaria ,Pat,4.58E-01,2.12E+05
+Ornate Tinamou,Nothoprocta,ornata ,Pat,6.22E-01,2.52E+05
+Spotted Nothura,Nothura,maculosa ,Pat,2.58E-01,1.09E+05
+Darwin's Nothura,Nothura ,darwinii,Pat,2.46E-01,1.22E+05
+Red-winged Tinamou,Rhynchotus ,rufescens,Pat,8.45E-01,2.65E+05
+Black Tinamou,Tinamus ,osgoodi,Pat,1.29E+00,1.97E+05
+Gray Tinamou,Tinamus ,tao,Pat,1.60E+00,6.10E+05
+Great Tinamou,Tinamus ,major,Pat,1.03E+00,3.07E+05
+Solitary Tinamou,Tinamus ,solitarius ,Pat,1.39E+00,4.86E+05
+Resplendent Quetzal,Pharomachrus,mocino,BiP,2.03E-01,2.51E+04
+Citreoline Trogon,Trogon,citreolus,BiP,7.90E-02,2.31E+04
+Amurosaurus,Lambeosaurine,riabinini,Othr,2.50E+03,9.22E+07
+Maiasaura ,Maiasaura ,peeblesorum,Othr,2.50E+03,1.44E+07
+Massospondylus,Massospondylus,carinatus,Othr,1.07E+02,6.78E+05
+Oviraptor,Oviraptor,philoceratops,Mani,3.90E+01,7.14E+06
+Lourinhanosaurus,Lourinhanosaurus,antunesi,Othr,1.76E+02,7.07E+06
+Citipati,Citipati,osmolskae,Mani,7.92E+01,8.77E+06
+Troodon,Troodon,formosus,Mani,5.14E+01,7.58E+06
+Megaloolithus,Megaloolithus,patagonicus,Othr,5.00E+03,3.85E+07
+Megaloolithus,Megaloolithus,sirguei,Othr,5.00E+03,4.15E+07
+American Alligator,Alligator,mississippiensis,Croc,4.78E+01,2.54E+06
+Broad-snouted Caiman,Caiman ,latirostris,Croc,1.46E+01,2.30E+06
+Yacare Caiman,Caiman ,yacare,Croc,1.30E+01,2.23E+06
+Black Caiman,Melanosuchus ,niger,Croc,8.20E+01,4.12E+06
+Cuvier's Dwarf Caiman,Paleosuchus ,palpebrosus ,Croc,5.90E+00,8.11E+05
+Smooth-fronted Caiman,Paleosuchus ,trigonatus ,Croc,7.50E+00,1.15E+06
+American Crocodile,Crocodylus,acutus,Croc,7.67E+01,2.60E+06
+Slender-snouted Crocodile,Crocodylus,cataphractus,Croc,5.05E+01,2.29E+06
+Nile Crocodile,Crocodylus,niloticus,Croc,9.42E+01,4.31E+06
+Marsh Crocodile,Crocodylus,palustris,Croc,4.27E+01,1.95E+06
+Estuarine Crocodile,Crocodylus,porosus,Croc,7.87E+01,5.42E+06
+Orinoco Crocodile,Crocodylus ,intermedius ,Croc,1.08E+02,4.97E+06
+Freshwater Crocodile,Crocodylus ,johnsoni,Croc,1.95E+01,7.56E+05
+Philippine Crocodile,Crocodylus ,mindorensis,Croc,3.69E+01,9.97E+05
+Morelet's Crocodile,Crocodylus ,moreletti ,Croc,3.17E+01,2.71E+06
+New Guinea Crocodile,Crocodylus ,novaeguineae,Croc,3.99E+01,2.16E+06
+Dwarf Crocodile,Osteolaemus,tetraspis,Croc,1.88E+01,5.56E+05
+Gharial,Gavialis ,gangeticus,Croc,1.47E+02,7.87E+06
+False Gharial,Tomistoma,schlegelii,Croc,1.19E+02,5.38E+06

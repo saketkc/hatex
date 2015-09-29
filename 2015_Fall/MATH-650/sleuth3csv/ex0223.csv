@@ -1,0 +1,52 @@
+State,Fatalities1995,Fatalities1996,PctChange,SpeedLimit
+Alabama,1114,1146,2.87,Inc
+Alaska,87,81,-6.90,Ret
+Arizona,1035,994,-3.96,Inc
+Arkansas,631,615,-2.54,Inc
+California,4192,3989,-4.84,Inc
+Colorado,645,617,-4.34,Inc
+Connecticut,317,310,-2.21,Ret
+Delaware,121,116,-4.13,Inc
+District of Columbia,58,62,6.90,Ret
+Florida,2805,2753,-1.85,Inc
+Georgia,1488,1573,5.71,Inc
+Hawaii,130,148,13.85,Ret
+Idaho,262,258,-1.53,Inc
+Illinois,1586,1477,-6.87,Inc
+Indiana,960,984,2.50,Ret
+Iowa,527,465,-11.76,Inc
+Kansas,442,490,10.86,Inc
+Kentucky,849,842,-0.82,Ret
+Louisiana,894,902,0.89,Ret
+Maine,187,169,-9.63,Ret
+Maryland,671,608,-9.39,Inc
+Massachusetts,444,417,-6.08,Inc
+Michigan,1530,1505,-1.63,Inc
+Minnesota,597,576,-3.52,Ret
+Mississippi,868,811,-6.57,Inc
+Missouri,1109,1148,3.52,Inc
+Montana,215,200,-6.98,Inc
+Nebraska,254,293,15.35,Inc
+Nevada,313,348,11.18,Inc
+New Hampshire,118,134,13.56,Ret
+New Jersey,774,814,5.17,Ret
+New Mexico,485,485,0.00,Inc
+New York,1679,1593,-5.12,Ret
+North Carolina,1448,1494,3.18,Inc
+North Dakota,74,85,14.86,Ret
+Ohio,1360,1391,2.28,Inc
+Oklahoma,669,772,15.40,Inc
+Oregon,574,526,-8.36,Ret
+Pennsylvania,1480,1469,-0.74,Inc
+Rhode Island,69,69,0.00,Inc
+South Carolina,881,930,5.56,Ret
+South Dakota,158,175,10.76,Inc
+Tennessee,1259,1239,-1.59,Inc
+Texas,3183,3742,17.56,Inc
+Utah,325,321,-1.23,Inc
+Vermont,106,88,-16.98,Ret
+Virginia,900,877,-2.56,Ret
+Washington,653,712,9.04,Inc
+West Virginia,376,348,-7.45,Ret
+Wisconsin,745,761,2.15,Ret
+Wyoming,170,143,-15.88,Inc

@@ -1,0 +1,7 @@
+BodyMass,Drinking,Cases,Controls
+Low,high,38,52
+Low,low,26,61
+medium,high,65,147
+medium,low,94,153
+high,high,30,42
+high,low,56,102

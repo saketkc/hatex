@@ -1,0 +1,113 @@
+State,Senator,Party,Pro2005,Anti2005,Pro2006,Anti2006,Pro2007,Anti2007,PctPro
+Alabama,Session,R,1,18,0,7,2,13,7.32
+Alabama,Shelby,R,1,19,0,7,1,14,4.76
+Alaska,Murkowski,R,2,17,1,6,6,9,21.95
+Alaska,Stevens,R,1,19,1,6,4,11,14.29
+Arizona,Kyle,R,1,19,2,5,2,13,11.90
+Arizona,McCain,R,9,11,2,4,0,15,26.83
+Arkansas,Lincoln,D,13,7,3,4,10,5,61.90
+Arkansas,Pryor,D,12,8,3,4,9,6,57.14
+California,Boxer,D,18,1,7,0,12,3,90.24
+California,Fenstein,D,18,2,7,0,13,2,90.48
+Colorado,Allard,R,1,18,2,5,3,12,14.63
+Colorado,Salazar,D,16,4,5,2,11,4,76.19
+Connecticut,Dodd,D,18,1,7,0,9,6,82.93
+Connecticut,Lieberman,I,14,2,5,0,14,1,91.67
+Delaware,Biden,D,18,2,7,0,10,5,83.33
+Delaware,Carper,D,16,4,5,2,14,1,83.33
+Florida,Martinez,R,2,18,0,7,2,13,9.52
+Florida,Nelson,D,18,2,3,4,15,0,85.71
+Georgia,Chambliss,R,0,20,0,7,1,14,2.38
+Georgia,Isakson,R,1,19,0,7,1,14,4.76
+Hawaii,Akaka,D,15,5,7,0,13,2,83.33
+Hawaii,Inouye,D,13,5,5,2,12,3,75.00
+Idaho,Craig,R,1,19,0,6,2,13,7.32
+Idaho,Crapo,R,1,19,0,7,2,13,7.14
+Illinois,Durbin,D,19,1,7,0,14,1,95.24
+Illinois,Obama,D,19,1,7,0,10,5,85.71
+Indiana,Bayh,D,17,3,7,0,11,4,83.33
+Indiana,Lugar,R,4,15,1,6,8,7,31.71
+Iowa,Grassley,R,2,18,1,6,5,10,19.05
+Iowa,Harkin,D,19,1,5,2,13,2,88.10
+Kansas,Brownback,R,2,18,2,5,1,14,11.90
+Kansas,Roberts,R,0,20,0,7,0,15,0.00
+Kentucky,Bunning,R,0,20,0,5,1,14,2.50
+Kentucky,McConnell,R,0,20,0,7,1,14,2.38
+Lousiana,Landrieu,D,10,10,3,3,8,7,51.22
+Lousiana,Vitter,R,2,18,0,7,0,15,4.76
+Maine,Collins,R,14,6,5,2,15,0,80.95
+Maine,Snowe,R,14,6,6,1,12,3,76.19
+Maryland,Mikulskji,D,17,3,7,0,14,1,90.48
+Maryland,Sarbanes,D,20,0,7,0,,,100.00
+Maryland,Cardin,D,,,,,14,1,93.33
+Massachusetts,Kennedy,D,19,0,7,0,14,1,97.56
+Massachusetts,Kerry,D,19,1,5,0,14,1,95.00
+Michigan,Levin,D,16,4,4,2,10,5,73.17
+Michigan,Stabenow,D,17,3,5,2,10,5,76.19
+Minnesota,Coleman,R,7,12,2,5,5,10,34.15
+Minnesota,Dayton,D,18,2,6,1,,,88.89
+Minnesota,Klobuchar,D,,,,,13,2,86.67
+Mississippi,Cochran,R,0,20,1,6,0,15,2.38
+Mississippi,Lott,R,0,18,0,7,0,15,0.00
+Missouri,Bond,R,0,20,1,6,0,15,2.38
+Missouri,Talent,R,3,17,1,6,,,14.81
+Missouri,McCaskill,D,,,,,11,4,73.33
+Montana,Baucus,D,11,9,5,1,10,5,63.41
+Montana,Burns,R,1,19,1,6,,,7.41
+Montana,Tester,D,,,,,12,3,80.00
+Nebraska,Hagel,R,1,19,1,6,3,12,11.90
+Nebraska,Nelson,D,6,14,3,4,10,5,45.24
+Nevada,Ensign,R,4,16,3,4,5,10,28.57
+Nevada,Reid,D,20,0,4,3,13,2,88.10
+New Hampshire,Gregg,R,6,14,3,4,9,6,42.86
+New Hampshire,Sununu,R,8,12,3,4,8,7,45.24
+New Jersey,Corzine,D,16,0,,,,,100.00
+New Jersey,Lautenberg,D,20,0,6,0,14,1,97.56
+New Jersey,Menendez,D,,,7,0,14,1,95.45
+New Mexico,Bingaman,D,14,4,7,0,14,1,87.50
+New Mexico,Domenici,R,1,17,1,6,3,12,12.50
+New York,Clinton,D,19,1,5,2,11,4,83.33
+New York,Schumer,D,20,0,5,2,14,1,92.86
+North Carolina,Burr,R,1,19,0,7,1,14,4.76
+North Carolina,Dole,R,0,20,0,7,1,14,2.38
+North Dakota,Conrad,D,12,6,3,4,11,4,65.00
+North Dakota,Dorgan,D,13,6,3,4,13,2,70.73
+Ohio,Brown,D,,,,,13,2,86.67
+Ohio,DeWine,R,9,11,5,2,,,51.85
+Ohio,Voinovich,R,3,17,3,4,3,12,21.43
+Oklahoma,Coburn,R,1,19,2,5,1,14,9.52
+Oklahoma,Inhofe,R,0,20,0,7,0,15,0.00
+Oregon,Smith,R,9,11,1,6,11,4,50.00
+Oregon,Wyden,D,19,1,7,0,13,2,92.86
+Pennsylvania,Casey,D,,,,,15,0,100.00
+Pennsylvania,Santorum,R,2,18,1,6,,,11.11
+Pennsylvania,Specter,R,8,12,1,6,9,6,42.86
+Rhode Island,Chafee,R,18,2,5,2,,,85.19
+Rhode Island,Reed,D,20,0,7,0,14,1,97.62
+Rhode Island,Whitehouse,D,,,,,14,1,93.33
+South Carolina,DeMint,R,1,19,1,6,1,14,7.14
+South Carolina,Graham,R,4,16,2,5,1,14,16.67
+South Dakota,Johnson,D,16,3,5,2,5,1,81.25
+South Dakota,Thune,R,3,16,1,6,5,10,21.95
+Tennessee,Alexander,R,3,17,2,5,5,10,23.81
+Tennessee,Corker,R,,,,,4,11,26.67
+Tennessee,Frist,R,1,19,1,6,,,7.41
+Texas,Cornyn,R,0,20,0,7,0,15,0.00
+Texas,Hutchinson,R,1,19,0,7,1,14,4.76
+Utah,Bennett,R,1,17,1,6,1,14,7.50
+Utah,Hatch,R,2,17,1,6,2,13,12.20
+Vermont,Jeffords,I,17,2,7,0,,,92.31
+Vermont,Leahy,D,19,1,7,0,12,3,90.48
+Vermont,Sanders,I,,,,,14,1,93.33
+Virginia,Allen,R,1,19,0,7,,,3.70
+Virginia,Warner,R,4,16,1,6,7,8,28.57
+Virginia,Webb,D,,,,,13,2,86.67
+Washington,Cantwell,D,18,2,7,0,13,2,90.48
+Washington,Murray,D,19,1,7,0,13,2,92.86
+West Virginia,Byrd,D,13,7,4,2,11,4,68.29
+West Virginia,Rockefeller,D,16,3,5,2,11,4,78.05
+Wisconsin,Feingold,D,18,2,7,0,14,1,92.86
+Wisconsin,Kohl,D,15,5,5,2,14,1,80.95
+Wyoming,Barrasso,R,,,,,2,4,33.33
+Wyoming,Enzi,R,2,18,0,7,2,13,9.52
+Wyoming,Thomas,R,3,17,0,7,0,2,10.34

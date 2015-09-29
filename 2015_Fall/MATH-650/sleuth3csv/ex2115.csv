@@ -1,0 +1,9 @@
+Context,Mode,Level,Number,InFavor,NotInFavor,PercentInFavor
+Vietnam,scattered,high,132,27,105,20.5
+Cuba,scattered,high,132,41,91,31.1
+Vietnam,scattered,low,132,37,95,28.0
+Cuba,scattered,low,131,51,80,38.9
+Vietnam,not,high,132,45,87,34.1
+Cuba,not,high,131,64,67,48.9
+Vietnam,not,low,132,31,101,23.5
+Cuba,not,low,123,56,67,45.5
