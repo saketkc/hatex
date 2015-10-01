@@ -28,6 +28,7 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 
 \usepackage{amsmath}
+    \usepackage{todonotes}
 
 % Margins
 \topmargin=-0.45in
@@ -137,7 +138,7 @@
 \newpage
 \tableofcontents
 \newpage
-
+ \listoftodos
 
 %----------------------------------------------------------------------------------------
 %       PROBLEM 2
@@ -146,24 +147,67 @@
 \begin{homeworkProblem}[Problem 1] % Custom section title
 
 
-\begin{homeworkSection}{\homeworkProblemName: ~(a)} % Section within problem
-%\lipsum[4]\vspace{10pt} % Question
-
+\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 \problemAnswer{ % Answer
+Linear regression assumes uncertainty in th measurement of dependent variables($X$). $Y$ being an independent variable is assumed to be the 'true' value that can be measured with ultimate precision. Any model that relates the independent variable to dependent will assume some kind of modelling error which in case of linear regression is often taken as Gaussian random variable . Additively the 'noise' and the dependent variable predict the independent. 
+
+\todo{Fix this answeer. it is verbose}
 
 }
 \end{homeworkSection}
 
-%--------------------------------------------
+
+\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+	\problemAnswer{ % Answer
+		In order to make linear regression robust to outliers, a n\"{a}ive solution will choose "absolute deviation"($L1$ norm) over "squared error"($L2$ norm) as the criterion for loss function. The reason this might work out in most cases(especially when the outliers belong to a non normal distribution) is that "squared error" will blow up errors when they are large. Thus $L2$ normn will give more weight to large residuals, while the $L1$ norm gives equal weights to all  residuals.
+	}
+\end{homeworkSection}
+
+
+\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+	\problemAnswer{ % Answer
+		A quick way to realise this is to consider the scale. Say one of the dependent variables is 'time'. Rescaling time from hours to seconds will also rescale its coefficient, but the importance remains the same!
+	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(d)}
+	\problemAnswer{ % Answer
+		If the dependent variables are perfect linear combination, the matrix $XX^T$ will be non invertible.
+	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(e)}
+	\problemAnswer{ % Answer
+		A simple solution would be to start from '0000'(length being equal to the number of levels of the categorical variables) for one of the categories.
+	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(f)}
+	\problemAnswer{ % Answer
+		If the independent variables are highly correlated, the coefficients might still be entirely different. So if a feature 
+	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(g)}
+	\problemAnswer{ % Answer
+		Using a posterior probability cutoff of 0.5 in linear regression is not same as 0.5 for logistic. A 0.5 rehsold on logistic guarantees that the point all points lying to the right belong to one class. However for a regression problem, this is not true, because the predicted value of $y$ is an 'intepolated or extraplolated' 
+		In any case, logistic regression is a better choice
+		\todo{Not so clear on this, the choice for logistic is tied to the first part answer}
+	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(h)}
+	\problemAnswer{ % Answer
+		When the number of variables exceed the number of samples, the system is undetermined. And yes, it can be solved by simply obtaining psuedo-inverse of $X$ which is always defined.
+	}
+\end{homeworkSection}
 
 \end{homeworkProblem}
 
-%----------------------------------------------------------------------------------------
-%       PROBLEM 3
-%----------------------------------------------------------------------------------------
-
-
-
-%----------------------------------------------------------------------------------------
+\begin{homeworkProblem}[Problem 2]
+	\problemAnswer{
+		Given
+		}
+\end{homeworkProblem}
 
 \end{document}
