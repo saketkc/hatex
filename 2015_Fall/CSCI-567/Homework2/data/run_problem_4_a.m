@@ -107,3 +107,54 @@ assert(strcmp(home_m{1}, 'home.dest'));
 [home, home_missing] = problem_4_a_massager('str', home_m);
 text= sprintf('home Missing: %d', home_missing);
 disp(text);
+
+rand('seed',1);
+ix = randperm(length(pclass));
+train_ix = ix(1:floor(length(ix)/2));
+test_ix = ix(ceil(length(ix)/2):length(ix));
+
+train_label = cell2mat(survival(train_ix));
+test_label = cell2mat(survival(test_ix));
+survival_train = cell2mat(survival(train_ix));
+survival_test = cell2mat(survival(test_ix));
+
+
+pclass_train = cell2mat(pclass(train_ix));
+pclass_test = cell2mat(pclass(test_ix));
+
+
+name_train = name(train_ix);
+name_test = name(test_ix);
+
+age_train = age(train_ix);
+age_test = age(test_ix);
+
+sex_train = sex(train_ix);
+sex_test = sex(test_ix);
+
+sibsp_train = sibsp(train_ix);
+sibsp_test = sibsp(test_ix);
+
+parch_train = parch(train_ix);
+parch_test = parch(test_ix);
+
+ticket_train = ticket(train_ix);
+ticket_test = ticket(test_ix);
+
+fare_train = fare(train_ix);
+fare_test = fare(test_ix);
+
+cabin_train = cabin(train_ix);
+cabin_test = cabin(test_ix);
+
+embarked_train = embarked(train_ix);
+embarked_test = embarked(test_ix);
+
+boat_train = boat(train_ix);
+boat_test = boat(test_ix);
+
+body_train = body(train_ix);
+body_test = body(test_ix);
+
+home_train = home(train_ix);
+home_test = home(test_ix);
