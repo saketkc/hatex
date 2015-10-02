@@ -25,7 +25,7 @@ home.dest       Home/Destination
 %}
 pclass_m = out{1};
 assert(strcmp(pclass_m{1}, 'pclass'));
-[pclass, pclass_missing] = problem_4_a_massager('str', pclass_m);
+[pclass, pclass_missing] = problem_4_a_massager('num', pclass_m);
 text= sprintf('pclass Missing: %d',pclass_missing);
 disp(text);
 
@@ -113,14 +113,14 @@ ix = randperm(length(pclass));
 train_ix = ix(1:floor(length(ix)/2));
 test_ix = ix(ceil(length(ix)/2):length(ix));
 
-train_label = cell2mat(survival(train_ix));
-test_label = cell2mat(survival(test_ix));
+train_label = (survival(train_ix));
+test_label = (survival(test_ix));
 survival_train = cell2mat(survival(train_ix));
 survival_test = cell2mat(survival(test_ix));
 
 
-pclass_train = cell2mat(pclass(train_ix));
-pclass_test = cell2mat(pclass(test_ix));
+pclass_train = pclass(train_ix);%cell2mat(pclass(train_ix));
+pclass_test = pclass(test_ix);%cell2mat(pclass(test_ix));
 
 
 name_train = name(train_ix);
@@ -147,8 +147,8 @@ fare_test = fare(test_ix);
 cabin_train = cabin(train_ix);
 cabin_test = cabin(test_ix);
 
-embarked_train = embarked(train_ix);
-embarked_test = embarked(test_ix);
+embarked_train = (embarked(train_ix));
+embarked_test = (embarked(test_ix));
 
 boat_train = boat(train_ix);
 boat_test = boat(test_ix);
