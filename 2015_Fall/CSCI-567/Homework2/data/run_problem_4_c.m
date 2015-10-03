@@ -55,8 +55,12 @@ body            Body Identification Number
 home.dest       Home/Destination
 %}
 
-%[hy, boat_hx] = problem_4_c_entropy_calculator(boat_train, survival_train);
-%disp(sprintf('boat: %f',hy-boat_hx));
+[hy, boat_hx] = problem_4_c_entropy_calculator(boat_train, survival_train);
+disp(sprintf('boat: %f',hy-boat_hx));
+
+[hy, body_hx] = problem_4_c_entropy_calculator(body_train, survival_train);
+disp(sprintf('body: %f',hy-body_hx));
+
 
 [hy, sex_hx] = problem_4_c_entropy_calculator_corrected(sex_train, survival_train);
 disp(sprintf('sex: %f',hy-sex_hx));
