@@ -12,7 +12,7 @@ train_label_clean = X_clean(:,p);
 X_input = [ones(n,1) X_clean(:,1:p-1)];
 
 
-[theta, newtons_train_accu, iterations]=newtons_method(X_input, train_label_clean);
+[theta, newtons_train_accu, iterations, errors]=newtons_method(X_input, train_label_clean);
 
 glmfit_train_accu = 0;
 

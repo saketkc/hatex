@@ -1,17 +1,25 @@
-function [ theta_new, grad_train_accu, iterations ] = newtons_method(X_data,y )
+function [ theta_new, grad_train_accu, iterations,errors ] = newtons_method(X_data,y )
 n = size(X_data,1);
 p = size(X_data,2);
-epsilon = 0.00000001;
-theta = ones(p,1);
-theta_new = zeros(p,1);
+epsilon = 1e-16;
+rand('seed',1);
+theta = rand(p,1);
+theta_new = rand(p,1);
+delta  = 1;
 iterations = 0;
-while norm(theta-theta_new)>epsilon
+errors = [];
+while delta>epsilon
     theta = theta_new;
-    gradient = 1/n * X_data'*(sigmoid(X_data*theta) - y);
+    
+    error = 1./n * ( -y' * log( sigmoid(X_data * theta) ) - ( 1 - y') * log ( 1 - sigmoid( X_data * theta)) );
+    errors(end+1,:) = error;
+    gradient = 1./n * X_data'*(sigmoid(X_data*theta) - y);
     h = hessian(X_data, theta);
     theta_new = theta - pinv(h)*gradient;
     iterations = iterations+1;
+    delta = norm(theta-theta_new)
 end
+
 predictions = sigmoid(X_data*theta_new);
 prediction_indices = predictions >0.5;
 grad_train_accu = sum(prediction_indices == y);
