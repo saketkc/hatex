@@ -119,8 +119,8 @@ survival_train = cell2mat(survival(train_ix));
 survival_test = cell2mat(survival(test_ix));
 
 
-pclass_train = pclass(train_ix);%cell2mat(pclass(train_ix));
-pclass_test = pclass(test_ix);%cell2mat(pclass(test_ix));
+pclass_train = pclass(train_ix);
+pclass_test = pclass(test_ix);
 
 
 name_train = name(train_ix);

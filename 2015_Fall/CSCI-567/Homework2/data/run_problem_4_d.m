@@ -2,9 +2,14 @@ clear all;
 pclass_dict = {'1', '2', '3'};
 sex_dict = {'female', 'male'};
 embarked_dict = {'C', 'Q', 'S'};
-pclass_map =  dummy_mapper(pclass_dict);
-sex_map = dummy_mapper(sex_dict);
-embarked_map = dummy_mapper(embarked_dict);
+%pclass_map =  dummy_mapper(pclass_dict);
+%sex_map = dummy_mapper(sex_dict);
+%embarked_map = dummy_mapper(embarked_dict);
+
+%%pclass_map =  binary_mapper(pclass_dict);
+sex_map = binary_mapper(sex_dict);
+embarked_map = binary_mapper(embarked_dict);
+
 
 % sex, pclass, fare, embarked, parch, sibsp, age
 run_problem_4_a;
@@ -16,7 +21,8 @@ embarked_test{cellfun(@isempty,embarked_test)}='S';
 fare_test(isnan(fare_test))=33.2955;
 
 X = [];
-n_cols = 2+2-1+1+2+1+1+1;
+n_cols = 1+1+1+2+1+1+1;
+%n_cols = 2+2-1+1+2+1+1+1;
 
 
 X_train = [];
@@ -24,9 +30,12 @@ for j=1:length(survival_train)
     %sex_map(char(sex_train(j)))
     %pclass_map(int2str(pclass_train(j)))
     s = sex_map(char(sex_train(j)));
-    p = pclass_map(int2str(pclass_train(j)));
+    %length(s)
+    %%p = pclass_map(int2str(pclass_train(j)));
+    %length(p)
     e = embarked_map(char(embarked_train(j)));
-    mappedfeatures = [s(:)' p(:)'  fare_train(j) e(:)' parch_train(j) sibsp_train(j) age_train(j)];
+    mappedfeatures = [s(:)' pclass_train(j)  fare_train(j) e(:)' parch_train(j) sibsp_train(j) age_train(j)];
+    length(mappedfeatures);
     X_train(end+1,1:n_cols) = mappedfeatures;
 end
 
@@ -34,9 +43,9 @@ X_test = [];
 
 for j=1:length(survival_test)
     s = sex_map(char(sex_test(j)));
-    p = pclass_map(int2str(pclass_test(j)));
+    %%p = pclass_map(int2str(pclass_test(j)));
     e = embarked_map(char(embarked_test(j)));
-    mappedfeatures = [s(:)' p(:)'  fare_test(j) e(:)' parch_test(j) sibsp_test(j) age_test(j)];
+    mappedfeatures = [s(:)' pclass_test(j)  fare_test(j) e(:)' parch_test(j) sibsp_test(j) age_test(j)];
     X_test(end+1,1:n_cols) = mappedfeatures;
 end
 

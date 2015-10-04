@@ -1,13 +1,9 @@
-function [ category_hist, category, division_boundaries ] = problem_4_c_discretizer( array )
-sorted = sort(array(~isnan(array)));
-n_bins = min(10, numel(unique(sorted)));
-
+function [ category_hist, category] = problem_4_c_discretizer_with_boundaries( array, division_boundaries )
+%sorted = sort(array(~isnan(array)));
+%n_bins = min(10, numel(unique(sorted)));
+n_bins = length(division_boundaries)+1;
     
-elements_per_bin = ceil(length(sorted)/n_bins);
-division_boundaries =[];
-for i=1:n_bins-1
-    division_boundaries(i) = sorted(elements_per_bin*i);
-end
+%elements_per_bin = ceil(length(sorted)/n_bins);
 category = zeros(length(array),1);
 for i=1:n_bins-2
     indices = find(array > division_boundaries(i) & array <= division_boundaries(i+1) &  ~isnan(array) );
@@ -32,5 +28,4 @@ for i=1:n_bins
 end
 
 end
-
 
