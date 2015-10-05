@@ -1,7 +1,8 @@
-clear all;
-run_problem_4_a;
-disp('--------------Problem 4c-----------------');
+%clear all;
+%run_problem_4_a;
+%disp('--------------Problem 4c-----------------');
 
+disp('Non sorted Muttual Information:');
 [pclass_category_hist, pclass_category, pclass_division_boundaries] = problem_4_c_discretizer( pclass_train );
 [hy, pclass_hx] = problem_4_c_entropy_calculator_corrected(pclass_category, survival_train);
 disp(sprintf('pclass: %f',hy-pclass_hx));

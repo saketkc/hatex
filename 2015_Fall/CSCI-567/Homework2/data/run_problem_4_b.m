@@ -1,5 +1,5 @@
-clear all;
-run_problem_4_a;
+%clear all;
+%run_problem_4_a;
 [pclass_bins, pclass_hist] = problem_4_b_hist(pclass_train, survival_train);
 subplot(2,3,1);
 bar(pclass_bins, pclass_hist);
@@ -41,5 +41,7 @@ bar(fare_bins,fare_hist);
 title('fare');
 xlabel('fare');
 ylabel('Probability');
+print('problem4b', '-dpng')
+disp('Nothing to output. Plt saved at problem4.png')
 
 

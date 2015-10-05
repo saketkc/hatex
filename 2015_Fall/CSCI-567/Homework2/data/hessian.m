@@ -5,7 +5,7 @@ h = zeros(p,p);
 for i=1:n       
     h = h + sigmoid(X_data(i,:)*theta) * ( 1-sigmoid(X_data(i,:)*theta) ) * X_data(i,:)'*X_data(i,:);
 end
-h=1/n*h;
+%h=1/n*h;
 end
 
 

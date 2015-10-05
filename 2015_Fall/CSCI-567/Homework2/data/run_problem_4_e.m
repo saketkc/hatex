@@ -1,4 +1,4 @@
-run_problem_4_d;
+%run_problem_4_d;
 X_train_main = X_train;
 X_test_main  = X_test;
 X_train(:,n_cols+1) = sqrt(pclass_train)';
@@ -100,4 +100,5 @@ X_train_master_pruned_normalised = bsxfun(@rdivide, X_train_master_pruned_normal
 X_test_master_pruned_normalised = bsxfun(@minus, X_test_master_pruned, X_train_master_pruned_mean );
 X_test_master_pruned_normalised = bsxfun(@rdivide, X_test_master_pruned_normalised, X_train_master_pruned_std);
 
-
+ccol = size(X_train_master_pruned_normalised,2);
+disp(sprintf('Total Number of columns: %d', ccol));

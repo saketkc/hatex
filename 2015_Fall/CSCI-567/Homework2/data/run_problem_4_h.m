@@ -12,7 +12,7 @@ train_label_clean = X_clean(:,p);
 X_input = [ones(n,1) X_clean(:,1:p-1)];
 
 
-[theta, newtons_train_accu, iterations, errors]=newtons_method(X_input, train_label_clean);
+[theta, newtons_train_accu, iterations, errors]=newtons_method(X_input, train_label_clean, theta);
 
 glmfit_train_accu = 0;
 
@@ -21,4 +21,7 @@ glm_predict = glmval(glm_b,X_clean(:,1:p-1),'logit');
 
 glm_indices = glm_predict>=0.5;
 glm_train_accu = sum(glm_indices == train_label_clean);
-glm_train_accu = glm_train_accu/length(glm_predict);
+glm_train_accu = glm_train_accu/length(glm_indices);
+
+disp(sprintf('Number of iterations: %f\t Accuracy: %f', iterations, newtons_train_accu))
+disp(sprintf('glmfit training accuracy: %f', glm_train_accu))

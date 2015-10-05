@@ -1,4 +1,4 @@
-clear all;
+%clear all;
 %pclass_dict = {'1', '2', '3'};
 sex_dict = {'female', 'male'};
 embarked_dict = {'C', 'Q', 'S'};
@@ -12,7 +12,7 @@ embarked_map = binary_mapper(embarked_dict);
 
 
 % sex, pclass, fare, embarked, parch, sibsp, age
-run_problem_4_a;
+%run_problem_4_a;
 
 embarked_train{cellfun(@isempty,embarked_train)}='S';
 fare_train(isnan(fare_train))=33.2955;
@@ -92,7 +92,7 @@ train_accu = sum(yfit_train_indices == train_label');
 train_accu = train_accu/length(yfit_train);
 
 train_stripped_accu = sum(yfit_train_stripped_indices == train_label');
-train__stripped_accu = train_stripped_accu/length(yfit_train_stripped);
+train_stripped_accu = train_stripped_accu/length(yfit_train_stripped);
 
 test_accu = sum(yfit_test_indices == test_label');
 test_accu = test_accu/length(yfit_test);
@@ -102,15 +102,28 @@ test_accu_stripped = test_accu_stripped/length(yfit_test_stripped);
 
 
 age_test_data = X_test(:,n_cols);
+age_train_data = X_train(:,n_cols);
 mean_age_train = X_train_mean(n_cols);
 
 age_test_data(isnan(age_test_data)) = mean_age_train;
+age_train_data(isnan(age_train_data)) = mean_age_train;
 
 X_test(:, n_cols) = age_test_data;
+X_train_meancol = X_train;
+X_train_meancol(:, n_cols) = age_train_data;
 
 X_test_normalised = bsxfun(@minus, X_test, X_train_mean );
 X_test_normalised = bsxfun(@rdivide, X_test_normalised, X_train_std);
 X_test_normalised_stripped = X_test_normalised(:, 1:n_cols-1);
+
+X_train_meancol_normalised = bsxfun(@minus, X_train_meancol, X_train_mean );
+X_train_meancol_normalised = bsxfun(@rdivide, X_train_meancol_normalised, X_train_std);
+
+b_m = glmfit(X_train_meancol_normalised, train_label','binomial','link','logit');
+yfit_m = glmval(b_m,X_train_meancol_normalised,'logit');
+yfit_m_indices = yfit_m >= 0.5;
+subs_train_accu = sum(yfit_m_indices == train_label');
+subs_train_accu = subs_train_accu/length(yfit_m);
 
 
 yfit_test = glmval(b,X_test_normalised,'logit');
@@ -124,3 +137,13 @@ subs_test_accu = subs_test_accu/length(yfit_test);
 
 subs_test_accu_stripped = sum(yfit_test_stripped_indices == test_label');
 subs_test_accu_stripped = subs_test_accu_stripped/length(yfit_test_stripped);
+
+disp(sprintf('Multiple Models training accuracyi(with age): %f', train_accu))
+disp(sprintf('Multiple Models training accuracy(remove age column): %f', train_stripped_accu))
+disp(sprintf('Multiple Models test accuracyi(with age): %f', test_accu))
+disp(sprintf('Multiple Models test accuracy(remove age column): %f', test_accu_stripped))
+
+
+disp(sprintf('Substitued Models training accuracy: %f', subs_train_accu))
+disp(sprintf('Substitued Models test accuracy: %f', subs_test_accu))
+
