@@ -44,4 +44,4 @@ ylabel('Probability');
 print('problem4b', '-dpng')
 disp('Nothing to output. Plt saved at problem4.png')
 
-
+close all;

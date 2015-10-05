@@ -1,4 +1,5 @@
-run_problem_4_e;
+warning('off','all');
+
 selected_features = [];
 features = 1:size(X_train_master_pruned_normalised,2);
 features_array = [];
@@ -31,6 +32,7 @@ for j=1:10
     test_accu = glmfit_accu(X_test_master_pruned_normalised(:,selected_features), test_label'); 
     test_accuracy_tracker(end+1) = test_accu;
     features_array(:,end+1) = X_train_master_pruned_normalised(:, selected);
+    disp(sprintf('Iteration: %d \t Train Accuracy: %f \t Test Accuracy: %f', j, max_accu, test_accu));
 end
 
 plot(1:10, test_accuracy_tracker, '-r', 1:10, training_accuracy_tracker, '-g');
