@@ -1,5 +1,5 @@
 clear all;
-pclass_dict = {'1', '2', '3'};
+%pclass_dict = {'1', '2', '3'};
 sex_dict = {'female', 'male'};
 embarked_dict = {'C', 'Q', 'S'};
 %pclass_map =  dummy_mapper(pclass_dict);
@@ -124,7 +124,3 @@ subs_test_accu = subs_test_accu/length(yfit_test);
 
 subs_test_accu_stripped = sum(yfit_test_stripped_indices == test_label');
 subs_test_accu_stripped = subs_test_accu_stripped/length(yfit_test_stripped);
-
-
-
-

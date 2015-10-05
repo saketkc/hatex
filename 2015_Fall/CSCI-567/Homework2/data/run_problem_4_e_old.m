@@ -13,51 +13,50 @@ X_test(:,n_cols+2) = sqrt(age_test)';
 X_test(:,n_cols+3) = sqrt(sibsp_test)';
 X_test(:,n_cols+4) = sqrt(parch_test)';
 X_test(:,n_cols+5) = sqrt(fare_test)';
-%% Appended square root columns
+
 
 X_train_master = X_train;
 X_test_master = X_test;
 
 % sex, pclass, fare, embarked, parch, sibsp, age
 % 1,    2,      3,     4-5,     6,      7,    8 
-
-%% Add swrt -> Discretize numerical variables(in this tranform) -> Append only the dummy variables
 transform = [2,3,6,7,8];
 discrete_boundaries = [];
 for i=1:length(transform)
     col = transform(i);
-    undiscretized_col = X_train(:, col);
-    %category = X_train(:, col);
-    %category_test = X_test(:, col);
-    undiscretized_col_test = X_test(:, col);
-    [ category_hist, category, division_boundaries ] = problem_4_c_discretizer(undiscretized_col);
-    [category_hist, category_test] =  problem_4_c_discretizer_with_boundaries(undiscretized_col_test, division_boundaries);
-    %disp(numel(unique(undiscretized_col)));
-    category(isnan(category))=Inf;
-    unique_values = unique(category);
-    %disp(sprintf('%d\t %d',col,numel(unique_values)));
-    %disp(unique_values);
+    [ category_hist, category, division_boundaries ] = problem_4_c_discretizer( X_train(:, col) );
+    discrete_boundaries{col} = division_boundaries';
+    X_train_master(:,col) = category;
+    
+    [category_hist, category_test] =  problem_4_c_discretizer_with_boundaries(X_test(:,col), division_boundaries);
+    X_test_master(:,col) = category_test;
+end
+
+X_train_before_addition = X_train_master;
+X_test_before_addition = X_test_master;
+
+for i=1:length(transform)
+    col = transform(i);
+    colvalue = X_train_master(:,col);
+    colvalue_test = X_test_master(:,col);
+    colvalue(isnan(colvalue))=Inf;
+    colvalue_test(isnan(colvalue_test))=Inf;
+
+    unique_values = unique(colvalue);
     map = binary_mapper(unique_values);
-
-    category_test(isnan(category_test))=Inf;
-
-
     mapped_values = [];
     mapped_values_test = [];
-    for j=1:length(category)
-        mapped_values(j,:) = map(category(j));
+    for j=1:length(colvalue)
+        mapped_values(j,:) = map(colvalue(j));        
     end
-    for j=1:length(category_test)
-        mapped_values_test(j,:) = map(category_test(j));
+    for j=1:length(colvalue_test)
+        mapped_values_test(j,:) = map(colvalue_test(j));
     end
     X_train_master = [X_train_master mapped_values];
     X_test_master = [X_test_master mapped_values_test];
+    
+    
 end
-
-X_train_nocross = X_train_master;
-X_test_nocross = X_test_master;
-
-
 
 
 current_cols = size(X_train_master,2);
