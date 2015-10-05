@@ -413,7 +413,7 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 	
 \begin{homeworkSection}{\homeworkProblemName: ~(b)}
 	\begin{figure}
-	\includegraphics[scale=0.38]{data/problem4b}
+	\includegraphics{data/problem4b}
 	\caption{4a. Montonic relationship}
 	\end{figure}
 	
@@ -466,11 +466,12 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 \end{homeworkSection}
 
 \begin{homeworkSection}{\homeworkProblemName: ~(f)}
+	\begin{figure}
+		\includegraphics{data/accuracy}
+		\caption{4f}
+	\end{figure}
 	\problemAnswer{
-			\begin{figure}
-				\includegraphics{accuracy}
-				\caption{4f}
-			\end{figure}
+			
 			
 			The method of forward selection seems to have worked well. The training accuracy increased by increasing the number of features iteratively. This also lead to an increase in test accuracy though only marginally.
 			As evident, the training accuracy plot seems to flatten (and hence saturate) near 0.85 for around 10 features. So $10$ features can be assumed to be an optimal choice for number of features.
