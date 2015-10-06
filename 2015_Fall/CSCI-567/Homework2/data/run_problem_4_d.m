@@ -138,12 +138,50 @@ subs_test_accu = subs_test_accu/length(yfit_test);
 subs_test_accu_stripped = sum(yfit_test_stripped_indices == test_label');
 subs_test_accu_stripped = subs_test_accu_stripped/length(yfit_test_stripped);
 
-disp(sprintf('Multiple Models training accuracyi(with age): %f', train_accu))
-disp(sprintf('Multiple Models training accuracy(remove age column): %f', train_stripped_accu))
-disp(sprintf('Multiple Models test accuracyi(with age): %f', test_accu))
-disp(sprintf('Multiple Models test accuracy(remove age column): %f', test_accu_stripped))
+
+disp(sprintf('Individual model training accuracyi(with age): %f', train_accu))
+disp(sprintf('Individual model training accuracy(remove age column): %f', train_stripped_accu))
+disp(sprintf('Individual model test accuracyi(with age): %f', test_accu))
+disp(sprintf('Individual model test accuracy(remove age column): %f', test_accu_stripped))
 
 
-disp(sprintf('Substitued Models training accuracy: %f', subs_train_accu))
-disp(sprintf('Substitued Models test accuracy: %f', subs_test_accu))
+disp(sprintf('Substituted Models training accuracy: %f', subs_train_accu))
+disp(sprintf('Substituted Models test accuracy: %f', subs_test_accu))
 
+model_accu=0;
+
+for i=1:length(train_label)
+    if sum(isnan(X_train_normalised(i,:)))==1
+        train_fit = glmval(b, X_train_normalised(i,:), 'logit');
+    else
+        train_fit = glmval(b_stripped, X_train_normalised_stripped(i,:), 'logit');
+    end
+
+    if train_fit>=0.5 & train_label(i)==1
+        model_accu = model_accu+1;
+    end
+    if train_fit<0.5 & train_label(i)==0
+        model_accu = model_accu+1;
+    end
+end
+
+model_accu = model_accu/length(yfit_train);
+disp(sprintf('Multiple Models training accuracy: %f', model_accu))
+
+model_test =0;
+for i=1:length(test_label)
+    if sum(isnan(X_test_normalised(i,:)))==1
+        train_fit = glmval(b, X_test_normalised(i,:), 'logit');
+    else
+        train_fit = glmval(b_stripped, X_test_normalised_stripped(i,:), 'logit');
+    end
+
+    if train_fit>=0.5 & test_label(i)==1
+        model_test = model_test+1;
+    end
+    if train_fit<0.5 & test_label(i)==0
+        model_test = model_test+1;
+    end
+end
+model_test = model_test/length(yfit_test);
+disp(sprintf('Multiple Models testing accuracy: %f', model_test))

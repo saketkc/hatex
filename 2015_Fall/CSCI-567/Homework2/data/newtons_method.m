@@ -12,7 +12,7 @@ while delta>epsilon
     theta = theta_new;
     error = 1./n * ( -y' * log( sigmoid(X_data * theta) ) - ( 1 - y') * log ( 1 - sigmoid( X_data * theta)) );
     errors(end+1,:) = error;
-    gradient = X_data'*(sigmoid(X_data*theta) - y);
+    gradient = 1./n*X_data'*(sigmoid(X_data*theta) - y);
     h = hessian(X_data, theta);
     theta_new = theta - pinv(h)*gradient;
     iterations = iterations+1;
