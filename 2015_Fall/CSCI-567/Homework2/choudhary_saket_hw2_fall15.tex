@@ -101,7 +101,7 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\hmwkTitle}{Assignment\ \# 2} % Assignment title
-\newcommand{\hmwkDueDate}{Friday,\ October\ 2,\ 2015} % Due date
+\newcommand{\hmwkDueDate}{Monday,\ October\ 5,\ 2015} % Due date
 \newcommand{\hmwkClass}{CSCI-567} % Course/class
 \newcommand{\hmwkClassTime}{} % Class/lecture time
 \newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
@@ -149,9 +149,10 @@
 
 \begin{homeworkSection}{\homeworkProblemName: ~(a)}
 \problemAnswer{ % Answer
-Linear regression assumes uncertainty in th measurement of dependent variables($Y$). $X$ being an independent variable is assumed to be the 'true' value that can be measured with ultimate precision. Any model that relates the independent variable to dependent will assume some kind of modeling error which in case of linear regression is often taken as Gaussian random variable . Additively the 'noise' and the independent variable predict the dependent. 
+%Linear regression assumes uncertainty in the measurement of dependent variable($Y$). $Y$ being a dependent variable is assumed to be the 'true' value that can be measured with ultimate precision. Any model that relates the independent variable to dependent will assume some kind of modeling error which in case of linear regression is often taken as Gaussian random variable . Additively the 'noise' and the independent variable predict the dependent. 
 
 %\todo{Fix this answeer. it is verbose}
+Linear regression assumes that the regressors have been observed 'truly' and as such the dependent variables $Y$ are the ones that are uncertain. The analogy is simpler to think when $Y$ is a 'response', caused due to some indepndent variable $X$. hence though $X$ is measured absolutely, (dependent varible) $Y$'s measurement should be accounted for errors.
 
 }
 \end{homeworkSection}
@@ -166,9 +167,9 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 
 \begin{homeworkSection}{\homeworkProblemName: ~(c)}
 	\problemAnswer{ % Answer
-		A quick way to realise this is to consider the scale. Say one of the dependent variables is 'time'. Rescaling time from hours to seconds will also rescale its coefficient, but the importance remains the same!
+		A quick way to realise this is to consider the "scale" of any two independent variables. Say one of the dependent variables is 'time'. Rescaling time from hours to seconds will also rescale its coefficient(approximately by a factor of 60), but the importance remains the same!
 		
-		Another example is to consider a model with two dependent variables that affect the dependent variable in a similar manner. However 
+		Another example is to consider a model with two dependent variables that affect the dependent variable in a similar manner(or are equally important regressors). However 
 		they are on different scales say $X1$ on [1-100] and $X2$ on [0-1], resulting in the coefficient of $X1$ being too smaller than that of $X2$
 		in a linear regression setting.
 	}
@@ -184,10 +185,14 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 	\problemAnswer{ % Answer
 		A simple solution would be to use $k-1$ bits instead of $k$ bits for k categories. For example, using the following setup for a 3 category setup:
 		\begin{align*}
-			Red &= 0 0\\
-			Green &= 1 0\\
-			Blue &= 0 1
+			Red &= 0\ 0\\
+			Green &= 1\ 0\\
+			Blue &= 0\ 1
 		\end{align*}
+		
+		Here is an alternate solution that exploits the property of features still being equidistant from the origin(though they are no longer equidistant from each other)
+		
+		
 	}
 \end{homeworkSection}
 
@@ -241,7 +246,7 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 		\end{align*}
 		
 		Similarly for class $0$: $x_i \sim N(0, \sigma^2) \forall x \in \{1..D\}$ and 
-		 $x_i \sim N(\delta, \sigma^2) \forall x \in \{D+1..2D\}$
+		 $x_i \sim N(\delta, \sigma^2) \forall x \in \{D+1..2D\}$ Notice that the latter is a shifted normal.
 			\begin{align*}
 			P(x|y=0) &= \prod_{i=1}^{2D} p(x_i|y=0) \\
 			\log(P(x|y=0) &= \sum_{i=1}^{D} \log(p(x_i|y=1)) +\sum_{i=1}^{D} \log(p(x_i|y=1) \\
@@ -250,7 +255,6 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 
 		
 }
-\clearpage
 \problemAnswer{
  		
  		Plugging $(2),(3)$ in $(1)$ we get:
@@ -261,6 +265,9 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 	 	 \log(p(y=1))-\log(p(y=0)) &\geq \frac{D\delta}{\sigma^2} \sum_{i=1}^{D}x_i - D\frac{\delta^2}{2\sigma^2}\\
 	 	 -\frac{D\delta}{\sigma^2} \sum_{i=1}^{D}x_i + D\frac{\delta^2}{2\sigma^2} &+ \log(p(y=1))-\log(p(y=0)) \geq 0
  		\end{align*} 
+ 	}
+ 	%\clearpage
+ 	\problemAnswer{
  		Where the change of indices in the penultimate step is permitted since $x_i$ are i.i.d(after taking care of the shifted mean)
  		
  		Now consider the general form solution of LDA and GDA:
@@ -273,7 +280,7 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 		Where $x_i$ represents the $i^{th}$ dimension indepdent variable, where each $x_i$ is a feature/attribute and hence is not limited to 2 dimensional special case.
 		
 		In this case, owing to the homoscedasticity assumption(the variance of the two class conditions being equal to $\sigma^2$) LDA and GDA return the same solution.
-		
+			
 		\underline{Solution form for $LDA$:}
 		
 		\begin{align*}
@@ -290,7 +297,7 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 		and hence for LDA $b_i = 0 \forall i \in \{1..D\}$ and  $b_i = -\frac{D\delta}{\sigma^2} \forall i \in \{D+1..2D\}$(simpliifies to $-1$ for the case with equal priors). and $c = \frac{D\delta^2}{2\sigma^2}$ (simplifies to $\frac{\delta}{2}$ for the case with equal priors )
 		
 		\textbf{In either case it does depend on $\delta$}
-		
+
 		\underline{Solution for $GDA$}:
 			\begin{align*}
 			-\frac{D\delta}{\sigma^2} \sum_{i=1}^{D}x_i + D\frac{\delta^2}{2\sigma^2} &+ \log(p(y=1))-\log(p(y=0)) \geq 0
@@ -321,18 +328,18 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 		\log(P(X|Y=2)) &= -\frac{1}{2} \ln(|\Sigma|) - \frac{D}{2}\ln(\pi) -\frac{1}{2}(x-\mu_2)^T\Sigma^{-1}(x-\mu_2)\\
 		\log(P(X|Y=2))-\log(P(X|Y=1)) &= \frac{1}{2}(x-\mu_1)^T\Sigma^{-1}(x-\mu_1) - \frac{1}{2}(x-\mu_2)^T\Sigma^{-1}(x-\mu_2)\\
 		\log(P(X|Y=2))-\log(P(X|Y=1)) &= (\mu_1^T-\mu_2^T)\Sigma^{-1}x + x^T\Sigma^{-1}(\mu_1-\mu_2)\\
-		\log(P(X|Y=2))-\log(P(X|Y=1)) &= 2(\mu_1^T-\mu_2^T)\Sigma^{-1}x
+		\log(P(X|Y=2))-\log(P(X|Y=1)) &= 2(\mu_1^T-\mu_2^T)\Sigma^{-1}x + \mu_1^T \Sigma^{-1} \mu_1 - \mu_2^T \Sigma^{-1} \mu_2
 		\end{align*}
 		
 		Plugging $(5)$ in $4$:
 		\begin{align*}
-		P(Y=1|X) &= \frac{1}{1+\exp(-(\log(\frac{P(Y=1)}{P(Y=2)})+2(\mu_1^T-\mu_2^T)\Sigma^{-1}x  ))}\\
-		P(Y=1|X) &= \frac{1}{1+\exp(-(C+\theta^T x  ))}
+		P(Y=1|X) &= \frac{1}{1+\exp(-(\log(\frac{P(Y=1)}{P(Y=2)})+ \mu_1^T \Sigma^{-1} \mu_1 - \mu_2^T \Sigma^{-1} \mu_2+2(\mu_1^T-\mu_2^T)\Sigma^{-1}x  ))}\\
+		\P(Y=1|X) &= \frac{1}{1+\exp(-(C)+\theta^T x  ))}
 		\end{align*}
 		
-		Where $C = \frac{P(Y=1)}{P(Y=2)}$
+		Where $$\boxed{C = \frac{P(Y=1)}{P(Y=2)}- \mu_1^T \Sigma^{-1} \mu_1 + \mu_2^T \Sigma^{-1} \mu_2}$$
 		
-		$\theta = 2(\mu_1-\mu_2)\Sigma^{-1}$ (since $(\Sigma^{-1})^T = \Sigma^{-1}$)
+		$$\boxed{\theta = 2(\mu_1-\mu_2)\Sigma^{-1}}$$ since $$(\Sigma^{-1})^T = \Sigma^{-1})$$
 	
 	
 		 
@@ -445,17 +452,21 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 \begin{homeworkSection}{\homeworkProblemName: ~(d)}
 \problemAnswer{
 		MM: Multiple Models\\
-		SM: Substituted Models
+		SM: Substituted Models\\
+		IM: Individual Model\\
+		
+		
 	
-	
-		\begin{tabular}{|c|c|c|c|}
-			\hline & With age column(MM) & Without Age column(MM) & With NaN substituted(SM) \\
-			\hline Testing Accuracy & 0.776758 & 0.801223 & 0.776758 \\
-			\hline Training Accuracy & 0.769466 & 0.781679 &  0.775573\\ 
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline & With age column(IM) & Without Age column(IM) & With NaN substituted(SM) & MM \\
+			\hline Training Accuracy & 0.776758 & 0.801223 & 0.793578 & 0.629969\\
+			\hline Testing Accuracy & 0.769466 & 0.781679 &  0.775573 & 0.781679\\ 
 			\hline 
 		\end{tabular} 
 		
-		Thus, the multiple models with the age column completely removed seems to have worked better. This is an indicative that the 'age' factor is not really informative as is also evident from part (c) above where 'age' features low in the information table.
+		Thus, the individual model(IM) with the age column completely removed seems to have worked better than the MM. Though in training MM perfroms poorer than SM, its performance is at part with SM for the test dataset. In totality, Substituted model seems to have worked better.(considering both training and test datasets).
+		
+		This is an indicative that the 'age' factor is not really informative as is also evident from part (c) above where 'age' features low in the information table.
 	}
 \end{homeworkSection}
 
@@ -468,7 +479,7 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 \begin{homeworkSection}{\homeworkProblemName: ~(f)}
 	\begin{figure}
 		\includegraphics{data/accuracy}
-		\caption{4f}
+		\caption{4f. Training/testing accuracy v/s iteration}
 	\end{figure}
 	\problemAnswer{
 			
@@ -527,17 +538,21 @@ Linear regression assumes uncertainty in th measurement of dependent variables($
 	Alpha: 1.360000e-01     Iterations to Converge:  3821   Accuracy: 9.408397e-01\\
 	Alpha: 1.370000e-01     Iterations to Converge:  3825   Accuracy: 9.408397e-01\\
 	Alpha: 1.380000e-01     Iterations to Converge:  3828  \textbf{  Accuracy: 9.408397e-01}\\
-	
-	Thus, it takes approximately 4000 iterations to converge with the choice of the slope parameter around 0.1 and gives an accuracy of 0.94. (Also very low values of the slope parameter seems to hit a local minima) It does seem to be converging in a stable way.
+	\problemAnswer{	Thus, it takes approximately 4000 iterations to converge with the choice of the slope parameter around 0.1 and gives an accuracy of 0.94. (Also very low values of the slope parameter seems to hit a local minima) It does seem to be converging in a stable way.
 	
 	\textbf{	glmfit accuracy: 0.984733}
-	
+}
 \end{homeworkSection}
 
 
 \begin{homeworkSection}{\homeworkProblemName: ~(h)}
 	\problemAnswer{
-		N
+		Number of iterations: 25
+		Accuracy: 0.583969
+		
+		\textbf{	glmfit accuracy: 0.984733}\\
+		Newton's methods implementation seems to be buggy somewhere.
+		
 	}
 \end{homeworkSection}
 
