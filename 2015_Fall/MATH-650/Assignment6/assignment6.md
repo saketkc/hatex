@@ -1,16 +1,10 @@
----
-title: "MATH-650 Assignment 6"
-author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
-date: "09/15/2015"
-output:
-  html_document:
-    keep_md: yes
-  pdf_document: default
-  word_document: default
----
+# MATH-650 Assignment 6
+Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)  
+09/15/2015  
 
 # Problem 19
-```{r}
+
+```r
 pH.data <- read.csv('case0702.csv', header=T)
 logT <- log(pH.data$Time)
 pH.data$logT <- logT
@@ -24,7 +18,8 @@ $$
 
 
 ### Part (a)
-```{r}
+
+```r
 fit <- lm(pH~logT, data=pH.data)
 s <- summary(fit)
 b0 <- fit$coefficients[1]
@@ -37,28 +32,29 @@ p0 <- s$coefficients[7]
 p1 <- s$coefficients[8]
 ```
 
-Thus, $\beta_0=`r b0`(S.E=`r se0`, p-value=`r p0`)$ and $\beta_1=`r b1`(S.E=`r se1`, p-value=`r p1`)$
+Thus, $\beta_0=6.983626(S.E=0.048532, p-value=6.0839895\times 10^{-15})$ and $\beta_1=-0.7256578(S.E=0.0344263, p-value=2.6951582\times 10^{-8})$
 
 ### Part (b)
 
-```{r}
+
+```r
 Xbar <- mean(log(pH.data$Time))#1.190
 sx2 <- var(log(pH.data$Time))#0.6344
 mu <- b0 +b1*log(5)
-
 ```
 
-Thus, $\hat\mu\{Y|log(5)\} = `r mu`$ 
+Thus, $\hat\mu\{Y|log(5)\} = 5.8157249$ 
 
 
 ### Part (c)
 
-```{r}
+
+```r
 sigmahat <- 0.08226
 se = sigmahat *sqrt(1/n+(log(5)-Xbar)^2/(n-1*sx2))
 ```
 
-$SE[\hat\mu\{Y|log(5)\}] = `r se`$
+$SE[\hat\mu\{Y|log(5)\}] = 0.0283496$
 
 
 # Problem 25
@@ -173,7 +169,8 @@ Thus, the 95% CI for  Intercept is [0.1534495, 0.6447505]
 
 
 Also following is the R code:
-```{r}
+
+```r
 intercept <- 0.3991
 se <- 0.1185
 df <- 22
@@ -181,5 +178,16 @@ t975 <- qt(0.975,df)
 limit.upper <- intercept + t975*se
 limit.lower <- intercept - t975*se
 limit.upper
+```
+
+```
+## [1] 0.644854
+```
+
+```r
 limit.lower
+```
+
+```
+## [1] 0.153346
 ```
