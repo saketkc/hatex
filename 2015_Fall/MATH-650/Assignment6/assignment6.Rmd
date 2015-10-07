@@ -59,3 +59,11 @@ se = sigmahat *sqrt(1/n+(log(5)-Xbar)^2/(n-1*sx2))
 
 # Problem 25
 
+$$
+\begin{align*}
+SS(\beta_0,\beta_1) &= \sum_{i=1}^N (Y_i-\beta_0-\beta_1X_i)^2\\
+\frac{\partial SS}{\partial \beta_0} = -2\sum_{i=1}^N (Y_i-\beta_0-\beta_1X_i)\\
+\frac{\partial SS}{\partial \beta_1} = -2\sum_{i=1}^N (Y_i-\beta_0-\beta_1X_i)X_i\\
+\end{align*}
+$$
+
