@@ -3,10 +3,10 @@ title: "MATH-650 Assignment 6"
 author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
 date: "09/15/2015"
 output:
+  word_document: default
+  pdf_document: default
   html_document:
     keep_md: yes
-  pdf_document: default
-  word_document: default
 ---
 
 # Problem 19
@@ -73,27 +73,25 @@ SS(\beta_0,\beta_1) &= \sum_{i=1}^N (Y_i-\beta_0-\beta_1X_i)^2\\
 $$
 
 
-$$
-\begin{align*}
-\frac{\partial SS}{\partial \beta_0} &= -2\sum_{i=1}^N (Y_i-\beta_0-\beta_1X_i) =0\\
-\implies \sum_{i=1}^N Y_i &= \sum_{i=1}^N (\beta_0 +\beta_1X_i)\\
-\implies \sum_{i=1}^N Y_i &= \beta_0n +\beta_1\sum_{i=1}^N X_i\tag{1}
-\end{align*}
-$$
+$$\begin{align*}
+\frac{\partial SS}{\partial \beta_0} &= -2\sum_{i=1}^N (Y_i-\beta_0-\beta_1X_i) = 0\\
+\sum_{i=1}^N Y_i &= \sum_{i=1}^N (\beta_0 +\beta_1X_i)\\
+\sum_{i=1}^N Y_i &= \beta_0n +\beta_1\sum_{i=1}^N X_i
+\end{align*}$$
 
 
 $$
 \begin{align*}
 \frac{\partial SS}{\partial \beta_1} &= -2\sum_{i=1}^N (Y_i-\beta_0-\beta_1X_i)X_i = 0\\
-\implies \sum_{i=1}^N Y_iX_i &= \sum_{i=1}^N(\beta_0+\beta_1X_i)X_i\\
-\implies \sum_{i=1}^N Y_iX_i &= \beta_0\sum_{i=1}^NX_i+\sum_{i=1}^N\beta_1 X_i^2\tag{2}
+\sum_{i=1}^N Y_iX_i &= \sum_{i=1}^N(\beta_0+\beta_1X_i)X_i\\
+\sum_{i=1}^N Y_iX_i &= \beta_0\sum_{i=1}^NX_i+\sum_{i=1}^N\beta_1 X_i^2
 \end{align*}
 $$
 
 ### Part (b)
 $$
 \begin{align*}
-\hat{\beta_0} &= \bar{Y}-\hat{\beta_1}\bar{X}  \tag{3}
+\hat{\beta_0} &= \bar{Y}-\hat{\beta_1}\bar{X}
 \end{align*}
 $$
 
@@ -112,7 +110,7 @@ $$
 \begin{align*}
 \hat{\beta_1}\sum_{i=1}^N X_i^2-n \hat{\beta_1} \bar{X}^2 &=\sum_{i=1}^N X_iY_i -n\bar{X}\bar{Y}\\
 \hat{\beta_1}\sum_{i=1}^N X_i^2 + n\bar{X}\bar{Y} -n \hat{\beta_1} \bar{X}^2 &= \sum_{i=1}^N X_iY_i\\
-\hat{\beta_1}\sum_{i=1}^N X_i^2 + n\bar{Y}(\bar{X} - \hat{\beta_1} \bar{X}) &= \sum_{i=1}^N X_iY_i \tag{4}\\
+\hat{\beta_1}\sum_{i=1}^N X_i^2 + n\bar{Y}(\bar{X} - \hat{\beta_1} \bar{X}) &= \sum_{i=1}^N X_iY_i
 \end{align*}
 $$
 
@@ -122,7 +120,7 @@ $$
 \begin{align*}
 \hat{\beta_1}\sum_{i=1}^N X_i^2 + n\bar{X}(\bar{Y} - \hat{\beta_1} \bar{X}) &= \sum_{i=1}^N X_iY_i\\
 \hat{\beta_1}\sum_{i=1}^N X_i^2 + n\bar{X}(\hat{\beta_0}) \bar{X} &= \sum_{i=1}^N X_iY_i\\
-\hat{\beta_1}\sum_{i=1}^N X_i^2 + \hat{\beta_0} \sum_{i=1}^N X_i &= \sum_{i=1}^N X_iY_i\tag{5}\\
+\hat{\beta_1}\sum_{i=1}^N X_i^2 + \hat{\beta_0} \sum_{i=1}^N X_i &= \sum_{i=1}^N X_iY_i
 \end{align*}
 $$
 
@@ -134,7 +132,7 @@ $$
 \hat{\beta_0} &= \bar{Y}-\hat{\beta_1}\bar{X}\\
 \bar{Y} &= \hat{\beta_0} + \hat{\beta_1}\bar{X}\\
 \frac{\sum_{i=1}^N Y_i}{N} &= \hat{\beta_0} + \hat{\beta_1}\frac{\sum_{i=1}^N X_i}{N}\\
-\sum_{i=1}^N Y_i &= n\hat{\beta_0} + \hat{\beta_1}\sum_{i=1}^N X_i \tag{6}
+\sum_{i=1}^N Y_i &= n\hat{\beta_0} + \hat{\beta_1}\sum_{i=1}^N X_i
 \end{align*}
 $$
 
@@ -164,7 +162,7 @@ Thus, the values of $\hat{\beta_0},\hat{\beta_1}$ indeed guarantee a minima sinc
 Intercept = 0.3991
 Standard Error = 0.1185
 df = 22
-$t_{0.975,22} = 2.073
+$t_{0.975,22} = 2.073$
 
 Upper limit = 0.3991 + 2.073 * 0.1185 = 0.6447505
 Lower limit = 0.3991 - 2.073 * 0.1185 =  0.1534495

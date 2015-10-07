@@ -160,7 +160,7 @@ Thus, the values of $\hat{\beta_0},\hat{\beta_1}$ indeed guarantee a minima sinc
 Intercept = 0.3991
 Standard Error = 0.1185
 df = 22
-$t_{0.975,22} = 2.073
+$t_{0.975,22} = 2.073$
 
 Upper limit = 0.3991 + 2.073 * 0.1185 = 0.6447505
 Lower limit = 0.3991 - 2.073 * 0.1185 =  0.1534495
