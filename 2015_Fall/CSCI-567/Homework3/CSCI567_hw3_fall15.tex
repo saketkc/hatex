@@ -1,0 +1,226 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%       PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{amsmath}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%       DOCUMENT STRUCTURE COMMANDS
+%       Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%       NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment\ \#3 } % Assignment title
+\newcommand{\hmwkDueDate}{Friday,\ October\ 16,\ 2015} % Due date
+\newcommand{\hmwkClass}{CSCI-567} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%       TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+        \textbf{\hmwkAuthorID}
+        }
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%       TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%       PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}[Problem 4] % Custom section title
+
+Given: $k_1(.,.)$ and $k_2(.,.)$ are kernel function. Thus,
+for any vector $y \in \mathbf{R}$,  $y^TKy \geq 0$ where $K_{ij} = k(x_i, x_j)$
+
+Mercer's theorem requires $K$ to be positive semi-definite.
+
+\begin{homeworkSection}{\homeworkProblemName: ~(a)} % Section within problem
+\problemAnswer{
+	$k_3(x,x') = a_1k_1(x,x')+a_2k_2(x,x')\ \text{where} a_1,a_2\geq 0$
+	
+	Since $k_1(x,x')$ is positive definite, $\forall y \in \mathbf{R}$, 
+	
+	\begin{align*}
+	y^TK^{(1)}y \geq 0 \tag{4a.1},\\
+	\text{where}\\
+	K^{(1)}_{ij} = k_1(x_i,x_j')
+	\end{align*}
+	
+	Similarly,
+	
+	
+	\begin{align*}
+	y^TK^{(2)}y \geq 0 \tag{4a.2},\\
+	\text{where}\\
+	K^{(2)}_{ij} = k_2(x_i,x_j')
+	\end{align*}
+	
+	Thus, from (4a.1) and (4a.2), we get
+		
+	\begin{align*}
+	y^T(K^{(1)}+K^{(2)})y \geq 0\  \forall y \in \mathbf{R}
+	\implies\\
+	y^TK^{(3)}y \geq 0\  \forall y \in \mathbf{R}\\
+	\text{where}\\
+	K^{(3)}_{ij} = k_3(x_i,x_j')
+	\end{align*}
+	
+
+}
+\end{homeworkSection}
+
+
+
+\begin{homeworkSection}{\homeworkProblemName: ~(b)} % Section within problem
+\problemAnswer{ % Answer
+$k_4(x,x') =f(x)f(x')$ 
+Let $K^{(4)}_{ij} = k_4(x_i,x_j) = f(x_i)f(x_j')$
+
+Since $f(x)$ is a real valued function, consider $K^{(4)}$
+\begin{align*}
+K^{(4)} = \begin{bmatrix}
+f(x_1)f(x_1') & f(x_1)f(x_2') & \cdots & f(x_1)f(x_n')\\
+\vdots\\
+f(x_n)f(x_1') & f(x_n)f(x_2') & \cdots & f(x_n)f(x_n')
+\end{bmatrix}\\
+K^{(4)} = \vec{F({x})}_{n\times 1} \vec{F(x)}^T_{1 \times n} \\
+\text{where}\\
+F(x)^T_{1 \times n} = \begin{pmatrix}
+f(x_1)\\
+f(x_2)\\
+\vdots
+f(x_n)
+\end{pmatrix}
+\end{align*}
+
+Now consider $y^TK^{(4)}y = y^TF(x)F(x)^Ty = y^TF(x)(y^TF(x))^T = ||y^TF(x)||_2^2 \geq 0$x`
+
+Thus, $k_2(.,.)$ is a valid kernel function!.
+}
+
+\end{homeworkSection}
+\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+	content...
+\end{homeworkSection}
+\end{homeworkProblem}
+
+
+
+
+\end{document}
