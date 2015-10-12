@@ -351,4 +351,74 @@ Thus, $k_2(.,.)$ is a valid kernel function!.
 	}
 \end{homeworkSection}
 \end{homeworkProblem}
+
+\begin{homeworkProblem}{Problem 2}
+	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
+	\problemAnswer{
+		Consider $||w||_0= \#{i: w_i \neq 0}$ for a 1D case.
+		Where, $x_1=(0)$ and $x_2 = (\epsilon)$ where $0 < \epsilon << 1$
+		
+		$f(\boldmath{w}) = \sum_{i} I\{w_i\neq 0\}$
+	
+		Since we are in 1D:
+		
+		$f(\boldmath{w}) = \begin{cases}
+		0 & \text{if w=0}\\
+		1 & \text{otherwise}
+		\end{cases}$
+		
+		Thus,
+		\begin{align*}
+		f(0) &= 0\\
+		f(\epsilon) &= 1\\
+		f(\lambda \times 0 + (1-\lambda)\times \epsilon) &= 1 \forall 0 < \lambda < 1 \tag{2a.1}\\
+		\lambda f(0) + (1-\lambda)f(\epsilon) &= 1-\lambda 
+		0 < 1-\lambda &< 1 \tag{2a.2}
+		\end{align*}
+		
+		From $(2a.1),(2a.2)$ we see:
+		
+		$f(\lambda \times 0 + (1-\lambda)\times \epsilon) > \lambda f(0) + (1-\lambda)f(\epsilon)$ 
+	
+		 
+		
+		Thus, $||w||_0$ is not a convecx function!
+		
+	
+		
+		
+	}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+	\problemAnswer{
+		$||w||_1 = \sum_i |w_i|$
+		
+		Consider two vectors $u,v$(same dimension say in $\mathbf{R^D}$)
+		
+		Assume: $0 \lambda < 1$
+		
+		\begin{align*}
+		||\lambda u + (1-\lambda) v|| & = \sum_{i=1}^D |\lambda u_i + (1-\lambda) v_i|\\
+		&\leq \sum_{i=1}^D \big(|\lambda u_i| + |(1-\lambda) v|\big)\  (since\ |a+b| \leq |a| + |b| \forall\ a,b \in R )\\
+		&= \sum_{i=1}^D |\lambda| |u_i| + \sum_{i=1}^D |1-\lambda| |v_i|\\
+		&= \lambda ||u||_1 + (1-\lambda)||v||_1\ \text{since} (0 \lambda < 1) \tag{2a.1}
+		\end{align*}
+		
+		From $(2b.1)$, we see.
+		$||\lambda u + (1-\lambda) v||_1 \leq \lambda ||u||_1 + (1-\lambda)||v||_1$
+		
+		And hence, $||w||_1$ is a convex function.
+		}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+		\problemAnswer{
+			
+			The idea of regularisation here is to bound
+			}
+	\end{homeworkSection}
+
+\end{homeworkProblem}
+
 \end{document}
