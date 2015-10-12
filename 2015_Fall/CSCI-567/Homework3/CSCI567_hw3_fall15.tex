@@ -345,9 +345,19 @@ Thus, $k_2(.,.)$ is a valid kernel function!.
 		\begin{align*}
 		\mathcal{L}(w) &= \sum_{j=1}^n\big( \boldmath{-y_j}(b+w^T\boldmath{x_j}) + \log(1+e^{(b+w^T\boldmath{x_j})})\big) + \lambda ||w||_2^2\\
 		\frac{\partial \mathcal{(L)}(w)}{\partial w_i} &=  \sum_{j=1}^n\big( \boldmath{-y_j}(\boldmath{x_{ji}}) + \frac{x_{ji}e^{(b+w^T\boldmath{x_j}) x_{ij}}}{1+e^{(b+w^T\boldmath{x_j})}}\big) + 2\lambda w_i = 0\\
-		\frac{\partial^2 \mathcal{(L)}(w)}{\partial w_i^2} &=  \sum_{j=1}^n\big(  \frac{x_{ji}^2e^{(b+w^T\boldmath{x_j}) x_{ij}}}{(1+e^{(b+w^T\boldmath{x_j})})^2}\big) + 2\lambda \geq 0
+		\frac{\partial^2 \mathcal{(L)}(w)}{\partial w_i^2} &=  \sum_{j=1}^n\big(  \frac{x_{ji}^2e^{(b+w^T\boldmath{x_j}) x_{ij}}}{(1+e^{(b+w^T\boldmath{x_j})})^2}\big) + 2\lambda > 0
 		\end{align*}
-		where the last ineuqlaity holds since $\lambda > 0$ and hence the function is convex, thus the solution to the partial differential $\frac{\partial \mathcal{(L)}(w)}{\partial w_i}$ is unique
+		where the last inequality holds since $\lambda > 0$ 
+		Consider $f(w_i) = \sum_{j=1}^n\big( \boldmath{-y_j}(\boldmath{x_{ji}}) + \frac{x_{ji}e^{(b+w^T\boldmath{x_j}) x_{ij}}}{1+e^{(b+w^T\boldmath{x_j})}}\big) + 2\lambda w_i = 0$
+		
+		And $u,v$ are the two solutions of $f(w_i)=0$, i.e. $f(u) = f(v) = 0$ (Without loss of generality, assume $u < v$)
+		
+		By Rolle's theorem, If $f(u)=f(v)=0$ then there exists a point in $[u,v]$ say $c$ such that $f'(c)=0$ for $c \in [u,v]$
+		
+		But, $f'(w_i) = \sum_{j=1}^n\big(  \frac{x_{ji}^2e^{(b+w^T\boldmath{x_j}) x_{ij}}}{(1+e^{(b+w^T\boldmath{x_j})})^2}\big) + 2\lambda > 0$
+		and hence there exists no such $c$.
+		
+		and hence the function is convex, thus the solution to the partial differential $\frac{\partial \mathcal{(L)}(w)}{\partial w_i}$ is unique.
 	}
 \end{homeworkSection}
 \end{homeworkProblem}
@@ -415,7 +425,14 @@ Thus, $k_2(.,.)$ is a valid kernel function!.
 	\begin{homeworkSection}{\homeworkProblemName: ~(c)}
 		\problemAnswer{
 			
-			The idea of regularisation here is to bound
+			The idea of regularisation here is to bound the hyperparameters $w_i$ so that they are less prone to overfitting. One simple QP equaivalent is this:
+			
+			$min_{w}\frac{1}{2}(y_1-w^Tx_1, y_2-w^Tx_2 \cdots y_n-w^Tx_n )^T I (y_1-w^Tx_1, y_2-w^Tx_2 \cdots y_n-w^Tx_n )$ where $I$ is the $n \times n$ identity matrix and
+			the constraint is:
+			
+			$||w||_1 \leq \frac{1}{\lambda}$
+			
+			
 			}
 	\end{homeworkSection}
 
