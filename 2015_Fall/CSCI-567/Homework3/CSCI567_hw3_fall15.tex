@@ -302,8 +302,9 @@ Thus, $k_2(.,.)$ is a valid kernel function!.
 		\mathcal{L}(\boldmath{w}) &= -\log(\prod_{i=1}^nP(Y=y_i|X=x_i))\\
 		&= -\sum_{i=1}^n \log(P(Y=y_i|X=x_i))\\
 		&= -\sum_{i=1}^n\big( \boldmath{y_i}(b+w^T\boldmath{x_i}) - \log(1+e^{(b+w^T\boldmath{x_i})})\big)\\
-		&= -\sum_{i=1}^n\big( \log(e^{(\boldmath{y_i}(b+w^T\boldmath{x_i}))}) - \log(1+e^{(b+w^T\boldmath{x_i})})\big)\\
-		&= -\sum_{i=1}^n\big( \log(e^{(\boldmath{y_i}(b+w^T\boldmath{x_i}))}) - \log(1+e^{-y_(b+w^T\boldmath{x_i})})\big)\\	
+		&= \sum_{i=1}^n\big( \boldmath{-y_i}(b+w^T\boldmath{x_i}) + \log(1+e^{(b+w^T\boldmath{x_i})})\big)\\
+		%&= -\sum_{i=1}^n\big( \log(e^{(\boldmath{y_i}(b+w^T\boldmath{x_i}))}) - \log(1+e^{(b+w^T\boldmath{x_i})})\big)\\
+		%&= -\sum_{i=1}^n\big( \log(e^{(\boldmath{y_i}(b+w^T\boldmath{x_i}))}) - \log(1+e^{-y_(b+w^T\boldmath{x_i})})\big)\\	
 	\end{align*}
 	
 	
