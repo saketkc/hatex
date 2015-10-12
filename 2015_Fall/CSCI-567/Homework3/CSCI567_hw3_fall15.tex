@@ -277,7 +277,8 @@ Thus, $k_2(.,.)$ is a valid kernel function!.
 
 
 \begin{homeworkProblem}[Problem 1] % Custom section title
-\end{homeworkProblem}
+\begin{homeworkSection}{\homeworkProblemName: ~(a)}
+
 \problemAnswer{
 	Let $\sigma(a) = \frac{1}{1+e^{-a}}$ and 
 	
@@ -302,13 +303,52 @@ Thus, $k_2(.,.)$ is a valid kernel function!.
 		\mathcal{L}(\boldmath{w}) &= -\log(\prod_{i=1}^nP(Y=y_i|X=x_i))\\
 		&= -\sum_{i=1}^n \log(P(Y=y_i|X=x_i))\\
 		&= -\sum_{i=1}^n\big( \boldmath{y_i}(b+w^T\boldmath{x_i}) - \log(1+e^{(b+w^T\boldmath{x_i})})\big)\\
-		&= \sum_{i=1}^n\big( \boldmath{-y_i}(b+w^T\boldmath{x_i}) + \log(1+e^{(b+w^T\boldmath{x_i})})\big)\\
+%		&= \sum_{i=1}^n\big( \boldmath{-y_i}(b+w^T\boldmath{x_i}) + \log(1+e^{(b+w^T\boldmath{x_i})})\big)\\
 		%&= -\sum_{i=1}^n\big( \log(e^{(\boldmath{y_i}(b+w^T\boldmath{x_i}))}) - \log(1+e^{(b+w^T\boldmath{x_i})})\big)\\
 		%&= -\sum_{i=1}^n\big( \log(e^{(\boldmath{y_i}(b+w^T\boldmath{x_i}))}) - \log(1+e^{-y_(b+w^T\boldmath{x_i})})\big)\\	
 	\end{align*}
 	
 	
-
+	Consider $\mathcal(L)(w) = y(b+w^Tx) - \log(1+e^{(b+w^Tx_i)})$
+	
+	
+	\begin{align*}
+	\frac{\partial \mathcal{L}(w)}{\partial w} &= -(xy^T) + \frac{e^{(b+w^Tx)}x}{1+e^{(b+w^Tx)}}\\
+	\frac{\partial^2 \mathcal{L}(w)}{\partial w^2}&= 0 +  \frac{\partial }{\partial w}\big(x-\frac{x}{1+e^{(b+w^Tx)}}\big)\\
+	\frac{\partial^2 \mathcal{L}(w)}{\partial w^2}&= \frac{x(e^{(b+w^Tx)})x^T}{(1+e^{(b+w^Tx)})^2} \geq 0\ \forall\ x \in \mathbf{R}\\
+	\frac{\partial^2 \mathcal{L}(w)}{\partial w^2}&= x^T \sigma(b+w^Tx)(1-\sigma(b+w^Tx))x \geq 0  \tag{1.2}\\
+	\end{align*}
+	
+	From (1.2) $\frac{\partial^2 \mathcal{L}(w)}{\partial w^2} \geq 0$ and hence, from the definition of convex functions, $\mathcal{L}(w)$ is indeed a convex function.
 	}
+\end{homeworkSection}
+\begin{homeworkSection}{\homeworkProblemName: ~(b)}
 
+\problemAnswer{
+	
+	
+	When the data is perfectly linearly separable, (assume first $n/2$ of the $n$ training points belong to class 0 and the remaining to class $1$), thus our regression model should assign the first $n/2$ points to class with cent percent certainity or with probability 1 and the remaining $n/2$ to class 0 with probability 1.
+	For this to happen, $P(Y=1|X=X_1) = 1$ and $P(Y=0|X=X_0)=1$ where $X_1$ is the set of points belonging to class $1$ and $X_0$ is the set of points belonging to class 0.
+	
+	Clearly this scenario is possible when $||w|| \longrightarrow \infty$
+}
+\end{homeworkSection}
+\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+	\problemAnswer{
+
+	A simple example with two points would be $(0,0)$, $(1,1)$. Intuitively the step function's step branches (the horizontals of a sigmooid function) will be located at infinity. Also the line separating the points (0,0) and (1,1) can be anywhere in between 0 and 1, thus there will be multiple solutions.
+}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(d)}
+	\problemAnswer{
+		\begin{align*}
+		\mathcal{L}(w) &= \sum_{j=1}^n\big( \boldmath{-y_j}(b+w^T\boldmath{x_j}) + \log(1+e^{(b+w^T\boldmath{x_j})})\big) + \lambda ||w||_2^2\\
+		\frac{\partial \mathcal{(L)}(w)}{\partial w_i} &=  \sum_{j=1}^n\big( \boldmath{-y_j}(\boldmath{x_{ji}}) + \frac{x_{ji}e^{(b+w^T\boldmath{x_j}) x_{ij}}}{1+e^{(b+w^T\boldmath{x_j})}}\big) + 2\lambda w_i = 0\\
+		\frac{\partial^2 \mathcal{(L)}(w)}{\partial w_i^2} &=  \sum_{j=1}^n\big(  \frac{x_{ji}^2e^{(b+w^T\boldmath{x_j}) x_{ij}}}{(1+e^{(b+w^T\boldmath{x_j})})^2}\big) + 2\lambda \geq 0
+		\end{align*}
+		where the last ineuqlaity holds since $\lambda > 0$ and hence the function is convex, thus the solution to the partial differential $\frac{\partial \mathcal{(L)}(w)}{\partial w_i}$ is unique
+	}
+\end{homeworkSection}
+\end{homeworkProblem}
 \end{document}
