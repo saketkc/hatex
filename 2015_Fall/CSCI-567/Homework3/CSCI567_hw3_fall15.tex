@@ -143,136 +143,7 @@
 %       PROBLEM 2
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Problem 4] % Custom section title
 
-Given: $k_1(.,.)$ and $k_2(.,.)$ are kernel function. Thus,
-for any vector $y \in \mathbf{R}$,  $y^TKy \geq 0$ where $K_{ij} = k(x_i, x_j)$
-
-Mercer's theorem requires $K$ to be positive semi-definite.
-
-\begin{homeworkSection}{\homeworkProblemName: ~(a)} % Section within problem
-\problemAnswer{
-	$k_3(x,x') = a_1k_1(x,x')+a_2k_2(x,x')\ \text{where} a_1,a_2\geq 0$
-	
-	Since $k_1(x,x')$ is positive definite, $\forall y \in \mathbf{R}$, 
-	
-	\begin{align*}
-	y^TK^{(1)}y \geq 0 \tag{4a.1},\\
-	\text{where}\\
-	K^{(1)}_{ij} = k_1(x_i,x_j')
-	\end{align*}
-	
-	Similarly,
-	
-	
-	\begin{align*}
-	y^TK^{(2)}y \geq 0 \tag{4a.2},\\
-	\text{where}\\
-	K^{(2)}_{ij} = k_2(x_i,x_j')
-	\end{align*}
-	
-	Thus, from (4a.1) and (4a.2), we get
-		
-	\begin{align*}
-	y^T(K^{(1)}+K^{(2)})y \geq 0\  \forall y \in \mathbf{R}
-	\implies\\
-	y^TK^{(3)}y \geq 0\  \forall y \in \mathbf{R}\\
-	\text{where}\\
-	K^{(3)}_{ij} = k_3(x_i,x_j')
-	\end{align*}
-	
-
-}
-\end{homeworkSection}
-
-
-
-\begin{homeworkSection}{\homeworkProblemName: ~(b)} % Section within problem
-\problemAnswer{ % Answer
-$k_4(x,x') =f(x)f(x')$ 
-Let $K^{(4)}_{ij} = k_4(x_i,x_j) = f(x_i)f(x_j')$
-
-Since $f(x)$ is a real valued function, consider $K^{(4)}$
-\begin{align*}
-K^{(4)} = \begin{bmatrix}
-f(x_1)f(x_1') & f(x_1)f(x_2') & \cdots & f(x_1)f(x_n')\\
-\vdots\\
-f(x_n)f(x_1') & f(x_n)f(x_2') & \cdots & f(x_n)f(x_n')
-\end{bmatrix}\\
-K^{(4)} = \vec{F({x})}_{n\times 1} \vec{F(x)}^T_{1 \times n} \\
-\text{where}\\
-F(x)^T_{1 \times n} = \begin{pmatrix}
-f(x_1)\\
-f(x_2)\\
-\vdots
-f(x_n)
-\end{pmatrix}
-\end{align*}
-
-Now consider $y^TK^{(4)}y = y^TF(x)F(x)^Ty = y^TF(x)(y^TF(x))^T = ||y^TF(x)||_2^2 \geq 0$
-
-Thus, $k_2(.,.)$ is a valid kernel function!.
-}
-
-\end{homeworkSection}
-\begin{homeworkSection}{\homeworkProblemName: ~(c)}
-\problemAnswer{
-	$k_5(x,x') = g(k_1(x,x'))$ where $g$ is a polynomial with positive coefficients.
-	
-	Since $g$ has positive coefficients,
-	$g(x) \geq 0 \forall x \geq 0$
-	
-	Now consider,
-	\begin{align*}
-	y^TK^{(5)}y  &= (y_1\ y_2 \cdots y_n) \times \begin{bmatrix}
-	g(k_1(x_1,x_1')) & g(k_1(x_1,x_2')) & \cdots g(k_1(x_1,x_n'))\\
-	\vdots\\
-	g(k_1(x_n,x_1')) & g(k_1(x_n,x_2')) & \cdots g(k_1(x_n,x_n'))
-	\end{bmatrix} \times \begin{pmatrix}
-	y_1\\
-	y_2\\
-	\vdots\\
-	y_n
-	\end{pmatrix}\\
-	y^TK^{(5)}y  &= y_1g(k_1(x_1,x_1'))y_1 + y_2g(k_1(x_1,x_2'))y_2 + \cdots y_ng(k_1(x_n,x_n'))y_n\\
-	\text{Since}\ g(k_1(x_i,x_j)) \geq 0\\
-	y^TK^{(5)}y &\geq 0 \ \forall \ y \in \mathbf{R}
-	\end{align*}
-	Thus $k_5$ is a kernel
-}
-\end{homeworkSection}
-
-\begin{homeworkSection}{\homeworkProblemName: ~(d)}
-\problemAnswer{
-	$k_6(x,x') = k_1(x,x')k_2(x,x')$
-	
-	Thus, in terms of our earlier defined matrix notation,
-	$K^{(6)} = K^{(1)} \circ K^{(2)}$ where $\circ$ denotes element wise multiplication (also known as the Hadamard product).
-	
-	
-	Since, $k_1$ and $k_2$ are valid kernel function $\exists v_i w_j$ the eigen vectors of matrix $K_1$ and $K_2$ defines such that:
-	
-	$K^{(1)} = \sum_{i} \lambda_i v_i v_i^T$ and $K^{(2)} = \sum_{j} \mu_j {w_j}{w_j}^T$
-	
-	Now,\begin{align*}
-	K^{(6)} &=  K^{(1)} \circ K^{(2)}\\
-	&=  \sum_{i} \lambda_i v_i v_i^T \circ \sum_{j} \mu_j {w_j}{w_j}^T\\
-	&= \sum_{i,j} \lambda_i \mu_j  (v_i v_i^T) \circ {w_j}{w_j}^T\\
-	&= 	\sum_{i,j} \lambda_i \mu_j  (v_i \circ w_j) ({v_j}\circ {w_j})^T\\
-	&\geq 0
-	\end{align*}
-	Because $(v_i \circ w_j) ({v_j}\circ {w_j})^T  = ||v_i w_j||_2^2\geq 0$ 
-	
-	}
-\end{homeworkSection}
-\begin{homeworkSection}{\homeworkProblemName: ~(e)}
-	\problemAnswer{
-		$k_7(x,x') = exp(k_1(x,x'))$
-		
-		Just like subpart (c), here $g(x) = exp(x)$ (it's not a polynomial, though that does not affect the derivation we came up with in part (c)). So this is immediate from part (c).
-		}
-\end{homeworkSection}
-\end{homeworkProblem}
 
 
 
@@ -438,7 +309,7 @@ Thus, $k_2(.,.)$ is a valid kernel function!.
 
 \end{homeworkProblem}
 
-\begin{homeworkProblem}[Problem 2]
+\begin{homeworkProblem}[Problem 3]
 \begin{homeworkSection}{\homeworkProblemName: ~(a)}
 	\problemAnswer{
 		
@@ -524,13 +395,137 @@ Thus, $k_2(.,.)$ is a valid kernel function!.
 	}
 \end{homeworkSection}
 
+\end{homeworkProblem}
 
-\begin{homeworkSection}{\homeworkProblemName: ~(d)}
-	\problemAnswer{
-	}
-\end{homeworkSection}
-
+\begin{homeworkProblem}[Problem 4] % Custom section title
 	
+	Given: $k_1(.,.)$ and $k_2(.,.)$ are kernel function. Thus,
+	for any vector $y \in \mathbf{R}$,  $y^TKy \geq 0$ where $K_{ij} = k(x_i, x_j)$
+	
+	Mercer's theorem requires $K$ to be positive semi-definite.
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(a)} % Section within problem
+		\problemAnswer{
+			$k_3(x,x') = a_1k_1(x,x')+a_2k_2(x,x')\ \text{where} a_1,a_2\geq 0$
+			
+			Since $k_1(x,x')$ is positive definite, $\forall y \in \mathbf{R}$, 
+			
+			\begin{align*}
+			y^TK^{(1)}y \geq 0 \tag{4a.1},\\
+			\text{where}\\
+			K^{(1)}_{ij} = k_1(x_i,x_j')
+			\end{align*}
+			
+			Similarly,
+			
+			
+			\begin{align*}
+			y^TK^{(2)}y \geq 0 \tag{4a.2},\\
+			\text{where}\\
+			K^{(2)}_{ij} = k_2(x_i,x_j')
+			\end{align*}
+			
+			Thus, from (4a.1) and (4a.2), we get
+			
+			\begin{align*}
+			y^T(K^{(1)}+K^{(2)})y \geq 0\  \forall y \in \mathbf{R}
+			\implies\\
+			y^TK^{(3)}y \geq 0\  \forall y \in \mathbf{R}\\
+			\text{where}\\
+			K^{(3)}_{ij} = k_3(x_i,x_j')
+			\end{align*}
+			
+			
+		}
+	\end{homeworkSection}
+	
+	
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(b)} % Section within problem
+		\problemAnswer{ % Answer
+			$k_4(x,x') =f(x)f(x')$ 
+			Let $K^{(4)}_{ij} = k_4(x_i,x_j) = f(x_i)f(x_j')$
+			
+			Since $f(x)$ is a real valued function, consider $K^{(4)}$
+			\begin{align*}
+			K^{(4)} = \begin{bmatrix}
+			f(x_1)f(x_1') & f(x_1)f(x_2') & \cdots & f(x_1)f(x_n')\\
+			\vdots\\
+			f(x_n)f(x_1') & f(x_n)f(x_2') & \cdots & f(x_n)f(x_n')
+			\end{bmatrix}\\
+			K^{(4)} = \vec{F({x})}_{n\times 1} \vec{F(x)}^T_{1 \times n} \\
+			\text{where}\\
+			F(x)^T_{1 \times n} = \begin{pmatrix}
+			f(x_1)\\
+			f(x_2)\\
+			\vdots
+			f(x_n)
+			\end{pmatrix}
+			\end{align*}
+			
+			Now consider $y^TK^{(4)}y = y^TF(x)F(x)^Ty = y^TF(x)(y^TF(x))^T = ||y^TF(x)||_2^2 \geq 0$
+			
+			Thus, $k_2(.,.)$ is a valid kernel function!.
+		}
+		
+	\end{homeworkSection}
+	\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+		\problemAnswer{
+			$k_5(x,x') = g(k_1(x,x'))$ where $g$ is a polynomial with positive coefficients.
+			
+			Since $g$ has positive coefficients,
+			$g(x) \geq 0 \forall x \geq 0$
+			
+			Now consider,
+			\begin{align*}
+			y^TK^{(5)}y  &= (y_1\ y_2 \cdots y_n) \times \begin{bmatrix}
+			g(k_1(x_1,x_1')) & g(k_1(x_1,x_2')) & \cdots g(k_1(x_1,x_n'))\\
+			\vdots\\
+			g(k_1(x_n,x_1')) & g(k_1(x_n,x_2')) & \cdots g(k_1(x_n,x_n'))
+			\end{bmatrix} \times \begin{pmatrix}
+			y_1\\
+			y_2\\
+			\vdots\\
+			y_n
+			\end{pmatrix}\\
+			y^TK^{(5)}y  &= y_1g(k_1(x_1,x_1'))y_1 + y_2g(k_1(x_1,x_2'))y_2 + \cdots y_ng(k_1(x_n,x_n'))y_n\\
+			\text{Since}\ g(k_1(x_i,x_j)) \geq 0\\
+			y^TK^{(5)}y &\geq 0 \ \forall \ y \in \mathbf{R}
+			\end{align*}
+			Thus $k_5$ is a kernel
+		}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(d)}
+		\problemAnswer{
+			$k_6(x,x') = k_1(x,x')k_2(x,x')$
+			
+			Thus, in terms of our earlier defined matrix notation,
+			$K^{(6)} = K^{(1)} \circ K^{(2)}$ where $\circ$ denotes element wise multiplication (also known as the Hadamard product).
+			
+			
+			Since, $k_1$ and $k_2$ are valid kernel function $\exists v_i w_j$ the eigen vectors of matrix $K_1$ and $K_2$ defines such that:
+			
+			$K^{(1)} = \sum_{i} \lambda_i v_i v_i^T$ and $K^{(2)} = \sum_{j} \mu_j {w_j}{w_j}^T$
+			
+			Now,\begin{align*}
+			K^{(6)} &=  K^{(1)} \circ K^{(2)}\\
+			&=  \sum_{i} \lambda_i v_i v_i^T \circ \sum_{j} \mu_j {w_j}{w_j}^T\\
+			&= \sum_{i,j} \lambda_i \mu_j  (v_i v_i^T) \circ {w_j}{w_j}^T\\
+			&= 	\sum_{i,j} \lambda_i \mu_j  (v_i \circ w_j) ({v_j}\circ {w_j})^T\\
+			&\geq 0
+			\end{align*}
+			Because $(v_i \circ w_j) ({v_j}\circ {w_j})^T  = ||v_i w_j||_2^2\geq 0$ 
+			
+		}
+	\end{homeworkSection}
+	\begin{homeworkSection}{\homeworkProblemName: ~(e)}
+		\problemAnswer{
+			$k_7(x,x') = exp(k_1(x,x'))$
+			
+			Just like subpart (c), here $g(x) = exp(x)$ (it's not a polynomial, though that does not affect the derivation we came up with in part (c)). So this is immediate from part (c).
+		}
+	\end{homeworkSection}
 \end{homeworkProblem}
 
 \end{document}
