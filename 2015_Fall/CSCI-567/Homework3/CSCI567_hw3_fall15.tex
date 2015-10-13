@@ -439,10 +439,98 @@ Thus, $k_2(.,.)$ is a valid kernel function!.
 \end{homeworkProblem}
 
 \begin{homeworkProblem}[Problem 2]
-\begin{homeworkProblem}{1}
+\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 	\problemAnswer{
+		
+		$min_w(\sum_i (y_i-w^Tx_i)^2+ \lambda||w||_2^2)$
+		
+		In more compact matrix notation, let:
+		
+		
+		\begin{align*}
+		y_{n\times 1} &= (y_1\ y_2\ \cdots\ y_n)^T\\
+		X_{n \times D} &= (x_1^T \ x_2^T\ \cdots\ x_n^T)^T\\
+		\end{align*}
+		
+		This notation, reduces the above function to:
+		
+		$min_w(||y-w^TX||_2^2 + \lambda||w||_2^2)$
+		
+		\begin{align*}
+		f(w) &= min_w(||y-Xw||_2^2 + \lambda||w||_2^2)\\
+		&= (y-Xw)^T(y-Xw) + \lambda w^Tw\\
+		&= (y^T-w^TX^T)(y-Xw) + \lambda w^Tw\\
+		&= y^Ty - y^TXw -w^TX^Ty + w^TX^TXw + \lambda w^Tw\\
+		&= y^Ty - {(X^Ty)}^Tw -w^TX^Ty + w^TX^TXw	 + \lambda w^Tw\\
+		\frac{\partial f(w)}{\partial w} &= -X^Ty - X^Ty + 2\lambda w + (X^TXw + (XX^Tw)) = 0\\
+		&= 2\lambda w +2X^TXw -2X^Ty = 0\\
+		\textbf{w}(\lambda I_D + X^Tw) &= X^Ty\\
+		\textbf{w} &= (X^TXw + \lambda I_D)^{-1}X^Ty
+		\end{align*}
+		
+		
 		}
-\end{homeworkProblem}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+	\problemAnswer{
+		$min_w(||y-w^T\Phi||_2^2 + \lambda||w||_2^2)$
+		From the previous part, the solution should be of similar form:
+		
+		$\textbf{{w}} = (\Phi^T\Phi + \lambda I_D)^{-1}\Phi^Ty$
+		
+		Using the identity:
+		
+		$(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}$
+		
+		Thus,
+		
+		$\big((\lambda I_D + \Phi^T\Phi)^{-1}\big)\Phi^Ty =  \Phi^T\big(\Phi\Phi^T + \lambda I_N\big)^{-1}y$
+		
+		$w^{*} = \Phi^T(\Phi\Phi^T + \lambda I_N)^{-1} y$
+		
+	}
+	
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+	\problemAnswer{
+		$\hat{y} = w^{*T} \Phi(x)$
+		
+		$\hat{y} =  \big(\Phi^T(\Phi\Phi^T + \lambda I_N)^{-1} y\big)^T\Phi(x) = y^T \big((\Phi\Phi^T + \lambda I_N)^{-1}\big)^T\Phi^T\Phi(x)$
+		
+		Now using the property, $(A^{-1})^T = (A^T)^{-1}$
+		
+		
+		\begin{align*}
+		\hat{y} &=  = y^T \big((\Phi\Phi^T + \lambda I_N)^{-1}\big)^T\Phi^T\Phi(x) \\
+		&=  y^T \big((\Phi\Phi^T + \lambda I_N)^{T}\big)^{-1}\Phi^T\Phi(x)\\
+		&=  y^T \big((\Phi^T\Phi + \lambda I_N)\big)^{-1}\Phi^T\Phi(x)\\
+		&= y^T(K+\lambda I_N)^{-1} \kappa(x)
+		\end{align*}
+		
+		Where $K_{ij}= \Phi_i^T\Phi_j$ and $\kappa(x) = \phi^T\phi^T(x)$
+		
+		
+		
+		}
+\end{homeworkSection}
+\begin{homeworkSection}{\homeworkProblemName: ~(d)}
+\problemAnswer{
+	
+	Kernel ridge regression is $O(n^3)$ for $n$ data points. Linear regression was forumlated as quadratic programing and hence is $O(n^2)$.
+	
+	The extra $n$ factor comes from the formation of kernel matrix $K$.
+	}
+\end{homeworkSection}
+
+
+\begin{homeworkSection}{\homeworkProblemName: ~(d)}
+	\problemAnswer{
+	}
+\end{homeworkSection}
+
+	
 \end{homeworkProblem}
 
 \end{document}
