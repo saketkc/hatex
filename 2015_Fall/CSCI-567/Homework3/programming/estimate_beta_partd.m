@@ -1,4 +1,4 @@
-function [beta] = estimate_beta(p,x,y)
+function [beta] = estimate_beta(p,l,x,y)
 X = [];
 beta = [];
 %% x : Column vector
@@ -10,5 +10,5 @@ for i=1:cols_X
 end
 %size(X)
 %size(y)
-beta = pinv(X'*X)*X'*y;
+beta = pinv(X'*X+l*eye(cols_X))*X'*y;
 end
