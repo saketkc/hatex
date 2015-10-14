@@ -1,4 +1,4 @@
-function [beta] = problem_5_b(l,X,y)
+function [beta] = kernel_linear(l,X,y)
 %size(X)
 %size(y)
 cols_X = size(X,2);
