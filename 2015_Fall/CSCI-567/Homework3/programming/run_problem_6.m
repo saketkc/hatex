@@ -19,16 +19,27 @@ for t=1:10
     test_data  = data(test_ind,:);
     [norm_train_data, mean_train_data, std_train_data] = normalise(train_data);
     norm_test_data = normalise_with_mean(test_data, mean_train_data, std_train_data);
+    norm_test_data_appended = norm_test_data(:,1);
+    norm_test_data_appended(:,2) = ones(size(norm_test_data,1),1);
+    norm_test_data_appended(:,3:size(norm_test_data,2)+1) = norm_test_data(:,2:size(norm_test_data,2));
+
+
+
+    norm_train_data_appended = norm_train_data(:,1);
+    norm_train_data_appended(:,2) = ones(size(norm_train_data,1),1);
+    norm_train_data_appended(:,3:size(norm_train_data,2)+1) = norm_train_data(:,2:size(norm_train_data,2));
+    
+
     for l=1:length(lambda)
         lamb = lambda(l);
-        [modelerror,W] = perform_k_fold_validation(l, norm_train_data);
+        [modelerror,W] = perform_k_fold_validation(l, norm_train_data_appended);
         if modelerror < minmodelerror
             minmodelerror = modelerror;
             optimalW = W;
             optimallambda = lamb;
         end
     end
-    testerror = problem_5_b_estimate_error(optimallambda,)
+    testerror = problem_5_b_estimate_error(optimalW,norm_test_data_appended(:,2:size(norm_test_data_appended,2)),norm_test_data_appended(:,1));
 
 end
 
