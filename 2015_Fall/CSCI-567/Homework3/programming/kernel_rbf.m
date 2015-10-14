@@ -1,4 +1,4 @@
-function [w] = kernel_rbf(sigma,X,y)
+function [w] = kernel_rbf(sigma,l,X,y)
 n = size(X,1);
 s = X*X';
 s = s/sigma^2;
@@ -7,6 +7,6 @@ s = s-ones(n,1)*d'/2;
 s = s-d*ones(1,n)/2;
 k = exp(s);
 
-w = y'*pinv(K+l*eye(n))*(X);%*X');
+w = y'*pinv(k+l*eye(n))*(X);%*X');
 end
 

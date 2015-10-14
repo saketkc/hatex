@@ -1,4 +1,4 @@
-function [err, W] = perform_k_fold_validation_linear(sigma, lambda, input_data)
+function [err, W] = perform_k_fold_validation_poly(a,b, input_data)
     k = 5;
     cols = size(input_data,2);
     datasize = size(input_data,1);
@@ -18,7 +18,7 @@ function [err, W] = perform_k_fold_validation_linear(sigma, lambda, input_data)
             end
         end
         test_data = input_data(training_dataset_indices(index,:),:);
-        [W] = kernel_rbf(sigma, lambda,training_data(:,2:cols), training_data(:,1));
+        [W] = kernel_poly(a,b,training_data(:,2:cols), training_data(:,1));
         [helderror] = kernel_linear_estimate_error(W, test_data(:,2:cols), test_data(:,1));
         err = err+helderror;
     end

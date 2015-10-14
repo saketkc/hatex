@@ -6,6 +6,7 @@ indices = 1:datasize;
 training_data_indices = [];
 test_data_indices = [];
 sigma = [0.125, 0.25, 0.5, 1, 2, 4, 8];
+lambda = [0 power(10,-4:3)];
 train_err =[];
 test_err = [];
 
@@ -13,6 +14,7 @@ for t=1:10
     minmodelerror = 100;
     optimalsigma = 0;
     optimalW = 0;
+    optimallamb = 0;
     permutation = randperm(datasize);
     train_ind = permutation(1:floor(0.8*datasize));
     test_ind = permutation (ceil(0.8*datasize):length(permutation));
@@ -33,22 +35,24 @@ for t=1:10
     norm_train_data_appended = norm_train_data(:,1);
     norm_train_data_appended(:,2) = ones(size(norm_train_data,1),1);
     norm_train_data_appended(:,3:size(norm_train_data,2)+1) = norm_train_data(:,2:size(norm_train_data,2));
-    
 
     for l=1:length(sigma)
-        lamb = sigma(l);
-        lamb;
-        [modelerror,W] = perform_k_fold_validation_rbf(lamb, norm_train_data_appended);
-        modelerror
-        if modelerror < minmodelerror
-            minmodelerror = modelerror;
-            optimalW = W;
-            optimalsigma = lamb;
+        sigm = sigma(l);
+        for k=1:length(lambda)
+            lamb = lambda(k);
+            [modelerror,W] = perform_k_fold_validation_rbf(sigm, lamb, norm_train_data_appended);
+            modelerror
+            if modelerror < minmodelerror
+                minmodelerror = modelerror;
+                optimalW = W;
+                optimalsigma = sigm;
+                optimallamb = lamb;
+            end
+            optimalsigma ;
         end
-        optimalsigma ;
     end
     cols = size(norm_train_data_appended,2);
-    newmodelw = kernel_rbf(optimalsigma, norm_train_data_appended(:,2:cols), norm_train_data_appended(:,1));
+    newmodelw = kernel_rbf(optimalsigma, optimallamb, norm_train_data_appended(:,2:cols), norm_train_data_appended(:,1));
     testerror = kernel_linear_estimate_error(newmodelw,norm_test_data_appended(:,2:size(norm_test_data_appended,2)),norm_test_data_appended(:,1));
 
 end
