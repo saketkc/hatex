@@ -1,4 +1,4 @@
-function [ypred] = kernel_poly(l,a,b,X,y)
+function [ypred] = kernel_poly(l,a,b,X,y, Xtest)
 %size(X)
 %size(y)
 n = size(X,1);
@@ -13,5 +13,5 @@ d = size(X,2);
 K = X*X'+a;
 K = K.^b;
 cols_X = size(X,2);
-ypred = y'*pinv(K+l*eye(n))*(X*X'+a).^b:;
+ypred = y'*pinv(K+l*eye(n))*(X*Xtest'+a).^b:;
 end

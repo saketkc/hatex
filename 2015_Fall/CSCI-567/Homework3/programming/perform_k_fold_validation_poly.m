@@ -18,9 +18,10 @@ function [err, W] = perform_k_fold_validation_poly(a,b, input_data)
             end
         end
         test_data = input_data(training_dataset_indices(index,:),:);
-        [W] = kernel_poly(a,b,training_data(:,2:cols), training_data(:,1));
-        [helderror] = kernel_linear_estimate_error(W, test_data(:,2:cols), test_data(:,1));
-        err = err+helderror;
+        [ypred] = kernel_poly(a,b,training_data(:,2:cols), training_data(:,1));
+        [ypredtest] = kernel_poly_predict(a,b,training_data(:,2:cols), training_data(:,1), training_data(:,2:cols));%, training_data(:,1));
+        [yerror] = kernel_poly_estimate_error(ypredtest, test_data(:,1));
+        err = err+yerror;
     end
     err = err/k;
 end
