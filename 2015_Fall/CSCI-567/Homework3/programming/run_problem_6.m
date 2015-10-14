@@ -8,7 +8,7 @@ test_data_indices = [];
 lambda = [0 power(10,-4:3)];
 train_err =[];
 test_err = [];
-
+optimal_lambdas=[];
 for t=1:10
     minmodelerror = 100;
     optimallambda = 0;
@@ -24,22 +24,23 @@ for t=1:10
     norm_test_data = normalise_with_mean(test_data, mean_train_data, std_train_data);
     norm_train_data(:,1) = train_data(:,1);
     norm_test_data(:,1) = test_data(:,1);
-    norm_test_data_appended = norm_test_data(:,1);
-    norm_test_data_appended(:,2) = ones(size(norm_test_data,1),1);
-    norm_test_data_appended(:,3:size(norm_test_data,2)+1) = norm_test_data(:,2:size(norm_test_data,2));
+    norm_test_data_appended = norm_test_data;%(:,1);
+    %norm_test_data_appended(:,2) = ones(size(norm_test_data,1),1);
+    %norm_test_data_appended(:,3:size(norm_test_data,2)+1) = norm_test_data(:,2:size(norm_test_data,2));
+    norm_test_data_appended(:,end+1) = ones(size(norm_test_data,1),1);
 
 
-
-    norm_train_data_appended = norm_train_data(:,1);
-    norm_train_data_appended(:,2) = ones(size(norm_train_data,1),1);
-    norm_train_data_appended(:,3:size(norm_train_data,2)+1) = norm_train_data(:,2:size(norm_train_data,2));
+     norm_train_data_appended = norm_train_data;%(:,1);
+   % norm_train_data_appended(:,2) = ones(size(norm_train_data,1),1);
+    %norm_train_data_appended(:,3:size(norm_train_data,2)+1) = norm_train_data(:,2:size(norm_train_data,2));
+    norm_train_data_appended(:,end+1) = ones(size(norm_train_data,1),1);
     
 
     for l=1:length(lambda)
         lamb = lambda(l);
         lamb;
         [modelerror,W] = perform_k_fold_validation(lamb, norm_train_data_appended);
-        modelerror
+        modelerror;
         if modelerror < minmodelerror
             minmodelerror = modelerror;
             optimalW = W;
@@ -50,6 +51,7 @@ for t=1:10
     cols = size(norm_train_data_appended,2);
     newmodelw = problem_5_b(optimallambda, norm_train_data_appended(:,2:cols), norm_train_data_appended(:,1));
     testerror = problem_5_b_estimate_error(newmodelw,norm_test_data_appended(:,2:size(norm_test_data_appended,2)),norm_test_data_appended(:,1));
-
+    test_err(end+1) = testerror;
+    optimal_lambdas(end+1) = optimallambda;
 end
 
