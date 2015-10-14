@@ -38,7 +38,7 @@ for t=1:10
     for l=1:length(lambda)
         lamb = lambda(l);
         lamb;
-        [modelerror,W] = perform_k_fold_validation_linear(lamb, norm_train_data_appended);
+        [modelerror,W] = perform_k_fold_validation_rbf(lamb, norm_train_data_appended);
         modelerror
         if modelerror < minmodelerror
             minmodelerror = modelerror;
@@ -48,7 +48,7 @@ for t=1:10
         optimallambda ;
     end
     cols = size(norm_train_data_appended,2);
-    newmodelw = kernel_linear(optimallambda, norm_train_data_appended(:,2:cols), norm_train_data_appended(:,1));
+    newmodelw = kernel_rbf(optimallambda, norm_train_data_appended(:,2:cols), norm_train_data_appended(:,1));
     testerror = kernel_linear_estimate_error(newmodelw,norm_test_data_appended(:,2:size(norm_test_data_appended,2)),norm_test_data_appended(:,1));
 
 end
