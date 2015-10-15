@@ -5,16 +5,16 @@ datasize = size(data,1);
 indices = 1:datasize;
 training_data_indices = [];
 test_data_indices = [];
-a = [−1, −0.5, 0, 0.5, 1];
-c = [1, 2, 3, 4];
+a = [-1, -0.5, 0, 0.5, 1];
+b = [1, 2, 3, 4];
 lambda = [0 power(10,-4:3)];
 train_err =[];
-test_err = [];
-optimal_sigmas=[];
-optimal_lambdas=[];
+test_err_6c = [];
+optimal_lambdas_6c=[];
 optimal_a=[];
 optimal_b=[];
 for t=1:10
+    t
     minmodelerror = 100;
     optimallamb = 0;
     optimala = 0;
@@ -40,20 +40,20 @@ for t=1:10
     norm_train_data_appended(:,2) = ones(size(norm_train_data,1),1);
     norm_train_data_appended(:,3:size(norm_train_data,2)+1) = norm_train_data(:,2:size(norm_train_data,2));
 
-    for l=1:length(sigma)
-        sigm = sigma(l);
-        for k=1:length(lambda)
-            lamb = lambda(k);
-            [modelerror,W] = perform_k_fold_validation_poly(sigm, lamb, norm_train_data_appended);
-            modelerror
-            if modelerror < minmodelerror
-                minmodelerror = modelerror;
-                optimalW = W;
-                optimala = a;
-                optimalb = b;
-                optimallamb = lamb;
+    for l=1:length(lambda)
+        lamb = lambda(l);
+        for p=1:length(a)
+            pa = a(p);
+            for q=1:length(b)
+                qb = b(q);
+                [modelerror] = perform_k_fold_validation_poly(lamb,pa,qb, norm_train_data_appended);
+                if modelerror < minmodelerror
+                    minmodelerror = modelerror;
+                    optimala = pa;
+                    optimalb = qb;
+                    optimallamb = lamb;
+                end
             end
-            optimalsigma ;
         end
     end
     cols = size(norm_train_data_appended,2);
@@ -61,8 +61,8 @@ for t=1:10
     %testerror = kernel_linear_estimate_error(newmodelw,norm_test_data_appended(:,2:size(norm_test_data_appended,2)),norm_test_data_appended(:,1));
     [ypredtest] = kernel_poly_predict(optimallambda, a,b, norm_train_data_appended(:,2:cols), norm_train_data_appended(:,1), norm_test_data_appended(:,2:cols));%, training_data(:,1));
     [testerror] = kernel_poly_estimate_error(ypredtest, norm_train_data_appended(:,1));
-    test_err(end+1) = testerror;
-    optimal_lambdas(end+1) = optimallamb;
+    test_err_6c(end+1) = testerror;
+    optimal_lambdas_6c(end+1) = optimallamb;
     optimal_a(end+1) = optimala;
     optimal_b(end+1) = optimalb;
 

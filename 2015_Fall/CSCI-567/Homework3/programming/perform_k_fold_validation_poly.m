@@ -1,4 +1,4 @@
-function [err, W] = perform_k_fold_validation_poly(lambda, a,b, input_data)
+function [err] = perform_k_fold_validation_poly(lambda, a,b, input_data)
     k = 5;
     cols = size(input_data,2);
     datasize = size(input_data,1);

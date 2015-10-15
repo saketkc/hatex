@@ -13,5 +13,5 @@ d = size(X,2);
 K = X*X'+a;
 K = K.^b;
 cols_X = size(X,2);
-ypred = y'*pinv(K+l*eye(n))*(X*X'+a).^b:;
+ypred = y'*pinv(K+l*eye(n))*((X*X'+a).^b);
 end
