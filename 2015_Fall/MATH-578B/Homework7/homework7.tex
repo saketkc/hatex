@@ -140,7 +140,7 @@
 
 
 
-\begin{homeworkProblem}[Prob. \Roman{homeworkProblemCounter}] % Roman numerals
+\begin{homeworkProblem}[Problem 1] % Roman numerals
 
 
 \problemAnswer{ % Answer
@@ -178,33 +178,138 @@ max_{h:||h||=1}|E(h(W))-E(h(Z))| &= 2max_{A \in Z^{+}}|P(W \in A)-P(Z \in A)|\\
 \end{align*}
 
 }
-
-
 \end{homeworkProblem}
+
 
 \begin{homeworkProblem}[Exercise 6.1]
-\problemAnswer{
-	Expected number of apparent islands = $N e^{-c(1-\theta)} = cg e^{-c(1-\theta)}$
+	\problemAnswer{
+		Expected number of apparent islands = $N e^{-c(1-\theta)} = cg e^{-c(1-\theta)}$
+		
+		where $g = \frac{G}{L}$ (since $cg \rightarrow \infty $) as $g \rightarrow \infty$
+		
+		\begin{align*}
+		f(c) &=cg e^{-c(1-\theta)}\\
+			\frac{\partial f(c)}{\partial c} &= g(e^{-c(1-\theta)} + -c(1-\theta)e^{-c(1-\theta)}) = 0\\
+			\implies 1-c(1-\theta) &=0\\
+			c^{*} &= (1-\theta)^{-1}
+			\end{align*}
+			
+			and the maximum number of apparent islands is $N e^{-c^{*}(1-\theta)} = Ne^{-1} = \frac{G}{L}e^{-1}(1-\theta)^{-1}$
+		}
+	\end{homeworkProblem}
 	
-	where $g = \frac{G}{L}$ (since $cg \rightarrow \infty $) as $g \rightarrow \infty$
-	
-	\begin{align*}
-	f(c) &=cg e^{-c(1-\theta)\\
-	\frac{\partial f(c)}{\partial c} &= g(e^{-c(1-\theta)} + -c(1-\theta)e^{-c(1-\theta)}) = 0\\
-	\implies 1-c(1-\theta) &=0\\
-	c^{*} &= (1-\theta)^{-1}
-	\end{align*}
-	
-	and the maximum number of apparent islands is $N e^{-c^{*}(1-\theta)} = Ne^{-1} = \frac{G}{L}e^{-1}(1-\theta)^{-1}$
-	}
-\end{homeworkProblem}
 
-\begin{homeworkProblem}[Exercise 6.5]
+	\begin{homeworkProblem}[Exercise 6.2]
+		\problemAnswer{
+			From our solution for $Excersice 6.1$ we see that the the maximum number of apparent islands occur
+			at $c^{*} = (1-\theta)^{-1}$ Now $c$ was defined to be the expected number of clones covering a point.
+			and $c^{*}$ is the maximum number of clones arranged such that no two clones overlap.(overlap if at all is less than $\theta$)
+			Then the maximum number of islands at any point would be $ceil((1-\theta)^{-1}) = 1 + max\{k: \text{k integer}, k < (1-\theta)^{-1}\}$ 
+		}
+	\end{homeworkProblem}
+	
+	\begin{homeworkProblem}[Problem 2]
+		\problemAnswer{
+			$\boldmath{w} = 11011011$
+			
+			Periods: $P(\omega) = \{p \in \{1,2 \cdots, w-1\}: w_i = w_{i+p} \}\ \forall i \in \{1,2 \dots w-p\}$
+			
+			$w_1 = w_4; w_2=w_5;w_3=w_6;\dots w_5=w_8$
+			
+			$w_1 = w_7$
+			
+			$w_1 = w_8$
+			
+			Thus $P(\omega) = \{3,6,7\}$
+			
+			$P(\omega) =6$ can be written as multiple of $P(\omega)=3$ and hence the principal period $P(\omega') = \{3,7\}$
+			
+			The mean $(n-w+1)\mu(w)$ using poisson approximation for the number of clumps is given by: $P(\omega) - \sum_{p \in P(\omega')}P(w^{(p)}w)$
+			
+			$w=11011011$
+			
+			$P(\omega) = \{3,6,7\}$
+			
+			$P(\omega') = \{3,7\}$
+			\begin{align*}
+			\mu(w) &= P(11011011) - P(110w) -P(1101101w)\\
+			&= p^6q^2 - p^2q(p^6q^2) - p^5q^2(p^6q^2)\\
+			&= p^6q^2(1-p^2q-p^5q^2)
+			\end{align*}
+			
+			And hence the mean of the poisson approximation is given by $(n-7)p^6q^2(1-p^2q-p^5q^2)$
+			
+			The number of occurences of $w$ can be approximated by:
+			
+			$P(L_i=j) = \frac{u_j(w)}{\sum_{i\geq 1} \mu_j(w)}$
+
+			where $C_j$ is the even that there are $j$ consecutive occurences of $w$ starting at that particular location.
+			
+			$C_j = \{w^{(p_1)}w^{(p_2)} \dots w^{(p_{j-1}w)}\}$ where $p_i$ is  a principal period of $w$.
+			and the mean of this process is given by $\mu_j(w) = P(C_j)-2P(C_{j+1})+P(C_{j+2})$
+			
+			$P(C_j)  $ calculation:
+			
+			Let there be $kw^{(3)}$ and $j-1-k$ with $w^{(7)}$ among the first $j-1$ occurences of $w$ starting at $i$. The probability of this is ${{j-1}\choose{k}}(p^2q)^k(p^5q^2)^{j-1-k} $
+			
+			Thus,
+			\begin{align*}
+			P(C_j) &= P(w) \sum_{k=0}^{j-1} (P(w^{(3)})^k(P(w^{(7)}))^{j-1-k}\\
+			&=p^6q^2(p^2q+p^5q^2)^{j-1}\\
+			&=p^{2j+4}q^{j+1}(1+p^3q) ^{j-1}\\
+			\mu_j(w) &= p^{2j+4}q^{j+1}(1+p^3q) ^{j-1} (1-2p^2q(1+p^3q)+p^4q^2(1+p^3q)^2)
+			\end{align*}
+			
+			
+			
+		}
+	\end{homeworkProblem}
+	
+	
+	\begin{homeworkProblem}[Excercise 11.14]
 \problemAnswer{
-	From our solution for $Excersice 6.1$ we see that the the maximum number of apparent islands occur
-	at $c^{*} = \frac{1-\theta}$ Now $c$ was defined to be the expected number of clones covering a point.
-	and $c^{*}$ is the maximum number of clones arranged such that no two clones overlap.(overlap if at all is less than $\theta$)
-	Then the maximum number of islands at any point would be $ceil((1-\theta)^{-1}) = 1 + max\{k: \text{k integer}, k < (1-\theta)^{-1}\}$ 
+	Stein equation: $(Lf)(x) = \lambda f(x+1) -xf(x)$ and $W=\sum_{i=1}^n X_i$
+	
+	$E((Lf)(W)) =0 $
+	
+	And $Z \sim Poisson(E(W))$
+
+Since $X_i$ is iid.
+
+$b_1 = \sum_{i \in I} \sum_{j \in J_i} E(X_i)E(X_j) = \sum_{i=1}p^2 = np^2$
+
+$b_2 =  \sum_{i \in I} \sum_{i \neq j \in J_i} E(X_iX_j)	= \sum_i \sum_{i \neq j \in I_i} E(X_iX_j) = 0$
+
+And hence, by Theorem 11.22:
+
+\begin{align*}
+||W-Z|| \leq 2np^2 \frac{1-e^-{\lambda}}{\lambda} \leq 2np^2
+\end{align*}
+where $EZ=EW=\lambda$
+
 	}
+	\end{homeworkProblem}
+	
+\begin{homeworkProblem}[Exercise 11.10]
+	\problemAnswer{
+		\begin{align*}
+		X_i &= \prod_{j=1}^{i+t-1}D_j\\
+		W &= \sum_{i \in I}X_i\\
+		\end{align*}
+		$I = \{1,2,\dots, n-t+1 \} $ and $J_i= \{ j \in I: |i-j| <t \}$ 
+		
+		$EW = \lambda  = (n-t+1)p^t$
+		
+		 Since $p<1$ define $q=1/p$
+		 
+		 Now, $EW = \frac{n-t+1}{q^t} $ and as $n \rightarrow \infty$ 
+		 In order to prevent $EW \rightarrow \infty$, we make $t \rightarrow n$ when $n \rightarrow \infty$
+		 
+		 $ i-(t-1) \leq j \leq i+(t-1) $
+		 
+		 $b_1 = \sum_i p^t \times((2t-2)+1)p^t = (n-t+1)(2t-1)p^{2t}$
+		 
+		 $b_2 = \sum_{i} p^{(2t-2)+1}  = (n-t+1)p^{2t-1}$
+		}
 \end{homeworkProblem}
 \end{document}
