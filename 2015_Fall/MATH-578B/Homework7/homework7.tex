@@ -182,4 +182,29 @@ max_{h:||h||=1}|E(h(W))-E(h(Z))| &= 2max_{A \in Z^{+}}|P(W \in A)-P(Z \in A)|\\
 
 \end{homeworkProblem}
 
+\begin{homeworkProblem}[Exercise 6.1]
+\problemAnswer{
+	Expected number of apparent islands = $N e^{-c(1-\theta)} = cg e^{-c(1-\theta)}$
+	
+	where $g = \frac{G}{L}$ (since $cg \rightarrow \infty $) as $g \rightarrow \infty$
+	
+	\begin{align*}
+	f(c) &=cg e^{-c(1-\theta)\\
+	\frac{\partial f(c)}{\partial c} &= g(e^{-c(1-\theta)} + -c(1-\theta)e^{-c(1-\theta)}) = 0\\
+	\implies 1-c(1-\theta) &=0\\
+	c^{*} &= (1-\theta)^{-1}
+	\end{align*}
+	
+	and the maximum number of apparent islands is $N e^{-c^{*}(1-\theta)} = Ne^{-1} = \frac{G}{L}e^{-1}(1-\theta)^{-1}$
+	}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Exercise 6.5]
+\problemAnswer{
+	From our solution for $Excersice 6.1$ we see that the the maximum number of apparent islands occur
+	at $c^{*} = \frac{1-\theta}$ Now $c$ was defined to be the expected number of clones covering a point.
+	and $c^{*}$ is the maximum number of clones arranged such that no two clones overlap.(overlap if at all is less than $\theta$)
+	Then the maximum number of islands at any point would be $ceil((1-\theta)^{-1}) = 1 + max\{k: \text{k integer}, k < (1-\theta)^{-1}\}$ 
+	}
+\end{homeworkProblem}
 \end{document}
