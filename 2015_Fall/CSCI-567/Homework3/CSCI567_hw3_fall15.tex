@@ -296,14 +296,107 @@
 	\begin{homeworkSection}{\homeworkProblemName: ~(c)}
 		\problemAnswer{
 			
-			The idea of regularisation here is to bound the hyperparameters $w_i$ so that they are less prone to overfitting. One simple QP equaivalent is this:
+			%The idea of regularisation here is to bound the hyperparameters $w_i$ so that they are less prone to overfitting. One simple QP equaivalent is this:
 			
-			$min_{w}\frac{1}{2}(y_1-w^Tx_1, y_2-w^Tx_2 \cdots y_n-w^Tx_n )^T I (y_1-w^Tx_1, y_2-w^Tx_2 \cdots y_n-w^Tx_n )$ where $I$ is the $n \times n$ identity matrix and
-			the constraint is:
+			%$min_{w}\frac{1}{2}(y_1-w^Tx_1, y_2-w^Tx_2 \cdots y_n-w^Tx_n )^T I (y_1-w^Tx_1, y_2-w^Tx_2 \cdots y_n-w^Tx_n )$ where $I$ is the $n \times n$ identity matrix and
+			%the constraint is:
 			
-			$||w||_1 \leq \frac{1}{\lambda}$
-			
-			
+			Let's redefine(for the sake of easense)$x_i$ to be column vector i.e $x_i \ is D\times1$ $w^T is 1\times D$ and and $Y=(y_1 \dots y_n)$ the equivalent porblem then becomes:
+			$$min_w \sum_i(y_i-x_i^w)^2$$
+			%$||w||_1 \leq \frac{1}{\lambda}$
+$$
+			\min_w \sum_i(y_i-x_i^Tw)^2 + \lambda ||w||_1$$
+		$$	\min_w (y-X^Tw)^T(y-X^Tw) + \lambda ||w||_1$$
+		$$	\min_w (w^TXX^Tw-2Y^TXw+Y^TY) +  \min_w \lambda ||w||_1$$
+		$$	\min_w (w^TXX^Tw-2Y^TXw) +  \min_w \lambda ||w||_1$$
+We introduce dummy variables $t_i$ such that:
+
+$$||w_i|| \leq t_i \implies t_i \geq w_i \text{and} t_i \geq -w_i$$
+
+Now,
+$$
+\min_w \lambda ||w||_1 \leq \lambda (t_1+t_2+\dots + t_n)
+$$
+Constraint:
+\begin{align*}
+t_i + w_i&\geq \\
+t_i - w_i &\geq -w_i
+\end{align*}
+
+which in the matrix form looks like:
+
+$$
+\begin{pmatrix}
+1 & 1\\
+1 & -1
+\end{pmatrix} \begin{pmatrix}
+t_i\\
+w_i
+\end{pmatrix} \geq 0
+$$
+
+Now consider this vector,: $$\begin{pmatrix}
+t_1\\
+t_2\\
+t_3\\
+\vdots
+t_n\\
+w_1\\
+\vdots
+w_n
+\end{pmatrix}$$		
+
+The matrix $A$ for reducing this constraicnt to the form $Au < b$ is then given by:
+Let:
+$$
+B= \begin{pmatrix}
+1 & 1\\
+1 & -1
+\end{pmatrix}
+$$
+
+$$
+\begin{pmatrix}
+1 & (n-1)zeroes\dots         & 1 & 0\dots & \\
+1 & (n-1)zeroes\dots         & -1 & 0\dots & \\
+01 & 1 &(n-1)zeroes       & -1 & \\
+&         & &  -1
+\end{pmatrix}\begin{pmatrix}
+t_1\\
+t_2\\
+t_3\\
+\vdots
+t_n\\
+w_1\\
+\vdots
+w_n
+\end{pmatrix} \geq 0
+$$
+}
+\newpage
+\problemAnswer{
+Our optimisation problem now looks like:
+
+
+$$
+\begin{pmatrix}
+t\\
+w
+\end{pmatrix}^T\begin{pmatrix}
+0 & 0\\
+0 & XX^T
+\end{pmatrix}
+\begin{pmatrix}
+t \\
+w
+\end{pmatrix}
++ \begin{pmatrix}
+	1 & 1 &  \dots(d-2) \text{times } 1 & \text{d times } 0\dots
+\end{pmatrix}\begin{pmatrix}
+t\\
+w
+\end{pmatrix}
+$$
 			}
 	\end{homeworkSection}
 
@@ -526,6 +619,56 @@
 			Just like subpart (c), here $g(x) = exp(x)$ (it's not a polynomial, though that does not affect the derivation we came up with in part (c)). So this is immediate from part (c).
 		}
 	\end{homeworkSection}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 5]
+\begin{homeworkSection}{a}
+	\problemAnswer{
+		-----$g_1$-------
+		MSE:0.463977    Bias Sq:0.108996        Variance:0.000000\\
+		-----$g_2$-------
+		MSE:0.356683    Bias Sq:0.002941        Variance:0.003295\\
+		-----$g_3$-------
+		MSE:0.354618    Bias Sq:0.002844        Variance:0.007814\\
+		-----$g_4$-------
+		MSE:0.004551    Bias Sq:0.000151        Variance:0.003862\\
+		-----$g_5$-------
+		MSE:0.005546    Bias Sq:0.000151        Variance:0.004782\\
+		----$g_6$-------
+		MSE:0.006223    Bias Sq:0.000125        Variance:0.005273\\
+		
+		As the model complexity increase the squared bias decreases  and the variance increases. However for some reason, the variance attributed with $g_3$ is a bit more than the normal trend. I could not think of a possible explanation for this.
+	}
+		\begin{figure}
+			\includegraphics[scale=0.7]{programming/g1-mse}
+			\caption{Problem 5.a $g_1$ MSE}
+		\end{figure} 
+		\begin{figure}
+			\includegraphics[scale=0.7]{programming/g2-mse}
+			\caption{Problem 5.a $g_2$ MSE}
+		\end{figure} 
+		\begin{figure}
+			\includegraphics[scale=0.7]{programming/g3-mse}
+			\caption{Problem 5.a $g_3$ MSE}
+		\end{figure} 
+		\begin{figure}
+			\includegraphics[scale=0.7]{programming/g4-mse}
+			\caption{Problem 5.a $g_4$ MSE}
+		\end{figure} 
+		\begin{figure}
+			\includegraphics[scale=0.7]{programming/g5-mse}
+			\caption{Problem 5.a $g_5$ MSE}
+		\end{figure} 
+		\begin{figure}
+			\includegraphics[scale=0.7]{programming/g6-mse}
+			\caption{Problem 5.a $g_6$ MSE}
+		\end{figure} 
+		
+		
+\end{homeworkSection}
+\begin{homeworkSection}{}
+	content...
+\end{homeworkSection}
 \end{homeworkProblem}
 
 \end{document}
