@@ -10,5 +10,10 @@ for i=1:cols_X
 end
 %size(X)
 %size(y)
-beta = pinv(X'*X)*X'*y;
+if p>=1
+    beta = pinv(X'*X)*X'*y;
+else
+    beta = y;
+end
+
 end
