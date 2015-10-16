@@ -1,9 +1,9 @@
-function [err, W] = perform_k_fold_validation_linear(sigma, lambda, input_data)
+function [err, W] = perform_k_fold_validation_rbf(sigma, lambda, input_data)
     k = 5;
     cols = size(input_data,2);
     datasize = size(input_data,1);
     permuted = randperm(datasize);
-    binsize = ceil(datasize/k);
+    binsize = floor(datasize/k);
     training_dataset_indices = [];
     err = 0;
     for i=1:k

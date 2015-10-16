@@ -1,0 +1,8 @@
+t=1
+Optimal: 0      0       1
+
+t=2
+Optimal: 1.000000e-03   0       1
+
+t=3
+Optimal: 1      0       1

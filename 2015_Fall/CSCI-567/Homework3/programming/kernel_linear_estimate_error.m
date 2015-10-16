@@ -4,5 +4,5 @@ size(X);
 size(y);
 ypred = w*X';
 ypred = ypred';
-yerror = (norm(y-ypred))^2/length(ypred);
+yerror = (norm(y-ypred,2))^2/length(ypred);
 end
