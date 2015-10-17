@@ -10,6 +10,7 @@ lambdas = [0.01,0.1,1,10];
 biases = [];
 vars = [];
 mses =[];
+disp(sprintf('lambda\tBias2\tVariance\tMSE'));
 for l=1:length(lambdas)
     beta_4 = [];
     lambda = lambdas(l);
