@@ -1,8 +1,10 @@
 function [norm_train_data_appended, norm_test_data_appended] = getdata(data)
-    datasize = size(data,2);
+    datasize = size(data,1);
+    training_data_indices = [];
+    test_data_indices = [];
     permutation = randperm(datasize);
-    train_ind = permutation(1:floor(0.8*datasize));
-    test_ind = permutation (ceil(0.8*datasize):length(permutation));
+    train_ind = permutation(1:floor(0.5*datasize));
+    test_ind = permutation (ceil(0.5*datasize):length(permutation));
     training_data_indices(end+1,:) = train_ind;
     test_data_indices(end+1,:) = test_ind;
     train_data = data(train_ind,:);

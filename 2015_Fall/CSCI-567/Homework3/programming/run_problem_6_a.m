@@ -1,6 +1,6 @@
 clear all;
 data = dlmread('space.tsv');
-%rng(1);
+rng(1);
 datasize = size(data,1);
 indices = 1:datasize;
 training_data_indices = [];
