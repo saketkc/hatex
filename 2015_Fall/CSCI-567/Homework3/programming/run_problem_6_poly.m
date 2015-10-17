@@ -46,7 +46,12 @@ for t=1:3
     disp('-------------------------------------------');
     disp(sprintf('Optimal: %d\t%d\t%d',optimallamb,optimala,optimalb));
     disp('-------------------------------------------');
-    test_err
 
 end
 
+disp('-------------------------------------------');
+disp(sprintf('t\tOptimal lambda\tOptimal a\tOptimal b\tError'));
+for t=1:3
+    disp(sprintf('%d\t%f\t%f\t%f',t,optimal_lambdas(t),optimal_a(t), optimal_b(t), test_err(t)))
+end
+disp('-------------------------------------------');

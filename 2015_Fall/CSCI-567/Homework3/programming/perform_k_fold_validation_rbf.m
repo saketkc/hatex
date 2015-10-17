@@ -1,4 +1,4 @@
-function [err, W] = perform_k_fold_validation_rbf(sigma, lambda, input_data)
+function [err] = perform_k_fold_validation_rbf(sigma, lambda, input_data)
     k = 5;
     cols = size(input_data,2);
     datasize = size(input_data,1);
@@ -18,8 +18,7 @@ function [err, W] = perform_k_fold_validation_rbf(sigma, lambda, input_data)
             end
         end
         test_data = input_data(training_dataset_indices(index,:),:);
-        %[ypred, ymodel] = kernel_rbf(sigma,lambda,training_data(:,2:cols), training_data(:,1));
-        [ypredtest] = kernel_rbf_predict(lambda, a,b,training_data(:,2:cols), training_data(:,1), test_data(:,2:cols));%, training_data(:,1));
+        [ypredtest] = kernel_rbf_predict(sigma, lambda, training_data(:,2:cols), training_data(:,1), test_data(:,2:cols));%, training_data(:,1));
         [yerror] = kernel_poly_estimate_error(ypredtest, test_data(:,1));
         err = err+yerror;
     end

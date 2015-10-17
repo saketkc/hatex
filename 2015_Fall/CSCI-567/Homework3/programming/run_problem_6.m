@@ -13,40 +13,18 @@ for t=1:10
     minmodelerror = 100;
     optimallambda = 0;
     optimalW = 0;
-    permutation = randperm(datasize);
-    train_ind = permutation(1:floor(0.8*datasize));
-    test_ind = permutation (ceil(0.8*datasize):length(permutation));
-    training_data_indices(end+1,:) = train_ind;
-    test_data_indices(end+1,:) = test_ind;
-    train_data = data(train_ind,:);
-    test_data  = data(test_ind,:);
-    [norm_train_data, mean_train_data, std_train_data] = normalise(train_data);
-    norm_test_data = normalise_with_mean(test_data, mean_train_data, std_train_data);
-    norm_train_data(:,1) = train_data(:,1);
-    norm_test_data(:,1) = test_data(:,1);
-    norm_test_data_appended = norm_test_data;%(:,1);
-    %norm_test_data_appended(:,2) = ones(size(norm_test_data,1),1);
-    %norm_test_data_appended(:,3:size(norm_test_data,2)+1) = norm_test_data(:,2:size(norm_test_data,2));
-    norm_test_data_appended(:,end+1) = ones(size(norm_test_data,1),1);
-
-
-     norm_train_data_appended = norm_train_data;%(:,1);
-   % norm_train_data_appended(:,2) = ones(size(norm_train_data,1),1);
-    %norm_train_data_appended(:,3:size(norm_train_data,2)+1) = norm_train_data(:,2:size(norm_train_data,2));
-    norm_train_data_appended(:,end+1) = ones(size(norm_train_data,1),1);
-    
+    [norm_train_data_appended, norm_test_data_appended] = getdata(data);
+    cols = size(norm_train_data_appended,2);
 
     for l=1:length(lambda)
         lamb = lambda(l);
         lamb;
         [modelerror,W] = perform_k_fold_validation(lamb, norm_train_data_appended);
-        modelerror;
         if modelerror < minmodelerror
             minmodelerror = modelerror;
             optimalW = W;
             optimallambda = lamb;
         end
-        optimallambda ;
     end
     cols = size(norm_train_data_appended,2);
     newmodelw = problem_5_b(optimallambda, norm_train_data_appended(:,2:cols), norm_train_data_appended(:,1));
@@ -55,3 +33,9 @@ for t=1:10
     optimal_lambdas(end+1) = optimallambda;
 end
 
+disp('-------------------------------------------');
+disp(sprintf('t\tOptimal lambda\tError'));
+for t=1:3
+    disp(sprintf('%d\t%f\t%f',t,optimal_lambdas(t),test_err(t)))
+end
+disp('-------------------------------------------');
