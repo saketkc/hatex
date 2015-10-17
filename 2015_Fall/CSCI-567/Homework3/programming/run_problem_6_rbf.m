@@ -25,7 +25,7 @@ for t=1:3
         for k=1:length(lambda)
             lamb = lambda(k);
             [modelerror] = perform_k_fold_validation_rbf(sigm, lamb, norm_train_data_appended);
-            disp(sprintf('%d\t%d\t%d\t%d\t%f',t,lamb,sigm,modelerror));
+            %disp(sprintf('%d\t%d\t%d\t%d\t%f',t,lamb,sigm,modelerror));
             if modelerror < minmodelerror
                 minmodelerror = modelerror;
                 optimalsigma = sigm;

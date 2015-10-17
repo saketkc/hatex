@@ -15,11 +15,11 @@ for t=1:3
     optimalW = 0;
     [norm_train_data_appended, norm_test_data_appended] = getdata(data);
     cols = size(norm_train_data_appended,2);
-    disp(sprintf('Lambda\tError'))
+   % disp(sprintf('Lambda\tError'))
     for l=1:length(lambda)
         lamb = lambda(l);
         [modelerror,W] = perform_k_fold_validation_linear(lamb, norm_train_data_appended);
-        disp(sprintf('%f\t%f',lamb, modelerror))
+        %disp(sprintf('%f\t%f',lamb, modelerror))
         if modelerror < minmodelerror
             minmodelerror = modelerror;
             optimalW = W;
