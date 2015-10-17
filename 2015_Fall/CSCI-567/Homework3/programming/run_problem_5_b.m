@@ -90,7 +90,7 @@ mbias6 = mean(bias6);
 
 disp('-----g1-------');
 disp(sprintf('MSE:%f\tBias Sq:%f\tVariance:%f',mmse1,mbias1,mvar1));
-hist(mse1,20);
+hist(mse1);
 title('g1 MSE');
 xlabel('MSE');
 ylabel('Frequency');
@@ -100,7 +100,7 @@ close all;
 
 disp('-----g2-------');
 disp(sprintf('MSE:%f\tBias Sq:%f\tVariance:%f',mmse2,mbias2,mvar2));
-hist(mse2,20);
+hist(mse2);
 title('g2 MSE');
 xlabel('MSE');
 ylabel('Frequency');
@@ -110,7 +110,7 @@ close all;
 
 disp('-----g3-------');
 disp(sprintf('MSE:%f\tBias Sq:%f\tVariance:%f',mmse3,mbias3,mvar3));
-hist(mse3,20);
+hist(mse3);
 title('g3 MSE');
 xlabel('MSE');
 ylabel('Frequency');
@@ -120,7 +120,7 @@ close all;
 
 disp('-----g4-------');
 disp(sprintf('MSE:%f\tBias Sq:%f\tVariance:%f',mmse4,mbias4,mvar4));
-hist(mse4,20);
+hist(mse4);
 title('g4 MSE');
 xlabel('MSE');
 ylabel('Frequency');
@@ -130,7 +130,7 @@ close all;
 
 disp('-----g5-------');
 disp(sprintf('MSE:%f\tBias Sq:%f\tVariance:%f',mmse5,mbias5,mvar5));
-hist(mse5,20);
+hist(mse5);
 title('g5 MSE');
 xlabel('MSE');
 ylabel('Frequency');
@@ -140,7 +140,7 @@ close all;
 
 disp('-----g6-------');
 disp(sprintf('MSE:%f\tBias Sq:%f\tVariance:%f',mmse6,mbias6,mvar6));
-hist(mse6,20);
+hist(mse6);
 title('g6 MSE');
 xlabel('MSE');
 ylabel('Frequency');

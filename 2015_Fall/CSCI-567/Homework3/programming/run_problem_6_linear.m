@@ -39,3 +39,6 @@ for t=1:3
     disp(sprintf('%d\t%f\t%f',t,optimal_lambdas(t),test_err(t)))
 end
 disp('-------------------------------------------');
+disp('-------------------------------------------');
+disp(sprintf('Mean test error: %f', mean(test_err)));
+disp('-------------------------------------------');

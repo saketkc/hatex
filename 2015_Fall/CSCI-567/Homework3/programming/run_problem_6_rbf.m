@@ -33,7 +33,6 @@ for t=1:3
             end
         end
     end
-    cols = size(norm_train_data_appended,2);
     [ypredtest] = kernel_rbf_predict(optimalsigma, optimallamb, norm_train_data_appended(:,2:cols), norm_train_data_appended(:,1), norm_test_data_appended(:,2:cols));
     [testerror] = kernel_poly_estimate_error(ypredtest, norm_test_data_appended(:,1));
     test_err(end+1) = testerror;
@@ -47,4 +46,7 @@ disp(sprintf('t\tOptimal lambda\tOptimal Sigma2\tError'));
 for t=1:3
     disp(sprintf('%d\t%f\t%f\t%f',t,optimal_lambdas(t),optimal_sigmas(t), test_err(t)))
 end
+disp('-------------------------------------------');
+disp('-------------------------------------------');
+disp(sprintf('Mean test error: %f', mean(test_err)));
 disp('-------------------------------------------');

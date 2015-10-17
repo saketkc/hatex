@@ -9,7 +9,7 @@ lambda = [0 power(10,-4:3)];
 train_err =[];
 test_err = [];
 optimal_lambdas=[];
-for t=1:10
+for t=1:3
     minmodelerror = 100;
     optimallambda = 0;
     optimalW = 0;
@@ -38,4 +38,7 @@ disp(sprintf('t\tOptimal lambda\tError'));
 for t=1:3
     disp(sprintf('%d\t%f\t%f',t,optimal_lambdas(t),test_err(t)))
 end
+disp('-------------------------------------------');
+disp('-------------------------------------------');
+disp(sprintf('Mean test error: %f', mean(test_err)));
 disp('-------------------------------------------');
