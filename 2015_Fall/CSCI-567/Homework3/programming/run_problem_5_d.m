@@ -10,7 +10,7 @@ lambdas = [0.01,0.1,1,10];
 biases = [];
 vars = [];
 mses =[];
-disp(sprintf('lambda\tBias2\tVariance\tMSE'));
+disp(sprintf('lambda\tMSE\tBias2\tVariance'));
 for l=1:length(lambdas)
     beta_4 = [];
     lambda = lambdas(l);
@@ -28,7 +28,7 @@ for l=1:length(lambdas)
     biases(end+1) = mbias4;
     vars(end+1) = mvar4;
     mses(end+1) = mmse4;
-    disp(sprintf('%f\t%f\t%f\t%f',lambda,mbias4,mvar4,mmse4));
+    disp(sprintf('%f\t%f\t%f\t%f',lambda,mmse4, mbias4,mvar4));
 end
 
 
