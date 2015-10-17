@@ -666,9 +666,38 @@ $$
 		
 		
 \end{homeworkSection}
-\begin{homeworkSection}{}
-	content...
+\begin{homeworkSection}{b}
+\begin{figure}
+	\includegraphics[scale=0.7]{programming/g1-mse}
+	\caption{Problem 5.a $g_1$ MSE}
+\end{figure} 
+\begin{figure}
+	\includegraphics[scale=0.7]{programming/g2-mse}
+	\caption{Problem 5.a $g_2$ MSE}
+\end{figure} 
+\begin{figure}
+	\includegraphics[scale=0.7]{programming/g3-mse}
+	\caption{Problem 5.a $g_3$ MSE}
+\end{figure} 
+\begin{figure}
+	\includegraphics[scale=0.7]{programming/g4-mse}
+	\caption{Problem 5.a $g_4$ MSE}
+\end{figure} 
+\begin{figure}
+	\includegraphics[scale=0.7]{programming/g5-mse}
+	\caption{Problem 5.a $g_5$ MSE}
+\end{figure} 
+\begin{figure}
+	\includegraphics[scale=0.7]{programming/g6-mse}
+	\caption{Problem 5.a $g_6$ MSE}
+\end{figure}
 \end{homeworkSection}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 6]
+\problemAnswer{
+	Kernel  ridge regression with linear kernel does not give the same results, and the thing to realise in this case is that linear kernel projects the data into $N \times N$ dimenisons, while the ridge regression still has the 'kernel' in $D\times D$ dimensions. There is extra information being used here (in cases where $N>D$) In a a siutation where $D>N$ the linear kernl might perform better.(I don't have a proof for this)
+	}
 \end{homeworkProblem}
 
 \end{document}
