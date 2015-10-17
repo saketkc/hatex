@@ -26,6 +26,8 @@
 \usepackage{extramarks} % Required for headers and footers
 \usepackage{graphicx} % Required to insert images
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{subcaption}
+
 
 \usepackage{amsmath}
 
@@ -180,7 +182,7 @@
 	\end{align*}
 	
 	
-	Consider $\mathcal(L)(w) = y(b+w^Tx) - \log(1+e^{(b+w^Tx_i)})$
+	Consider $\mathcal{L}(w) = -y(b+w^Tx) + \log(1+e^{(b+w^Tx_i)})$
 	
 	
 	\begin{align*}
@@ -198,7 +200,7 @@
 \problemAnswer{
 	
 	
-	When the data is perfectly linearly separable, (assume first $n/2$ of the $n$ training points belong to class 0 and the remaining to class $1$), thus our regression model should assign the first $n/2$ points to class with cent percent certainity or with probability 1 and the remaining $n/2$ to class 0 with probability 1.
+	When the data is perfectly linearly separable, (assume first $n/2$ of the $n$ training points belong to class 0 and the remaining to class $1$), thus our regression model should assign the first $n/2$ points to class 1 with cent percent certainty or with probability 1 and the remaining $n/2$ to class 0 with probability 1.
 	For this to happen, $P(Y=1|X=X_1) = 1$ and $P(Y=0|X=X_0)=1$ where $X_1$ is the set of points belonging to class $1$ and $X_0$ is the set of points belonging to class 0.
 	
 	Clearly this scenario is possible when $||w|| \longrightarrow \infty$
@@ -207,7 +209,7 @@
 \begin{homeworkSection}{\homeworkProblemName: ~(c)}
 	\problemAnswer{
 
-	A simple example with two points would be $(0,0)$, $(1,1)$. Intuitively the step function's step branches (the horizontals of a sigmooid function) will be located at infinity. Also the line separating the points (0,0) and (1,1) can be anywhere in between 0 and 1, thus there will be multiple solutions.
+	A simple example with two points would be $(0,0)$, $(1,1)$. Intuitively the step function's step branches (the horizontals of a sigmoid function) will be located at infinity. Also the line separating the points (0,0) and (1,1) can be anywhere in between 0 and 1, thus there will be multiple solutions.
 }
 \end{homeworkSection}
 
@@ -233,7 +235,7 @@
 \end{homeworkSection}
 \end{homeworkProblem}
 
-\begin{homeworkProblem}{Problem 2}
+\begin{homeworkProblem}[Problem 2]
 	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 	\problemAnswer{
 		Consider $||w||_0= \#{i: w_i \neq 0}$ for a 1D case.
@@ -251,10 +253,11 @@
 		Thus,
 		\begin{align*}
 		f(0) &= 0\\
-		f(\epsilon) &= 1\\
-		f(\lambda \times 0 + (1-\lambda)\times \epsilon) &= 1 \forall 0 < \lambda < 1 \tag{2a.1}\\
-		\lambda f(0) + (1-\lambda)f(\epsilon) &= 1-\lambda 
-		0 < 1-\lambda &< 1 \tag{2a.2}
+		f(\epsilon) &= 1\\		
+		f((1-\lambda)\epsilon) &= 1\\
+		f(\lambda \times 0 + (1-\lambda)\times \epsilon) &= 1\  \forall\ 0 < \lambda < 1 \tag{2a.1}\\
+		\lambda f(0) + (1-\lambda)f(\epsilon) &= 1-\lambda
+		 < 1 = f(\lambda \times 0 + (1-\lambda)\times \epsilon) \tag{2a.2}
 		\end{align*}
 		
 		From $(2a.1),(2a.2)$ we see:
@@ -263,7 +266,7 @@
 	
 		 
 		
-		Thus, $||w||_0$ is not a convecx function!
+		Thus, $||w||_0$ is not a convex function!
 		
 	
 		
@@ -283,7 +286,7 @@
 		||\lambda u + (1-\lambda) v|| & = \sum_{i=1}^D |\lambda u_i + (1-\lambda) v_i|\\
 		&\leq \sum_{i=1}^D \big(|\lambda u_i| + |(1-\lambda) v|\big)\  (since\ |a+b| \leq |a| + |b| \forall\ a,b \in R )\\
 		&= \sum_{i=1}^D |\lambda| |u_i| + \sum_{i=1}^D |1-\lambda| |v_i|\\
-		&= \lambda ||u||_1 + (1-\lambda)||v||_1\ \text{since} (0 \lambda < 1) \tag{2a.1}
+		&= \lambda ||u||_1 + (1-\lambda)||v||_1\ \text{since} (0 < \lambda < 1) \tag{2a.1}
 		\end{align*}
 		
 		From $(2b.1)$, we see.
@@ -319,8 +322,8 @@ $$
 $$
 Constraint:
 \begin{align*}
-t_i + w_i&\geq \\
-t_i - w_i &\geq -w_i
+t_i + w_i&\geq 0 \\
+t_i - w_i &\geq 0
 \end{align*}
 
 which in the matrix form looks like:
@@ -346,7 +349,14 @@ w_1\\
 w_n
 \end{pmatrix}$$		
 
-The matrix $A$ for reducing this constraicnt to the form $Au < b$ is then given by:
+which in short form is :
+$$
+\begin{pmatrix}
+t\\
+w
+\end{pmatrix}
+$$
+The matrix $A$ for reducing this constraint to the form $Au < b$ is then given by:
 Let:
 $$
 B= \begin{pmatrix}
@@ -354,14 +364,22 @@ B= \begin{pmatrix}
 1 & -1
 \end{pmatrix}
 $$
+}
+\newpage
+\problemAnswer{
 
 $$
 \begin{pmatrix}
-1 & (n-1)zeroes\dots         & 1 & 0\dots & \\
-1 & (n-1)zeroes\dots         & -1 & 0\dots & \\
-01 & 1 &(n-1)zeroes       & -1 & \\
-&         & &  -1
-\end{pmatrix}\begin{pmatrix}
+1 & (n-1)zeroes\dots         & 1 & 0\dots & 0 & 0 & 0\\
+1 & (n-1)zeroes\dots         & -1 & 0\dots & 0  & 0 & 0\\
+0 & 1 &(n-1)zeroes       & 1 & 0\dots & 0 & 0\\
+0 & 1 &(n-1)zeroes       & -1 & 0\dots & 0 & 0 \\
+0 & 0 & 1     & (n-1) zeroes  & 1 & 0\dots & 0\\
+0 & 0 & 1     & (n-1) zeroes  & -1 & 0\dots\\
+\vdots & \vdots & \vdots 
+& 0\dots        & &  &  1\\
+& & 0\dots        & &  & &-1
+\end{pmatrix}_{2n\times 2n}\begin{pmatrix}
 t_1\\
 t_2\\
 t_3\\
@@ -370,33 +388,51 @@ t_n\\
 w_1\\
 \vdots
 w_n
-\end{pmatrix} \geq 0
+\end{pmatrix}_{2n \times 1} \geq 0
 $$
-}
-\newpage
-\problemAnswer{
+
 Our optimisation problem now looks like:
 
 
 $$
-\begin{pmatrix}
+\min_{t,w} \begin{pmatrix}
 t\\
 w
-\end{pmatrix}^T\begin{pmatrix}
+\end{pmatrix}^T_{1 \times 2n}\begin{pmatrix}
 0 & 0\\
 0 & XX^T
-\end{pmatrix}
+\end{pmatrix}_{2n \times 2n}
 \begin{pmatrix}
 t \\
 w
-\end{pmatrix}
+\end{pmatrix}_{2n \times 1}
 + \begin{pmatrix}
-	1 & 1 &  \dots(d-2) \text{times } 1 & \text{d times } 0\dots
-\end{pmatrix}\begin{pmatrix}
+	1 &  \dots(n-2) \text{times } 1 & 0\dots & \text{n times } 0\dots
+\end{pmatrix}^T_{1 \times 2n}\begin{pmatrix}
 t\\
 w
-\end{pmatrix}
+\end{pmatrix}_{2n \times 1}
 $$
+with the constraint:
+
+$$
+\begin{pmatrix}
+1 & (n-1)zeroes\dots         & 1 & 0\dots & 0 & 0 & 0\\
+1 & (n-1)zeroes\dots         & -1 & 0\dots & 0  & 0 & 0\\
+0 & 1 &(n-1)zeroes       & 1 & 0\dots & 0 & 0\\
+0 & 1 &(n-1)zeroes       & -1 & 0\dots & 0 & 0 \\
+0 & 0 & 1     & (n-1) zeroes  & 1 & 0\dots & 0\\
+0 & 0 & 1     & (n-1) zeroes  & -1 & 0\dots\\
+\vdots & \vdots & \vdots 
+& 0\dots        & &  &  1\\
+& & 0\dots        & &  & &-1
+\end{pmatrix}_{2n\times 2n}\begin{pmatrix}
+t\\
+w
+\end{pmatrix}_{2n \times 1} \geq 0
+$$
+
+
 			}
 	\end{homeworkSection}
 
@@ -429,8 +465,8 @@ $$
 		\frac{\partial f(w)}{\partial w} &= -X^Ty - X^Ty + 2\lambda w + (X^TXw + (XX^Tw)) = 0\\
 		&= 2\lambda w +2X^TXw -2X^Ty = 0\\
 		\textbf{w}(\lambda I_D + X^Tw) &= X^Ty\\
-		\textbf{w} &= (X^TXw + \lambda I_D)^{-1}X^Ty
 		\end{align*}
+$$\boxed{		\textbf{w*} = (X^TXw + \lambda I_D)^{-1}X^Ty}$$
 		
 		
 		}
@@ -445,13 +481,13 @@ $$
 		
 		Using the identity:
 		
-		$(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}$
+		$$(P^{-1}+B^TR^{-1}B)^{-1}B^TR^{-1} = PB^T(BPB^T+R)^{-1}$$
 		
 		Thus,
 		
-		$\big((\lambda I_D + \Phi^T\Phi)^{-1}\big)\Phi^Ty =  \Phi^T\big(\Phi\Phi^T + \lambda I_N\big)^{-1}y$
+		$$\big((\lambda I_D + \Phi^T\Phi)^{-1}\big)\Phi^Ty =  \Phi^T\big(\Phi\Phi^T + \lambda I_N\big)^{-1}y$$
 		
-		$w^{*} = \Phi^T(\Phi\Phi^T + \lambda I_N)^{-1} y$
+		$$\boxed{w^{*} = \Phi^T(\Phi\Phi^T + \lambda I_N)^{-1} y}$$
 		
 	}
 	
@@ -459,15 +495,15 @@ $$
 
 \begin{homeworkSection}{\homeworkProblemName: ~(c)}
 	\problemAnswer{
-		$\hat{y} = w^{*T} \Phi(x)$
+		$$\hat{y} = w^{*T} \Phi(x)$$
 		
-		$\hat{y} =  \big(\Phi^T(\Phi\Phi^T + \lambda I_N)^{-1} y\big)^T\Phi(x) = y^T \big((\Phi\Phi^T + \lambda I_N)^{-1}\big)^T\Phi^T\Phi(x)$
+		$$\hat{y} =  \big(\Phi^T(\Phi\Phi^T + \lambda I_N)^{-1} y\big)^T\Phi(x) = y^T \big((\Phi\Phi^T + \lambda I_N)^{-1}\big)^T\Phi^T\Phi(x)$$
 		
-		Now using the property, $(A^{-1})^T = (A^T)^{-1}$
+		Now using the property, $$(A^{-1})^T = (A^T)^{-1}$$
 		
 		
 		\begin{align*}
-		\hat{y} &=  = y^T \big((\Phi\Phi^T + \lambda I_N)^{-1}\big)^T\Phi^T\Phi(x) \\
+		\hat{y} &= y^T \big((\Phi\Phi^T + \lambda I_N)^{-1}\big)^T\Phi^T\Phi(x) \\
 		&=  y^T \big((\Phi\Phi^T + \lambda I_N)^{T}\big)^{-1}\Phi^T\Phi(x)\\
 		&=  y^T \big((\Phi^T\Phi + \lambda I_N)\big)^{-1}\Phi^T\Phi(x)\\
 		&= y^T(K+\lambda I_N)^{-1} \kappa(x)
@@ -482,9 +518,9 @@ $$
 \begin{homeworkSection}{\homeworkProblemName: ~(d)}
 \problemAnswer{
 	
-	Kernel ridge regression is $O(n^3)$ for $n$ data points. Linear regression was forumlated as quadratic programing and hence is $O(n^2)$.
+	Kernel ridge regression is $O(n^3)$ for $n$ data points. Linear regression was formulated as quadratic programing and hence is $O(n^2)$.
 	
-	The extra $n$ factor comes from the formation of kernel matrix $K$.
+  Kernel $n\times n$ instead of $d \times d$(for vanilla ridge regression without kernel). In cases where $d<n$ this leads to an additional $n$ operations for calculating $K$ itself.
 	}
 \end{homeworkSection}
 
@@ -581,11 +617,37 @@ $$
 			\vdots\\
 			y_n
 			\end{pmatrix}\\
-			y^TK^{(5)}y  &= y_1g(k_1(x_1,x_1'))y_1 + y_2g(k_1(x_1,x_2'))y_2 + \cdots y_ng(k_1(x_n,x_n'))y_n\\
-			\text{Since}\ g(k_1(x_i,x_j)) \geq 0\\
-			y^TK^{(5)}y &\geq 0 \ \forall \ y \in \mathbf{R}
+			%y^TK^{(5)}y  &= y_1g(k_1(x_1,x_1'))y_1 + %y_2g(k_1(x_1,x_2'))y_2 + \cdots y_ng(k_1(x_n,x_n'))y_n\\
+			%\text{Since}\ g(k_1(x_i,x_j)) \geq 0\\
+			%y^TK^{(5)}y &\geq 0 \ \forall \ y \in \mathbf{R}
 			\end{align*}
-			Thus $k_5$ is a kernel
+			%Thus $k_5$ is a kernel
+			Since $K_1$ is positive definite, it is possible to compute its diagonal formulation:
+			$$
+			K_1 =P \Lambda P^{-1} 
+			$$
+			where $\Lambda$ is a diagonal matrix with the diagonals equal to the eigen values (all non-negative).
+			
+			$$y^TK^{(5)}y = y^T(Pg(\Lambda)P^{-1})y$$
+			
+\begin{align*}
+y^TK^{(5)}y  &= (y_1\ y_2 \cdots y_n) \times \begin{bmatrix}
+g(\lambda_1) & 0 & \cdots 0\\
+\vdots\\
+0 & 0 & \cdots g(\lambda_n)
+\end{bmatrix} \times \begin{pmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n
+\end{pmatrix}
+\end{align*}
+where $\lambda_i \geq 0$ and hence $g(\Lambda)$ is semi=positive definite since $g(\lambda_1) \geq 0$ (as $\lambda_i \geq 0$ and $g$ is polynomial with positive coefficients)
+
+Thus,
+$$
+y^TK^{(5)}y \geq 0
+$$
 		}
 	\end{homeworkSection}
 	
@@ -614,91 +676,243 @@ $$
 	\end{homeworkSection}
 	\begin{homeworkSection}{\homeworkProblemName: ~(e)}
 		\problemAnswer{
-			$k_7(x,x') = exp(k_1(x,x'))$
+			$k_7(x,x') = \exp(k_1(x,x'))$
 			
-			Just like subpart (c), here $g(x) = exp(x)$ (it's not a polynomial, though that does not affect the derivation we came up with in part (c)). So this is immediate from part (c).
+			Just like subpart (c), here $g(x) = exp(x) = 1+x+x^2/2!+x^3/3!\dots$ (it's an polynomial with infinite terms and all coefficients are positive )
 		}
 	\end{homeworkSection}
 \end{homeworkProblem}
 
 \begin{homeworkProblem}[Problem 5]
-\begin{homeworkSection}{a}
+\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 	\problemAnswer{
-		-----$g_1$-------
-		MSE:0.463977    Bias Sq:0.108996        Variance:0.000000\\
-		-----$g_2$-------
-		MSE:0.356683    Bias Sq:0.002941        Variance:0.003295\\
-		-----$g_3$-------
-		MSE:0.354618    Bias Sq:0.002844        Variance:0.007814\\
-		-----$g_4$-------
-		MSE:0.004551    Bias Sq:0.000151        Variance:0.003862\\
-		-----$g_5$-------
-		MSE:0.005546    Bias Sq:0.000151        Variance:0.004782\\
-		----$g_6$-------
-		MSE:0.006223    Bias Sq:0.000125        Variance:0.005273\\
+		\begin{center}
 		
-		As the model complexity increase the squared bias decreases  and the variance increases. However for some reason, the variance attributed with $g_3$ is a bit more than the normal trend. I could not think of a possible explanation for this.
+
+	\begin{tabular}{|c|c|c|c|}
+		\hline  $g$& $MSE$  & $Bias^2$  & $Variance$  \\ 
+		\hline  $g_1$& 0.463977  & 0.108996 &  0.00\\ 
+		\hline  $g_2$&  0.356683 & 0.002941  & 0.003295 \\ 
+		\hline  $g_3$& 0.354618 & 0.002844 & 0.007814 \\ 
+		\hline  $g_4$& 0.004551  & 0.000151  & 0.003862  \\ 
+		\hline  $g_5$& 0.005546  & 0.000151 & 0.004782  \\ 
+		\hline  $g_6$& 0.006223  & 0.000125  & 0.005273  \\ 
+		\hline 
+	\end{tabular} 
+			\end{center}
+	
+		
+		
+		
 	}
 		\begin{figure}
-			\includegraphics[scale=0.7]{programming/g1-mse}
+			\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\linewidth]{programming/g1-mse}
 			\caption{Problem 5.a $g_1$ MSE}
-		\end{figure} 
-		\begin{figure}
-			\includegraphics[scale=0.7]{programming/g2-mse}
+			\end{subfigure}
+			\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\linewidth]{programming/g2-mse}
 			\caption{Problem 5.a $g_2$ MSE}
+			\end{subfigure}
 		\end{figure} 
+		
 		\begin{figure}
-			\includegraphics[scale=0.7]{programming/g3-mse}
-			\caption{Problem 5.a $g_3$ MSE}
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\linewidth]{programming/g3-mse}
+				\caption{Problem 5.a $g_3$ MSE}
+			\end{subfigure}
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\linewidth]{programming/g4-mse}
+				\caption{Problem 5.a $g_4$ MSE}
+			\end{subfigure}
 		\end{figure} 
+			
 		\begin{figure}
-			\includegraphics[scale=0.7]{programming/g4-mse}
-			\caption{Problem 5.a $g_4$ MSE}
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\linewidth]{programming/g5-mse}
+				\caption{Problem 5.a $g_5$ MSE}
+			\end{subfigure}
+			\begin{subfigure}{0.5\textwidth}
+				\includegraphics[width=\linewidth]{programming/g6-mse}
+				\caption{Problem 5.a $g_6$ MSE}
+			\end{subfigure}
 		\end{figure} 
-		\begin{figure}
-			\includegraphics[scale=0.7]{programming/g5-mse}
-			\caption{Problem 5.a $g_5$ MSE}
-		\end{figure} 
-		\begin{figure}
-			\includegraphics[scale=0.7]{programming/g6-mse}
-			\caption{Problem 5.a $g_6$ MSE}
-		\end{figure} 
+		
 		
 		
 \end{homeworkSection}
-\begin{homeworkSection}{b}
-\begin{figure}
-	\includegraphics[scale=0.7]{programming/g1-mse}
-	\caption{Problem 5.a $g_1$ MSE}
-\end{figure} 
-\begin{figure}
-	\includegraphics[scale=0.7]{programming/g2-mse}
-	\caption{Problem 5.a $g_2$ MSE}
-\end{figure} 
-\begin{figure}
-	\includegraphics[scale=0.7]{programming/g3-mse}
-	\caption{Problem 5.a $g_3$ MSE}
-\end{figure} 
-\begin{figure}
-	\includegraphics[scale=0.7]{programming/g4-mse}
-	\caption{Problem 5.a $g_4$ MSE}
-\end{figure} 
-\begin{figure}
-	\includegraphics[scale=0.7]{programming/g5-mse}
-	\caption{Problem 5.a $g_5$ MSE}
-\end{figure} 
-\begin{figure}
-	\includegraphics[scale=0.7]{programming/g6-mse}
-	\caption{Problem 5.a $g_6$ MSE}
-\end{figure}
+\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+\problemAnswer{
+		\begin{center}
+			
+			
+			\begin{tabular}{|c|c|c|c|}
+				\hline  $g$& $MSE$  & $Bias^2$  & $Variance$  \\ 
+				\hline  $g_1$& 0.466517  & 0.118490 &  0.00\\ 
+				\hline  $g_2$&  0.349509 & 0.003121  & 0.004464 \\ 
+				\hline  $g_3$& 0.345009 & 0.003141 & 0.010835 \\ 
+				\hline  $g_4$& 0.003469  & 0.000002  & 0.003411  \\ 
+				\hline  $g_5$& 0.004510  & 0.000002 & 0.004441  \\ 
+				\hline  $g_6$& 0.005375  & 0.000004  & 0.005292  \\ 
+				\hline 
+			\end{tabular} 
+		\end{center}
+	}
+	\begin{figure}
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\linewidth]{programming/g11-mse}
+			\caption{Problem 5.b $g_1$ MSE}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\linewidth]{programming/g21-mse}
+			\caption{Problem 5.b $g_2$ MSE}
+		\end{subfigure}
+	\end{figure} 
+	
+	\begin{figure}
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\linewidth]{programming/g31-mse}
+			\caption{Problem 5.b $g_3$ MSE}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\linewidth]{programming/g41-mse}
+			\caption{Problem 5.b $g_4$ MSE}
+		\end{subfigure}
+	\end{figure} 
+	
+	\begin{figure}
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\linewidth]{programming/g51-mse}
+			\caption{Problem 5.b $g_5$ MSE}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\includegraphics[width=\linewidth]{programming/g61-mse}
+			\caption{Problem 5.b $g_6$ MSE}
+		\end{subfigure}
+	\end{figure} 
+	
+\end{homeworkSection}
+\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+	\problemAnswer{
+		As the model complexity increase the squared bias decreases  and the variance increases and the mean squared error decreases. However for some reason, the variance attributed with $g_3$ is a bit more than the normal trend. I could not think of a possible explanation for this.
+		
+		Another point to realise is that the variance is decreases for $g_4$ since it is a second order polynomial just like $f(x)=2x^2$.
+		}
+
+\end{homeworkSection}
+\begin{homeworkSection}{\homeworkProblemName: ~(d)}
+	\problemAnswer{
+		\begin{center}
+			
+			
+			\begin{tabular}{|c|c|c|c|}
+				\hline  $lambda$ & $MSE$  & $Bias^2$  & $Variance$  \\ 
+				\hline 0.01& 0.006682 & 0.000356 & 0.003399\\
+				\hline 0.1& 0.014202 & 0.001268 & 0.003537\\
+				\hline 1& 0.024060 & 0.002480 & 0.003716\\
+				\hline 10& 0.035110 & 0.003843 & 0.003891\\
+				\hline 
+			\end{tabular} 
+		\end{center}
+		
+		Thus, as the $\lambda$ increases the bias increases and the variance seems to increase too(unexpected, but anyway it is marginal). Since this is regularization problem, a higher $\lambda$ will try to further penalise the larger coefficients  and hence the coefficients tend to be close to zero, thus the bias increases. Ideally the variance should have decreased(again because the coefficients are now smaller!) but this does not seem to be reflected in my simulation.
+		
+		
+		}
 \end{homeworkSection}
 \end{homeworkProblem}
 
 \begin{homeworkProblem}[Problem 6]
+	
+\begin{homeworkSection}{	\textbf{Linear Ridge Regression}}
+		\problemAnswer{
+			\centering
+\begin{tabular}{|c|c|c|}
+	\hline  Split& Optimal $\lambda$  & MSE  \\ 
+	\hline  1& 0.01 &  0.016042 \\
+	\hline  2& 0.0001 &   0.016664 \\
+	\hline  3& 0 &   0.017038 \\
+	\hline 
+\end{tabular}
+				\newline				\newline 
+Mean test error: $0.016581$
+			
+			}
+	\end{homeworkSection}
+	
+\begin{homeworkSection}{\textbf{Linear Kernel Ridge Regression}}
+	\problemAnswer{
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline  Split& Optimal $\lambda$  & MSE  \\ 
+			\hline  1& 0.01 & 0.016101   \\
+			\hline  2& 0.0001 &  0.016829  \\
+			\hline  3&  0.0& 0.017040    \\
+			\hline 
+		\end{tabular} 
+		\newline\newline
+		Mean test error: $0.016657$
+		}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{\textbf{Polynomial Kernel Ridge Regression}}
+			\problemAnswer{
+			
+			\centering
+				\begin{tabular}{|c|c|c|c|c|}
+					\hline  Split & Optimal $\lambda$  & Optimal $a$  & Optimal $b$ & MSE  \\ 
+					\hline   1 &   0.01  &  0.5   &   2 &  $1.268206*10^{-02}$  \\ 
+					\hline   2 &   1  &  0.0   &   3 &  $1.227860*10^{-02}$  \\ 
+					\hline   3 &   10  &  1.0   &   3 &  $1.286726*10^{-02}$  \\ 
+					\hline 
+				\end{tabular} 
+				\newline\newline
+				Mean test Error: $0.012609$
+			}
+	\end{homeworkSection}
+	
+		\begin{homeworkSection}{\textbf{RBF Gaussian Kernel Ridge Regression}}
+			\problemAnswer{
+			\centering
+				\begin{tabular}{|c|c|c|c|}
+					\hline  Split & Optimal $\lambda$  & Optimal $\sigma^2$ & MSE  \\ 
+					\hline  1 & 0.001 & 8 & 0.013382 \\ 
+					\hline  2 & 0.01 & 8  & 0.012444 \\
+					\hline  3 & 0.01 & 8  & 0.012080\\
+					\hline 
+				\end{tabular} 
+				\newline\newline
+				Mean test Error: $0.012635$
+			}
+		\end{homeworkSection}
+		
+	\begin{homeworkSection}{Comparison}
+
+
 \problemAnswer{
-	Kernel  ridge regression with linear kernel does not give the same results, and the thing to realise in this case is that linear kernel projects the data into $N \times N$ dimenisons, while the ridge regression still has the 'kernel' in $D\times D$ dimensions. There is extra information being used here (in cases where $N>D$) In a a siutation where $D>N$ the linear kernl might perform better.(I don't have a proof for this)
+	\textbf{Linear Ridge Regression mean test error} : $0.016581$
+	
+	\textbf{Linear Kernel Ridge Regression mean test error} : $0.016657$
+		
+
+	Kernel  ridge regression with linear kernel does not give the "same" results(they are very close though), and the thing to realise in this case is that linear kernel projects the data into $N \times N$ dimensions, while the ridge regression still has the 'kernel' in $D\times D$ dimensions. There is extra information being used here (in cases where $N>D$) In a a situation where $D>N$ the linear kernl might perform better.(I don't have a proof for this)
+	
+	\centering{
+\begin{tabular}{|c|c|}
+	\hline  Kernel &  Mean Test Error    \\ 
+	\hline  Linear no Kernel & 0.016581 \\ 
+	\hline  Linear Kernel &  0.016657 \\
+	\hline  Polynomial Kernel &  0.012609 \\
+	\hline  Gaussian Kernel & 0.012635  \\
+	\hline 
+\end{tabular} 
+}
+\newline
+
+From the table we see, the Polynomial kernel with an average polynomial degree of $2.5$ performs the best, though Gaussian comes close. It looks like the poylnomial kernel in this case is better able to capture the non linearity in 2 or 3 dimensions, while the gaussian uses infinite dimensions.
 	
 	}
+		\end{homeworkSection}
 \end{homeworkProblem}
 
 \end{document}
