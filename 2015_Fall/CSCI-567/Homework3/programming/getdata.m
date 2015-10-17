@@ -1,4 +1,5 @@
-function [norm_train_data_appended, norm_test_data_appended] = function getdata(data)
+function [norm_train_data_appended, norm_test_data_appended] = getdata(data)
+    datasize = size(data,2);
     permutation = randperm(datasize);
     train_ind = permutation(1:floor(0.8*datasize));
     test_ind = permutation (ceil(0.8*datasize):length(permutation));
