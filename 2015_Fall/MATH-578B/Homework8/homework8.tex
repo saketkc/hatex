@@ -226,14 +226,37 @@ Thus, $a=\lambda$ and $b=\frac{1}{\lambda}$
 				}
 \end{homeworkProblem}
 
+
+\begin{homeworkProblem}[Problem 3]
+\problemAnswer{
+
+$$
+p = P(match) = \sum_{i \in A}\xi_i^2
+$$
+
+
+
+$$
+p = P(R,R) + P(Y,Y) = 0.04+0.64 = 0.68
+$$
+
+
+
+	}
+\end{homeworkProblem}
+
 \begin{homeworkProblem}[Problem 11.9]
 \problemAnswer{
 Part (a):
 $\xi_a = 1/|A|$ 
 
-$\mu_{a,a} = \frac{1}{|A|^2}$
+$\mu_{a,a} =  \xi_a\xi_a(p)^{-s(a,a)} = 1/|A|^2\times |A| = 1/|A|$
 
+$p = \sum_{a\in A} \xi_a\xi_a = |A|/|A|^2 = 1/|A|$
 
+$f(\lambda) = 1-\xi_a^2\lambda^{-s(a,a)} = 1-\frac{\lambda^{-s(a,a)}}{|A|^2}$
+
+$p= \frac{2\log(|A|)}{-s(a,a)}$
 
 }
 \end{homeworkProblem}
