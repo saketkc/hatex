@@ -1,0 +1,241 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%       PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{amsmath}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%       DOCUMENT STRUCTURE COMMANDS
+%       Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%       NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment\ \# 3 } % Assignment title
+\newcommand{\hmwkDueDate}{Thursday,\ October\ 22,\ 2015} % Due date
+\newcommand{\hmwkClass}{MATH-578B} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%       TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+        \textbf{\hmwkAuthorID}
+        }
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%       TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+
+
+\begin{homeworkProblem}[Problem 1] % Roman numerals
+
+
+\problemAnswer{ % Answer
+
+The coverage $c$ depends on the position $x$ as: $c=\frac{NL_x}{G}$ where $L_x$ is the expected length of  of clones covering $x$.
+
+Probability any position $x$ to be covered by atleast one clone = 1- Probability that it is sequenced by atleast one clone.
+
+Probability that position $x$ is not sequenced = Probability of zero clones starting in $(x-L,x]$ = No arrivals in the interval $(x-L,x]$ = $e^{-c(x)}$ 
+
+
+Probability that it is sequenced = $1-e^{-c(x)}$ where $c(x)$ represents that c is a function of $x$.
+
+$ C \sim \Gamma(\alpha,\beta)$
+
+$$f(c) = \frac{c^{\alpha-1}e^{-c/\beta}}{\beta^\alpha \Gamma(\alpha)}$$
+Thus, 
+\begin{align*}
+P(N_h = k) = \int_0 ^ \infty e^{-ch}\frac{(ch)^k}{k!} \times \frac{c^{\alpha-1}e^{-c/\beta}}{\beta^\alpha \Gamma(\alpha)} dc
+\end{align*}
+
+
+
+}
+\end{homeworkProblem}
+\begin{homeworkProblem}[Problem 2]
+	\problemAnswer{
+		Given: $\lim_{n \rightarrow \infty} (1-F(b\log(n)+x/a)) = G(x)$
+		
+		\begin{align*}
+		\lim_{n \rightarrow \infty} (1-F(b\log(n)+x/a)) &= G(x)\\
+		\lim_{n \rightarrow \infty} F(b\log(n)+x/a) &= 1-G(x)/n\\
+		\end{align*}
+		
+		\begin{align*}
+		P(a(max_i X_i-b\log(n))\leq x) &= P(max_i X_i \leq x/a+b\log(n))\\
+		&= P(X_1 \leq x/a+b\log(n))P(X_2 \leq x/a+b\log(n))\dots P(X_n \leq x/a+b\log(n))\\
+		&= (F(x/a+b\log(n)))^n\\
+		&= \lim n_infty(1-G(x)/n)^n\\
+		&= \lim_{n \rightarrow \infty}e^{n\log(1-G(x)/n)}\\
+		&= e^{-G(x)}
+		\end{align*}
+		
+Choosing $a,b$ for $G(x)=e^{-x}$ given $X_i \sim exponential(\lambda)$
+
+$f(x|\lambda) = \lambda e^-{\lambda x} \implies F(x) = 1-e^{-\lambda x}$
+
+Now,
+\begin{align*}
+\lim {n \rightarrow \infty}1-G(x)/n &= F(b\log(n)+x/a)\\
+&= 1-e^{-\lambda (b\log(n)+x/a)}\\
+e^{-x}/n &= e^{-\lambda (b\log(n)+x/a)}\\
+-x &= \log(n) + -\lambda(b\log(n)+x/a)\\
+x(-1+\lambda/a) &= \log(n)-b\lambda\log(n)\\
+%1/n - x/n + x^2/2n - x^3/6n \dots &= 1-\lambda (b\log(n)+x/a)+(\lambda (b\log(n)+x/a))^2/2 +
+\end{align*}
+
+Thus, $a=\lambda$ and $b=\frac{1}{\lambda}$ 
+
+		
+	
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 4]
+	\problemAnswer{
+		Minimal neighborhood set $J_{i,j}$ such that $\{i',j' \in J_{i',j'}^c\}$ are independent of $Y_{i,j}$ is given by: $\{(i',j'): |i-i'| \leq t or |j-j'|\leq t \}$
+		
+		
+		Now,
+		
+		\begin{align*}
+		b_1 &= \sum_{i \in I}\sum_{j in J_i} E(X_i)E(X_j)\\
+		&= p^t \sum_{j \in J_i} E(X_j) + \sum_{i=2}^{n-t+1}(1-p)p^t \sum_{j \in J_i}E(X_j)\\
+		&= (n-t+1)p^t (2t+1)p^t \times 2 + (n-t+1)^2(1-p)^2p^{2t}(4t+2) \\
+		&= p^{2t}(n-t+1)(4t+2)(1+(n-t+1)(1-p)^2)
+		%&= p^{2t}(3t+1 + (n-t)(4t+3)(1-p)^2 )
+		\end{align*}
+		
+		Choose $t_n = 2\log_{1/p}n +x$
+		
+		Consider $(n-t_n+1)p^{2t} = (n-\log_{1/p}n^2+1)p^{2t} $
+				}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 11.9]
+\problemAnswer{
+Part (a):
+$\xi_a = 1/|A|$ 
+
+$\mu_{a,a} = \frac{1}{|A|^2}$
+
+
+
+}
+\end{homeworkProblem}
+\end{document}
+
