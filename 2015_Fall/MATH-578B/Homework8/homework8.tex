@@ -147,7 +147,7 @@
 
 The coverage $c$ depends on the position $x$ as: $c=\frac{NL_x}{G}$ where $L_x$ is the expected length of  of clones covering $x$.
 
-Probability any position $x$ to be covered by atleast one clone = 1- Probability that it is sequenced by atleast one clone.
+Probability any position $x$ to be covered by atleast one clone = $(1-$ Probability that it is sequenced by atleast one clone).
 
 Probability that position $x$ is not sequenced = Probability of zero clones starting in $(x-L,x]$ = No arrivals in the interval $(x-L,x]$ = $e^{-c(x)}$ 
 
@@ -198,12 +198,78 @@ x(-1+\lambda/a) &= \log(n)-b\lambda\log(n)\\
 %1/n - x/n + x^2/2n - x^3/6n \dots &= 1-\lambda (b\log(n)+x/a)+(\lambda (b\log(n)+x/a))^2/2 +
 \end{align*}
 
-Thus, $a=\lambda$ and $b=\frac{1}{\lambda}$ 
+Thus, $$a=\lambda ; b=\frac{1}{\lambda}$$ 
 
 		
 	
 }
 \end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 3]
+	\problemAnswer{
+		Target Distribution in aligned region: $P(R,R)=0.2$ ; $P(Y,Y)=0.7$;  $P(R,Y)=0.1$
+		
+		\begin{align*}
+		\xi_r &= 0.2\\
+		\xi_y &= 0.8\\
+		\end{align*}
+		
+		By Theorem 11.7 we have that thte proportion of letter $a$  aligning with letter $b$ in the best matching interval converges to:
+		$$
+		p(a,b)=\xi_a\xi_bp^{-s(a,b)}
+		$$
+		
+		Equivalently:
+		
+		$$
+		s(a,b) = \log_{1/p}(\frac{p(a,b)}{\xi_a\xi_b})
+		$$
+		
+		$$p = \xi_r \xi_r + \xi_y \xi_y = 0.68$$
+		
+		
+		Thus
+		\begin{align*}
+		P(RR) & = \xi_r\xi_rp^{-s(r,r)}\\
+		s(r,r)&= \log_{1/0.68}(\frac{0.2}{0.04})\\
+		&= 4.17		
+		\end{align*}		
+		\begin{align*}
+		s(r,y) &= \log_{1/p}(\frac{p(r,y)}{\xi_r\xi_y})\\
+		s(r,y)&= \log_{1/0.68}(\frac{0.1}{0.16})\\		
+		&= -1.21		
+		\end{align*}		
+		\begin{align*}
+		s(y,y) &= \log_{1/p}(\frac{p(y,y)}{\xi_y\xi_y})\\
+		s(y,y)&= \log_{1/0.68}(\frac{0.7}{0.64})\\		
+		&= 0.23		
+		\end{align*}
+		\begin{center}
+		\boxed{s(r,r) = 4.17	}\\
+		\boxed{s(y,y) = 0.23} \\
+		\boxed{s(y,r) = -1.21}			
+		\end{center}
+	}
+	\problemAnswer{
+		To find the value of $\lambda$ such that:
+		$$
+		\lim_{n \rightarrow \infty, m \rightarrow \infty} P\{\lambda R_{mn} - \log(K_{mn}) <x\} = exp(-exp(-x))
+		$$
+		
+		
+		$$\lambda = log(1/p) = 0.38$$
+		
+		And given that the score for 1000bp alignment is 100,
+		the p value is given by;
+		
+		$$p-value = 1-e^{-e^{-s}} $$
+			
+		where $s= \lambda R_{mn} - \log(Kmn)$
+		
+		If the p-value is less than some pre-defined threshold, the hypothesis that alignment is as good as by random chance can be rejected.
+		}
+\end{homeworkProblem}
+
 
 \begin{homeworkProblem}[Problem 4]
 	\problemAnswer{
@@ -220,21 +286,66 @@ Thus, $a=\lambda$ and $b=\frac{1}{\lambda}$
 		%&= p^{2t}(3t+1 + (n-t)(4t+3)(1-p)^2 )
 		\end{align*}
 		
+		\begin{align*}
+			E[NC_n] &=(n-t+1)(1-p)p^t\\
+			& = \lambda
+		\end{align*}
+		Thus, $n(1-p)p^t \sim \lambda$
+		
+		\begin{align*}
+		\log_{1/p} \lambda & = \log_{1/p}n + 
+		\end{align*}
 		Choose $t_n = 2\log_{1/p}n +x$
 		
 		Consider $(n-t_n+1)p^{2t} = (n-\log_{1/p}n^2+1)p^{2t} $
 				}
 \end{homeworkProblem}
 
-\begin{homeworkProblem}[Problem 11.9]
+\begin{homeworkProblem}[Exercise 11.9]
 \problemAnswer{
 Part (a):
 $\xi_a = 1/|A|$ 
 
-$\mu_{a,a} = \frac{1}{|A|^2}$
+$$ p = \sum_{a\in A} \xi_a\xi_a = |A|/|A|^2 = 1/|A| $$
+
+\begin{align*}
+\mu_{a,a} &= \xi_a \xi_a p^{-s(a,a)}\\
+&= 1/|A|^2 \times |A|\\
+&= 1/|A|
+\end{align*}
+
+
+Part (b): To Derive $s(a,b)$ such that $\mu_{a,a} = 1/|A|$
+We have(from problem 3):
+$$
+	s(a,b) = \log_{1/p}(\frac{p(a,b)}{\xi_a\xi_b})
+$$
+
+And hence:
+
+
+$$
+s(a,a) = \log_{|A|}(\frac{1/|A|}{1/|A|^2}) = 1
+$$
+
+Thus, $$s(a,a)=1;s(a,b)= -\infty$$
 
 
 
+
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Exercise 11.11]
+	\problemAnswer{
+If there are N sequences we have $n^N$ choices for $(i_i,i_2,i_3 \dots i_n)$ where $i_j$ represents the starting position for the $j^{th}$ sequence.
+and hence using naive approach(Largest run being unique and satisfying $np^{R_n}=1$ and then by allowing shifts there are $n^N$ choices for starting position in each sequence): 
+
+$H_n$ grows like $$\log_{1/p}n^N = N \log_{1/p} n$$
+
+and hence $$t(n,N) = N \log_{1/p} n$$
+
+As $$N \rightarrow \infty \implies t(n,N) \rightarrow \infty$$
 }
 \end{homeworkProblem}
 \end{document}
