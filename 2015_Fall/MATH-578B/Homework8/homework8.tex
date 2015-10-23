@@ -287,17 +287,29 @@ Thus, $$a=\lambda ; b=\frac{1}{\lambda}$$
 		\end{align*}
 		
 		\begin{align*}
-			E[NC_n] &=(n-t+1)(1-p)p^t\\
+			E[NC_n] &=(n-t+1)^2(1-p)p^t\\
 			& = \lambda
 		\end{align*}
-		Thus, $n(1-p)p^t \sim \lambda$
+		Thus, $$n^2(1-p)p^t \sim \lambda$$
 		
 		\begin{align*}
-		\log_{1/p} \lambda & = \log_{1/p}n + 
+\log(n^2(1-p)) + t\log(p) = \log(\lambda)\\
+t = -\log_{1/p}(\lambda) + 2\log_{1/p}(n(1-p))
 		\end{align*}
-		Choose $t_n = 2\log_{1/p}n +x$
 		
-		Consider $(n-t_n+1)p^{2t} = (n-\log_{1/p}n^2+1)p^{2t} $
+		And $b1$ can be approximated as:
+		$$
+			(n-t+1)^2(4t+2)(1-p)^2p^{2t}
+		$$
+		If we approximate $t_n = 2\log_{1/p}n +x$
+		
+		\begin{align*}
+		(n-t+1)^2(4t+2)(1-p)^2p^{2t} & = (n-2\log_{1/p} n +1)^2(4(2\log_{1/p} n+x)+2)((1-p)p^{2\log_{1/p}n+x})^2\\
+		 &=(n-2\log_{1/p} n +1)^2(4(2\log_{1/p} n+x)+2)((1-p) \times 1/n^2)^2 \rightarrow 0	\\
+		 & 	\rightarrow 0	
+		\end{align*}
+		
+
 				}
 \end{homeworkProblem}
 
@@ -338,14 +350,28 @@ Thus, $$s(a,a)=1;s(a,b)= -\infty$$
 
 \begin{homeworkProblem}[Exercise 11.11]
 	\problemAnswer{
-If there are N sequences we have $n^N$ choices for $(i_i,i_2,i_3 \dots i_n)$ where $i_j$ represents the starting position for the $j^{th}$ sequence.
-and hence using naive approach(Largest run being unique and satisfying $np^{R_n}=1$ and then by allowing shifts there are $n^N$ choices for starting position in each sequence): 
+%If there are N sequences we have $n^N$ choices for $(i_i,i_2,i_3 \dots i_n)$ where $i_j$ represents the starting position for the $j^{th}$ sequence.
+%and hence using naive approach(Largest run being unique and satisfying %$np^{R_n}=1$ and then by allowing shifts there are $n^N$ choices for starting position in each sequence): 
 
-$H_n$ grows like $$\log_{1/p}n^N = N \log_{1/p} n$$
+%$H_n$ grows like $$\log_{1/p}n^N = N \log_{1/p} n$$
 
-and hence $$t(n,N) = N \log_{1/p} n$$
+%and hence $$t(n,N) = N \log_{1/p} n$$
 
-As $$N \rightarrow \infty \implies t(n,N) \rightarrow \infty$$
+%As $$N \rightarrow \infty \implies t(n,N) \rightarrow \infty$$
+$E[NC] = (n-t+1)^Np^t$
+
+The probability of $x$ being the starting position of alignment in the $N$ sequences: $p=(\frac{1}{|A|})^N \times |A| = 1/|A|^{N-1} = 1/n^{N-1}$ (since A,B are iid)
+
+$$|A| = n$$
+Thus, assuming the longest run is unique, we have that the expected number of runs of this length be 1:
+\begin{align*}
+(n-t+1)^Np^t &=1\\
+(n-t+1)^N 1/n^{Nt-t} &=1\\
+n^{t-Nt+N}&\approx  1\\
+t &= \frac{1}{N-1}\log_{1/n} N
+\end{align*}
+
+And hence as $$N\rightarrow \infty \implies t \rightarrow 1/N^2 \rightarrow 0$$
 }
 \end{homeworkProblem}
 \end{document}
