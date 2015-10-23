@@ -3,13 +3,44 @@ title: "MATH-650 Assignment 8"
 author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
 date: "09/28/2015"
 output:
-  pdf_document: default
   html_document:
     keep_md: yes
+  pdf_document: default
   word_document: default
 ---
 
 ## Chapter 11: 10
+
+```{r}
+library(ggplot2)
+data <- read.csv('data_ch9_16.csv', header=T)
+data$PollenRemovedlogit = log(data$PollenRemoved/(1-data$PollenRemoved))
+data$DurationOfVisitlog = log(data$DurationOfVisit)
+ggplot(data, aes(x=DurationOfVisitlog, y=PollenRemovedlogit, color=BeeType)) +
+    geom_point(shape=1) +
+    scale_colour_hue(l=50) + 
+    geom_smooth(method=lm,  
+                se=FALSE)
+```
+
+\begin{align*}
+\mu\{PollenRemovedLogit| DuratioOfVisitlog, BeeType \} &= \beta_0 + \beta_1 DurationOfVisitlog\\ 
+&+ \beta_2 BeeType + \beta_3 BeeType*DurationOfVisitlog
+\end{align*}
+
+
+```{r}
+lmfit <- lm(PollenRemovedlogit ~ BeeType + DurationOfVisitlog 
+            + BeeType*DurationOfVisitlog, data=data)
+summary(lmfit)
+r <- residuals(lmfit)
+yh <- predict(lmfit)
+
+p1<-ggplot(lmfit, aes(.fitted, .resid))+geom_point()
+p1 <- p1 +geom_hline(yintercept=0)+geom_smooth()
+p1
+```
+
 
 ## Chapter 11: 21
 
