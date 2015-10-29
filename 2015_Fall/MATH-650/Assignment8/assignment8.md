@@ -1,17 +1,11 @@
----
-title: "MATH-650 Assignment 8"
-author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
-date: "09/28/2015"
-output:
-  html_document:
-    keep_md: yes
-  pdf_document: default
-  word_document: default
----
+# MATH-650 Assignment 8
+Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)  
+09/28/2015  
 
 ## Chapter 11: 10
 
-```{r}
+
+```r
 library(ggplot2)
 data <- read.csv('data_ch9_16.csv', header=T)
 data$PollenRemovedlogit = log(data$PollenRemoved/(1-data$PollenRemoved))
@@ -23,16 +17,46 @@ ggplot(data, aes(x=DurationOfVisitlog, y=PollenRemovedlogit, color=BeeType)) +
                 se=FALSE)
 ```
 
+![](assignment8_files/figure-html/unnamed-chunk-1-1.png) 
+
 \begin{align*}
 \mu\{PollenRemovedLogit| DuratioOfVisitlog, BeeType \} &= \beta_0 + \beta_1 DurationOfVisitlog\\ 
 &+ \beta_2 BeeType + \beta_3 BeeType*DurationOfVisitlog
 \end{align*}
 
 
-```{r}
+
+```r
 lmfit <- lm(PollenRemovedlogit ~ BeeType + DurationOfVisitlog 
             + BeeType*DurationOfVisitlog, data=data)
 summary(lmfit)
+```
+
+```
+## 
+## Call:
+## lm(formula = PollenRemovedlogit ~ BeeType + DurationOfVisitlog + 
+##     BeeType * DurationOfVisitlog, data = data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.3803 -0.3699  0.0307  0.4552  1.1611 
+## 
+## Coefficients:
+##                                  Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                       -3.0390     0.5115  -5.941 4.45e-07 ***
+## BeeTypeWorker                      1.3770     0.8722   1.579    0.122    
+## DurationOfVisitlog                 1.0121     0.1902   5.321 3.52e-06 ***
+## BeeTypeWorker:DurationOfVisitlog  -0.2709     0.2817  -0.962    0.342    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.6525 on 43 degrees of freedom
+## Multiple R-squared:  0.6151,	Adjusted R-squared:  0.5882 
+## F-statistic:  22.9 on 3 and 43 DF,  p-value: 5.151e-09
+```
+
+```r
 r <- residuals(lmfit)
 yh <- predict(lmfit)
 
@@ -41,6 +65,12 @@ p1 <- p1 +geom_hline(yintercept=0)+geom_smooth() +
 geom_text(aes(label=ifelse((.resid>4*IQR(.resid)|.fitted>4*IQR(.fitted)),paste('', "\n", .fitted, ",", .resid),"")), hjust=1.1)
 p1
 ```
+
+```
+## geom_smooth: method="auto" and size of largest group is <1000, so using loess. Use 'method = x' to change the smoothing method.
+```
+
+![](assignment8_files/figure-html/unnamed-chunk-2-1.png) 
 
 From the residual plot, there seem to be no outliers(see outlier detection part in the last code chunk wheere a outlier is defined if it is greater than 4*IQR(x)).
 
