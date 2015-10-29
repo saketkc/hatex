@@ -3,9 +3,9 @@ title: "MATH-650 Assignment 8"
 author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
 date: "09/28/2015"
 output:
+  pdf_document: default
   html_document:
     keep_md: yes
-  pdf_document: default
   word_document: default
 ---
 
@@ -102,7 +102,9 @@ And for $$ k \neq j $$:
 \begin{pmatrix}
 \sum_i w_iX_{1i}^2 & \sum_i w_iX_{1i}X_{2i} & \dots & \sum_i w_iX_{1i}X_{ni}\\
 \sum_i w_iX_{2i}X_{1i} & \sum_i w_iX_{2i}^2 & \dots & \sum_i w_iX_{2i}X_{ni}\\
-\vdots & \vdots
+ \vdots
 \sum_i w_iX_{ni}X_{1i} & \sum_i w_iX_{2i}^2 & \dots & \sum_i w_iX_{ni}^2
 \end{pmatrix}
 \end{align*}
+(We can take the $w_i$ out by factoring that as a separate vector) and then 
+each element in the  remaining matrix in this case can be written as $H_{ij}=\mathbf{x_i}^T\mathbf{x_j}$ and hence this is a Gram matrix and positive definite, hence minima at the above point is guaranteed.
