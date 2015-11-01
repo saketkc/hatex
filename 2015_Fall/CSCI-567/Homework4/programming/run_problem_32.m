@@ -39,7 +39,6 @@ for idx = 1:numel(C)
     end
 end
 
-
 %rate = sum(crossval(svmpredict,permutedlabels,permutedfeatures,'partition',c))...
  %          /sum(c.TestSize)
 
