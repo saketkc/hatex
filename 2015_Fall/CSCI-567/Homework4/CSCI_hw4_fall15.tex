@@ -164,9 +164,83 @@
 
 \begin{homeworkSection}{\homeworkProblemName: ~(b)  Weak Learner Section}
 \problemAnswer{
+$$
+\gamma^* = min_{\gamma \in R}\sum_{i=1}^n (-g_i-\gamma h(x_i))^2
+$$
+
+\begin{align*}
+    \frac{\partial\gamma^* }{\partial \gamma} &=0\\
+    2\sum_{i=1}^n (g_i+\gamma h(x_i))h(x_i) &= 0\\
+    \hat{gamma} &= - \frac{\sum_{i=1}^n g_ih(x_i)}{\sum_{i=1^n h(x_i)^2}}
+\end{align*}
 }
 \end{homeworkSection}
 
+\begin{homeworkSection}{\homeworkProblemName: ~(b)  Weak Learner Section}
+    \problemAnswer{
+        $$\alpha^* = \argmin_{\alpha in R} \sum_1^n L(y_i, \hat{y_i}+\alpha h^*(x_i))         $$
+        Newton's approximation:
+
+        $$
+        f(x+h)=f(x)+hf'(x) + o(h^2)$$
+        We start from $\alpha=0$
+        and hence:
+        $$
+    $$$
+i$$
+    }
+
+\end{homeworkSection}
+
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+    \begin{homeworkSection}{\homeworkProblemName: ~(a)}
+        \problemAnswer{
+            Primal form:
+            $$
+                \begin{align*} 
+                    \min_w ||w||^2\\
+                    such that |y_i-(w^Tx_i+b)| \leq \epsilon
+                \end{align*}
+
+                $$
+        }
+    \end{homeworkSection}
+    \begin{homeworkSection}{\homeworkProblemName: ~(b)}
+        \problemAnswer{ 
+            \begin{align*}
+            \min_{_w,\epsilon_i}  \frac{1} {2}||w||^2 +  C\section{um_i \epsilon_i\\
+         $       such that |y_i-(w^Tx_i+b)| \leq \mathcal{\epsilon_i}+ \epsilon_i\\
+         \epsilon_i \geq 0
+            \end{align*}
+        }
+    \end{homeworkSection}
+    \begin{homeworkSection}{\homeworkProblemName: ~(c)}
+        \problemAnswer{
+             $$
+             L  = \frac{1}{2}||w||^2 + C\sum \epsilon_i - \sum\eta_i\epsilon_i -\sum_i \alpha_i(\epsilon+\mathcal{\epsion_i} - (y_i-(w^Tx_i+b)))
+$$
+Conditions:
+$$
+\alpha_i, \eta_i \geq 0
+$$
+Dual Form:
+$$
+\partial_wL =0 \implies w - \sum_i \alpha_ix_i =0$$
+$$
+\partial_bL =0 \implies \sum_i \alpha_i =0$$
+
+
+$$
+\partial_E_iL =0 \implies C-\eta_i - \alpha_i =0$$
+
+Essentially $w= \sum\alpha_ix_i$
+
+Maximise $-\frac{1}{2} \sum_{i,j}  (\alpha_i)
+        }
+    \end{homeworkSection}
 \end{homeworkProblem}
 
 \end{document}
