@@ -183,8 +183,28 @@
 	P_U(2) = p_{w_1w_2}p_{w_2w_3} = p_{10}p_{01} = \beta\alpha\\
 	\end{eqnarray*}
 	
-	Thus
+	Now,
+	$$G_{w,w}(t) = \sum_{j=0}^2t^j\beta_{w,w}(j)P_{w,w}(j)$$
+	
+	Thus,
+	\begin{align*}
+	G_{w,w}(t) &= 1 \times 1 \times 1 + t \times 0 \times \alpha + t^2 \times 1 \times \beta \alpha\\ 
+	&= 1+\alpha\beta t^2
+	\end{align*}
 	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+	\problemAnswer{
+		$X_n$ : Number of occurrences(overlaps allowed)  in $A_1A_2A_3\dots A_n$
+		Using Theorem $12.1$:
+		$$
+		\lim_{n \rightarrow \infty} \frac{1}{n} E(X_n) = \pi_w = \pi_1 \times p_{10} \times p_{01} = 1 \times \beta \times \alpha 
+		$$ 
+		
+		Thus $	\lim_{n \rightarrow \infty} \frac{X_n}{n} = \alpha \beta$
+		
+		}
 \end{homeworkSection}
 
 \begin{homeworkSection}{\homeworkProblemName: ~(d)}
