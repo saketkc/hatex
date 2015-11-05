@@ -49,7 +49,7 @@
 \rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
 \renewcommand\headrulewidth{0.4pt} % Size of the header rule
 \renewcommand\footrulewidth{0.4pt} % Size of the footer rule
-
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
 
 %----------------------------------------------------------------------------------------
@@ -283,8 +283,147 @@ P^n = \frac{1}{\alpha+\beta} \begin{bmatrix}
 \end{bmatrix}
 $$
 
+
+\underline{\textbf{ALITER}}
+
+We consider the following identity: $P^{n+1}=PP^n$
+
+then:
+
+$$
+\begin{bmatrix}
+p_{00}^{n+1} & p_{01}^{n+1}\\
+p_{10}^{n+1} & p_{11}^{n+1}\\
+\end{bmatrix} = \begin{bmatrix} 
+p_{00}^n & p_{01}^n\\
+p_{10}^n & p_{11}^n
+\end{bmatrix} \times \begin{bmatrix}
+1-\alpha & \alpha\\
+\beta & 1-\beta
+\end{bmatrix}
+$$
+
+$\implies$
+
+
+\begin{align*}
+p_{11}^{n+1} &= p_{10}^n(\alpha) + p_{11}^n(1-\beta)\\
+&= (1-p_{11}^n)(\alpha) +(p_{11}^n)(1-\beta)\\
+&= \alpha + (1-\alpha-\beta)p_{11}^n   \tag{1d.1}
+\end{align*}
+
+}
+\clearpage
+\problemAnswer{
+
+On similar lines:
+
+\begin{align*}
+p_{00}^{n+1} &= (1-\alpha-\beta)p_{00}^n + \beta   \tag{1d.2}
+\end{align*}
+
+In order to solve equations of type $1d.1$ and $1d.2$ we take the following strategy:
+
+By substituting $p_{00}^{n+1} = p_{00}^n$ (and thus obtaining the stationary solution at $\frac{\beta}{\alpha+\beta}$), $1d.2$ can be reduced to the following form:
+
+\begin{align*}
+p_{00}^{n+1} &= \frac{\beta}{\alpha+\beta}= (1-\alpha-\beta)(p_{00}^n -\frac{\beta}{\alpha+\beta})  \label{1d.3}
+\end{align*}
+
+
+
+
+Let's call $y^(n) =  p_{00}^n -\frac{\beta}{\alpha+\beta}$
+
+
+Then $1d.3$ is similar to:
+
+\begin{eqnarray*}
+y^{(n+1)} = (1-\alpha-\beta)y^(n) \\
+y^{(n+1)} = (1-\alpha-\beta)^ny^(0)
+\end{eqnarray*}
+
+$y^(0) = p_{00}^{(0)} - \frac{\beta}{\alpha+\beta}$
+
+Assume $p_{00}^{(0)}=1$ $\implies$ $y^{(0)} = \frac{\alpha}{\alpha+\beta }$
+
+Which gives:
+
+$$
+p_{00}^n = (1-\alpha-\beta)^n \frac{\alpha}{\alpha+\beta} + \frac{\beta}{\alpha+\beta} \text{if $\alpha+\beta > 0$}
+$$
+
+Similarly,
+
+$$
+p_{11}^n = (1-\alpha-\beta)^n \frac{\beta}{\alpha+\beta} + \frac{\alpha}{\alpha+\beta} \text{if $\alpha+\beta > 0$}
+$$
+
+\textbf{NOTE:} If $\alpha+\beta = 0$, we get:
+$$
+P^n = \begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}
+$$
+
+}
+
+\end{homeworkSection}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(e)}
+\problemAnswer{
+	$\pi_w =\pi_i p_{10}p_{01} = 1 \times \beta \alpha  = \alpha\beta$
+	  
+	\begin{align*}
+	\lim_{n \rightarrow \infty} \frac{Var(X_n)}{n} &= 2\pi_w \big((\beta_{w,w}(0)P_w(0) -\pi_w ) + (\beta_{w,w}(1)P_w(1) - \pi_w ) + (\beta_{w,w}(2)P_w(2) - \pi_w )	\big)\\
+	 &+ 2\pi_w P_w(2)\sum_{j=0}^\infty \{p^{j+1}_{11} - \pi_1 \} + \pi_w^2-\pi_w \\
+	&= 2\alpha\beta (1+\alpha\beta - 3\alpha\beta )  + 2\alpha\beta   \sum_{j=0}^\infty \{ \beta^{j+1} - 1 \} - \alpha\beta + (\alpha\beta)^2\\
+	&= \alpha\beta \big(2(1-2\alpha\beta) + 2 \sum_{j=0}^\infty \{ \beta^{j+1} - 1 \}  -1 + \alpha\beta)
+	\end{align*}
+		
 }
 \end{homeworkSection}
 
 \end{homeworkProblem}
+
+\begin{homeworkSection}{\homeworkProblemName: ~(f)}
+	\problemAnswer{
+		$Y_n$: Number of occurences of word $w$ in all words, thus,
+		$Y_n \approx c X_n$
+		
+		\textbf{NOTE:} I assume the problem should be to estimate $\lim_{n \rightarrow \infty} \frac{Y_n}{n}$ and $\lim_{n \rightarrow \infty } \frac{Var(Y_n)}{n}$ In the problem it mentions $X_n$ instead of $Y_n$
+		
+		Thus,
+		\begin{align*}
+			\lim_{n \rightarrow \infty} \frac{Y_n}{n} &= c \times \lim_{n \rightarrow} \frac{X_n}{n}\\  
+			&= c\alpha\beta \\
+			\lim_{n \rightarrow \infty } \frac{Var(Y_n)}{n} &= c^2 \times \lim_{n \rightarrow \infty } \frac{Var(X_n)}{n}\\ 
+			&= c^2 \times \big( \alpha\beta \big(2(1-2\alpha\beta) + 2 \sum_{j=0}^\infty \{ \beta^{j+1} - 1 \}  -1 + \alpha\beta) \big)
+		\end{align*} 
+		
+		
+		}
+\end{homeworkSection}
+
+\begin{homeworkProblem}{Problem 2}
+\begin{homeworkSection}{\homeworkProblemName: ~(a)}
+	\problemAnswer{
+		Expected number of squares of side length $t$ such that all $X_v$ are 1 in the square: We simply choose a position on the positive lattice $x$ axis and then construct a square around it $[(x_0,y_0) (x_0+t,y_0+t)]$ so we have $n-t$ choices for $x_0$ and $n-t$ choices for $y_0$, the constraint being that all points inside are all $1$, there are approximately $t^2$ integer points inside $
+		
+		$$
+		E(\# \text{number of squares of side length $t$ such that all $X_v$ are 1 inside}) = (n-t) \times (n-t) p^{t^2} = (n-t)^2 p^{t^2}
+		$$
+		
+	}
+\end{homeworkSection}
+
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+		\problemAnswer{
+			
+			}
+	\end{homeworkSection}
+\end{homeworkProblem}
+
 \end{document}
