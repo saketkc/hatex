@@ -1,5 +1,5 @@
 ---
-title: "MATH-650 Assignment 9"
+title: "MATH-650 Assignment 10"
 author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
 date: "11/04/2015"
 output:
@@ -9,4 +9,4 @@ output:
   word_document: default
 ---
 
-# Chapter 13: 12
+# Chapter 12: 14
