@@ -27,6 +27,9 @@
 \usepackage{graphicx} % Required to insert images
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{tikz}
+
 
 
 \usepackage{amsmath}
@@ -140,54 +143,63 @@
 \tableofcontents
 \newpage
 
-
-%----------------------------------------------------------------------------------------
-%       PROBLEM 2
-%----------------------------------------------------------------------------------------
-
-
-
-
-
 \begin{homeworkProblem}[Problem 1] % Custom section title
 \begin{homeworkSection}{\homeworkProblemName: ~(a) Gradient Calculation}
 \problemAnswer{
     $$
-      L(y_i, \hat{y_i}) = \log(1+exp(-y_i\hat{y_i}))
+      L(y_i, \hat{y_i}) = \log(1+\exp(-y_i\hat{y_i}))
     $$
     \begin{align*}
-        g_i &= \frac{\partial L(y_i, \hat{y_i})}{\partial y_i}\\
-            &= \frac{-y_iexp(-y_i\hat{y_i})}{1+exp(-y_i\hat{y_i})}\\
+        g_i &= \frac{\partial L(y_i, \hat{y_i})}{\partial \hat{y_i}}\\
+        \Aboxed{g_i   &= \frac{-y_i\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}}
     \end{align*}
 }
 \end{homeworkSection}
 
 \begin{homeworkSection}{\homeworkProblemName: ~(b)  Weak Learner Section}
 \problemAnswer{
-$$
-\gamma^* = min_{\gamma \in R}\sum_{i=1}^n (-g_i-\gamma h(x_i))^2
-$$
 
-\begin{align*}
-    \frac{\partial\gamma^* }{\partial \gamma} &=0\\
-    2\sum_{i=1}^n (g_i+\gamma h(x_i))h(x_i) &= 0\\
-    \hat{gamma} &= - \frac{\sum_{i=1}^n g_ih(x_i)}{\sum_{i=1^n h(x_i)^2}}
-\end{align*}
+\begin{eqnarray*}
+	h^* = \min_{h \in H} \big( \min_{\gamma \in R} \sum_{i=1}^n (-g_i-\gamma h(x_i))^2 \big)\\
+	\implies 
+    \frac{\partial h^* }{\partial \gamma} =0\\
+   \implies 2\sum_{i=1}^n (-g_i-\gamma h(x_i))(-h(x_i)) = 0\\
+    \Aboxed{\hat{h} = -\frac{\sum_{i=1}^n g_ih(x_i)}{\sum_{i=1}^n h(x_i)^2}}
+\end{eqnarray*}
+
+Also check if it is indeed minimum with a second derivative test:
+\begin{eqnarray*}
+\frac{\partial^2h^* }{\partial \gamma^2} = 2 \sum_{i=1}^n h(x_i)^2 > 0
+\end{eqnarray*}
+
+Since the second derivative is positive definite, $\hat{gamma}$ is indeed where the minima occurs.
 }
 \end{homeworkSection}
 
-\begin{homeworkSection}{\homeworkProblemName: ~(b)  Weak Learner Section}
+\begin{homeworkSection}{\homeworkProblemName: ~(c)  Step Size Selection}
     \problemAnswer{
-        $$\alpha^* = \argmin_{\alpha in R} \sum_1^n L(y_i, \hat{y_i}+\alpha h^*(x_i))         $$
+        $$
+	        \alpha^* = \arg \min_{\alpha \in R} \sum_1^n L(y_i, \hat{y_i}+\alpha h^*(x_i))         
+        $$
         Newton's approximation:
 
         $$
-        f(x+h)=f(x)+hf'(x) + o(h^2)$$
-        We start from $\alpha=0$
-        and hence:
+        \alpha_1 = \alpha_0 - \frac{f(\alpha_0)}{f'(\alpha_0)}
         $$
-    $$$
-i$$
+        We start from $\alpha_0=0$
+        and hence:
+        
+		\begin{align*}
+		f(\alpha_0) &=   \sum_{i=1}^n \log(1+\exp(-y_i\hat{y_i})) \\
+		f'(\alpha_0) & = \sum_{i=1}^n \frac{\partial L}{\partial \alpha }\\
+		 &= \sum_{i=1}^n \frac{-y_i h^*(x_i)\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}}{1+\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}}\\
+		 &=  \sum_{i=1}^n \frac{-y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}
+		\end{align*}  
+		      
+		      Thus,
+		      $$
+		      \alpha_1 = \frac{\sum_{i=1}^n(\log(1+\exp(-y_i\hat{y_i})))}{\sum_{i=1}^n \frac{-y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}}
+		      $$
     }
 
 \end{homeworkSection}
@@ -195,51 +207,123 @@ i$$
 
 \end{homeworkProblem}
 
-\begin{homeworkProblem}
+\begin{homeworkProblem}[Problem 2]
     \begin{homeworkSection}{\homeworkProblemName: ~(a)}
         \problemAnswer{
             Primal form:
-            $$
                 \begin{align*} 
-                    \min_w ||w||^2\\
-                    such that |y_i-(w^Tx_i+b)| \leq \epsilon
+                    \min_w  ||w||^2\\
+                    \text{such that } |y_i-(w^Tx_i+b)| \leq \epsilon
                 \end{align*}
-
-                $$
         }
     \end{homeworkSection}
+    
     \begin{homeworkSection}{\homeworkProblemName: ~(b)}
         \problemAnswer{ 
             \begin{align*}
-            \min_{_w,\epsilon_i}  \frac{1} {2}||w||^2 +  C\section{um_i \epsilon_i\\
-         $       such that |y_i-(w^Tx_i+b)| \leq \mathcal{\epsilon_i}+ \epsilon_i\\
-         \epsilon_i \geq 0
+            \min_{_w,\epsilon_i}  \frac{1} {2}||w||^2 +  C\sum_i \epsilon_i\\
+            \text{such that } (w^Tx_i+b) - y_i \leq n_i + \epsilon_i \text{ (positive deviation)}\\
+             \text{ and } y_i-(w^Tx_i+b) \leq {p_i}+ \epsilon_i \text{ (negative deviation)}\\
+	         n_i \geq 0\\
+	         p_i \geq 0
             \end{align*}
+            
+            Also,
+            the slackness loss needs further constraints:
+            \begin{align*}
+            n_i &= \begin{cases}
+            0 & |n_i| < \epsilon_i,\\
+            |n_i|-\epsilon & otherwise
+            \end{cases}\\
+            p_i &= \begin{cases}
+            0 & |p_i| < \epsilon_i,\\
+            |p_i|-\epsilon & otherwise
+            \end{cases}
+            \end{align*}
+            \begin{center}
+            	
+
+            \begin{tikzpicture}
+            \draw[->] (-3,0) -- (3.2,0) node[right] {$x$};
+            \draw[->] (0,-3) -- (0,3.2) node[above] {$y$};
+            \draw[scale=0.5,domain=1:3,smooth,variable=\x,blue] plot ({\x},{\x-1});
+           \draw[scale=0.5,domain=-3:-1,smooth,variable=\x,blue] plot ({\x},{-\x-1});
+           \filldraw[black] (-0.5,0) circle (2pt) node[anchor=south]   {$-\epsilon_i$};
+            \filldraw[black] (0.5,0) circle (2pt) node[anchor=south]   {$\epsilon_i$};
+            \end{tikzpicture}
+            \end{center}
+            
+            So essentially $n_i,p_i$ are non zero, only above the two blue lines
         }
     \end{homeworkSection}
     \begin{homeworkSection}{\homeworkProblemName: ~(c)}
         \problemAnswer{
-             $$
-             L  = \frac{1}{2}||w||^2 + C\sum \epsilon_i - \sum\eta_i\epsilon_i -\sum_i \alpha_i(\epsilon+\mathcal{\epsion_i} - (y_i-(w^Tx_i+b)))
-$$
-Conditions:
-$$
-\alpha_i, \eta_i \geq 0
-$$
+\begin{align*}
+L  &= \frac{1}{2}||w||^2 + C\sum_i (p_i+n_i)\\
+ &- \sum_i(\eta_ip_i+\eta_i'n_i)\\ 
+ &-\sum_i \alpha_i(\epsilon+ p_i - (y_i-(w^Tx_i+b)))\\
+ &- \sum_i \beta_i (\epsilon+ n_i + (y_i-(w^Tx_i+b)))
+\end{align*}
+
+{\centering{\textbf{Conditions	}:}}
+\begin{align*}
+\alpha_i &\geq 0\\
+\beta_i &\geq 0\\
+\eta_i &\geq 0\\
+\eta_i^* &\geq 0
+\end{align*}
+
+
 Dual Form:
+\begin{align*}
+\Delta_w L &=0 \\
+&= w - \sum_i \alpha_i x_i + \sum_i \beta_i x_i = 0\\
+\Delta_b L &=0\\
+&= \sum_i \alpha_i - \sum_i \beta_i = 0\\
+\Delta_{p_i} L &= 0\\
+&= C-\sum \eta_i -\sum_i \alpha_i   =0\\
+\Delta_{n_i} L &= 0\\
+&= C-\sum \eta'_i -\sum_i \beta_i   =0\\
+\end{align*}
+}
+\problemAnswer{
+
+Thus, $w$ is given by:
 $$
-\partial_wL =0 \implies w - \sum_i \alpha_ix_i =0$$
+w = \sum_i \alpha_i x_i - \sum_i \beta_i x_i
 $$
-\partial_bL =0 \implies \sum_i \alpha_i =0$$
+
+depends only on the support vectors.
 
 
-$$
-\partial_E_iL =0 \implies C-\eta_i - \alpha_i =0$$
+This reduces the optimisation to:
 
-Essentially $w= \sum\alpha_ix_i$
+\begin{align*}
+\max f &= \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)x_i^Tx_j(\alpha_j-\beta_j) + p_i(C-\sum_i \eta_i - \sum_i \alpha_i)\\ 
+&+ n_i(C+\sum_i \eta'_i -\sum_i \beta_i)\\
+&+ \epsilon(-\sum_i \alpha_i - \sum_i \beta_i)\\ 
+&+ \sum_i y_i(\alpha_i-\beta_i)\\
+&= \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)x_i^Tx_j(\alpha_j-\beta_j)  - \epsilon (\sum_i(\alpha_i+\beta_i))\\
+&+ \sum_i y_i(\alpha_i-\beta_i)\\
+\text{such that} \sum_i(\alpha_i-\beta_i) &= 0 \\
+\text{and } \alpha_i,\beta_i &\in [0,C]
+\end{align*}
 
-Maximise $-\frac{1}{2} \sum_{i,j}  (\alpha_i)
         }
+    \end{homeworkSection}
+    \begin{homeworkSection}{\homeworkProblemName: ~(d)}
+\problemAnswer{
+	Using Kernel transformation:
+	$$
+	w = \sum_i(\alpha_i-\beta_i)\phi(x_i)
+	$$	
+	this happens because $x_i'x_j$ gets mapped onto by an equivalnet kernel function $k(x_i,x_j)=\phi^T(x_i)\phi(x_j)$
+	and the objective function is:
+	$$
+	\max_f = \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)k(x_i, x_j)(\alpha_j-\beta_j)  - \epsilon (\sum_i(\alpha_i+\beta_i))
+	$$
+	}
+	
     \end{homeworkSection}
 \end{homeworkProblem}
 

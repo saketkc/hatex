@@ -1,0 +1,104 @@
+%===============================================================================
+% $Id: ifacconf.tex 19 2011-10-27 09:32:13Z jpuente $  
+% Template for IFAC meeting papers
+% Copyright (c) 2007-2008 International Federation of Automatic Control
+%===============================================================================
+\documentclass{ifacconf}
+
+%\input{./macros.tex}
+\usepackage{graphicx}      % include this line if your document contains figures
+\usepackage{natbib}        % required for bibliography
+\usepackage{amsmath, amsxtra, amsfonts,amscd,amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx,wrapfig}
+\usepackage{epstopdf}
+\usepackage{url}
+\usepackage[algo2e,linesnumbered, vlined,ruled]{algorithm2e}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{mathrsfs}
+%===============================================================================
+
+\begin{document}
+\begin{frontmatter}
+
+
+\title{
+	Linear Mixed-Effect Models}% \thanksref{footnoteinfo}}    % Title, preferably not more than 10 words.
+
+%\thanks[footnoteinfo]{}
+
+\author[First]{Saket Choudhary} 
+
+
+
+
+\address[First]{University of Southern California, 
+   LA, CA 90089 USA (e-mail: skchoudh@ usc.edu).}
+
+
+\begin{abstract}                % Abstract of not more than 250 words.
+\emph{Linear Mixed-Effect Models} are an extension of \emph{Linear Regression} that describe the relationship between response variable $\mathcal{Y}$ and independent variables ${X}$ such that the coefficients can vary with respect to one or more grouping variables and hence at least one independent covariate should be categorical.
+
+Mixed-Effects models find use in \emph{longitudinal} or repeated measures study, where repeated measurements are made on \emph{experimental} or \emph{observational} units.
+
+Mixed-Effects models make use of constrained optimisation to arrive at the Maximum Likelihood or Restricted Maximum Likelihood estimate of the parameters.
+
+\end{abstract}
+
+
+\end{frontmatter}
+
+\section{Problem description}
+Consider a Linear Regression Problem:
+$$
+\mathcal{Y} = X\beta + \epsilon
+$$
+
+Where $\epsilon \sim \mathcal{N}(0,\sigma^2I)$
+and $\beta$ is a p-dimensional coefficient vector;
+$X$ is $n \times p$ model matrix. There are two parameters
+in this model: $\beta$ and $\sigma^2$
+
+and hence for a linear model:
+$$
+y \sim \mathcal{N}({X\beta,\sigma^2I})
+$$
+
+
+Mixed-effects models the response with an additional "random-effect" $\mathcal{B}$ such that:
+
+$$
+(\mathcal{Y}|\mathcal{B}=b) = \mathcal{N}(XB+Zb, \sigma^2I)
+$$
+where $Z$ is a $n \times q$ model matrix just like $X$ but for the random-effect covariates $\mathcal{B}$ which we fix at $b$ and then model $b$ as another normal random variable:
+
+$$
+\mathcal{B} \sim \mathcal{N}(0,\Sigma)
+$$
+
+where $\Sigma$ is a parameterized $q\times q$ covariance matrix.
+The parameter estimation now can be down by separating(profiling) the log-likelihood.(Details Skipped, since I do not understand them yet)
+
+
+
+
+\section{Goals}
+
+\begin{itemize}
+	\item Understand the derivation/math behind parameter estimation
+	\item Use available modeling libraries to demonstrate at least one use case  of mixed-effects models
+\end{itemize}
+
+
+\section{References}
+\begin{itemize}
+\item Pinherio, J. C., and D. M. Bates. Mixed-Effects Models in S and S-PLUS. Statistics and Computing Series, Springer, 2004.
+
+\item Bates, Douglas, et al. "Fitting linear mixed-effects models using lme4." arXiv preprint arXiv:1406.5823 (2014).
+	
+\end{itemize}
+
+
+
+\end{document}
