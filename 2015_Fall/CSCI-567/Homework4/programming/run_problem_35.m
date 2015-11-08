@@ -68,6 +68,6 @@ disp(sprintf('Polynomial Kernel optimal C: %f', optimc_poly));
 disp(sprintf('Polynomial Kernel optimal degree: %f', optimdegree));
 disp(sprintf('Polynomal Kernel test accuracy: %f', poly_accuracy(1)));
 disp(sprintf('RBF Kernel optimal g: %f', optimg))
-disp(sprintf('RBF Kernel optimal c: %f', optimc_rbf(1)))
-disp(sprintf('RBF Kernel test accuracy: %f', rbf_accuracy));
+disp(sprintf('RBF Kernel optimal c: %f', optimc_rbf))
+disp(sprintf('RBF Kernel test accuracy: %f', rbf_accuracy(1)));
 
