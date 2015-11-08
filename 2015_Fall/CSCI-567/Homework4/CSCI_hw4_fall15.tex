@@ -184,7 +184,7 @@ Since the second derivative is positive definite, $\hat{gamma}$ is indeed where 
         Newton's approximation:
 
         $$
-        \alpha_1 = \alpha_0 - \frac{f(\alpha_0)}{f'(\alpha_0)}
+        \alpha_1 = \alpha_0 - \frac{f'(\alpha_0)}{f''(\alpha_0)}
         $$
         We start from $\alpha_0=0$
         and hence:
@@ -193,12 +193,20 @@ Since the second derivative is positive definite, $\hat{gamma}$ is indeed where 
 		f(\alpha_0) &=   \sum_{i=1}^n \log(1+\exp(-y_i\hat{y_i})) \\
 		f'(\alpha_0) & = \sum_{i=1}^n \frac{\partial L}{\partial \alpha }\\
 		 &= \sum_{i=1}^n \frac{-y_i h^*(x_i)\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}}{1+\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}}\\
-		 &=  \sum_{i=1}^n \frac{-y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}
+		 &=  -\sum_{i=1}^n \frac{y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}
 		\end{align*}  
 		      
+		And,
+		
+		\begin{align*}
+		f''(\alpha_0) &= \sum_{i=1}^n \frac{\partial^2 L}{\partial \alpha^2}\\
+		&= \sum_{i=1}^n \frac{\big\{\big(1+\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}\big)(y_ih^*(x_i))^2  +y_ih^*(x_i) \big\} \exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}}{(1+\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))})^2}\\
+		&= \sum_{i=1}^n \frac{\big\{\big(1+\exp{(-y_i\hat{y_i})}\big)(y_ih^*(x_i))^2  +y_ih^*(x_i) \big\} \exp{(-y_i\hat{y_i})}}{(1+\exp{(-y_i\hat{y_i})})^2}\\
+		\end{align*}
 		      Thus,
 		      $$
-		      \alpha_1 = \frac{\sum_{i=1}^n(\log(1+\exp(-y_i\hat{y_i})))}{\sum_{i=1}^n \frac{-y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}}
+		      %\alpha_1 = \frac{\sum_{i=1}^n(\log(1+\exp(-y_i\hat{y_i})))}{\sum_{i=1}^n \frac{-y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}}
+		      \alpha_1 = \frac{\sum_{i=1}^n \frac{y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}}{\sum_{i=1}^n \frac{\big\{\big(1+\exp{(-y_i\hat{y_i})}\big)(y_ih^*(x_i))^2  +y_ih^*(x_i) \big\} \exp{(-y_i\hat{y_i})}}{(1+\exp{(-y_i\hat{y_i})})^2}}
 		      $$
     }
 
@@ -331,27 +339,27 @@ This reduces the optimisation to:
 	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 		\problemAnswer{
 			\begin{center}
-			\begin{tabular}{|c|c|c|c|c|c|}
+			\begin{tabular}{|c|c|c|c|c|c|c|}
 				\hline
-C	& Tr. Dataset 1(t) & Tr. Dataset 2(t) & Training Dataset 3(t)	& CV \\
+C	& Tr. Dataset 1(t) & Tr. Dataset 2(t) & Training Dataset 3(t)	& CV & Avg. t \\
 \hline
-$4^{-6}$=0.000244 & 0.606156 & 0.400791 & 0.346078 & 0.578976\\
+$4^{-6}$=0.000244 & 0.606156 & 0.400791 & 0.346078 & 0.578976 & 0.451 \\
 \hline
-$4^{-5}$=0.000977 & 0.379495 & 0.477559 & 0.498054 & 0.907001\\
+$4^{-5}$=0.000977 & 0.379495 & 0.477559 & 0.498054 & 0.907001 & 0.451\\
 \hline
-$4^{-4}$=0.003906 & 0.529940 & 0.495841 & 0.534946 & 0.926001\\
+$4^{-4}$=0.003906 & 0.529940 & 0.495841 & 0.534946 & 0.926001 & 0.520\\
 \hline
-$4^{-3}$=0.015625 & 0.516236 & 0.577324 & 0.561874 & 0.935501\\
+$4^{-3}$=0.015625 & 0.516236 & 0.577324 & 0.561874 & 0.935501 & 0.551\\
 \hline
-$4^{-2}$=0.062500 & 0.512287 & 0.529517 & 0.554510 & 0.945006\\
+$4^{-2}$=0.062500 & 0.512287 & 0.529517 & 0.554510 & 0.945006 & 0.532\\
 \hline
-$4^{-1}$=0.250000 & 0.630195 & 0.663459 & 0.657651 & 0.943010\\
+$4^{-1}$=0.250000 & 0.630195 & 0.663459 & 0.657651 & 0.943010 & 0.650\\
 \hline 
-$4^{0}$=1.000000 & 0.746649 & 0.601710 & 0.563063 & 0.939003\\
+$4^{0}$=1.000000 & 0.746649 & 0.601710 & 0.563063 & 0.939003 & 0.637\\
 \hline
-$4^{1}$=4.000000 & 0.633370 & 0.572011 & 0.595552 & 0.942501\\
+$4^{1}$=4.000000 & 0.633370 & 0.572011 & 0.595552 & 0.942501 & 0.600\\
 \hline
-$4^2$=16.000000 & 0.674677 & 0.681010 & 0.698041 & 0.943503\\
+$4^2$=16.000000 & 0.674677 & 0.681010 & 0.698041 & 0.943503 & 0.684\\
 \hline
 			\end{tabular}
 				
@@ -385,43 +393,39 @@ Based on lowest cross validation error. $C=4^2$
 	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 		\problemAnswer{
 			Platform Used: $Ubuntu\ 12.04,\ x86\_64$\\
-			`libsvm` gives $0.9455$ as its accuracy which is pretty close to 
+			`libsvm` gives $0.9655$ as its accuracy which is pretty close to  0.943 that my code gives.
+			\begin{center}
+				\begin{tabular}{|c|c|c|c}
+					\hline
+					C & Training Time & CV\\
+					\hline
+					$4^{-6}$ & 0.829624 & 0.5575 \\
+					\hline
+					$4^{-5}$ & 0.827846 & 0.5575\\
+					\hline
+					$4^{-4}$ & 0.831586 & 0.5575\\
+					\hline
+					$4^{-3}$ & 0.831599 & 0.7295\\
+					\hline
+					$4^{-2}$ & 0.649459 & 0.9195\\
+					\hline
+					$4^{-1}$ & 0.425499 & 0.934\\
+					\hline 
+					$4^{0}$ & 0.281219 & 0.949\\
+					\hline
+					$4^{1}$ & 0.210071 & 0.955\\
+					\hline
+					$4^2$ & 0.201989 & 0.9655\\
+					\hline
+				\end{tabular}
+						\end{center}
 			}
 	\end{homeworkSection}
 	
 		\begin{homeworkSection}{\homeworkProblemName: ~(b)}
 			\problemAnswer{
 				`libsvm` gives $0.9455$ as its accuracy which is pretty close to 
-				C: 0.000244
-				Cross Validation Accuracy = 55.75%
-				Training Time: 0.818518
-				C: 0.000977
-				Cross Validation Accuracy = 55.75%
-				Training Time: 0.831537
-				C: 0.003906
-				Cross Validation Accuracy = 55.75%
-				Training Time: 0.826694
-				C: 0.015625
-				Cross Validation Accuracy = 72.95%
-				Training Time: 0.827831
-				C: 0.062500
-				Cross Validation Accuracy = 91.95%
-				Training Time: 0.647635
-				C: 0.250000
-				Cross Validation Accuracy = 93.4%
-				Training Time: 0.425102
-				C: 1.000000
-				Cross Validation Accuracy = 94.9%
-				Training Time: 0.278804
-				C: 4.000000
-				Cross Validation Accuracy = 95.5%
-				Training Time: 0.203395
-				C: 16.000000
-				Cross Validation Accuracy = 96.55%
-				Training Time: 0.202181
-				Optimum C: 16.000000
-				Testing Accuracy: 95.000000
-				
+		
 			}
 		\end{homeworkSection}
 		
@@ -432,16 +436,90 @@ Based on lowest cross validation error. $C=4^2$
 \begin{homeworkProblem}[Problem 3.5]
 	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 		\problemAnswer{
-
+			\begin{center}
+						\begin{tabular}{|c|c|c|}
+				\hline
+				C & Training Time & CV\\
+				\hline 
+				0.015625 & 0.675134 & 0.7010\\
+				\hline
+				0.062500 & 0.680862 & 0.5575\\
+				\hline
+				0.250000 & 0.682373 & 0.5575\\
+				\hline
+				1.000000 & 0.532627 & 0.9175\\
+				\hline
+				4.000000 & 0.608079 & 0.8655\\
+				\hline
+				16.000000 & 0.678589 & 0.7690\\
+				\hline
+				64.000000 & 0.347019 & 0.9280\\
+				\hline
+				256.000000 & 0.432110 & 0.9255\\
+				\hline
+				1024.000000 & 0.523863 & 0.9180\\
+				\hline
+				4096.000000 & 0.239251 & 0.9385\\
+				\hline
+				16384.000000 & 0.284755 & 0.9470\\
+				\hline
+				
+			\end{tabular}
+			
+			\end{center}
+			
 		}
 	\end{homeworkSection}
 	
 	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
 		\problemAnswer{
-
+				\begin{center}
+					\begin{tabular}{|c|c|c|}
+						\hline
+						C & Training Time & CV\\
+						\hline 
+		0.015625 & 0.806863 & 0.5575\\
+		\hline
+		0.062500 & 0.804094 & 0.5575\\
+		\hline
+		0.250000 & 0.804537 & 0.5575\\
+		\hline
+		1.000000 & 0.807285 & 0.5575\\
+		\hline
+		4.000000 & 0.810119 & 0.6475\\
+		\hline
+		16.000000 & 0.815702 & 0.7375\\
+		\hline
+		64.000000 & 0.828215 & 0.55750\\
+		\hline
+		256.000000 & 0.803329 & 0.5575\\
+		\hline
+		1024.000000 & 0.803978 & 0.5575\\
+		\hline
+		4096.000000 & 0.806347 & 0.5575\\
+		\hline
+		16384.000000 & 0.816474 & 0.8335\\
+		\hline
+			\end{tabular}
+			
+		\end{center}
+		
 		}
 	\end{homeworkSection}
-	
+	\problemAnswer{
+		Based on the RBF, polykernel:
+		
+		Polynomal Kernel train accuracy: 96.600000\\
+		RBF Kernel train accuracy: 96.900000\\
+		Better kernel: RBF\\
+		Polynomial Kernel optimal C: 64.000000\\
+		Polynomial Kernel optimal degree: 2.000000\\
+		Polynomal Kernel test accuracy: 95.150000\\
+		RBF Kernel optimal g: 0.062500\\
+		RBF Kernel optimal c: 16.000000\\
+		RBF Kernel test accuracy: 96.500000\\
+		
+		}
 	
 \end{homeworkProblem}
 \end{document}

@@ -1,4 +1,5 @@
 C = power(4,[-6:2]);
+rng(1)
 traindata  = load('phishing-train.mat');
 testdata = load('phishing-test.mat');
 trainfeatures = double(traindata.features);
