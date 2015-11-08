@@ -1,5 +1,5 @@
 clear all;
-C = 4;
+C = 16;
 traindata  = load('phishing-train.mat');
 testdata = load('phishing-test.mat');
 
@@ -15,3 +15,4 @@ testfeatures = transformdata(testfeatures);
 
 [w,b] = trainsvm(trainfeatures, trainlabels, C);
 testaccu = testsvm(testfeatures, testlabels, w, b);
+disp(sprintf('Own linear test accuracy: %f', testaccu))

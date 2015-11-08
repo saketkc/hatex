@@ -10,7 +10,9 @@ testlabels = double(testdata.label');
 testfeatures = transformdata(testfeatures);
 for idx=1:numel(C)
     c = C(idx);
-    disp(c);
+    disp(sprintf('C: %f',c));
+    tic;
     model = svmtrain(trainlabels, trainfeatures, '-v 3 -c ' + c);
+    disp(sprintf('Time: %f', toc() ));
     [predicted_label, accuracy, decision_values] = svmpredict(testlabels, testfeatures, model);
 end

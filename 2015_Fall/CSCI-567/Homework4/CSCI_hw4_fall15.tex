@@ -317,7 +317,7 @@ This reduces the optimisation to:
 	$$
 	w = \sum_i(\alpha_i-\beta_i)\phi(x_i)
 	$$	
-	this happens because $x_i'x_j$ gets mapped onto by an equivalnet kernel function $k(x_i,x_j)=\phi^T(x_i)\phi(x_j)$
+	this happens because $x_i'x_j$ gets mapped onto by an equivalent kernel function $k(x_i,x_j)=\phi^T(x_i)\phi(x_j)$
 	and the objective function is:
 	$$
 	\max_f = \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)k(x_i, x_j)(\alpha_j-\beta_j)  - \epsilon (\sum_i(\alpha_i+\beta_i))
@@ -327,4 +327,87 @@ This reduces the optimisation to:
     \end{homeworkSection}
 \end{homeworkProblem}
 
+\begin{homeworkProblem}[Problem 3.3]
+	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
+		\problemAnswer{
+			\begin{tabular}{|c|c|c|c|c|c|}
+				\hline
+C	& Tr. Dataset 1(t) & Tr. Dataset 2(t) & Training Dataset 3(t)	& CV \\
+\hline
+$4^{-6}$=0.000244 & 0.606156 & 0.400791 & 0.346078 & 0.578976\\
+\hline
+$4^{-5}$=0.000977 & 0.379495 & 0.477559 & 0.498054 & 0.907001\\
+\hline
+$4^{-4}$=0.003906 & 0.529940 & 0.495841 & 0.534946 & 0.926001\\
+\hline
+$4^{-3}$=0.015625 & 0.516236 & 0.577324 & 0.561874 & 0.935501\\
+\hline
+$4^{-2}$=0.062500 & 0.512287 & 0.529517 & 0.554510 & 0.945006\\
+\hline
+$4^{-1}$=0.250000 & 0.630195 & 0.663459 & 0.657651 & 0.943010\\
+\hline 
+$4^{0}$=1.000000 & 0.746649 & 0.601710 & 0.563063 & 0.939003\\
+\hline
+$4^{1}$=4.000000 & 0.633370 & 0.572011 & 0.595552 & 0.942501\\
+\hline
+$4^2$=16.000000 & 0.674677 & 0.681010 & 0.698041 & 0.943503\\
+\hline
+			\end{tabular}
+			
+			As seen from the table. the time seems to increase with $C$ and the $CV$ increases too.
+			C determines the tradeoff between objective function complexity and the overall loss. When $C$ is small, there are chances of overfitting, this is evident from low $CV$ values for lower $C$(because the generalisation error is high)
+			
+			In terms of time complexity, if 
+			
+			The larger the value of $C$, the more is the penalisation and hence smaller the $\epsilon_i$ would be
+			
+
+			}
+	\end{homeworkSection}
+	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+		\problemAnswer{
+Based on lowest cross validation error. $C=4^2$ 
+			}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+		\problemAnswer{
+		With $C=16$, test accuracy = $0.943500$
+		}
+	\end{homeworkSection}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 3.4]
+	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
+		\problemAnswer{
+			`libsvm` gives $0.9455$ as its accuracy which is pretty close to 
+			}
+	\end{homeworkSection}
+	
+		\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+			\problemAnswer{
+				`libsvm` gives $0.9455$ as its accuracy which is pretty close to 
+			}
+		\end{homeworkSection}
+		
+		
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}[Problem 3.5]
+	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
+		\problemAnswer{
+
+		}
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+		\problemAnswer{
+
+		}
+	\end{homeworkSection}
+	
+	
+\end{homeworkProblem}
 \end{document}
