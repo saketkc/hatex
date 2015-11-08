@@ -330,6 +330,7 @@ This reduces the optimisation to:
 \begin{homeworkProblem}[Problem 3.3]
 	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 		\problemAnswer{
+			\begin{center}
 			\begin{tabular}{|c|c|c|c|c|c|}
 				\hline
 C	& Tr. Dataset 1(t) & Tr. Dataset 2(t) & Training Dataset 3(t)	& CV \\
@@ -353,6 +354,8 @@ $4^{1}$=4.000000 & 0.633370 & 0.572011 & 0.595552 & 0.942501\\
 $4^2$=16.000000 & 0.674677 & 0.681010 & 0.698041 & 0.943503\\
 \hline
 			\end{tabular}
+				
+			\end{center}
 			
 			As seen from the table. the time seems to increase with $C$ and the $CV$ increases too.
 			C determines the tradeoff between objective function complexity and the overall loss. When $C$ is small, there are chances of overfitting, this is evident from low $CV$ values for lower $C$(because the generalisation error is high)

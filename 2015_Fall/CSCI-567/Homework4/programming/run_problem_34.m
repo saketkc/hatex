@@ -8,11 +8,22 @@ trainfeatures = transformdata(trainfeatures);
 testfeatures = double(testdata.features);
 testlabels = double(testdata.label');
 testfeatures = transformdata(testfeatures);
+maxaccu=0;
+optimC = 0;
 for idx=1:numel(C)
     c = C(idx);
     disp(sprintf('C: %f',c));
+    opts = sprintf('-v 3 -c %f -q', c);
     tic;
-    model = svmtrain(trainlabels, trainfeatures, '-v 3 -c ' + c);
-    disp(sprintf('Time: %f', toc() ));
-    [predicted_label, accuracy, decision_values] = svmpredict(testlabels, testfeatures, model);
+    model = svmtrain(trainlabels, trainfeatures, opts);
+    disp(sprintf('Training Time: %f', toc() ));
+    if maxaccu<model(1)
+        maxaccu = model(1);
+        optimumC = c;
+    end
 end
+disp(sprintf('Optimum C: %f', optimumC));
+opts = sprintf('-c %f -q', optimumC);
+model = svmtrain(trainlabels, trainfeatures, opts);
+[predicted_label, accuracy, decision_values] = svmpredict(testlabels, testfeatures, model, '-q');
+disp(sprintf('Testing Accuracy: %f', accuracy(1)));
