@@ -1,0 +1,217 @@
+% \iffalse meta-comment -------------------------------------------------------
+% Copyright 2015 Matthias Vogelgesang and the LaTeX community. A full list of
+% contributors can be found at
+%
+%     https://github.com/matze/mtheme/graphs/contributors
+%
+% and the original template was based on the HSRM theme by Benjamin Weiss.
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+% ------------------------------------------------------------------------- \fi
+% \iffalse
+%<driver> \ProvidesFile{beamerthemem.dtx}
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemem}[2015/06/12 Metropolis Beamer theme]
+%</package>
+%<driver> \documentclass{ltxdoc}
+%<driver> \usepackage{beamerthemem}
+%<driver> \begin{document}
+%<driver> \DocInput{beamerthemem.dtx}
+%<driver> \end{document}
+% \fi
+% \CheckSum{0}
+% \StopEventually{}
+% \iffalse
+%<*package>
+% ------------------------------------------------------------------------- \fi
+%
+% \subsection{\textsc{metropolis} main theme}
+%
+% The primary job of this package is to load the component sub-packages of the
+% \textsc{metropolis} theme and route the theme options accordingly. It also
+% provides some custom commands and environments for the user.
+%
+% Load the required packages.
+%    \begin{macrocode}
+\RequirePackage{etoolbox}
+\RequirePackage{pgfopts}
+\RequirePackage{ifxetex}
+\RequirePackage{ifluatex}
+%    \end{macrocode}
+%
+% \subsubsection{Options}
+%
+% \begin{macro}{\metroset}
+% First of all we define a macro for the user to set options.
+%    \begin{macrocode}
+\newcommand{\metroset}[1]{\pgfkeys{/metropolis/.cd,#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% Then we need to pass the unknown options to the sub-packages.
+%
+%    \begin{macrocode}
+\pgfkeys{/metropolis/.cd,
+  .search also={
+    /metropolis/inner,
+    /metropolis/outer,
+    /metropolis/color,
+  },
+%    \end{macrocode}
+%
+% We have to forwarded keys that affect multiple sub-packages manually.
+%
+%    \begin{macrocode}
+  block/.code=\pgfkeysalso{
+    inner/block=#1,
+    color/block=#1,
+  },
+}
+%    \end{macrocode}
+%
+% \begin{macro}{plaintitleformat}
+% Control the case style of the plain title
+%    \begin{macrocode}
+\pgfkeys{
+  /metropolis/plaintitleformat/.cd,
+    .is choice,
+    regular/.code=\renewcommand{\@metropolis@plaintitleformat}{#1},
+    lowercase/.code={%
+      \renewcommand{\@metropolis@plaintitleformat}{\MakeLowercase{#1}}
+    },
+    uppercase/.code={%
+      \renewcommand{\@metropolis@plaintitleformat}{\MakeUppercase{#1}}
+    },
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{everytitleformat}
+% Control the case style of the every title
+%    \begin{macrocode}
+\pgfkeys{
+  /metropolis/everytitleformat/.code=\pgfkeysalso{
+      inner/titleformat=#1,
+      inner/sectiontitleformat=#1,
+      outer/frametitleformat=#1,
+      plaintitleformat=#1,
+    }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% For backwards compatibility with earlier betas of the theme, we implement
+% deprecated option names as aliases to the corresponding |key=value| options.
+%
+%    \begin{macrocode}
+\pgfkeys{/metropolis/.cd,
+  usetitleprogressbar/.code=\pgfkeysalso{outer/progressbar=frametitle},
+  noslidenumbers/.code=\pgfkeysalso{outer/numbering=none},
+  usetotalslideindicator/.code=\pgfkeysalso{outer/numbering=fraction},
+  nosectionslide/.code=\pgfkeysalso{inner/sectionpage=none},
+  darkcolors/.code=\pgfkeysalso{color/background=dark},
+  blockbg/.code=\pgfkeysalso{color/block=fill, inner/block=fill},
+}
+%    \end{macrocode}
+%
+% Set default values for options.
+%
+%    \begin{macrocode}
+\newcommand{\@metropolis@setdefaults}{
+  \pgfkeys{/metropolis/.cd,
+    plaintitleformat=lowercase,
+  }
+}
+%    \end{macrocode}
+%
+%
+%
+% \subsubsection{Component sub-packages}
+%
+% Having processed the options, we can now load the component sub-packages of
+% the theme.
+%    \begin{macrocode}
+\useinnertheme{metropolis}
+\useoutertheme{metropolis}
+\usecolortheme{metropolis}
+%    \end{macrocode}
+%
+% The |fira| font theme, which depends on |fontspec|, is only loaded if the
+% document is being processed by Xe\LaTeX{} or Lua\LaTeX{}.
+%
+%    \begin{macrocode}
+\ifboolexpr{bool {xetex} or bool {luatex}}{
+  \usefonttheme{metropolis}
+}{
+  \PackageWarning{beamerthemem}{%
+    You need to compile with XeLaTeX or LuaLaTeX to use the Fira fonts.
+  }
+}
+%    \end{macrocode}
+%
+% The |tol| theme for |pgfplots| is only loaded if |pgfplots| is used.
+%
+%    \begin{macrocode}
+\AtEndPreamble{%
+  \@ifpackageloaded{pgfplots}{%
+    \RequirePackage{pgfplotsthemetol}
+  }{}
+}
+%    \end{macrocode}
+%
+%
+%
+% \subsubsection{Custom commands}
+%
+% We define custom commands in this package as their proper usage may depend
+% on multiple sub-packages.
+%
+% \begin{macro}{\@metropolis@plaintitleformat}
+%   Define a hook to change the case format of the plain title.
+%    \begin{macrocode}
+\def\@metropolis@plaintitleformat#1{#1}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\plain}
+%   Creates a plain frame with dark background, suitable for displaying images
+%   or a few words.
+%    \begin{macrocode}
+\newcommand{\plain}[2][]{%
+  \begingroup
+    \setbeamercolor{background canvas}{
+      use=palette primary,
+      parent=palette primary
+    }
+    \begin{frame}[c]{#1}
+      \begin{center}
+        \usebeamercolor[fg]{palette primary}
+        \usebeamerfont{section title}
+        \@metropolis@plaintitleformat{#2}
+      \end{center}
+    \end{frame}
+  \endgroup
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\mreducelistspacing}
+%    \begin{macrocode}
+\newcommand{\mreducelistspacing}{\vspace{-\topsep}}
+%    \end{macrocode}
+% \end{macro}
+%
+% Process package options
+%
+%    \begin{macrocode}
+\@metropolis@setdefaults
+\ProcessPgfOptions{/metropolis}
+%    \end{macrocode}
+%
+% \iffalse
+%</package>
+% \fi
+% \Finale
+\endinput

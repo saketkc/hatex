@@ -1,0 +1,528 @@
+% \iffalse meta-comment -------------------------------------------------------
+% Copyright 2015 Matthias Vogelgesang and the LaTeX community. A full list of
+% contributors can be found at
+%
+%     https://github.com/matze/mtheme/graphs/contributors
+%
+% and the original template was based on the HSRM theme by Benjamin Weiss.
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+% ------------------------------------------------------------------------- \fi
+% \iffalse
+%<driver> \ProvidesFile{beamerinnerthememetropolis.dtx}
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthememetropolis}[2015/06/12 Metropolis inner theme]
+%</package>
+%<driver> \documentclass{ltxdoc}
+%<driver> \usepackage{beamerinnerthememetropolis}
+%<driver> \begin{document}
+%<driver> \DocInput{beamerinnerthememetropolis.dtx}
+%<driver> \end{document}
+% \fi
+% \CheckSum{0}
+% \StopEventually{}
+% \iffalse
+%<*package>
+% ------------------------------------------------------------------------- \fi
+%
+% \subsection{\textsc{metropolis} inner theme}
+%
+% A |beamer| inner theme dictates the style of the frame elements traditionally
+% set in the ``body'' of each slide. These include:
+%
+% \begin{itemize}
+%   \item title, part, and section pages;
+%   \item itemize, enumerate, and description environments;
+%   \item block environments including theorems and proofs;
+%   \item figures and tables; and
+%   \item footnotes and plain text.
+% \end{itemize}
+%
+% Load required packages.
+%    \begin{macrocode}
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
+\RequirePackage{pgfopts}
+\RequirePackage{tikz}
+%    \end{macrocode}
+%
+%
+%
+% \subsubsection{Options}
+%
+% \begin{macro}{block}
+% This option controls the block style.
+%    \begin{macrocode}
+\pgfkeys{
+  /metropolis/inner/block/.cd,
+    .is choice,
+    transparent/.code=\setlength{\@metropolis@blockskip}{0ex},
+    fill/.code=\setlength{\@metropolis@blockskip}{1ex},
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{titleformat}
+% Control the case style of the title
+%    \begin{macrocode}
+\pgfkeys{
+  /metropolis/inner/titleformat/.cd,
+    .is choice,
+    regular/.code=\renewcommand{\@metropolis@titleformat}{},
+    lowercase/.code={%
+      \renewcommand{\@metropolis@titleformat}{\MakeLowercase}
+    },
+    uppercase/.code={%
+      \renewcommand{\@metropolis@titleformat}{\MakeUppercase}
+    },
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{sectiontitleformat}
+% Control the case style of the section title
+%    \begin{macrocode}
+\pgfkeys{
+  /metropolis/inner/sectiontitleformat/.cd,
+    .is choice,
+    regular/.code=\renewcommand{\@metropolis@sectiontitleformat}{},
+    lowercase/.code={%
+      \renewcommand{\@metropolis@sectiontitleformat}{\MakeLowercase}
+    },
+    uppercase/.code={%
+      \renewcommand{\@metropolis@sectiontitleformat}{\MakeUppercase}
+    },
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{sectionpage}
+% The |sectionpage| option defines the behaviour of the sectionpage.
+%    \begin{macrocode}
+\pgfkeys{
+  /metropolis/inner/sectionpage/.cd,
+    .is choice,
+    none/.code=\@metropolis@sectionpage@none,
+    simple/.code=\@metropolis@sectionpage@simple,
+    progressbar/.code=\@metropolis@sectionpage@progressbar,
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@metropolis@inner@setdefaults}
+% Set default values for inner theme options.
+%    \begin{macrocode}
+\newcommand{\@metropolis@inner@setdefaults}{
+  \pgfkeys{/metropolis/inner/.cd,
+    sectionpage=progressbar,
+    block=transparent,
+    titleformat=lowercase,
+    sectiontitleformat=lowercase,
+  }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+%
+% \subsubsection{Title page}
+%
+% \begin{macro}{\@metropolis@titleformat}
+%   Define hooks to change the case format of the titles.
+%    \begin{macrocode}
+\def\@metropolis@titleformat#1{#1}
+\def\@metropolis@sectiontitleformat#1{#1}
+%    \end{macrocode}
+% \end{macro}
+%
+% To make the |\MakeLowercase| and |\MakeUppercase| macros work in the
+% sectiontitle we have to patch |\sectionentry| and |\beamer@section|. This
+% solution was suggested by Enrico Gregorio in an answer to
+% \href{http://tex.stackexchange.com/questions/112526/}{this StackExchange
+% question}.
+%
+%    \begin{macrocode}
+\patchcmd{\sectionentry}
+  {\def\insertsectionhead{#2}}
+  {\def\insertsectionhead{\@metropolis@sectiontitleformat{#2}}}
+  {}
+  {\PackageError{beamerinnerthememetropolis}{Patching section title failed.}}
+\patchcmd{\beamer@section}
+  {\def\insertsectionhead{\hyperlink{Navigation\the\c@page}{#1}}}
+  {\def\insertsectionhead{\hyperlink{Navigation\the\c@page}{\@metropolis@sectiontitleformat{#1}}}}
+  {}
+  {\PackageError{beamerinnerthememetropolis}{Patching section title failed.}}
+%    \end{macrocode}
+%
+% \begin{macro}{title page}
+%   Template for the title page. Each element is only typset if it is defined
+%   by the user. If |\subtitle| is empty, for example, it won't leave a blank
+%   space on the title slide.
+%    \begin{macrocode}
+\setbeamertemplate{title page}{
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+    \vfill%
+    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+    \usebeamertemplate*{title separator}
+%    \end{macrocode}
+%
+%   Beamer's definition of |\insertauthor| is always nonempty, so we have
+%   to test another macro initialized by |\author{...}| to see if the user has
+%   defined an author. This solution was suggested by Enrico Gregorio in an
+%   answer to \href{https://tex.stackexchange.com/questions/241306/}{this
+%   Stack Exchange question}.
+%
+%    \begin{macrocode}
+    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+    \vfill
+    \vspace*{1mm}
+  \end{minipage}
+}
+%    \end{macrocode}
+% \end{macro}%
+%
+% Normal people should use |\maketitle| or |\titlepage| instead of using the
+% |title page| beamer template directly. Beamer already defines these macros,
+% but we patch them here to make the title page |[plain]| by default, remove
+% |\@thanks|, and ensure the title frame number doesn't count.
+%
+% \begin{macro}{\maketitle}
+% \begin{macro}{\titlepage}
+%
+%   Inserts the title frame, or causes the current frame to use the
+%   |title page| template.
+%
+%    \begin{macrocode}
+\def\maketitle{%
+  \ifbeamer@inframe
+    \titlepage
+  \else
+    \frame[plain]{\titlepage}
+  \fi
+}
+\def\titlepage{%
+  \usebeamertemplate{title page}
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{title graphic}
+%   Set the title graphic in a zero-height box, so it doesn't change the
+%   position of other elements.
+%    \begin{macrocode}
+\setbeamertemplate{title graphic}{
+  \vbox to 0pt {
+    \vspace*{2em}
+    \inserttitlegraphic%
+  }%
+  \nointerlineskip%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{title}
+%   Set the title on the title page.
+%    \begin{macrocode}
+\setbeamertemplate{title}{
+  \raggedright%
+  \linespread{1.0}%
+  \@metropolis@titleformat{\inserttitle}%
+  \par%
+  \vspace*{0.5em}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{subtitle}
+%   Set the subtitle on the title page.
+%    \begin{macrocode}
+\setbeamertemplate{subtitle}{
+  \insertsubtitle%
+  \par%
+  \vspace*{0.5em}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{title separator}
+%   Template to set the title graphic in a zero-height box. (It won't
+%   change the position of other elements.)
+%    \begin{macrocode}
+\setbeamertemplate{title separator}{
+  \begin{tikzpicture}
+    \draw[fg] (0, 0) -- (\textwidth, 0);
+  \end{tikzpicture}%
+  \par%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{author}
+%   Set the author on the title page.
+%    \begin{macrocode}
+\setbeamertemplate{author}{
+  \vspace*{2em}
+  \insertauthor%
+  \par%
+  \vspace*{0.25em}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{date}
+%   Set the date on the title page.
+%    \begin{macrocode}
+\setbeamertemplate{date}{
+  \insertdate%
+  \par%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{institute}
+%   Set the institute on the title page.
+%    \begin{macrocode}
+\setbeamertemplate{institute}{
+  \vspace*{3mm}
+  \insertinstitute%
+  \par%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+%
+% \subsubsection{Section page}
+%
+% \begin{macro}{section page}
+%
+%   Template for the section title slide at the beginning of each section.
+%
+%    \begin{macrocode}
+\newcommand{\@metropolis@sectionpage@none}{
+  \AtBeginSection{
+    % intenionally empty
+  }
+}
+\defbeamertemplate{section page}{simple}{
+  \centering
+  \usebeamercolor[fg]{section title}
+  \usebeamerfont{section title}
+  \insertsectionhead\\
+}
+\newcommand{\@metropolis@sectionpage@simple}{
+  \setbeamertemplate{section page}[simple]
+  \AtBeginSection{
+    \ifbeamer@inframe
+      \sectionpage
+    \else
+      \frame[plain,c]{\sectionpage}
+    \fi
+  }
+}
+\defbeamertemplate{section page}{progressbar}{
+  \centering
+  \begin{minipage}{22em}
+    \usebeamercolor[fg]{section title}
+    \usebeamerfont{section title}
+    \insertsectionhead\\[-1ex]
+    \usebeamertemplate*{progress bar in section page}
+  \end{minipage}
+  \par
+}
+\newcommand{\@metropolis@sectionpage@progressbar}{
+  \setbeamertemplate{section page}[progressbar]
+  \AtBeginSection{
+    \ifbeamer@inframe
+      \sectionpage
+    \else
+      \frame[plain,c]{\sectionpage}
+    \fi
+  }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{progress bar in section page}
+%
+%   Template for the progress bar displayed by default on the section page.
+%   This code is duplicated in large part in the outer theme's template
+%   |progress bar in head/foot|.
+%
+%    \begin{macrocode}
+\newlength{\metropolis@progressonsectionpage}
+\setbeamertemplate{progress bar in section page}{
+  \setlength{\metropolis@progressonsectionpage}{%
+    \textwidth * \ratio{\insertframenumber pt}{\inserttotalframenumber pt}%
+  }%
+  \begin{tikzpicture}
+    \draw[bg, fill=bg] (0,0) rectangle (\textwidth, 0.4pt);
+    \draw[fg, fill=fg] (0,0) rectangle (\metropolis@progressonsectionpage, 0.4pt);
+  \end{tikzpicture}%
+}
+%    \end{macrocode}
+%
+%   The above code assumes that |\insertframenumber| is less than or equal to
+%   |\inserttotalframenumber|. However, this is not true on the first compile;
+%   in the absence of an |.aux| file, |\inserttotalframenumber| defaults to 1.
+%   This behaviour could cause fatal errors for long presentations, as
+%   |\metropolis@progressonsectionpage| would exceed \TeX's maximum length
+%   (16383.99999pt, roughly 5.75 metres or 18.9 feet).
+%   To avoid this, we increase the default value for |\inserttotalframenumber|;
+%   presentations with over 4000 slides will still break on first compile, but
+%   users in that situation likely have deeper problems to solve.
+%
+%    \begin{macrocode}
+\def\inserttotalframenumber{100}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+%
+% \subsubsection{Block environments}
+%
+% Regular block environment
+%
+%    \begin{macrocode}
+\newlength{\@metropolis@blockskip}
+\setbeamertemplate{block begin}{%
+  \vspace*{1ex}
+  \begin{beamercolorbox}[%
+    ht=2.4ex,
+    dp=1ex,
+    leftskip=\@metropolis@blockskip,
+    rightskip=\@metropolis@blockskip]{block title}
+      \usebeamerfont*{block title}\insertblocktitle%
+  \end{beamercolorbox}%
+  \vspace*{-1pt}
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[%
+    dp=1ex,
+    leftskip=\@metropolis@blockskip,
+    rightskip=\@metropolis@blockskip,
+    vmode]{block body}%
+}
+\setbeamertemplate{block end}{%
+  \end{beamercolorbox}
+  \vspace*{0.2ex}
+}
+%    \end{macrocode}
+%
+% Alerted block environment
+%
+%    \begin{macrocode}
+\setbeamertemplate{block alerted begin}{%
+  \vspace*{1ex}
+  \begin{beamercolorbox}[%
+    ht=2.4ex,
+    dp=1ex,
+    leftskip=\@metropolis@blockskip,
+    rightskip=\@metropolis@blockskip]{block title alerted}
+      \usebeamerfont*{block title alerted}\insertblocktitle%
+  \end{beamercolorbox}%
+  \vspace*{-1pt}
+  \usebeamerfont{block body alerted}%
+  \begin{beamercolorbox}[%
+    dp=1ex,
+    leftskip=\@metropolis@blockskip,
+    rightskip=\@metropolis@blockskip,
+    vmode]{block body alerted}%
+}
+\setbeamertemplate{block alerted end}{%
+  \end{beamercolorbox}
+  \vspace*{0.2ex}
+}
+%    \end{macrocode}
+%
+% Example block environment
+%
+%    \begin{macrocode}
+\setbeamertemplate{block example begin}{%
+  \vspace*{1ex}
+  \begin{beamercolorbox}[%
+    ht=2.4ex,
+    dp=1ex,
+    leftskip=\@metropolis@blockskip,
+    rightskip=\@metropolis@blockskip]{block title example}
+      \usebeamerfont*{block title example}\insertblocktitle%
+  \end{beamercolorbox}%
+  \vspace*{-1pt}
+  \usebeamerfont{block body example}%
+  \begin{beamercolorbox}[%
+    dp=1ex,
+    leftskip=\@metropolis@blockskip,
+    rightskip=\@metropolis@blockskip,
+    vmode]{block body example}%
+}
+\setbeamertemplate{block example end}{%
+  \end{beamercolorbox}
+  \vspace*{0.2ex}
+}
+%    \end{macrocode}
+%
+%
+%
+% \subsubsection{Lists and floats}
+%
+%    \begin{macrocode}
+\setbeamertemplate{itemize items}{\textbullet}
+\setbeamertemplate{caption label separator}{: }
+\setbeamertemplate{caption}[numbered]
+%    \end{macrocode}
+%
+%
+%
+% \subsubsection{Footnotes}
+%    \begin{macrocode}
+\setbeamertemplate{footnote}{%
+  \parindent 0em\noindent%
+  \raggedright
+  \usebeamercolor{footnote}\hbox to 0.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
+}
+%    \end{macrocode}
+%
+%
+%
+% \subsubsection{Text and spacing settings}
+%
+%    \begin{macrocode}
+\setlength{\parskip}{0.5em}
+\linespread{1.15}
+%    \end{macrocode}
+%
+% By default, Beamer frames offer the |c| option to \textit{almost} vertically
+% center the text, but the placement is a little too high. To fix this, we
+% redefine the |c| option to equalize |\beamer@frametopskip| and
+% |\beamer@framebottomskip|. This solution was suggested by Enrico Gregorio in
+% an answer to \href{http://tex.stackexchange.com/questions/247826/}{this
+% Stack Exchange question}.
+%
+%    \begin{macrocode}
+\define@key{beamerframe}{c}[true]{% centered
+  \beamer@frametopskip=0pt plus 1fill\relax%
+  \beamer@framebottomskip=0pt plus 1fill\relax%
+  \beamer@frametopskipautobreak=0pt plus .4\paperheight\relax%
+  \beamer@framebottomskipautobreak=0pt plus .6\paperheight\relax%
+  \def\beamer@initfirstlineunskip{}%
+}
+%    \end{macrocode}
+%
+% Process package options
+%
+%    \begin{macrocode}
+\@metropolis@inner@setdefaults
+\ProcessPgfPackageOptions{/metropolis/inner}
+%    \end{macrocode}
+%
+% \iffalse
+%</package>
+% \fi
+% \Finale
+\endinput
