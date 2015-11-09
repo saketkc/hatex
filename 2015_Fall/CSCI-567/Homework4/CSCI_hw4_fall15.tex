@@ -31,7 +31,9 @@
 \usepackage{tikz}
 
 
+\usepackage{empheq}
 
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
 \usepackage{amsmath}
 
 % Margins
@@ -191,22 +193,22 @@ Since the second derivative is positive definite, $\hat{gamma}$ is indeed where 
         
 		\begin{align*}
 		f(\alpha_0) &=   \sum_{i=1}^n \log(1+\exp(-y_i\hat{y_i})) \\
-		f'(\alpha_0) & = \sum_{i=1}^n \frac{\partial L}{\partial \alpha }\\
+		f'(\alpha) & = \sum_{i=1}^n \frac{\partial L}{\partial \alpha }\\
 		 &= \sum_{i=1}^n \frac{-y_i h^*(x_i)\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}}{1+\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}}\\
-		 &=  -\sum_{i=1}^n \frac{y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}
+		 \Aboxed{f'(\alpha=\alpha_0)&=  -\sum_{i=1}^n \frac{y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}}
 		\end{align*}  
 		      
 		And,
 		
 		\begin{align*}
-		f''(\alpha_0) &= \sum_{i=1}^n \frac{\partial^2 L}{\partial \alpha^2}\\
+		f''(\alpha) &= \sum_{i=1}^n \frac{\partial^2 L}{\partial \alpha^2}\\
 		&= \sum_{i=1}^n \frac{\big\{\big(1+\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}\big)(y_ih^*(x_i))^2  +y_ih^*(x_i) \big\} \exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))}}{(1+\exp{(-y_i(\hat{y_i}+\alpha h^*(x_i)))})^2}\\
-		&= \sum_{i=1}^n \frac{\big\{\big(1+\exp{(-y_i\hat{y_i})}\big)(y_ih^*(x_i))^2  +y_ih^*(x_i) \big\} \exp{(-y_i\hat{y_i})}}{(1+\exp{(-y_i\hat{y_i})})^2}\\
+		\Aboxed{f''(\alpha_0)&= \sum_{i=1}^n \frac{\big\{\big(1+\exp{(-y_i\hat{y_i})}\big)(y_ih^*(x_i))^2  +y_ih^*(x_i) \big\} \exp{(-y_i\hat{y_i})}}{(1+\exp{(-y_i\hat{y_i})})^2}}\\
 		\end{align*}
 		      Thus,
 		      $$
 		      %\alpha_1 = \frac{\sum_{i=1}^n(\log(1+\exp(-y_i\hat{y_i})))}{\sum_{i=1}^n \frac{-y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}}
-		      \alpha_1 = \frac{\sum_{i=1}^n \frac{y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}}{\sum_{i=1}^n \frac{\big\{\big(1+\exp{(-y_i\hat{y_i})}\big)(y_ih^*(x_i))^2  +y_ih^*(x_i) \big\} \exp{(-y_i\hat{y_i})}}{(1+\exp{(-y_i\hat{y_i})})^2}}
+		      \boxed{\alpha_1 = \frac{\sum_{i=1}^n \frac{y_ih^*(x_i)\exp(-y_i\hat{y_i})}{1+\exp(-y_i\hat{y_i})}}{\sum_{i=1}^n \frac{\big\{\big(1+\exp{(-y_i\hat{y_i})}\big)(y_ih^*(x_i))^2  +y_ih^*(x_i) \big\} \exp{(-y_i\hat{y_i})}}{(1+\exp{(-y_i\hat{y_i})})^2}}}
 		      $$
     }
 
@@ -219,10 +221,13 @@ Since the second derivative is positive definite, $\hat{gamma}$ is indeed where 
     \begin{homeworkSection}{\homeworkProblemName: ~(a)}
         \problemAnswer{
             Primal form:
-                \begin{align*} 
+                %\begin{empheq}[box=\widefbox]
+                	\begin{align*} 
                     \min_w  ||w||^2\\
                     \text{such that } |y_i-(w^Tx_i+b)| \leq \epsilon
-                \end{align*}
+	                \end{align*}
+                %\end{empheq}
+            
         }
     \end{homeworkSection}
     
@@ -268,7 +273,7 @@ Since the second derivative is positive definite, $\hat{gamma}$ is indeed where 
         \problemAnswer{
 \begin{align*}
 L  &= \frac{1}{2}||w||^2 + C\sum_i (p_i+n_i)\\
- &- \sum_i(\eta_ip_i+\eta_i'n_i)\\ 
+ &- \sum_i(\lambda_ip_i+\lambda_i'n_i)\\ 
  &-\sum_i \alpha_i(\epsilon+ p_i - (y_i-(w^Tx_i+b)))\\
  &- \sum_i \beta_i (\epsilon+ n_i + (y_i-(w^Tx_i+b)))
 \end{align*}
@@ -277,21 +282,22 @@ L  &= \frac{1}{2}||w||^2 + C\sum_i (p_i+n_i)\\
 \begin{align*}
 \alpha_i &\geq 0\\
 \beta_i &\geq 0\\
-\eta_i &\geq 0\\
-\eta_i^* &\geq 0
+\lambda_i &\geq 0\\
+\lambda_i' &\geq 0
 \end{align*}
 
 
-Dual Form:
+Dual Form(all summations are from 1 to n)::
 \begin{align*}
 \Delta_w L &=0 \\
 &= w - \sum_i \alpha_i x_i + \sum_i \beta_i x_i = 0\\
+&= w-\sum_i( \alpha_i-\beta_i	) x_i=0\\
 \Delta_b L &=0\\
 &= \sum_i \alpha_i - \sum_i \beta_i = 0\\
 \Delta_{p_i} L &= 0\\
-&= C-\sum \eta_i -\sum_i \alpha_i   =0\\
+&= C-\sum \lambda_i -\sum_i \alpha_i   =0\\
 \Delta_{n_i} L &= 0\\
-&= C-\sum \eta'_i -\sum_i \beta_i   =0\\
+&= C-\sum \lambda'_i -\sum_i \beta_i   =0\\
 \end{align*}
 }
 \problemAnswer{
@@ -307,11 +313,11 @@ depends only on the support vectors.
 This reduces the optimisation to:
 
 \begin{align*}
-\max f &= \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)x_i^Tx_j(\alpha_j-\beta_j) + p_i(C-\sum_i \eta_i - \sum_i \alpha_i)\\ 
-&+ n_i(C+\sum_i \eta'_i -\sum_i \beta_i)\\
+\max f &= \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)x_i^Tx_j(\alpha_j-\beta_j) + p_i(C-\sum_i \lambda_i - \sum_i \alpha_i)\\ 
+&+ n_i(C+\sum_i \lambda'_i -\sum_i \beta_i)\\
 &+ \epsilon(-\sum_i \alpha_i - \sum_i \beta_i)\\ 
-&+ \sum_i y_i(\alpha_i-\beta_i)\\
-&= \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)x_i^Tx_j(\alpha_j-\beta_j)  - \epsilon (\sum_i(\alpha_i+\beta_i))\\
+&+ \sum_i y_i(\alpha_i-\beta_i)  - \sum_i(\alpha_iw^Tx_i-\beta_iw^Tx_i)\\
+&= -\frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)x_i^Tx_j(\alpha_j-\beta_j)  - \epsilon (\sum_i(\alpha_i+\beta_i))\\
 &+ \sum_i y_i(\alpha_i-\beta_i)\\
 \text{such that} \sum_i(\alpha_i-\beta_i) &= 0 \\
 \text{and } \alpha_i,\beta_i &\in [0,C]
@@ -321,14 +327,14 @@ This reduces the optimisation to:
     \end{homeworkSection}
     \begin{homeworkSection}{\homeworkProblemName: ~(d)}
 \problemAnswer{
-	Using Kernel transformation:
+	Using Kernel transformation, we simply replace $x_i^Tx_j$ with $k(x_i, x_j)$:
 	$$
 	w = \sum_i(\alpha_i-\beta_i)\phi(x_i)
 	$$	
 	this happens because $x_i'x_j$ gets mapped onto by an equivalent kernel function $k(x_i,x_j)=\phi^T(x_i)\phi(x_j)$
 	and the objective function is:
 	$$
-	\max_f = \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)k(x_i, x_j)(\alpha_j-\beta_j)  - \epsilon (\sum_i(\alpha_i+\beta_i))
+	\max_f = \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)k(x_i, x_j)(\alpha_j-\beta_j)  - \epsilon (\sum_i(\alpha_i+\beta_i)) + \sum_i y_i(\alpha_i-\beta_i)
 	$$
 	}
 	
@@ -338,7 +344,10 @@ This reduces the optimisation to:
 \begin{homeworkProblem}[Problem 3.3]
 	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 		\problemAnswer{
+			
 			\begin{center}
+			%	\begin{table}
+					
 			\begin{tabular}{|c|c|c|c|c|c|c|}
 				\hline
 C	& Tr. Dataset 1(t) & Tr. Dataset 2(t) & Training Dataset 3(t)	& CV & Avg. t \\
@@ -362,13 +371,13 @@ $4^{1}$=4.000000 & 0.633370 & 0.572011 & 0.595552 & 0.942501 & 0.600\\
 $4^2$=16.000000 & 0.674677 & 0.681010 & 0.698041 & 0.943503 & 0.684\\
 \hline
 			\end{tabular}
-				
+			\text{ The time shown$(t)$ is in seconds for three partitions, the last column being the average time}
+			%\end{table}
 			\end{center}
 			
 			As seen from the table. the time seems to increase with $C$ and the $CV$ increases too.
-			C determines the tradeoff between objective function complexity and the overall loss. When $C$ is small, there are chances of overfitting, this is evident from low $CV$ values for lower $C$(because the generalisation error is high)
+			C determines the tradeoff between objective function complexity and the overall loss. When $C$ is small, there are chances of overfitting, this is evident from low $CV$ values for lower $C$(because the generalisation error is high, and this is where cross validation is helpful)
 			
-			In terms of time complexity, if 
 			
 			The larger the value of $C$, the more is the penalisation and hence smaller the $\epsilon_i$ would be
 			
@@ -435,40 +444,172 @@ Based on lowest cross validation error. $C=4^2$
 
 \begin{homeworkProblem}[Problem 3.5]
 	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
-		\problemAnswer{
+		%\problemAnswer{
+			RBF
 			\begin{center}
-						\begin{tabular}{|c|c|c|}
+						\begin{tabular}{|c|c|c|c|}
 				\hline
-				C & Training Time & CV\\
+				C & $\gamma$ & Training Time & CV\\
 				\hline 
-				0.015625 & 0.675134 & 0.7010\\
+				0.015625 & 0.000061 & 0.799739 & 55.750000\\
 				\hline
-				0.062500 & 0.680862 & 0.5575\\
+				0.015625 & 0.000244 & 0.799145 & 55.750000\\
 				\hline
-				0.250000 & 0.682373 & 0.5575\\
+				0.015625 & 0.000977 & 0.798638 & 55.750000\\
 				\hline
-				1.000000 & 0.532627 & 0.9175\\
+				0.015625 & 0.003906 & 0.801114 & 55.750000\\
 				\hline
-				4.000000 & 0.608079 & 0.8655\\
+				0.015625 & 0.015625 & 0.802529 & 64.750000\\
 				\hline
-				16.000000 & 0.678589 & 0.7690\\
+				0.015625 & 0.062500 & 0.805714 & 73.750000\\
 				\hline
-				64.000000 & 0.347019 & 0.9280\\
+				0.015625 & 0.250000 & 0.822912 & 55.750000\\
 				\hline
-				256.000000 & 0.432110 & 0.9255\\
+				0.062500 & 0.000061 & 0.799229 & 55.750000\\
 				\hline
-				1024.000000 & 0.523863 & 0.9180\\
+				0.062500 & 0.000244 & 0.798608 & 55.750000\\
 				\hline
-				4096.000000 & 0.239251 & 0.9385\\
+				0.062500 & 0.000977 & 0.799373 & 55.750000\\
 				\hline
-				16384.000000 & 0.284755 & 0.9470\\
+				0.062500 & 0.003906 & 0.800940 & 83.350000\\
 				\hline
+				0.062500 & 0.015625 & 0.648832 & 91.200000\\
+				\hline
+				0.062500 & 0.062500 & 0.634587 & 91.850000\\
+				\hline
+				0.062500 & 0.250000 & 0.824124 & 63.600000\\
+				\hline
+				0.250000 & 0.000061 & 0.798746 & 55.750000\\
+				\hline
+				0.250000 & 0.000244 & 0.799292 & 55.750000\\
+				\hline
+				0.250000 & 0.000977 & 0.799286 & 86.350000\\
+				\hline
+				0.250000 & 0.003906 & 0.587110 & 92.000000\\
+				\hline
+				0.250000 & 0.015625 & 0.426160 & 93.200000\\
+				\hline
+				0.250000 & 0.062500 & 0.423444 & 94.750000\\
+				\hline
+				0.250000 & 0.250000 & 0.713477 & 92.300000\\
+				\hline
+				1.000000 & 0.000061 & 0.800186 & 55.750000\\
+				\hline
+				1.000000 & 0.000244 & 0.797172 & 86.900000\\
+				\hline
+				1.000000 & 0.000977 & 0.571743 & 91.850000\\
+				\hline
+				1.000000 & 0.003906 & 0.381565 & 93.050000\\
+				\hline
+				1.000000 & 0.015625 & 0.281917 & 94.650000\\
+				\hline
+				1.000000 & 0.062500 & 0.285756 & 96.150000\\
+				\hline
+				1.000000 & 0.250000 & 0.568394 & 96.100000\\
+				\hline
+				4.000000 & 0.000061 & 0.798443 & 86.950000\\
+				\hline
+				4.000000 & 0.000244 & 0.569461 & 91.850000\\
+				\hline
+				4.000000 & 0.000977 & 0.371507 & 93.000000\\
+				\hline
+				4.000000 & 0.003906 & 0.259033 & 94.250000\\
+				\hline
+				4.000000 & 0.015625 & 0.203123 & 95.550000\\
+				\hline
+				4.000000 & 0.062500 & 0.230975 & 96.650000\\
+				\hline
+				4.000000 & 0.250000 & 0.539952 & 96.100000\\
+				\hline
+				16.000000 & 0.000061 & 0.570222 & 91.850000\\
+				\hline
+				16.000000 & 0.000244 & 0.369962 & 93.050000\\
+				\hline
+				16.000000 & 0.000977 & 0.261383 & 93.950000\\
+				\hline
+				16.000000 & 0.003906 & 0.203001 & 95.050000\\
+				\hline
+				16.000000 & 0.015625 & 0.195201 & 96.500000\\
+				\hline
+				16.000000 & 0.062500 & 0.225650 & 96.900000\\
+				\hline
+				16.000000 & 0.250000 & 0.541735 & 95.950000\\
+				\hline
+				64.000000 & 0.000061 & 0.369279 & 93.050000\\
+				\hline
+				64.000000 & 0.000244 & 0.262142 & 93.950000\\
+				\hline
+				64.000000 & 0.000977 & 0.210888 & 94.750000\\
+				\hline
+				64.000000 & 0.003906 & 0.191527 & 94.950000\\
+				\hline
+				64.000000 & 0.015625 & 0.183208 & 96.650000\\
+				\hline
+				64.000000 & 0.062500 & 0.229521 & 96.550000\\
+				\hline
+				64.000000 & 0.250000 & 0.541598 & 95.950000\\
+				\hline
+				256.000000 & 0.000061 & 0.257230 & 93.900000\\
+				\hline
+				256.000000 & 0.000244 & 0.214556 & 94.700000\\
+				\hline
+				256.000000 & 0.000977 & 0.191176 & 94.900000\\
+				\hline
+				256.000000 & 0.003906 & 0.188024 & 96.450000\\
+				\hline
+				256.000000 & 0.015625 & 0.186326 & 96.500000\\
+				\hline
+				256.000000 & 0.062500 & 0.224757 & 96.350000\\
+				\hline
+				256.000000 & 0.250000 & 0.542700 & 95.950000\\
+				\hline
+				1024.000000 & 0.000061 & 0.212776 & 94.600000\\
+				\hline
+				1024.000000 & 0.000244 & 0.191017 & 94.700000\\
+				\hline
+				1024.000000 & 0.000977 & 0.208193 & 95.050000\\
+				\hline
+				1024.000000 & 0.003906 & 0.225442 & 96.600000\\
+				\hline
+				1024.000000 & 0.015625 & 0.194065 & 96.400000\\
+				\hline
+				1024.000000 & 0.062500 & 0.224793 & 96.350000\\
+				\hline
+				1024.000000 & 0.250000 & 0.542050 & 95.950000\\
+				\hline
+				4096.000000 & 0.000061 & 0.192989 & 94.550000\\
+				\hline
+				4096.000000 & 0.000244 & 0.210952 & 94.750000\\
+				\hline
+				4096.000000 & 0.000977 & 0.271062 & 96.250000\\
+				\hline
+				4096.000000 & 0.003906 & 0.277291 & 96.250000\\
+				\hline
+				4096.000000 & 0.015625 & 0.187257 & 96.350000\\
+				\hline
+				4096.000000 & 0.062500 & 0.224741 & 96.350000\\
+				\hline
+				4096.000000 & 0.250000 & 0.541835 & 95.950000\\
+				\hline
+				16384.000000 & 0.000061 & 0.241238 & 94.350000\\
+				\hline
+				16384.000000 & 0.000244 & 0.310596 & 94.950000\\
+				\hline
+				16384.000000 & 0.000977 & 0.401110 & 96.600000\\
+				\hline
+				16384.000000 & 0.003906 & 0.330598 & 96.250000\\
+				\hline
+				16384.000000 & 0.015625 & 0.187273 & 96.350000\\
+				\hline
+				16384.000000 & 0.062500 & 0.224825 & 96.350000\\
+				\hline
+				16384.000000 & 0.250000 & 0.542722 & 95.950000\\
 				
 			\end{tabular}
 			
 			\end{center}
 			
-		}
+	%	}
 	\end{homeworkSection}
 	
 	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
