@@ -334,7 +334,7 @@ This reduces the optimisation to:
 	this happens because $x_i'x_j$ gets mapped onto by an equivalent kernel function $k(x_i,x_j)=\phi^T(x_i)\phi(x_j)$
 	and the objective function is:
 	$$
-	\max_f = \frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)k(x_i, x_j)(\alpha_j-\beta_j)  - \epsilon (\sum_i(\alpha_i+\beta_i)) + \sum_i y_i(\alpha_i-\beta_i)
+	\max_f = -\frac{1}{2} \sum_{i,j} (\alpha_i-\beta_i)k(x_i, x_j)(\alpha_j-\beta_j)  - \epsilon (\sum_i(\alpha_i+\beta_i)) + \sum_i y_i(\alpha_i-\beta_i)
 	$$
 	}
 	
