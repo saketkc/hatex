@@ -146,7 +146,7 @@
 \newpage
 
 \begin{homeworkProblem}[Problem 1] % Custom section title
-\begin{homeworkSection}{\homeworkProblemName: ~(a) Gradient Calculation}
+\begin{homeworkSection}{\homeworkProblemName: ~(a)  Gradient Calculation}
 \problemAnswer{
     $$
       L(y_i, \hat{y_i}) = \log(1+\exp(-y_i\hat{y_i}))
@@ -376,17 +376,22 @@ $4^2$=16.000000 & 0.674677 & 0.681010 & 0.698041 & 0.943503 & 0.684\\
 			\end{center}
 			
 			As seen from the table. the time seems to increase with $C$ and the $CV$ increases too.
-			C determines the tradeoff between objective function complexity and the overall loss. When $C$ is small, there are chances of overfitting, this is evident from low $CV$ values for lower $C$(because the generalisation error is high, and this is where cross validation is helpful)
+			
+			\begin{itemize}
+				\item \textbf{Increasing $C$ leads to increase in runtime}\\
+				The larger the value of $C$, the more is the penalisation and hence smaller the $\epsilon_i$ would be, this causes the lower bound in input `quadprog` to increase in size (since $A.x \leq b$ and in this case $\epsilon$ is included in vector $x$, so the search space for $A$ increases, since $|x|$ is  small, when $C$ is large!)
+				\item \textbf{Increasing $C$ leads to higher training accuracy}\\
+				$C$ determines the tradeoff between objective function complexity and the overall loss. When $C$ is small, there are chances of overfitting, this is evident from low $CV$ values for lower $C$(because the generalisation error is high, and this is where cross validation is helpful) and hence increasing $C$ helps overcome the problem of over-fitting and the generalization error lowers(training accuracy increases)
+			\end{itemize}
 			
 			
-			The larger the value of $C$, the more is the penalisation and hence smaller the $\epsilon_i$ would be
 			
 
 			}
 	\end{homeworkSection}
 	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
 		\problemAnswer{
-Based on lowest cross validation error. $C=4^2$ (maximum training accuracy = 94.3503\%)
+Based on \textbf{highest cross validation accuracy}. $C=4^2$ (maximum training accuracy = 94.3503\%)
 			}
 	\end{homeworkSection}
 	
@@ -402,11 +407,11 @@ Based on lowest cross validation error. $C=4^2$ (maximum training accuracy = 94.
 	\begin{homeworkSection}{\homeworkProblemName: ~(a)}
 		\problemAnswer{
 			Platform Used: $Ubuntu\ 12.04,\ x86\_64$\\
-			`libsvm` gives $96.55\%$ as its accuracy which is pretty close to  94.35\% that my code gives. Hence the cross validation accuracy is not exactly the same, and `libsvm` performs better, by a margin of 2.2786\%
+			`libsvm` gives $96.55\%$ as its accuracy which is pretty close to  94.35\% that my code gives. \textbf{Hence the cross validation accuracy is not exactly the same, and `libsvm` performs better, by a margin of 2.2786\%}
 			\begin{center}
 				\begin{tabular}{|c|c|c|c}
 					\hline
-					C & Training Time & CV Accuracy\\
+					C & Avg. Training Time & CV Accuracy\\
 					\hline
 					$4^{-6}$ & 0.829624 & 0.5575 \\
 					\hline
@@ -449,7 +454,7 @@ Based on lowest cross validation error. $C=4^2$ (maximum training accuracy = 94.
 			
 			\begin{tabular}{|c|c|c|c|}
 				\hline
-				C & $degree$ & Training Time(s) & CV Accuracy(\%)\\
+				C & $degree$ & Avg. Training Time(s) & CV Accuracy(\%)\\
 				\hline
 				0.015625 & 1.000000 & 0.652999 & 70.100000\\
 				\hline
