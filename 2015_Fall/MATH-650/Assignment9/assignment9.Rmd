@@ -1,12 +1,79 @@
 ---
-title: "MATH-650 Assignment 8"
+title: "MATH-650 Assignment 9"
 author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
-date: "09/28/2015"
+date: "11/04/2015"
 output:
+  pdf_document: default
   html_document:
     keep_md: yes
-  pdf_document: default
   word_document: default
 ---
 
 # Chapter 12: 14
+
+```{r}
+require(leaps)
+data <- read.csv('case1102.csv')
+data$logY = log(data$Brain/data$Liver)
+Y <- data$logY
+X <- data[,c('Days', 'Sex', 'Weight', 'Loss', 'Tumor')]
+```
+We use the `leaps` package to perform subset selection.
+
+```{r}
+rsubsets <- regsubsets(logY ~ Days+Sex+Weight+Loss+Tumor, data=data)
+s <- summary(rsubsets, matrix.logical=TRUE)
+s$cp
+```
+
+### Part (a): $C_p$
+
+```{r}
+plot(rsubsets, scale='Cp')
+```
+
+The way to interpet this plot is to look at first the smallest $C_p$ values,
+which happens to be around 1.4 and see the `black` dots which in this case are given by `Days, SexMale`
+So if we were to choose the covarates based only on $C_p$ values, we select: `Days and Sex`
+Here $p=5$ and in principle any model with $C_p < p$ is better than the full model, so we can also select these:
+
+- Days, Sex: $C_p = 1.43$
+- Days, Sex, Weight: $C_p=2.006$
+- Days, Sex, Weight, Tumor: $C_p=4.00008$
+
+### Part (b): Forward Selection
+
+```{r}
+rsubsets <- regsubsets(logY ~ Days+Sex+Weight+Loss+Tumor, 
+                       data=data, 
+                       method='forward')
+sforward <- summary(rsubsets, matrix.logical=TRUE)
+sforward
+```
+
+### Part (c): Backward Selection
+
+```{r}
+rsubsets <- regsubsets(logY ~ Days+Sex+Weight+Loss+Tumor, 
+                       data=data, 
+                       method='backward')
+sbackward <- summary(rsubsets, matrix.logical=TRUE)
+sbackward
+```
+
+### Part(d): Stepwise Regression 
+
+```{r}
+rsubsets <- regsubsets(logY ~ Days+Sex+Weight+Loss+Tumor, 
+                       data=data, 
+                       method="seqrep")
+sboth <- summary(rsubsets, matrix.logical=TRUE)
+sboth
+```
+
+### Conclusion
+
+From the above, we conclude that the variable selection in this case gives us the same 
+set for all four methods.
+
+

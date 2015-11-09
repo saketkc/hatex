@@ -17,7 +17,11 @@ for t=1:3
     optimalb = 0;
    [norm_train_data_appended, norm_test_data_appended] = getdata(data);
     cols = size(norm_train_data_appended,2);
+<<<<<<< HEAD
     %disp(sprintf('t\tlambda\ta\tb\terror'));
+=======
+    disp(sprintf('t\tlambda\ta\tb\terror'));
+>>>>>>> 7691f7bb1819133ee4ff0ab731b914514b685743
     for l=1:length(lambda)
         lamb = lambda(l);
         for p=1:length(a)
@@ -25,7 +29,11 @@ for t=1:3
             for q=1:length(b)
                 qb = b(q);
                 [modelerror] = perform_k_fold_validation_poly(lamb,pa,qb, norm_train_data_appended);
+<<<<<<< HEAD
                 %disp(sprintf('%d\t%d\t%d\t%d\t%f',t,lamb,pa,qb,modelerror));
+=======
+                disp(sprintf('%d\t%d\t%d\t%d\t%f',t,lamb,pa,qb,modelerror));
+>>>>>>> 7691f7bb1819133ee4ff0ab731b914514b685743
                 if modelerror < minmodelerror
                     minmodelerror = modelerror;
                     optimala = pa;
