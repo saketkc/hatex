@@ -1,0 +1,19 @@
+> optimal_a
+
+optimal_a =
+
+     0     0     0
+
+>> optimal_b
+
+optimal_b =
+
+     1     1     1
+
+>> optimal_lambdas_6c
+
+optimal_lambdas_6c =
+
+   1.0e-03 *
+
+    1.0000         0    1.0000

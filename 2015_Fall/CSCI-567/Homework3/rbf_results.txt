@@ -1,0 +1,26 @@
+>> mean(test_err)
+
+ans =
+
+    0.0264
+
+>> optimal       
+optimal_lambdas   optimal_sigmas    optimallamb       optimalleaforder  optimalsigma      optimalW          
+>> optimal_lambdas
+
+optimal_lambdas =
+
+        1000        1000        1000        1000        1000        1000        1000        1000        1000        1000
+
+>> optimal_sigmas
+
+optimal_sigmas =
+
+     8     8     8     8     8     8     8     8     8     8
+
+>> test_err
+
+test_err =
+
+    0.0270    0.0248    0.0269    0.0292    0.0258    0.0254    0.0261    0.0265    0.0274    0.0254
+
