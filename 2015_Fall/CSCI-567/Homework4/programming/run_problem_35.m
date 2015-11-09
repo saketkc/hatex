@@ -41,10 +41,13 @@ for idx=1:numel(C)
         end
     end
 end
-
+shift=0;
 for idx=1:numel(C)
-disp(sprintf('%f & %f & %f\\', C(idx), tocs(idx), accus(idx)));
-disp('\hline');
+    for dx=1:numel(degree)
+         disp(sprintf('%f & %f & %f & %f\\', C(idx), degree(dx), tocs(shift+dx), accus(shift+dx)));
+        disp('\hline');
+    end
+    shift = shift+numel(degree);
 end
 accus = [];
 tocs = [];
@@ -77,16 +80,20 @@ for idx=1:numel(C)
         end
     end
 end
-
+shift=0;
 for idx=1:numel(C)
-disp(sprintf('%f & %f & %f\\', C(idx), tocs(idx), accus(idx)));
-disp('\hline');
+    for dx=1:numel(gamma)
+        disp(sprintf('%f & %f & %f & %f\\', C(idx), gamma(dx),  tocs(shift+dx), accus(shift+dx)));
+        disp('\hline');
+    end
+    shift = shift+numel(gamma);
 end
 
 opts = sprintf('-q -t 2 -c %f -g %f',optimc_rbf, optimg);
 model = svmtrain(trainlabels, trainfeatures, opts);
 [predicted_label, rbf_accuracy, decision_values] = svmpredict(testlabels, testfeatures, model, '-q');
 
+disp('**********************Results Start****************************')
 disp(sprintf('Polynomal Kernel train accuracy: %f', poly_maxaccu));
 disp(sprintf('RBF Kernel train accuracy: %f', rbf_maxaccu));
 
@@ -103,3 +110,4 @@ disp(sprintf('RBF Kernel optimal g: %f', optimg))
 disp(sprintf('RBF Kernel optimal c: %f', optimc_rbf))
 disp(sprintf('RBF Kernel test accuracy: %f', rbf_accuracy(1)));
 
+disp('**********************Results End****************************')
