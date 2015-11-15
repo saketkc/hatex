@@ -20,5 +20,5 @@ for i=1:numel(K)
     k = K(i);
     clusters = kmeans(circle,k);
     scatter(circle(:,1), circle(:,2), [], clusters, 'filled');
-    print(sprintf('blob-%d',k), '-dpng');
+    print(sprintf('circle-%d',k), '-dpng');
 end
