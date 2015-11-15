@@ -1,8 +1,8 @@
 function [clusters] = kernelkmeans(circle)
 K = 2;
 %Random initilisation of clusters
-%kernel = rbf_kernel(0.1, circle);
-kernel = poly_kernel(-5, 1, circle);
+kernel = rbf_kernel(0.1, circle);
+%kernel = poly_kernel(-5, 1, circle);
 rows = size(kernel,1);
 clusters_old = repmat([0 1], rows, 1);
 clusters_new = repmat([1 0], rows, 1);

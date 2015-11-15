@@ -1,12 +1,19 @@
-function [clusters_new] = kmeans(data, k)
+function [clusters_new] = kkkmeans(data)
 %Random initilisation of clusters
+k=2;
 rows = size(data,1);
-clusters_old = repmat(3,rows,1);
-clusters_new = repmat(5,rows,1);
-initial_indices = randi([1 rows], 1, k);
-%mu = datasample(data, k, 'Replace', false);
-mu = data(initial_indices, :);
+kernel = poly_kernel(-5, 1, data);
+rows = size(kernel,1);
+clusters_old = repmat(1,rows,1);
+clusters_new = repmat(1,rows,1);
 iterations = 0;
+
+norm_data = sum(data.^2,2);
+min_pos = find(norm_data == min(norm_data));
+clusters_new(min_pos,:) = 2;
+mu2 = sum(data,1)-data(min_pos,:);
+mu = [data(min_pos,:);mu2/(rows-1)];
+
 while any(clusters_old~=clusters_new)
     distances = pdist2(data, mu);
     [M, I] = min(distances, [], 2);
