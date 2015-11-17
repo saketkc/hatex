@@ -102,7 +102,7 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\hmwkTitle}{Assignment\ \#5 } % Assignment title
-\newcommand{\hmwkDueDate}{Monday,\ November\ 16,\ 2015} % Due date
+\newcommand{\hmwkDueDate}{Tueday,\ November\ 17,\ 2015(One late day used)} % Due date
 \newcommand{\hmwkClass}{CSCI-567} % Course/class
 \newcommand{\hmwkClassTime}{} % Class/lecture time
 \newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
@@ -179,7 +179,7 @@
 		
 	
 		
-		Let's define $z_k = W_{IH}x_t+W_{HH}s_{t-1}$
+		Let's define $z_t = W_{IH}x_t+W_{HH}s_{t-1}$
 		
 		Thus,
 		\begin{align*}
@@ -236,7 +236,7 @@
 		\nabla_{s_{t+1}}L =  \sum_{k=t+1}^T \frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k} \times \frac{\partial s_k}{\partial s_t}\\
 		\nabla_{s_{t}}L =  \sum_{k=t}^T \frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k} \times \frac{\partial s_k}{\partial s_t}\\
 		\implies \nabla_{s_{t}}L = \nabla_{s_{t+1}}L +   \frac{\partial L}{\partial y_t} \times \frac{\partial y_t}{\partial s_t} \times \frac{\partial s_t}{\partial s_t}\\
-		\implies \nabla_{s_{t}}L = \nabla_{s_{t+1}}L + (y_y-\hat{y_t})W_{HO}
+		\implies \nabla_{s_{t}}L = \nabla_{s_{t+1}}L + (y_t-\hat{y_t})W_{HO}
 		\end{eqnarray*}	
 		
 		
@@ -252,12 +252,89 @@
 \begin{homeworkSection}{\homeworkProblemName: ~(c)}
 	\problemAnswer{
 		
+		\begin{align*}
+		\nabla_{W_{IH}}L &= \sum_{k=1}^T \big(\frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k}\big) \times \frac{\partial s_k}{ \partial z_k} \times \frac{\partial z_k}{\partial W_{IH}}\\
+		&= \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times x_k 
+		\end{align*}
+		
+		Thus,\\
+		\problemAnswer{
 		\begin{eqnarray*}
-		\nabla_{W_{IH}}L = \sum_{k=1}^T \frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k} \times \frac{\partial s_k}{ \partial z_k} \times \frac{\partial z_k}{\partial W_{IH}}\\
-		\end{eqnarray*}
+			\nabla_{W_{IH}}L = \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times x_k\\
+			\text{where } \nabla_{s_{k}}L = \nabla_{s_{k+1}}L + (y_k-\hat{y_k})W_{HO}\\
+			\text{and } z_k = W_{IH}x_k+W_{HH}s_{k-1}	\\
+			\text{boundary condition } \nabla_{S_T}L =  (y_T-\hat{y_T})W_{HO}
+		\end{eqnarray*}}
+		
+			\begin{align*}
+			\nabla_{W_{HH}}L &= \sum_{k=1}^T \big(\frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k}\big) \times \frac{\partial s_k}{ \partial z_k} \times \frac{\partial z_k}{\partial W_{HH}}\\
+			&= \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times s_{k -1}
+			\end{align*}
+			
+		Thus,\\
+		\problemAnswer{
+			\begin{eqnarray*}
+				\nabla_{W_{IH}}L = \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times s_{k -1}\\
+				\text{where } \nabla_{s_{k}}L = \nabla_{s_{k+1}}L + (y_k-\hat{y_k})W_{HO}\\
+				\text{and } z_k = W_{IH}x_k+W_{HH}s_{k-1}	\\
+				\text{boundary condition } \nabla_{S_T}L =  (y_T-\hat{y_T})W_{HO}
+			\end{eqnarray*}}
+	
 		}
+		\problemAnswer{
+			
+			
+			\begin{align*}
+			\nabla_{W_{HO}}L &= \sum_{k=1}^T \frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial W_{HO}}\\
+			&= \sum_{k=1}^T (y_k-\hat{y_k})s_k
+			\end{align*}
+			
+			Thus,
+			
+			\problemAnswer{
+				$$
+					\nabla_{W_{HO}}L =\sum_{k=1}^T (y_k-\hat{y_k})s_k
+				$$
+			
+			}
+			
+			}
 \end{homeworkSection}	
 
+\begin{homeworkSection}{\homeworkProblemName: ~(d)}
+	\problemAnswer{
+		Leaky hidden units:
+		$$
+		s_t = (1-\tau)s_{t-1} + \tau \sigma(z_t) 
+		$$
+		
+		Thus,
+		\begin{align*}
+		\frac{\partial s_t}{\partial s_{t-1}} = 1-\tau + \tau \sigma(z_t)(1-\sigma(z_t))W_{HH}
+		\end{align*}
+			
+			For $\nabla_{W_{IH}}L$,
+			\begin{align*}
+			\nabla_{W_{IH}}L &= \sum_{k=1}^T \big(\frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k}\big) \times \frac{\partial s_k}{ \partial z_k} \times \frac{\partial z_k}{\partial W_{IH}}\\
+			&= \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times x_k 
+			\end{align*}
+		}
+\end{homeworkSection}
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 2]
+	\begin{homeworkSection} {\homeworkProblemName: ~(a)}
+		\problemAnswer{
+			$$
+			\tilde{D} = \sum_{n=1}^N\sum_{k=1}^K r_{nk} ||\phi(x_n) - \tilde{\mu_k}||^2
+			$$
+			where $$
+			\tilde{\mu_k} = 
+			$$
+			}		
+	\end{homeworkSection}
+	
 \end{homeworkProblem}
 
 \begin{homeworkProblem}[Problem 3]
@@ -343,5 +420,72 @@ M step:
 		
 		}
 \end{homeworkProblem}
+%\clearpage
+
+\begin{homeworkProblem}[Problem 4]
+\begin{homeworkSection}{Problem 4.2}
+	\problemAnswer{As seen from Figure 2, k-means algorithm fails to separate the two circles. This happens because of the failure of the following assumption in this case: the dataset is linearly separable. The circular dataset is not really separable, and hence the clusters returned by k-means, have a linear boundary(making two halves of the circle)}
+	\begin{figure}
+	\begin{minipage}{0.5\linewidth}
+			\includegraphics[width=\linewidth]{blob-2}	
+			\caption{Blob Dataset $k=2$}
+	\end{minipage}
+	\begin{minipage}{0.5\linewidth}
+		%\begin{figure}
+			\includegraphics[width=\linewidth]{circle-2}
+			\caption{Circle Dataset $k=2$}
+		%\end{figure}
+	\end{minipage}	
+	\begin{minipage}{0.5\linewidth}
+		\includegraphics[width=\linewidth]{blob-3}	
+		\caption{Blob Dataset $k=3$}
+	\end{minipage}
+	\begin{minipage}{0.5\linewidth}
+		%\begin{figure}
+		\includegraphics[width=\linewidth]{circle-3}
+		\caption{Circle Dataset $k=3$}
+		%\end{figure}
+	\end{minipage}	
+		\begin{minipage}{0.5\linewidth}
+			\includegraphics[width=\linewidth]{blob-5}	
+			\caption{Blob Dataset $k=5$}
+		\end{minipage}
+		\begin{minipage}{0.5\linewidth}
+			%\begin{figure}
+			\includegraphics[width=\linewidth]{circle-5}
+			\caption{Circle Dataset $k=5$}
+			%\end{figure}
+		\end{minipage}	
+		\end{figure}
+	%\problemAnswer{
+
+	%	}
+\end{homeworkSection}
+\clearpage
+\begin{homeworkSection}{Problem 4.3}
+	\problemAnswer{
+		Choice of Kernel = RBF: 
+		$$
+		K(x,x') = \exp(-\frac{||x-x'||^2}{2\sigma^2})
+		$$
+		with $\sigma = 0.1$
+		
+		}
+		\begin{figure}
+			\includegraphics[width=\linewidth]{kcircle-2}
+			\caption{Problem 4.3 Kernel k-means with RBF kernel creates separate clusters}
+		\end{figure}
+\end{homeworkSection}
+\end{homeworkProblem}
+
+\begin{homeworkSection}{Problem 4.4(a)}
+\problemAnswer{
+	}
+\end{homeworkSection}
+
+\begin{homeworkSection}{Problem 4.4(b)}
+	\problemAnswer{
+	}
+\end{homeworkSection}
 
 \end{document}

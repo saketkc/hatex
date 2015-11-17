@@ -10,19 +10,12 @@ distances = zeros(rows, K);
 
 norm_data = sum(circle.^2,2);
 min_pos = find(norm_data == min(norm_data));
-min_pos
 clusters_new(min_pos,:) = [0 1];
-%mu = kernelsample(kernel, k, 'Replace', false);
 iterations = 0;
 c_old = clusters_old * [1;2];
 c_new = clusters_new * [1;2];
 
 while any(c_old~=c_new)
-    %U = sparse(1:rows, clusters_old, 1, rows, k, rows);
-    %U = bsxfun(@times, U, 1./sum(U,1));
-    %size(U);
-    %size(kernel)
-    %[M, I] = min(U*kernel*U', [], 2);
     cluster_count = sum(clusters_new,1);
     for j=1:K;
         Kjj = clusters_new(:,j)*clusters_new(:,j)';
