@@ -27,6 +27,9 @@
 \usepackage{graphicx} % Required to insert images
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{pifont}
 
 
 \usepackage{amsmath}
@@ -330,11 +333,81 @@
 			\tilde{D} = \sum_{n=1}^N\sum_{k=1}^K r_{nk} ||\phi(x_n) - \tilde{\mu_k}||^2
 			$$
 			where $$
-			\tilde{\mu_k} = \frac{\sum _{i=1}^N r_{ik}\phi(x_i)}{\sum_{i=1}^N r_{ik}}
+			\tilde{\mu_k} = \frac{\sum_{i=1}^N r_{ik}\phi(x_i)}{\sum_{i=1}^N r_{ik}}
+			$$
+			Consider, $||\phi(x_n) - \tilde{\mu_k}||^2$
+			\begin{align*}
+			||\phi(x_n) - \tilde{\mu_k}||^2 &= (\phi(x_n)- \tilde{\mu_k})^T(\phi(x_n)-\tilde{\mu_k})\\
+			&=\phi(x_n)^T\phi(x_n) - 2\tilde{\mu}^T\phi(x_n) + \tilde{\mu}^T\tilde{\mu}\\
+			&= \phi(x_n)^T\phi(x_n) -2 \frac{\sum_{i=1}^N r_{ik}\phi(x_i)^T\phi(x_n)}{\sum_{i=1}^N r_{ik}} + \frac{\sum_{i=1}^N \sum_{j=1}^Nr_{ik}r_{jk}\phi(x_i)^T\phi(x_j)}{\sum_{i=1}^N \sum_{j=1}^N r_{ik}r_{jk}}
+			\end{align*}
+
+		Define $n_k = \sum_{i=1}^N r_{ik}$, so that it simplifies to:
+		\begin{align*}
+		||\phi(x_n) - \tilde{\mu_k}||^2 &= \phi(x_n)^T\phi(x_n) -2 \frac{\sum_{i=1}^N r_{ik}\phi(x_i)^T\phi(x_n)}{n_k} + \frac{\sum_{i=1}^N \sum_{j=1}^Nr_{ik}r_{jk}\phi(x_i)^T\phi(x_j)}{n_k^2}\\
+		&= K(x_n,x_n) -2 \frac{\sum_{i=1}^N r_{ik} K(x_i, x_n)}{n_k} + \frac{\sum_{i=1}^N \sum_{j=1}^Nr_{ik}r_{jk}K(x_i,x_j)}{n_k^2}
+		\end{align*}
+			
+			Thus,
+			$$
+			\tilde{D} = \sum_{n=1}^N K(x_n,x_n) -2 \frac{\sum_{i=1}^N r_{ik} K(x_i, x_n)}{n_k} + \frac{\sum_{i=1}^N \sum_{j=1}^Nr_{ik}r_{jk}K(x_i,x_j)}{n_k^2}
 			$$
 			}		
 	\end{homeworkSection}
-	
+
+\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+	\problemAnswer{
+		\begin{enumerate}
+			\item For given point $x_n$ calculate $K(x_n,x_n) -2 \frac{\sum_{i=1}^N r_{ik} K(x_i, x_n)}{n_k} + \frac{\sum_{i=1}^N \sum_{j=1}^Nr_{ik}r_{jk}K(x_i,x_j)}{n_k^2}$ for all possible clusters $k$
+			\item Assign cluster to point $x_n$ using:
+			$$
+			r_{nk} = \begin{cases}
+			1 & k = \arg \min_k ||\phi(x_n)-\tilde{u_k}||_2^2\\
+			0 & \text{otherwise}
+			\end{cases}
+			$$
+			
+			where 
+			$$
+			K(x_n,x_n) -2 \frac{\sum_{i=1}^N r_{ik} K(x_i, x_n)}{n_k} + \frac{\sum_{i=1}^N \sum_{j=1}^Nr_{ik}r_{jk}K(x_i,x_j)}{n_k^2}
+			$$ and $n_k = \sum_{i=1}^N r_{ik}$
+			
+			
+		\end{enumerate}
+		}
+\end{homeworkSection}
+\clearpage
+
+\begin{homeworkSection}{\homeworkProblemName: ~(c)}
+%\problemAnswer{
+	\begin{algorithm}
+		\caption{Kernel k means}
+		\begin{algorithmic}[1]
+		\Procedure{Kernel K means} {}
+		\State mu[i] = x(random(1..N)) for $1 \leq i \leq k$ 		\Comment initialise cluster centroids[1..k]  randomly choosing any $k$ points of $N$ (Sample without replacement)
+		\For i:1 to N
+			\For j:1 to N
+				K[i,j] = $\phi(x_i)\phi(x_j)$
+			\EndFor 
+		\EndFor 
+
+		
+		r(n,k) $\longleftarrow$ $[0]$
+		\For i:1 to N
+
+
+		\State	j = $\arg \min_k ||\phi(x_n)-\mu_k||^2$		\Comment Use the above formula to calculate distances
+		\State	r[i,j] = 1
+		\State Update $mu_j$ 		\Comment Recalculate centroids of assigned cluster $j$
+		\EndFor
+		
+				\EndProcedure
+		\end{algorithmic}
+		
+	\end{algorithm}
+%	}
+\end{homeworkSection}
+
 \end{homeworkProblem}
 
 \begin{homeworkProblem}[Problem 3]
