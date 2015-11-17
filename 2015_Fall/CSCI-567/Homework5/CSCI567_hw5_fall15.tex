@@ -212,9 +212,36 @@
 \begin{align*}	
 E_{P(Z|X_i)}[z_i] &= 0 \times p(Z_i=0|X) + 1 \times p(Z_i=1|X_i=0) \\
 &= \frac{p(X_i=0|Z_i=1)p(Z_i=1)}{p(X_i=0|Z_i=0)p(Z_i=0)+p(X_i=0|Z_i=1)p(Z_i=1)}\\
-&= \frac{\pi}{\pi+(1-\pi)e^{-\lambda}}
+&= \frac{\pi_0}{\pi_0+(1-\pi_0)e^{-\lambda_0}}
 \end{align*}
 
+Hence,
+
+\begin{align*}
+Q(\theta, \theta_0) &= \sum_{I(x_i=0)} \frac{\pi_0}{\pi_0+(1-\pi_0)e^{-\lambda_0}} \log(\pi) + (\frac{(1-\pi_0)e^{-\lambda_0}}{\pi_0+(1-\pi_0)e^{-\lambda_0}}) \big( \log(1-\pi) - \lambda \big)\\  
+&+ \sum_{I(x_i>0)} \big( \log(1-\pi) + x_i \log(\lambda) - \lambda - \log(x_i!) \big)
+\end{align*}
+}
+
+\problemAnswer{
+M step:
+\begin{align*}
+\frac{\partial Q}{\partial \lambda} &=0\\
+&= \sum_{I(x_i=0)} (1-E[z_i])(-1) + \sum_{I(x_i>0)} (\frac{x_i}{\lambda}-1)  =0\\
+\implies \hat{\lambda} &= \frac{\sum_{I(x_i>0)}x_i}{n-\sum_{I(x_i=0)}E[z_i]} \\
+\hat{\lambda}  &= \frac{\sum_{I(x_i>0)}x_i}{n-\sum_{I(x_i=0)}\hat{z_i}} \\
+\text{where } \hat{z} &= \frac{\pi_0}{\pi_0+(1-\pi_0)e^{-\lambda_0}}
+\end{align*}
+		
+
+\begin{align*}
+\frac{\partial Q}{\partial \pi} &=0\\
+&=  \sum_{I(x_i=0)} \big(\frac{E[z_i]}{\pi} - \frac{1-E[z_i]}{1-\pi}\big) - \sum_{I(x_i>0)}  \frac{1}{1-\pi} =0 \\
+&= \sum_{I(x_i=0)} \big(\frac{E[z_i]}{\pi} + \frac{E[z_i]}{1-\pi}\big) - \frac{n}{1-\pi} = 0\\
+\implies \hat{\pi} &= \sum_{I(x_i=0)} \frac{\hat{z_i}}{n}
+\end{align*}
+		
+		
 		
 		}
 \end{homeworkProblem}
