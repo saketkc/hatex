@@ -330,7 +330,7 @@
 			\tilde{D} = \sum_{n=1}^N\sum_{k=1}^K r_{nk} ||\phi(x_n) - \tilde{\mu_k}||^2
 			$$
 			where $$
-			\tilde{\mu_k} = 
+			\tilde{\mu_k} = \frac{\sum _{i=1}^N r_{ik}\phi(x_i)}{\sum_{i=1}^N r_{ik}}
 			$$
 			}		
 	\end{homeworkSection}
@@ -479,13 +479,47 @@ M step:
 \end{homeworkProblem}
 
 \begin{homeworkSection}{Problem 4.4(a)}
-\problemAnswer{
-	}
+\begin{figure}
+	\includegraphics[width=\linewidth]{ll}
+	\caption{GMM with 3 mixtures}
+\end{figure}
+
 \end{homeworkSection}
 
 \begin{homeworkSection}{Problem 4.4(b)}
+	\begin{figure}
+		\includegraphics[width=\linewidth]{ll-scatter}
+		\caption{GMM showing most likely assignments}
+	\end{figure}
+	\newpage
 	\problemAnswer{
-	}
+		$\mu_i$: Centroid of  cluster $i$\\
+		$\sigma_i$: Covariance of cluster $i$
+		
+	   \begin{eqnarray*}
+		 \mu_1  = (-0.6395,1.4746)\\
+		 \sigma_1 = \begin{pmatrix}
+		 	0.0360 &   0.0155\\
+		 	0.0155 &   0.0194
+		 \end{pmatrix}
+   \end{eqnarray*}
+   	   \begin{eqnarray*}
+		 \mu_2 = (0.7590,0.6798)\\
+		 \sigma_2 = \begin{pmatrix}
+		 	  0.0272  & -0.0084\\
+		 	  -0.0084  &  0.0404		 	  
+		 \end{pmatrix}\\
+		    \end{eqnarray*}
+		    \begin{eqnarray*}
+		 \mu_3 = ( -0.3259,0.9713)\\
+		 \sigma_3 = \begin{pmatrix}
+		 	 0.0360  &  0.0146\\
+		 	 0.0146  &  0.0163
+		 \end{pmatrix}
+	   \end{eqnarray*}
+	   }
+	   
+	   
 \end{homeworkSection}
 
 \end{document}

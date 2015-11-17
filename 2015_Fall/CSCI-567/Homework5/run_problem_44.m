@@ -7,6 +7,8 @@ N = size(blob,1);
 LL_iter = {};
 clusters_new = [];
 clusters_assigned = {};
+most_likely_mus = {};
+most_likely_vars = {};
 for i=1:5
     loglik =0;
     LL= [];
@@ -64,6 +66,8 @@ for i=1:5
     end
     clusters_assigned{i} = clusters_new;
     LL_iter{i} = LL;
+    most_likely_mus{i} = mu;
+    most_likely_vars{i} = variances;
 end
 %length(LL_iter{1})
 %plot(1:1:length(LL_iter{1}), LL_iter{1}, 'r', 1:length(LL_iter{2}), LL_iter{2}, 'g', 1:length(LL_iter{3}), LL_iter{3}, 'b', 1:length(LL_iter{4}), LL_iter{4}, 'y', 1:length(LL_iter{5}), LL_iter{5}, 'k');
@@ -79,11 +83,47 @@ hold on;
 h5=plot(1:length(LL_iter{5}), LL_iter{5}, 'k');
 hold off;
 
-legend([h1,h2,h3,h4,h5],{'1','2','3','4','5(Best)'});
+legend([h1,h2,h3,h4,h5],{'1','2(Best)','3','4','5'});
 print('ll','-dpng');
 
+maxv=-1000000;
+maxiter=0;
+maxindex=0;
+for i=1:5
+    v=max(LL_iter{i});
+    if v>maxv
+        maxv=v;
+        maxindex=i;
+    end
+end
 
-disp('Best run in terms of maximum log likelihood: 5');
 
-scatter(blob(:,1), blob(:,2), [], clusters_assigned{1}, 'filled');
+disp(sprintf('Best run in terms of maximum log likelihood: %d, Max log likelihood: %f', maxindex, maxv));
+
+scatter(blob(:,1), blob(:,2), [], clusters_assigned{maxindex}, 'filled');
+title(sprintf('GMM | Circle dataset | K=%d', 3));
+xlabel('x1');
+ylabel('x2');
 print('ll-scatter', '-dpng');
+
+disp('**********Mu Cluster 1 Start************');
+disp(most_likely_mus{maxindex}(1,:));
+disp('**********Mu Cluster 1 End************');
+disp('**********Covariance Cluster 1 Start************');
+disp(most_likely_vars{maxindex}{1});
+disp('**********Covariance Cluster 1 End************');
+
+
+disp('**********Mu Cluster 2 Start************');
+disp(most_likely_mus{maxindex}(2,:));
+disp('**********Mu Cluster 2 End************');
+disp('**********Covariance Cluster 2 Start************');
+disp(most_likely_vars{maxindex}{2});
+disp('**********Covariance Cluster 2 End************');
+
+disp('**********Mu Cluster 3 Start************');
+disp(most_likely_mus{maxindex}(3,:));
+disp('**********Mu Cluster 3 End************');
+disp('**********Covariance Cluster 3 Start************');
+disp(most_likely_vars{maxindex}{3});
+disp('**********Covariance Cluster 3 End************');
