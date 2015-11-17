@@ -12,14 +12,14 @@ for i=1:5
     LL= [];
     [clusters, mu] = kmeans(blob, K);
     if (i==5)
-        gamma = [];
+        prior = [];
        for t=1:3
-           gamma(t) = sum((clusters==t))/length(clusters);
+           prior(t) = sum((clusters==t))/length(clusters);
       end
-     %gamma
+     %prior
     else
         r = rand(1,3);
-        gamma = r/sum(r);
+        prior = r/sum(r);
    end
     variances = {};
     for j=1:K
@@ -42,10 +42,10 @@ for i=1:5
         end
         [M, clusters_new] = max(p,[],2);
         %p_w
-        p_w = bsxfun(@times, p, gamma);
+        p_w = bsxfun(@times, p, prior);
         W = bsxfun(@rdivide, p_w, sum(p_w,2));
         for k=1:K
-            gamma(k) = mean(W(:,k),1);
+            prior(k) = mean(W(:,k),1);
             newmu(k,:) = (W(:,k)'*blob)./(sum(W(:,k),1));
             var_k = zeros(2,2);
             blob_m = bsxfun(@minus, blob, newmu(k,:));
