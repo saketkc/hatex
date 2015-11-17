@@ -162,4 +162,61 @@
 		\end{homeworkSection}
 \end{homeworkProblem}
 
+\begin{homeworkProblem}[Problem 3]
+	\problemAnswer{
+		Given:
+		$$
+		p(x_i) = \begin{cases}
+		\pi+(1-\pi)e^{-\lambda} & x_i=0\\
+		(1-\pi)\frac{\lambda^{x_i}e^{-\lambda}}{x_i!} & x_i>0
+		\end{cases}
+		$$
+		
+		Alternatively:
+		
+		$$
+		X_i = \begin{cases}
+		0 & \text{probability = }  \pi+(1-\pi)e^{-\lambda}\\
+		x_i & \text{probability = } (1-\pi)\frac{\lambda^{x_i}e^{-\lambda}}{x_i!}
+		\end{cases}
+		$$
+		
+		We define a $latent$ variable $Z_i$ for all cases where $X_i=0$. It is latent because when we observed $X_i=0$ we do not know if it came out of the 'Poisson' distribution or it came out the 'degenerate' distribution(which has a probability of $1$ at point 0.).  we cannot observe the following. So $X_i$ comes out of a mixture of a degenerate distribution as follows:
+		
+		$$
+		Z_i = \begin{cases}
+		1 &  \text{$X_i$ is from the degenerate distrbution }\\
+		0 & \text{otherwise}
+		\end{cases}
+		$$
+		
+		\begin{eqnarray*}
+		p(X_i=0,Z_i=1) = p(Z_i=1) \times p(X_i=0|Z_i=1) = \pi \times 1\\
+		P(X_i=0,Z_i=0) = p(Z_i=0) \times p(X_i=0|Z_i=0) = (1-\pi)e^{-\lambda} \times 1
+		\end{eqnarray*}
+		
+		\begin{eqnarray}
+		L(Complete) = \prod_{x_i=0} \pi^{Z_i} \times ((1-\pi)e^{-\lambda})^{1-Z_i} \times \prod_{x_i > 0} (1-\pi)e^\frac{\lambda^x_i e^{-\lambda}}{x_i!}\\
+		\log L = \sum_{I(x_i=0)} z_i \log(\pi) + (1-z_i) \big( \log(1-\pi) - \lambda \big)  + \sum_{I(x_i>0)} \big( \log(1-\pi) + x_i \log(\lambda_i) - \lambda - \log(x_i!) \big)
+		\end{eqnarray}
+		
+		
+		E step:
+		
+\begin{align*}	
+		Q(\theta, \theta_0) &= \sum_{I(x_i=0)} E_{P(Z|X)}[z_i] \log(\pi) + (1-E_{P(Z|X)}[z_i]) \big( \log(1-\pi) - \lambda \big)\\  
+		&+ \sum_{I(x_i>0)} \big( \log(1-\pi) + x_i \log(\lambda_i) - \lambda - \log(x_i!) \big)
+\end{align*}
+
+
+\begin{align*}	
+E_{P(Z|X_i)}[z_i] &= 0 \times p(Z_i=0|X) + 1 \times p(Z_i=1|X_i=0) \\
+&= \frac{p(X_i=0|Z_i=1)p(Z_i=1)}{p(X_i=0|Z_i=0)p(Z_i=0)+p(X_i=0|Z_i=1)p(Z_i=1)}\\
+&= \frac{\pi}{\pi+(1-\pi)e^{-\lambda}}
+\end{align*}
+
+		
+		}
+\end{homeworkProblem}
+
 \end{document}

@@ -1,4 +1,4 @@
-function [clusters_new] = kmeans(data, k)
+function [clusters_new, mu] = kmeans(data, k)
 %Random initilisation of clusters
 rows = size(data,1);
 clusters_old = repmat(3,rows,1);
