@@ -257,13 +257,13 @@
 		
 		\begin{align*}
 		\nabla_{W_{IH}}L &= \sum_{k=1}^T \big(\frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k}\big) \times \frac{\partial s_k}{ \partial z_k} \times \frac{\partial z_k}{\partial W_{IH}}\\
-		&= \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times x_k 
+		&= \sum_{k=1}^T (y_k-\hat{y_k})W_{HO} \times \sigma(z_k)(1-\sigma(z_k)) \times x_k 
 		\end{align*}
 		
 		Thus,\\
 		\problemAnswer{
 		\begin{eqnarray*}
-			\nabla_{W_{IH}}L = \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times x_k\\
+			\nabla_{W_{IH}}L = \sum_{k=1}^(y_k-\hat{y_k})W_{HO} \times \sigma(z_k)(1-\sigma(z_k)) \times x_k\\
 			\text{where } \nabla_{s_{k}}L = \nabla_{s_{k+1}}L + (y_k-\hat{y_k})W_{HO}\\
 			\text{and } z_k = W_{IH}x_k+W_{HH}s_{k-1}	\\
 			\text{boundary condition } \nabla_{S_T}L =  (y_T-\hat{y_T})W_{HO}
@@ -271,13 +271,13 @@
 		
 			\begin{align*}
 			\nabla_{W_{HH}}L &= \sum_{k=1}^T \big(\frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k}\big) \times \frac{\partial s_k}{ \partial z_k} \times \frac{\partial z_k}{\partial W_{HH}}\\
-			&= \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times s_{k -1}
+			&= \sum_{k=1}^T (y_k-\hat{y_k})W_{HO} \times \sigma(z_k)(1-\sigma(z_k)) \times s_{k -1}
 			\end{align*}
 			
 		Thus,\\
 		\problemAnswer{
 			\begin{eqnarray*}
-				\nabla_{W_{IH}}L = \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times s_{k -1}\\
+				\nabla_{W_{IH}}L = \sum_{k=1}^T (y_k-\hat{y_k})W_{HO} \times \sigma(z_k)(1-\sigma(z_k)) \times s_{k -1}\\
 				\text{where } \nabla_{s_{k}}L = \nabla_{s_{k+1}}L + (y_k-\hat{y_k})W_{HO}\\
 				\text{and } z_k = W_{IH}x_k+W_{HH}s_{k-1}	\\
 				\text{boundary condition } \nabla_{S_T}L =  (y_T-\hat{y_T})W_{HO}
@@ -295,9 +295,11 @@
 			Thus,
 			
 			\problemAnswer{
-				$$
+				\begin{eqnarray*}
 					\nabla_{W_{HO}}L =\sum_{k=1}^T (y_k-\hat{y_k})s_k
-				$$
+				\end{eqnarray*}
+				
+				
 			
 			}
 			
@@ -313,14 +315,28 @@
 		
 		Thus,
 		\begin{align*}
-		\frac{\partial s_t}{\partial s_{t-1}} = 1-\tau + \tau \sigma(z_t)(1-\sigma(z_t))W_{HH}
+		\frac{\partial s_t}{\partial s_{t-1}} &= 1-\tau + \tau \sigma(z_t)(1-\sigma(z_t))W_{HH}\\
+		\frac{\partial s_t}{\partial z_t} &= \tau \sigma(z_t)(1-\sigma(z_t))
 		\end{align*}
 			
 			For $\nabla_{W_{IH}}L$,
 			\begin{align*}
 			\nabla_{W_{IH}}L &= \sum_{k=1}^T \big(\frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k}\big) \times \frac{\partial s_k}{ \partial z_k} \times \frac{\partial z_k}{\partial W_{IH}}\\
-			&= \sum_{k=1}^T \nabla_{s_k}L \times \sigma(z_k)(1-\sigma(z_k)) \times x_k 
+			&= \sum_{k=1}^T (y_k-\hat{y_k})W_{HO} \times \tau \sigma(z_k)(1-\sigma(z_k)) \times x_k 
 			\end{align*}
+			
+			For $\nabla_{W_{HH}}L$,
+			\begin{align*}
+			\nabla_{W_{IH}}L &= \sum_{k=1}^T \big(\frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k}\big) \times \frac{\partial s_k}{ \partial z_k} \times \frac{\partial z_k}{\partial W_{HH}}\\
+			&= \sum_{k=1}^T (y_k-\hat{y_k})W_{HO} \times \tau \sigma(z_k)(1-\sigma(z_k)) \times s_{k-1} 
+			\end{align*}
+			
+			For $\nabla_{W_{HO}}L$,
+			\begin{align*}
+			\nabla_{W_{HO}}L &= \sum_{k=1}^T (y_k-\hat{y_k})s_k\\
+			&=  \sum_{k=1}^T (y_k-\hat{y_k})((1-\tau)s_{k-1}+\tau\sigma(z_k))
+			\end{align*}
+
 		}
 \end{homeworkSection}
 
@@ -443,19 +459,20 @@
 		P(X_i=0,Z_i=0) = p(Z_i=0) \times p(X_i=0|Z_i=0) = (1-\pi)e^{-\lambda} \times 1
 		\end{eqnarray*}
 		
-		\begin{eqnarray}
-		L(Complete) = \prod_{x_i=0} \pi^{Z_i} \times ((1-\pi)e^{-\lambda})^{1-Z_i} \times \prod_{x_i > 0} (1-\pi)e^\frac{\lambda^x_i e^{-\lambda}}{x_i!}\\
-		\log L = \sum_{I(x_i=0)} z_i \log(\pi) + (1-z_i) \big( \log(1-\pi) - \lambda \big)  + \sum_{I(x_i>0)} \big( \log(1-\pi) + x_i \log(\lambda_i) - \lambda - \log(x_i!) \big)
-		\end{eqnarray}
+		\begin{align*}
+		L((\pi,\lambda)|(X,Z)) &= \prod_{x_i=0} \pi^{z_i} \times ((1-\pi)e^{-\lambda})^{1-z_i} \times \prod_{x_i > 0} (1-\pi)e^\frac{\lambda^x_i e^{-\lambda}}{x_i!}\\
+		\log L &= \sum_{I(x_i=0)} z_i \log(\pi) + (1-z_i) \big( \log(1-\pi) - \lambda \big)\\  &+ \sum_{I(x_i>0)} \big( \log(1-\pi) + x_i \log(\lambda_i) - \lambda - \log(x_i!) \big)
+		\end{align*}
 		
-		
-		E step:
+		Notation $\theta = (\pi, \lambda)$ $\theta_0$ represents a known parameter(as estimated from previous step, I don't use explicit indices for showing the E,M steps)
+	}
+	\problemAnswer{
+\textbf{		E step:}
 		
 \begin{align*}	
 		Q(\theta, \theta_0) &= \sum_{I(x_i=0)} E_{P(Z|X)}[z_i] \log(\pi) + (1-E_{P(Z|X)}[z_i]) \big( \log(1-\pi) - \lambda \big)\\  
 		&+ \sum_{I(x_i>0)} \big( \log(1-\pi) + x_i \log(\lambda_i) - \lambda - \log(x_i!) \big)
 \end{align*}
-
 
 \begin{align*}	
 E_{P(Z|X_i)}[z_i] &= 0 \times p(Z_i=0|X) + 1 \times p(Z_i=1|X_i=0) \\
@@ -464,15 +481,12 @@ E_{P(Z|X_i)}[z_i] &= 0 \times p(Z_i=0|X) + 1 \times p(Z_i=1|X_i=0) \\
 \end{align*}
 
 Hence,
-
 \begin{align*}
 Q(\theta, \theta_0) &= \sum_{I(x_i=0)} \frac{\pi_0}{\pi_0+(1-\pi_0)e^{-\lambda_0}} \log(\pi) + (\frac{(1-\pi_0)e^{-\lambda_0}}{\pi_0+(1-\pi_0)e^{-\lambda_0}}) \big( \log(1-\pi) - \lambda \big)\\  
 &+ \sum_{I(x_i>0)} \big( \log(1-\pi) + x_i \log(\lambda) - \lambda - \log(x_i!) \big)
 \end{align*}
-}
 
-\problemAnswer{
-M step:
+\textbf{M step:}
 \begin{align*}
 \frac{\partial Q}{\partial \lambda} &=0\\
 &= \sum_{I(x_i=0)} (1-E[z_i])(-1) + \sum_{I(x_i>0)} (\frac{x_i}{\lambda}-1)  =0\\
@@ -488,7 +502,20 @@ M step:
 &= \sum_{I(x_i=0)} \big(\frac{E[z_i]}{\pi} + \frac{E[z_i]}{1-\pi}\big) - \frac{n}{1-\pi} = 0\\
 \implies \hat{\pi} &= \sum_{I(x_i=0)} \frac{\hat{z_i}}{n}
 \end{align*}
+	}
+	\problemAnswer{
+		Thus parameter updates are as follows:(subscript 1 indicates the next iteration and 0 indicates known parameter value from previous step)
+		$$
+		\boxed{\hat{z}_1 = \frac{\pi_0}{\pi_0+(1-\pi_0)e^{-\lambda_0}} }
+		$$
 		
+		$$
+		\boxed{\hat{\lambda}_1 = \frac{\sum_{I(x_i>0)}x_i}{n-\sum_{I(x_i=0)}\hat{z_1}}}
+		$$
+		
+		$$
+		\boxed{ \hat{\pi} = \sum_{I(x_i=0)} \frac{\hat{z_1}}{n} }
+		$$
 		
 		
 		}
@@ -501,32 +528,32 @@ M step:
 	\begin{figure}
 	\begin{minipage}{0.5\linewidth}
 			\includegraphics[width=\linewidth]{blob-2}	
-			\caption{Blob Dataset $k=2$}
+			\caption{Problem 4.2 Blob Dataset $k=2$}
 	\end{minipage}
 	\begin{minipage}{0.5\linewidth}
 		%\begin{figure}
 			\includegraphics[width=\linewidth]{circle-2}
-			\caption{Circle Dataset $k=2$}
+			\caption{Problem 4.2 Circle Dataset $k=2$}
 		%\end{figure}
 	\end{minipage}	
 	\begin{minipage}{0.5\linewidth}
 		\includegraphics[width=\linewidth]{blob-3}	
-		\caption{Blob Dataset $k=3$}
+		\caption{Problem 4.2 Blob Dataset $k=3$}
 	\end{minipage}
 	\begin{minipage}{0.5\linewidth}
 		%\begin{figure}
 		\includegraphics[width=\linewidth]{circle-3}
-		\caption{Circle Dataset $k=3$}
+		\caption{Problem 4.2 Circle Dataset $k=3$}
 		%\end{figure}
 	\end{minipage}	
 		\begin{minipage}{0.5\linewidth}
 			\includegraphics[width=\linewidth]{blob-5}	
-			\caption{Blob Dataset $k=5$}
+			\caption{Problem 4.2 Blob Dataset $k=5$}
 		\end{minipage}
 		\begin{minipage}{0.5\linewidth}
 			%\begin{figure}
 			\includegraphics[width=\linewidth]{circle-5}
-			\caption{Circle Dataset $k=5$}
+			\caption{Problem 4.2 Circle Dataset $k=5$}
 			%\end{figure}
 		\end{minipage}	
 		\end{figure}
@@ -534,8 +561,9 @@ M step:
 
 	%	}
 \end{homeworkSection}
-\clearpage
-\begin{homeworkSection}{Problem 4.3}
+\newpage
+
+\begin{homeworkSection}{Problem 4.3(a)}
 	\problemAnswer{
 		Choice of Kernel = RBF: 
 		$$
@@ -544,17 +572,20 @@ M step:
 		with $\sigma = 0.1$
 		
 		}
+\end{homeworkSection}	
+	\begin{homeworkSection}{Problem 4.3(b)}
 		\begin{figure}
 			\includegraphics[width=\linewidth]{kcircle-2}
-			\caption{Problem 4.3 Kernel k-means with RBF kernel creates separate clusters}
+			\caption{Problem 4.3(b) Kernel k-means with RBF kernel creates separate clusters}
 		\end{figure}
 \end{homeworkSection}
-\end{homeworkProblem}
+
+
 
 \begin{homeworkSection}{Problem 4.4(a)}
 \begin{figure}
 	\includegraphics[width=\linewidth]{ll}
-	\caption{GMM with 3 mixtures}
+	\caption{Problem 4.4(a) Log likelihood versus iteration for GMM with 3 mixtures and 5 different initializations}
 \end{figure}
 
 \end{homeworkSection}
@@ -562,7 +593,7 @@ M step:
 \begin{homeworkSection}{Problem 4.4(b)}
 	\begin{figure}
 		\includegraphics[width=\linewidth]{ll-scatter}
-		\caption{GMM showing most likely assignments}
+		\caption{Problem 4.4(b) GMM showing most likely assignments}
 	\end{figure}
 	\newpage
 	\problemAnswer{
@@ -594,5 +625,5 @@ M step:
 	   
 	   
 \end{homeworkSection}
-
+\end{homeworkProblem}
 \end{document}
