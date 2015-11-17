@@ -141,9 +141,7 @@
 \newpage
 
 
-%----------------------------------------------------------------------------------------
-%       PROBLEM 2
-%----------------------------------------------------------------------------------------
+
 
 
 
@@ -156,10 +154,100 @@
 	To find $\nabla_{y_t} L$:
 	
 	\begin{align*}
-	\nabla_{y_t}L &= \frac{\partial}{\partial y_t} \frac{1}{2}\sum_{i=1}^{N}()
+	\nabla_{y_t}L &= \frac{\partial}{\partial y_t} \frac{1}{2}\sum_{i=1}^{N}(y_i-\hat{y_i})^T(y_i-\hat{y_i})\\
+	&=  \frac{\partial}{\partial y_t} \frac{1}{2} \sum_{i=1}^{N}(y_i^Ty_i-2y_i^T\hat{y_i}+\hat{y_t}^2)\\
+	&= \frac{1}{2} (2y_t-2\hat{y_t})\\
+	&= y_t-\hat{y_t}
 	\end{align*}
+	
+	$$
+		\boxed{\nabla_{y_t}L  =  y_t-\hat{y_t}}
+	$$
+	
 }
 		\end{homeworkSection}
+		
+	\begin{homeworkSection}{\homeworkProblemName: ~(b)}
+	\problemAnswer{
+		To find $\nabla_{y_t} L$:
+		
+		\begin{align*}
+		\nabla_{s_t}L &= \sum_{k=1}^T \frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k} \times \frac{\partial s_k}{\partial s_t}
+		\end{align*}
+		
+	
+		
+	
+		
+		Let's define $z_k = W_{IH}x_t+W_{HH}s_{t-1}$
+		
+		Thus,
+		\begin{align*}
+		z_k &= W_{IH}x_k+W_{HH}s_{k-1}\\
+		s_k &= \sigma(z_k)\\
+		y_k &= W_{HO}s_k
+		\end{align*}
+		
+		Thus,
+		\begin{align}
+		\frac{\partial y_k}{\partial s_k} &= W_{HO}\\
+		\frac{\partial s_k}{\partial z_k} &= \sigma(z_k)(1-\sigma(z_k))\\
+		\frac{\partial z_k}{\partial W_{IH}} &= x_k\\
+		\frac{\partial y_k}{\partial W_{HH}} &= y_{k-1}\\
+		\frac{\partial z_k}{\partial s_{k-1}} &= W_{HH}\\
+		 \frac{\partial s_k}{\partial s_{k-1}} &= \frac{\partial s_k}{\partial z_k} \frac{\partial z_k}{\partial s_{k-1}} = \sigma(z_k)(1-\sigma(z_k))W_{HH}
+		\end{align}
+		
+		 	Let's now consider $ \frac{\partial s_k}{\partial s_t}$:
+		 	
+		 	$s_k$ depends on $s_{k-1},s_{k-2},\dots s_{1}$.
+		 	And hence:
+		 	
+		 	\begin{align*}
+		 	\frac{\partial s_k}{\partial s_t} &= 0\ \forall\ k<t 
+		 	\end{align*}
+		 	
+		 For $k\geq t$:
+		 
+		\begin{align*}
+		\frac{\partial s_k}{\partial s_t} &= \frac{\partial s_k}{\partial s_{k-1}} \times \frac{\partial s_{k-1}}{\partial s_{k-2}} \times \frac{\partial s_{k-2}}{\partial s_{k-3}} \times \dots \frac{\partial s_{k-(k-t)+1}}{\partial s_{k-(k-t)}} 
+		\end{align*} 
+		
+		
+		
+		Thus, consider a special case of $t=T$:
+		
+		\begin{align*}
+		\nabla_{s_T}L &= \sum_{k=T}^T \frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k} \times \frac{\partial s_k}{\partial s_t}\\
+		&= \frac{\partial L}{\partial y_T} \times \frac{\partial y_T}{\partial s_T}\\
+		&= (y_T-\hat{y_T})W_{HO}
+		\end{align*}
+		
+		
+		Thus,
+		$$
+		\boxed{\nabla_{S_T} L = (y_T-\hat{y_T})W_{HO}}
+		$$
+	}
+	\problemAnswer{
+		Let's consider $\nabla_{s_{t}}L$ and $\nabla_{s_{t+1}}L$:
+		
+		\begin{eqnarray*}
+		\nabla_{s_{t+1}}L =  \sum_{k=t+1}^T \frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k} \times \frac{\partial s_k}{\partial s_t}\\
+		\nabla_{s_{t}}L =  \sum_{k=t}^T \frac{\partial L}{\partial y_k} \times \frac{\partial y_k}{\partial s_k} \times \frac{\partial s_k}{\partial s_t}\\
+		\implies \nabla_{s_{t}}L = \nabla_{s_{t+1}}L +   \frac{\partial L}{\partial y_t} \times \frac{\partial y_t}{\partial s_t} \times \frac{\partial s_t}{\partial s_t}\\
+		\implies \nabla_{s_{t}}L = \nabla_{s_{t+1}}L + (y_y-\hat{y_t})W_{HO}
+		\end{eqnarray*}	
+		
+		
+		Thus,
+		$$
+		\boxed{\nabla_{s_{t}}L = \nabla_{s_{t+1}}L + (y_y-\hat{y_t})W_{HO}}
+		$$
+		
+		
+	}
+\end{homeworkSection}
 \end{homeworkProblem}
 
 \begin{homeworkProblem}[Problem 3]
