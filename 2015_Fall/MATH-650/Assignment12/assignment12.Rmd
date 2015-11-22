@@ -1,0 +1,12 @@
+---
+title: "MATH-650 Assignment 12"
+author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
+date: "11/19/2015"
+output:
+  pdf_document: default
+  html_document:
+    keep_md: yes
+  word_document: default
+---
+
+# Chapter 19: 10,13
