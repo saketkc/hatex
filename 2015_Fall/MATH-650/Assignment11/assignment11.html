@@ -76,8 +76,8 @@ notobese &lt;- obesity.data[obesity.data$Obesity=='NotObese',]
 
 obesity.data</code></pre>
 <pre><code>##    Obesity Deaths NonDeaths
-## 1    Obese     16      2045
-## 2 NotObese      7      1044</code></pre>
+## 1    Obese     22      1179
+## 2 NotObese     22      1409</code></pre>
 <pre class="r"><code>n1 = obese$Deaths+obese$NonDeaths
 n2 = notobese$Deaths+notobese$NonDeaths
 pc = (obese$Deaths+notobese$Deaths)/(n1+n2)</code></pre>
@@ -87,14 +87,14 @@ pc = (obese$Deaths+notobese$Deaths)/(n1+n2)</code></pre>
 <h3>Part (i)</h3>
 <pre class="r"><code>p1 = obese$Deaths/n1
 p2 = notobese$Deaths/n2</code></pre>
-<p>Sample proportion of CVD deaths for obese group: <span class="math">\(\pi_1=0.0077632\)</span></p>
-<p>Sample proportion of CVD deaths for nonbese group: <span class="math">\(\pi_2=0.0066603\)</span></p>
+<p>Sample proportion of CVD deaths for obese group: <span class="math">\(\pi_1=0.0183181\)</span></p>
+<p>Sample proportion of CVD deaths for nonbese group: <span class="math">\(\pi_2=0.0153739\)</span></p>
 </div>
 <div id="part-ii" class="section level3">
 <h3>Part (ii)</h3>
 <pre class="r"><code>seci &lt;- sqrt(p1*(1-p1)/n1+p2*(1-p2)/n2)
 setest &lt;- sqrt(pc*(1-pc)/n1+pc*(1-pc)/n2)</code></pre>
-<p>Standard error for difference : 0.0031674</p>
+<p>Standard error for difference : 0.0050548</p>
 </div>
 <div id="part-iii" class="section level3">
 <h3>Part (iii)</h3>
@@ -103,13 +103,13 @@ Z &lt;- difference/setest
 halfwidth &lt;- 1.96*setest
 hci &lt;- difference + halfwidth
 lci &lt;- difference - halfwidth</code></pre>
-<p>95% confidence interval: <span class="math">\([-0.0052602, 0.007466]\)</span></p>
+<p>95% confidence interval: <span class="math">\([-0.0068898, 0.0127782]\)</span></p>
 </div>
 </div>
 <div id="part-b" class="section level2">
 <h2>Part (b)</h2>
 <pre class="r"><code>pval &lt;- 1-pnorm(Z)</code></pre>
-<p>One sided p-value: 0.3670332</p>
+<p>One sided p-value: 0.2786674</p>
 </div>
 <div id="part-c" class="section level2">
 <h2>Part (c)</h2>
@@ -120,28 +120,29 @@ logodds &lt;- log(oddsratio)
 selogci &lt;- sqrt(1/obese$Deaths + 1/obese$NonDeaths + 1/notobese$Deaths + 1/notobese$NonDeaths)
 selogtest &lt;- sqrt(1/(n1*pc*(1-pc)) + 1/(n2*pc*(1-pc)) )
 logwidth &lt;- 1.96*selogci
-loglci &lt;- selogci-logwidth
-loghci &lt;- selogci+logwidth</code></pre>
+loglci &lt;- logodds-logwidth
+loghci &lt;- logodds+logwidth</code></pre>
 <div id="part-i-1" class="section level3">
 <h3>Part (i)</h3>
-<p>Sample Odds: <span class="math">\(\omega_1=0.007824\)</span> ; <span class="math">\(\omega_2=0.006705\)</span></p>
+<p>Sample Odds: <span class="math">\(\omega_1=0.0186599\)</span> ; <span class="math">\(\omega_2=0.0156139\)</span></p>
 </div>
 <div id="part-ii-1" class="section level3">
 <h3>Part (ii)</h3>
-<p>Odds ratio: <span class="math">\(1.1668879\)</span></p>
+<p>Odds ratio: <span class="math">\(1.1950806\)</span></p>
 </div>
 <div id="part-iii-1" class="section level3">
 <h3>Part (iii)</h3>
-<p>Standard error of the log odds ratio: <span class="math">\(0.4547571\)</span></p>
+<p>Standard error of the log odds ratio: <span class="math">\(0.3040839\)</span></p>
 </div>
 <div id="part-iv" class="section level3">
 <h3>Part (iv)</h3>
-<p>95% confidence interval for log odds ratio: <span class="math">\([-0.4365668, 1.3460809]\)</span></p>
+<p>95% confidence interval for log odds ratio: <span class="math">\([-0.4177907, 0.774218]\)</span></p>
 </div>
 </div>
 <div id="part-d" class="section level2">
 <h2>Part (d)</h2>
-<p>…</p>
+<!-- The odds of deaths for obese group are estimated to be 1.1950806 times the odds of deaths for nonobese group(approximate 95% CI: $[-0.4177907, 0.774218]$) .-->
+<p>While testing for equality, we opbtained a p-value of 0.2786674. Also the 95% CI for log odds ratio is <span class="math">\([-0.4177907, 0.774218]\)</span> which does not include the estimated odds ratio of <span class="math">\(1.1950806\)</span> and thus there is no evidence that odds ratio of deaths among obese grooup over nonobese groups is different from 1.</p>
 </div>
 </div>
 <div id="chapter-18-11" class="section level1">

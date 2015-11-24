@@ -3,9 +3,9 @@ title: "MATH-650 Assignment 11"
 author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
 date: "11/19/2015"
 output:
+  pdf_document: default
   html_document:
     keep_md: yes
-  pdf_document: default
   word_document: default
 ---
 
@@ -83,8 +83,8 @@ logodds <- log(oddsratio)
 selogci <- sqrt(1/obese$Deaths + 1/obese$NonDeaths + 1/notobese$Deaths + 1/notobese$NonDeaths)
 selogtest <- sqrt(1/(n1*pc*(1-pc)) + 1/(n2*pc*(1-pc)) )
 logwidth <- 1.96*selogci
-loglci <- selogci-logwidth
-loghci <- selogci+logwidth
+loglci <- logodds-logwidth
+loghci <- logodds+logwidth
 ```
 ### Part (i)
 Sample Odds: $\omega_1=`r w1`$ ; $\omega_2=`r w2`$
@@ -103,8 +103,8 @@ Standard error of the log odds ratio: $`r selogci`$
 
 
 ## Part (d)
-
-...
+<!-- The odds of deaths for obese group are estimated to be `r oddsratio` times the odds of deaths for nonobese group(approximate 95% CI: $[`r loglci`, `r loghci`]$) .-->
+While testing for equality, we opbtained a p-value of `r pval`. Also the 95% CI for log odds ratio is  $[`r loglci`, `r loghci`]$ which does not include the estimated odds ratio of  $`r oddsratio`$ and thus there is no evidence that odds ratio of deaths among obese grooup over nonobese groups is different from 1.
 
 # Chapter 18: 11
 

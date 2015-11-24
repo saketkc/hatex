@@ -15,8 +15,8 @@ obesity.data
 
 ```
 ##    Obesity Deaths NonDeaths
-## 1    Obese     16      2045
-## 2 NotObese      7      1044
+## 1    Obese     22      1179
+## 2 NotObese     22      1409
 ```
 
 
@@ -36,9 +36,9 @@ p2 = notobese$Deaths/n2
 ```
 
 
-Sample proportion of CVD deaths for obese group: $\pi_1=0.0077632$
+Sample proportion of CVD deaths for obese group: $\pi_1=0.0183181$
 
-Sample proportion of CVD deaths for nonbese group: $\pi_2=0.0066603$
+Sample proportion of CVD deaths for nonbese group: $\pi_2=0.0153739$
 
 
 ### Part (ii)
@@ -50,7 +50,7 @@ seci <- sqrt(p1*(1-p1)/n1+p2*(1-p2)/n2)
 setest <- sqrt(pc*(1-pc)/n1+pc*(1-pc)/n2)
 ```
 
-Standard error for difference : 0.0031674
+Standard error for difference : 0.0050548
 
 ### Part (iii)
 
@@ -65,7 +65,7 @@ hci <- difference + halfwidth
 lci <- difference - halfwidth
 ```
 
-95% confidence interval: $[-0.0052602, 0.007466]$
+95% confidence interval: $[-0.0068898, 0.0127782]$
 
 
 ## Part (b)
@@ -76,7 +76,7 @@ pval <- 1-pnorm(Z)
 ```
 
 
-One sided p-value: 0.3670332
+One sided p-value: 0.2786674
 
 ## Part (c)
 
@@ -89,28 +89,28 @@ logodds <- log(oddsratio)
 selogci <- sqrt(1/obese$Deaths + 1/obese$NonDeaths + 1/notobese$Deaths + 1/notobese$NonDeaths)
 selogtest <- sqrt(1/(n1*pc*(1-pc)) + 1/(n2*pc*(1-pc)) )
 logwidth <- 1.96*selogci
-loglci <- selogci-logwidth
-loghci <- selogci+logwidth
+loglci <- logodds-logwidth
+loghci <- logodds+logwidth
 ```
 ### Part (i)
-Sample Odds: $\omega_1=0.007824$ ; $\omega_2=0.006705$
+Sample Odds: $\omega_1=0.0186599$ ; $\omega_2=0.0156139$
 
 ### Part (ii)
 
-Odds ratio: $1.1668879$
+Odds ratio: $1.1950806$
 
 ### Part (iii)
 
-Standard error of the log odds ratio: $0.4547571$
+Standard error of the log odds ratio: $0.3040839$
 
 ### Part (iv)
 
-95% confidence interval for log odds ratio: $[-0.4365668, 1.3460809]$
+95% confidence interval for log odds ratio: $[-0.4177907, 0.774218]$
 
 
 ## Part (d)
-
-...
+<!-- The odds of deaths for obese group are estimated to be 1.1950806 times the odds of deaths for nonobese group(approximate 95% CI: $[-0.4177907, 0.774218]$) .-->
+While testing for equality, we opbtained a p-value of 0.2786674. Also the 95% CI for log odds ratio is  $[-0.4177907, 0.774218]$ which does not include the estimated odds ratio of  $1.1950806$ and thus there is no evidence that odds ratio of deaths among obese grooup over nonobese groups is different from 1.
 
 # Chapter 18: 11
 
