@@ -7,8 +7,9 @@ indices = [5500, 6500, 7500, 8000, 8500];
 %x=double(reshape(X.train(5438,:), 16, 16))
 for i=1:numel(indices)
     n = indices(i);
+        orig = double(reshape(X.train(n,:), 16, 16));
+        imwrite(orig, sprintf('3c-orig-%d.png', n));
     for k=1:numel(K)
-        size(eigenvecs(:,1:k))
         X_compressed = X.train * eigenvecs(:,1:k);
         X_reconstructed = X_compressed*eigenvecs(:,1:k)';
         y_t = double(reshape(X_reconstructed(n,:), 16, 16));
