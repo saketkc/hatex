@@ -13,8 +13,11 @@ function [eigenvecs] = get_sorted_eigenvecs(X)
 %
 % CSCI 567 2015 Fall, Homework 6
 % (put your code here...)
-
+[N,P] = size(X);
 X_normalised = bsxfun(@minus, X, mean(X));
-XTX = X_normalised'*X_normalised;
-[V, eigvecs] = eig(XTX, 'matrix')
+XTX = 1/N*X_normalised'*X_normalised;
+[V,D] = eig(XTX);
+[D,I] = sort(diag(D), 'descend');
+V = V(:, I);
+eigenvecs = V;
 end
