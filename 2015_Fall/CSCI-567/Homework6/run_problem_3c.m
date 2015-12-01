@@ -1,7 +1,7 @@
 load('hw6_pca.mat')
 eigenvecs = get_sorted_eigenvecs(X.train);
 [N,D] = size(X.train);
-K = [1, 5, 10, 20, 80];
+K = [1, 5, 10, 20, 80. 256];
 mu = mean(X.train);
 indices = [5500, 6500, 7500, 8000, 8500];
 %x=double(reshape(X.train(5438,:), 16, 16))
