@@ -13,7 +13,7 @@ for i=1:numel(indices)
         k = K(j);
         X_compressed = X.train * eigenvecs(:,1:k);
         X_reconstructed = X_compressed*eigenvecs(:,1:k)';
-        y_t = double(reshape(X_reconstructed(n,:)+mu, 16, 16));
+        y_t = double(reshape(X_reconstructed(n,:), 16, 16));
         imwrite(y_t, sprintf('3c-%d-%d.png', n, k));
     end
 end
