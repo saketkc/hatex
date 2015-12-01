@@ -17,7 +17,8 @@ function [eigenvecs] = get_sorted_eigenvecs(X)
 X_normalised = bsxfun(@minus, X, mean(X));
 XTX = 1/N*X_normalised'*X_normalised;
 [V,D] = eig(XTX);
-[D,I] = sort(diag(D), 'descend');
-V = V(:, I);
+%[D,I] = sort(diag(D), 'descend');
+%V = V(:, I);
+%D
 eigenvecs = V;
 end
