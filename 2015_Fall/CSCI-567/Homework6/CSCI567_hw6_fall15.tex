@@ -105,7 +105,7 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\hmwkTitle}{Assignment\ \#6 } % Assignment title
-\newcommand{\hmwkDueDate}{Wednesday,\ December\ 2,\ 2015(One late day used)} % Due date
+\newcommand{\hmwkDueDate}{Wednesday,\ December\ 2,\ 2015} % Due date
 \newcommand{\hmwkClass}{CSCI-567} % Course/class
 \newcommand{\hmwkClassTime}{} % Class/lecture time
 \newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
@@ -334,8 +334,18 @@
 			}
 		\end{homeworkSection}
 
-		\begin{homeworkSection}{\homeworkProblemName: ~(e)}
+		\begin{homeworkSection}{\homeworkProblemName: ~(d)}
 			\problemAnswer{
+				$\delta_t(j) = \max_i \delta_{t-1}(i) a_{ij} P(x_t|Z_t=s_i)$
+				
+				\begin{eqnarray*}
+				\delta_1(1) = \pi_1 b_{1a} = 0.28\\
+				\delta_1(2) = \pi_2 b_{2a} = 0.06\\
+				\delta_2(1) = b_{1g} \times max(\delta_1(1)a_{11}, \delta_1(2)a_{21}) = 0.896\\
+				\delta_2(2) =  b_{2g} \times max(\delta_1(1)a_{12}, \delta_1(2)a_{22}) = 0.072\\
+				\delta_3(1) = b_{1c} \times (\delta_2(1)a_{11} + \delta_2(2)a_{21} )\\
+				\end{eqnarray*}
+
 					}
 			\end{homeworkSection}
 		\begin{homeworkSection}{\homeworkProblemName: ~(e)}
@@ -569,7 +579,7 @@
 \end{homeworkSection}
 \end{homeworkProblem}		
 
-\begin{homeworkProblem}[Problem 3.1] % Custom section title
+\begin{homeworkProblem}[Problem 3.2] % Custom section title
 	\begin{homeworkSection}{\homeworkProblemName : ~(a)}
 		\problemAnswer{
 			Length of shortest trace: 109\\
@@ -588,10 +598,55 @@
 			Thus, any observation $O^{(i)} = \{O^{(i)}_1, O^{(i)}_2 \dots O^{(i)}_{T_i} \}$
 			
 			\begin{align*}
-			L_D &= \log()
+			L_D(\theta, A, B) &= \sum_{i=1}^D \log( P( O^{(i)}_1, O^{(i)}_1, \dots O^{(i)}_{T_i}, S^{(i)}_1, S^{(i)}_2, \dots S^{(i)}_{T_i} ) )\\
+			&= \sum_{i=1}^D  (\log (P(S^{(i)}_1, S^{(i)}_2, \dots S^{(i)}_{T_i} ) +  P( O^{(i)}_1, O^{(i)}_1, \dots O^{(i)}_{T_i}| S^{(i)}_1, S^{(i)}_2, \dots S^{(i)}_{T_i} ) )) \\
+			&= \sum_{i=1}^D \log(P(S_1^{(i)})+ \sum_{i=1}^D\sum_{t=2}^{T_i} \log(P(S_t^{(i)}|S_{t-1}^{(i)}) ) + \sum_{i=1}^D \sum_{t=1}^{T_i}\log(P(O^{(i)}_t|S^{(i)}_t)))\\
+			&= \sum_{i=1}^D \log(P(S_1^{(i)})+ \sum_{i=1}^D\sum_{t=2}^{T_i} \log(P(S_t^{(i)}|S_{t-1}^{(i)}) ) + \sum_{i=1}^D \sum_{t=1}^{T_i}\log(P(O^{(i)}_t|S^{(i)}_t)))\\
+			&= \sum_{i=1}^D \log(\pi_{S_1}^{(i)})  + \sum_{i=1}^D \sum_{t=2}^{T_i} \log(A^{(i)}_{t-1,t} + \sum_{i=1}^D \sum_{t=2}^{T_i} \log(B^{(i)}_{S_t^{(i)}O^{(i)}_t})
 			\end{align*}
+			
+			Note $B^{(i)}_{S_t^{(i)}O^{(i)}_t}$ denotes the emission probability when state is $S_t^{(i)}$ and emission is $O_t^{(i)}$
 				}
 	\end{homeworkSection}
+	
+\begin{homeworkSection}{\homeworkProblemName : ~(a)}
+	\problemAnswer{
+		Let $S'$ denote the set of all possiblities that $S_t^{(i)}$ can take,
+		
+		\begin{align*}
+		Q(\theta, \theta^s) &= \sum_{S \in S'} L_D(\theta,s, A,B) \times P(s| O;\theta)\\
+		&= \sum_{S \in S'} \sum_{i=1}^D \log(\pi_{S_1}^{(i)})  + \sum_{S \in S'}\sum_{i=1}^D \sum_{t=2}^{T_i} \log(A^{(i)}_{t-1,t} + \sum_{S \in S'}\sum_{i=1}^D \sum_{t=2}^{T_i} \log(B^{(i)}_{S_t^{(i)}O^{(i)}_t})\\
+		\end{align*}
+		
+		Now define the total number of hidden states to be M. 
+		
+		Given constraints (for each training dataset):
+		\begin{align*}
+		\sum_i \pi_i &=1 \\
+		\sum_j A_{ij} &= 1\\
+		\sum_j B_{ij} &=1\\
+		\end{align*}
+		Then we define a langragian as follows:
+		
+		\begin{align*}
+		L(\theta, \theta^s) = Q(\theta, \theta^s) - \lambda_\pi(\sum_{i=1}^M \pi_i -1 ) + \sum){i=1}^M \lambda_{A_i}(\sum_{j=1}^M\lambda A_{ij} -1) - \sum_{i=1}^M \lambda_{B_i}(\sum_{j=1}^M B_{ij}- 1)\\
+		\end{align*}
+		
+		Now, 
+			 \begin{align*}
+		\frac{\partial L}{\partial \pi_{S_i}}  &= 0\\
+		&= \frac{\partial }{\partial \pi_{S_i}} (\sum_{S\in S'} \sum_{i=d}^D \sum_{j=1}^M \log (\pi_{S_i}) P(S_1^{(i)} = j,O;\theta)  - \lambda_\pi = 0 \\
+		&=  \sum_{i=1}^D \frac{P(S_1^{(i)}=j, O;\theta)}{\pi_{S_i}} - \lambda_\pi = 0
+		\end{align*}
+		
+		Since the likelihood is linear in terms of probability, the M step involves a posterior calculation:
+		\begin{align*}
+		\pi_{S_i} &= \frac{\sum_{i=1}^D P(S_1^{(i)}=S_i, O; \theta) }{ \sum_{i=d}^D \sum_{j=1}^M \sum_{i=1}^D P(S_1^{(i)}=S_i, O; \theta) }
+		\end{align*}
+		
+	}	
 \end{homeworkSection}
+
+\end{homeworkProblem}
 
 \end{document}
