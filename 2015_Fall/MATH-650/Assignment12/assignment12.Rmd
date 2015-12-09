@@ -9,7 +9,7 @@ output:
   word_document: default
 ---
 
-# Chapter 19: 10,13
+## Chapter 19: Problem 10
 
 ```{r}
 coffee.data <- read.csv('data_10.csv')
@@ -41,7 +41,9 @@ pval
 chisq.test(coffee.data[,-1])
 ```
 
-# Problem 13
+*Conclusion:* Thus with a p-value of `0.007209`, there is a convincing evidence that drinking alcohol and being sexually active are not independent.
+
+# Chapter 19: Problem 13
 
 ```{r}
 smoker.data <- read.csv('data_13.csv')
@@ -70,3 +72,7 @@ pval.excess
 ```{r}
 pval.fisher
 ```
+
+Fisher's Exact test p-value: `r pval.fisher`
+
+Excess test p-value: `r pval.excess`
