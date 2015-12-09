@@ -1,17 +1,11 @@
----
-title: "MATH-650 Assignment 12"
-author: 'Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)'
-date: "12/4/2015"
-output:
-  pdf_document: default
-  html_document:
-    keep_md: yes
-  word_document: default
----
+# MATH-650 Assignment 12
+Saket Choudhary (USCID: 2170058637) (skchoudh@usc.edu)  
+11/19/2015  
 
 ## Chapter 19: Problem 10
 
-```{r}
+
+```r
 coffee.data <- read.csv('data_10.csv')
 n11 <- coffee.data[1,2]
 n12 <- coffee.data[1,3]
@@ -24,31 +18,61 @@ C2 <- n12+n22
 T1 <- R1+R2
 ```
 
-```{r}
+
+```r
 e11 <- R1*C1/T1
 e12 <- R1*C2/T1
 e21 <- R2*C1/T1
 e22 <- R2*C2/T1
 chi2 <-  T1*(abs(n11*n22-n12*n21)-T1/2)^2/(R1*C1*R2*C2)
 chi2
+```
+
+```
+## [1] 7.22013
+```
+
+```r
 pval <- pchisq(chi2, 1, lower.tail = F)
 pval
 ```
 
+```
+## [1] 0.00720905
+```
+
 ### Check with `chisq.test`
 
-```{r}
+
+```r
 chisq.test(coffee.data[,-1])
+```
+
+```
+## 
+## 	Pearson's Chi-squared test with Yates' continuity correction
+## 
+## data:  coffee.data[, -1]
+## X-squared = 7.2201, df = 1, p-value = 0.007209
 ```
 
 *Conclusion:* Thus with a p-value of `0.007209`, there is a convincing evidence that drinking alcohol and being sexually active are not independent.
 
 # Chapter 19: Problem 13
 
-```{r}
+
+```r
 smoker.data <- read.csv('data_13.csv')
 smoker.data
+```
 
+```
+##      Smoking Cancer Control
+## 1    Smokers     83      72
+## 2 NonSmokers      3      14
+```
+
+```r
 n11 <- smoker.data$Cancer[1]
 n12 <- smoker.data$Control[1]
 n21 <- smoker.data$Cancer[2]
@@ -75,16 +99,26 @@ pval.fisher <- sum(dhyper(possiblek, R1, R2, C1))
 
 
 
-```{r}
+
+```r
 pval.excess
 ```
 
-```{r}
+```
+## [1] 0.07668854
+```
+
+
+```r
 pval.fisher
 ```
 
-Fisher's Exact test p-value: `r pval.fisher`
+```
+## [1] 0.004411402
+```
 
-Excess test p-value: `r pval.excess`
+Fisher's Exact test p-value: 0.0044114
+
+Excess test p-value: 0.0766885
 
 Thus on a threshold of significance = 0.05, we can reject using Fisher's exact test but not using excess test where the null hypothesis is that the observed count of smoking persons is not a random allocation based on cancer or control.
