@@ -2,6 +2,7 @@ load('PCA_Exercise_Images.mat')
 vectorized_images = [];
 [nrow, ncol, nimg] = size(Photo_Images);
 original = double(Photo_Images(:,:,70));
+r = 80;
 for i=1:30
     for j=1:30
         patch = original(20*(i-1)+1:20*(i), 20*(j-1)+1:20*j);
@@ -9,7 +10,7 @@ for i=1:30
         vectorized_images = [vectorized_images; vimg];
     end
 end
-[eigvals, eigvecs, projected, reconstructed] = perform_pca(vectorized_images, 10);
+[eigvals, eigvecs, projected, reconstructed] = perform_pca(vectorized_images, r);
 
 %imagesc(original);
 %print('pca-part-c-original', '-dpng');
@@ -29,5 +30,5 @@ for i=1:900
 end
 %imagesc(reshape(reconstructed,600,600));
 imagesc(rec_patches_all);
-print('pca-part-c-reconstructed', '-dpng');
+print(sprintf('pca-part-c-reconstructed-r=%d',r), '-dpng');
 close all;
