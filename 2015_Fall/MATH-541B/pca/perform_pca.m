@@ -1,4 +1,4 @@
-function [eigenvalues, eigenvecs, projected, reconstructed] = get_sorted_eigenvecs(X, r)
+function [eigenvalues, eigenvecs, projected, reconstructed] = perform_pca(X, r)
 % input:
 %   X - N*D data matrix, each row as a data sample
 %       You must assume that the data samples are not zero-mean, thus you need to perform 
@@ -16,7 +16,11 @@ function [eigenvalues, eigenvecs, projected, reconstructed] = get_sorted_eigenve
 X_normalised = bsxfun(@minus, X, mean(X));
 x_n = X_normalised;
 XTX = 1/N*X_normalised'*X_normalised;
-[V,D] = eig(XTX);
+XXT = 1/N*X_normalised*X_normalised';
+%[V,D] = eig(XTX);
+[V,D] = eig(XXT);
+% Trick to calculte eigne vectors when number of dimenssamples >> number of dimensions
+V = X'*V;
 [D,I] = sort(diag(D), 'descend');
 V = V(:, I);
 %[V,D]=eigs(XTX, size(XTX,1),'LA');
