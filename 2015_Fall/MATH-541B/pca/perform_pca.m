@@ -16,11 +16,11 @@ function [eigenvalues, eigenvecs, projected, reconstructed] = perform_pca(X, r)
 X_normalised = bsxfun(@minus, X, mean(X));
 x_n = X_normalised;
 XTX = 1/N*X_normalised'*X_normalised;
-XXT = 1/N*X_normalised*X_normalised';
-%[V,D] = eig(XTX);
-[V,D] = eig(XXT);
+%XXT = 1/N*X_normalised*X_normalised';
+[V,D] = eig(XTX);
+%[V,D] = eig(XXT);
 % Trick to calculte eigne vectors when number of dimenssamples >> number of dimensions
-V = X'*V;
+%V = X_normalised'*V;
 [D,I] = sort(diag(D), 'descend');
 V = V(:, I);
 %[V,D]=eigs(XTX, size(XTX,1),'LA');
