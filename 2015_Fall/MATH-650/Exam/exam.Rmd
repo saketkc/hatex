@@ -1,0 +1,71 @@
+---
+title: "End Term"
+author: "Saket Choudhary"
+date: "December 9, 2015"
+output: pdf_document
+---
+
+# Problem 1
+
+Define the likelihood function: $L(\theta|N,n,k)$ Then,
+
+\begin{align*}
+L(\theta|N,n,k) &= \frac{{\theta \choose k} {N-\theta \choose n-k}}{{N \choose n}}
+\end{align*}
+
+We find the MLE using first principle.
+
+In order to ensure MLE, we need to ensure: $\frac{L(\theta|N,n,k)}{L(\theta-1|N,n,k)} >1$
+
+\begin{align*}
+\frac{L(\theta|N,n,k)}{L(\theta-1|N,n,k)} &>1\\
+\frac{ \frac{ {\theta \choose k}{N-\theta \choose n-k} } { {N \choose n} } }{ \frac{ {\theta-1 \choose k}{N-\theta+1 \choose n-k} } { {N \choose n} }  } &>1\\
+\frac{\theta(N-\theta+1-(n-k))}{(\theta-k)(N-\theta+1)} &>1\\
+\theta n &> -kN -k\\
+\theta &< \frac{N(k+1)}{n}
+\end{align*}
+
+Similarly, $\frac{}{}$
+
+# Problem 4
+
+## Part (a)
+
+In this part, the variables $X_1$ and $X_2$ are correlated. The main diffciulty that would potentially arise would be in interpreting the cofficients associtated with these variables. Cofficients by definition imply the amount by which the mean response changes when all other covariates are held fixed. However in this case since $X_1$ and $X_2$ are highly correlated, changing one would also imply chaning the other.
+
+
+In order to overcome this, we need to choose either of $X_1$ or $X_2$ as a covariate in the linear regression model(essentially discarding the other) based on which one of these predictors best captures the 'reality' of the independent variable.
+
+## Part (b)
+
+
+
+# Problem 5
+
+Given $\log{\frac{p}{1-p}}=3.2 - 0.078 \times age$ for men
+and $\log{\frac{p}{1-p}}=1.6 - 0.078 \times age$ for women  where $p$ denotes the probability of survival.
+
+Consider 
+\begin{align*}
+\log{\frac{p}{1-p}} &=\beta_0+\beta_1 x\\
+\frac{1-p}{p} &= \exp(-(\beta_0+\beta_1 x))\\
+p &= \frac{1}{1+\exp(-(\beta_0+\beta_1 x))}
+\end{align*}
+
+```{r}
+pman <- 1/(1+exp(-(3.2-0.078*25)))
+pwoman <-  1/(1+exp(-(1.6-0.078*50)))
+```
+Thus, Estimated probability of survival of man of age 25 = `r pman`
+and of woemn aged 50 = `r pwoman`
+
+
+Age at which probability of survival is 0.5: 
+
+\begin{align*}
+\beta_0+\beta_1 x &= \log(0.5/0.5)\\
+\hat{x} &= \frac{\beta_0}{\beta_1}
+\end{align*}
+
+Thus, man's age at which probability of surviving is 0.5: `r 3.2/0.078`
+and for woman: `r 1.6/0.078`
