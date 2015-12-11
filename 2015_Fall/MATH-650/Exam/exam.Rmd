@@ -60,7 +60,7 @@ s <- sapply(theta, function(x) choose(4,k) * choose(10-4,k)/(choose(10,4)) )
 sum(s)
 ```
 
-**Thus, one sided p-value is `r sum(s)`**
+**Thus, one sided p-value is `r sum(s)`** and based on a threshold of $\alpha=0.05$ we fail to reject the null hypothesis that $\theta=4$
 
 # Problem 2
 $Y \sim Binomial(n, \pi)$ and $\hat{\pi} = \frac{Y}{n}$ 
@@ -83,7 +83,7 @@ and $g'(\hat{\pi}) = \frac{1}{\hat{\pi}} + \frac{1}{1-\hat{\pi}} = \frac{1}{\hat
 
 Thus, $Var(\hat{\pi}) = \frac{1}{\hat{\pi}^2(1-\hat{\pi})^2} \times \hat{\pi}(1-\hat{\pi}) = \frac{1}{\hat{\pi}(1-\hat{\pi})}$
 
-Thus, $E[g(\hat{\pi})^2]=\frac{1}{\hat{\pi}(1-\hat{\pi})}+ \log^2{\frac{\hat{\pi}}{1-\hat{\pi}}}$
+Thus, $E[g(\hat{\pi})^2]=\frac{1}{\hat{\pi}(1-\hat{\pi})}+ \log^2{\frac{\hat{\pi}}{1-\hat{\pi}}} = \frac{n^2}{Y(n-Y)} + \log^2 \frac{n}{n-Y}$
 
 
 
@@ -104,13 +104,13 @@ In order to overcome this, we need to choose either of $X_1$ or $X_2$ as a covar
 ## Part (b)
 
 
-There exists two outliers one on the top right and one on the bottom left. They are outliers considering $(X_1,X_2)$ together but not individually. Since we are minimizing the squared error to determine the coefficients, the presence of such outlier points will affect the cofficients (and they will turn out to be smaller in magnitude). One way to overcome such outliers is to either use regularization(L1,L2) or to completely neglect such outliers.
+There exists two outliers one on the top right and one on the bottom left. They are outliers considering $(X_1,X_2)$ together but not individually. Since we are minimizing the squared error to determine the coefficients, the presence of such outlier points will affect the cofficients (and they will turn out to be smaller in magnitude). One way isto completely neglect such outliers in the model.
 
 # Problem 5
 
 
-Given $\log{\frac{p}{1-p}}=3.2 - 0.078 \times age$ for men
-and $\log{\frac{p}{1-p}}=1.6 - 0.078 \times age$ for women  where $p$ denotes the probability of survival.
+Given $\log{\frac{p}{1-p}}=3.2 - 0.078 \times age$ for females
+and $\log{\frac{p}{1-p}}=1.6 - 0.078 \times age$ for males  where $p$ denotes the probability of survival.
 
 Consider 
 \begin{align*}
@@ -120,11 +120,11 @@ p &= \frac{1}{1+\exp(-(\beta_0+\beta_1 x))}
 \end{align*}
 
 ```{r}
-pman <- 1/(1+exp(-(3.2-0.078*25)))
-pwoman <-  1/(1+exp(-(1.6-0.078*50)))
+pwoman <- 1/(1+exp(-(3.2-0.078*25)))
+pman <-  1/(1+exp(-(1.6-0.078*50)))
 ```
 Thus, Estimated probability of survival of man of age 25 = `r pman`
-and of woemn aged 50 = `r pwoman`
+and of woman aged 50 = `r pwoman`
 
 
 Age at which probability of survival is 0.5: 
@@ -134,8 +134,8 @@ Age at which probability of survival is 0.5:
 \hat{x} &= \frac{\beta_0}{\beta_1}
 \end{align*}
 
-Thus, man's age at which probability of surviving is 0.5: `r 3.2/0.078`
-and for woman: `r 1.6/0.078`
+Thus, man's age at which probability of surviving is 0.5: `r 1.6/0.078`
+and for woman: `r 3.2/0.078`
 
 
 # Problem 6
@@ -144,7 +144,6 @@ and for woman: `r 1.6/0.078`
 library(car)
 problem6 <- read.csv('problem6.csv')
 model <- lm(y~x1+x2, problem6)
-vif(model)
 ```
 
 We first consider $VIF1$ $X_1 = \beta_0 + \beta_1X_2$ $\bar{X_1} = 2.5$ and $\bar{X_2} = 0$ Also, $\sum_i(X_{2i}-\bar{X_2})^2 = (-1-0)^2+(0-0)^2+(1-0)^2+(0-0)^2=2$
@@ -159,7 +158,7 @@ $SS_{Total} = \sum_i(X_{1i}-\bar{X_1})^2 =  (1-2.5)^2 + (2-2.5)^2 + (3-2.5)^2 + 
 
 $SS_{Res}=(1-2.5)^2+(2-2.5)^2+(3-2.5)^2+(4-2.5)^2=3$
 
-Thus $R_1^2 = 1-SS_{Res}/SS{Tot}  = 1-3/5 = 0.4$
+Thus $R_1^2 = 1-SS_{Res}/SS_{Total}  = 1-3/5 = 0.4$
 
 And $VIF1 = 1/(1-R_1^2) = 1.6667$
 
@@ -176,12 +175,21 @@ And $SS_{Res} = (-1+0.6)^2+(0+0.2)^2+(1-0.2)^2+(0-0.6)^2 = 1.2$
 
 and hence $R_2^2 = 1-1.2/2=0.4$ and $VIF2 = 1/(1-R_2^2) = 1.667$
 
+$S_{X_2} = \sqrt{2}$ and $S_{X_1} = \sqrt{5}$
+
 \begin{align*}
-\frac{SE(\beta_2)}{SE(\beta_1)} &= \frac{\sigma \sqrt{\frac{1}{(n-1)s_{X_2}^2}}} {\sigma \sqrt{\frac{1}{(n-1) s_{X_1}^2}}}\\ 
-&= \frac{s_{X_1}}{s_{X_2}}\\
+\frac{SE(\beta_1)}{SE(\beta_2)} &= \frac{\sigma \sqrt{\frac{1}{(n-1)s_{X_1}^2}}} {\sigma \sqrt{\frac{1}{(n-1) s_{X_2}^2}}}\\ 
+&= \frac{s_{X_2}}{s_{X_1}}\\
 &= \sqrt{\frac{2}{5}}\\
 &=0.632455
 \end{align*}
+
+
+$VIF1 = 1.667; VIF2 = 1.667$ which can be verified as per R output:
+```{r}
+vif(model)
+```
+
 
 ## Part (b)
 
@@ -189,13 +197,26 @@ and hence $R_2^2 = 1-1.2/2=0.4$ and $VIF2 = 1/(1-R_2^2) = 1.667$
 c <- summary(model)
 s <- c$coefficients
 SE1 <- s[2,2]
-SE2 <- s[3,3]
+SE2 <- s[3,2]
+b0  <- s[1,1]
 b1  <- s[2,1]
 b2  <- s[3,1]
 ```
 
+Thus
+\begin{align*}
+\hat{\beta_0} &= `r b0`\\
+\hat{\beta_1} &= `r b1`\\
+\hat{\beta_2} &= `r b2`\\
+SE(\hat{\beta_1}) &= `r SE1`\\
+SE(\hat{\beta_2}) &= `r SE2`\\
+SE(\hat{\beta_1})/SE(\hat{\beta_2}) &= `r SE1/SE2`\\
+\end{align*}
 
-
+which can be verified as per this summary of the model
+```{r}
+summary(model)
+```
 
 # Problem 7
 
@@ -281,11 +302,11 @@ $H_0: \beta_1 =0, \beta_2=0$ and $H_1: \beta_1 \neq 0, \beta_2 \neq 0$ alternati
  
 ## Part (d)
 
-She can use the model for prediction of Temperature conditions in a given region for 1 year, since there is autocorrelation and hence the next year's prediction will depend on the current year's parameters(which are known).
+She can use the model for prediction of Temperature conditions in a given region for 1 year, since there is autocorrelation involved and hence the next year's prediction will depend on the current year's parameters(which are known). This is not true for predicting temperature after 2 years, since the true temperature conditions after 1 year would not be known.
 
 ## Part (e)
 
-Prediction for 20 years will not be accurate since the data for next year depends on knowing the actual parameters for the current year(since the temperature readings are correlated)
+Prediction for 20 years will not be accurate since the data for next year depends on knowing the actual parameters for the current year(since the temperature readings are correlated). Though the model can in principle be used for 20 years prediction, the residuals might be very large.
 
 ## Part (f)
 
