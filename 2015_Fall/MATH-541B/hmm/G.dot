@@ -1,0 +1,11 @@
+digraph G {
+bad;
+good;
+mediocre;
+bad -> bad  [key=0, label="0.50"];
+bad -> mediocre  [key=0, label="0.50"];
+good -> bad  [key=0, label="0.50"];
+good -> good  [key=0, label="0.20"];
+good -> mediocre  [key=0, label="0.20"];
+mediocre -> mediocre  [key=0, label="1.00"];
+}
