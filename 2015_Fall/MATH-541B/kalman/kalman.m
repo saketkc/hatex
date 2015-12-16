@@ -97,11 +97,36 @@ for k=1:time
 
 end
 
-%plot(1:time+1, x, 1:time+1, (xbar));
+
+% Defaults for this blog post
+width = 20;     % Width in inches
+height = 10;    % Height in inches
+alw = 0.75;    % AxesLineWidth
+fsz = 21;      % Fontsize
+lw = 2.5;      % LineWidth
+msz = 18;       % MarkerSize
+
+
+
+set(gcf,'defaultLineLineWidth',lw);   % set the default line width to lw
+set(gcf,'defaultLineMarkerSize',msz); % set the default line marker size to msz
+set(gcf,'defaultLineLineWidth',lw);   % set the default line width to lw
+set(gcf,'defaultLineMarkerSize',msz); % set the default line marker size to msz
+
+
+% Here we preserve the size of the image when we save it.
+set(gcf,'InvertHardcopy','on');
+set(gcf,'PaperUnits', 'inches');
+papersize = get(gcf, 'PaperSize');
+left = (papersize(1)- width)/2;
+bottom = (papersize(2)- height)/2;
+myfiguresize = [left, bottom, width, height];
+set(gcf,'PaperPosition', myfiguresize);
+set(gca, 'FontSize', fsz, 'LineWidth', alw); %<- Set properties
+
+
+
+
 plot(1:time+1, (x), 1:time+1, (xbar), 1:time+1, (xd), 1:time+1, xdbar);
-%plot(1:time+1, cell2mat(y_observed), 1:time+1, (x));
-%plot(1:time+1,x);% cell2mat(y_observed));%, 1:time+1, (x));
-%plot(1:time+1, cell2mat(y_observed));%, 1:time+1, (x));
-%legend('Observed');%, 'Predicted');
 legend('Y Befo', 'Y after', 'Velocity Before', 'Vecocity After');
 print('kalman-y', '-dpng');
