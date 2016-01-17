@@ -2,18 +2,18 @@
 title: "MATH 542 | Assignment 1"
 author: "Saket Choudhary"
 date: "1/16/2016"
-output: html_document
+output: pdf_document
 ---
 
 ### Problem 1
 
-|2^3 - 3^2|
+$|2^3 - 3^2|$
 ```{r}
 abs(2**3-3**2)
 ```
 
 ### Problem 2
-e^e
+$e^e$
 
 ```{r}
 exp(exp(1))
@@ -21,7 +21,7 @@ exp(exp(1))
 
 ### Problem 3
 
-$2.3^8 + \ln(7.5) −\cos(\pi/\sqrt{2})$
+$2.3^8 + log(7.5) - cos \frac{\pi}{\sqrt{2}}$
 
 ```{r}
 2.3**8 + log(7.5) - cos(pi/sqrt(2))
