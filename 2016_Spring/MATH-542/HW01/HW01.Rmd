@@ -1,0 +1,38 @@
+---
+title: "MATH 542 | Homework 1"
+author: "Saket Choudhary"
+date: "1/17/2016"
+output: html_document
+---
+
+# Problem 1
+
+$$
+\begin{align*}
+\mathbf{1}_n = \begin{pmatrix} 1\\
+1\\
+\vdots\\
+1\\
+\end{pmatrix}
+\end{align*}
+$$
+
+Consider $\mathbf{a}' = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix}$
+
+Thus, $$\mathbf{a}'\mathbf{1}_n = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix} . \begin{pmatrix} 1\\
+1\\ 
+\vdots\\
+1\end{pmatrix} = a_1 + a_2 + a_3 + \dots a_n = \mathbf{a'} \mathbf{1_n}
+$$
+
+
+# Problem 3
+$A$ is $n \times p$
+
+$AA'$ is symmetric if $AA' = A'A$
+
+$(AA')' = (A')'A' = AA'$
+
+
+Consider $A=a_{ij}$
+if $A'A = 0$ \sum
