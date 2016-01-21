@@ -17,14 +17,76 @@ $$
 \end{align*}
 $$
 
+### Problem a
 Consider $\mathbf{a}' = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix}$
 
-Thus, $$\mathbf{a}'\mathbf{1}_n = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix} . \begin{pmatrix} 1\\
+Thus, $$\mathbf{a}'\mathbf{1}_n = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix} \times \begin{pmatrix} 1\\
 1\\
 \vdots\\
 1\end{pmatrix} = a_1 + a_2 + a_3 + \dots a_n = \mathbf{a'} \mathbf{1_n}
 $$
 
+### Problem b
+
+\begin{align*}
+A_n I &=  \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\
+a_{21} & a_{22}  & \dots & a_{2n}\\
+\vdots\\
+a_{n1} & a_{n2} & \dots  & a_{nn}
+\end{pmatrix}  \times \begin{pmatrix} 1 \\
+1\\ 
+\vdots
+1
+\end{pmatrix} = \begin{pmatrix} \sum_{j=1}^n a_{ij}\\
+\sum_{j=1}^n a_{2j}\\
+\vdots
+\sum{j=1}^n a_{nj}
+\end{pmatrix}\\
+&= \text{Column vector with row sums of }A
+\end{align*}
+
+### Problem c
+Row sum of $j^{th}$ column of $A = \sum_{i=1}^na_{ij}$
+
+Column sum of $i^{th}$ row of $A= \sum_{j=1}^n a_{ij}$
+
+\begin{align*}
+1_n'A &= \begin{pmatrix} 1 & 1 & \dots 1 \end{pmatrix} \times \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\
+a_{21} & a_{22}  & \dots & a_{2n}\\
+\vdots\\
+a_{n1} & a_{n2} & \dots  & a_{nn}
+\end{pmatrix}\\
+&= \begin{pmatrix} \sum_{i=1}^n a_{i1} & \sum_{i=1}^n a_{i2} & \sum_{i=1}^n a_{i3}  & \dots \sum_{i=1}^n a_{in} \end{pmatrix}\\
+&= \text{Row vector with elements as column sums of A}
+\end{align*}
+
+# Problem 2
+
+
+\begin{align*}
+a_1 &= \begin{pmatrix}
+2\\
+3\\
+1
+\end{pmatrix}\\
+A_2 &= \begin{pmatrix}
+1 & 2\\
+2 & 0\\
+0 & 1\\
+\end{pmatrix}\\
+b_1' &= \begin{pmatrix}
+1 & 1 & 1 & 0
+\end{pmatrix}\\
+B_2 &= \begin{pmatrix}
+2 & 1 & 1 & 2\\
+2 & 3 & 1 & 2
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+AB &= a_1b_1' + A_2B_2\\
+
+\end{align*}
 
 # Problem 3
 $A$ is $n \times p$
