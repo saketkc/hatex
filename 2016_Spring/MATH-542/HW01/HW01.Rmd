@@ -88,12 +88,9 @@ AB &= a_1b_1' + A_2B_2
 \end{align*}
 
 # Problem 3
+
 $A$ is $n \times p$
 
 $AA'$ is symmetric if $AA' = A'A$
 
 $(AA')' = (A')'A' = AA'$
-
-
-Consider $A=a_{ij}$
-if $A'A = 0$ \sum
