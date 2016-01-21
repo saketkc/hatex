@@ -20,7 +20,7 @@ $$
 Consider $\mathbf{a}' = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix}$
 
 Thus, $$\mathbf{a}'\mathbf{1}_n = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix} . \begin{pmatrix} 1\\
-1\\ 
+1\\
 \vdots\\
 1\end{pmatrix} = a_1 + a_2 + a_3 + \dots a_n = \mathbf{a'} \mathbf{1_n}
 $$
