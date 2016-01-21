@@ -2,12 +2,12 @@
 title: "MATH 542 | Homework 1"
 author: "Saket Choudhary"
 date: "1/17/2016"
-output: html_document
+output: pdf_document
 ---
 
 # Problem 1
 
-$$
+
 \begin{align*}
 \mathbf{1}_n = \begin{pmatrix} 1\\
 1\\
@@ -15,7 +15,7 @@ $$
 1\\
 \end{pmatrix}
 \end{align*}
-$$
+
 
 ### Problem a
 Consider $\mathbf{a}' = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix}$
@@ -84,8 +84,7 @@ B_2 &= \begin{pmatrix}
 \end{align*}
 
 \begin{align*}
-AB &= a_1b_1' + A_2B_2\\
-
+AB &= a_1b_1' + A_2B_2
 \end{align*}
 
 # Problem 3
