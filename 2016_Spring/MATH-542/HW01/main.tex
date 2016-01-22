@@ -25,7 +25,14 @@ Consider $\mathbf{a}' = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix}$
 Thus, $$\mathbf{a}'\mathbf{1}_n = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix} \times \begin{pmatrix} 1\\
 1\\
 \vdots\\
-1\end{pmatrix} = a_1 + a_2 + a_3 + \dots a_n = \mathbf{a'} \mathbf{1_n}
+1\end{pmatrix} = a_1 + a_2 + a_3 + \dots a_n 
+$$
+$$
+1_n'a = \begin{pmatrix} 1 & 1 & \dots & 1 \end{pmatrix} \times \begin{pmatrix} a_1\\
+a_2 \\
+\vdots \\
+a_n
+\end{pmatrix} = a_1+a_2+a_3+\dots+a_n =  \mathbf{a'} \mathbf{1_n}
 $$
 \subsection*{Problem 1.b}
 \begin{align*}
@@ -35,12 +42,12 @@ a_{21} & a_{22}  & \dots & a_{2n}\\
 a_{n1} & a_{n2} & \dots  & a_{nn}
 \end{pmatrix}  \times \begin{pmatrix} 1 \\
 1\\
-\vdots
+\vdots\\
 1
 \end{pmatrix} = \begin{pmatrix} \sum_{j=1}^n a_{ij}\\
 \sum_{j=1}^n a_{2j}\\
 \vdots\\
-\sum{j=1}^n a_{nj}
+\sum_{j=1}^n a_{nj}
 \end{pmatrix}\\
 &= \text{Column vector with row sums of }A
 \end{align*}
@@ -124,7 +131,7 @@ $(A'A)' = A'A''  = A'A$ and hence $A'A_{p \times p}$ is symmetric too.
 
 $(A'A)_{ij} = \sum_{k=1}^n a_{ki}a_{kj}$ and hence any diagonal element of $A'A$ is a sum of perfect squares(the case when $i=j$ $\implies$ $(A'A)_{ii} = \sum_{k=1}^n a_{ki}^2$)
 
-If $\sum_{k=1}^n a_{ki}^2 =0$ $\implies$ $a_{ki} =0 \forall 1 \leq k \leq n \forall i$ Hence $A$ is a zero matrix.
+If $\sum_{k=1}^n a_{ki}^2 =0$ $\implies$ $a_{ki} =0\  \forall 1 \leq k \leq n\  \forall i$ Hence $A$ is a zero matrix.
 
 \section*{Problem 4}
 \subsection*{Problem 4.a}
