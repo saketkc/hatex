@@ -1,13 +1,17 @@
----
-title: "MATH 542 | Homework 1"
-author: "Saket Choudhary"
-date: "1/17/2016"
-output: pdf_document
----
+\documentclass[a4paper]{article}
 
-# Problem 1
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
 
+\title{MATH 542 Homework 1}
+\author{Saket Choudhary\\skchoudh@usc.edu}
 
+\begin{document}
+\maketitle 
+\section*{Problem 1}
 \begin{align*}
 \mathbf{1}_n = \begin{pmatrix} 1\\
 1\\
@@ -15,9 +19,7 @@ output: pdf_document
 1\\
 \end{pmatrix}
 \end{align*}
-
-
-### Problem a
+\subsection*{Problem 1.a}
 Consider $\mathbf{a}' = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix}$
 
 Thus, $$\mathbf{a}'\mathbf{1}_n = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmatrix} \times \begin{pmatrix} 1\\
@@ -25,9 +27,7 @@ Thus, $$\mathbf{a}'\mathbf{1}_n = \begin{pmatrix}a_1 & a_2 & \dots a_n \end{pmat
 \vdots\\
 1\end{pmatrix} = a_1 + a_2 + a_3 + \dots a_n = \mathbf{a'} \mathbf{1_n}
 $$
-
-### Problem b
-
+\subsection*{Problem 1.b}
 \begin{align*}
 A_n I &=  \begin{pmatrix} a_{11} & a_{12} & \dots & a_{1n} \\
 a_{21} & a_{22}  & \dots & a_{2n}\\
@@ -39,13 +39,13 @@ a_{n1} & a_{n2} & \dots  & a_{nn}
 1
 \end{pmatrix} = \begin{pmatrix} \sum_{j=1}^n a_{ij}\\
 \sum_{j=1}^n a_{2j}\\
-\vdots
+\vdots\\
 \sum{j=1}^n a_{nj}
 \end{pmatrix}\\
 &= \text{Column vector with row sums of }A
 \end{align*}
 
-### Problem c
+\subsection*{Problem 1.c}
 Row sum of $j^{th}$ column of $A = \sum_{i=1}^na_{ij}$
 
 Column sum of $i^{th}$ row of $A= \sum_{j=1}^n a_{ij}$
@@ -60,8 +60,7 @@ a_{n1} & a_{n2} & \dots  & a_{nn}
 &= \text{Row vector with elements as column sums of A}
 \end{align*}
 
-# Problem 2
-
+\section*{Problem 2}
 
 \begin{align*}
 a_1 &= \begin{pmatrix}
@@ -109,10 +108,9 @@ And hence $AB = a_1b_1' + A_2B_2 = \begin{pmatrix}
 4  &  2  &  2  &  4\\
 2  &  3 &   1 &   2\\
 \end{pmatrix}$
-# Problem 3
-
+\section*{Problem 3}
 $A$ is $n \times p$
-
+\subsection*{Problem 3.a}
 $AA'$ is symmetric if $AA' = A'A$
 
 Proof:
@@ -122,40 +120,35 @@ Similarly, for $A'A$ consider the following:
 
 $(A'A)' = A'A''  = A'A$ and hence $A'A_{p \times p}$ is symmetric too.
 
-### Part (b)
+\subsection*{Problem 3.b}
 
 $(A'A)_{ij} = \sum_{k=1}^n a_{ki}a_{kj}$ and hence any diagonal element of $A'A$ is a sum of perfect squares(the case when $i=j$ $\implies$ $(A'A)_{ii} = \sum_{k=1}^n a_{ki}^2$)
 
 If $\sum_{k=1}^n a_{ki}^2 =0$ $\implies$ $a_{ki} =0 \forall 1 \leq k \leq n \forall i$ Hence $A$ is a zero matrix.
 
+\section*{Problem 4}
+\subsection*{Problem 4.a}
 
-# Problem 4
-
-### Part (a)
-
-$A_2 = \begin{pmatrix} 1 & 1 \\
+$$A_2 = \begin{pmatrix} 1 & 1 \\
 1 & 1\\
 1 & 0\\
 0 & 0
-\end{pmatrix}$
+\end{pmatrix}$$
 
-$A_3 = \begin{pmatrix} 1 & 1 & 1\\
+$$A_3 = \begin{pmatrix} 1 & 1 & 1\\
 1 & 1 & 0\\
 1 & 0 & 0\\
 0 & 0 & 1
-\end{pmatrix}$
+\end{pmatrix}$$
 
 
-$A_4 = \begin{pmatrix} 1 & 1 & 1\\
+$$A_4 = \begin{pmatrix} 1 & 1 & 1\\
 1 & 1 & 0\\
 1 & 0 & 0\\
 0 & 0 & 1
-\end{pmatrix}$
-
-### Part (b)
-
-#### Rank of $V_2$:
-
+\end{pmatrix}$$
+\subsection*{Problem 4.b}
+Rank of $V_2$:
 \begin{align*}
 V_2 &= \begin{pmatrix} 1 & 1 \\
 1 & 1\\
@@ -168,9 +161,9 @@ V_2 &= \begin{pmatrix} 1 & 1 \\
 0 & 0
 \end{pmatrix}\\ 
 \end{align*}
-which cannot be reduced further, hence rank = $min(4,2) = 2$
+which cannot be reduced further, hence rank = $min(3,2) = 2$
 
-#### Rank of $V_3$
+Rank of  $V_3$:
 
 \begin{align*} A_3 &= \begin{pmatrix} 1 & 1 & 1\\
 1 & 1 & 0\\
@@ -186,10 +179,10 @@ which cannot be reduced further, hence rank = $min(4,2) = 2$
 
 Thus rank of $V_3=3$
 
-## Part (c)
+\subsection*{Problem 4.c}
 
-Basis for $V_2$(maximising zeroes by doing a $C1-C2$ operation): $\begin{pmatrix} 0 & 1 & 0 \end{pmatrix}'$ and $\begin{pmatrix} 1 & 0 & 0\end{pmatrix}'$ 
+Basis for $V_2$(maximising zeroes by doing a $C1-C2$ operation):  $\big(\begin{pmatrix} 0 & 1 & 0 \end{pmatrix}'$, $\begin{pmatrix} 1 & 0 & 0\end{pmatrix}'\big)$ 
 
-Basis for $V_3$(maximised zeroes): \begin{pmatrix}1 & 0 & 0 \end{pmatrix}';\begin{pmatrix}1 & 1 & 0 \end{pmatrix}' and \begin{pmatrix}0 & 0 & 1 \end{pmatrix}'
+Basis for $V_3$ (maximised zeroes): $\big(\begin{pmatrix}1 & 0 & 0 \end{pmatrix}',\begin{pmatrix}1 & 1 & 0 \end{pmatrix}',\begin{pmatrix}0 & 0 & 1 \end{pmatrix}'\big)$
 
-
+\end{document}
