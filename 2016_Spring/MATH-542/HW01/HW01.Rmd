@@ -2,7 +2,7 @@
 title: "MATH 542 | Homework 1"
 author: "Saket Choudhary"
 date: "1/17/2016"
-output: pdf_document
+output: html_document
 ---
 
 # Problem 1
@@ -34,7 +34,7 @@ a_{21} & a_{22}  & \dots & a_{2n}\\
 \vdots\\
 a_{n1} & a_{n2} & \dots  & a_{nn}
 \end{pmatrix}  \times \begin{pmatrix} 1 \\
-1\\ 
+1\\
 \vdots
 1
 \end{pmatrix} = \begin{pmatrix} \sum_{j=1}^n a_{ij}\\
@@ -87,10 +87,72 @@ B_2 &= \begin{pmatrix}
 AB &= a_1b_1' + A_2B_2
 \end{align*}
 
+\begin{align*}
+a_1b_1' &= \begin{pamtrix}
+2 &   2 & 2 &   0\\
+3 &   3  &  3 &   0\\
+1  &  1 &   1 &   0
+\end{pamtrix}
+\end{align*}
+
+Similarly,
+\begin{align*}
+A_2B_2 &= \begin{pmatrix}
+6 &   7 &   3 &   6\\
+4 &   2  &  2  &  4\\
+2  &  3   & 1 &   2
+\end{pmatrix}
+\end{align*}
+
+And hence $AB = a_1b_1' + A_2B_2 = \begin{pmatrix}
+6 &   7 &   3 &   6\\
+4  &  2  &  2  &  4\\
+2  &  3 &   1 &   2\\
+\end{pmatrix}$
 # Problem 3
 
 $A$ is $n \times p$
 
 $AA'$ is symmetric if $AA' = A'A$
 
-$(AA')' = (A')'A' = AA'$
+Proof:
+$(AA')' = (A')'A' = AA'$ and hence $AA'_{n \times n}$ is symmetric
+
+Similarly, for $A'A$ consider the following:
+
+$(A'A)' = A'A''  = A'A$ and hence $A'A_{p \times p}$ is symmetric too.
+
+### Part (b)
+
+$(A'A)_{ij} = \sum_{k=1}^n a_{ki}a_{kj}$ and hence any diagonal element of $A'A$ is a sum of perfect squares(the case when $i=j$ $\implies$ $(A'A)_{ii} = \sum_{k=1}^n a_{ki}^2$)
+
+If $\sum_{k=1}^n a_{ki}^2 =0$ $\implies$ $a_{ki} =0 \forall 1 \leq k \leq n \forall i$ Hence $A$ is a zero matrix.
+
+# Problem 4
+
+### Part (a)
+
+$A_2 = \begin{pmatrix} 1 & 1 \\
+1 & 1\\
+1 & 0\\
+0 & 0
+\end{pmatrix}$
+
+$A_3 = \begin{pmatrix} 1 & 1 & 1\\
+1 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix}$
+
+
+$A_4 = \begin{pmatrix} 1 & 1 & 1\\
+1 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+$
+
+### Part (b)
+
+#### Rank of $V_2$:
+
