@@ -1,0 +1,57 @@
+---
+title: "MATH 542 | Assignment 2"
+author: "Saket Choudhary"
+date: "January 30, 2016"
+output: pdf_document
+---
+
+## Problem 1
+```{r}
+LengthCT <- c(75,85,91.6,95,NA,105.5,106)
+Tb <- c(0,0,1,NA,0,0,0)
+```
+
+### Average lengthCT of animals
+
+```{r}
+mean(LengthCT, na.rm = TRUE)
+```
+
+## Problem 2
+
+```{r}
+Farm <- c(rep("MO",4),"LN","SE","QM")
+Month <- c(11,7,7,NA,9,9,11)
+Boar <- cbind(Farm,Month,LengthCT,Tb)
+```
+
+```{r}
+dim(Boar)
+```
+`dim` gives the size(rows, columns) of the dataframe: $7 \times 4$
+
+```{r}
+nr <- nrow(Boar)
+nr
+```
+
+`nrow` gives the number of rows in the dataframe: 7
+
+```{r}
+nc <- ncol(Boar)
+nc
+```
+
+`ncol` gives the number of columns in the dataframe: 4
+
+## Problem 3
+```{r}
+Year <- c(00,00,01,NA,03,03,02)
+Sex <- c(1,2,2,2,1,2,2)
+LengthClass <- rep(1,7)
+Ecervi <- c(rep(0,3),NA,rep(0,3))
+df <- data.frame(Farm,Month,Year,Sex,LengthClass,LengthCT,Ecervi,Tb)
+df
+```
+
+
