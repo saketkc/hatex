@@ -1,0 +1,210 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\title{MATH 542 Homework 3}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle 
+\section*{Problem 1}
+
+Given: $A_{n\times n}$ is idempotent $\implies AA=A$; $P$ is non-singular and $C_{n\times n}$ is orthogonal $\implies CC^T=C^TC=I$
+
+\subsection*{1.a}
+\begin{align*}
+(I-A)(I-A) = I-A-A+AA\\
+&= I-2A+A\ \text{ using } AA=A\\
+&=I-A
+\end{align*}
+
+Hence $I-A$ is idempotent
+
+\subsection*{1.b}
+\begin{align*}
+A(I-A) &= A-AA\\
+&= A-A\ \text{ using } AA=A\\
+&=0
+\end{align*}
+
+Similarly,
+\begin{align*}
+(I-A)A &= A-AA\\
+&= A-A\ \text{ using } AA=A\\
+&=0
+\end{align*}
+
+\subsection*{1.c}
+\begin{align*}
+(P^{-1}AP)(P^{-1}AP)  &=P^{-1}APP^{-1}AP\\ 
+&= P^{-1}AAP \ \text{since }PP^{-1}=I\\
+&= P^{-1}AP\ \text{ using } AA=A\\
+\end{align*}
+Hence $P^{-1}AP$ is idempotent
+
+\subsection*{1.d}
+\begin{align*}
+(C'AC)(C'AC) &=C'ACC'AC\\
+&= C'AAC \text{ since } CC'=C'C=I\\
+&= C'AC \ \text{ using } AA=A\\
+\end{align*}
+
+\subsection*{1.e}
+$A$ is a projection matrix and $C'C=C'C=I$
+For $C'AC$ to be a projection matrix $C'ACz=z\ \forall z \in S$ for some vector space $S$
+
+For some $z \in S$:
+\begin{align*}
+C'ACz &= C'Ay \text{ where } y=Az\\
+&= C'Ay\\
+&= C'y\text{ since $A$ is projection matrix }  \\
+&= C'Cz\\
+&= z\ \text{ since } C'C=I
+\end{align*}
+
+Thus, $C'ACz \in S$ and $C'ACz=z$ and hence $C'AC$ is a projection matrix
+
+\section*{Problem 2}
+\subsection*{2.a}
+
+\begin{align*}
+Q(x_1,x_2,x_3) &= 12x_1^2+3x_2^2+3x_3^2+2x_1x_2-10x_1x_3+4x_2x_3\\
+&= 3(2x_1+x_2+x_3)^2-(12x_1x_2+6x_2x_3+12x_1x_3)+2x_1x_2-10x_1x_3+4x_2x_3\\
+&= 3(2x_1+x_2+x_3)^2-10x_1x_2-2x_2x_3-22x_1x_3\\
+&= (x_1+x_2)^2+ 2(x_2+x_3)^2+(5x_1-x_3)^2-14x_1^2\\
+&=(x_1+x_2)^2+2(x_2+x_3)^2+x_3^2+11x_1^2-10x_1x_3\\
+&= (x_1+x_2)^2+2(x_2+x_3)^2+(5x_1-x_3)^2-14x_1^2
+\end{align*}
+
+and hence $Q(x_1,x_2,x_3)$ is neither positive definite nor positive semidefinite.
+
+\subsection*{2.b}
+\begin{align*}
+x'Ax=\begin{pmatrix}x_1 & x_2 &x_3\end{pmatrix}\begin{pmatrix}
+2 & 1 & 2\\
+1 & 2 & 1\\
+2 & 1 & 4\\
+\end{pmatrix}\begin{pmatrix} x_1\\x_2\\x_3
+\end{pmatrix}\\
+&= (2x_1+x_2+x_3)x_1+(x_1+2x_2+x_3)x_2+(2x_1+x_2+4x_3)x_3\\
+&= 2x_1^2+2x_2^2+4x_3^2+2x_1x_2+3x_1x_3+2x_2x_3\\
+&= (x_1+x_2)^2+(x_2+x_3)^2+(x_1+\frac{3}{2}x_2)^2+\frac{3}{4}x_2^2\\
+\geq 0
+\end{align*}
+
+$A$ is positive semidefinite
+
+\subsection*{2.c}
+
+\begin{align*}
+x'Ax=\begin{pmatrix}x_1 & x_2 &x_3\end{pmatrix}\begin{pmatrix}
+1 & 2 & 3\\
+2 & 1 & 1\\
+3 & 1 & -2\\
+\end{pmatrix}\begin{pmatrix} x_1\\x_2\\x_3
+\end{pmatrix}\\
+&= (x_1+2x_2+3x_3)x_1+(2x_1+x_2+x_3)x_2+(3x_1+x_2-2x_3)x_3\\
+&= x_1^2+x_2^2-2x_3^2+4x_1x_2+6x_1x_3+2x_2x_3\\
+&= (x_2+x_3)^2+3(x_1+x_3)^2+2(x_1+x_2)^2-6x_1^2-6x_3^2-4x_1^2-2x_2^2-6x_3^2\\
+\end{align*}
+
+$A$ is neither positive definite nor positive semidefinite.
+
+\section*{Problem 3}
+
+\begin{align*}
+\begin{pmatrix}
+a & b\\
+c & d\\
+\end{pmatrix}\times \begin{pmatrix}
+a & b\\
+c & d\\
+\end{pmatrix} &= \begin{pmatrix}
+2 & -1\\
+-1 & 2
+\end{pmatrix}\\
+\begin{pmatrix}
+a^2+b^2 & ac+bd\\
+ac+bd & c^2+d^2
+\end{pmatrix}&=\begin{pmatrix}
+2 & -1\\
+-1 & 2
+\end{pmatrix}\\
+\end{align*}
+
+\begin{align*}
+a^2+b^2 &=2\\
+ac+bd&=-1\\
+c^2+d^2&=2
+\end{align*}
+
+Let $a=1,b=1$ $\implies \ c+d=1 $ 
+
+\begin{align*}
+c^2+d^2 &=2\\
+c^2+(-1-c)^2 & =2\\
+2c^2+2c-1 &=0\\
+c &= \frac{-2\pm\sqrt{4+8}}{4}\\
+c &= \frac{-1\pm\sqrt{3}}{2}\\
+d &= \frac{-1\pm\sqrt{3}}{2}
+\end{align*}
+
+and hence one possible $B$ is:
+\begin{align*}
+B &=\begin{pmatrix}
+1 & 1\\
+\frac{-1-\sqrt{3}}{2} & \frac{-1+\sqrt{3}}{2}\\
+\end{pmatrix}
+\end{align*}
+
+\section*{Problem 4}
+$G=(X'X)^-$
+
+Let $Y=(X'X)$ so that $G=Y^-$
+
+\begin{align*}
+G(X'X)G &= GYG\\
+&= Y^-YY^-\\
+&= Y^-
+\end{align*}
+
+Note that $Y$ is symmetric, $Y=Y^T$
+(Proof: $Y=X^TX$, $Y^T=(X^TX)^T = X^TX$)
+
+Since $Y$ is symmetric, $Y^-$ is symmetric too $\implies G(X'X)G$ is symmetric.
+
+To prove $P=G(X'X)G$ is a generalised inverse of $Y=X'X$ we need to show $YPY=P$
+
+\begin{align*}
+YPY &= YGYGY\\
+&= Y(Y^-)Y\ \text{using $GYG=Y^-$ from the previous result} \\
+&= Y \ \text{ since } YY^-=I
+\end{align*}
+
+\section*{Problem 5}
+
+Given: $E[X]=1$ and $Var(X)=E[X^2]-E[X]^2 = 5$
+Using $E[X]=1$ we get, $E[X^2]=5+E[X]^2=6$
+
+\subsection*{5.a}
+
+\begin{align*}
+E[(1+2X)^2] &= E[1+4X+4X^2]\\
+&= E[1]+E[4X]+E[4X^2]\\
+&= 1+4E[X]+4E[X^2]\\
+&= 1+4+4(6)\\
+&= 30
+\end{align*}
+
+\subsection*{5.b}
+\begin{align*}
+var(3+4X) &= Var(3) + Var(4X) + 2Cov(3,4X)\\
+&= 0 + 16Var(X) + 2(0)\\
+&= 80
+\end{align*}
+
+\end{document}
