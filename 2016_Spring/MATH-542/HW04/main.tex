@@ -1,0 +1,301 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{MATH 542 Homework 4}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle 
+\section*{Problem 1}
+
+\begin{align*}
+E[(X-a)(X-a)']&= E[(X-a)(X'-a')]\\
+&= E[XX'-Xa'-aX'+aa']\\
+&= E[XX']-E[Xa']-E[aX']+E[aa']\\
+&= E[XX']-E[X]a'-aE[X']+E[aa']\\
+&= (Var[X]+E[X]E[X]')-E[X]a'-aE[X']+aa'\\
+&= Var[X]+ E[X]E[X]'-E[X]a'-aE[X]'+aa'\ \text{ since } E[X']=E[X]'\\
+&= Var[X] + (E[X]=a)(E[X]'-a')\\
+&= Var[X] + (E[X]=a)(E[X]-a)'
+\end{align*}
+
+$Var[X] = \sum = (\sigma_{ij})$
+
+$||X-a||_{1\times 1}^2 = (X-a)'_{1 \times r}(X-a)_{1 \times r}$
+and hence(replace $X$ with $X'$ and $a$ with $a'$):
+\begin{align*}
+E[||X-a||^2] &= E[(X-a)'(X-a)]\\
+&= E[X'X]-E[X']a-a'E[X]+a'a\\
+&= \sum_i E[X_i^2]-E[X']a-a'E[X]+a'a\\
+&= \sum_i (Var[X_i]+E[X_i]^2)-E[X']a-a'E[X]+a'a\\
+&= \sum_i Var[X_i]+ E[X'X]-E[X']a-a'E[X]+a'a\ \text{since } \sum_i E[X_i]^2 = E[X'X]\\
+&= \sum_i \sigma_i + ||E[X]-a||^2
+\end{align*}
+
+\section{Problem 2}
+Fact: $X-a-E[X-a]=X-E[X]$
+\begin{align*}
+Cov[X-a,Y-b] &= E[(X-a-E[X-a])(Y-b-E[Y-b])'])\\
+&= E[(X-E[X])(Y-E[Y])']\\
+&= Cov[X,Y]
+\end{align*}
+
+\section{Problem 3}
+$Y_i = X_i-X_{i-1}$
+
+$Cov[Y_i,Y_j]=0$ for $i \neq j$
+
+Consider the vector $(Y_1, Y_2, Y_3, \dots, Y_n)' = (X_1,X_2-X_1,X_3-X_2, \dots, X_n-X_{n-1})'$ 
+
+We make use of $Var(AX) = AVar(X)A'$.
+
+To find $A$, consider the vectors $(Y_1, Y_2, Y_3, \dots, Y_n)' = (X_1,X_2-X_1,X_3-X_2, \dots, X_n-X_{n-1})'$ 
+
+\begin{align*}
+\begin{pmatrix}
+Y_1\\
+Y_2\\
+Y_3\\
+\vdots\\
+Y_n
+\end{pmatrix} &= \begin{pmatrix}
+X_1\\
+X_2-X_1\\
+X_3-X_2\\
+\vdots\\
+X_n-X_{n-1}
+\end{pmatrix}\\
+&= \begin{pmatrix}1 & 0 & 0 & \dots & 0\\
+-1 & 1 & 0 & \dots & 0 & 0\\
+0 & -1 & 1 & \dots & 0 & 0\\
+\vdots \\
+0 & 0 & 0 & \dots & -1 & 1
+\end{pmatrix} \times \begin{pmatrix}
+X_1\\
+X_2\\
+X_3\\
+\vdots\\
+X_n
+\end{pmatrix}
+\end{align*}
+
+Hence $A=\begin{pmatrix}1 & 0 & 0 & \dots & 0\\
+-1 & 1 & 0 & \dots & 0 & 0\\
+0 & -1 & 1 & \dots & 0 & 0\\
+\vdots \\
+0 & 0 & 0 & \dots & -1 & 1
+\end{pmatrix}$
+
+
+Now using $Var(Y) = AVar(X)A'$ we get 
+$Var(X) = A^{-1}Var(Y)A'^{-1}$
+
+Also $Var(Y) = I_{n\times n}$
+and hence $Var(X) = A^{-1}A'^{-1} = BB^T$ where $B=A^{-1}$
+
+
+
+\section{Problem 4}
+
+$X_{i+1} = \rho X_i$
+
+Consider:
+
+\begin{align*}
+\begin{pmatrix}
+X_1\\
+X_2\\
+X_3\\
+\vdots\\
+X_n
+\end{pmatrix} &= \begin{pmatrix}
+X_1\\
+\rho X_1\\
+\rho X_2\\
+\vdots\\
+\rho X_{n-1}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+1\\
+\rho\\
+\rho^2\\
+\vdots\\
+\rho^{n-1}
+\end{pmatrix}X_1
+\end{align*}
+
+Let $A=\begin{pmatrix}1 & \rho & \rho^2 & \vdots & \rho^{n-1}\end{pmatrix}'$
+and hence variance $Var[X] = AVar(X_1)A' = \sigma^2AA'$
+
+$Var[X] = \begin{pmatrix}
+1 & \rho & \rho^2 & \dots & \rho^{n-1}\\
+\rho & \rho^2 & \rho^3 & \dots & \rho^n\\
+\rho^2 & \rho^3 & \rho^4 & \dots & \rho^{n+1}\\
+\vdots\\
+\rho^n & \rho^{n+1} & \rho^{n+2} & \dots & \rho^{2n-2}\\
+\end{pmatrix}$
+
+\section*{1b. Problem 1}
+
+\begin{align*}
+X_1^2+2X_1X_2-4X_2X_3+X_3^2 &= (X_1+X_2)X_1 + (X_1-2X_3)X_2 + (-2X_2+X_3)X_3\\
+&= \begin{pmatrix}
+X_1 & X_2 & X_2
+\end{pmatrix}\begin{pmatrix}
+1 & 1 & 0\\
+1 & 0 & -2\\
+0 & -2 & 1\\
+\end{pmatrix}\begin{pmatrix}
+X_1\\
+X_2\\
+X_3
+\end{pmatrix}
+\end{align*}
+
+$X=\begin{pmatrix}X_1 & X_2 & X_3\end{pmatrix}$
+
+$A = \begin{pmatrix}
+1 & 1 & 0\\
+1 & 0 & -2\\
+0 & -2 & 1\\
+\end{pmatrix}$
+
+
+$AS = \begin{pmatrix}
+1 & 1 & \frac{1}{4}\\
+1 & -\frac{1}{2} & -2\\
+0 & -\frac{7}{4} & \frac{1}{2}\\
+\end{pmatrix}$
+
+
+Thus, $E[X'AX] = tr(A\sum) + \mu'A\mu = 1 + \mu'A\mu$
+
+\section*{1b. Problem 2}
+
+$\sum_i(X_i-\bar{X})^2 = \sum_i (X_i^2-2X_i\bar{X}+\bar{X}^2) = \sum_i X_i^2 -2\sum_i X_i \bar{X} + \bar{X}^2 = \sum_i X_i^2 -n\bar{X}^2$
+
+Now $\sum_iX_i^2 = X'X$ and $\bar{X} = \frac{1}{n}\sum_i X_i = \frac{1}{n} \mathbf{1'}X = \frac{1}{n}X'\mathbf{1} $
+
+Hence,
+
+\begin{align*}
+\sum_i(X_i-\bar{X})^2 &= \sum_i X_i^2-n\bar{X}^2\\
+&= X'X - n\frac{1}{n^2}(X'\mathbf{11'}X)\\
+&= X'X-\frac{1}{n}(X'\mathbf{11'}X)\\
+&= X'(\mathbf{I}-\frac{1}{n}\mathbf{11'})X
+\end{align*}
+
+Let $A=(\mathbf{I}-\frac{1}{n}\mathbf{11'})$
+
+Now using $E[X'AX]= tr(A\sum) + \mu'A\mu$ we have:
+
+$A\sum = \begin{pmatrix}1-1/n & -1/n & -1/n & \dots & -1/n\\
+-1/n & 1-1/n & -1/n & \dots & -1/n\\
+\vdots\\
+-1/n & -1/n & -1/n & \dots & 1-1/n
+\end{pmatrix}\times diag(\sigma_1^2, \sigma_2^2, \dots, \sigma_n^2) = (1-\frac{1}{n})\sum_i \sigma_i^2$
+
+Also, $\mu'A = \begin{pmatrix} \mu & \mu & \dots & \mu \end{pmatrix} \times \begin{pmatrix}1-1/n & -1/n & -1/n & \dots & -1/n\\
+-1/n & 1-1/n & -1/n & \dots & -1/n\\
+\vdots\\
+-1/n & -1/n & -1/n & \dots & 1-1/n
+\end{pmatrix} = 0 $ and hence $\mu'A\mu=0$
+
+\begin{align*}
+E[\sum_i(X_i-\bar{X})^2] &= (1-\frac{1}{n})\sum_i \sigma_i^2  \\
+E[\frac{1}{n(n-1)}\sum_i(X_i-\bar{X})^2]  &= \frac{1}{n^2} \sum_i \sigma_i^2
+\end{align*}
+
+Finally,
+
+\begin{align*}
+var(\bar{X}) &= Var(\frac{1}{n}\sum_i X_i)\\
+&= \frac{1}{n^2} \sum_i Var(X_i)\\ \text{ since $X_i$ are mutually independent}\\
+&= \frac{1}{n^2}\sum_i \sigma_i^2\\
+&= E[\frac{1}{n(n-1)}\sum_i(X_i-\bar{X})^2]
+\end{align*}
+
+\section*{1b. Problem 3}
+
+Given: $\bar{X_w} = \sum_i w_i X_i $ and $\sum w_i =1 $
+
+\begin{align*}
+Var(\bar{X_w}) &= Var(\sum w_i X_i)\\
+&= \sum w_i^2Var(X_i)\ \text{ since $X_i$ are mutually independent}\\
+&= \sum w_i^2 \sigma_i^2
+\end{align*}
+
+Now consider,
+
+$$
+\text{minimize} \sum w_i^2\sigma_i^2 \text{ subject to } \sum_i w_i =1
+$$
+
+We consider the following lagrange formulation $min_w f(\mathbf{w}) = \sum_i w_i^2\sigma_i^2 +\lambda(\sum_iw_i-1) $
+
+Now to find optimal $\lambda$, we solve $\frac{\partial f(\mathbf{w})}{\partial w_i} = 0$
+
+\begin{align*}
+\frac{\partial f(\mathbf)}{\partial w_i} &= 2w_i\sigma_i^2+\lambda =0\\
+\implies w_i &= -\frac{\lambda}{2\sigma_i^2}
+\end{align*}
+
+Thus, $w_i = -\frac{\lambda}{2\sigma_i^2}$ or $w_i \propto \frac{1}{\sigma_i^2}$
+
+Using $\sum_i w_i=1$  we get:
+\begin{eqnarray*}
+\sum_i w_i = 1\\
+\sum_i \frac{\lambda}{-2\sigma_i^2} =1\\
+\implies \lambda = \frac{-2}{\sum_i 1/\sigma_i^2 }\\
+\implies w_i = \frac{1}{\sigma_i^2 \sum_i(1/\sigma_i^2)}\\
+\implies f_min(w) = \sum_i (\frac{1}{\sigma_i^2 \sum_i(1/\sigma_i^2)}) \sigma_i^2\\
+= \frac{1}{\sum_i(1/\sigma_i^2)}
+\end{eqnarray*}
+
+
+\subsection*{Part b}
+
+\begin{align*}
+\sum_i w_i (X_i-\bar{X_w})^2 &= \sum_i w_i(X_i^2-2X_i\bar{X_w}+\bar{X_w}^2)\\
+&= \sum_i w_iX_i^2-2\bar{X_w}\sum_iw_iX_i+\bar{X_w^2}\\
+&= \sum_i w_iX_i^2 -2\bar{X_w}^2+\bar{X_w}^2\\
+&= \sum_i w_iX_i^2 -\bar{X_w}^2
+\end{align*}
+
+Now, we rewrite $\sum_i w_iX_i^2 = X'\Lambda X$ where $\Lambda = diag(w_1, w_2, \dots, w_n)$
+
+and $\bar{X_w} = \sum_i w_iX_i = X'w = w'X$
+
+\begin{align*}
+\bar{X_w}^2 &= (\sum_i w_iX_i)^2\\
+&=X'ww'X
+\end{align*}
+
+and hence $\sum_i w_i (X_i-\bar{X_w})^2=X'(\Lambda-ww')X$ 
+
+Define $A=\Lambda-ww'$
+
+so that $E[\sum_i w_i (X_i-\bar{X_w})^2] = E[X'AX]= tr(A\sum) + \mu'A\mu$
+
+$tr(A\sum) = \sum_i(w_i-w_i^2)\sigma_i^2 = \sum_i w_i\sigma_i^2-w_i(w_i\sigma_i^2) = \sum_i (a-aw_i) = na-a$
+
+and $\mu'A_i = \mu(w_i-w_i^2-w_i(1-w_i)) = 0 $ 
+
+Also, $v_min = \frac{1}{\sum_i 1/\sigma_i^2} = \frac{1}{\sum_i \frac{w_i}{a}} = a $
+\textit{}
+Thus,
+
+\begin{align*}
+E[S_w^2] &= \frac{1}{n-1} tr(A\sum) + \mu'A\mu\\
+&= \frac{1}{n-1} (na-a) + 0\\
+&=a\\
+&= v_min
+\end{align*}
+
+\end{document}
+
+

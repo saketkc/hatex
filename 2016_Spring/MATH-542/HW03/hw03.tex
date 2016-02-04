@@ -77,11 +77,10 @@ Q(x_1,x_2,x_3) &= 12x_1^2+3x_2^2+3x_3^2+2x_1x_2-10x_1x_3+4x_2x_3\\
 &= 3(2x_1+x_2+x_3)^2-10x_1x_2-2x_2x_3-22x_1x_3\\
 &= (x_1+x_2)^2+ 2(x_2+x_3)^2+(5x_1-x_3)^2-14x_1^2\\
 &=(x_1+x_2)^2+2(x_2+x_3)^2+x_3^2+11x_1^2-10x_1x_3\\
-&= (x_1+x_2)^2+2(x_2+x_3)^2+(5x_1-x_3)^2-14x_1^2
+&= (x_1+x_2)^2+2(x_2+x_3)^2+25(x_1-x_3/5)^2-14x_1^2
 \end{align*}
 
-and hence $Q(x_1,x_2,x_3)$ is neither positive definite nor positive semidefinite.
-
+and hence $Q(x_1,x_2,x_3)$ is positive defnite, (the coefficient of the negative term(-$x_1^2$) is less than the positive coefficient of $x_1^2$
 \subsection*{2.b}
 \begin{align*}
 x'Ax=\begin{pmatrix}x_1 & x_2 &x_3\end{pmatrix}\begin{pmatrix}
@@ -93,10 +92,10 @@ x'Ax=\begin{pmatrix}x_1 & x_2 &x_3\end{pmatrix}\begin{pmatrix}
 &= (2x_1+x_2+x_3)x_1+(x_1+2x_2+x_3)x_2+(2x_1+x_2+4x_3)x_3\\
 &= 2x_1^2+2x_2^2+4x_3^2+2x_1x_2+3x_1x_3+2x_2x_3\\
 &= (x_1+x_2)^2+(x_2+x_3)^2+(x_1+\frac{3}{2}x_2)^2+\frac{3}{4}x_2^2\\
-\geq 0
+> 0
 \end{align*}
 
-$A$ is positive semidefinite
+$A$ is positive definite
 
 \subsection*{2.c}
 
@@ -164,28 +163,49 @@ B &=\begin{pmatrix}
 \section*{Problem 4}
 $G=(X'X)^-$
 
-Let $Y=(X'X)$ so that $G=Y^-$
+Let $Y=(X'X)$  to prove $GYG$ is symmetric we need to show $(GYG)^T=GYG$
 
+NOTE: $Y^T=(X^TX)^T=X^TX=Y$
+
+Using $YGY=Y$, we get:
 \begin{align*}
-G(X'X)G &= GYG\\
-&= Y^-YY^-\\
-&= Y^-
+YGY &= Y\\
+YGYG &= YG\\
+\implies GYG=G
 \end{align*}
 
-Note that $Y$ is symmetric, $Y=Y^T$
-(Proof: $Y=X^TX$, $Y^T=(X^TX)^T = X^TX$)
-
-Since $Y$ is symmetric, $Y^-$ is symmetric too $\implies G(X'X)G$ is symmetric.
-
-To prove $P=G(X'X)G$ is a generalised inverse of $Y=X'X$ we need to show $YPY=P$
+Now, again consider $YGY$ and take transpose on both sides:
 
 \begin{align*}
-YPY &= YGYGY\\
-&= Y(Y^-)Y\ \text{using $GYG=Y^-$ from the previous result} \\
-&= Y \ \text{ since } YY^-=I
+(YGY)^T &= Y^T\\
+Y^TG^TY^T &= Y^T\\
+YG^TY &= Y \text{ using } Y^T=Y\\
+\implies G&=G^T \ \text{ since }YG^TY=YGY=Y \text{Also see NOTE below}
 \end{align*}
+
+Now consider $GYG$
+
+\begin{align*}
+(GYG)^T &= G^TY^TG^T\\
+&= GYG \ \text{ using } G=G^T and Y=Y^T
+\end{align*}
+NOTE: 
+\begin{enumerate}
+\item 
+\end{enumerate}
+However, this case is only true for the case when $G=G^T$ i.e. the generalized inverse in unique. I could not prove it for the general case
+
+To show $GYG$ is a generalized inverse of $Y$ we need to show $YGYGY = Y$
+
+\begin{align*}
+Y(GYG)Y &= YG(YGY)\\
+&= YGY\ \text{ using } YGY=Y, \text{ G is generalised inverse of Y}\\
+&= Y\ \text{ using definition of generalised inverse for } G
+\end{align*}
+$\implies$ GYG is generalised inverse of $Y=X^TX$
 
 \section*{Problem 5}
+
 
 Given: $E[X]=1$ and $Var(X)=E[X^2]-E[X]^2 = 5$
 Using $E[X]=1$ we get, $E[X^2]=5+E[X]^2=6$
