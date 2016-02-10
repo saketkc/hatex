@@ -1,0 +1,322 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{MATH 542 Homework 5}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle 
+\section*{Problem 1}
+
+%
+%    Miscellaneous Exercise 1: #2 on page 15
+%    Exercise 2a: #1 and #3(b) on page 19
+%    Exercise 2b: #2, #3, #6, #8 on page 23-24
+\subsection*{Problem 1a.}
+Using variance-covariance expansion:
+
+\begin{align*}
+Var(X_1-2X_2+X_3) &= Var(X_1) + Var(-2X_2) + Var(X_3) + 2Cov(X_1,-2X_2) + 2Cov(-2X_2,X_3) + 2Cov(X_3,X_1)\\
+&= Var(X_1) + 4Var(X_2) + Var(X_3) -4 Cov(X_1,X_2) -4Cov(X_2,X_3) + 2Cov(X_3,X_1)\\
+&= 5+4(3)+3-4(2) -4(0) + 2(3)\\
+&= 18
+\end{align*}
+
+\begin{align*}
+Y &= \begin{pmatrix} Y_1\\ Y_2 \end{pmatrix}\\
+&= \begin{pmatrix}
+X_1+X_2\\
+X_1+X_2+X_3\\
+\end{pmatrix}\\
+&= \begin{pmatrix}
+1 & 1 & 0\\
+1 & 1 & 1
+\end{pmatrix} \begin{pmatrix}
+X_1\\ 
+X_2\\
+X_3
+\end{pmatrix}
+\end{align*}
+
+Now using $Var(AX) = AVar(X)A'$
+
+\begin{align*}
+Var(Y) &= \begin{pmatrix}
+1 & 1 & 0\\
+1 & 1 & 1
+\end{pmatrix} Var(X) \begin{pmatrix}
+1 & 1 \\
+1 & 1 \\
+0 & 1\\
+\end{pmatrix}\\
+&= \begin{pmatrix}
+12 & 15 \\
+15 & 21
+\end{pmatrix}
+\end{align*}
+
+\section*{Ex2a Problem 1}
+
+$f(y_1,y_2) = k^{-1}\exp(-\frac{1}{2}(2y_1^2+y_2^2+2y_1y_2-22y_1-14y_2+65))$
+
+
+\begin{align*}
+2y_1^2+y_2^2+2y_1y_2-22y_1-14y_2+65 &= \begin{pmatrix}y_1-\mu_1 & y_2-\mu_2\end{pmatrix} \begin{pmatrix}
+a & b\\
+b & c
+\end{pmatrix} \begin{pmatrix}
+y_1-\mu_1\\
+y_2-\mu_2
+\end{pmatrix}\\
+&= a(y_1-\mu_1)^2+2b(y_1-\mu_1)(y_2-\mu_2) + c(y_2-\mu_2)^2\\
+&= ay_1^2+cy_2^2+2by_1y_2-y_1(2a\mu_1+2b\mu_2)-y_2(2b\mu_1+2c\mu_2) + (a\mu_1^2+2b\mu_1\mu_2+c\mu_2^2)
+\end{align*}
+
+Now comparing the coefficient of $y_1^2$ $\implies\ a=2$
+
+Comparing coefficient of $y_2^2\ \implies\  c=1$
+
+Comparing coefficient of $y_1y_2\ \implies \ b=1$
+
+Comparing coefficient of $y_1 \implies \  4\mu_1+2\mu_2=22$
+
+Comparing coefficient of $y_2 \implies \  2\mu_1+2\mu_2=14$
+
+Thus, $\mu_1 = 4$ and $\mu_2=3$
+
+Check: $4\mu_1^2 + 2\mu_1\mu_2+\mu_2^2 = 2(16)+24+9 = 65$
+
+and hence $\Sigma^{-1} = \begin{pmatrix} 2 & 1\\ 1 & 1 \end{pmatrix}$
+
+$det(\Sigma^{-1}) = 1$
+
+$\Sigma = \begin{pmatrix}
+1 & -1\\
+-1 & 2
+\end{pmatrix}$
+
+Thus, $k^{-1} = \frac{1}{\sqrt{2\pi det(\Sigma)}}^{2/2} = \frac{1}{2\pi}$
+Thus, $k = 2\pi$
+\subsection*{2a Problem 1b}
+
+\begin{align*}
+E[Y] & = \begin{pmatrix}
+\mu_1\\
+\mu_2
+\end{pmatrix}\\
+&= \begin{pmatrix}
+4\\
+3
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+Var[Y] & = \begin{pmatrix}
+a & b\\
+b & c
+\end{pmatrix}\\
+&= \begin{pmatrix}
+1 & -1\\
+-1 & 2
+\end{pmatrix}
+\end{align*}
+
+
+
+\section*{Ex2a Problem 3(b)}
+\begin{align*}
+\Sigma &= \begin{pmatrix}
+1 & \rho \\ 
+\rho & 1
+\end{pmatrix}
+\end{align*}
+
+Determining eigen values:
+\begin{align*}
+det(\Sigma-\lambda I) &=0 \\
+(1-\lambda)^2 = \rho^2 \\
+\lambda &= 1\pm \rho
+\end{align*}
+
+And the corresponding eigen values:
+\begin{align*}
+\begin{pmatrix}
+1 & \rho \\ 
+\rho & 1
+\end{pmatrix}\begin{pmatrix} v_1 \\ v_2  \end{pmatrix} &= \lambda \begin{pmatrix}
+v_1\\ v_2
+\end{pmatrix}
+\end{align*}
+
+One set of eigen vectors are given by: for $\lambda_1=1+\rho$: $\frac{1}{\sqrt{2}}\begin{pmatrix}1\\1 \end{pmatrix}$
+and for $\lambda_2=1-\rho$: $\frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -1 \end{pmatrix}$
+
+Thus using eigen decomposition $\Sigma$ can be rewritten as:
+\begin{align*}
+\Sigma &= A\Lambda A'\\
+&=\frac{1}{2}\begin{pmatrix}
+1 & 1\\
+1 & -1 
+\end{pmatrix}\begin{pmatrix}
+1+\rho & 0\\
+0 & 1-\rho
+\end{pmatrix}\begin{pmatrix}
+1 & 1\\
+1 & -1 
+\end{pmatrix}
+\end{align*}
+
+And hence $\Sigma^{1/2} = A\Lambda^{1/2} A' = \frac{1}{2}\begin{pmatrix}
+\sqrt{1+\rho} + \sqrt{1-\rho} & \sqrt{1+\rho} - \sqrt{1-\rho}\\
+\sqrt{1+\rho} - \sqrt{1-\rho} & \sqrt{1+\rho} + \sqrt{1-\rho}
+\end{pmatrix}$
+
+\section*{Ex2b Problem 2}
+
+$Y_i = \begin{pmatrix} 0 & 0 & \dots & 1_i & 0 \dots 0 \end{pmatrix}Y =a_i'Y$
+
+Since $Y_i \sim N(\mu, \Sigma)$ Using Theorem 2.2
+$Y_i \sim N(a_i'\mu, a_i'\Sigma a_i) = N(\mu_i, \sigma_{ii})$
+
+
+\section*{Ex2b Problem 3}
+Since $Y_1,Y_2,Y_3$ and $Y_1-Y_2$ are both normal, their joint distribution is normal too.
+Consider: $A = \begin{pmatrix}
+1 & 1 & 1\\
+1 & -1 & 0
+\end{pmatrix}$
+
+Now, $Z = \begin{pmatrix}
+Z_1\\
+Z_2
+\end{pmatrix} = AY$
+
+and hence $Z \sim N(A\mu, A\Sigma A')$
+$A\mu = \begin{pmatrix}
+5\\
+1
+\end{pmatrix}$
+
+$A\Sigma A' = \begin{pmatrix}
+10 & 0\\
+0 & 3
+\end{pmatrix}$ 
+
+Since $Z_1$ and $Z_2$ are normal, and they are independent $\sigma_{12}=0$ so the joint distribution is given by their product.
+
+$\sigma_1^2 = 10$ ; $\sigma_2^2=3$
+$\mu_1 = 5$, $\mu_2 =1$
+
+\begin{align*}f(Z_1,Z_2) &= \frac{1}{2\pi \sigma_1 \sigma_2}\exp(-\frac{(Z_1-\mu_1)^2}{2\sigma_1^2}-\frac{(Z_2-\mu_2)^2}{2\sigma_2^2})\\
+\end{align*}
+\section*{Ex2b Problem 6}
+
+Define $U_1 = Y_1+Y_2$ 
+and $U_2 = Y_1-Y_2$ where $U_i \sim N(0,1)$
+
+$Cov(U_1,U_2) = 0$
+
+Rearranging gives:
+\begin{align*}
+Y_1 &= \frac{1}{2}(U_1+U_2)\\
+Y_2 &= \frac{1}{2}(U_1-U_2)\\
+\end{align*}
+
+Thus, $Y_i \sim N(0, \frac{1}{4}$
+
+Since any vector $a'Y$ has  a univariate normal distribution(mean=0) using Theorem 2.3, we see that $Y \sim N(\mu, \Sigma)$ where
+
+\begin{align*}
+Y &= \begin{pmatrix}
+Y_1\\Y_2 \end{pmatrix}\\
+\mu &= \begin{pmatrix}
+\mu_1\\
+\mu_2
+\end{pmatrix}\\
+&= \begin{pmatrix}
+0\\
+0
+\end{pmatrix}\\
+\end{align*}
+
+To find $\Sigma$:
+
+\begin{align*}
+Cov(U_1,U_2) &= 0\\
+Cov(Y_1+Y_2, Y_1-Y_2) &=0\\
+Cov(Y_1,Y_1)+Cov(Y_1, Y_2)+Cov(Y_2,Y_1)+Cov(Y_2, -Y_2) &= 0\\
+\sigma_{11}+2\sigma_{12}-\sigma_{22} &=0
+\implies \sigma_{12} &=0 \text{ using } \sigma_{11} = \sigma_{22} =1
+\end{align*}
+Thus, $Y_1,Y_2$ have a bivariate normal ditribution. with $\mu= \begin{pmatrix}
+0\\
+0
+\end{pmatrix}$ and $\Sigma = \begin{pmatrix}
+1 & 0\\
+0 & 1
+\end{pmatrix}$
+
+
+\section*{Ex2b Problem 8}
+
+\begin{align*}
+\begin{pmatrix} \bar{Y} & Y_1-\bar{Y}& Y_2-\bar{Y_3} \dots Y_n-\bar{Y}\end{pmatrix}' &= \begin{pmatrix}
+1/n & 1/n & 1/n & \dots & 1/n\\
+1-1/n & -1/n & -1/n & \dots & -1/n\\
+1 & 1-1/n & -1/n & \dots & -1/n\\
+\vdots \\
+-1/n & -1/n & -1/n & \dots & 1-1/n\\
+\end{pmatrix} \begin{pmatrix} Y_1 & Y_2 & Y_3 &\dots Y_n \end{pmatrix}'\\
+%&= (I-\frac{1}{n}1_n1_n')\begin{pmatrix} Y_1 & Y_2 & Y_3 &\dots Y_n \end{pmatrix}'
+Z &= AY
+\end{align*}
+
+Also $Z \sim N(A\mu, A\Sigma A')$
+
+
+\begin{align*}
+A\Sigma A' &=  AA' \text{ since } \Sigma = I\\
+&= \begin{pmatrix}
+\frac{n}{n^2} & 0 & 0 & \dots & 0 \\
+0 & (1-\frac{1}{n})^2+\frac{n}{n^2}  &  -2/n(1-1/n) + \frac{n-2}{n} & \dots & -2/n(1-1/n) + \frac{n-2}{n}\\
+\vdots \\
+0 & -2/n(1-1/n) + \frac{n-2}{n} & -2/n(1-1/n) + \frac{n-2}{n} & \dots & (1-\frac{1}{n})^2+\frac{n}{n^2}\\
+\end{pmatrix}\\
+&= \begin{pmatrix}
+\frac{1}{n} & 0 & 0 & 0 & \dots & 0\\
+0 & \frac{1}{n}+(1-\frac{1}{n})^2 & -\frac{1}{n} & -\frac{1}{n} &\dots & -\frac{1}{n}\\
+\vdots\\
+0 & -\frac{1}{n} & -\frac{1}{n} & -\frac{1}{n} & \dots & \frac{1}{n}+(1-\frac{1}{n})^2
+\end{pmatrix}\\
+&=B
+\end{align*}
+
+%where $A=I-\frac{1}{n}1_n1_n'$
+
+Thus M.g.f. of $Z=AY$ is (using Theorem 2.2 with $d=0$)
+
+\begin{align*}
+E[\exp(t'AY)] &= \exp(t'A\mu + \frac{1}{2}t'A\Sigma A't)\\
+&= \exp(t'A\mu + \frac{1}{2}t'AA't)) \text{ using } \Sigma = I\\
+&=\exp(t'A\mu + \frac{1}{2}t'Bt))
+\end{align*}
+
+And hence $Z=\begin{pmatrix} \bar{Y} & Y_1-\bar{Y}& Y_2-\bar{Y_3} \dots Y_n-\bar{Y}\end{pmatrix}'$ follows a multivariate distribution such that $Cov(\bar{Y}, Y_i-\bar{Y}) = 0$ $\implies$ $\bar{Y}$ and $Y_i-\bar{Y}$ are independent (for all $i$)
+
+Let's call $X=\begin{pmatrix} Y_1-\bar{Y}& Y_2-\bar{Y_3} \dots Y_n-\bar{Y}\end{pmatrix}'$
+
+Then, from above we have $\bar{Y}$ and $X$ are indepedent (also follows from rom theorem 2.4)
+
+Then,
+
+$$\sum_i(Y_i-\bar{Y})^2 = X'X$$
+
+Since $\bar{Y},X$ are independent $\implies $ $\bar{Y},X'X$ are independent
+
+\end{document}
+
+
