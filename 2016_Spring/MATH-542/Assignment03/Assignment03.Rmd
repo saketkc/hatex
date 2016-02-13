@@ -1,0 +1,75 @@
+---
+title: "MATH 542 | Lab 3"
+author: "Saket Choudhary"
+date: "February 13, 2016"
+output: pdf_document
+---
+
+## Problem 1
+
+### Problem 1a
+```{r}
+birdful.data <- read.csv('BirdFlu.csv', header=T)
+cases.2003 <- sum(birdful.data$X2003.cases)
+```
+Total cases in 2003: `r cases.2003`
+
+### Problem 1b
+```{r}
+cases.2003.2005 <- sum(birdful.data$X2003.cases)+sum(birdful.data$X2005.cases)
+```
+Total cases in 2003 and 2005: `r cases.2003.2005`
+
+### Problem 1c
+
+```{r}
+total.deaths <- rowSums(birdful.data[,-1])
+max.which <- which.max(total.deaths)
+min.which <- which.min(total.deaths)
+max.country <- birdful.data$Country[max.which]
+min.country <- birdful.data$Country[min.which]
+```
+
+Country with most cases: `r max.country`
+
+Country with least cases: `r min.country`
+
+### Problem 1d
+
+```{r kable}
+birdful.data['total'] <- total.deaths
+library(knitr)
+kable(subset(birdful.data, select=c('Country', 'total')))
+```
+
+Total number of cases per year
+
+```{r}
+column.sum <- colSums(birdful.data[,-1])
+kable(rbind(colnames(birdful.data)[2:13], column.sum[1:12]))
+```
+
+## Problem 2
+
+```{r}
+isit <- read.csv('ISIT.txt', sep = ' ')
+station1.data <- subset(isit, Station=="1")
+nobs1 <- nrow(station1.data)
+sample1.depth <- station1.data$Sample.Depth
+```
+
+### Problem 2a
+Number of observations in station 1: `r nobs1`
+
+Summary of station 1:
+```{r}
+summary(station1.data)
+```
+
+Mean median etc of `Sample.Depth`:
+```{r}
+summary(sample1.depth)
+```
+
+### Problem 2b
+
