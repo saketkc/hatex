@@ -46,7 +46,8 @@ Total number of cases per year
 
 ```{r}
 column.sum <- colSums(birdful.data[,-1])
-kable(rbind(colnames(birdful.data)[2:13], column.sum[1:12]))
+#t(kable(rbind(t(colnames(birdful.data)[2:13]), t(column.sum[1:12]) )))
+kable(column.sum[1:12])
 ```
 
 ## Problem 2

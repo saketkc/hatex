@@ -168,52 +168,57 @@ kable(subset(birdful.data, select=c('Country', 'total')))</code></pre>
 </table>
 <p>Total number of cases per year</p>
 <pre class="r"><code>column.sum &lt;- colSums(birdful.data[,-1])
-kable(rbind(colnames(birdful.data)[2:13], column.sum[1:12]))</code></pre>
+#t(kable(rbind(t(colnames(birdful.data)[2:13]), t(column.sum[1:12]) )))
+kable(column.sum[1:12])</code></pre>
 <table>
-<thead>
-<tr class="header">
-<th align="left">X2003.cases</th>
-<th align="left">X2003.deaths</th>
-<th align="left">X2004.cases</th>
-<th align="left">X2004.deaths</th>
-<th align="left">X2005.cases</th>
-<th align="left">X2005.deaths</th>
-<th align="left">X2006.cases</th>
-<th align="left">X2006.deaths</th>
-<th align="left">X2007.cases</th>
-<th align="left">X2007.deaths</th>
-<th align="left">X2008.cases</th>
-<th align="left">X2008.deaths</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
 <td align="left">X2003.cases</td>
-<td align="left">X2003.deaths</td>
-<td align="left">X2004.cases</td>
-<td align="left">X2004.deaths</td>
-<td align="left">X2005.cases</td>
-<td align="left">X2005.deaths</td>
-<td align="left">X2006.cases</td>
-<td align="left">X2006.deaths</td>
-<td align="left">X2007.cases</td>
-<td align="left">X2007.deaths</td>
-<td align="left">X2008.cases</td>
-<td align="left">X2008.deaths</td>
+<td align="right">4</td>
 </tr>
 <tr class="even">
-<td align="left">4</td>
-<td align="left">4</td>
-<td align="left">46</td>
-<td align="left">32</td>
-<td align="left">98</td>
-<td align="left">43</td>
-<td align="left">115</td>
-<td align="left">79</td>
-<td align="left">88</td>
-<td align="left">59</td>
-<td align="left">34</td>
-<td align="left">26</td>
+<td align="left">X2003.deaths</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">X2004.cases</td>
+<td align="right">46</td>
+</tr>
+<tr class="even">
+<td align="left">X2004.deaths</td>
+<td align="right">32</td>
+</tr>
+<tr class="odd">
+<td align="left">X2005.cases</td>
+<td align="right">98</td>
+</tr>
+<tr class="even">
+<td align="left">X2005.deaths</td>
+<td align="right">43</td>
+</tr>
+<tr class="odd">
+<td align="left">X2006.cases</td>
+<td align="right">115</td>
+</tr>
+<tr class="even">
+<td align="left">X2006.deaths</td>
+<td align="right">79</td>
+</tr>
+<tr class="odd">
+<td align="left">X2007.cases</td>
+<td align="right">88</td>
+</tr>
+<tr class="even">
+<td align="left">X2007.deaths</td>
+<td align="right">59</td>
+</tr>
+<tr class="odd">
+<td align="left">X2008.cases</td>
+<td align="right">34</td>
+</tr>
+<tr class="even">
+<td align="left">X2008.deaths</td>
+<td align="right">26</td>
 </tr>
 </tbody>
 </table>
