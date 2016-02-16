@@ -1,0 +1,194 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{MATH 542 Homework 6}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle 
+\section*{Problem 1}
+\subsection*{Problem 1a}
+
+To find: $f_{y_2,y_4}(y_1,y_3) = \int_{-\infty}^{\infty}f(y_1,y_2,y_2,y_4)dy_2dy_4$
+For marginalising a MVN, we simply drop the irrelevant terms(terms with respect to which marginalisation is performed, as they integrate to 1)
+
+Joint Marginal distribution of $y_1,y_3$: $f_{y_2,y_4}(y_1,y_3) \sim N(\begin{pmatrix}1 \\ 3\end{pmatrix},\begin{pmatrix}4 & -1 \\ -1 &5\end{pmatrix})$
+
+\subsection*{Problem 1b}
+$f_{y_1,y_3,y_4} \sim N(3, 5)$
+
+\subsection*{Problem 1c}
+$z=y_1+2y_2-y_3+3y_4$ 
+
+Thus, $z=aY$ where $a = \begin{pmatrix}1 & 2 & -1 * 3 \end{pmatrix}$ and $Y=\begin{pmatrix}y_1 & y_2 & y_3 & y_4\end{pmatrix}'$
+
+Thus, $Ez = aE[y] = -4$
+
+\begin{align*}
+Var(z) &= aVar(y)a'\\
+& = 79 \text{ from R}
+\end{align*}
+
+\subsection*{Problem 1d}
+
+$z_1=a_1y$ and $z_2 = a_2y$ where $a_1 = \begin{pmatrix}1 & 1 & -1 & -1 \end{pmatrix}$
+and $a_2 = \begin{pmatrix}-3 & 1 & 2 & -2 \end{pmatrix}$
+
+Then $f_{z_1,z_2} \sim N(\begin{pmatrix} \mu_1 \\ \mu_2 \end{pmatrix}, S)$
+
+$\mu_1 = a_1'E[y] = 2$
+
+$\mu_2 = a_2'E[y] = 9$
+
+$\Sigma^z_{11} = a_1\Sigma a_1^T = 11$
+
+$\Sigma^z_{22} = a_2\Sigma a_2^T = 154$
+
+$\Sigma^z_{12} =  \Sigma^z_{21} =  a_2\Sigma a_2^T = -6$
+
+
+Thus, $Z = \begin{pmatrix} z_1 \\ z_2 \end{pmatrix}
+\sim N(\begin{pmatrix} 2\\ 9\end{pmatrix}, \begin{pmatrix} 11 & -6\\ 
+-6 & 154\end{pmatrix})$ 
+
+\subsection*{Problem 1e}
+
+$\mu' = \mu_1 + \Sigma_{12}\Sigma_{22}^{-1}(x_2-\mu_2)$
+
+$Cov = \Sigma_{11} - \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$
+
+Where $f(y_1, y_2 |y_3, y_4) = N(\mu', Cov)$
+
+$\mu' = \begin{pmatrix}1 \\ 2 \end{pmatrix} + \begin{pmatrix} -1 & 2\\ 2 & -2 \end{pmatrix} \begin{pmatrix} 5 & -4\\ -4 & 5\end{pmatrix}^{-1} \begin{pmatrix}y_3-3\\ y_4+2\end{pmatrix} = \begin{pmatrix}1 \\ 2 \end{pmatrix} + \begin{pmatrix} -0.55 & 0.88\\ 1.33 & -1.11 \end{pmatrix} \begin{pmatrix}y_3-3\\ y_4+2\end{pmatrix}$
+
+$Cov' = \begin{pmatrix} 4 & 2\\ 2 & 6 \end{pmatrix}-\begin{pmatrix} -1 & 2\\ 2 & -2 \end{pmatrix} \begin{pmatrix} 5 & -4\\ -4 & 5\end{pmatrix}^{-1}\begin{pmatrix}-1 & 3\\ 2 & -2 \end{pmatrix}$
+
+
+\subsection*{Problem 1f}
+
+$\mu' =  \begin{pmatrix} 1 \\3 \end{pmatrix} + \begin{pmatrix} -1 & 2\\ 5 &-4 \end{pmatrix}\begin{pmatrix} 3 & -2 \\-4 & 4\end{pmatrix}^{-1}\begin{pmatrix}y_2-2\\ y_4+2\end{pmatrix} $
+
+$Cov' = \begin{pmatrix} 4 & 2\\ -1 & 3 \end{pmatrix} - \begin{pmatrix} -1 & 2\\ 5 &-4 \end{pmatrix}\begin{pmatrix} 5 & -4\\ -4 & 5\end{pmatrix}^{-1} \begin{pmatrix} 2 & 6\\ 2 & -2\end{pmatrix}^{-1} $
+
+
+
+
+\subsection*{Problem 1g}
+$Cov(y_1,y_3) = -1 $
+
+\subsection*{Problem 1h}
+
+$\mu' = 1 - \begin{pmatrix} 2 & -1 & 2 \end{pmatrix} \begin{pmatrix} 6 & 3 & -2\\ 3 & 5 & -4 \\ -2 & -4 & 4 \end{pmatrix}^{-1} \begin{pmatrix} y_2-2\\ y_3-3\\ y_4+2 \end{pmatrix} $
+
+$Cov' = 4 - \begin{pmatrix} 2 & -1 & 2 \end{pmatrix} \begin{pmatrix} 6 & 3 & -2\\ 3 & 5 & -4 \\ -2 & -4 & 4 \end{pmatrix}^{-1} \begin{pmatrix} 2 \\ -1 \\ 2 \end{pmatrix}$
+
+
+
+
+
+
+
+
+\section*{Problem 2}
+Since $\sigma_{12} = \sigma_{13} = \sigma_{14} = 0$ and $y$ follows a MVN, by Theorem 2.2, $y_1$ is pairwise independent with $y_2,y_3,y_4$
+
+\section*{Problem 3}
+
+\begin{align*}
+y_2 - \Sigma_{21}\Sigma_{11}^{-1}y_1 &= \begin{pmatrix} 0_{n-r \times r} & I_{n-r \times n-r} \end{pmatrix} \begin{pmatrix}y_1 \\ y_2\end{pmatrix} + \begin{pmatrix} -\Sigma_{21}\Sigma_{11}^{-1} & 0_{n \times r}\end{pmatrix}\begin{pmatrix}y_1 \\ y_2\end{pmatrix} \\
+E(y_2 - \Sigma_{21}\Sigma_{11}^{-1}y_1) &= \begin{pmatrix} 0_{n-r \times r} & I_{n-r \times n-r} \end{pmatrix} \begin{pmatrix}Ey_1\\ Ey_2 \end{pmatrix} + \begin{pmatrix} -\Sigma_{21}\Sigma_{11}^{-1} & 0_{n \times r}\end{pmatrix}\begin{pmatrix}Ey_1 \\ Ey_2\end{pmatrix}\\
+&= \mu_2 - \Sigma_{21}\Sigma_{11}^{-1}\mu_1
+\end{align*}
+
+\begin{align*}
+Cov(y_2 - \Sigma_{21}\Sigma_{11}^{-1}y_1 ) &= Cov(\begin{pmatrix} 0_{n-r \times r} & I_{n-r \times n-r} \end{pmatrix} \begin{pmatrix}y_1 \\ y_2\end{pmatrix} + \begin{pmatrix} -\Sigma_{21}\Sigma_{11}^{-1} & 0_{n \times r}\end{pmatrix}\begin{pmatrix}y_1 \\ y_2\end{pmatrix})\\
+&= Cov(aY+bY)\\
+&= (a+b)Var(Y)(a+b)^T\\
+&= \begin{pmatrix} -\Sigma_{21}\Sigma_{11}^{-1} & I \end{pmatrix} \begin{pmatrix} 
+\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\end{pmatrix}\begin{pmatrix} -(\Sigma_{11}^{-1})^T\Sigma_{21}^T \\ I^T \end{pmatrix}\\
+&= \begin{pmatrix}-\Sigma_{21}+\Sigma_{21} & -\Sigma_{21}\Sigma_{11}^{-1}\Sigma_{12}+\Sigma_{22} \end{pmatrix} \begin{pmatrix}-(\Sigma_{21}\Sigma_{11}^{-1})^T \\ I^T\end{pmatrix}\\
+&= \Sigma_{22}-\Sigma_{21}\Sigma_{11}^{-1}\Sigma_{12}
+\end{align*} 
+
+
+\section*{Problem 4}
+\subsection*{Problem 4a}
+
+Given $t=\frac{z}{\sqrt{\frac{u}{\rho}}} \sim t(\rho)$ we know the following facts:
+
+\begin{itemize}
+\item $Z \sim N(0,1)$
+\item $u \sim \chi^2_\rho$
+\item $Z$ and $u$ are independent
+\end{itemize}
+
+$t^2 = \frac{z^2}{{\frac{u}{\rho}}} \sim \frac{\chi_1^2}{\chi_\rho^2} \sim F(1,\rho)$
+
+\subsection*{Problem 5.3}
+We consider first the following vector:
+$Z=\begin{pmatrix} \bar{Y} & Y_1-Y_2 & Y_2-Y_3 \dots Y_n-Y_{n-1}\end{pmatrix}'$
+
+Let's call $X = \begin{pmatrix} Y_1-Y_2 & Y_2-Y_3 \dots Y_{n-1}-Y_{n}\end{pmatrix}'$ so that it allows us to write $\sum_{i=1}^{n-1}(Y_i-Y_{i+1})^2=X'X$ 
+
+Now $Z=\begin{pmatrix} \bar{Y} & X \end{pmatrix}$
+
+
+\begin{align*}
+\begin{pmatrix} \bar{Y} & Y_1-Y_2 & Y_2-Y_3 \dots Y_{n-1}-Y_{n}\end{pmatrix}' &= \begin{pmatrix}
+1/n & 1/n & 1/n & \dots & 1/n\\
+1 & -1 &  0 & \dots & 0\\
+0 & 1 & -1 & \dots & 0\\
+\vdots \\
+0 & 0 & 0 & \dots & -1\\
+\end{pmatrix} \begin{pmatrix} Y_1 & Y_2 & Y_3 &\dots Y_n \end{pmatrix}'\\
+%&= (I-\frac{1}{n}1_n1_n')\begin{pmatrix} Y_1 & Y_2 & Y_3 &\dots Y_n \end{pmatrix}'
+Z &= AY
+\end{align*}
+
+Also $Z \sim N(A\mu, A\Sigma A')$
+
+$A\mu = \begin{pmatrix} \mu  & 0 & 0 \dots 0 \end{pmatrix}$
+
+$A\Sigma A' = AA'$ since $\Sigma = I$
+
+$AA'  = \begin{pmatrix} 1/n & 0 & 0 & \dots & 0\\ 
+0 & 2 & -1  & \dots & 0\\
+0 & -1 & 2 & -1 & \dots 0\\
+\vdots 
+0 & 0 & 0 & 0 & \dots 2
+\end{pmatrix}$
+
+Thus, $Z=\begin{pmatrix}\bar{Y} & X_{n \times 1}\end{pmatrix}'$ is a MVN such that $\bar{Y}$ and $X$ are independent (since the covariance is 0)
+
+We also know that $\sum_{i=1}^{n-1}(Y_i-Y_{i+1})^2=X'X = h(X)$
+
+Since, functions of independent random variables are also independent $\bar{Y}$ and $h(X) = X'X$ are independent.
+
+\subsection*{Problem 5.11}
+
+$Z = \begin{pmatrix} \phi & 1 & 0 & 0 & \dots & 0\\ 0 & \phi & 1 & 0 & \dots & 0\\ 
+0 & 0 & \phi & 1 &  \dots & 0\\ 
+\vdots\\
+0 & 0 & 0 & 0 & \dots & 1\\ 
+\end{pmatrix} \begin{pmatrix} y_1\\ y_2 \\ y_3\\ \vdots\\ y_n\end{pmatrix} = AY$
+
+Since $Y \sim N(0, \sigma^2I)$ $\implies$ $Z \sim N(0, \sigma^2 AA^T)$
+
+where $AA^T = \begin{pmatrix}\phi^2+1 & \phi & 0 & 0 & \dots & 0\\ 
+\phi & 1+\phi^2 & \phi & 0 & \dots & 0\\
+0 & \phi & 1+\phi^2 & \phi & \dots & 0\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
+0 & 0 & 0 & \dots & \phi
+\end{pmatrix}$
+
+
+\end{document}
+
+
+
