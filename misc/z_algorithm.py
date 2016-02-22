@@ -1,16 +1,20 @@
+"""Z-algorithm in Python
+"""
+
 from __future__ import division
 from __future__ import print_function
 import sys
 
-def create_R(pattern):
-    R = {}
-    for i in range(0, len(pattern)):
-        R[pattern[i]] = i
-    return R
-
 def match(pattern, p1, p2):
     """Returns index of string till where matching occurs
+    Arguments
+    ---------
+    pattern: string
+    p1: First Position to start matching from [0-based]
+    p2: First Position to start matching pattern[p1] [0-based]
 
+    Returns
+    p1: Last matching index
     """
     while max(p2,p1)<len(pattern) and pattern[p1] == pattern[p2]:
         p1+=1
@@ -18,6 +22,7 @@ def match(pattern, p1, p2):
     return p1
 
 def calc_Z(pattern):
+    """Calculate Z values using Z-algorithm as in Gusfield"""
     Z = []
     len_p = len(pattern)
     Z.append(len_p)
