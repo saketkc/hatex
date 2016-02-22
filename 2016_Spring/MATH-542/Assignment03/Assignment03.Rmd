@@ -53,10 +53,10 @@ kable(column.sum[1:12])
 ## Problem 2
 
 ```{r}
-isit <- read.csv('ISIT.txt', sep = ' ')
+isit <- read.csv('ISIT.txt', sep = '\t')
 station1.data <- subset(isit, Station=="1")
 nobs1 <- nrow(station1.data)
-sample1.depth <- station1.data$Sample.Depth
+sample1.depth <- station1.data$SampleDepth
 ```
 
 ### Problem 2a
@@ -71,6 +71,39 @@ Mean median etc of `Sample.Depth`:
 ```{r}
 summary(sample1.depth)
 ```
+Mean: `r mean(sample1.depth, na.rm=T)`
+
+Median: `r median(sample1.depth, na.rm=T)`
+
+Minimum: `r min(sample1.depth, na.rm=T)`
+
+Maximum: `r max(sample1.depth, na.rm=T)`
+
+
 
 ### Problem 2b
 
+## Problem 2b.1
+```{r}
+data2002 <- subset(isit, Year=2002)
+kable(data2002)
+```
+
+## Problem 2b.2
+```{r}
+april.data <-  subset(isit, Month==4)
+kable(april.data)
+```
+
+## Problem 2b.3
+```{r}
+depths <- subset(isit, SampleDepth>2000)
+kable(depths)
+```
+
+### Problem 2c
+```{r}
+april.data.2002 <- subset(depths, Month==4)
+kable(april.data.2002)
+```
+```
