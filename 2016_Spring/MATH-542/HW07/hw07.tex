@@ -1,0 +1,129 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{MATH 542 Homework 7}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle 
+
+\begin{align*}
+Y_i &= \beta_0+\beta_1X_i+\epsilon_i\\
+\epsilon_i&=Y_i - \beta_0-\beta_1X_i\\
+\epsilon_i^2&=(Y_i - \beta_0-\beta_1X_i)^2\\
+Q&=\sum_i\epsilon_i^2\sum_i(Y_i - \beta_0-\beta_1X_i)^2\\
+\end{align*}
+
+We want to minimize the residual $\epsilon_i=Y_i - \beta_0-\beta_1X_i = Y_i-\hat{Y_i}$ so $\frac{\partial \sum_i\epsilon_i^2}{\partial \beta_0}=\frac{\partial \sum_i\epsilon_i^2}{\partial \beta_1}=0$
+\begin{align*}
+\frac{\partial Q}{\partial \beta_0} &= -2\sum_i(Y_i - \beta_0-\beta_1X_i)=0\\
+\hat{\beta_0} &= \bar{Y}-\hat{\beta_1}\bar{X}
+\end{align*}
+
+\begin{align*}
+\frac{\partial Q}{\partial \beta_1} &= -2\sum_iX_i(Y_i - \beta_0-\beta_1X_i)=0\\
+\sum_iX_i(Y_i - \hat{\beta_0}-\hat{\beta_1}X_i)&=0\\
+\sum_iX_i(Y_i - \bar{Y}+\hat{\beta_1}\bar{X}-\hat{\beta_1}X_i)&=0\\
+\hat{\beta_1} &= \frac{\sum_iX_i(Y_i-\bar{Y})}{\sum_iX_i(X_i-\bar{X})}
+\end{align*}
+
+Using $\sum \bar{X}(X_i-\bar{X}) =0$ $\implies$ $\sum X_i(X_i-\bar{X})=\sum (X_i-\bar{X})(X_i-\bar{X})$
+and using $\sum \bar{X}(Y_i-\bar{Y}) =0$ we get $\sum_iX_i(Y_i-\bar{Y}) = \sum_i(X_i-\bar{X})(Y_i-\bar{Y})$
+
+and hence $\hat{\beta_1} = \frac{\sum_i(X_i-\bar{X})(Y_i-\bar{Y})}{\sum_i(X_i-\bar{X})^2}$
+
+\begin{align*}
+E[\hat{\beta_0}] &= E[\bar{Y}]-\bar{X}E[\hat{\beta_1}]\\
+E[\bar{Y}] &= E[\beta_0+\beta_1\bar{X}+1/n\sum_i \epsilon_i] \\
+&=\beta_0+\beta_1\bar{X}
+\end{align*}
+
+Now consider $E[\hat{\beta_1}] = \frac{\sum_i(X_i-\bar{X})(EY_i-E\bar{Y})}{\sum_i(X_i-\bar{X})^2} = \frac{\sum_i(X_i-\bar{X})(\beta_1 X_i-\beta_1 \bar{X})}{\sum_i(X_i-\bar{X})^2} = \beta_1$
+
+using which we get:
+$$
+E[\hat{\beta_0}] = E[\bar{Y}]-\bar{X}E[\hat{\beta_1}] = \beta_0 + \beta_1 \bar{X} - \beta_1\bar{X} = \beta_0
+$$
+
+\section*{Problem 2}
+\begin{align*}
+Var(\hat{\beta_1}) &= \frac{1}{(\sum(X_i-\bar{X})^2)^2} Var(\sum_i(X_i-\bar{X})(Y_i-\bar{Y}))\\
+&=\frac{1}{(\sum(X_i-\bar{X})^2)^2} Var(\sum_i(X_i-\bar{X})(Y_i))\\
+&= \frac{1}{(\sum(X_i-\bar{X})^2)^2} \sum_i(X_i-\bar{X})^2Var(Y_i)\\ 
+&= \frac{1}{(\sum(X_i-\bar{X})^2)^2} \sum_i(X_i-\bar{X})^2\sigma^2\\ 
+&= \frac{\sigma^2}{(\sum(X_i-\bar{X})^2)}\\ 
+\end{align*}
+
+\begin{align*}
+\hat{\beta_0} &= \bar{Y}-\hat{\beta_1}\bar{X}\\
+Var(\hat{\beta_0}) &= Var(\bar{Y}) + \bar{X}^2Var(\hat{\beta_1})\\
+&= \frac{\sigma^2}{n} + \bar{X}^2(\frac{\sigma^2}{(\sum(X_i-\bar{X})^2)})
+\end{align*}
+
+\section*{Problem 3}
+\begin{align*}
+Y_i &= \beta_0 + \beta_1X_i + \epsilon_i\\
+\hat{Y_i} &= {\beta_0} + {\beta_1}X_i\\
+\frac{\partial Q}{\partial \beta_0} &= -2\sum_i(Y_i - \beta_0-\beta_1X_i)=-2\sum_i(Y_i - \hat{Y_i})=0\\
+\frac{\partial Q}{\partial \beta_1} &= -2\sum_iX_i(Y_i - \beta_0-\beta_1X_i)=0\\
+&= \sum_i(\hat{Y_i}/\beta_1-\beta_0/\beta_1)(Y_i-\hat{Y_i})=0\\
+&\implies \sum_i(\hat{Y_i})(Y_i-\hat{Y_i})=0\\
+\end{align*}
+
+
+Now, 
+\begin{align*}
+\sum_i(Y_i-\bar{Y})^2 &= \sum_(Y_i-\hat{Y_i}+\hat{Y_i}-\bar{Y})^2\\
+&= \sum(Y_i-\hat{Y_i})^2+\sum_i(\hat{Y_i}-\bar{Y})^2 + 2\sum_i(Y_i-\hat{Y_i})(\hat{Y_i}-\bar{Y})\\
+&= \sum(Y_i-\hat{Y_i})^2+\sum_i(\hat{Y_i}-\bar{Y})^2 + 2\sum_i\hat{Y_i}(Y_i-\hat{Y_i}) - 2\sum_i\bar{Y}(Y_i-\hat{Y_i})\\
+&= \sum(Y_i-\hat{Y_i})^2+\sum_i(\hat{Y_i}-\bar{Y})^2 
+\end{align*}
+
+where the two last terms are zero using the properties derived previous to the last set of equations
+
+\section*{Problem 4}
+\begin{align*}
+r &= \frac{\sum_i(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_i(x_i-\bar{x})^2\sum_i(y_i-\bar{y})^2 }}\\
+r^2 &= \frac{(\sum_i(x_i-\bar{x})(y_i-\bar{y}))^2}{{\sum_i(x_i-\bar{x})^2\sum_i(y_i-\bar{y})^2 }} = \frac{s_{xy}^2}{s_{xx}s_{yy}}\\
+R^2 &= 1- \frac{SSE}{SST} = \frac{SSR}{SST}\\
+SSE(rror) &= \sum_i(y_i-\hat{y_i})^2\\
+SST(otal) &= \sum_i(y_i-\bar{y})^2\\
+SSR(egression) &= \sum_i(\hat{y_i}-\bar{y})^2
+\end{align*}
+
+Consider $y=a+bx$ then from the first problem we have:
+$b = \frac{s_{xy}}{s_{xx}}$
+
+\begin{align*}
+SSR &= \sum_i(\hat{y_i}-\bar{y})^2\\
+&= \sum_i(a+bx_i-\bar{y})^2\\
+&= \sum(\bar{y}-b\bar{x}+bx_i-\bar{y})^2\\
+&= b^2s_{xx}\\
+&= \frac{s_{xy}^2}{s_{xx}^2}s_{xx}\\
+&= \frac{s_{xy}^2}{s_{xx}}\\
+\end{align*}
+\begin{align*}
+R^2 &= \frac{SSR}{SST}\\
+&= \frac{\frac{s_{xy}^2}{s_{xx}}}{s_{yy}}\\
+&= \frac{s_{xy}^2}{s_{xx}s_{yy}}\\
+&=r^2
+\end{align*}
+\section*{Problem 5}
+\begin{align*}
+L(\sigma^2,\beta_0,\beta_1) &= (2\pi\sigma^2)^{-\frac{n}{2}}\prod_iexp(-\frac{1}{2\sigma^2}(y_i-\beta_0-\beta_1x_i)^2)\\
+\log(L) & = -\frac{n}{2}\log(2\pi) - n \log\sigma^2 -\frac{1}{2\sigma^2}\sum_i(y_i-\beta_0-\beta_1x_i)^2\\
+\frac{\partial \log L}{\partial \beta_0}|^{\beta_{MLE}} &= -\frac{-2}{2\sigma^2}\sum_i(y_i-\beta_0-\beta_1x_i) \\
+&\implies \beta_0^{MLE} = \bar{Y}-\beta_1^{MLE}\bar{X}\\
+\frac{\partial \log L}{\partial \beta_1}|^{\beta_{MLE}} &= -\frac{-2}{2\sigma^2}\sum_ix_i(y_i-\beta_0-\beta_1x_i) \\
+&\implies \beta_1^{MLE} = \frac{\sum_i(x_i-\bar{x})(y_i-\bar{y})}{\sum_i(x_i-\bar{x})^2}\\
+\frac{\partial \log L}{\partial \sigma^2}|^{\beta_{MLE}} &= -\frac{n}{2\sigma^2} +\frac{1}{2\sigma^4}\sum_i(y_i-\beta_0-\beta_1x_1)^2 \\
+&\implies \sigma^2_{MLE} = \frac{1}{n}\sum_i(y_i-\beta_0^{MLE}-\beta_1^{MLE}x_1)^2
+\end{align*}
+\end{document}
+
+
+
