@@ -1,0 +1,115 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{MATH 542 Homework 9}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle 
+\subsection*{Problem 1}
+Since $\mathbf{X}$ is full rank, the least sqare estimate of $\beta$ for the linear model $\mathbf{Y}=\mathbf{y}\beta+\epsilon$ then $\hat{\beta} = \mathbf{(X'X)^{-1}X'y}$ also this is an unbiased estimator of $\beta$ that is $E[\hat{\beta}]=\beta$
+\begin{align*}
+a'\beta &= a'E[\hat{\beta}]\\
+&= a'E[\mathbf{(X'X)^{-1}X'y}]\\
+&= E[a'\mathbf{(X'X)^{-1}X'y}]\\
+&= E[b'\mathbf{y}]
+\end{align*}
+Hence when $\mathbf{X}$ is full rank, we have can take $b'=a'\mathbf{(X'X)^{-1}X'}$ making every $a'\beta$ estimable
+
+For each individual $\beta_i$ to be estimable, we set $a'=\begin{pmatrix}0 & 0 & \dots & 0 & 1 & 0 \dots 0 \end{pmatrix}$
+setting $a_i=1$ remaining zero.
+
+\subsection*{Problem 2}
+Since each $a_i'\beta$ is estimable: $a_i'\beta = E[b_i'Y]$
+Consider $\lambda_i \in \mathcal{R}$
+\begin{align*}
+\lambda_1a_1'\beta + \lambda_2a_2'\beta + \dots + \lambda_na_n'\beta &= \lambda_1 E[b_1'Y] +  \lambda_2 E[b_2'Y] + \dots \lambda_n E[b_n'Y]\\
+&= \sum_i E[\lambda_ib_i'Y]\\
+&= \sum E[c'Y] \text{ where }c'= \mathbf{\lambda I b'}
+\end{align*}
+where $\lambda =  \begin{pmatrix}\lambda_1 & \lambda_2 &  \dots & \lambda_n \end{pmatrix}$ and $b' = \begin{pmatrix} b_1 & b_2 & \dots b_n \end{pmatrix}$
+
+Hence linear combination of $a_i'\beta$ is also estimable.
+
+\subsection*{Problem 3}
+\begin{align*}
+X &= \begin{pmatrix}
+1 & 1 & 3\\
+1 & 1 & -2\\
+1 & 1 & 0\\
+1 & 0 & 0\\
+\end{pmatrix}
+\beta & = \begin{pmatrix}
+\beta_1\\
+\beta_2\\
+\beta_3
+\end{pmatrix}\\
+\beta_1 & = \begin{pmatrix}1 & 1 & 0\end{pmatrix}\mathbf{\beta}\\
+\beta_1-\beta_2 &= \begin{pmatrix}1 &-1 & 0\end{pmatrix}\mathbf{\beta}\\
+5\beta_1+3\beta_2+9\beta_3 &= \begin{pmatrix}5 & 3& 9\end{pmatrix}\mathbf{\beta}\\
+\end{align*}
+
+X has full column rank and hence we can make use of the theorem we proved in Problem 1 to say that all three cases $(a,b,c)$ are indeed estimable, that is since $X$ is full rank, every $a'\beta$ is estimable (One particular case of the corollary proved in Problem 1 here is the case $a$ where $a'=\begin{pmatrix}1 & 0 & 0\end{pmatrix}$
+\subsection*{Problem 4}
+\subsubsection*{Problem 4.a}
+Define $\mathbf{y}=\begin{pmatrix}Y_1 & Y_2 &  Y_3\end{pmatrix}'$, $\mathbf{\tau} = \begin{pmatrix} \tau_1 & \tau_2 & \tau_3 \end{pmatrix}$, $\mathbf{\epsilon} = \begin{pmatrix}\epsilon_1 & \epsilon_2 & \epsilon_3\end{pmatrix}$
+
+Thus, $\mathbf{y} = \begin{pmatrix}1 & 1& 1\\
+1 & 0 & 1\\
+0 & 1 & 0
+\end{pmatrix}\mathbf{\tau} + \mathbf{\epsilon}$
+
+Rank of design matrix is 2
+
+\subsubsection*{Problem 4.b}
+
+$E[b'Y] = a'\beta = b'X\beta$ iff $a'=b'X$ or $a=Xb'$
+%which is equivalent to saying that $a$ belongs to row space of $X$
+$\tau_2$ is estimable:
+\begin{align*}
+\tau_2  &= a'\mathbf{\beta}= \begin{pmatrix}0 & 1 & 0\end{pmatrix}\mathbf{\tau}\\
+&= EY_3\\
+&= E[\begin{pmatrix}0 & 0 & 1\end{pmatrix}]
+\end{align*}
+
+
+$\tau_1 = \begin{pmatrix}1 & 0 & 0 \end{pmatrix}\mathbf{\tau}$ so we need to find $b$ such that $\begin{pmatrix}1 & 0 & 0 \end{pmatrix}' = X'b$ It is clear to see no b does not exist.
+
+$\tau_2 =  \begin{pmatrix}0 & 1 & 0\end{pmatrix}\mathbf{\tau}$ is estimable because $b=\begin{pmatrix}0 & 1 & 0 \end{pmatrix}$
+
+$\tau_3$ is not estimable because of symmetry with $\tau_1$
+
+\subsubsection*{Problem 4.c}
+
+$\tau_1-2\tau_2+\tau_3 = \begin{pmatrix}1 &-2 &1 \end{pmatrix}\mathbf{\tau} = \begin{pmatrix}1 &1 &0\\ 1 &0 &1\\ 0 & 1 & 0\end{pmatrix} \begin{pmatrix}0\\1\\-2\end{pmatrix}$ and hence it is estimable
+
+\subsubsection*{Problem 4.d}
+
+A possible unbiasd estimator of $\tau_1-2\tau_2+\tau_3 = E[Y_2-2Y_3]$ i.e $Y_2-2Y_3$ whihc is not necessarily BLUE.
+
+For BLUE, we simply take the OLS estimate of $\beta$ as $\hat{\beta} = \mathbf{X'X}^{-1}\mathbf{X'y}$ and from Gauss-Markov model BLUE follows.
+
+Generalized inverse(using $R$) $\mathbf{X'X}^{-1} = \begin{pmatrix} \frac{1}{6} & \frac{-1}{6} & \frac{1}{6}\\ 
+\frac{-1}{6} & \frac{2}{3} & \frac{-1}{6}\\
+\frac{1}{6} & \frac{-1}{6} & \frac{1}{6} \\
+\end{pmatrix}$
+
+so $\hat{\beta} =\mathbf{X'X}^{-1}\mathbf{X'y} = \begin{pmatrix} \frac{1}{6} & \frac{1}{3} & \frac{-1}{6}\\ 
+\frac{1}{3} & \frac{-1}{3} & \frac{2}{3}\\
+\frac{1}{6} & \frac{1}{3} & \frac{-1}{6}\\
+\end{pmatrix}\mathbf{y}$
+
+and hence $\tau_1-2\tau_2+\tau_3 = \begin{pmatrix} 1 &-2 &1\end{pmatrix}\begin{pmatrix} \frac{1}{6} & \frac{1}{3} & \frac{-1}{6}\\ 
+\frac{1}{3} & \frac{-1}{3} & \frac{2}{3}\\
+\frac{1}{6} & \frac{1}{3} & \frac{-1}{6}\\
+\end{pmatrix}\mathbf{y} = \frac{-Y_1+4Y_2-5Y_3}{3}  $
+
+Thus BLUE of  $\tau_1-2\tau_2+\tau_3$ : $ \frac{-Y_1+4Y_2-5Y_3}{3}$
+\end{document}
+
+
+
