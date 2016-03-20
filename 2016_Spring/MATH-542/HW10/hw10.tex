@@ -1,0 +1,104 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{MATH 542 Homework 10}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle 
+\subsection*{Problem 3c.1}
+
+\subsubsection*{Problem 3c.1.a}
+\begin{align*}
+var[S^2]  &= Var[\frac{Y'(I_n-P)Y}{n-p}]\\
+&= \frac{1}{(n-p)^2}Var[Y'(I_n-P)Y]\\
+&= \frac{1}{(n-p)^2}\times (2\sigma^4(n-p))\\
+&= \frac{2\sigma^4}{n-p}
+\end{align*}
+
+\subsubsection*{Problem 3c.1.b}
+\begin{align*}
+A_1 &= \frac{1}{n-p+2}[I_n-X(X'X)^{-1}X']\\
+&= \frac{R}{n-p+2}\\
+E[(Y'A_1Y-\sigma^2)^2] &= Var(Y'A_1Y-\sigma^2) + (E[Y'A_1Y-\sigma^2])^2\\ 
+&= Var(Y'A_1Y) + (E[Y'A_1Y]-\sigma^2)^2\\
+&= \frac{Var(Y'RY)}{(n-p+2)^2} + ( \frac{E[Y'RY]}{(n-p+2)}-\sigma^2)^2\\
+&= \frac{2\sigma^4(n-p)}{(n-p+2)^2} + (\frac{\sigma^2(n-p)}{n-p+2}-\sigma^2)^2 \text{ using 3.12 from textbook}\\
+&= \frac{2\sigma^4(n-p)}{(n-p+2)^2} + \frac{4\sigma^4}{(n-p+2)^2}\\
+&= \frac{2\sigma^4}{n-p+2}
+\end{align*} 
+
+\subsubsection*{Problem 3c.1.c}
+\begin{align*}
+E[Y'A_1Y] &= \frac{E[Y'RY]}{n-p+2}\\
+&= \frac{\sigma^2(n-p)}{n-p+2}\text{ using 3.12 from textbook}\\
+MSE[Y'A_1Y] &= E[(Y'A_1Y-\sigma^2)^2]\\
+&= \frac{2\sigma^4}{n-p+2}\\
+MSE[S^2] &= E[S^2-(E[S^2])^2]\\
+&= Var(S^2)\\
+&= \frac{2\sigma^4}{n-p}\\
+&<\frac{2\sigma^4}{n-p+2}\\
+&\leq MSE[Y'A_1Y]
+\end{align*}
+
+\section*{Problem 3d.1}
+\subsubsection*{Problem 3d.1.a}
+Given $Y_i \sim N(\theta, \sigma^2)$ or $Y_i = \theta + \epsilon_i$ where $\epsilon_i \sim N(0, \sigma^2)$ \\
+$\mathbf{Y} = \mathbf{1_n}\theta + \mathbf{\epsilon}$ thus $\hat{\theta} = (\mathbf{1_n}'\mathbf{1_n})^{-1}\mathbf{1_n'}Y = \frac{1}{n}\mathbf{1_n'}Y  = \bar{Y}$
+
+Thus,  using theorem  $3.5(ii)$ $\bar{Y}$ and $S^2=\sum_i(Y_i-\bar{Y})^2$ are independent
+
+\subsubsection*{Problem 3d.1.b}
+Borrowing from part (a)  we have: $RSS=Q=\sum_i(Y_i-\bar{Y})^2$ $\implies$ using  theorem $3.5(iii)$:
+
+$RSS/\sigma^2 \sim \chi^2_{n-1}$
+
+\subsection*{Problem 3d.2}
+\begin{align*}
+RSS &= Y'(I_n-P)Y\\
+&= Y'(I_n-P)Y-\beta'X'(I-P)(Y-X\beta)+Y'(I-P)(-X\beta) \text{ both terms are zero using PX=P and P=P'} \\
+&= (Y-X\beta)'(I_n-P)(Y-X\beta)\\
+&= \epsilon'(I_n-P)\epsilon
+\end{align*}
+
+\begin{align*}
+(\hat{\beta}-\beta)'X'X(\hat{\beta}-\beta) &= Z'Z\\
+Z &= X(\hat{\beta}-\beta)\\
+&= X((X'X)^{-1}X'Y-(X'X)^{-1}X'X\beta)\\
+&= P(Y-X\beta)\\
+&= P\epsilon\\
+(\hat{\beta}-\beta)'X'X(\hat{\beta}-\beta) &= \epsilon'P'P\epsilon
+\end{align*}
+
+\begin{align*}
+Cov[RSS, (\hat{\beta}-\beta)'X'X(\hat{\beta}-\beta)] &= Cov[\epsilon'(I_n-P)\epsilon, \epsilon'P'P\epsilon]\\
+&=  Cov[\epsilon'(I_n-P)\epsilon, \epsilon'PP\epsilon] \text{ using } P'=P\\
+&=  Cov[\epsilon'(I_n-P)\epsilon, \epsilon' P\epsilon] \text{ using } PP = P\\
+&= \sigma^2(I-P)P \\
+&= 0
+\end{align*}
+Thus, $RSS$ and $(\hat{\beta}-\beta)'X'X(\hat{\beta}-\beta)$ are indepedent
+
+\subsection*{Problem 3.12}
+
+\begin{align*}
+Y &= X\beta + \epsilon\\
+\bar{Y} &= \frac{1}{n}\mathbf{1_n}Y\\
+\sum_i(Y_i-\hat{Y_i})^2  &= (Y-X\hat{\beta})'(Y-X\hat{\beta})\\
+&= (Y-X(X'X)^{-1}X'Y)'(Y-X(X'X)^{-1}X'Y)\\
+&= (Y-PY)'(Y-PY)\\
+&= Y'(I-P)'(I-P)Y\\
+&= Y'(I-P)Y\text{ using idempotency of } I-P\\
+Cov[\frac{1}{n}\mathbf{1_n}Y, (I-P)Y]\\
+&= \frac{1}{n}\mathbf{1_n}Cov[Y](I-P)'\\
+&= \sigma^2(n-p)\frac{1}{n}\mathbf{1_n}(I-P)'
+\end{align*}
+Since the first column of the design matrix is all 1, $1_n$ belongs to the column space of $X$  and is orthogonal to $(I-P)'$ (P being the projection matrix) $\implies Cov[\frac{1}{n}\mathbf{1_n}Y, (I-P)Y] = 0$
+\end{document}
+
+
+
