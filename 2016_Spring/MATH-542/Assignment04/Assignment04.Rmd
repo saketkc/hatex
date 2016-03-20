@@ -1,0 +1,133 @@
+---
+title: "Assignment 4"
+author: "Saket Choudhary"
+date: "March 20, 2016"
+output: html_document
+---
+
+## Problem 1
+
+```{r}
+x1 <- rexp(n=100)
+m.x1 <- mean(x1)
+m.x1
+```
+
+```{r}
+sd.x1 <- sd(x1)
+sd.x1
+```
+
+Mean: `r m.x1`
+
+Standard Deviation: `r sd.x1`
+
+## Problem 2
+```{r}
+x0.1 <- rexp(n=100, rate=0.1)
+x0.5 <- rexp(n=100, rate=0.5)
+x5 <- rexp(n=100, rate=5)
+x10 <- rexp(n=100, rate=10)
+```
+`x0.1`: Mean = `r mean(x0.1)` SD  = `r sd(x0.1)`
+
+`x0.5`: Mean = `r mean(x0.5)` SD  = `r sd(x0.5)`
+
+`x5`: Mean = `r mean(x5)` SD  = `r sd(x5)`
+
+`x10`: Mean = `r mean(x10)` SD  = `r sd(x10)`
+
+
+## Problem 3
+
+### Problem 3.a
+
+```{r}
+plot(c(0.1,0.5,1,5,10), c(mean(x0.1), mean(x0.5), mean(x1), mean(x5), mean(x10)), pch=2, xlab = 'Rate', ylab='Mean', main='Mean vs Rate')
+```
+
+
+### Problem 3.b
+
+```{r}
+plot(c(0.1,0.5,1,5,10), c(sd(x0.1), sd(x0.5), sd(x1), sd(x5), sd(x10)), pch=2, xlab = 'Rate', ylab='SD', main='SD vs Rate')
+```
+
+### Problem 3.c
+
+```{r}
+plot(c(mean(x0.1), mean(x0.5), mean(x1), mean(x5), mean(x10)), c(sd(x0.1), sd(x0.5), sd(x1), sd(x5), sd(x10)), pch=2, xlab = 'SD', ylab='Mean', main='Mean vs SD')
+```
+
+$E[X] = \frac{1}{\lambda}$ and $Var[X] = \frac{1}{\lambda^2}$ hence $E[X] vs \sqrt{Var[X]}$ follows a linear trend
+
+## Problem 4
+
+```{r}
+y <- rexp(n=1100000)
+```
+
+Mean of $y$: `r mean(y)`
+SD of $y$: `r sd(y)`
+
+## Problem 5
+
+```{r}
+hist(y)
+```
+
+$y$ is the PDF of exponential distribution and hence matches the following distribution $e^{-x}$
+
+```{r}
+h <- hist(y, plot = FALSE)
+ylim <- range(0, h$density, dexp(0))
+hist(y, freq = FALSE, ylim = ylim)
+curve(dexp, y, add=TRUE)
+```
+
+```{r}
+plot(seq(0,15,0.1), exp(-seq(0,15,0.1)), main='$e^{-x}$ vs $x$', xlab = '$x$', ylab='$y$')
+```
+
+
+## Problem 6
+```{r}
+y.mat  <- matrix(y, nrow=1100,ncol=1000)
+```
+
+## Problem 7
+
+```{r}
+mean(y.mat[,371])
+```
+
+## Problem 8
+
+```{r}
+col.m <- colMeans(y.mat)
+h <- hist(col.m, plot = FALSE)
+ylim <- range(0, h$density, dnorm(0))
+hist(col.m, freq = FALSE, ylim = ylim)
+curve(dnorm, col.m, add=TRUE)
+```
+
+The shape of the column means soes not match that of Problem 2 because of central limit theorem, which states 
+that the distribution of mean of large number of iterants(columns in this case) is approximately normal
+
+### Problem 9
+
+```{r}
+mean(y.mat[y.mat>1])
+```
+
+#Part 2
+
+```{r}
+temp.data <- read.csv("Temperature.csv", header=TRUE)
+temp.data$DateNr <- as.Date(temp.data$DateNr, format='%m/%d/%Y')
+month <- format(temp.data$DateNr, '%m')
+temp.data$month <- month
+uniq.months <- sort(unique(month))
+splitted.data <- split(temp.data, temp.data$month)
+
+```
