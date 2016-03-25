@@ -1,8 +1,9 @@
 ---
 title: "Assignment 4"
-author: "Saket Choudhary"
+author: "Saket Choudhary\n http://rpubs.com/saketkc/164963"
 date: "March 20, 2016"
-output: html_document
+output: pdf_document
+url: http://rpubs.com/saketkc/164963
 ---
 
 ## Problem 1
@@ -122,12 +123,62 @@ mean(y.mat[y.mat>1])
 
 #Part 2
 
+### Problem 2.a
 ```{r}
 temp.data <- read.csv("Temperature.csv", header=TRUE)
 temp.data$DateNr <- as.Date(temp.data$DateNr, format='%m/%d/%Y')
 month <- format(temp.data$DateNr, '%m')
-temp.data$month <- month
-uniq.months <- sort(unique(month))
-splitted.data <- split(temp.data, temp.data$month)
+year <- format(temp.data$DateNr, '%Y')
 
+temp.df <- data.frame(month)
+temp.df$month <- as.factor(month)
+temp.df$year <- as.factor(year)
+temp.df$Station <- temp.data$Station
+temp.df$temperature <- temp.data$Temperature
+head(temp.df)
+```
+
+```{r, warning=FALSE}
+agg <- aggregate(temperature~year+month, data=temp.df, mean, na.rm=TRUE)
+head(agg)
+```
+
+```{r}
+tempeture.list <- agg$temperature
+```
+
+```{r}
+print(agg[, c('year', 'month', 'temperature')])
+```
+
+### Problem 2.b
+
+```{r}
+count <- as.data.frame(table(temp.df$Station))
+print(count)
+sorted <- count[order(-count$Freq),]
+top10 <- sorted[1:10,]
+```
+
+Top 10 stations(with most number of readings): 
+```{r}
+print(top10)
+```
+
+```{r}
+top10.stations <- sorted$Var1
+```
+
+
+```{r}
+agg<-aggregate(temperature~Station+year+month, data=temp.df, mean)
+head(agg)
+```
+In the following part to draw the time series, I simply aggregate by years (since including month leads to a lot of data points on the X axis)
+
+```{r}
+library(ggplot2)
+agg<-aggregate(temperature~Station+year, data=temp.df, mean)
+agg$year <- as.numeric(agg$year)
+ggplot(agg, aes(x=year, y=temperature)) + geom_line() + aes(color=factor(Station))
 ```
