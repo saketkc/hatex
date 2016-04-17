@@ -1,0 +1,30 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{MATH 505B Homework 4}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 6.14.1}
+
+\begin{align*}
+\langle\ \mathbf{x}, \mathbf{Py} \rangle &= \sum_{k\in \theta} x_k (\mathbf{Py})_k\pi_k \\
+&= \sum_{k\in \theta} x_k (\sum_jp_{kj}y_j)\pi_k\\
+&= \sum_{k\in \theta} x_k (\sum_jp_{kj}\pi_ky_j)\\
+&= \sum_{k,j} x_k p_{kj}\pi_ky_j\\
+&= \sum_{k,j} x_k (p_{jk}\pi_jy_j) \text{ using reversibility criterion  } \pi_jp_{jk} = \pi_kp_{kj}\\ 
+&= \sum_{j} p_{jk}x_k \pi_jy_j\\
+&= \sum_{j \in \theta} (\sum_k p_{jk}x_k) \pi_jy_j\\
+&= \langle \mathbf{Px,y} \rangle
+\end{align*}
+
+\section*{Problem 6.14.2}
+
+
+\end{document}
