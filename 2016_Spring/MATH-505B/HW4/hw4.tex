@@ -3,6 +3,8 @@
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
 \usepackage{graphicx}
 
 \title{MATH 505B Homework 4}
@@ -25,6 +27,160 @@
 \end{align*}
 
 \section*{Problem 6.14.2}
+For reversibility: $\pi_ip_{ij} = \pi_jp_{ji}$:
 
+$p'_{ij}= b_{ij}g_{ij} = \frac{\pi_jg_{ji}g_{ij}}{\pi_ig_{ij}+\pi_jg_{ji}}$ and $p'_{ji} = \frac{\pi_ig_{ij}g_{ij}}{\pi_ig_{ij}+\pi_jg_{ji}}$
+
+Hence, $\pi_ip'_{ij} = \pi_jp'_{ji}$ and hence $b_{ij}$ satisfies reversibility criterion besides $ 0 \leq b_{ij} \leq 1$.
+
+\section*{Problem 7.2.1}
+\subsection*{7.2.1(a)}
+
+\begin{align*}
+\{E(|X+Y|^p)\}^{1/p} &= \{E|X^p|\}^{1/p} + \{E|Y^p|^{1/p}\}\\
+E[|X|] &= E[|X_n+X-X_n|]\\
+\{E[|X|^p]\}^{1/p} &= \{E[|X_n+X-X_n|^p]\}^{1/p}\\
+&\leq \{E[|X_n|^p]\}^{1/p}+\{E[|X-X_n|^p]\}^{1/p}\\
+\implies \lim_{n \longrightarrow \infty} \inf E[|X|^p] &\leq E[|X_n|^p]^{1/p}\numberthis \label{eqn1} \\
+\end{align*}
+
+Similarly,
+
+\begin{align*}
+\{E[|X_n|^p]\}^{1/p} &= \{E[|X_n-X+X|^p]\}^{1/p}\\
+&\leq \{E[|X|^p]\}^{1/p} + \{E[|X_n-X|]\}^{1/p}\\
+\implies  \lim_{n \longrightarrow \infty} \sup E[|X_n|^p] &\leq E[|X|^p] \numberthis \label{eqn2}
+\end{align*}
+
+Combining \ref{eqn1}, \ref{eqn2} : $E[|X_n|^p] \longrightarrow
+E[|X|^p]$ $p \geq 1$
+
+\subsection*{7.2.1(b)}
+Using $p=1$ in part (a)
+\subsection*{7.2.1(c)}
+Using part (a) $E[X_n^2] \longrightarrow E[X^2]$
+$(X_n \xrightarrow{2} X) \Rightarrow (X_n \xrightarrow{1} X)\ \implies E[X_n] \longrightarrow E[X]$ and hence $Var(X_n) \longrightarrow Var(X)$
+
+\section*{Problem 7.2.3}
+
+Consider $k \geq 0$, $ n\geq 1$,  $X_n=k/n \leq X < (k+1)/n$. 
+$X-1/n \leq X_n \leq X$
+
+Define similarly $Y_n$. $Y_n,X_n$ are independent by definition
+
+
+$E[X_n] \longrightarrow E[X]$ and $E[Y_n] \longrightarrow E[Y]$
+
+Thus, using independence and convergence relations $E[X_nY_n] = E[X_n]E[Y_n] \longrightarrow E[X]E[Y] $
+
+Now,
+\begin{eqnarray*}
+(X-1/n)(Y-1/n)\leq X_nY_n \leq XY\\
+\implies E[(X-1/n)(Y-1/n)]\leq E[X_nY_n] \leq E[XY]\\
+E[(X-1/n)(Y-1/n)] = E[XY-\frac{X+Y}{n}+1/n^2] 
+\implies E[X_nY_n] \longrightarrow E[XY]
+\end{eqnarray*}
+
+Thus combining, the above two results $E[X_nY_n] \longrightarrow E[XY]$ and $E[X_nY_n] \longrightarrow E[X][Y]$ 
+we get $E[XY]=E[X]E[Y]$
+
+\section*{Problem 7.2.10}
+
+$\sum_r X_r \sim Poisson(\sum_r \lambda_r)$
+
+Define $t=\sum_{r=1}^n \lambda_r$:
+\begin{align*}
+P(\sum_r X_r \leq x) &= \sum_{i=0}^x \frac{e^{-t}t^i}{i!}\\
+\lim_{n \longrightarrow \infty}P(\sum_r X_r \leq x)  &= \begin{cases} 0 & t\longrightarrow \infty\\
+Poisson(t) & t \text{is finite}
+\end{cases}
+\end{align*}
+
+\section*{Problem 7.4.1}
+
+\begin{align*}
+E[X_1] &= 0*(1-\frac{1}{n\log{n}} + 0*\frac{1}{2n\log n}\\
+&=0\\
+E[X_1^2] &= \frac{2n^2}{2n\log{n}}+0*(1-\frac{1}{n\log{n}}\\
+&= \frac{n}{\log{n}}\\
+E[(\frac{1}{n}S_n-0)^2] &= \frac{1}{n^2}Var(S_n)\\
+&= \frac{1}{n^2}\frac{n}{\log{n}}\\
+&= \frac{1}{n \log{n}}
+&\longrightarrow 0
+\end{align*}
+
+$\sum_i P(|X_i| \geq i) 
+\longrightarrow \infty$ Hence, using Borel-Cantelli Lemma(7.3.10b)
+we have $P(|X_j| \geq j) =1$ for some $j$
+$|X_j| = |S_j-S_{j-1}| \geq j$ and hence $S_j/j$ diverges.
+
+
+\section*{Problem 7.5.1}
+Define $I_{i}(j)$ as the indicator variable denoting if the $X_j$ lies in the $i^{th}$ interval,
+\begin{align*}
+\log{R_m} &= \sum_{i=1}^n Z_m(i) \log p_i\\
+&= \sum_{i=1}^n \sum_{j=1}^m I_i(j) p_i\\
+\end{align*}
+Define $\sum_{i=1}^m I_i(j)=Y_j$, then $\log{R_m} = \sum_{j=1}^m Y_j$ 
+
+$E[Y_j]=\sum_{i=1}^np_i\log{p_i}=-h$
+Thus, by strong law of convergence $\frac{1}{m}\sum_{j=1}^m Y_j = \ \longrightarrow -h=E[Y_j]$
+
+\section*{Problem 7.5.3}
+Transient $P(X_n=i|X_0=i)< 1$
+
+Using strong law $S_n/n \longrightarrow E[X_1]$ If $E[X_1]\neq 0$ then $P[S_n=0|S_1=0] < 1$ as $S_n=0$ happens only finitely often
+
+\section*{Problem 7.7.1}
+\begin{align*}
+E[X_iX_j] &= E[E[X_iX_j|X_0,X_1,\dots, X_{j-1}]]\\
+&= E[E[X_i(S_j-S_{j-1})|X_0,X_1,\dots,X_{j-1}]]\\
+&= E[X_i(E[S_j-S_{j-1}|X_0,X_1,\dots,X_{j-1}])]\\
+&= E[X_i(E[S_j|X_0,X_1,\dots,X_{j-1}]-S_{j-1})]\\
+&= E[X_i(S_{j-1}-S_{j-1})]\\
+&=0
+\end{align*}
+
+\section*{Problem 7.7.3}
+\begin{align*}
+E[X_{n+1}|X_0,X_1,\dots,X_n] &= aX_n+X_{n-1} \\
+E[S_{n+1}|X_0,X_1,\dots, X_n] &= E[\alpha X_{n+1}+X_{n}|X_0,X_1,\dots,X_n]\\
+&= \alpha E[X_{n+1}|X_0,X_1,\dots, X_n] + X_n\\
+&= (\alpha a+1)X_n + \alpha bX_{n-1}\\
+&= S_n = \alpha X_n+X_{n-1}\\
+\implies \alpha = \frac{1}{1-a}, b=\frac{1}{\alpha}
+\end{align*}
+
+\section*{Problem 7.7.4}
+$X_n$: Net profit per unit stake on $n^{th}$ play.
+
+$S_{i} = S_{i-1}+f_{i}(X_1,X_2,\dots,X_i)$ 
+such that $S_1=X_1Y$
+
+Thus, $S_{n} = \sum_{i=1}^n X_if_{i-1}(X_1,X_2,\dots, X_{i-1})$
+
+\begin{align*}
+S_{n+1} &=  S_n + f_{n+1}(X_1,X_2,\dots, X_n)X_{n+1}\\
+E[S_{n+1}-S_n|X_1,X_2,\dots,X_n] &= E[X_{n+1}f_{n+1}(X_1,X_2,\dots, X_n)|X_1,X_2,\dots,X_n]\\ 
+&= f_{n+1}(X_1,X_2,\dots, X_n)E[X_{n+1}|X_1,X_2,\dots,X_n]\\
+&= 0\\
+\implies E[S_{n+1}|X_1,X_2,\dots,X_n] &= S_n
+\end{align*}
+
+\section*{Problem 7.8.1}
+$E[X_i]=0$ 
+By Doob-Kolmogorov inquality: 
+
+\begin{align*}
+P(\max_{i\leq j \leq n} |S_j| > \epsilon) &\leq \frac{1}{\epsilon^2} \sum_{j=1}^{n}E[S_n^2]\\
+E[S_n^2] &= Var(S_n)+E[S_n]^2\\
+&= Var(S_n)\\
+&= \sum Var(X_i)\\
+\implies P(\max_{i\leq j \leq n} |S_j| > \epsilon) \leq \frac{1}{\epsilon^2} \sum_{j=1}^{n}Var(X_j)
+\end{align*}
+
+\section*{Problem 7.8.3}
+By theorem 7.8.1 $S_n$ converges to $S$ almost surely
+Now, using the above proved fact that $S_n \longrightarrow S \implies Var(S_n) \longrightarrow Var(S) \implies Var(S) \longrightarrow 0$
 
 \end{document}
