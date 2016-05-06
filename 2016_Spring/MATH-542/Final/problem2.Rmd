@@ -16,7 +16,10 @@ chemical.data <- read.csv('chemical.csv', header=T)
 N <- nrow(chemical.data)
 model <- lm(y1 ~ x1 + x2 + x3, data=chemical.data)
 model.summary <- summary(model)
-print(xtable(model.summary, caption="Model 1 Summary"))
+print(xtable(model.summary, caption="Model 1 Summary", 
+             table.placement = "h!", 
+             caption.placement = "top")
+             ,comment = FALSE)
 ```
 
 ## Part (2.1)
@@ -32,8 +35,7 @@ sigma.squared <- sigma**2
 print(kable(beta))
 ```
 
-### $\sigma^2$:  
-`r sigma.squared`
+### $\sigma^2$:  `r sigma.squared`
 
 
 ## Part (2.2)
@@ -41,7 +43,8 @@ print(kable(beta))
 ### Covariance matrix of the coefficients:
 ```{r, results="asis"}
 cov.beta <- vcov(model)
-print(xtable(cov.beta, caption="Part 2.2 Covariance matrix of coefficients"))
+print(xtable(cov.beta, caption="Part 2.2 Covariance matrix of coefficients"),
+      comment=F)
 ```
 
 ## Part (2.3)
@@ -52,7 +55,7 @@ R.adjusted <- model.summary$adj.r.squared
 ```
 
 ### Coefficient of determination:
-$R^2$ `r R.unadjusted`
+$R^2$: `r R.unadjusted`
 
 $R^2 adjusted$: `r R.adjusted`
 
@@ -61,7 +64,7 @@ $R^2 adjusted$: `r R.adjusted`
 ```{r, results="asis"}
 model2 <- lm(y1 ~ x1+x2+x3+I(x1^2)+I(x2^2)+I(x3^2)+x1*x2+x1*x3+x2*x3, data=chemical.data)
 model2.summary <- summary(model2)
-print(xtable(model2.summary, caption= "Model 2 Summary"))
+print(xtable(model2.summary, caption= "Model 2 Summary"), comment=F)
 ```
 
 ```{r}
@@ -72,36 +75,41 @@ sigma2 <- summary(model2)$sigma
 sigma2.squared <- sigma2**2
 ```
 
-Thus, $\hat{\beta}$: `r print(kable(beta2.adj.constant))`
-and $\sigma^2$: `r print(sigma2.squared)`
+Thus, $\hat{\beta}$: 
+```{r} 
+print(kable(beta2.adj.constant))
+```
+
+and $\sigma^2$: `r sigma2.squared`
 
 ## Part (2.5)
 
 ```{r}
 R2.unadjusted <- model2.summary$r.squared
-
 R2.adjusted <- model2.summary$adj.r.squared
 ```
 
 For the second model:
 
 $R^2$ `r R2.unadjusted`
+
 $R^2 adjusted$: `r R2.adjusted`
 
 
 ## Part (2.6)
 
 ```{r, results="asis"}
-print(xtable(anova(model2, model, test='F')))
+print(xtable(anova(model2, model, test='F')), 
+      comment=F)
 ```
 
-Hence on a p-value threshold of 0.01, we fail to reject(since p-value=0.43) $H_0: \beta_4 = \beta_5 = \dots = \beta_9 = 0$
+Hence on a p-value threshold of 0.01, we FAIL to reject(since p-value=0.43) $H_0: \beta_4 = \beta_5 = \dots = \beta_9 = 0$
 
 
 ## Part (2.7)
 
 ```{r}
-CI <- confint(model2, level=0.95, c(2,3,4))
+CI <- confint(model2, level=0.95, c(1,2,3,4))
 CI
 ```
 
@@ -110,8 +118,8 @@ Check this:
 p <- 10
 k <- 3
 alpha <- 0.05
-coef <- model2.summary$coefficients[,1][c(2,3,4)]
-err <- model2.summary$coefficients[,2][c(2,3,4)]
+coef <- beta2.adj.constant[c(1,2,3,4)]
+err <- model2.summary$coefficients[,2][c(1,2,3,4)]
 coef - err * qt(1-alpha/2, N-p) ## same as CI above
 ```
 
@@ -231,6 +239,7 @@ colnames(df) <- c('$y_i$', '$\\hat{y}_i$',
                   '$r_i$' , '$t_i$', '$D_i$')
 html <- xtable(df, auto=TRUE)
 print(html, sanitize.text.function=function(x){x}, 
-      size = "\\setlength{\\tabcolsep}{12pt}")
+      size = "\\setlength{\\tabcolsep}{12pt}", 
+      comment=F)
 ```
 
