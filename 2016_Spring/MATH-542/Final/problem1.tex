@@ -80,7 +80,8 @@ Y &= \begin{pmatrix}
 \beta_1\\
 \vdots\\
 \beta_{p-1}
-\end{pmatrix}+ \mathbf{\epsilon}
+\end{pmatrix}+ \mathbf{\epsilon}\\
+\implies \mathbf{X_c} &= (\mathbf{I}-\frac{\mathbf{1_n1_n'}}{n})X
 \end{align*}
 
 \subsection*{Problem 1.3}
@@ -109,7 +110,40 @@ Y_n &= \alpha + \beta_1(x_{n1}-\bar{x}_1) + \beta_2(x_{n2} - \bar{x}_2) + \dots 
 \end{align*}
 Now, we perform $Y_i-\bar{Y}$ eliminating $\alpha$ Let $Z=Y_i-\bar{Y}$m the problem then reduces to the following form: $Z = \mathbf{X_c}\beta + \epsilon$ where $\beta = \begin{pmatrix}
 \beta_1 & \beta_2 & \dots & \beta_{p-1}
-\end{pmatrix}$ and hence simply using OLS results, $\hat{\beta} =\mathbf{X_c'X_c}^{-1}\mathbf{X_c'}Y$
+\end{pmatrix}$ and hence simply re-using OLS results, $\hat{\beta} =\mathbf{X_c'X_c}^{-1}\mathbf{X_c'}Y$
+
+More rigorously:
+
+\begin{align*}
+\hat{\beta} &= (X'X)^{-1}X'Y\\
+X'X\hat{\beta} &= X'Y\\ 
+\mathbf{X'X} &= \begin{pmatrix}
+\mathbf{1_n}'\\
+\mathbf{X_c}'
+\end{pmatrix} \begin{pmatrix}
+\mathbf{1_n} & \mathbf{X_c}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+\mathbf{1_n}' \mathbf{1_n} & \mathbf{1_n'X_c}\\
+\mathbf{X_c'1_n} & \mathbf{X_c'X_c}
+\end{pmatrix}\\
+\begin{pmatrix}
+\mathbf{1_n}' \mathbf{1_n} & \mathbf{1_n'X_c}\\
+\mathbf{X_c'1_n} & \mathbf{X_c'X_c}
+\end{pmatrix} \begin{pmatrix}
+\alpha\\
+\beta_1
+\end{pmatrix} &= \begin{pmatrix}
+\mathbf{1_n'}\\
+\mathbf{X_c'}
+\end{pmatrix}\mathbf{Y}\\
+\implies n\hat{\alpha} + \mathbf{1_n'X_c}\beta_1 &= \sum_{i=1}Y_i = n\bar{Y} \text{using first row}\\
+\hat{\alpha} + 0 &= \bar{Y} \text{ since }\mathbf{X_c'1_n1} =0 \\
+\implies \hat{\alpha} &= \bar{Y}\\
+\mathbf{X_c'1_n1_n'} + \mathbf{X_c'X_c}\hat{\beta_1} &= \mathbf{X_c'Y} \text{using second row}\\
+\implies \mathbf{X_c'X_c}\hat{\beta_1} &= \mathbf{X_c'Y} \text{ since }\mathbf{X_c'1_n1} =0\\
+\implies \hat{\beta_1} &= \mathbf{(X_c'X_c)^{-1}X_c'Y}
+\end{align*}
 
 
 \subsection*{Problem 1.4.b}
@@ -150,10 +184,10 @@ n & 0\\
 (X'X)^{-1}X'Y &= \begin{pmatrix}
 \frac{1}{n} & 0\\
 0 & (\mathbf{X_c'X_c})^{-1}
-\end{pmatrix}\begin{pmatrix}
+\end{pmatrix}_{(p+1) \times (p+1)}\begin{pmatrix}
 \mathbf{1_n}'\\
 \mathbf{X_c}'
-\end{pmatrix}\mathbf{Y}\\
+\end{pmatrix}_{(p+1) \times n}\mathbf{Y}_{n \times 1}\\
 &= \begin{pmatrix}
 \frac{1}{n} & 0\\
 0 & (\mathbf{X_c'X_c})^{-1}
@@ -168,7 +202,7 @@ n & 0\\
 &= \begin{pmatrix}
 \bar{Y}\\
 \mathbf{(X_c'X_c)^{-1}X_c}'Y
-\end{pmatrix}\\
+\end{pmatrix}_{p \times 1}\\
 \begin{pmatrix}
 \alpha\\
 \beta_1\\
@@ -189,7 +223,20 @@ Yes, column space of $X$ is identical to $\begin{pmatrix}
 
 \subsection*{Problem 1.6}
 \begin{align*}
-X_c(X_c'X_c)^{-1}X_c + 1_n1_n'\\
+\mathbf{P} &= \mathbf{X(X'X)^{-1}X'Y}\\
+&= \begin{pmatrix}
+\mathbf{1_n} & X_c
+\end{pmatrix} \begin{pmatrix}
+\frac{1}{n} & 0\\
+0 & (\mathbf{X_c'X_c})^{-1}
+\end{pmatrix}\begin{pmatrix}
+\mathbf{1_n'}\\
+\mathbf{X_c'}
+\end{pmatrix}\\
+\implies \mathbf{P} &= \mathbf{X_c(X_c'X_c)^{-1}X_c'} + \frac{\mathbf{1_n1_n'}}{n}\\
+\end{align*}
+
+\begin{align*}
 SSE &= \mathbf{\epsilon'\epsilon}\\
 &=(Y-X\hat{\beta})'(Y-X\hat{\beta})\\
 &= Y'Y-\hat{\beta}'X'Y-Y'X\hat{\beta}+\hat{\beta}'X'X\hat{\beta}\\
@@ -221,7 +268,7 @@ SSE &= \mathbf{\epsilon'\epsilon}\\
 Y_i^* &= Y_i-\bar{Y}\\
 \mathbf{Y}^* &= \mathbf{Y}-\frac{1}{n}\mathbf{1_n1_n'Y}\\
 \sum_{i=1}^n(Y_i-\bar{Y})^2 &= \mathbf{Y'}^{*}\mathbf{Y}^*\\
-SSE &= \mathbf{Y'}^{*}\mathbf{Y}^*-\mathbf{Y'^*P_c}\mathbf{Y^*}
+\implies SSE &= \mathbf{Y'}^{*}\mathbf{Y}^*-\mathbf{Y'^*P_c}\mathbf{Y^*}
 \end{align*}
 
 \end{document}

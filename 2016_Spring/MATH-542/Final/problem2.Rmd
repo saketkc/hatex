@@ -5,6 +5,7 @@ date: "4/30/2016"
 output: pdf_document
 ---
 ```{r, echo=FALSE}
+library(knitr)
 library(xtable)
 library(knitr)
 options(xtable.timestamp = "")
@@ -55,9 +56,10 @@ R.adjusted <- model.summary$adj.r.squared
 ```
 
 ### Coefficient of determination:
-$R^2$: `r R.unadjusted`
 
-$R^2 adjusted$: `r R.adjusted`
+### $R^2$: `r R.unadjusted`
+
+### $R^2 adjusted$: `r R.adjusted`
 
 ## Part (2.4)
 
@@ -76,7 +78,7 @@ sigma2.squared <- sigma2**2
 ```
 
 Thus, $\hat{\beta}$: 
-```{r} 
+```{r, echo=FALSE} 
 print(kable(beta2.adj.constant))
 ```
 
@@ -91,9 +93,9 @@ R2.adjusted <- model2.summary$adj.r.squared
 
 For the second model:
 
-$R^2$ `r R2.unadjusted`
+### $R^2$ `r R2.unadjusted`
 
-$R^2 adjusted$: `r R2.adjusted`
+### $R^2 adjusted$: `r R2.adjusted`
 
 
 ## Part (2.6)
@@ -123,10 +125,10 @@ err <- model2.summary$coefficients[,2][c(1,2,3,4)]
 coef - err * qt(1-alpha/2, N-p) ## same as CI above
 ```
 
-Thus,95% CI for $\beta_0,\beta_1,\beta_2, \beta_3$: 
+### Thus, 95% CI for $\beta_0,\beta_1,\beta_2, \beta_3$: 
 
-```{r} 
-print(kable(CI))
+```{r,  results="asis", echo=FALSE} 
+print(xtable(as.data.frame(CI), labels=c('2.5%', '97.5%')), comment=F)
 ```
 
 
@@ -141,14 +143,14 @@ t.stats <- qt(1-alpha/(2*N),df=N-p)
 ```{r}
 CI.bonferroni.ub <-  coef + std.err.coef * t.stats 
 CI.bonferroni.lb <-  coef - std.err.coef * t.stats
-CI.bonferroni <- c(CI.bonferroni.lb, CI.bonferroni.ub)
-CI.bonferroni
+CI.bonferroni <- data.frame('$2.5%(LB)$'=CI.bonferroni.lb, '97.5(UB)'=CI.bonferroni.ub)
+rownames(CI.bonferroni) <- c('x1', 'x2', 'x3')
 ```
 
-95% bonferroni CI for $\beta_0,\beta_1,\beta_2, \beta_3$: 
+### 95% bonferroni CI for $\beta_1(x1),\beta_2(x2), \beta_3(x3)$: 
 
-```{r} 
-print(kable(CI.bonferroni))
+```{r, results="asis", echo=FALSE} 
+print(xtable(CI.bonferroni, labels=c('$2.5%(LB)$', '97.5(UB)'), sanitize.text.function=function(x){x}), comment=F)
 ```
 
 ## Part (2.9)
@@ -159,12 +161,14 @@ tukey.stats <- qtukey(1-alpha/2, nmeans=k  ,df=N-p)
 CI.tukeys.ub <- coef + std.err.coef * tukey.stats
 CI.tukeys.lb <- coef - std.err.coef * tukey.stats
 CI.tukeys <- c(CI.tukeys.lb, CI.tukeys.ub)
-CI.tukeys
+CI.tukeys <- data.frame('2.5(LB)'=CI.tukeys.lb, '97.5(UB)'=CI.tukeys.ub)
+rownames(CI.tukeys) <- c('x1', 'x2', 'x3')
 ```
 
-Tukey's 95% CI : 
-```{r} 
-print(kable(CI.tukeys))
+### Tukey's 95% CI for $\beta_1(x1),\beta_2(x2), \beta_3(x3)$: 
+
+```{r, results="asis", echo=FALSE} 
+print(xtable(CI.tukeys, sanitize.text.function=function(x){x}), comment=F)
 ```
 
 
@@ -175,13 +179,14 @@ kfk <- k*qf(1-alpha/2, df1=k, df2=p)
 CI.scheffes.ub <- coef + std.err.coef * (kfk**0.5)
 CI.scheffes.lb <- coef - std.err.coef * (kfk**0.5)
 CI.scheffes <- c(CI.scheffes.lb, CI.scheffes.ub)
-CI.scheffes
+CI.scheffes <- data.frame('2.5(LB)'=CI.scheffes.lb, '97.5(UB)'=CI.scheffes.ub)
+rownames(CI.scheffes) <- c('x1', 'x2', 'x3')
 ```
 
-Scheffe's's 95% CI : 
+### Scheffe's 95% CI for $\beta_1(x1),\beta_2(x2), \beta_3(x3)$: 
 
-```{r} 
-print(kable(CI.scheffes))
+```{r, results="asis", echo=FALSE} 
+print(xtable(CI.scheffes, sanitize.text.function=function(x){x}), comment=F)
 ```
 
 
@@ -194,11 +199,9 @@ xob.CI <- c(xob.CI.lb, xob.CI.ub)
 print (xob.CI)
 ```
 
-95% CI: 
+$x_0'\beta$: `r xob`
 
-```{r}
-print(kable(xob.CI))
-```
+95% CI for $x_0'\beta$ : [`r xob.CI[1]`, `r xob.CI[2]`]
 
 
 ## Part (2.12)
@@ -210,11 +213,8 @@ xob.PI <- c(xob.PI.lb, xob.PI.ub)
 print (xob.PI)
 ```
 
-96% Prediction Interval: 
+95% Prediction Interval for $x_0'\beta$: [`r xob.PI[1]`, `r xob.PI[2]`]
 
-```{r} 
-print(kable(xob.PI))
-```
 
 ## Part (2.13)
 ```{r kable}
