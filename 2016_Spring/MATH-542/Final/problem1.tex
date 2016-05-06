@@ -92,6 +92,14 @@ Y &= \begin{pmatrix}
 \end{pmatrix} \begin{pmatrix}
 \mathbf{I}-\frac{1}{n}\mathbf{1_n1_n'}
 \end{pmatrix}\mathbf{X}\\
+&= \begin{pmatrix}
+1 & 1 & 1 & \dots & 1
+\end{pmatrix} \begin{pmatrix}
+1-\frac{1}{n} & \frac{-1}{n} & \frac{-1}{n} & \dots & \frac{-1}{n}\\
+\frac{-1}{n} &1-\frac{1}{n} & -\frac{1}{n} & \dots & -\frac{1}{n}\\
+\vdots\\
+\frac{-1}{n} &-\frac{1}{n} & -\frac{1}{n} & \dots & 1-\frac{1}{n}\\
+\end{pmatrix}\\
 &= (1-\frac{1}{n}) -\frac{1}{n}*(n-1)\\
 &= 0
 \end{align*}
