@@ -1,0 +1,227 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\usepackage{graphicx}
+\usepackage{fullpage}
+\title{MATH 542 Final Exam}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\subsection*{Problem 1a}
+
+\begin{align*}
+Y_i &= \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_{p-1}x_{i,p-1} + \epsilon_i\\
+Y_i &= \alpha + \beta_1(x_{i1}-\bar{x}_1) + \beta_2(x_{i2} - \bar{x}_2) + \dots + \beta_{p-1}(x_{i,p-1}-\bar{x}_{p-1})\\
+&= \alpha - \beta_1 \bar{x}_1 -\beta_2 \bar{x}_2 - \dots - \beta_{p-1}\bar{x}_{p-1} + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_{p-1}x_{i,p-1} + \epsilon_i\\
+\implies \beta_0 &= \alpha - \beta_1 \bar{x}_1 -\beta_2 \bar{x}_2 - \dots - \beta_{p-1}\bar{x}_{p-1}\\
+\implies \alpha &= \beta_0 + \beta_1 \bar{x}_1 -\beta_2 \bar{x}_2 - \dots - \beta_{p-1}\bar{x}_{p-1}
+\end{align*}
+
+\subsection*{Problem 1.2}
+\begin{align*}
+\bar{x_j} &= \sum_{i=1}^n \frac{x_{ij}}{n}\\
+&= \frac{1}{n}\mathbf{1_n}'\mathbf{X_i}\\
+Y &= \begin{pmatrix}
+1 & x_{11}-\bar{x}_1 & x_{12}-\bar{x}_2 & \dots & x_{1,p-1}-\bar{x}_{p-1}\\
+1 & x_{21}-\bar{x}_2 & x_{22}-\bar{x}_2 & \dots & x_{2, p-1}-\bar{x}_{p-1}\\
+\vdots & \\
+1 & x_{n1}-\bar{x}_1 & x_{n2}-\bar{x}_2 & \dots & x_{n,p-1}-\bar{x}_{p-1}
+\end{pmatrix}\begin{pmatrix}
+\alpha\\
+\beta_1\\
+\vdots\\
+\beta_{p-1}
+\end{pmatrix} + \mathbf{\epsilon}\\
+&=\big(\begin{pmatrix}
+1 & x_{11} & x_{12} & \dots & x_{1,p-1}\\
+1 & x_{21} & x_{22} & \dots & x_{2, p-1}\\
+\vdots & \\
+1 & x_{n1} & x_{n2} & \dots & x_{n,p-1}
+\end{pmatrix}- \begin{pmatrix}
+0 & \bar{x}_1 & \bar{x}_2 & \dots & \bar{x}_{p-1}\\
+0 & \bar{x}_1 & \bar{x}_2 & \dots & \bar{x}_{p-1}\\
+\vdots & \\
+0 & \bar{x}_1 & \bar{x}_2 & \dots & \bar{x}_{p-1}\\
+\end{pmatrix} \big)\begin{pmatrix}
+\alpha\\
+\beta_1\\
+\vdots\\
+\beta_{p-1}
+\end{pmatrix} + \mathbf{\epsilon}\\
+&= \big(\begin{pmatrix}
+\mathbf{1_n} & \mathbf{X}
+\end{pmatrix} - \begin{pmatrix}
+\mathbf{0_n} & \frac{1}{n}\mathbf{1_n1_n'X}
+\end{pmatrix}\big)\begin{pmatrix}
+\alpha\\
+\beta_1\\
+\vdots\\
+\beta_{p-1}
+\end{pmatrix} + \mathbf{\epsilon}\\
+&= \begin{pmatrix}
+\mathbf{1_n} & \mathbf{X}-\frac{1}{n}\mathbf{1_n1_n'X}
+\end{pmatrix}\begin{pmatrix}
+\alpha\\
+\beta_1\\
+\vdots\\
+\beta_{p-1}
+\end{pmatrix}+ \mathbf{\epsilon}\\
+&= \begin{pmatrix}
+\mathbf{1_n} & \mathbf{X_c}
+\end{pmatrix}\begin{pmatrix}
+\alpha\\
+\beta_1\\
+\vdots\\
+\beta_{p-1}
+\end{pmatrix}+ \mathbf{\epsilon}
+\end{align*}
+
+\subsection*{Problem 1.3}
+
+\begin{align*}
+\mathbf{1_n'X_c} &= \begin{pmatrix}
+1 & 1 & 1 & \dots & 1
+\end{pmatrix} \begin{pmatrix}
+\mathbf{I}-\frac{1}{n}\mathbf{1_n1_n'}
+\end{pmatrix}\mathbf{X}\\
+&= (1-\frac{1}{n}) -\frac{1}{n}*(n-1)\\
+&= 0
+\end{align*}
+
+\subsection*{Problem 1.4.a}
+
+\begin{align*}
+Y_1 &= \alpha + \beta_1(x_{11}-\bar{x}_1) + \beta_2(x_{12} - \bar{x}_2) + \dots + \beta_{p-1}(x_{1,p-1}-\bar{x}_{p-1})\\
+Y_2 &= \alpha + \beta_1(x_{21}-\bar{x}_1) + \beta_2(x_{22} - \bar{x}_2) + \dots + \beta_{p-1}(x_{2,p-1}-\bar{x}_{p-1})\\
+\vdots \\
+Y_n &= \alpha + \beta_1(x_{n1}-\bar{x}_1) + \beta_2(x_{n2} - \bar{x}_2) + \dots + \beta_{p-1}(x_{n,p-1}-\bar{x}_{p-1})\\
+\hline\\
+\sum_{i=1}Y_i &= n\alpha + \beta_1(\sum_{i=1}x_{i1}-n\bar{x}_1) + \beta_2(\sum_{i=1}x_{i2}-n\bar{x}_2) + \dots + \beta_{p-1}(\sum_{i=1}x_{i,p-1}-n\bar{x}_{p-1})\\
+\sum_{i=1}x_{i,j}-n\bar{x}_j &= 0\\
+\implies \hat{\alpha} &= \frac{\sum_{i=1}Y_i}{n}
+\end{align*}
+Now, we perform $Y_i-\bar{Y}$ eliminating $\alpha$ Let $Z=Y_i-\bar{Y}$m the problem then reduces to the following form: $Z = \mathbf{X_c}\beta + \epsilon$ where $\beta = \begin{pmatrix}
+\beta_1 & \beta_2 & \dots & \beta_{p-1}
+\end{pmatrix}$ and hence simply using OLS results, $\hat{\beta} =\mathbf{X_c'X_c}^{-1}\mathbf{X_c'}Y$
+
+
+\subsection*{Problem 1.4.b}
+Inverse of a block matrix
+\begin{align*}
+\begin{pmatrix}
+A_{11} & A_{12}\\
+A_{21} & A_{22}
+\end{pmatrix}^{-1} &= \begin{pmatrix}
+(A_{11}-A_{12}A_{22}^{-1}A_{21})^{-1} & -(A_{11}-A_{12}A_{22}^{-1}A_{21})^{-1}A_{12}A_{22}^{-1}\\
+-(A_{22}-A_{21}A_{11}^{-1}A_{12})^{-1} & (A_{22}-A_{21}A_{11}^{-1}A_{12})
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+\mathbf{X'X} &= \begin{pmatrix}
+\mathbf{1_n}'\\
+\mathbf{X_c}'
+\end{pmatrix} \begin{pmatrix}
+\mathbf{1_n} & \mathbf{X_c}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+\mathbf{1_n}' \mathbf{1_n} & \mathbf{1_n'X_c}\\
+\mathbf{X_c'1_n} & \mathbf{X_c'X_c}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+\mathbf{1_n}' \mathbf{1_n} & 0\\
+0 & \mathbf{X_c'X_c}
+\end{pmatrix}\\
+\mathbf{X'X}^{-1} &= \begin{pmatrix}
+\mathbf{1_n}' \mathbf{1_n} & \mathbf{1_n'X_c}\\
+\mathbf{X_c'1_n} & \mathbf{X_c'X_c}
+\end{pmatrix}^{-1}\\
+&= \begin{pmatrix}
+n & 0\\
+0 & (\mathbf{X_c'X_c})^{-1}
+\end{pmatrix}\\
+(X'X)^{-1}X'Y &= \begin{pmatrix}
+\frac{1}{n} & 0\\
+0 & (\mathbf{X_c'X_c})^{-1}
+\end{pmatrix}\begin{pmatrix}
+\mathbf{1_n}'\\
+\mathbf{X_c}'
+\end{pmatrix}\mathbf{Y}\\
+&= \begin{pmatrix}
+\frac{1}{n} & 0\\
+0 & (\mathbf{X_c'X_c})^{-1}
+\end{pmatrix}\begin{pmatrix}
+\mathbf{1_n}'Y\\
+\mathbf{X_c}'Y
+\end{pmatrix}\\
+&= \begin{pmatrix}
+\frac{1}{n}\mathbf{1_n}'Y_{1 \times 1}\\
+\mathbf{(X_c'X_c)^{-1}X_c}'Y_{p-1 \times 1}
+\end{pmatrix}\\
+&= \begin{pmatrix}
+\bar{Y}\\
+\mathbf{(X_c'X_c)^{-1}X_c}'Y
+\end{pmatrix}\\
+\begin{pmatrix}
+\alpha\\
+\beta_1\\
+\beta_2\\
+\vdots\\
+\beta_{p-1}\end{pmatrix} &= \begin{pmatrix}
+\bar{y}\\
+\mathbf{(X_c'X_c)^{-1}X_c}'Y_{p-1\times 1}
+\end{pmatrix}
+\end{align*}
+
+
+\subsection*{Problem 1.5}
+
+Yes, column space of $X$ is identical to $\begin{pmatrix}
+\mathbf{1_n} & \mathbf{X_c}
+\end{pmatrix}$ since $X_c = (I-\frac{J}{n})X$
+
+\subsection*{Problem 1.6}
+\begin{align*}
+X_c(X_c'X_c)^{-1}X_c + 1_n1_n'\\
+SSE &= \mathbf{\epsilon'\epsilon}\\
+&=(Y-X\hat{\beta})'(Y-X\hat{\beta})\\
+&= Y'Y-\hat{\beta}'X'Y-Y'X\hat{\beta}+\hat{\beta}'X'X\hat{\beta}\\
+&= Y'Y-2Y'X\hat{\beta} + \hat{\beta}'X'X\{(X'X)^{-1}X'Y\}\\
+&= Y'Y-2Y'X\hat{\beta} + \hat{\beta}'IX'Y\\
+&= Y'Y-2Y'X\hat{\beta} + \hat{\beta}'X'Y\\
+&= Y'Y-2Y'X\hat{\beta} + Y'X\hat{\beta}'\\
+&= Y'Y-Y'X\hat{\beta}\\
+&= Y'Y-Y'\begin{pmatrix}
+1_n & X_c
+\end{pmatrix}\begin{pmatrix}
+\bar{y}\\
+\mathbf{(X_c'X_c)^{-1}X_c}'Y_{p-1\times 1}
+\end{pmatrix}\\
+&=Y'Y-Y'\begin{pmatrix}
+1_n & X_c
+\end{pmatrix}\begin{pmatrix}
+\frac{1}{n}1_n'\mathbf{Y}\\
+\mathbf{(X_c'X_c)^{-1}X_c}'Y_{p-1\times 1}
+\end{pmatrix}\\ 
+&= Y'(I-\frac{1_n1_n'}{n})Y - \mathbf{Y'X_c}\mathbf{(X_c'X_c)^{-1}X_c}'\mathbf{Y}\\
+&=\sum_{i=1}^n(Y_i-\bar{Y})^2 -\mathbf{Y'X_c}\mathbf{(X_c'X_c)^{-1}X_c}'\mathbf{Y}\\
+&=\sum_{i=1}^n(Y_i-\bar{Y})^2 -\mathbf{Y'P_c}\mathbf{Y}\\
+\end{align*}
+
+\subsection*{Problem 1.7}
+
+\begin{align*}
+Y_i^* &= Y_i-\bar{Y}\\
+\mathbf{Y}^* &= \mathbf{Y}-\frac{1}{n}\mathbf{1_n1_n'Y}\\
+\sum_{i=1}^n(Y_i-\bar{Y})^2 &= \mathbf{Y'}^{*}\mathbf{Y}^*\\
+SSE &= \mathbf{Y'}^{*}\mathbf{Y}^*-\mathbf{Y'^*P_c}\mathbf{Y^*}
+\end{align*}
+
+\end{document}

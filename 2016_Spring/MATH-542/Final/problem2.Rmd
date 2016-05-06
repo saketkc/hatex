@@ -1,0 +1,236 @@
+---
+title: "MATH-542 Final Exam"
+author: "Saket Choudhary"
+date: "4/30/2016"
+output: pdf_document
+---
+```{r, echo=FALSE}
+library(xtable)
+library(knitr)
+options(xtable.timestamp = "")
+options(xtable.floating = FALSE)
+```
+
+```{r, results="asis"}
+chemical.data <- read.csv('chemical.csv', header=T)
+N <- nrow(chemical.data)
+model <- lm(y1 ~ x1 + x2 + x3, data=chemical.data)
+model.summary <- summary(model)
+print(xtable(model.summary, caption="Model 1 Summary"))
+```
+
+## Part (2.1)
+
+```{r, results="asis"}
+beta <- coef(model)
+sigma <- summary(model)$sigma
+sigma.squared <- sigma**2
+```
+
+### $\beta$: (Intercept x1 x2 x3): 
+```{r, echo=FALSE} 
+print(kable(beta))
+```
+
+### $\sigma^2$:  
+`r sigma.squared`
+
+
+## Part (2.2)
+
+### Covariance matrix of the coefficients:
+```{r, results="asis"}
+cov.beta <- vcov(model)
+print(xtable(cov.beta, caption="Part 2.2 Covariance matrix of coefficients"))
+```
+
+## Part (2.3)
+
+```{r}
+R.unadjusted <- model.summary$r.squared
+R.adjusted <- model.summary$adj.r.squared
+```
+
+### Coefficient of determination:
+$R^2$ `r R.unadjusted`
+
+$R^2 adjusted$: `r R.adjusted`
+
+## Part (2.4)
+
+```{r, results="asis"}
+model2 <- lm(y1 ~ x1+x2+x3+I(x1^2)+I(x2^2)+I(x3^2)+x1*x2+x1*x3+x2*x3, data=chemical.data)
+model2.summary <- summary(model2)
+print(xtable(model2.summary, caption= "Model 2 Summary"))
+```
+
+```{r}
+beta2 <- coef(model2)
+beta2.constant <- beta2[1]-3
+beta2.adj.constant <- c(beta2.constant, beta2[-1])
+sigma2 <- summary(model2)$sigma
+sigma2.squared <- sigma2**2
+```
+
+Thus, $\hat{\beta}$: `r print(kable(beta2.adj.constant))`
+and $\sigma^2$: `r print(sigma2.squared)`
+
+## Part (2.5)
+
+```{r}
+R2.unadjusted <- model2.summary$r.squared
+
+R2.adjusted <- model2.summary$adj.r.squared
+```
+
+For the second model:
+
+$R^2$ `r R2.unadjusted`
+$R^2 adjusted$: `r R2.adjusted`
+
+
+## Part (2.6)
+
+```{r, results="asis"}
+print(xtable(anova(model2, model, test='F')))
+```
+
+Hence on a p-value threshold of 0.01, we fail to reject(since p-value=0.43) $H_0: \beta_4 = \beta_5 = \dots = \beta_9 = 0$
+
+
+## Part (2.7)
+
+```{r}
+CI <- confint(model2, level=0.95, c(2,3,4))
+CI
+```
+
+Check this:
+```{r}
+p <- 10
+k <- 3
+alpha <- 0.05
+coef <- model2.summary$coefficients[,1][c(2,3,4)]
+err <- model2.summary$coefficients[,2][c(2,3,4)]
+coef - err * qt(1-alpha/2, N-p) ## same as CI above
+```
+
+Thus,95% CI for $\beta_0,\beta_1,\beta_2, \beta_3$: 
+
+```{r} 
+print(kable(CI))
+```
+
+
+## Part (2.8)
+
+```{r}
+coef <- model2.summary$coefficients[,1][c(2,3,4)]
+std.err.coef <- model2.summary$coefficients[,2][c(2,3,4)]
+t.stats <- qt(1-alpha/(2*N),df=N-p)
+```
+
+```{r}
+CI.bonferroni.ub <-  coef + std.err.coef * t.stats 
+CI.bonferroni.lb <-  coef - std.err.coef * t.stats
+CI.bonferroni <- c(CI.bonferroni.lb, CI.bonferroni.ub)
+CI.bonferroni
+```
+
+95% bonferroni CI for $\beta_0,\beta_1,\beta_2, \beta_3$: 
+
+```{r} 
+print(kable(CI.bonferroni))
+```
+
+## Part (2.9)
+
+```{r}
+range.data <- max(chemical.data$y1)-min(chemical.data$y1)
+tukey.stats <- qtukey(1-alpha/2, nmeans=k  ,df=N-p)
+CI.tukeys.ub <- coef + std.err.coef * tukey.stats
+CI.tukeys.lb <- coef - std.err.coef * tukey.stats
+CI.tukeys <- c(CI.tukeys.lb, CI.tukeys.ub)
+CI.tukeys
+```
+
+Tukey's 95% CI : 
+```{r} 
+print(kable(CI.tukeys))
+```
+
+
+## Part (2.10)
+
+```{r}
+kfk <- k*qf(1-alpha/2, df1=k, df2=p)
+CI.scheffes.ub <- coef + std.err.coef * (kfk**0.5)
+CI.scheffes.lb <- coef - std.err.coef * (kfk**0.5)
+CI.scheffes <- c(CI.scheffes.lb, CI.scheffes.ub)
+CI.scheffes
+```
+
+Scheffe's's 95% CI : 
+
+```{r} 
+print(kable(CI.scheffes))
+```
+
+
+## Part (2.11)
+```{r}
+xob <- c(1,165,32,5) %*% beta2[1:4]
+xob.CI.ub <- xob + t.stats * sigma 
+xob.CI.lb <- xob - t.stats * sigma 
+xob.CI <- c(xob.CI.lb, xob.CI.ub)
+print (xob.CI)
+```
+
+95% CI: 
+
+```{r}
+print(kable(xob.CI))
+```
+
+
+## Part (2.12)
+
+```{r}
+xob.PI.ub <- xob + t.stats * sigma * sqrt(1+1/N)
+xob.PI.lb <- xob - t.stats * sigma * sqrt(1+1/N)
+xob.PI <- c(xob.PI.lb, xob.PI.ub)
+print (xob.PI)
+```
+
+96% Prediction Interval: 
+
+```{r} 
+print(kable(xob.PI))
+```
+
+## Part (2.13)
+```{r kable}
+leverage <- hat(model.matrix(model2))
+epsilon <- residuals(model2)
+prediction <- predict(model2)
+studentised.residual <- rstandard(model2)
+cooksdistance <- cooks.distance(model2)
+deleted.studentised.residual <- rstudent(model2)
+df <- data.frame(y_i=chemical.data$y1, 
+                 y_hat= prediction, 
+                 epsilon=epsilon, 
+                 h=leverage,  
+                 r=studentised.residual, 
+                 t=studentised.residual, 
+                 D=cooksdistance)
+```
+
+```{r, results="asis"}
+colnames(df) <- c('$y_i$', '$\\hat{y}_i$', 
+                  '$\\epsilon_i$', '$h_{ii}$', 
+                  '$r_i$' , '$t_i$', '$D_i$')
+html <- xtable(df, auto=TRUE)
+print(html, sanitize.text.function=function(x){x}, 
+      size = "\\setlength{\\tabcolsep}{12pt}")
+```
+
