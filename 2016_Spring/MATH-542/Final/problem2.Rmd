@@ -1,7 +1,7 @@
 ---
-title: "MATH-542 Final Exam"
+title: "MATH-542 Final Exam - Problem 2"
 author: "Saket Choudhary"
-date: "4/30/2016"
+date: "5/6/2016"
 output: pdf_document
 ---
 ```{r, echo=FALSE}
@@ -107,6 +107,7 @@ print(xtable(anova(model2, model, test='F')),
 
 Hence on a p-value threshold of 0.01, we FAIL to reject(since p-value=0.43) $H_0: \beta_4 = \beta_5 = \dots = \beta_9 = 0$
 
+## NOTE: In the problems that follow I perform the calculations based on Model2
 
 ## Part (2.7)
 
