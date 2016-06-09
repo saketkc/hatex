@@ -1,0 +1,15 @@
+filenames,cells,gene,environ,replicate
+GSM277630,A549,WT,vivo,3
+GSM277619,A549,rho,vitro,3
+GSM277628,A549,WT,vivo,2
+GSM277622,A549,WT,vitro,3
+GSM277625,A549,rho,vivo,3
+GSM277631,A549,WT,vivo,4
+GSM277620,A549,WT,vitro,1
+GSM277623,A549,rho,vivo,1
+GSM277617,A549,rho,vitro,1
+GSM277626,A549,rho,vivo,4
+GSM277618,A549,rho,vitro,2
+GSM277624,A549,rho,vivo,2
+GSM277627,A549,WT,vivo,1
+GSM277621,A549,WT,vitro,2
