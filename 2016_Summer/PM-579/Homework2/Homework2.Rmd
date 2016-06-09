@@ -1,8 +1,8 @@
 ---
-title: "Homework 2"
-author: "Saket Choudhary"
+title: 'PM 579: Statistical Analysis of High-Dimensional Data | Homework 2'
+author: "Saket Choudhary  <skchoudh@usc.edu>"
 date: "6/9/2016"
-output: html_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(limma)
 library(knitr)
+library(sva)
 ```
 
 ```{r, cache=TRUE}
@@ -170,7 +171,7 @@ for (i in 1:3) {
 ```{r, cache=TRUE}
 plotMDS(rawdata.bgcorrected,
         labels=paste(rawdata.bgcorrected$targets$treatment, unclass(rawdata.bgcorrected$targets$time), sep="_"),
-        col=unclass(rawdata.bgcorrected$targets$treatment),)
+        col=unclass(rawdata.bgcorrected$targets$treatment),main="MDS plot before batch correction colored by treatment")
 ```
 
 
@@ -178,6 +179,13 @@ Clearly there is a batch effect. The MDS plot can be partioned vertically into 3
 such that Batch 1 samples are fall along the left most partition, the Batch 2 samples fall along the middle partition
 and Batch 2 samples fall along the right most partition.
 
+We replot it by coloring by batches:
+
+```{r, cache=TRUE}
+plotMDS(rawdata.bgcorrected,
+        labels=paste(rawdata.bgcorrected$targets$treatment, unclass(rawdata.bgcorrected$targets$time), sep="_"),
+        col=unclass(rawdata.bgcorrected$targets$time),main="MDS plot before batch correction colored by batch")
+```
 
 ## Batch Correction
 ```{r, cache=TRUE}
@@ -185,5 +193,5 @@ model <- model.matrix(~as.factor(treatment), data=as.data.frame(treatment))
 rawdata.bgcorrected.bc <- ComBat(dat=rawdata.bgcorrected$E, batch=batch, mod=model)
 plotMDS(rawdata.bgcorrected.bc,
         labels=paste(rawdata.bgcorrected$targets$treatment, unclass(rawdata.bgcorrected$targets$time), sep="_"),
-        col=unclass(rawdata.bgcorrected$targets$treatment),)
+        col=unclass(rawdata.bgcorrected$targets$treatment), main="MDS Plot post batch correction")
 ```
