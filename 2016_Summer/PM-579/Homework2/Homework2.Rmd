@@ -113,6 +113,8 @@ stemplot(log2(rawdata$E[rawdata$genes$Status=="HOUSEKEEPING",]),
          main="HOUSEKEEPING probes")
 ```
 
+## QC Analysis discussion
+
 From the QC plots, we observe that regular probes have similar distribution across arrays, the BIOTIN probes
 exhibit high intensities across arrays and also seem top exhibit array specific bias. Array specific bias is also evident from the LABELLING and LOW_STRINGENCY_HYB probes. There are 2 labelling probes on each array and they seem to have moderate intensities while exhibiting array specfic bias. The  LOW_STRINGENCY_HYB probes show high intensity throughout which is expected but also exihibt array specific bias with lower intensities in the first and last 8 arrays. Negative probes also have array specific bias,  but otherwise have low values throughout as compared to the regular probes which is expected. 
 
@@ -152,7 +154,7 @@ treatment           <- unclass(rawdata.bgcorrected$targets$treatment)
 
 #plot(A,M[,1],ylab="M",cex=.5)
 #lines(lowess(A,M[,1]),col=2,lwd=4)
-par(mfrow=c(3,1))
+#par(mfrow=c(3,1))
 for (i in 1:3) {
   ## Since the arrays are processed like 16 in a batch
   ## I use only samples from the same batch to draw MA plots
@@ -174,6 +176,7 @@ plotMDS(rawdata.bgcorrected,
         col=unclass(rawdata.bgcorrected$targets$treatment),main="MDS plot before batch correction colored by treatment")
 ```
 
+## Batch-effect Analysis discussion
 
 Clearly there is a batch effect. The MDS plot can be partioned vertically into 3 partitions
 such that Batch 1 samples are fall along the left most partition, the Batch 2 samples fall along the middle partition
@@ -193,5 +196,15 @@ model <- model.matrix(~as.factor(treatment), data=as.data.frame(treatment))
 rawdata.bgcorrected.bc <- ComBat(dat=rawdata.bgcorrected$E, batch=batch, mod=model)
 plotMDS(rawdata.bgcorrected.bc,
         labels=paste(rawdata.bgcorrected$targets$treatment, unclass(rawdata.bgcorrected$targets$time), sep="_"),
-        col=unclass(rawdata.bgcorrected$targets$treatment), main="MDS Plot post batch correction")
+        col=unclass(rawdata.bgcorrected$targets$treatment), main="MDS Plot post batch correction colored by treatment")
 ```
+
+```{r, cache=TRUE}
+model <- model.matrix(~as.factor(treatment), data=as.data.frame(treatment))
+rawdata.bgcorrected.bc <- ComBat(dat=rawdata.bgcorrected$E, batch=batch, mod=model)
+plotMDS(rawdata.bgcorrected.bc,
+        labels=paste(rawdata.bgcorrected$targets$treatment, unclass(rawdata.bgcorrected$targets$time), sep="_"),
+        col=unclass(rawdata.bgcorrected$targets$treatment), main="MDS Plot post batch correction colored by batch")
+```
+
+The MDS plot does not show any regular pattern with batches. Thus, batch effects seem to be no longer present.
