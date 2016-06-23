@@ -2,35 +2,32 @@
 title: 'PM 579: Statistical Analysis of High-Dimensional Data | Homework 2'
 author: "Saket Choudhary  <skchoudh@usc.edu>"
 date: "6/9/2016"
-output: html_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Hw2 Solution
 
-
-
-## Read Data
-```{r}
+# Read Data
+```{r, echo=TRUE, results='hide', warning=FALSE}
 library(limma)
 library(knitr)
 
-load(file="jbcdata_hw3.Rdata")
+load('stallcupdat.Rdata')
 ```
 
-## Volcano Plots
+# Volcano Plots
 
 ```{r, cache=TRUE}
-Index1 <- which(jbcdat$target$time==1)
-Index2 <- which(jbcdat$target$time==2)
-Index3 <- which(jbcdat$target$time==3)
+Index1 <- which(stallcupdat$target$time==1)
+Index2 <- which(stallcupdat$target$time==2)
+Index3 <- which(stallcupdat$target$time==3)
 
-d <- rowMeans(jbcdat$E[,Index2])-rowMeans(jbcdat$E[,Index1])
+d <- rowMeans(stallcupdat$E[,Index2])-rowMeans(stallcupdat$E[,Index1])
 
-tt <- rowttests(jbcdat$E[, c(Index1,Index2)], factor(jbcdat$targets$time[c(Index1,Index2)]))
+tt <- rowttests(stallcupdat$E[, c(Index1,Index2)], factor(stallcupdat$targets$time[c(Index1,Index2)]))
 lodt <- -log10(tt$p.value)
 smoothScatter(d,
               lodt,
@@ -42,33 +39,17 @@ points(d[lodt>10], lodt[lodt>10], pch=20, col=4)
 points(d[lodt>10 & abs(d)>1], lodt[lodt>10 & abs(d)>1], pch=20, col=6)
 ```
 
-Based on t-tests, there seem to be enough differentially expressed genes between time points 1 and time points 2 (Across treatments+control)
-
-```{r, cache=TRUE}
-d <- rowMeans(jbcdat$E[,Index3])-rowMeans(jbcdat$E[,Index1])
-
-tt <- rowttests(jbcdat$E[, c(Index1,Index3)], factor(jbcdat$targets$time[c(Index1,Index3)]))
-lodt <- -log10(tt$p.value)
-smoothScatter(d,
-              lodt,
-              nrpoints=500,
-              xlab="Average fold-change",
-              ylab="-log10 pvalue",
-              main="Volcano plot for t-test across time points(time=1 vs time=2)")
-points(d[lodt>10], lodt[lodt>10], pch=20, col=4)
-points(d[lodt>10 & abs(d)>1],lodt[lodt>10 & abs(d)>1], pch=20, col=6)
-```
-Based on t-tests, there seems to be enough differentially expressed genes between time points 1 and time points 3 (Across treatments+control)
+### Based on t-tests, there seem to be enough differentially expressed genes between time points 1 and time points 2 (Across treatments+control)
 
 
-## Moderated t-tests
+# Moderated t-tests
 ```{r}
-design <- model.matrix(~factor(jbcdat$target$time))
-fit <- lmFit(jbcdat$E, design)
+design <- model.matrix(~factor(stallcupdat$target$time))
+fit <- lmFit(stallcupdat$E, design)
 efit <- eBayes(fit)
 lodmt <- -log10(efit$p.value[,2])
 
-d <- rowMeans(jbcdat$E[,Index2])-rowMeans(jbcdat$E[,Index1])
+d <- rowMeans(stallcupdat$E[,Index2])-rowMeans(stallcupdat$E[,Index1])
 
 smoothScatter(d,
               lodmt,
@@ -85,47 +66,141 @@ abline(0,1,col=2,lwd=3)
 box(lwd=2)
 ```
 
-As there are too few replicates(12 here) so the variance estimates can be stabilised using moderated t-tests. Clearly. in this case pooling variance information from similar genes helps as they p-value estimates improve.
+### As there are too few replicates(12 here) so the variance estimates can be stabilised using moderated t-tests. Clearly. in this case pooling variance information from similar genes helps as they p-value estimates improve.
 
-## Finding DE genes
+# Finding DE genes
 
 ```{r}
-time <- jbcdat$targets$time
-trts <- factor(jbcdat$targets$treatment, 
-               levels=unique(jbcdat$targets$treatment))
+time <- stallcupdat$targets$time
+trts <- factor(stallcupdat$targets$treatment, 
+               levels=unique(stallcupdat$targets$treatment))
 design <- model.matrix(~0+trts)
 colnames(design) <- levels(trts)
 kable(design)
 ```
 
-We use an explicit design matrix here.
+### We define a more explicit design matrix without intercept.
 
+# Differential genes at time point 2
 
-### Differential genes at time point 2
-
+### We define an contrast matrix which is more easy to interpret than using vectors
 
 ```{r}
-fit <- lmFit(jbcdat$E[,c(time==2)],design[c(time==2),])
+fit <- lmFit(stallcupdat$E[,c(time==2)],design[c(time==2),])
 
 contr.matrix <- makeContrasts(XYsC1C2 = (X+Y)/2 - (Control1+Control2)/2, 
                               XvsC1C2 = X-(Control1+Control2)/2,
                               YvsC1C2 = Y-(Control1+Control2)/2,
                               levels = design)
-kable(contr.matrix)
+kable(contr.matrix )
+fitgpd=contrasts.fit(fit,contr.matrix)
+fitgpd=eBayes(fitgpd)
+topTable(fitgpd,n=10)
 ```
 
+### Here XvsC1C2 implies that differential expression was calculated by averaging over Control1 and Control2 values.
+## A total of 193 genes are upregulated and 158 downregulated when comparing average X+Y over average C1+C2 at time point 2 alone (i.e. not accounting for common genes with X vs C1C2 or YvsC1C2)
+## Also, around 735 genes are up and 582 genes are downregulated in the common region of XvsC1C2, XYvsC1C2, YvsC1C2 indicating that X,Y are similar expression wise.
+
+
+
 ```{r}
+results <- decideTests(fitgpd,adjust.method="none") 
+a <- vennCounts(results)
+print(a)
+head(results,n=10)
+vennDiagram(results,include=c("up","down"),counts.col=c("red","green"), main="Time point = 2")
+```
+
+
+###Let's compare XvsY and XvsC1 and YvsC1
+```{r}
+contr.matrix <- makeContrasts(XYvsC1 = (X+Y)/2 - (Control1), XvsY = X-Y, XvsC1= X-Control1, levels = design)
 fitgpd <- contrasts.fit(fit,contr.matrix)
 fitgpd <- eBayes(fitgpd)
+results <- decideTests(fitgpd, adjust.method="none") 
+cs <- vennCounts(results)
+vennDiagram(results, include=c("up","down"),counts.col=c("red","green"), main="Time point = 2")
+head(results,n=10)
+print(vennCounts(results,include=c("up")))
+print(vennCounts(results,include=c("down")))
+```
+
+### A striking number that stands out is 0 up and downregulated genes between XYvsC1 and XvsY, thus indicating that there are no such genes which are diff expressed in (X+Y)vsC1C2 or XvsY or XvsC1 however there are genes which are in common up or down regulated  in all these groups.
+
+## Differential genes at time point 3
+
+```{r}
+fit <- lmFit(stallcupdat$E[,c(time==3)],design[c(time==3),])
+
+contr.matrix <- makeContrasts(XYsC1C2 = (X+Y)/2 - (Control1+Control2)/2, 
+                              XvsC1C2 = X-(Control1+Control2)/2,
+                              YvsC1C2 = Y-(Control1+Control2)/2,
+                              levels = design)
+kable(contr.matrix )
+fitgpd=contrasts.fit(fit,contr.matrix)
+fitgpd=eBayes(fitgpd)
 kable(topTable(fitgpd,n=10))
 ```
 
-```{r}
+### Lots of common genes between XYvsC1C2 and XvsC1C2
 
-results <- decideTests(fitgpd, adjust.method="none") 
-counts <- vennCounts(results)
-counts.subset <- counts#[, c('TrtVsControl', 'XvsC1', 'YvsC2')]
-print(counts.subset)
-vennDiagram(counts.subset, include=c("up","down"),counts.col=c("red","green"))
+
+
+```{r}
+results <- decideTests(fitgpd,adjust.method="none") 
+a <- vennCounts(results)
 head(results,n=10)
+vennDiagram(results,include=c("up","down"),counts.col=c("red","green"), main="Time point = 3")
 ```
+
+
+```{r}
+contr.matrix <- makeContrasts(XYvsC1 = (X+Y)/2 - (Control1), XvsY = X-Y, XvsC1= X-Control1, levels = design)
+fitgpd <- contrasts.fit(fit,contr.matrix)
+fitgpd <- eBayes(fitgpd)
+results <- decideTests(fitgpd, adjust.method="none") 
+cs <- vennCounts(results)
+vennDiagram(results, include=c("up","down"),counts.col=c("red","green"), main="Time point = 3")
+head(results,n=10)
+print(vennCounts(results,include=c("up")))
+print(vennCounts(results,include=c("down")))
+```
+
+### Again no common genes between XYvsC1 and XvsY which are not in XvsC1.
+
+## DE genes associated with time
+
+Reference: https://www.bioconductor.org/packages/devel/bioc/vignettes/limma/inst/doc/usersguide.pdf
+Section 9.6
+
+```{r}
+time <- factor(stallcupdat$targets$time)
+trts <- factor(stallcupdat$targets$treatment, 
+             levels=unique(stallcupdat$targets$treatment))
+
+design <- model.matrix(~0+trts*time)
+colnames(design) <- c('Control2', 'X', 'Control1', 'Y', 'time2', 'time3', 'X.time2', 'Control1.time2', 'Y.time2', 'X.time3', 'Control1.time3', 'Y.time3')
+fit <- lmFit(stallcupdat$E,design)
+contr.matrix <- makeContrasts(XYvsC1C2  = (X+Y)/2-(Control1+Control2)/2,
+                              X3Y3vsX2Y2 = (X.time3+Y.time3)/2-(X.time2+Y.time2)/2,
+                              X3vsX2 = X.time3-X.time2,
+                              levels = design)
+kable(contr.matrix)
+fitgpd=contrasts.fit(fit,contr.matrix)
+fitgpd=eBayes(fitgpd)
+kable(topTable(fitgpd,n=10))
+```       
+
+```{r}
+results <- decideTests(fitgpd,adjust.method="none") # doesn't subset of F<0.05'
+a <- vennCounts(results)
+print(a)
+vennDiagram(results, include=c("up","down"),counts.col=c("red","green"))
+```
+
+### The number of up or down regulated genes are more affected by the treatment type than by time as these numbers are less 
+### when comparing based on time points.
+
+
+
