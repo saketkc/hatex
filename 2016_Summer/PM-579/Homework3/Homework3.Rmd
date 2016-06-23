@@ -1,0 +1,131 @@
+---
+title: 'PM 579: Statistical Analysis of High-Dimensional Data | Homework 2'
+author: "Saket Choudhary  <skchoudh@usc.edu>"
+date: "6/9/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Hw2 Solution
+
+
+
+## Read Data
+```{r}
+library(limma)
+library(knitr)
+
+load(file="jbcdata_hw3.Rdata")
+```
+
+## Volcano Plots
+
+```{r, cache=TRUE}
+Index1 <- which(jbcdat$target$time==1)
+Index2 <- which(jbcdat$target$time==2)
+Index3 <- which(jbcdat$target$time==3)
+
+d <- rowMeans(jbcdat$E[,Index2])-rowMeans(jbcdat$E[,Index1])
+
+tt <- rowttests(jbcdat$E[, c(Index1,Index2)], factor(jbcdat$targets$time[c(Index1,Index2)]))
+lodt <- -log10(tt$p.value)
+smoothScatter(d,
+              lodt,
+              nrpoints=500,
+              xlab="Average fold-change",
+              ylab="-log10 pvalue",
+              main="Volcano plot for t-test across time points(time=1 vs time=2)")
+points(d[lodt>10], lodt[lodt>10], pch=20, col=4)
+points(d[lodt>10 & abs(d)>1], lodt[lodt>10 & abs(d)>1], pch=20, col=6)
+```
+
+Based on t-tests, there seem to be enough differentially expressed genes between time points 1 and time points 2 (Across treatments+control)
+
+```{r, cache=TRUE}
+d <- rowMeans(jbcdat$E[,Index3])-rowMeans(jbcdat$E[,Index1])
+
+tt <- rowttests(jbcdat$E[, c(Index1,Index3)], factor(jbcdat$targets$time[c(Index1,Index3)]))
+lodt <- -log10(tt$p.value)
+smoothScatter(d,
+              lodt,
+              nrpoints=500,
+              xlab="Average fold-change",
+              ylab="-log10 pvalue",
+              main="Volcano plot for t-test across time points(time=1 vs time=2)")
+points(d[lodt>10], lodt[lodt>10], pch=20, col=4)
+points(d[lodt>10 & abs(d)>1],lodt[lodt>10 & abs(d)>1], pch=20, col=6)
+```
+Based on t-tests, there seems to be enough differentially expressed genes between time points 1 and time points 3 (Across treatments+control)
+
+
+## Moderated t-tests
+```{r}
+design <- model.matrix(~factor(jbcdat$target$time))
+fit <- lmFit(jbcdat$E, design)
+efit <- eBayes(fit)
+lodmt <- -log10(efit$p.value[,2])
+
+d <- rowMeans(jbcdat$E[,Index2])-rowMeans(jbcdat$E[,Index1])
+
+smoothScatter(d,
+              lodmt,
+              nrpoints=500,
+              main="Volcano plot for moderated t-test",xlab="Average fold-change",
+              ylab="-log10 pvalue",ylim=c(0,15))
+points(d[lodmt>10], lodmt[lodmt>10], pch=20, col=4)
+points(d[lodmt>10 & abs(d)>1],lodmt[lodmt>10 & abs(d)>1], pch=20, col=6)
+par(mar=c(5,5,3,2))
+plot(lodt,lodmt,pch=".",cex.axis=1.5,cex.lab=1.5,
+     xlab="-log10(p) from 2-sample t-test",
+     ylab="-log10(p) from moderated t-test (limma)")
+abline(0,1,col=2,lwd=3)
+box(lwd=2)
+```
+
+As there are too few replicates(12 here) so the variance estimates can be stabilised using moderated t-tests. Clearly. in this case pooling variance information from similar genes helps as they p-value estimates improve.
+
+## Finding DE genes
+
+```{r}
+time <- jbcdat$targets$time
+trts <- factor(jbcdat$targets$treatment, 
+               levels=unique(jbcdat$targets$treatment))
+design <- model.matrix(~0+trts)
+colnames(design) <- levels(trts)
+kable(design)
+```
+
+We use an explicit design matrix here.
+
+
+### Differential genes at time point 2
+
+
+```{r}
+fit <- lmFit(jbcdat$E[,c(time==2)],design[c(time==2),])
+
+contr.matrix <- makeContrasts(XYsC1C2 = (X+Y)/2 - (Control1+Control2)/2, 
+                              XvsC1C2 = X-(Control1+Control2)/2,
+                              YvsC1C2 = Y-(Control1+Control2)/2,
+                              levels = design)
+kable(contr.matrix)
+```
+
+```{r}
+fitgpd <- contrasts.fit(fit,contr.matrix)
+fitgpd <- eBayes(fitgpd)
+kable(topTable(fitgpd,n=10))
+```
+
+```{r}
+
+results <- decideTests(fitgpd, adjust.method="none") 
+counts <- vennCounts(results)
+counts.subset <- counts#[, c('TrtVsControl', 'XvsC1', 'YvsC2')]
+print(counts.subset)
+vennDiagram(counts.subset, include=c("up","down"),counts.col=c("red","green"))
+head(results,n=10)
+```
