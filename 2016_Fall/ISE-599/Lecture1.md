@@ -1,3 +1,6 @@
+--------
+date: 08/23/2016
+--------
 - Learning algorithms are based on a model, with an aim to optimise a loss function
 - Linear regression
 \begin{align*}
@@ -25,3 +28,21 @@ MLE estimation of $w$:
 &= argmax_w \sum_i \log P(Y_i)\\
 &= argmax_w -\sum_i \log(1+e^{w^Tx_i}) + \sum_{i, y_i=1) w^Tx_i
 \end{align*}
+
+- inf and sup: TODO
+- Inner production: $<x,y> = \sum_i x_iy_i$
+- CAuchy Schwartz $<x,y> \leq ||x||.||y||$. Equality if the are in the same plane
+
+- Matrix inner producti $<A,B> = Tr(AB^T) = \sum_{ij}A_{ij}B_{ij}$
+- Spectral radius: $\rho(A) = max(|\lambda_i|: \lambda_i\text{eigen value})$
+- Matrix always has a SVD. Singular values $\sigma_i$ such that $\sigma_i^2$ is the eigen value of $AA^T$
+- 
+
+A^TX = \lambda X
+AA^TX = \lambda AX
+ = \lambda^2 X
+
+- Norms: Forebenius Nuclear.
+
+
+- TODO: Proof of inequalities
