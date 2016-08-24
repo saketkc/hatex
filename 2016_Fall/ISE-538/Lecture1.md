@@ -62,6 +62,23 @@ $Var(a+bX) = b^2Var(X)$
 $E[X] = \mu$ $E[Y] = \mu_y$
 $Cov(X,Y) = E[(X-\mu_X)(Y-\mu_Y)]$
 
+$X,Y$ indep $\implies  E[XY]=E[X]E[Y]$
+
+$Cov(aX,bY = abCov(X,Y)$
+
+$Cov(X+Y,Z) = Cov(X,Z) + Cov(Y,Z)$
+
+$Cov(\sum_i X_i, \sum_j Y_j) = \sum_{i,j} Cov(X_i, Y_j)$
+
+$Var(\sum_i X_i) = Cov(\sum_i X_i, \sum_j X_j) = \sum_i Var(X_i) + \sum_{i \neq j} Cov(X_i, X_j)$
+
+
+
+Example: $X \sim Bern(p)$ $P(X=1)=p$ and $P(X=0)=1-p$
+
+$EX = p$
+$Var(X) = p-p^2$
+
 
 
 
