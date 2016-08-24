@@ -55,6 +55,15 @@ P(X_i=1) = (1-p_i)^n$
 $E[X] = \sum_i (1-p_i)^n$
 
 
+$Var(X) = E[(X-\mu)^2] = E[X^2-2\mu X + \mu^2] = E[X^2]-2\mu^2+\mu^2 = E[X^2]-(E[X])^2$
+
+$Var(a+bX) = b^2Var(X)$
+
+$E[X] = \mu$ $E[Y] = \mu_y$
+$Cov(X,Y) = E[(X-\mu_X)(Y-\mu_Y)]$
+
+
+
 
 
 
