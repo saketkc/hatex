@@ -77,6 +77,7 @@ $Var(\sum_i X_i) = Cov(\sum_i X_i, \sum_j X_j) = \sum_i Var(X_i) + \sum_{i \neq 
 Example: $X \sim Bern(p)$ $P(X=1)=p$ and $P(X=0)=1-p$
 
 $EX = p$
+
 $Var(X) = p-p^2$
 
 
