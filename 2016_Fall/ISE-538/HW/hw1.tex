@@ -1,0 +1,107 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\usepackage{graphicx}
+\usepackage{fullpage}
+\title{ISE 538 Homework 1}
+\author{Saket Choudhary\\skchoudh@usc.edu}
+
+\begin{document}
+\maketitle
+
+
+
+
+\section*{Problem 1.31}
+Let $D_i$ represent the score on $i^{th}$ dice.
+Then the possible configurations for getting a sum 7 are: $(D_1, D_2): (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) $
+
+Thus $P(D_1=6|D_1+D_2=7) = \frac{1}{6}$
+\section*{Problem 1.32}
+
+Let 
+\begin{align*}
+I_i &= \begin{cases}
+1 & i^{th}\text{ person gets his hat back}\\
+0 & \text{otherwise}
+\end{cases}\\
+P(\text{no person gets his hat back}) &= 1 - P(I_1 \cup I_2 \dots \cup I_n)\\
+P(I_i=1) &= \frac{1}{n}\\
+P(I_i=1, I_j=1) &= \frac{1}{n}\frac{1}{n-1} = \frac{1}{n(n-1)} = \frac{(n-2)!}{n!}\\
+P(I_i=1, I_j=1) &= \frac{1}{n}\frac{1}{n-1}\frac{1}{n-2} = \frac{(n-3)!}{n!}\\
+P(I_1 \cup I_2 \dots \cup I_n) &= \sum_{i=1}^{n}P(I_i) - \sum_{i<j}P(I_iI_j) + \sum_{i<j<k}P(I_iI_jI_k) - \dots - (-1)^n P(I_1I_2\dots I_n)\\
+\end{align*}
+
+The number of terms of type $P(I_iI_j) $ for $i<j$ are $n\choose{2}$, similarly of type $P(I_iI_jI_k)$ for $i<j<k$ are $n\choose{3}$ and so on
+
+Thus,
+
+\begin{align*}
+P(I_1 \cup I_2 \dots \cup I_n) &= n \times \frac{1}{n} - {n\choose{2}} \times \frac{(n-2)!}{n!} + {n\choose{3}} \times \frac{(n-3)!}{n!} - \dots - (-1)^n {n\choose{n}} \times \frac{1}{n!}\\
+&= 1 - \frac{1}{2!} + \frac{1}{3!} - \dots - (-1)^n \frac{1}{n!}\\
+P(\text{no person gets his hat back}) &= 1 - (1 - \frac{1}{2!} + \frac{1}{3!} - \dots - (-1)^n \frac{1}{n!})\\
+&= \frac{1}{2!} - \frac{1}{3!} + \dots + (-1)^n \frac{1}{n!}\\
+\end{align*}
+
+\section*{Problem 1.34}
+Assuming that the red and black are equiprobable, choosing a red or black is equally rewarding.
+$P(11 \text{consecutive black}) = (\frac{1}{2})^{11}$
+$P(11^{th} \text{red} , \text{ last 10 black}) = \frac{1}{2}\frac{1}{2}^{10}$. The probability of observing $10$ blacks continuously is very low, having observed this it is actually likely that the system is biased towards black hits and hence the bet should probably be on a black rather than a red.
+
+\section*{Problem 1.35}
+\textbf{(a)} H,H,H,H: $(\frac{1}{2})^4$
+
+\textbf{(b)} T,H,H,H: $(\frac{1}{2})^4$
+
+\textbf{(c)} T,H,H,H occurs before H,H,H,H: The only possible way for $H,H,H,H$ to occur first is that first four flips are heads. And hence the required probability is $1-\frac{1}{2}^4 = \frac{15}{16}$
+
+\section*{Problem 1.36}
+Box1 : $1B, 1W$
+
+Box2: $2B, 1W$
+
+$P(B) = \frac{1}{2} \times \frac{1}{2} + \frac{1}{2} \times \frac{2}{3} = \frac{7}{12}$
+
+\section*{Problem 1.37}
+
+$P(Box_1|W) = \frac{P(W,Box1)}{P(W)} = \frac{P(W|Box1)P(Box1)}{P(W)} = \frac{\frac{1}{2}\frac{1}{2}}{1-\frac{7}{12}} = \frac{3}{5}$
+
+\section*{Problem 1.44}
+$P(tails|W) = \frac{P(tails)P(W|tails)}{P(W)}$
+
+$P(W) = P(W|heads)P(heads) + P(W|tails)P(tails) = \frac{5}{12}\frac{1}{2} + \frac{3}{15}\frac{1}{2} = \frac{37}{120}$
+
+Thus, $P(tails|W) = \frac{\frac{1}{2}\frac{3}{15}}{\frac{37}{120}} = \frac{12}{37}$
+
+\section*{Problem 1.45}
+$P(B1|R2) = \frac{P(R2|B1)P(B1)}{P(R2)}$
+\begin{align*}
+P(B1) &= \frac{b}{b+r}\\
+P(R2) &= P(R2|B1)P(B1) + P(R2|R1)P(R1)\\
+&= \frac{r}{r+b+c}\frac{b}{b+r}+ \frac{r+c}{r+b+c}\frac{r}{b+r}\\
+&= \frac{br+r^2+rc}{(b+r)(b+r+c)}\\
+P(B1|R2) &= \frac{\frac{r}{r+b+c}\frac{b}{b+r}}{\frac{br+r^2+rc}{(b+r)(b+r+c)}}\\
+&= \frac{br}{br+r^2+rc}\\
+&= \frac{b}{b+r+c}
+\end{align*}
+
+\section*{Problem 1.46}
+Let's assume WLOG, that the jailer tells $C$ will be set free.
+Then $P(\text{C free} | \text{A dies}) = \frac{1}{2}$ because is A is to die the jailer could have also named $B$ with equal probability.
+\begin{align*}
+P(\text{A dies} | \text{C free}) &= \frac{P(\text{C free}| \text{A dies})P(\text{A dies})}{P(\text{C free})}\\
+&= \frac{P(\text{C free}| \text{A dies})P(\text{A dies})}{P(\text{C free} | \text{A dies}) P(\text{A dies}) + P(\text{C free} | \text{B dies}) P(\text{B dies}) + P(\text{C free} | \text{C dies}) P(\text{C dies}) }\\
+&= \frac{\frac{1}{2} \frac{1}{3}}{1\frac{1}{3} + 1\frac{1}{3} + 0}\\
+&= \frac{1}{3}
+\end{align*}
+
+So the jailer is wrong. The probability of $A$ being executed remains the same.
+
+\section*{Problem 1.47}
+
+
+\end{document}
