@@ -1,0 +1,151 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsmath}
+
+%\usepackage{amsymbols}
+
+\begin{document}
+\section{Review}
+Change of Bases: 
+$$
+\mathcal{B} \{b_1, b_2, \dots b_n \} \longrightarrow B \{b_1|b_2\dots|b_n\}
+$$
+$$
+\mathcal{C} \{c_1, c_2, \dots c_n \} \longrightarrow C \{c_1|c_2\dots|c_n\}
+$$
+
+
+Diagnolization:
+$$
+A \in C^{n \times n}
+$$
+
+$A$ is diagnolizable if $\exists$ $X \in C^{n\times n}$ duch that $det (X) \neq 0$ 
+
+$v \in C^{n \times n}$ 
+
+$ [v] = B[v]_B$ 
+
+$[v]_B = B^{-1}[v]$ 
+
+$[v]_C = C^{-1}B[v]_B$
+
+
+$A = X\Lambda X^{-1}$ , $\Lambda = diag(\lambda_1, \lambda_2, \dots \lambda_n)$
+$\Lambda = X^{-1}AX$
+
+
+Diagnolization is like change of basis
+
+$$
+A[v] = X\Lambda X^{-1}[v]/[v]_X = [\Lambda v]_X/[\Lambda v]
+$$
+
+\textbf{Claim: }If spectrum of $A$, $card(\sigma(A)) = n i.e.(\lambda_i \neq \lambda_j, i \neq j)$ then $A$ is diagonizable(non-defective)
+
+\textbf{Proof:} Do induction on \# of eigen vector
+
+$\lambda_1 \neq \lambda_2$
+$c_1\vec{X}_1 + c_2\vec{X}_2 = 0$; $c_1,c_2 \neq 0$ 
+
+$c_1A\vec{X}_1 + c_2A\vec{X}_2 =0$
+
+$c_1\lambda_1\vec{X}_1 + c_2\lambda_2\vec{X}_2 =0$
+
+$-c_1\lambda_2\vec{X}_1 + c_2\lambda_2\vec{X}_2 =0$
+
+ $c_1(\lambda_1-\lambda_2)\vec{X}_1=0$ $->$ Contradiction
+ 
+ Assume truth for $k=1$
+ 
+ $\sum_{i=1}^k c_i \vec{X}_i = 0$ $c_i is not zero$
+ 
+ In particular, at least one of $c_i$ is not zero
+ 
+ \begin{align*}
+\sum_{i}c_i\lambda_i X_i &= 0\\
+0 &= \lambda_k 0 - 0\\
+&= \lambda_k \sum c_iX_o - \sum_i c_i \lambda_i X_i\\
+&= \sum_i c_i(\lambda_k - \lambda_i)X_i\\ contradiction
+\end{align*}
+
+$X_i$ are independent, hence follows.
+
+\section{Interpretation}
+Assume $A \in C^{n \times n} \text{ and } \vec{b} \in C^n$ ; $det(A) \neq 0$
+
+$AX = \vec{b}$
+
+Best case:
+\begin{itemize}
+\item $A$ is diagnolizable
+\item $A$ is triangular(upper/lower)
+\end{itemize}
+
+Properties:
+\begin{itemize}
+\item Production of 2 upper triangle is upper triangular
+\item Inverse of non singular upper triangular is upper triangular
+\end{itemize}
+
+Argument of (2):
+\begin{align*}
+SX &= I\\
+[SX_1, SX_2, \dots, SX_n] &= [e_1,e_2, \dots e_n] (Std basis)\\
+S\vec{X}_i &= \vec{e}_i
+\end{align*}
+
+Elementary row operations
+
+\begin{itemize}
+\item R1 Multiply on RHS by a constant
+\item R2 Exchanging two rows
+\item R3 add non zero multiple of one to another
+\end{itemize}
+
+(R2)Permutation matrix: exactly one 1 in row or column -> Not lower or upper traingular. But holds for R1,R3
+
+
+
+LU decomposition $[L_1, L_2,L3]A = U$ $\hat{L}A = U$
+$A = LU$
+$L=\hat{L}^{-1}$
+
+$AX =b -> Ly= b -> UX=y$
+
+Two factorization:
+1. $A = X\Lambda X^{-1}$ when $X$ is non-defective
+2. $A = LU$, when $A$ is square and not of permutation type.
+
+
+\section{Norms}
+
+Absolute value:
+\begin{align*}
+|a| &\geq 0 \\
+|a| &=0 -> a=0,\\
+|ab| & = |a||b|\\
+|x+y| \leq |x|+|y|
+\end{align*}
+
+Norm:
+\begin{itemize}
+\item Norm is  mapping $||. || : V -> R$ $V over C$
+\item ||0||: V ->R
+\item $||\vec{v}|| \geq 0, ||v|| = 0$ iff $v=0$
+\item $||c\vec{v}|| = |c|||\vec{v}||$
+\item $||\vec{v}+\vec{w}|| \leq ||\vec{v}|| + ||\vec{w}||$
+\end{itemize}
+
+$p$ norm:
+$p \leq \infty$
+
+$||\vec{v}||_p = \sum (|v_i|^p)^{1/p}$
+
+$||v||_{\infty} = max|V_i|$ $1 \leq i \leq n$ 
+
+
+\textbf{Clasim:} $||v||_p$ is a norm
+\end{document}
