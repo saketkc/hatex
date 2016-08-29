@@ -102,6 +102,28 @@ P(\text{A dies} | \text{C free}) &= \frac{P(\text{C free}| \text{A dies})P(\text
 So the jailer is wrong. The probability of $A$ being executed remains the same.
 
 \section*{Problem 1.47}
+\begin{align*}
+0 \leq P(A|B) \leq 1\\
+P(\Omega | B) = \frac{P(\Omega \cap B)}{P(B)} = \frac{P(B)}{P(B)} = 1\\
+\end{align*}
 
+For the third property, let's consider disjoint events $A$ and $C$
+then 
+\begin{align*}
+P(A \cup C | B) & = \frac{P((A \cup C)B)}{P(B)}\\ 
+&= \frac{P(AB \cup CB)}{P(B)}\\
+&= \frac{P(AB)+P(CB)}{P(B)}\\
+&= P(A|B)+P(C|B)
+\end{align*}
+
+Now,
+\begin{align*}
+P(A|BC)P(C|B) + P(A|BC^c)P(C^c|B)
+&= \frac{P(ABC)}{P(BC)}\frac{P(BC)}{P(B)} + \frac{P(ABC^c)}{P(BC^c)}\frac{P(BC^c)}{P(B)}\\
+&= \frac{P(ABC)}{P(B)} + \frac{P(ABC^c)}{P(B)}\\
+&= P(AC|B) + P(AC^c|B)\\
+&= P(AC \cup AC^c|B)\\
+&= P(A|B)
+\end{align*}
 
 \end{document}
