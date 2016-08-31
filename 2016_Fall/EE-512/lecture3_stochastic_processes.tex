@@ -1,0 +1,313 @@
+\documentclass{article}
+\usepackage{times,amsmath,amsthm,amsfonts,eucal,graphicx, amssymb}
+ \setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+\newcommand{\indep}{{\bot\negthickspace\negthickspace\bot}}
+\newcommand{\notindep}{{\not\negthickspace\negthinspace{\bot\negthickspace\negthickspace\bot}}}
+\newcommand{\definedtobe}{\stackrel{\Delta}{=}}
+\renewcommand{\choose}[2]{{{#1}\atopwithdelims(){#2}}}
+\newcommand{\argmax}[1]{{\hbox{$\underset{#1}{\mbox{argmax}}\;$}}}
+\newcommand{\argmin}[1]{{\hbox{$\underset{#1}{\mbox{argmin}}\;$}}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.58in { {\bf EE512~Stochastic Processes
+                        \hfill University of Southern California} }
+    \hbox to 6.58in { {\bf Fall 2016
+                        \hfill Dept. of Electrical Engineering} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Lecture #1: #2  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Lecturer: {\it Prof: Nayyar {\tt <>}} \hfill Scribe: #3} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{Lecture #1: #2}{Lecture #1: #2}
+   \vspace*{4mm}
+}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{CAPTION}{.eps FILE TO INCLUDE}{WIDTH-IN-INCHES}
+\newcommand{\fig}[4]{
+			\begin{center}
+	                \includegraphics[width=#4,clip=true]{#3} \\
+			Figure \thelecnum.#1:~#2
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+% \newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\begin{document}
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{3}{Aug 25, 2016}{Saket Choudhary}
+%\footnotetext{These notes are partially based on those of Nigel Mansell.}
+
+% **** YOUR NOTES GO HERE:
+
+% Some general latex examples and examples making use of the
+% macros follow.  
+%**** IN GENERAL, BE BRIEF AND COMPLETE. 
+% **** THIS ENDS THE EXAMPLES. DON'T DELETE THE FOLLOWING LINE:
+
+\section{Stochastic Processes}
+
+
+For each $t$, $X(t)$ is a random variable
+
+$T$ = range of time
+
+If $T$ is countable we have discrete time stochastic process.
+If $T$ is interval we have continuous time stochastic process.
+
+Example: Suppose we are tossing a fair coin infinitely many times.
+
+$\Omega =  \{ \text{Any infinite string of H and T} \}$
+
+Like $HHHTHTHHTHT..$
+
+Look at range of time interval $T$ = $[1, \infty)$ 
+
+For $1  \leq t M 2$
+
+
+\begin{align*}
+X(t)(\omega) = \begin{cases}
+1 & \text{if the first toss is head}\\
+-1 & \text{otherwise}
+\end{cases}
+\end{align*}
+
+For $n \leq t M nH$
+\begin{align*}
+X(t)(\omega) = \begin{cases}
+1 & \text{if the $n^{th}$ toss is head}\\
+-1 & \text{otherwise}
+\end{cases}
+\end{align*}
+
+
+
+E.g.$X(t) (HTHHTTT ) =1$l $X(t)(THHTTHHT) = -1$
+
+
+So we defined collection of random variables  $\{X(t), 1 \leq t<\infty \}$
+In a stochastic proces, each $X(t)$ is random variable
+
+Fix an $\omega$ and look at $X(t)(\omega)$ as a function of time.
+
+
+Consider $X(t)(\omega)$ for $HHTHHH...$.
+
+\begin{align*}
+X(t)(w) = \begin{cases}
+1 & 
+\end{cases}
+\end{align*}
+
+IF we change $\omega$ we get a different sample path. So sample path is a realization of the stochastic process. If we fix time we get a random variable
+
+For $n=1,2,3\dots$
+
+\begin{align*}
+Y_n &= \begin{cases}
+1 & \text{if $n^{th}$ toss is heads}\\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+
+Assume coin tosses are independent and $P(heads)=p; P(tails)=q; p+q=1$
+
+\begin{align*}
+P(Y_n=1) &= P(\text{$n^{th}$ toss is heads } \\
+&= p\\
+P(Y_n=0) &= q
+\end{align*}
+
+$\{Y_n\}_{n=1,2,3}$ are independent and identically distributed random variables.
+
+\section{Bernoulli Process}
+
+$P(Y_1=1,Y_2=0, Y_3=1) = P(Y_1=1)P(Y_2=0)P(Y_3=1) = pqp$
+
+$P(Y_1+Y_2+Y_3=1) = 3pq^2$
+
+Generalization: $P(\sum Y_i = k) = n \choose {k} p^kq^{n-k}$
+
+
+\section{Convergence of Random Variables}
+
+Suppose $a_a, a_2, \dots a_n$ is seqience of real numbers and $\lim_{n \longrightarrow \infty} a_n = b$ i.e. $\{a_n\}_{n\geq 1}$ converges to b
+
+$a_n$ converges to b if for every $\epsilon > 0$ there exists a natural number $N_\epsilon$ such that $|a_n-b| < \epsilon if n > N_\epsilon$
+
+\subsection*{Almost sure convergence}
+Convergence with probability 1.
+
+$\{X_n\}_{n=1,2,3}$ are all defined on $(\Omega, \mathcal{F}, P)$
+
+for any $\omega \in \Omega$, $X_1(\omega), X_2(\omega), X_3(\omega) \dots$ 
+Is the sequence of real numbers $\{ X_n(\omega) \}$ convergging to number $Y(\omega)$
+
+Look at collection $\{\omega \in \Omega: \{X_n(\omega)\} \text{converges to} Y(\omega)  \}$
+
+If $P(\{ \omega  \in \Omega: \lim_{x\longrightarrow \infty} X_n(\omega) = Y(\omega) \})= 1$ then we say that r.v $\{ X_n\}_{n \geq 1}$ converge to random variable $Y$ almost surely.
+
+Example: $\Omega = (0,1)$
+
+$X_1(\omega) =1  \forall \omega in \Omega$
+$X_2(\omega) = \begin{cases}
+2 & if 0 < w \leq 0.5\\
+0 & if 0.5 < w < 1
+
+\end{cases}$
+
+$X_n(\omega) = \begin{cases} n & 0 < \omega \leq 1/n\\ 
+0 & \text{otherwise}
+\end{cases}$
+
+Pick an arbitrary $\omega=1/3$
+
+$X_1(\omega) X_2(\omega) \dots X_n(\omega)  = 123000\dots$
+
+
+$Y(1/3) = 0$
+
+$\lim_{n \longrightarrow} X(1/3) = Y(1/3)$
+
+For all $\omega \in (0,1)$, $\lim_{n \longrightarrow \infty} X_n(\omega) = Y(\omega)$
+
+So $P(\{\omega : \lim_{n} X_n(\omega) = Y(\omega)  \})=1$ so $X(w)$ converges almost surekt 
+
+
+\subsection{Strong Large of large numbers}
+
+$\{ X_n \}_n$ are iid. $E[X_n] = \mu < \infty$ and $E[|X_n| ] < \infty$
+
+$S_n = X_1+X_2+ \dots X_n$
+
+Then $\frac{S_n}{n}$ converges almost surely to $\mu$
+
+$P(\{ \omega: \lim_n \frac{S_n(\omega}{n} = \mu \}) = 1$
+
+
+\subsection{Convergence in probability}
+
+We say that $X_n(\omega)$ converges to $Y$
+then $P(|X_n-Y_n|)> \epsilon$ converges to 0
+
+\subsection*{Weak law of large numbers}
+
+
+$\{X_n \}$ are iid with $E[X_n] = mu, E[|X_n|]$
+
+
+$S_n = \sum X_i$ then $\frac{{S_n}}{n}$ converges tp $\mu$ in probability.
+
+Check if $\lim_{n \longrightarrow \infty} P(|\{\frac{S_n}{n}\} - \mu| > \epsilon)=0$
+$E[\frac{S_n}{n}] = \mu$ and $Var(\frac{S_n}{n}) = \frac{\sigma^2}{n}$ 
+
+$0\leq P(|S_n/n - \epsilon| > \epsilon) \leq E[(S_n/n-\mu)^2]/\epsilon^2 = \frac{\sigma^2}{n\epsilon^2} $
+
+Thus, $ \lim_{n \longrightarrow \infty} P(|S_n/n - \epsilon| > \epsilon)  = 0$
+
+So $S_n/n$ converges to $\mu$ in probability.
+
+
+Thus, almost sure convergence $\implies$ convergence in probability 
+but converse is not true.
+
+\subsection*{Convergence in distribution}
+
+$\{ X_n \}_{n \geq 1}$ We look at cdfs $F_{X_n}(x)$ and we want to check of $\lim_{n \longrightarrow} F_{X_n}(x) = F_Y(x)$
+
+for all $x$ where $F_Y$ is continuous
+
+Example: $Y \sim \mathcal{N}(0,1)$ and $X_n = (-1)^nY$ Does $X_n$ converge to $Y$ in distrbution
+
+$F_{X_1}(x) = F_{-Y}(x) = P(-Y \leq x) = P(Y \geq -x) = P(Y \leq x) = F_Y(x)$
+
+$F_X(_2)(x) = P(Y\leq x)  = F_Y(x)$
+
+Example: Central limit theorem
+
+$\{X_n\}_{n \geq 1}$ are iid random variable with $E[X_n] = \mu$ and $Var[X_n]= \sigma^2$
+
+$Z_n = \frac{\sum_n X_n - n\mu}{\sigma \sqrt{n}}$
+
+$Z_1 = \frac{X_1-\mu}{\sigma}$
+
+$Z_2 = \frac{X_1+X_2-2\mu}{\sigma\sqrt{2}}$
+
+CLT: $\{ Z_n \}_{n\geq 1}$ converges to $Y$ where $Y \sim \mathcal{N}(0,1)$
+
+$\lim_{n\longrightarrow \infty} P(Z_n \leq x) = F_Y(x)$ 
+
+Almost sure convergence $\implies$ Convergence in probability $\implies$ Convergence in distribution
+
+
+\subsection*{Convergence in mean square}
+
+$\{X_n\}$ converge to $Y$ in mean square of $\lim_{n \longrightarrow \infty }E[(X_n-Y)^2] =0$
+
+
+Example: IID $X_n$ and $S_n = \sum X_i$
+
+then $\lim_{n \longrightarrow \infty}E[(\frac{S_n}{n}- \mu)^2] = 0$
+
+i.e. $\lim_{n \longrightarrow \infty} \frac{\sigma^2}{n} = 0$
+
+\section{How to remember}
+
+
+\end{document}
+
+
+
