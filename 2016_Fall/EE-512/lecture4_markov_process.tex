@@ -1,0 +1,214 @@
+\documentclass{article}
+\usepackage{times,amsmath,amsthm,amsfonts,eucal,graphicx, amssymb}
+ \setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+\newcommand{\indep}{{\bot\negthickspace\negthickspace\bot}}
+\newcommand{\notindep}{{\not\negthickspace\negthinspace{\bot\negthickspace\negthickspace\bot}}}
+\newcommand{\definedtobe}{\stackrel{\Delta}{=}}
+\renewcommand{\choose}[2]{{{#1}\atopwithdelims(){#2}}}
+\newcommand{\argmax}[1]{{\hbox{$\underset{#1}{\mbox{argmax}}\;$}}}
+\newcommand{\argmin}[1]{{\hbox{$\underset{#1}{\mbox{argmin}}\;$}}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.58in { {\bf EE512~Stochastic Processes
+                        \hfill University of Southern California} }
+    \hbox to 6.58in { {\bf Fall 2016
+                        \hfill Dept. of Electrical Engineering} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Lecture #1: #2  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Lecturer: {\it Prof: Nayyar {\tt <>}} \hfill Scribe: #3} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{Lecture #1: #2}{Lecture #1: #2}
+   \vspace*{4mm}
+}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{CAPTION}{.eps FILE TO INCLUDE}{WIDTH-IN-INCHES}
+\newcommand{\fig}[4]{
+			\begin{center}
+	                \includegraphics[width=#4,clip=true]{#3} \\
+			Figure \thelecnum.#1:~#2
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+% \newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\begin{document}
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{4}{Sep 1, 2016}{Saket Choudhary}
+%\footnotetext{These notes are partially based on those of Nigel Mansell.}
+
+% **** YOUR NOTES GO HERE:
+
+% Some general latex examples and examples making use of the
+% macros follow.  
+%**** IN GENERAL, BE BRIEF AND COMPLETE. 
+% **** THIS ENDS THE EXAMPLES. DON'T DELETE THE FOLLOWING LINE:
+
+Example: \textbf{Branching Processes}
+Day 0: $\dots$ (organisms)
+
+Day 1: $Y_1, Y_2, $ (Number of offsprings of $i^{th}$ bacteria)
+
+$\{ Y_i \}$ are iid.
+
+$ Y_i \in \{0,2,4\}$ $p_0+p_2+p_4=1$
+
+Day n $\implies$ $M$ bacteria $(X_n=m)$
+
+$X_n = \#$ of bacteria on day $n$
+
+$P(X_{n+1}=j|X_n=M) = P(Y_1 + Y_2 + \dots +  Y_M = j | X_n =M) = P(X_{n+1} = j | X_n=M, X_{n-1}=a, \dots X_0=2)$
+
+so a branching process is  markov chain
+
+\section*{Multistep Transition Probability}
+$P(X_{n+m}=j|X_n=1,X_{n-1}) = P(X_{m}=j|X_{0}=i)$
+$m-step$ transition probabilities does on depend on past given the currrent state.
+
+\textbf{Gambler's ruin}: time homegenous $P(X_1=1|X_0=0) = P(X_{101}=1|X_100=0)$
+
+
+Example: $S=\{1,2,3\}$
+
+$p = \begin{pmatrix}
+0.8 & 0.1 & 0.1\\
+0.1 & 0.8 & 0.1\\
+0.1 & 0.1 & 0.8
+\end{pmatrix}$
+
+$P(X_2=1,X_1=3|X_0=2) = P(X_2+1|X_1=3)P(X_1=3|X_0=2)$
+
+$P(A \cap B) = P(A|B)P(B) \implies P(A \cap B|C) = P(A|B \cap C) P(B|C)$
+
+$P(X_2=1,X_1=3|X_0=2) = P(X_2=1|X_1=3)P(X_1=3|X_0=2) = 0.1 * 0.1 = 0.01$
+
+
+$P(X_2=1|X_0=2) = \sum_i P(X_2=1,X_1=i|X_0=2)P(X_i=i|X_0=2)$
+
+
+$P(X_2 =j | X_0 =i)$ denoted by $p^2(i,j)$
+
+$p^2(i,j) = \sum_{k \in S} P(X_2=j, X_1=k|X_0=i) = \sum_{k \in S} P(X_2=j|X_1=k) P(X_1=k|X_0=i) = \sum_{k \in S} p(k,j)p(i,k)$
+
+$p^2 = p . p$ Two steo is product of one step.
+
+So $m$ step transition probabilities are denoted by $p^m(i,j)$ 
+= $P(X_m=j|X_0=i)$
+
+$m-step$ transition probability matrix is the $m^[th]$ power of one step transition probability matrix.
+
+
+\subsection{Champan Kplmogorov equations}
+
+$p^{m+n}(i,j) = \sum_{k \in S} p^m(i,k)p^n(k,j)$
+ 
+$P(X_{m+n}=j|X_0=i)$ 
+
+\textbf{Proof}: 
+
+\begin{align*}
+P(X_{n+m}=k|X_0=i) &= \sum_{k \in S} P(X_{n+m}=j, X_m=k| X_0=i)\\
+&= \sum_{k \in S} P(X_{n+m}=j | X_m=k, X_0=i)P(X_m=k|X_0=i)\\
+&= \sum_{k \in S} P(X_{n+m}=j | X_m=k)P(X_m=k|X_0=i)\\
+&= \sum_{k \in S} p^n(k,j)p^m(i,k)\\
+\end{align*}
+
+\subsection*{Notation}
+For some event $A$, $P(A|X_0=x) = P_x(A)$
+
+For some RV Y, $E[Y|X_0=x] = E_x[Y]$
+
+\subsection*{Stopping Time}
+
+\textbf{Definition} Consider a RV T, takes avalues in the set $ \{0,1,2,3 \}$. We say that $T$ is a stopping time with respect to the stochastic process. $\{X_n, n \geq 0 \}$ if the value of $I_{N}$[INCOMPLETE]
+
+$\{X_n, n \geq 0\}$ -- Gambler's ruin problem
+
+$ T = \min\{k \geq 0: X_k \geq 5\}$
+
+
+Example: $X_0 = 10$ then $T=0$
+
+Calculate $I_{\{T_n\}}$ from $X_0, X_1, \dots X_n$
+
+If $\{T =0 \}$ $\implies$ $ \{X_0 \geq 5 \}$
+
+$\{ T= 1\} \implies \{X_0 <5, X_1 \geq 5 \}$
+
+$ \{ T=n \} \implies \{X_0 <5, X_1<5, \dots X_{n-1} < 5, X_n \geq 5\}$
+
+$T$ is a stopping time
+
+Strong markov property: 
+
+Suppose $T$ is a stopping time with respect to the Markov Chain, $\{X_n, n \geq 0\}$ Given that stopping time $T=n$ and $X_T=y$
+
+Any other information about $X_0, X_1, \dots X_{T-1}$ is irrelevant for predicting future. 
+
+$P(X_{T+1} =j | T=n, X_T=y) = P(X_1=j|X_0=y) = p(y,j)$
+
+$P(X_{T+1} = j|T_n,X_T=y,X_{T-1}=x, \dots X_o=z) = P(X_{T+1}=j | T=n, X_T=y)P(y,j)$
+
+
+$P(X_{T+m} = j|T=n, X_T=y, X_{T-1}=x) = P(X_{T+m} = j|T=n, X_T=y) = P(X_m=j|X_0=y) = p^m(y,j)$
+
+
+
+
+\end{document}
+
+
+
