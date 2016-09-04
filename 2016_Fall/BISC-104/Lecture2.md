@@ -1,6 +1,9 @@
 Nucleus = Protons + Neutrons
+
 Neutron => Neutral
+
 Positron => Positive charges
+
 Electron => Negative charged
 
 Isotopes => Same number of protons, different number of neutrons
@@ -38,13 +41,14 @@ Compound => Molecule with unlike atoms
 
 Chemical properties of compound have little or nothing to do with properties of the atom that make it up
 
-Three trypes of bonds:
-1. Covalend => Strongest -> Formed by sharing of electrons such that outermost valence shell is full
+Three types of bonds:
+1. Covalend => Strongest => Formed by sharing of electrons such that outermost valence shell is full
 2. Ionic => Moderate => One atom gains, other loses electron
-3. Hydrogen => Wea k  => Formed because of electronegative difference
+3. Hydrogen => Weak  => Formed because of electronegative difference
 
 O2 forms double bond by sharing of electorns
-one bound = one pair of electrons
+
+one bond = one pair of electrons
 
 Ionic bonds -> Formed by donating and gaining of electrons between two atoms 
 
