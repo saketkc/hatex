@@ -72,3 +72,8 @@ Required for
 - fewer oxygen than Carbohydrates
 - Dehydration reaction produces triglyides
 
+
+- Glycerol + satuated fatty acids  -> (dehydration) -> Triglycerides
+- Phospholipids -> Lipids with phosphate group; polar head, non polar tails
+- Steroids -> Lipids with common four ring structure
+- 
