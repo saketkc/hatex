@@ -12,7 +12,7 @@ Cholestrol -> Pre-cursor to lot of osteroids(osterogen, testesterone)
 
 
 ## Proteins
-- Contain C,H,O
+- Contain C,H,O, N
 - Provide structural support
 - Mechanism for moving muscles
 - Function in physiological proceses
@@ -23,7 +23,7 @@ Cholestrol -> Pre-cursor to lot of osteroids(osterogen, testesterone)
 - Type pf protein
 - Speedup chemical reactions
 - E.g Digestive enzymes catalyze hydrolysis of bonds in food molecules
-- Speicifc to substrate
+- Specific to substrate
 
 
 ## Defensie Proteins
@@ -32,26 +32,30 @@ Cholestrol -> Pre-cursor to lot of osteroids(osterogen, testesterone)
 ## Storage Proteins
 
 - Storage of amino acids
-- Casein = makor source of AA for baby mammals. Plants stire in seeds. Ovaluv
+- Casein = major source of AA for baby mammals. Plants store in seeds. Ovalbumin -> egg white
+- 
 
 ## Transport protein
 
 - Transport of substances
 - E.g Haemoglobin - Carries 
 
-## HArmonola proteins
+## Hormonoal proteins
 - Coordination of organisms activities
 - Insulin regulates hhihig blod sugar
 
 ## Receptor Proteins
-- Response of'cell to 
+- Response of'cell to detect stimuli
 
-## Contractive and motor proteins
+## Contractile and motor proteins
 - Movement
-- motor proteins regulate movement;. of  cilia and f=k
+- motor proteins regulate movement of cililar, flagella
+- Actin/myosin: reposnisble for muscle contraction
 
-## Strucutkra Porii-
+## Structural Proteins
 - Support
+- Keratin : feather, hair
+- Collagen: supports tissues
 
 - Amino acids are building blocs of proteini
 - 20 different AA
@@ -64,15 +68,15 @@ Cholestrol -> Pre-cursor to lot of osteroids(osterogen, testesterone)
 
     R group determines activity of the AA
 - AA join by forming peptide bond(dehydration reaction)
-- AA-AA is a dipeptide
+- AA-AA is a dipeptide -> >100 = protein else <100 polypeptide
 - All proteins are polypeptides
 - Folding and interation of adjacent AA determines shape of protein
 - Primary -> Secondary -> Tertiary -> Quaternary structur
-- Shpe of prptein determines function, final shape determined by primary structure
+- Shape of prptein determines function, final shape determined by primary structure
 
 ## Enzymes
 
 - Facilititates reaction without changing themselves
 - Rely on shape to function properly
+- substrates bind to active site of enzyme
 
-e
