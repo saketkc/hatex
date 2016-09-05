@@ -86,6 +86,46 @@ Endo and Exo cytosis:
 Cytoskeleton: bones of cell
 - Intermediate filaments -> protect cells from mechanical stress
 - Micortubule: hollowcylinders made od tubulin protein
-- microfilaments: actin => cellular locomotion, muscle contraction, cell division
+- microfilaments: actin => cellular locomotion, muscle contraction, cell division\
+
+cell movement
+- flagella -? long whiplike structures that properl cell forward -> sperm [only human cell]
+- Cilia -> shorter extensions like hair 
+  - lineup upper respiratory tract moving mucus upward and sweeping out debris and pathogens
+  - lineup fallopian tubes and move the egg from ovary to uterus
+
+ER:
+- membrane of ER directly connected to double membrane surrounding nucleus
+- RER provide surface for glycoproteins synthesis by ribisomoes
+- Synthesiszed proteins pass through Golgi apparatus till they become the final product
+- Ribsomoes are themseolves proteins serving as protein factories. synthesized proteins might be exocytosed
+ through secretory vesicles
+
+Nucleus
+- Nuclear envelope formed by phospholipid membrane
+- Diff with cell membrane: cell membrane is single bilayer, this is two
+- puntured by buclear pores that allow intake/outlet for materials into the nucleus
+
+
+Mitochondira
+- bean shapped organells outside nucleus
+- convery digested food to usable energy in the form of ATP
+- requies O2 produces Co2
+
+Lipids: 9kcal/g
+GlycogenL 4kcal/g
+Protein: 4kcal/g
+
+Glycogen -> Glucose -> Pyruvate ->  Acetyl group -> Krebs cycle
+Fats -> Fatty acid /Glycerol-> Pyruvate ->  Acetyl group -> Krebs cycle
+Protein -> AA -> Carbon backbone +NH3
+
+
+## Cell Signalling
+
+- Cicrulating hormones: target cells remote, can be released into bloodstream so can reach every cell
+- Paracrines: local hormones for quick action like virus interferons for attacking virus. Neurons use paracrines to stimulate nearby nerve which inturn release neurotransmitters
+- Gap junction: physicall connection between cells
 - 
+
 
