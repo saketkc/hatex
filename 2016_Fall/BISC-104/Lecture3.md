@@ -69,6 +69,6 @@ Required for
 - Not soluble in water
 - Oils, wax, fats => long chain carbon containing
 - C,H,O but not 1:2:1 ratio
-- ewer oxygen than Carbohydrates
+- fewer oxygen than Carbohydrates
 - Dehydration reaction produces triglyides
 
