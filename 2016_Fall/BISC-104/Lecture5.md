@@ -109,6 +109,7 @@ Nucleus
 
 Mitochondira
 - bean shapped organells outside nucleus
+- smooth outer mebrane
 - convery digested food to usable energy in the form of ATP
 - requies O2 produces Co2
 
