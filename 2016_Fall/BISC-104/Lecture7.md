@@ -64,3 +64,11 @@ Tissue -> Cells of similar type grouped to perform similar function together
 - Anatomical position
   - Proximal/distal
   - Dorsal(back)/Ventral
+
+- Bone structure
+  - Provide support
+  - anchoring skeletal muscles
+  - protect soft tissue and organs
+  - producing blood cells ( hematopoiesis)
+  - Storing and releasing minerals
+  - 206 bones -- 26 in the feet
