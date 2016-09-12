@@ -50,3 +50,8 @@ Signature Projection
 
 - Lot of copy number in cancer
 - == Beta ketnanin mutation in C6
+
+
+## Reveleader
+-- Recursive evaulation of variables conditional et
+-- Find genomic feature that are correlated with functional readout or phneotype
