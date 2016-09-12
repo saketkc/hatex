@@ -47,3 +47,6 @@ Prediction
 Signature Projection
 - GSEA like approach
 - Bayesian network outcome: clinical, didsease subtype indepdent expression, dna copy number 
+
+- Lot of copy number in cancer
+- == Beta ketnanin mutation in C6
