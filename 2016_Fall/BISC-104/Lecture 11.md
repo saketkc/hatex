@@ -16,10 +16,8 @@ Neroglia -- Like the dough in a chocolate chip cookie
 - Microglia
 
 # Na-K Pump
-
-
-
-
+- E_K -- Equilbrium potential
+- 
 
 
 
