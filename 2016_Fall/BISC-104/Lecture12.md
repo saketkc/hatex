@@ -1,5 +1,5 @@
 Electrical nature of neurons
-
+  
 - Na+ - K+ pump -- Na+ K= selective channels
 - Concentration force pushes out while elc. pontial forces K+ inside membrane
 - Why charge? Chargeexists;p
@@ -14,4 +14,5 @@ Electrical nature of neurons
 - Voltage gated K+ channel- Ligarnd - diffusable protein
 - Ligand binding causes protein to change its shape
 - Mechanicall gated channels
-
+- One of the channels nned to be closed
+- 
