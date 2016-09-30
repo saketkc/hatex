@@ -10,6 +10,6 @@ High dimen dimensional missing data problems
 
 ## Imputational consitency algorithm
 - I-step: draw Z from the conditional distribution given h(z|Y, theta_n)
-
 - C-: ste- arg max_\tejta E(log(f(x))
+
 
