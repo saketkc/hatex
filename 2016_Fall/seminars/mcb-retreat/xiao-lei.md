@@ -16,3 +16,6 @@ Problem:
 Hypothesis
 - C-terminal helix flippwed up does not allow CAbin1 to bind( which is a repressor) thus driving expression
 
+Question:
+- Sickel cell anemica involves protein aggregation? It probably does not happen here
+
