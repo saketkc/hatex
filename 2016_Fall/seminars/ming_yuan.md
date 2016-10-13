@@ -13,4 +13,6 @@
 - This doesnt work for two reasons
     - Too conservative for large regions
     - Computationally expensive: Too many rectangles 
--
+- Kendall's tau - for determining threshold
+- To maintain local dependence -> Do block by block bootstrap
+- -
