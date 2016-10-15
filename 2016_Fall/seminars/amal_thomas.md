@@ -4,12 +4,11 @@
 - Mutations in this receptor: How breast cancer gets affected?
 
 ## ESR
-- ESR1 --> Overexpressed in 70% of breast cancer- 
+- ESR1 --> Overexpressed in 70% of breast cancer
 - Andrew: Changed the title?
-- Estrogen binds to estrogen receptor -> Formas a binder -> binds to DNA -> regulate genes
-- Estrogen produced from obary -> binds to receptor -> conformation change happens ->
+- Estrogen binds to estrogen receptor -> binds to DNA -> regulate genes
+- Estrogen produced from ovary -> binds to receptor -> conformation change happens
 - Binding can happen via binding co activators
-- Strategy: Precent 
 - Whenzheng: Is their over expression in other cancers as well?
     - Amal: Not sure, but generally over expressed
 - Liz: How does over expression work?
@@ -18,7 +17,7 @@
     - Amal: Don't know the exact mechanism
     - Survival of cancer cell requires estrogen
 
-## Common Treatmen
+## Common Treatment
 - Method 1: Stop production of estrogen -- Aromatase inhibitor
 - Method 2: use drugs to prevent Estrogen binding to receptor
     - Competitively binds to the ER
@@ -50,7 +49,7 @@
 - Andrew: What is the logical order of questions? Lots of people study in ER mutations.
 In our context we are interested in studying binding related chagnes
     - Amal: Priority: Binding site differences > Cofactor > 
-- IF less binding site difference: other factors include change in binding energy --> Not necessarily cofactors
+- If less binding site difference: other factors include change in binding energy --> Not necessarily cofactors
 
 - Meng: Already know the motif?
 
