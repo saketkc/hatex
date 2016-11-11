@@ -34,3 +34,4 @@ equal to the sample moments calculated from the data
 - but ChromHMM overfits 
 - Comparison with GWAS SNP enrichments - seen in 20th state
 
+- eRNAs - bidirectiona non spliced --> active enhacner
