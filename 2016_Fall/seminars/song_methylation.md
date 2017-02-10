@@ -15,3 +15,8 @@ DNMT1 Recognition -> Hydrogen bonding interactions
 
 Autoinhibition of DNMT1 
 - Deletion of autunguth
+- 3A, 3B homologous
+
+
+DNaMT3 
+
