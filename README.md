@@ -1,5 +1,7 @@
 hatex
 =====
+- Fall 2017
+    - No courses :sob:
 - [Fall 2016](2016 Fall)
     - [CSCI 561: Foundations of Artifical Intelligence](2016_Fall/CSCI-561)
     - [EE 512: Stochastic Processes](2016_Fall/EE-599)
