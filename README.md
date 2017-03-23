@@ -1,6 +1,6 @@
 hatex
 =====
-- Fall 2017
+- Spring 2017
     - No courses :sob:
 - [Fall 2016](2016_Fall)
     - [CSCI 561: Foundations of Artifical Intelligence](2016_Fall/CSCI-561)
