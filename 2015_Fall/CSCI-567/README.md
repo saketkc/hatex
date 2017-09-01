@@ -5,12 +5,12 @@ Collection of all source code + tex files for CSCI-567.
 
 **If you landed here looking for solutions to your homework problems, it would make more sense to come up with your own solutions first. That's the best way to learn!**
 
-- Homework 1:
+- Homework 1
     - [Problem](Homework1/CSCI567_hw1.pdf)
     - [Matlab Jupyter Notebook](Homework1/data/programming/CSCI-567_Homework1.ipynb)    
     - [Code](Homework1/data/programming) 
     
-- Homework 2:
+- Homework 2
     - [Problem](Homework2/hw2.pdf)
     - [Solution](Homework2/choudhary_saket_hw2_fall15.pdf)
     - [Code](Homework2/data)
@@ -31,6 +31,7 @@ Collection of all source code + tex files for CSCI-567.
     - [Code](Homework5)
 
 - Homework 6
+    The final HMM problem is incomplete.
     - [Problem](Homework6/hw6.pdf)
     - [Solution](Homework3/CSCI567_hw6_fall15.pdf)
     - [Code](Homework6)
