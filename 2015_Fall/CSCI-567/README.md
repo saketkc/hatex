@@ -31,7 +31,9 @@ Collection of all source code + tex files for CSCI-567.
     - [Code](Homework5)
 
 - Homework 6
+
     The final HMM problem is incomplete.
+    
     - [Problem](Homework6/hw6.pdf)
     - [Solution](Homework3/CSCI567_hw6_fall15.pdf)
     - [Code](Homework6)
