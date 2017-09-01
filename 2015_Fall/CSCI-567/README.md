@@ -2,7 +2,7 @@
 
 Collection of all source code + tex files for CSCI-567. 
 
-**If you landed here looking for solutions to your homework problems, it would make more sense to come up with your own solutions first.** That's the best way to learn!
+**If you landed here looking for solutions to your homework problems, it would make more sense to come up with your own solutions first. That's the best way to learn! **
 
 - Homework 1:
     - [Problem](Homework1/CSCI567_hw1.pdf)
