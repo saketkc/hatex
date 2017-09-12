@@ -5,9 +5,9 @@ Author: Saket Choudhary <skchoudh@usc.edu>
 from collections import Counter
 import pickle
 import sys
-import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.decomposition import PCA
+#import matplotlib.pyplot as plt
 
 
 def read_pickled_data(path):

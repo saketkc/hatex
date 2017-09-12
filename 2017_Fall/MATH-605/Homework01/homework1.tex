@@ -1,0 +1,401 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%       PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{verbatim} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%       DOCUMENT STRUCTURE COMMANDS
+%       Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%       NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Homework 1\ \# } % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ September\ 12,\ 2017} % Due date
+\newcommand{\hmwkClass}{MATH-605} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%       TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+        \textbf{\hmwkAuthorID}
+        }
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%       TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%       PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+
+%\begin{homeworkProblem}[Prob. \Roman{homeworkProblemCounter}] % Roman numerals
+
+%--------------------------------------------
+
+\begin{homeworkProblem}[2.5.1] % Using the problem name elsewhere
+\problemAnswer{ % Answer
+
+\begin{align*}
+||X||_p &= (\mathbb{E}|X|^p)^{\frac{1}{p}}\\
+\mathbb{E}|X|^p &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty |x|^p e^{\frac{-x^2}{2}}dx\\
+&= \frac{2}{\sqrt{2\pi}}\int_{0}^\infty x^p e^{\frac{-x^2}{2}}dx\\
+&= \frac{2}{\sqrt{2\pi}}\int_{0}^\infty x^{p-1} e^{\frac{-x^2}{2}}xdx\\
+&= \frac{2}{\sqrt{2\pi}} \times 2^{\frac{p-1}{2}}  \int_{0}^\infty y^{\frac{p+1}{2}-1} e^{-y}dy && [ y = \frac{x^2}{2}]\\
+&= \frac{2^{\frac{p+1}{2}}}{\sqrt{2\pi}}\Gamma(\frac{p+1}{2})\\
+&= 2^{\frac{p}{2}} \frac{\Gamma(\frac{p+1}{2})}{\Gamma(\frac{1}{2})} && [\because \sqrt{\pi} = \Gamma(\frac{1}{2})] \\
+(\mathbb{E}|X|^p)^{\frac{1}{p}} &= 2^{\frac{1}{2}} \large(\frac{\Gamma(\frac{p+1}{2})}{\Gamma(\frac{1}{2})}  \large )^{\frac{1}{p}} \\
+\end{align*}
+
+Now using $\lim_{x\rightarrow \infty} \Gamma(x) \rightarrow x^x$
+
+\begin{align*}
+\Gamma(\frac{p+1}{2}) &\rightarrow  \big(\frac{p+1}{2}\big)^{\frac{p+1}{2}}\\
+\big(\Gamma(\frac{p+1}{2}) \big)^{\frac{1}{p}} &\rightarrow  \big(\frac{p+1}{2}\big)^{\frac{1}{2} + \frac{1}{2p}}\\
+\implies (\mathbb{E}|X|^p)^{\frac{1}{p}} &= 2^{\frac{1}{2}} \large(\frac{\Gamma(\frac{p+1}{2})}{\Gamma(\frac{1}{2})}  \large )^{\frac{1}{p}} \rightarrow p^{\frac{1}{2}} & \text{ as } p \rightarrow \infty \\
+\end{align*}
+
+\begin{align*}
+\mathbb{E}\exp(\lambda X) & = \frac{1}{\sqrt {2\pi} }\int_{-\infty}^{\infty} e^{\lambda x}e^{-\frac{x^2}{2}} dx\\
+&= \frac{1}{\sqrt {2\pi} }\int_{-\infty}^{\infty} e^{-\frac{(x-\lambda)^2}{2}} e^{\frac{\lambda^2}{2}} dx  \forall \lambda \in \mathbb{R}\\
+&= e^{\frac{\lambda^2}{2}} && [\because \frac{1}{\sqrt {2\pi} }\int_{-\infty}^{\infty} e^{-\frac{(x-\lambda)^2}{2}} dx = 1]
+\end{align*}
+
+}
+
+
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[2.5.4] % Using the problem name elsewhere
+\problemAnswer{ 
+
+Assume $k=1$
+Suppose $\mathbb{E} \exp(\lambda X) \leq \exp(k^2\lambda^2)$ for all $\lambda \in \mathbb{R}$ holds for $EX \neq 0$. attempting proof by contradiction:
+
+\begin{align*}
+\mathbb{E} \exp(\lambda X) &\leq \exp(\lambda^2)\\
+E[1+\sum_{p=1}^\infty \frac{(\lambda X)^p}{p!}] &\leq 1+\sum_{p=1}^\infty \frac{\lambda^{2p}}{p!}\\
+E[\sum_{p=1}^\infty \frac{(\lambda X)^p}{p!}] &\leq \sum_{p=1}^\infty \frac{\lambda^{2p}}{p!}\\
+\sum_{p=1}^\infty \frac{\lambda^p}{p!} (EX^p - \lambda^{p}) \leq 0\\
+\lambda E[X] + \sum_{i=1}\frac{\lambda^{2i+1}E[X^{2i+1}]}{(2i+1)!} + \sum_{j=1}\lambda^{2j} (\frac{E[X^{2j}]}{2j!} - \frac{1}{j!})&\leq 0\\
+\end{align*}
+...... Not complete ......
+
+
+Attempt 2:
+
+Using $e^x \leq x + e^{x^2}$ $\implies \mathbb{E}[e^{\lambda X }] \leq \mathbb{E} [ \lambda X + e^{\lambda^2X^2}] \leq \lambda E[X] + e^{\lambda^2}$ for $\lambda \leq 1$  and given $ \mathbb{E} \exp(\lambda X) \leq \exp(\lambda^2)$ 
+Thus for $|\lambda| \leq 1$, $\lambda E[X] \geq 0$ which can hold only if $EX=0$. Hence $EX=0$ is required.
+
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[2.5.5] % Using the problem name elsewhere
+\problemAnswer{ 
+%$\mathbb{E} \exp(\lambda^2 X^2) \leq \exp(K^2\lambda^2)$ for all $\lambda$ such that $|\lambda | \leq \frac{1}{K}$
+1.
+
+$\mathbb{E}X =0$ and $\mathbb{E}X^2 = 1$
+
+%$\exp(K^2\lambda^2) \rightarrow 1 $ as $\lambda \rightarrow 0$ or $\lambda \rightarrow \infty$
+
+\begin{align*}
+M_{X^2}(t) &= \mathbb{E}(e^{tX^2})  \\
+&= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{tx^2} e^{-\frac{x^2}{2}}dx\\
+&= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}(1-2t)}dx\\
+&= \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2\frac{1}{(1-2t)}}}dx\\
+&= \frac{1}{\sqrt{1-2t}} && \forall t>\frac{1}{2}\\
+&\leq 1 && \forall t>\frac{1}{2}
+\end{align*}
+
+
+2.
+
+\begin{align*}
+\mathbb{E} (\lambda^2X^2) &\leq \exp(K\lambda^2)\\
+E [ 1 + \sum_{p=1} \frac{(\lambda^2X^2)^p}{p!}] &\leq 1 + \sum_{p=1} \frac{(K\lambda^2)^p}{p!}\\
+\sum_{p=1} \frac{\lambda^{2p}}{p!}(E[X^{2p}] - K^p) &\leq 0\\
+(E[X^{2p}] - K^p) &\leq 0 & \forall p\geq 1\\ 
+\implies E[X^{2p}] &\leq K^p & \forall p\geq 1\\
+\implies E[|X|^{p}]^{\frac{1}{p}} &\leq K & \forall p\geq 1\\
+\implies ||X||_\infty &< \infty \\
+\end{align*}
+
+}
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[2.5.7] % Using the problem name elsewhere
+\problemAnswer{ 
+
+$||X||_{\psi_2} = \inf \{ t > 0 : \mathbb{E} \exp(\frac{X^2}{t^2}) \leq 2 \}$. A valid norml satisfies following conditions
+
+1. $||X||_{\psi_2} \geq 0$ 
+
+2. $||X||_{\psi_2} = 0$ iff $X=0$
+
+3. $||aX||_{\psi_2} = |a| ||X||_{\psi_2}$ for $a \in \mathbb{R}$
+
+4. $||X+Y||_{\psi_2} \leq ||X||_{\psi_2} + ||Y||_{\psi_2} $ 
+
+
+Proof:
+
+1. $||X||_{\psi_2} \geq 0$ as $t > 0$ always by the condition inside infimum.
+
+2. $||X||_{\psi_2} = 0$ if $X=0$ clearly. 
+
+For $||X||_{\psi_2} =0 \implies X=0$:
+
+As $||X||_{\psi_2} =0$, $\mathbb{E} \exp(\frac{X^2}{t^2}) \leq 2 \ \ \forall t>0$
+
+Assume $X \neq 0$, i.e $P(|X| >0) > 0$ Define event $A  = \{ \omega \in \Omega : |X(\omega)| \geq \delta \} where \delta > 0$. Since $X \neq 0, P(A) >0$
+
+\begin{align*}
+\exp(\frac{\delta^2}{t^2}) P(A) &\leq \int_A \exp(\frac{\delta^2}{t^2}) dP\\
+&\leq \int_A \exp(\frac{X^2}{t^2}) dP && [\because |X| > \delta on set A]\\
+&\leq \mathbb{E}\exp(\frac{X^2}{t^2}) \\
+&\leq 2
+\end{align*}
+
+Let $t \rightarrow 0$, then $\mathbb{E}\exp(\frac{X^2}{t^2}) > 2$ which is a contradiction, and hence $X=0$ when $||X||_{\psi_2} =0$
+
+\textit{Adapted from "Subgaussian random variables: An expository note" by Omar Rivasplata.}
+
+3. \begin{align*}
+||aX||_{\psi_2} & = \inf \{ t > 0 : \mathbb{E} \exp(\frac{a^2X^2}{t^2}) \leq 2 \}\\
+&= \inf \{ |a|t > 0 : \mathbb{E} \exp(\frac{X^2}{t'^2}) \leq 2 \} && [\text{Substitute } t'=|a|t]\\
+&= |a| \inf \{ t > 0 : \mathbb{E} \exp(\frac{X^2}{t^2}) \leq 2 \}\\
+&= |a| ||X||_{\psi_2}
+\end{align*}
+
+%\begin{comment}
+%%4.  \begin{align*}
+%%||X||_{\psi_2} &= \inf \{ t > 0 : \mathbb{E} \exp(\frac{X^2}{t^2}) \leq 2 \}\\
+%%& = \inf \{ t > 0 : \mathbb{E} \exp(\frac{X^2}{t^2}) -1 \leq 1 \}\\
+%%f(X) &= e^{\frac{X^2}{t^2}} -1 \\
+%%f'(X) &= 2Xe^{\frac{X^2}{t^2}}  \\
+%%||X + Y||_{\psi_2} &= \inf \{ t > 0 : \mathbb{E} \exp(\frac{(X+Y)^2}{t^2}) \leq 2 \}\\
+%%\mathbb{E} \exp(\frac{(X+Y)^2}{t^2}) &\leq \mathbb{E} \exp(\frac{X^2+Y^2+2|X||Y|}{t^2})\\
+%%\end{align*}
+%\end{comment}
+4.
+
+For 4. we make use Proposition 2.5.2 where we proved equivalence of the other forms of the norm. Here we use the p-norm form:
+
+$||X||_{\psi_2} = \inf \{t>0: (\mathbb{E}|X|^p)^\frac{1}{p} \leq t\sqrt{p} \}$
+$Lp$ norm is a norm and hence satisfies triangular inequality.
+
+\begin{align*}
+||X+Y||_{\psi_2} &= \inf \{t>0: (\mathbb{E}|X+Y|^p)^\frac{1}{p} \leq t\sqrt{p} \} \\
+\mathbb{E}|X+Y|^p)^\frac{1}{p} &\leq (E|X|^p)^\frac{1}{p} + (E|Y|^p)^\frac{1}{p} && [ \text{ using  Minkowski's inequality }]\\
+\inf \{t>0: (\mathbb{E}|X+Y|^p)^\frac{1}{p} \leq t\sqrt{p} \} &\leq \inf \{r>0: (\mathbb{E}|X|^p)^\frac{1}{p} \leq r\sqrt{p} \} \\
+&+ \inf \{s>0: (\mathbb{E}|Y|^p)^\frac{1}{p} \leq s\sqrt{p} \}\\
+\implies ||X+Y||_{\psi_2} &\leq ||X||_{\psi_2} + ||Y||_{\psi_2}
+\end{align*}
+}
+\end{homeworkProblem}
+
+
+
+
+\begin{homeworkProblem}[2.6.9] % Using the problem name elsewhere
+\problemAnswer{ 
+Consider $X$ a bernoulli random variable $P(X=0) = P(X=1) = \frac{1}{2}$
+\begin{align*}
+\mathbb{E}e^{\frac{X^2}{t^2}} &= \frac{e^{\frac{1}{4t^2}}+1}{2}\\
+\mathbb{E}e^{\frac{(X-\frac{1}{2})^2}{t^2}} &= e^{\frac{1}{4t^2}}\\
+||X||_{\psi_2} &= \inf \{ t>0 : \mathbb{E}e^{\frac{X^2}{t^2}} \leq 2 \}\\
+&= \inf \{ t>0 : \frac{e^{\frac{1}{4t^2}}+1}{2} \leq 2 \}\\
+&= \inf \{ t>0 : \frac{1}{4t^2} \leq \ln(3) \}\\
+&= \frac{1}{2\sqrt{\ln(3)}}\\
+||X-EX||_{\psi_2} &= ||X-\frac{1}{2}||_{\psi_2}\\
+||X-\frac{1}{2}||_{\psi_2} & = \inf \{ t>0 : \mathbb{E}e^{\frac{(X-\frac{1}{2})^2}{t^2}} \leq 2 \}\\
+&= \inf \{ t>0 : e^{\frac{1}{4t^2}} \leq 2 \}\\
+&= \frac{1}{2\sqrt{\ln(2)}}\\
+\end{align*}
+
+Assume $||X-EX||_{\psi_2} \leq C||X||_{\psi_2}$ to be true for $C=1$, then
+\begin{align*}
+||X-EX||_{\psi_2} &\leq ||X||_{\psi_2}\\
+\implies \frac{1}{2\sqrt{\ln(2)}} \leq \frac{1}{2\sqrt{\ln(3)}}\\
+\sqrt{\ln(3)} &\leq  \sqrt{\ln(2)}
+\end{align*}
+
+which is a contradiction and hence $C \neq 1$
+
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[2.7.2] % Using the problem name elsewhere
+\problemAnswer{ 
+1. $P\{ |X| \geq t \} \leq 2 \exp^{-t/K_1}$ for all $t \geq 0$
+
+2. $||X||_p = \big( E|X|^p \big)^{\frac{1}{p}} \leq K_2p \forall p \geq 1$
+
+3. $\mathbb{E} \exp(\lambda |X|) \leq \exp(\lambda K_3)$ for all $\lambda$ such that $0 \leq \lambda \frac{1}{K_3}$
+
+4. $\mathbb{E} \exp(|X|/K_3) \leq 2$
+
+
+$ 1 \implies 2$ :
+
+By homogenity, $X$ can be rescaled to $X/K_1$
+
+\begin{align*}
+E|X|^p &= \int_0^\infty P(|X|^p > u) du\\
+&=\int_0^\infty P(|X| > t)pt^{p-1}dt && [\text{Substitute }  u=t^p]\\
+&\leq \int_0^\infty 2 e^{-t} pt^{p-1}dt\\
+&= p\Gamma(p) \\
+&\leq pp^p && [\because \Gamma(p) \leq p^p]\\
+(E|X|^p)^{\frac{1}{p}} &= p^{\frac{1}{p}}p\\
+&\leq 2p
+\end{align*}
+
+$2 \implies 3$ :
+\begin{align*}
+\mathbb{E}[e^{\lambda |X|}] &=  \mathbb{E}[1 + \sum_{p=1}^{\infty}\frac{(\lambda |X|)^p}{p!}] \\
+&= 1 + \sum_{p=1}^{\infty} \frac{\lambda^p E[|X|^p]}{p!}\\
+&\leq 1 +\sum_{p=1}^{\infty} \frac{\lambda^p p^p}{p!} && [\because (E[|X|^p])^\frac{1}{p} \leq p ]\\ 
+&\leq 1 +\sum_{p=1}^{\infty} \lambda^p e^p && [\because p! \geq (\frac{p}{e})^p ]\\ 
+&= \frac{1}{1-\lambda e} && [\text{ for } \lambda e < 1]\\
+&\leq e^{2\lambda e} && [\because \frac{1}{1-x} \leq e^2x]
+\end{align*}
+
+$3 \implies 4$ :
+
+3 holds for $\lambda K \leq 1$ and $\exp{K\lambda} \rightarrow 1$ as $\lambda \rightarrow 0$ 
+
+
+$4 \implies 1$ :
+\begin{align*}
+E[|X|] &\leq  2\\
+P(|X| > t) &= P(e^{|X|} > e^t) \\
+&= e^{-t}P(e^{|X|} > 1)\\
+&\leq  e^{-t} E[e^{|X|}]\\
+\leq 2e^{-t}
+\end{align*}
+
+
+
+}
+\end{homeworkProblem}
+
+\end{document}
