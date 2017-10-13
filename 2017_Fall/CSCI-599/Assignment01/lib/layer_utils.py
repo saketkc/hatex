@@ -221,12 +221,12 @@ class dropout(object):
         #############################################################################
 
         p = self.p
-        if p == 0:
-            p = 1
+        if p == 1:
+            p = 0
         if is_Training:
-            dropped = np.random.binomial(1, p, feat.shape)
+            dropped = np.random.binomial(1, 1-p, feat.shape)
             #dropped = feat[to_drop==1]
-            output = np.multiply(dropped, feat)*(1/p)
+            output = np.multiply(dropped, feat)*(1/(1-p))
         else:
             output = feat
 
@@ -247,10 +247,10 @@ class dropout(object):
         # TODO: Implement the backward pass of Dropout                              #
         #############################################################################
         p = self.p
-        if p == 0:
-            p = 1
+        if p == 1:
+            p = 0
         if self.is_Training:
-            dfeat = self.dropped * dprev *(1/p)
+            dfeat = self.dropped * dprev *(1/(1-p))
         else:
             dfeat = dprev
         #############################################################################
@@ -303,7 +303,7 @@ class cross_entropy(object):
         n_samples, n_feat = dLoss.shape
         label_encoded = np.zeros(dLoss.shape)
         label_encoded[np.arange(n_samples), self.label] = 1
-        dLoss = dLoss - label_encoded
+        dLoss = (dLoss - label_encoded)
         if self.dim_average:
             dLoss/=n_samples
         #############################################################################

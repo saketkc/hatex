@@ -156,7 +156,7 @@ def train_net(data, model, loss_func, optimizer, batch_size, max_epochs,
             # pass to the network, and make a step for the optimizer                    #
             #############################################################################
             loss = None
-            output_batch = model.forward(data_batch)
+            output_batch = model.forward(data_batch, True)
             loss = loss_func.forward(output_batch, labels_batch)
             dLoss = loss_func.backward()
             dX_batch = model.backward(dLoss)
