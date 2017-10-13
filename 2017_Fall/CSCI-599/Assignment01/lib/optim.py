@@ -28,8 +28,6 @@ class SGD(Optimizer):
         for layer in self.net.layers:
             for n, v in layer.params.iteritems():
                 dv = layer.grads[n]
-                print(dv.shape)
-                print(layer.params[n].shape)
                 layer.params[n] -= self.lr * dv
 
 
@@ -44,7 +42,13 @@ class SGDM(Optimizer):
         #############################################################################
         # TODO: Implement the SGD + Momentum                                        #
         #############################################################################
-        pass
+        for layer in self.net.layers:
+            for n, v in layer.params.iteritems():
+                vprev = self.velocity.get(n, np.zeros_like((layer.params[n])))
+                dv = layer.grads[n]
+                vnew = self.momentum * vprev - self.lr*dv
+                self.velocity[n] = vnew
+                layer.params[n] += vnew
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################
@@ -62,7 +66,15 @@ class RMSProp(Optimizer):
         #############################################################################
         # TODO: Implement the RMSProp                                               #
         #############################################################################
-        pass
+        for layer in self.net.layers:
+            for n, v in layer.params.iteritems():
+                eg2prev = self.cache.get(n, 0)
+                dv = layer.grads[n]
+                g2 = dv**2
+                eg2new = self.decay*eg2prev + (1-self.decay)*g2
+                self.cache[n] = eg2new
+                layer.params[n] -= self.lr*dv/(np.sqrt(eg2new+self.eps))
+
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################
@@ -82,7 +94,18 @@ class Adam(Optimizer):
         #############################################################################
         # TODO: Implement the Adam                                                  #
         #############################################################################
-        pass
+        self.t += 1
+        for layer in self.net.layers:
+            for n, v in layer.params.iteritems():
+                dv = layer.grads[n]
+                mtprev = self.mt.get(n, np.zeros_like((layer.params[n])))
+                vtprev = self.vt.get(n, np.zeros_like((layer.params[n])))
+                mtnew = self.beta1 * mtprev + (1-self.beta1) * dv
+                vtnew = self.beta2 * vtprev + (1-self.beta2) * (dv**2)
+                self.vt[n] = vtnew
+                self.mt[n] = mtnew
+                layer.params[n] -= self.lr*(mtnew/(1-self.beta1**self.t)) /(np.sqrt(vtnew/(1-self.beta2**self.t))+self.eps)
+
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################

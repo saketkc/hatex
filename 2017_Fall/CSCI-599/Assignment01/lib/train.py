@@ -127,7 +127,7 @@ def train_net(data, model, loss_func, optimizer, batch_size, max_epochs,
     data_val, labels_val = data["data_val"]
     dataloader = CIFAR10_DataLoader(data_train, labels_train, batch_size)
     opt_val_acc = 0.0
-    opt_params = None
+    opt_params = {}
     loss_hist = []
     train_acc_hist = []
     val_acc_hist = []
@@ -213,7 +213,7 @@ def train_net(data, model, loss_func, optimizer, batch_size, max_epochs,
             #############################################################################
             for layer in model.net.layers:
                 for n, v in layer.params.iteritems():
-                    optim_params[n] = v
+                    opt_params[n] = v
             #############################################################################
             #                             END OF YOUR CODE                              #
             #############################################################################

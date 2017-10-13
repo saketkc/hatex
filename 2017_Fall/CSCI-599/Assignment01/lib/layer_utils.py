@@ -95,7 +95,7 @@ class fc(object):
         self.params = {}
         self.grads = {}
         self.params[self.w_name] = init_scale * np.random.randn(input_dim, output_dim)
-        self.params[self.b_name] = np.zeros((output_dim, 1))
+        self.params[self.b_name] = np.zeros(output_dim)
         self.grads[self.w_name] = None
         self.grads[self.b_name] = None
         self.meta = None
