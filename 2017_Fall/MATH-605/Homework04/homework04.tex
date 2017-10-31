@@ -1,0 +1,351 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%       PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{verbatim} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%       DOCUMENT STRUCTURE COMMANDS
+%       Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%       NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Homework \ \# 4} % Assignment title
+\newcommand{\hmwkDueDate}{Tuesday,\ October\ 31,\ 2017} % Due date
+\newcommand{\hmwkClass}{MATH-605} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%       TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+        \textbf{\hmwkAuthorID}
+        }
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%       TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+%----------------------------------------------------------------------------------------
+%       PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+
+%\begin{homeworkProblem}[Prob. \Roman{homeworkProblemCounter}] % Roman numerals
+
+%--------------------------------------------
+
+
+\begin{homeworkProblem}[5.4.12] % Using the problem name elsewhere
+\problemAnswer{ % Answer
+\begin{align*}
+\mathbb{E} \exp{\lambda \epsilon A} &= \frac{1}{2}(\exp{\lambda A} + \exp{-\lambda A})\\
+\exp{A} & = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \dots \\
+\exp{-A} & = I - A + \frac{A^2}{2!} - \frac{A^3}{3!} + \dots \\
+\frac{1}{2}(\exp{\lambda A} + \exp{-\lambda A}) &= I + \frac{\lambda^2A^2}{2} +  \frac{\lambda^4 A^4}{ 4!} +  \frac{\lambda^6 A^6}{6!} + \dots   \\
+&= I + \frac{\lambda^2A^2}{2} +  \frac{\lambda^4 A^4}{ 4 * 3} +  \frac{\lambda^6 A^6}{8 * 90} + \dots  \\
+&\leq 1 + (\lambda^2A^2/2) + \frac{((\lambda^2A^2)/2)^2}{2} +  \frac{(\lambda^2 A^2/2)^3}{3!} + \dots\\
+&= \exp{\lambda^2 A^2/2}
+\end{align*}
+
+Then define $X = \sum_{i=1}^N \epsilon_i A_i$, then following from 5.14 :
+\begin{align*}
+\mathbb{P} \{\lambda_{max}(S) \geq t \} &= \mathbb{P} \{ e^{\lambda \lambda_{max}(S) \geq t} \} \\
+&\leq e^{-\lambda t} \mathbb{E} e^{\lambda . \lambda_{max}(S)}
+\end{align*}
+
+Define $E = \mathbb{E}\lambda_{max}(e^{\lambda S})$. By the bound on maximum eigen value of $e^{\lambda S}$: $E \leq \mathbb{E} tr e^{\lambda S}$
+
+Applying Lieb's inequality:
+\begin{align*}
+E &\leq \mathbb{E}\ tr e^{\lambda S} \\
+E &\leq \mathbb{E}\ tr \exp{[\sum_{i=1}^{N-1} \lambda X_i + \lambda X_N]} \\
+E &\leq \mathbb{E}\ tr \exp{[\sum_{i=1}^{N-1} \lambda X_i + \log \mathbb{E} e^{\lambda X_N}]} & \text{Conditioning on $X_{i=1}^{N-1}$ and using Lemma 5.4.9 }\\
+E &\leq tr \exp{[\sum_{i=1}^N \log \mathbb{E} e^{\lambda X_i}]} & \text{Repeating above step and using Lemma 5.4.9 $N$ times} \\
+&\leq tr \exp{ [ \sum_{i=1}^N  \frac{\lambda_i^2A_i^2}{2} ] } & \because \mathbb{E} \exp{\lambda \epsilon A}  \leq \exp{\lambda^2 A^2/2}\\
+&\leq n . \lambda_{max} ( \exp{\sum_{i=1}^N \lambda_i^2A_i^2/2} ) & \because \text{trace is sum of $n$ eigen values}\\
+&\leq n \exp\{n\lambda_{max}^2/2 \sum_{i=1}^n A_i^2\}  & \because \lambda_i \leq \lambda_{max} \forall i \in [1, N] \\\\
+&= n \exp\{\lambda_{max}^2\sigma^2/2\} \\
+\mathbb{P} \{\lambda_{max}(S) \geq t \} &\leq n . \exp\{-\lambda t + \lambda_{max}^2\sigma^2/2 \} & \text{substituting for E} \\
+\end{align*} 
+Differentiating $\exp\{-\lambda t + \lambda_{max}^2\sigma^2/2\}$ wrt $\lambda$ gives: $ \exp\{-\lambda t + \lambda_{max}^2\sigma^2/2\} *(-t + \lambda_{max} \sigma^2/2) $ Thus $ \lambda = \frac{t}{\sigma ^2}$ and hence:
+\begin{align*}
+E &\leq n. \exp \{ -\frac{t^2}{2\sigma^2} \}
+\end{align*}
+I don't seem to get a factor of 2 on the RHS
+}
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[5.4.15] % Using the problem name elsewhere
+\problemAnswer{ % Answer
+Consider dilation of $X$ as $Y:= \begin{pmatrix}
+0 & X_i^T\\
+X_i & 0
+\end{pmatrix}$
+Then $Y^2 = \begin{pmatrix}
+X_i^TX_i & 0\\
+0 & X_iX_i^T
+\end{pmatrix}$
+Then $\sigma^2 = ||\sum_{i=1}^NY_i^2|| = || \begin{pmatrix}
+\sum_{i=1}^NX_i^TX_i & 0\\
+0 & \sum_{i=1}^NX_iX_i^T
+\end{pmatrix}  || = \max \{ || \sum_{i=1}^NX_i^TX_i ||, || \sum_{i=1}^NX_iX_i^T || \}$
+Applying Matrix Bernstein's inequality from theorem 5.4.1 to the dilation $Y$ of $X$ give:
+
+\begin{align*}
+P\{ ||\sum_{i=1}^N X_i|| \geq t \} &= P\{ ||\sum_{i=1}^N Y_i|| \geq t \}   \\
+&\leq 2(m+n) \exp{-\frac{t^2/2}{\sigma^2 +Kt/3}}
+\end{align*}
+where $\sigma^2 =  \max \{ || \sum_{i=1}^NX_i^TX_i ||, || \sum_{i=1}^NX_iX_i^T || \} $
+}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}[5.6.6] % Using the problem name elsewhere
+\problemAnswer{ % Answer
+Frame $u_i$ obeys's approximate Parseva;s identity: $ \exists A,B >0 $ such that 
+\begin{align*}
+A||x||_2^2 \leq \sum_{i=1}^N \langle u_i, x \rangle \leq B||x||_2^2 \forall x \in \mathbb{R}^n
+\end{align*}
+$u_i$ is tight when $A=B$. Also, from problem 3.3.9 we have $\{u_i \}_{i=1}^N$ is tight when $ \sum_{i=1}^n u_iu_i^T = AI_n$
+
+Consider random sample $\{v_i \}_{i=1}^m$ of $\{ u_i \}$ from remark 5.6.2 we see that 
+\begin{align*}
+E || \sum_{i=1}^m v_iv_i^T - \sum_{i=1}^N u_iu_i^T || &\leq \epsilon ||\sum_{i=1}^N u_iu_i^T  ||\\
+&= \epsilon ||A||
+\end{align*}
+Hence $\{v_i \}_{i=1}^m$ has a good frame bound.
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[6.1.6] % Using the problem name elsewhere
+\problemAnswer{ % Answer
+$EF(\sum_{i\neq j} a_{ij}f(X_i, X_j)) \leq E(4 \sum_{i\neq j} a_{ij}f(X_i, X_j'))$ . For this to hold, $f$ should be measurable. 
+
+If this holds then theorem $6.1.1$ is implied by taking $f(X_i, X_j) = X_iX_j$ for matrix $X_i$ and theorem $6.1.4$ is implied by considering $f(X_i, X_j) = X_iX_j^T$ for vectors $X_i, X_j$.
+
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[6.3.4] % Using the problem name elsewhere
+\problemAnswer{ % Answer
+To prove: $\mathbb{E} || \sum_{i=1}^N X_i - \sum_{i=1}^N  \mathbb{E} X_i||  \leq 2\mathbb{E} ||\sum_{i=1}^N \epsilon_i X_i||$
+\begin{align*}
+\mathbb{E} || \sum_{i=1}^N X_i - \sum_{i=1}^N EX_i|| &\leq \mathbb{E} || \sum_{i=1}^N X_i || + ||\sum_{i=1}^N  \mathbb{E} X_i ||  &  \text{triangular inequality} \\
+& \leq  \mathbb{E} || \sum_{i=1}^N \epsilon_i X_i || + ||\sum_{i=1}^N  \mathbb{E}  \epsilon_iX_i || &  \text{same distribution} \\
+&\leq  \mathbb{E} || \sum_{i=1}^N \epsilon_i X_i || +  \mathbb{E}  ||\sum_{i=1}^N \epsilon_i X_i || &  \text{Jensen's inequality} \\
+&= 2 \mathbb{E} ||\sum_{i=1}^N  \epsilon_i X_i || 
+\end{align*}
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[6.3.5] % Using the problem name elsewhere
+\problemAnswer{ % Answer
+Consider  $Y_i$ to be independent copies of $X_i$
+\begin{align*}
+ || \sum_{i=1}^N X_i ||_F &= ||\sum_{i=1}^N X_i - \sum_{i=1}^N \mathbb{E}Y_i ||_F & \because EY_i = 0\\
+ &\leq \mathbb{E}_Y ||\sum_{i=1}^N( X_i - Y_i)||_F\\
+F(|| \sum_{i=1}^N X_i ||_F ) &\leq F ( \mathbb{E}_Y ||\sum_{i=1}^N( X_i - Y_i)||_F) \\
+&\leq  \mathbb{E}_Y F(||\sum_{i=1}^N( X_i - Y_i)||_F) & \text{Jensen's}\\
+\mathbb{E}_{X, Y} F(|| \sum_{i=1}^N X_i ||_F ) &\leq \mathbb{E}_X \mathbb{E}_Y F(||\sum_{i=1}^N( X_i - Y_i)||_F)\\
+&\leq  \mathbb{E}_{X, Y}F(||\sum_{i=1}^N( X_i - Y_i)||_F) & \text{Using Fubini's}\\
+\end{align*}
+Now, for rademacher $\epsilon_i$
+\begin{align*}
+ \mathbb{E}_{X, Y}F(||\sum_{i=1}^N( X_i - Y_i)||_F &\leq \mathbb{E}_\epsilon \mathbb{E}_{X, Y} F ( || \sum_{i=1}^N \epsilon_i (X_i-Y_i) ||_F) \\
+ &\leq \mathbb{E}_{X, Y} F ( || \sum_{i=1}^N \epsilon_i X_i ||_F) +  \mathbb{E}_{X, Y} F ( || \sum_{i=1}^N \epsilon_i Y_i ||_F \\
+ &\leq 2 \mathbb{E}_{X, Y} F ( || \sum_{i=1}^N \epsilon_i X_i ||_F)
+ \end{align*}
+ which is the upper bound.
+ 
+ For lower bound:
+ \begin{align*}
+ \mathbb{E} F(\frac{1}{2} ||\sum_{i=1}^N \epsilon_i X_i ||_F) &= \mathbb{E}_{\epsilon} \mathbb{E} F ( \frac{1}{2} || \sum_{i=1}^N \epsilon_i X_i - \sum_{i=1}^N \mathbb{E}Y_i ||_F)\\
+ &\leq \mathbb{E} || \frac{1}{2} \sum_{i=1}^N \epsilon_i(X_i-Y_i)  ||_F \\
+ &\leq \mathbb{E} || \frac{1}{2} \sum_{i=1}^N \epsilon_iX_i ||_F +  \mathbb{E} || \frac{1}{2} \sum_{i=1}^N \epsilon_iX_i ||_F \\
+ &= \mathbb{E} || \frac{1}{2} \sum_{i=1}^N X_i ||_F + \mathbb{E} || \frac{1}{2} \sum_{i=1}^N Y_i ||_F & \text{Same distrubution} \\
+ &\leq \frac{1}{2}( \mathbb{E} ||  \sum_{i=1}^N X_i ||_F + \mathbb{E} || \sum_{i=1}^N Y_i ||_F  )\\
+ &=  \mathbb{E} ||  \sum_{i=1}^N X_i ||_F 
+ \end{align*}
+ 
+ which is the LHS of the whole inequality.
+ 
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[6.5.4] % Using the problem name elsewhere
+\problemAnswer{ % Answer
+$\hat{X}$ is best approximation to $p^{-1}Y$ hence $||\hat{X} - p^{-1}Y || \leq ||p^{-1}Y - X|| $
+\begin{align*}
+||\hat{X} - X|| &\leq || \hat{X} - p^{-1}Y || + ||p^{-1}Y -X|| & \text{Trinagular inequality}\\
+||\hat{X} - X|| &\leq 2||p^{-1}Y -X|| & \because \text{Assumption above} \\
+&= \frac{2}{p} ||Y-pX||\\
+(Y-pX)_{ij} &= (\delta_{ij} - p)X_{ij} + \delta_{ij} {v}_{ij} \\
+\end{align*}
+
+Consider,
+
+\begin{align*}
+||(Y-pX)_i||_2^2 &= \sum_{j=1}^n (\delta _{ij} - p)X_ij + \delta_{ij}v_{ij})^2 \\
+&\leq \sum_{j=1}^n ((\delta _{ij} - p)||X||_\infty + \delta_{ij}||v||_{\infty})^2\\
+\mathbb{E} \max \sum_{j=1} (\delta_{ij} - p)^2 &\leq Cpn \text{Using 2.8.3}\\
+\mathbb{E} \max \sum_{j=1} (\delta_{ij})^2 &\leq Cpn\\
+\implies \mathbb{E} \max ||(Y-pX)_i||_2^2 &\leq   \mathbb{E} {\sum_{j=1}^n ((\delta _{ij} - p)||X||_\infty + \delta_{ij}||v||_{\infty})^2} \\
+&=  \mathbb{E} {\sum_{j=1}^n ((\delta _{ij} - p)^2||X||_\infty^2 + \delta_{ij}^2||v||_{\infty}^2 + (\delta_{ij}-p)\delta_{ij} ||X||_\infty ||v||_\infty )^2}\\
+\implies  \mathbb{E} \max ||(Y-pX)_i||_2 &\leq \sqrt{pn } ||X||_\infty + \sqrt{pn} ||v|_\infty\\
+\end{align*}
+
+Using 6.4.2 .
+\begin{align*}
+\mathbb{E} ||(Y-pX)|| &\leq C\sqrt{\log n} (\mathbb{E} \max ||(Y-pX)_i|| + \mathbb{E} \max ||(Y-pX)^j||) \\
+\end{align*}
+
+Thus,
+
+\begin{align*}
+\mathbb{E} ||(\hat{X}-X)|| &\leq \sqrt{\frac{n \log n}{p}}  ||X||_\infty +  \sqrt{\frac{n \log n}{p}} ||v||_\infty
+\end{align*}
+ 
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[6.6.5] % Using the problem name elsewhere
+\problemAnswer{ % Answer
+\begin{align*}
+\mathbb{E}||g||_\infty &= \mathbb{E} \{ \max_{i \leq n} g_i \}\\
+e^{s \mathbb{E}[\max_{i\leq n} g_i]} &\leq \mathbb{E}[e^{s\max_{i\leq n} g_i}] & \text{Jensen's inequality}\\
+&= \mathbb{E}[\max e^{sg_i}]\\
+&\leq \sum_{i=1}^N \mathbb{E}[e^{sg_i}]\\
+&\leq n e^{\sigma^2s^2/2} &\text{Using mgf of $g$}\\
+\implies \mathbb{E} \{ \max_{i \leq n} g_i \} &\leq \frac{\ln}{s} + \frac{s\sigma^2}{2}
+\end{align*}
+
+Differentiating $\frac{\ln}{s} + \frac{s\sigma^2}{2}$ wrt $s$ gives $s =\sqrt{\frac{2\ln n}{\sigma^2}}$ and hence
+\begin{align*}
+\mathbb{E}||g||_\infty &= \mathbb{E} \{ \max_{i \leq n} g_i \}\\
+&\leq \sqrt{2}\sigma \sqrt{\ln n}
+\end{align*}
+
+
+
+}
+\end{homeworkProblem}
+
+
+
+
+\end{document}
