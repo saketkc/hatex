@@ -287,7 +287,15 @@ class LSTM(object):
         # TODO: Implement the forward pass for a single timestep of an LSTM.        #
         # You may want to use the numerically stable sigmoid implementation above.  #
         #############################################################################
-
+        activation = x.dot(self.params[self.wx_name]) + prev_h.dot(self.params[self.wh_name]) + self.params[self.b_name]
+        ai, af, ao, ag = np.hsplit(activation, 4)
+        i = sigmoid(ai)
+        f = sigmoid(af)
+        o = sigmoid(ao)
+        g = np.tanh(ag)
+        next_c = np.multiply(f, prev_c) + np.multiply(i, g)
+        next_h = np.multiply(o, np.tanh(next_c))
+        meta = [x, i, f, o, g, prev_c, next_c, prev_h, next_h]
         ##############################################################################
         #                              END OF YOUR CODE                              #
         ##############################################################################
@@ -312,6 +320,32 @@ class LSTM(object):
         # HINT: For sigmoid and tanh you can compute local derivatives in terms of  #
         # the output value from the nonlinearity.                                   #
         #############################################################################
+        x, i, f, o, g, prev_c, next_c, prev_h, next_h = meta
+        ##TODO-mine: Can get rid of multiply
+
+        do = np.multiply(np.tanh(next_c), dnext_h)
+        dnext_c += np.multiply(np.multiply((1-np.tanh(next_c)**2), o), dnext_h)
+        df = np.multiply(prev_c, dnext_c)
+        dprev_c = np.multiply(f, dnext_c)
+        di = np.multiply(g, dnext_c)
+        dg = np.multiply(i, dnext_c)
+
+        dag = np.multiply((1-g**2), dg)
+        dao = np.multiply(np.multiply(o, 1-o), do)
+        dai = np.multiply(np.multiply(i, 1-i), di)
+        daf = np.multiply(np.multiply(f, 1-f), df)
+
+        da = np.concatenate((dai, daf, dao, dag), axis=1)
+
+        dprev_h = da.dot(self.params[self.wh_name].T)
+        dWh = prev_h.T.dot(da)
+        dx = da.dot(self.params[self.wx_name].T)
+        dWx = x.T.dot(da)
+        db = np.sum(da, axis=0)
+
+
+
+
 
         ##############################################################################
         #                              END OF YOUR CODE                              #
@@ -347,6 +381,15 @@ class LSTM(object):
         # TODO: Implement the forward pass for an LSTM over an entire timeseries.   #
         # You should use the lstm_step_forward function that you just defined.      #
         #############################################################################
+        h = np.zeros((x.shape[0],x.shape[1],h0.shape[1]))
+        prev_h = h0
+        prev_c = np.zeros_like(h0)
+        h[:,0,:], next_c, meta_i = self.step_forward(x[:,0,:], h0, prev_c)
+        self.meta.append(meta_i)
+        for i in range(1, x.shape[1]):
+            h[:,i,:], next_c, meta_i = self.step_forward(x[:,i,:], h[:,i-1,:], next_c)
+            prev_c = next_c
+            self.meta.append(meta_i)
 
         ##############################################################################
         #                              END OF YOUR CODE                              #
@@ -374,6 +417,28 @@ class LSTM(object):
         # TODO: Implement the backward pass for an LSTM over an entire timeseries.  #
         # You should use the lstm_step_backward function that you just defined.     #
         #############################################################################
+        N = dh.shape[0]
+        T = dh.shape[1]
+        H = dh.shape[2]
+        D = self.meta[0][0].shape[1]
+
+        dx = np.zeros((N,T,D))
+        dh0 = np.zeros((N,H))
+        dnext_c = np.zeros_like(dh0)
+        self.grads[self.wx_name] = np.zeros((D,4*H))
+        self.grads[self.wh_name] = np.zeros((H,4*H))
+        self.grads[self.b_name] = np.zeros((4*H,))
+        dnext_h = dh[:,T-1,:]
+        for i in reversed(range(0, T)):
+            dxi, dhi, dnext_c, dWxi, dWhi, dbi = self.step_backward(dnext_h,dnext_c,self.meta[i])
+            dx[:,i,:] = dxi
+            if i == 0:
+                dh0 = dhi
+            else:
+                dnext_h = dhi + dh[:,i-1,:]
+            self.grads[self.wx_name] += dWxi
+            self.grads[self.wh_name] += dWhi
+            self.grads[self.b_name] += dbi
 
         ##############################################################################
         #                              END OF YOUR CODE                              #
