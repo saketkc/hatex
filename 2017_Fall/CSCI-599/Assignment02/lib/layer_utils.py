@@ -159,7 +159,7 @@ class VanillaRNN(object):
         dprev_h = dtanh.dot(self.params[self.wh_name].T)
         dWx = x.T.dot(dtanh)
         dWh = prev_h.T.dot(dtanh)
-        db = np.sum(dtanh,axis=0)
+        db = np.sum(dtanh, axis=0)
         #############################################################################
         #                            END OF THE CODE                                #
         #############################################################################
@@ -184,7 +184,7 @@ class VanillaRNN(object):
         # TODO: Check forward pass for a vanilla RNN running on a sequence of        #
         # input data. We use the step_forward function defined above                 #
         ##############################################################################
-        h = np.zeros((x.shape[0],x.shape[1],h0.shape[1]))
+        h = np.zeros((x.shape[0], x.shape[1], h0.shape[1]))
         h[:,0,:], meta_i = self.step_forward(x[:,0,:], h0)
         self.meta.append(meta_i)
         for i in range(1, x.shape[1]):
@@ -289,6 +289,7 @@ class LSTM(object):
         #############################################################################
         activation = x.dot(self.params[self.wx_name]) + prev_h.dot(self.params[self.wh_name]) + self.params[self.b_name]
         ai, af, ao, ag = np.hsplit(activation, 4)
+        #a[:, :H], a[:, H:2*H], a[:, 2*H:3*H], a[:,3*H:]
         i = sigmoid(ai)
         f = sigmoid(af)
         o = sigmoid(ao)
@@ -342,11 +343,6 @@ class LSTM(object):
         dx = da.dot(self.params[self.wx_name].T)
         dWx = x.T.dot(da)
         db = np.sum(da, axis=0)
-
-
-
-
-
         ##############################################################################
         #                              END OF YOUR CODE                              #
         ##############################################################################
@@ -384,11 +380,11 @@ class LSTM(object):
         h = np.zeros((x.shape[0],x.shape[1],h0.shape[1]))
         prev_h = h0
         prev_c = np.zeros_like(h0)
-        h[:,0,:], next_c, meta_i = self.step_forward(x[:,0,:], h0, prev_c)
+        h[:,0,:], next_c, meta_i = self.step_forward(x[:,0,:], prev_h, prev_c)
         self.meta.append(meta_i)
         for i in range(1, x.shape[1]):
-            h[:,i,:], next_c, meta_i = self.step_forward(x[:,i,:], h[:,i-1,:], next_c)
             prev_c = next_c
+            h[:,i,:], next_c, meta_i = self.step_forward(x[:,i,:], h[:,i-1,:], prev_c)
             self.meta.append(meta_i)
 
         ##############################################################################
@@ -422,6 +418,7 @@ class LSTM(object):
         H = dh.shape[2]
         D = self.meta[0][0].shape[1]
 
+
         dx = np.zeros((N,T,D))
         dh0 = np.zeros((N,H))
         dnext_c = np.zeros_like(dh0)
@@ -430,7 +427,7 @@ class LSTM(object):
         self.grads[self.b_name] = np.zeros((4*H,))
         dnext_h = dh[:,T-1,:]
         for i in reversed(range(0, T)):
-            dxi, dhi, dnext_c, dWxi, dWhi, dbi = self.step_backward(dnext_h,dnext_c,self.meta[i])
+            dxi, dhi, dnext_c, dWxi, dWhi, dbi = self.step_backward(dnext_h, dnext_c, self.meta[i])
             dx[:,i,:] = dxi
             if i == 0:
                 dh0 = dhi
