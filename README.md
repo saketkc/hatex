@@ -1,5 +1,8 @@
 hatex
 =====
+- Fall 2017
+    - [CSCI 599: Deep Learning](2017_Fall/CSCI-599)
+    - [MATH 605: High dimensional probability](2017_Fall/MATH-605)
 - Spring 2017
     - No courses :sob:
 - [Fall 2016](2016_Fall)
