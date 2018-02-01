@@ -6,7 +6,8 @@ load signal_HW1.mat;
 % Generates two N x N matrices (block-based DCT and Haar bases):
 %   - T_haar(k,:)' is the k-th Haar basis vector
 %   - T_dct(k,:)' is the k-th DCT basis vector
-[T_dct, T_haar] = GenerateBases(N);
+
+[T_dct, T_haar] = GenerateBases_2N(N);
 
 
 
@@ -41,7 +42,7 @@ xlabel('Angle (degree)')
 
 
 
-print('fft','-dpng','-r300');
+print('fft_2N','-dpng','-r300');
 
 
 
@@ -51,12 +52,26 @@ print('fft','-dpng','-r300');
 assert(rank(T_dct) == N, 'Error: rank < N');
 assert(rank(T_haar) == N, 'Error: rank < N');
 
+if (rank(T_dct)==N)
+    sprintf('T_dct is a basis (full rank)')
+end
+
+if (rank(T_haar)==N)
+    sprintf('T_haar is a basis (full rank)')
+end
+
 
 %%%% Part 3: Check orthogonality
 % Check if the resulting matrix is identity
-epsilon = 1e-6;
+epsilon = 1e-2;
 T_dct_prod = T_dct * transpose(T_dct);
 T_haar_prod = T_haar * transpose(T_haar);
+
+%assert(isdiag(T_dct_prod), 'T_dct*T_dct is not diagonal');
+%assert(isdiag(T_haar_prod), 'T_dct*T_dct is not diagonal');
+
+assert(abs(sum(diag(T_dct_prod)) - length(diag(T_dct_prod)))<epsilon, 'Not an identity matrix');
+assert(abs(sum(diag(T_haar_prod)) - length(diag(T_dct_prod)))<epsilon, 'Not an identity matrix');
 
 %assert(sum(sum(T_dct_prod - eye(size(T_dct_prod,1)) < epsilon)) == 0);
 %assert(sum(sum(T_haar_prod - eye(size(T_haar_prod,1)) < epsilon)) == 0);
@@ -66,7 +81,7 @@ T_haar_prod = T_haar * transpose(T_haar);
 %%%% Part 4: Compute the projection onto each basis vector
 % Projections are given by inner products c(n) = < T_haar(n,:)', x >
 %c_dct = zeros(N, N, N);
-%c_haar = zeros(N, N, N);
+%c_haar = zeros(N, Nt, N);
 %i=1;
 %while i<=N
 %    c_dct(i, :, :) = dot(T_dct(i,:).', x);
@@ -93,8 +108,11 @@ b = T_dct;
 B = fft(b,N);
 k = 0:N/2-1;
 mu_t = sum( n.*abs(b).^2 ); % where n = [0, 1, ..., N-1]
-mu_f = sum( k.*abs(B(1:N/2)).^2 ); % where k = [0, 1, ..., N/2-1]
-mu_f = sum(transpose(k.*abs(B(:,1:N/2) )));
+%mu_f = sum( k.*abs(B(1:N/2)).^2 ); % where k = [0, 1, ..., N/2-1]
+
+%mu_f = sum(transpose(k.*abs(B(:,1:N/2) ).^2 ));
+
+mu_f = sum(k.'.*abs(B(1:N/2,:)).^2);
 sigma_t = sqrt( sum( (n-mu_t).^2.*abs(b).^2 ) );
 %sigma_f = sqrt( sum( (k-mu_f).^2*abs(B(:,1:N/2)).^2 ) );
 
@@ -103,10 +121,11 @@ sigma_t = sqrt( sum( (n-mu_t).^2.*abs(b).^2 ) );
 % using standard plot functions, some examples being:
 close all;
 c = c_dct;
-plot3(mu_t, mu_f, c.^2, 'o'); hold on;
+%plot3(mu_t, mu_f, c.^2, 'o'); 
+%hold on;
 scatter(mu_t, mu_f, c.^2);view(0,90); hold on;
-scatter(mu_t, mu_f, 10, c.^2);view(0,90);colorbar;
-print('time_freq_dct', '-dpng', '-r300');
+%scatter(mu_t, mu_f, 10, c.^2);view(0,90);colorbar;
+print('time_freq_dct_2N', '-dpng', '-r300');
 
 close all;
 
@@ -115,14 +134,22 @@ b = T_haar;
 B = fft(b,N);
 k = 0:N/2-1;
 mu_t = sum( n.*abs(b).^2 ); % where n = [0, 1, ..., N-1]
-mu_f = sum( k.*abs(B(1:N/2)).^2 ); % where k = [0, 1, ..., N/2-1]
-mu_f = sum(transpose(k.*abs(B(:,1:N/2) )));
+%mu_f = sum( k.*abs(B(1:N/2)).^2 ); % where k = [0, 1, ..., N/2-1]
+%mu_f = sum(transpose(k.*abs(B(:,1:N/2) ).^2 ));
+
+mu_f = sum(k.'.*abs(B(1:N/2,:)).^2);
+%k = 0:N-1;
+%mu_f = sum(k.*abs(B).^2 );
+
 sigma_t = sqrt( sum( (n-mu_t).^2.*abs(b).^2 ) );
 c = c_haar;
-plot3(mu_t, mu_f, c.^2, 'o'); hold on;
-scatter(mu_t, mu_f, c.^2);view(0,90); hold on;
-scatter(mu_t, mu_f, 10, c.^2);view(0,90);colorbar;
-print('time_freq_haar', '-dpng', '-r300');
+%plot3(mu_t, mu_f, c.^2, 'o');
+%hold on;
+scatter(mu_t, mu_f, c.^2);view(0,90);
+%hold on;
+%scatter(mu_t, mu_f, 10, c.^2);view(0,90);
+%colorbar;
+print('time_freq_haar_2N', '-dpng', '-r300');
 
 %%%% Part 6: Interpret your results
 
