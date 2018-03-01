@@ -1,5 +1,7 @@
 hatex
 =====
+- [Spring 2018](2018_Spring)
+    - [EE 599: Special Topics (Wavelets)](2018_Spring/EE-599)
 - [Fall 2017](2017_Fall)
     - [CSCI 599: Deep Learning](2017_Fall/CSCI-599)
     - [MATH 605: High dimensional probability](2017_Fall/MATH-605)
