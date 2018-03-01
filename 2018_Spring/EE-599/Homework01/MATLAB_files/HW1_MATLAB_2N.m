@@ -80,15 +80,6 @@ assert(abs(sum(diag(T_haar_prod)) - length(diag(T_dct_prod)))<epsilon, 'Not an i
 
 %%%% Part 4: Compute the projection onto each basis vector
 % Projections are given by inner products c(n) = < T_haar(n,:)', x >
-%c_dct = zeros(N, N, N);
-%c_haar = zeros(N, Nt, N);
-%i=1;
-%while i<=N
-%    c_dct(i, :, :) = dot(T_dct(i,:).', x);
-%    c_haar(i, :, :) = dot(T_haar(i,:).', x);
-%    i = i+1;
-%end
-
 
 c_dct = zeros(1, N);
 c_haar = zeros(1, N);
@@ -98,6 +89,20 @@ while i<=N
     c_haar(1, i) = dot(T_haar(i,:), x.');
     i = i+1;
 end
+close all;
+plot(c_dct);
+xlabel('Time');
+ylabel('Magnitude');
+title('Projection(DCT)');
+print('projection_dct_2N', '-dpng', '-r300');
+
+close all;
+plot(c_haar);
+xlabel('Time');
+ylabel('Magnitude');
+title('Projection(Haar)');
+print('projection_haar_2N', '-dpng', '-r300');
+
 
 %%%% Part 35: Compute a time-frequency diagram for each basis
 
@@ -105,50 +110,36 @@ end
 % Let b is a basis vector and B = fft(b,N), then compute as: 
 n = 0:N-1;
 b = T_dct;
+c = c_dct;
 B = fft(b,N);
 k = 0:N/2-1;
 mu_t = sum( n.*abs(b).^2 ); % where n = [0, 1, ..., N-1]
-%mu_f = sum( k.*abs(B(1:N/2)).^2 ); % where k = [0, 1, ..., N/2-1]
-
-%mu_f = sum(transpose(k.*abs(B(:,1:N/2) ).^2 ));
-
 mu_f = sum(k.'.*abs(B(1:N/2,:)).^2);
-sigma_t = sqrt( sum( (n-mu_t).^2.*abs(b).^2 ) );
-%sigma_f = sqrt( sum( (k-mu_f).^2*abs(B(:,1:N/2)).^2 ) );
+%mu_f = sum(transpose(k.*abs(B(:,1:N/2)).^2));%sum(k.*abs(B(1:N/2,:)).^2);
+%k = 0:N-1;
+%mu_f = sum( k.'.'*abs(B).^2 ); % where n = [0, 1, ..., N-1]
 
 
 % Given the vectors mu_t, mu_f and c, you can plot a T-F diagram 
 % using standard plot functions, some examples being:
 close all;
-c = c_dct;
-%plot3(mu_t, mu_f, c.^2, 'o'); 
-%hold on;
-scatter(mu_t, mu_f, c.^2);view(0,90); hold on;
-%scatter(mu_t, mu_f, 10, c.^2);view(0,90);colorbar;
+scatter(mu_t, mu_f, c.^2);
 print('time_freq_dct_2N', '-dpng', '-r300');
 
-close all;
+
 
 n = 0:N-1;
 b = T_haar;
+c = c_haar;
 B = fft(b,N);
 k = 0:N/2-1;
 mu_t = sum( n.*abs(b).^2 ); % where n = [0, 1, ..., N-1]
-%mu_f = sum( k.*abs(B(1:N/2)).^2 ); % where k = [0, 1, ..., N/2-1]
-%mu_f = sum(transpose(k.*abs(B(:,1:N/2) ).^2 ));
-
 mu_f = sum(k.'.*abs(B(1:N/2,:)).^2);
+%mu_f = sum(transpose(k.*abs(B(:,1:N/2)).^2));%sum(k.*abs(B(1:N/2,:)).^2);
 %k = 0:N-1;
-%mu_f = sum(k.*abs(B).^2 );
-
-sigma_t = sqrt( sum( (n-mu_t).^2.*abs(b).^2 ) );
-c = c_haar;
-%plot3(mu_t, mu_f, c.^2, 'o');
-%hold on;
-scatter(mu_t, mu_f, c.^2);view(0,90);
-%hold on;
-%scatter(mu_t, mu_f, 10, c.^2);view(0,90);
-%colorbar;
+%mu_f = sum( k.*abs(B).^2 ); % where n = [0, 1, ..., N-1]
+close all;
+scatter(mu_t, mu_f, c.^2);
 print('time_freq_haar_2N', '-dpng', '-r300');
 
 %%%% Part 6: Interpret your results

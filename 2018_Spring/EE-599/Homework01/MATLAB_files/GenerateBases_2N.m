@@ -6,7 +6,7 @@ function [T_dct, T_haar] = GenerateBases_2N(N);
 
 % Generates N DCT basis vectors (N-dimensional)
 
-N_b = 64*2;  % block size
+N_b = 4;% 64*2;  % block size
 T_dct = [];
 
 % create a block diagonal matrix w/ blocks of size N_b x N_b
