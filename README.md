@@ -10,7 +10,8 @@ hatex
 - [Fall 2016](2016_Fall)
     - [CSCI 561: Foundations of Artifical Intelligence](2016_Fall/CSCI-561)
     - [EE 512: Stochastic Processes](2016_Fall/EE-599)
-    - [ISE 538: Stochastic Processes](2016_Fall/ISE-538) => Taught by [Sheldon M. Ross](http://ise.usc.edu/directory/sheldon_ross.htm)!
+    - [ISE 538: Stochastic Processes](2016_Fall/ISE-538)
+    
     - [BISC 104: How the body works](2016_Fall/BISC-104)
 - [Summer 2016](2016_Summer)
     - [PM 579: Statistical Analysis of High Dimensional Data](2016_Summer/PM-579)
