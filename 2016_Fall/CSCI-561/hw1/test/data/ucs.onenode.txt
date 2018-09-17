@@ -1,0 +1,12 @@
+UCS
+A
+A
+4
+A B 1
+B A 1
+B C 1
+C A 1
+3
+A 1
+B 1
+C 1

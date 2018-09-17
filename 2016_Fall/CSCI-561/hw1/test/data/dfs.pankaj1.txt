@@ -1,0 +1,17 @@
+DFS
+A
+G
+6
+A B 2
+A C 3
+B D 3
+C E 2
+D G 1
+E G 1
+4
+A 6
+B 3
+C 3
+D 1
+E 1
+G 0

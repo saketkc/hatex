@@ -1,0 +1,18 @@
+A*
+s
+d
+8
+s a 3
+s b 2
+a c 1
+a b 3
+b c 5
+c d 2
+a d 3
+b d 3
+5
+s 1
+a 3
+b 3
+c 0
+d 0

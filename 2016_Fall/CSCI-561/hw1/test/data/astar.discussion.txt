@@ -1,0 +1,32 @@
+A*
+S
+G3
+15
+S C 1
+S B 5
+S A 7
+C D 1
+D B 1
+B G3 3
+B H 4
+B A 9
+H G3 4
+A E 8
+A F 9
+E G1 9
+F G2 2
+G2 I 0
+I G1 2
+12
+S 6
+C 5
+B 1
+A 10
+D 2
+G3 0
+H 15
+E 8
+F 1
+G2 0
+I 1
+G1 0
