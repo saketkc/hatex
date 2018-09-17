@@ -5,6 +5,10 @@ Collection of all source code + tex files for CSCI-567.
 
 **If you landed here looking for solutions to your homework problems, it would make more sense to come up with your own solutions first. That's the best way to learn!**
 
+**2015 Fall run of the course had a strict requirement for using Matlab, which seems to have been relaxed now. It's probably
+one of the worst computing toolkits out there, irrespective of a huge user-base**
+
+
 - Homework 1
     - [Problem](Homework1/CSCI567_hw1.pdf)
     - [Matlab Jupyter Notebook](Homework1/data/programming/CSCI-567_Homework1.ipynb)    
