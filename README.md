@@ -1,5 +1,7 @@
 hatex
 =====
+- [Fall 2018](2018_Fall)
+    - [EE 546 : Mathematics for high dimensional data](2018_Fall/EE-546)
 - [Spring 2018](2018_Spring)
     - [EE 599: Special Topics (Wavelets)](2018_Spring/EE-599)
     - [MATH 545L: Introduction to Time Series Analysis](2018_Spring/MATH-545L)
