@@ -7,7 +7,7 @@ hatex
     - [CSCI 599: Deep Learning](2017_Fall/CSCI-599)
     - [MATH 605: High dimensional probability](2017_Fall/MATH-605)
 - Spring 2017
-    - No courses => Self imposed break?
+    - No courses => Self imposed break.
 - [Fall 2016](2016_Fall)
     - [CSCI 561: Foundations of Artifical Intelligence](2016_Fall/CSCI-561)
     - [EE 512: Stochastic Processes](2016_Fall/EE-599)
