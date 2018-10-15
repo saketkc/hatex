@@ -1,0 +1,330 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%       PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{url,amsmath,amsfonts,amssymb, bm}
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ : \hmwkTitle} % Top center header
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{properties}{Properties}
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{observation}{Observation}
+
+\def \endprf{\hfill {\vrule height6pt width6pt depth0pt}\medskip}
+\newenvironment{proof}{\noindent {\bf Proof} }{\endprf\par}
+
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\N}{{\mathbb N}}
+
+
+\newcommand{\E}{{\mathbb E}}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\vct}[1]{\bm{#1}}
+\newcommand{\mtx}[1]{\bm{#1}}
+%----------------------------------------------------------------------------------------
+%       DOCUMENT STRUCTURE COMMANDS
+%       Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%       NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment\ \# 2} % Assignment title
+%\newcommand{\hmwkDueDate}{} % Due date
+\newcommand{\hmwkClass}{EE-546} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Saket Choudhary} % Your name
+\newcommand{\hmwkAuthorID}{2170058637} % Teacher/lecturer
+%----------------------------------------------------------------------------------------
+%       TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}%\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}\large{\textit{\hmwkClassTime}}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName} \\
+        \textbf{\hmwkAuthorID}
+        }
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%       TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+\tableofcontents
+\newpage
+
+
+%----------------------------------------------------------------------------------------
+%       PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}[Problem \# 1] % Custom section title
+
+
+%\begin{homeworkSection}{(3)} % Section within problem
+%\lipsum[4]\vspace{10pt} % Question
+
+\problemAnswer{ % Answer
+Problem 1a):
+\begin{align*}
+    Z &= \frac{1}{m} \sum_{r=1}^m X_r |X_r| \text{ sign}(X_r + \mathbf{a_r}^T \mathbf{y})\\
+    &= \frac{1}{m} \sum_{r=1}^m X_r^2 \text{ sign}(X_r) \text{sign}(X_r + \mathbf{a_r}^T \mathbf{y})\\
+    \text{Let } Z_r &= X_r^2 \text{ sign}(X_r) \text{sign}(X_r + \mathbf{a_r}^T \mathbf{y})\\
+    \mathbf{a_r}^T\mathbf{y} &\sim \mathcal{N}(0, \mathbf{y^T}\mathbf{y})\\
+    \implies \frac{\mathbf{a_r}^T\mathbf{y}}{\sqrt{\mathbf{y^T}\mathbf{y}}} &\sim \mathcal{N}(0, 1)\\
+    \mathbb{E}[Z_r] &= \mathbb{E}[X_r^2 \text{sign}(X_r) \text{sign}(X_r+\mathbf{a_r}^T\mathbf{y})] \\
+    &= \mathbb{E}[X_r^2 \text{sign}(X_r) \text{sign}(X_r+\sqrt{\mathbf{y^T}\mathbf{y}}\frac{\mathbf{a_r}^T\mathbf{y}}{\sqrt{\mathbf{y^T}\mathbf{y}}})] \\
+    &= \frac{2}{\pi} \tan^{-1} \frac{1}{\sqrt{\mathbf{y^T}\mathbf{y}}} + \frac{2}{\pi} \frac{\sqrt{\mathbf{y^T}\mathbf{y}}}{1+\mathbf{y^T}\mathbf{y}}\\
+    \implies \mathbb{E}[Z] &= \frac{1}{m}\sum_{r=1}^m\mathbb{E}[Z_r]\\
+    &= \frac{2}{\pi} \tan^{-1} \frac{1}{\sqrt{\mathbf{y^T}\mathbf{y}}} + \frac{2}{\pi} \frac{\sqrt{\mathbf{y^T}\mathbf{y}}}{1+\mathbf{y^T}\mathbf{y}}\\
+\end{align*}
+
+Problem 1b):
+
+
+\begin{align*}
+\mathbb{P}(|X_r^2 \text{ sign}(X_r) \text{sign}(X_r + \mathbf{a_r}^T \mathbf{y})| \geq t) &= \mathbb{P}(|X_r^2 | \geq t) & \because \text{sign is immaterial}\\
+&= P(\chi_1^2 \geq t)
+\end{align*}
+$P(\chi^2 \geq t)$ is easily obtained as $\chi^2$ is sub-exponential,
+
+$Z \sim \chi_m^2$ and hence:
+\begin{align*}
+    P(|Z - \mathbb{E}[Z]| \geq t) &\leq \exp({1-\frac{t}{k_1}})
+\end{align*}
+}
+%\end{homeworkSection}
+
+%--------------------------------------------
+
+
+%--------------------------------------------
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%       PROBLEM 3
+%----------------------------------------------------------------------------------------
+\begin{homeworkProblem}[Problem \# 2] % Custom section title
+
+
+%\begin{homeworkSection}{(3)} % Section within problem
+%\lipsum[4]\vspace{10pt} % Question
+
+\problemAnswer{
+Problem 2 (i):
+
+From Cauchy Schwartz inequality we have:
+\begin{align*}
+    |\langle x, y \rangle| &\leq ||x|| ||y||
+\end{align*}
+
+Thus,
+
+\begin{align*}
+    \langle x, Ay \rangle &\leq ||x||\ ||Ay|| \\
+    \max_{||x||_{l_2} =1, ||y||_{l_2}=1}\langle x, Ay \rangle &\leq \max_{||x||_{l_2} =1, ||y||_{l_2}=1}||x||\ ||Ay|| \\
+    &= \max_{||y||_{l_2}=1}||Ay|| &  \because ||x||=1\\
+    &= ||A|| & \because \text{from the definition of } ||A||
+\end{align*}
+Fact: For unitary $U$, $U^TU=I$ $\implies$  $||Ux||_{l_2}^2 = x^TU^TUx = ||x||_{l_2}^2$
+
+Now consider $||Ax||$:
+\begin{align*}
+    \sup_{||x||=1}||Ax|| &= \sup_{||x||=1} ||U\Sigma V^T x|| & \because \text{ spectral decomosition of A} \\
+    &= \sup_{||x||=1} ||\Sigma V^T x|| & \because ||Ux|| = ||x|| for unitary U \\
+    &= \sup_{||y||=1} ||\Sigma y|| & \because y=V^Tx \text{ and } y^Ty = 1\\
+\end{align*}
+
+Since $\Sigma$ is a diagnoal matrix  $\sup_{||y||=1} ||\Sigma y||$ can easily be obtained when $y = (1,0, \dots,0)$ such that the maximum will be $\sigma_1(A)$
+
+Problem 2 (ii):
+
+\begin{align*}
+    \text{trace}(U^TAV) &= \sum_{i=1}^r u_i^Ta_{ii}v_i \\
+    \max \text{trace}(U^TAV) &= \max \sum_{i=1}^r u_i^Ta_{ii}v_i \\
+    &= \sum_{i=1}^r \sigma_i(A)
+\end{align*}
+
+}
+%\end{homeworkSection}
+
+%--------------------------------------------
+
+
+%--------------------------------------------
+
+\end{homeworkProblem}
+
+\newpage
+\begin{homeworkProblem}[Problem \# 3] % Custom section title
+\problemAnswer{
+Upper bound:
+
+\begin{align*}
+||A|| &= \sup_{||x||=1} ||Ax|| = \sup_{||x||=1} \sqrt{\sum_{i=1}^m\big(\sum_{j=1}^n A_{ij}x_j \big)^2} \\
+&\leq \sup_{||x||=1} \sqrt{\sum_{i=1}^m ( \sum_{j=1}^nA_{ij}^2) ( \sum_{k=1}^nx_k^2 )} & \because \text{ using Cauchy-Schwartz inequality }\\
+\implies ||A|| &\leq \sqrt{m}\max_{i \in \{1, 2, \dots, m\}}  \big( \sum_{j=1}^n A_{ij}^2 \big)^{1/2}
+\end{align*}
+For eqaulity $A_{ij}x_j = \lambda x_j$ and hence $A = I$ is one such matrix.
+
+Lower bound:
+
+Consider $x = (\frac{1}{\sqrt{n}} , \frac{1}{\sqrt{n}} \dots, \frac{1}{\sqrt{n}})$
+
+them 
+\begin{align*}
+    ||A|| = \sup_{||x||=1}||Ax||  & \geq \sqrt{\sum_{i=1}^m\big(\sum_{j=1}^n A_{ij}\frac{1}{\sqrt{n}} \big)^2} \\
+    &= \frac{1}{\sqrt{n}} \sqrt{\sum_{i=1}^m\big(\sum_{j=1}^n A_{ij} \times 1 \big)^2} \\
+    &\geq \frac{1}{\sqrt{n}} \sqrt{\frac{1}{m} \big ( \sum_{i=1}^m | \sum_{j=1}^n A_{ij}| \big)^2}   \\
+    &= \frac{1}{\sqrt{mn}}  \sum_{i=1}^m | \sum_{j=1}^n A_{ij}|
+\end{align*}
+
+}
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem \# 4] % Custom section title
+\problemAnswer{
+\begin{align*}
+    ||A||_F &= (\sum_{i=1}^m \sum_{j=1} ^n |a_{ij}|^2)^\frac{1}{2}\\
+    &= (\text{Tr}(A^TA))^\frac{1}{2}\\
+    &= (\text{Tr}(V\Sigma U^T U \Sigma V^T ))^\frac{1}{2} & \because \text{Spectral decomposition of } A\\ 
+    &= (\text{Tr}(V\Sigma^2 V^T ))^\frac{1}{2}\\
+    &= (\text{Tr}(V^TV\Sigma^2  ))^\frac{1}{2} & \because \text{Tr}(AB) = \text{Tr}(BA)\\
+    &= (\text{Tr}(\Sigma^2  ))^\frac{1}{2} \\
+    &= (\sum_{i=1}^{\min(m,n)} \sigma_i^2(A) )^\frac{1}{2} \\
+\end{align*}
+
+From Problem 2 $||A|| = \sigma_1(A)$. Now, given $\sigma_1(A) \geq \sigma_2(A) \geq \dots \geq \sigma_{\min(m, n)}(A)$
+
+\begin{align*}
+    \sigma_1(A) &\leq \sqrt{ \sigma_1(A)^2  + \sigma_2(A)^2 + \dots + \sigma_{\min(m,n)}(A)^2 }\\
+    \sqrt{ \sigma_1(A)^2  + \sigma_2(A)^2 + \dots + \sigma_{\min(m,n)}(A)^2 } &\leq \sqrt{ \sigma_1(A)^2  + \sigma_1(A)^2 + \dots + \sigma_1(A)^2 }\\
+    &= \sqrt{\text{rank}(A)}\sigma_1(A)
+\end{align*}
+where the l;ast equality follows from the fact that  only  rank($A$) singular vectors are non zero.
+
+Thus,
+
+$$
+  \sigma_1(A) \leq \sqrt{ \sigma_1(A)^2  + \sigma_2(A)^2 + \dots + \sigma_{\min(m,n)}(A)^2 } \leq \sqrt{\text{rank}(A)}\sigma_1(A)
+$$
+
+$\implies$ $$ \sigma_1(A) \leq ||A|| \leq \sqrt{\text{rank}(A)}||A||$$
+}
+
+\end{homeworkProblem}
+
+\end{document}
