@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{HW04-aca5}
+    \title{HW04-aca2}
     
     
     
@@ -281,7 +281,7 @@
 
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{load}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5.mat\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{n}{load}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2.mat\PYZsq{}}\PY{p}{)}
         \PY{n}{X} \PY{p}{=} \PY{n}{transpose}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{;}
         \PY{n}{s} \PY{p}{=} \PY{n}{transpose}\PY{p}{(}\PY{n}{s}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
@@ -296,7 +296,7 @@
 
 ans =
 
-        1747          42
+        2204          42
 
 
     \end{Verbatim}
@@ -310,37 +310,19 @@ ans =
 
 ans =
 
-        1747           1
+        2204           1
 
 
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{a} \PY{p}{=} \PY{p}{[}\PY{l+m+mi}{1} \PY{l+m+mi}{2} \PY{l+m+mi}{3}\PY{p}{;} \PY{l+m+mi}{4} \PY{l+m+mi}{5} \PY{l+m+mi}{6}\PY{p}{]}\PY{p}{;}
-        \PY{n}{a\PYZus{}row\PYZus{}norm} \PY{p}{=} \PY{n+nb}{sqrt}\PY{p}{(}\PY{n}{sum}\PY{p}{(}\PY{n}{a}\PY{o}{.\PYZca{}}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{;}
-        \PY{n}{a\PYZus{}normalized} \PY{p}{=} \PY{n+nb}{bsxfun}\PY{p}{(}\PY{p}{@}\PY{n}{rdivide}\PY{p}{,} \PY{n}{a}\PY{p}{,} \PY{n}{a\PYZus{}row\PYZus{}norm}\PY{p}{)}\PY{p}{;} 
-        \PY{n+nb}{sqrt}\PY{p}{(}\PY{n}{sum}\PY{p}{(}\PY{n}{a\PYZus{}normalized}\PY{o}{.\PYZca{}}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-ans =
-
-    1.0000
-    1.0000
-
-
-    \end{Verbatim}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{X\PYZus{}truncated} \PY{p}{=} \PY{n}{X}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{:}\PY{k}{end}\PY{p}{,} \PY{p}{:}\PY{p}{)}\PY{p}{;}
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{X\PYZus{}truncated} \PY{p}{=} \PY{n}{X}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{:}\PY{k}{end}\PY{p}{,} \PY{p}{:}\PY{p}{)}\PY{p}{;}
         \PY{n}{s\PYZus{}truncated} \PY{p}{=} \PY{n}{s}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{:}\PY{k}{end}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{X\PYZus{}col\PYZus{}norm} \PY{p}{=} \PY{n+nb}{sqrt}\PY{p}{(}\PY{n}{sum}\PY{p}{(}\PY{n}{X\PYZus{}truncated}\PY{o}{.\PYZca{}}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{;} 
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{X\PYZus{}col\PYZus{}norm} \PY{p}{=} \PY{n+nb}{sqrt}\PY{p}{(}\PY{n}{sum}\PY{p}{(}\PY{n}{X\PYZus{}truncated}\PY{o}{.\PYZca{}}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{;} 
         \PY{n}{X\PYZus{}truncated} \PY{p}{=} \PY{n+nb}{bsxfun}\PY{p}{(}\PY{p}{@}\PY{n}{rdivide}\PY{p}{,}\PY{n}{X\PYZus{}truncated}\PY{p}{,} \PY{n}{X\PYZus{}col\PYZus{}norm}\PY{p}{)}\PY{p}{;} 
         \PY{n}{X\PYZus{}col\PYZus{}norm} \PY{p}{=} \PY{n+nb}{reshape}\PY{p}{(}\PY{n}{X\PYZus{}col\PYZus{}norm}\PY{p}{,}\PY{p}{[}\PY{p}{]}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{;}
         \PY{n}{X\PYZus{}truncated}\PY{p}{(}\PY{n+nb}{isnan}\PY{p}{(}\PY{n}{X\PYZus{}truncated}\PY{p}{)}\PY{p}{)} \PY{p}{=} \PY{l+m+mi}{0}\PY{p}{;}
@@ -348,7 +330,7 @@ ans =
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{n+nb}{gamma} \PY{p}{=}\PY{l+m+mi}{1} \PY{p}{;}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n+nb}{gamma} \PY{p}{=}\PY{l+m+mi}{1} \PY{p}{;}
         \PY{n}{k} \PY{p}{=} \PY{l+m+mi}{2}\PY{p}{;}
         \PY{n}{min\PYZus{}error} \PY{p}{=}  \PY{l+m+mf}{1e9}\PY{p}{;}
         \PY{n}{min\PYZus{}gamma} \PY{p}{=} \PY{l+m+mi}{1}\PY{p}{;}
@@ -383,66 +365,66 @@ ans =
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{gammas} \PY{p}{=} \PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{100}\PY{p}{;}
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{gammas} \PY{p}{=} \PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{100}\PY{p}{;}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5\PYZus{}gammas.txt\PYZsq{}}\PY{p}{,} \PY{n}{gammas}\PY{p}{)}\PY{p}{;}
-        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5\PYZus{}errors\PYZus{}laplacian\PYZus{}unnormalized.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}laplacian\PYZus{}unnormalized}\PY{p}{)}\PY{p}{;}
-        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5\PYZus{}errors\PYZus{}laplacian\PYZus{}normalized.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}laplacian\PYZus{}normalized}\PY{p}{)}\PY{p}{;}
-        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5\PYZus{}errors\PYZus{}laplacian\PYZus{}rw.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}laplacian\PYZus{}rw}\PY{p}{)}\PY{p}{;}
-        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5\PYZus{}errors\PYZus{}minimum.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}minimum}\PY{p}{)}\PY{p}{;}
-        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5\PYZus{}errors\PYZus{}minimum\PYZus{}index.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}minimum\PYZus{}index}\PY{p}{)}\PY{p}{;}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2\PYZus{}gammas.txt\PYZsq{}}\PY{p}{,} \PY{n}{gammas}\PY{p}{)}\PY{p}{;}
+        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2\PYZus{}errors\PYZus{}laplacian\PYZus{}unnormalized.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}laplacian\PYZus{}unnormalized}\PY{p}{)}\PY{p}{;}
+        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2\PYZus{}errors\PYZus{}laplacian\PYZus{}normalized.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}laplacian\PYZus{}normalized}\PY{p}{)}\PY{p}{;}
+        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2\PYZus{}errors\PYZus{}laplacian\PYZus{}rw.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}laplacian\PYZus{}rw}\PY{p}{)}\PY{p}{;}
+        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2\PYZus{}errors\PYZus{}minimum.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}minimum}\PY{p}{)}\PY{p}{;}
+        \PY{n}{dlmwrite}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2\PYZus{}errors\PYZus{}minimum\PYZus{}index.txt\PYZsq{}}\PY{p}{,} \PY{n}{errors\PYZus{}minimum\PYZus{}index}\PY{p}{)}\PY{p}{;}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{set}\PY{p}{(}\PY{n}{gcf}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{PaperPositionMode\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{manual\PYZsq{}}\PY{p}{)}\PY{p}{;}
-         \PY{n}{set}\PY{p}{(}\PY{n}{gcf}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{PaperUnits\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{inches\PYZsq{}}\PY{p}{)}\PY{p}{;}
-         \PY{n}{set}\PY{p}{(}\PY{n}{gcf}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{PaperPosition\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1} \PY{l+m+mi}{1} \PY{l+m+mi}{10} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{;}
-         \PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{;}
-         \PY{n}{plot}\PY{p}{(}\PY{n}{errors\PYZus{}minimum}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{p}{:}\PY{p}{)}\PY{p}{)}\PY{p}{;}
-         \PY{n}{grid} \PY{n}{on}
-         
-         \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5: \PYZbs{}gamma=2 | Minimum error\PYZsq{}}\PY{p}{)}\PY{p}{;}
-         \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{K\PYZsq{}}\PY{p}{)}\PY{p}{;}
-         \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Misclassification Error\PYZsq{}}\PY{p}{)}\PY{p}{;}
-         
-         \PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
-         \PY{n}{plot}\PY{p}{(}\PY{n}{errors\PYZus{}laplacian\PYZus{}normalized}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{p}{:}\PY{p}{)}\PY{p}{)}
-         \PY{n}{grid} \PY{n}{on}
-         \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5: \PYZbs{}gamma=2 | Laplacian Normalized error\PYZsq{}}\PY{p}{)}
-         \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{K\PYZsq{}}\PY{p}{)}
-         \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Misclassification Error\PYZsq{}}\PY{p}{)}
-         
-         \PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{;}
-         \PY{n}{plot}\PY{p}{(}\PY{n}{errors\PYZus{}laplacian\PYZus{}unnormalized}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{p}{:}\PY{p}{)}\PY{p}{)}
-         \PY{n}{grid} \PY{n}{on}
-         \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5: \PYZbs{}gamma=2 | Laplacian Unnormalized error\PYZsq{}}\PY{p}{)}
-         \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{K\PYZsq{}}\PY{p}{)}
-         \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Misclassification Error\PYZsq{}}\PY{p}{)}
-         
-         \PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{;}
-         
-         \PY{n}{plot}\PY{p}{(}\PY{n}{errors\PYZus{}laplacian\PYZus{}rw}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{p}{:}\PY{p}{)}\PY{p}{)}
-         \PY{n}{grid} \PY{n}{on}
-         \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5: \PYZbs{}gamma=2 | Laplacian RW error\PYZsq{}}\PY{p}{)}
-         \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{K\PYZsq{}}\PY{p}{)}
-         \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Misclassification Error\PYZsq{}}\PY{p}{)}
-         
-         
-         \PY{n}{saveas}\PY{p}{(}\PY{n}{gcf}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca5\PYZus{}minimum\PYZus{}error.pdf\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{set}\PY{p}{(}\PY{n}{gcf}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{PaperPositionMode\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{manual\PYZsq{}}\PY{p}{)}\PY{p}{;}
+        \PY{n}{set}\PY{p}{(}\PY{n}{gcf}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{PaperUnits\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{inches\PYZsq{}}\PY{p}{)}\PY{p}{;}
+        \PY{n}{set}\PY{p}{(}\PY{n}{gcf}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{PaperPosition\PYZsq{}}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1} \PY{l+m+mi}{1} \PY{l+m+mi}{10} \PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)}\PY{p}{;}
+        \PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{;}
+        \PY{n}{plot}\PY{p}{(}\PY{n}{errors\PYZus{}minimum}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{p}{:}\PY{p}{)}\PY{p}{)}\PY{p}{;}
+        \PY{n}{grid} \PY{n}{on}\PY{p}{;}
+        
+        \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2: \PYZbs{}gamma=17 | Minimum error\PYZsq{}}\PY{p}{)}\PY{p}{;}
+        \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{K\PYZsq{}}\PY{p}{)}\PY{p}{;}
+        \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Misclassification Error\PYZsq{}}\PY{p}{)}\PY{p}{;}
+        
+        \PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{;}
+        \PY{n}{plot}\PY{p}{(}\PY{n}{errors\PYZus{}laplacian\PYZus{}normalized}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{p}{:}\PY{p}{)}\PY{p}{)}
+        \PY{n}{grid} \PY{n}{on}\PY{p}{;}
+        \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2: \PYZbs{}gamma=17 | Laplacian Normalized error\PYZsq{}}\PY{p}{)}
+        \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{K\PYZsq{}}\PY{p}{)}
+        \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Misclassification Error\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}\PY{p}{;}
+        \PY{n}{plot}\PY{p}{(}\PY{n}{errors\PYZus{}laplacian\PYZus{}unnormalized}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{p}{:}\PY{p}{)}\PY{p}{)}
+        \PY{n}{grid} \PY{n}{on}\PY{p}{;}
+        \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2: \PYZbs{}gamma=17 | Laplacian Unnormalized error\PYZsq{}}\PY{p}{)}
+        \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{K\PYZsq{}}\PY{p}{)}
+        \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Misclassification Error\PYZsq{}}\PY{p}{)}
+        
+        \PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{;}
+        
+        \PY{n}{plot}\PY{p}{(}\PY{n}{errors\PYZus{}laplacian\PYZus{}rw}\PY{p}{(}\PY{l+m+mi}{17}\PY{p}{,}\PY{p}{:}\PY{p}{)}\PY{p}{)}
+        \PY{n}{grid} \PY{n}{on}\PY{p}{;}
+        \PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2: \PYZbs{}gamma=17 | Laplacian RW error\PYZsq{}}\PY{p}{)}
+        \PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{K\PYZsq{}}\PY{p}{)}
+        \PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Misclassification Error\PYZsq{}}\PY{p}{)}
+        
+        
+        \PY{n}{saveas}\PY{p}{(}\PY{n}{gcf}\PY{p}{,}\PY{l+s}{\PYZsq{}}\PY{l+s}{aca2\PYZus{}minimum\PYZus{}error.pdf\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_9_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_8_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{min\PYZus{}gamma}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{min\PYZus{}gamma}
 \end{Verbatim}
 
 
@@ -450,13 +432,13 @@ ans =
 
 min\_gamma =
 
-     2
+    16
 
 
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{min\PYZus{}k}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{min\PYZus{}k}
 \end{Verbatim}
 
 
@@ -464,13 +446,13 @@ min\_gamma =
 
 min\_k =
 
-     6
+     9
 
 
     \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{min\PYZus{}error}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{min\PYZus{}error}
 \end{Verbatim}
 
 
@@ -478,7 +460,7 @@ min\_k =
 
 min\_error =
 
-    0.3043
+    0.2015
 
 
     \end{Verbatim}
@@ -488,7 +470,7 @@ min\_error =
 Function}\label{spectral-clustering-function}}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{function}\PY{+w}{ }[idx1, idx2, idx3] \PY{p}{=}\PY{+w}{ }\PY{n+nf}{SpectralClustering}\PY{p}{(}gamma, k, X\PY{p}{)}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{function}\PY{+w}{ }[idx1, idx2, idx3] \PY{p}{=}\PY{+w}{ }\PY{n+nf}{SpectralClustering}\PY{p}{(}gamma, k, X\PY{p}{)}
          \PY{+w}{    }\PY{n}{K} \PY{p}{=} \PY{n+nb}{zeros}\PY{p}{(}\PY{n+nb}{size}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{n+nb}{size}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{;}
              \PY{k}{for} \PY{n+nb}{i}\PY{p}{=}\PY{l+m+mi}{1}\PY{p}{:}\PY{n+nb}{size}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
                  \PY{k}{for} \PY{n+nb}{j}\PY{p}{=}\PY{l+m+mi}{1}\PY{p}{:}\PY{n+nb}{size}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}
