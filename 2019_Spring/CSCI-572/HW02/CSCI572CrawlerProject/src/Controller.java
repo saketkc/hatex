@@ -19,14 +19,14 @@ public class Controller {
 
 
 
-		 int numberOfCrawlers = 4;
+		 int numberOfCrawlers = 1;
 		 CrawlConfig config = new CrawlConfig();
 		 config.setCrawlStorageFolder(crawlStorageFolder);
          config.setFollowRedirects(true);
          config.setResumableCrawling(false);
          config.setMaxDepthOfCrawling(16);
          config.setMaxPagesToFetch(20000);
-         config.setMaxDownloadSize(10000000);
+         config.setMaxDownloadSize(90000000);
          config.setPolitenessDelay(2000);
 
 		 /*
