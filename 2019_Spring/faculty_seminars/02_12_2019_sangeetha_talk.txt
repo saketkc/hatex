@@ -1,0 +1,56 @@
+Sangeetha Abdu Jyothi
+- Infrastrucutre growing rapdily is expensive
+- Infracsture provides want to increase the revensue while consumers
+want to get it at minimal cost.
+- Private clouds are different from the cloud provides like Azure
+- Estimating application resource needs is difficult
+- Significant overprovisioning - > 75% of jobs provision more than 2x
+- Lot of micro data centers; population in any geo location is not unfiformly distributed
+data centers vary in size, application run in containers aggregate resource are similar to 
+cloud but yet different because they need to co exist on environment
+- Different environments: public clouds, private clouds, hybrid clouds,
+geo distriibuted micro data centers, specialzed clouds
+
+- Goal: design and build application aware self optimizing systems to meet
+diverse resouce allocation needs of of stakeholders
+- resource management challenges: users cannot predict the resoure requirements;
+providers do not have visibility into user applications
+
+- Opportunities: Fine grainde techniques, learning mechanisms
+- Work spans across 3 platfoms: applications+platform+infrastrucutre
+
+- Automated resource management: Inference (Learns application requirements)=> Resource Allocation(allocates resoure efficiently)=> Dynamic Adaptation
+
+- Focus: batch job in big data enteprise clusters which are periodic
+- Roadblock: unpredictability
+- Consider a periodic job, if the cluster is heavily utilized this job may miss its deadline
+- Inherent prdictability in the system: Even if the job has entire cluster to itself,
+the variance in run time is higher. Users hack: over provision resources
+- The problem is then in utilization vs predictability
+- Solution: Automated service level objectives with a focus on periodic jobs => reduced deadline violoations by 30%
+
+- How? Learn the application requirements from the job logs.
+- Reqreuiments: Derive deadlines => Put the job that reads the output first 
+- Deadline SLO optimization: meetSLOW, missSLOW or fail
+- If A fails the probabilty that the downstream job B fails by 4x times as compared to when A passes, could work on stale jobs
+- Thereis no discussion of memory as this is at the container level
+
+- Resource esitmation through a linear program.
+- Compact representation of periodic jobs: smallest repeat unit sotred, the LCM could grow very large => a large fraction
+of the jobs have a 24 hour LCM
+- Ad hoc jobs are batch jobs
+- Dealing with unpredictabilities: 
+- Provisioned containers over total containers
+- Higher alpha => tigher fitting
+-
+
+- Geo distributed data centers
+- predict traffic availabilty to other systems 
+- Go 50% away from the optimal for 
+- Peak utilization of data center baseline was 50% but adding VPN traffic shot it up to 100%.
+
+- Latency characteristics
+- Network scheduling for deep learning
+- flux: predicts flow requirements
+
+- f

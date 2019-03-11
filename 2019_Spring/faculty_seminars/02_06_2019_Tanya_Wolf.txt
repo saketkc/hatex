@@ -1,0 +1,36 @@
+GPS callers for tracking the behavorial data.
+
+Juvenile, adult, subordinate, male, female? > Alpha male 
+
+Finding animals: USe camera data, identify species
+
+Numnber of surviving juveniles of Zebras is not enough for their survival
+Why not enough babies? Predators
+
+Biases in remote sensing data? Is counting through photographs unbiased?
+
+Biased by: camera location, goal alignment,
+species fatigue
+
+Error estimate: population estimate - true population for correcting for biases
+
+t's the cognitive load possibleWrong netweok can lead to wrong resultse 
+Given data and the question for the network, what is the best configuration
+for the network that gives lowest error
+
+
+`
+Long term affiliations: Zebras dont walk in same group all tim
+Observong zebras in the field and their groups are chainging over tim
+Relatively: Need to observe the "you" in context to a bigger
+Social costs: Individuals are relucatant to switch affilicatopms
+Individuals are mostly seen with their community because there is a cost of visiting.
+Cost of switching can be higher or lower to cost of visiting
+
+Individuals are rarely absent from their community
+
+equivalent to a graph coloring problem
+
+Why social? Constrained by the resouces, but that woul
+
+Zebra have cohsesive structure because of the predators

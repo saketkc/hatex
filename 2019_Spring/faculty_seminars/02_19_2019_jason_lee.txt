@@ -1,0 +1,96 @@
+- Applicability of ML: translation, recognition, computer vision, game playing, natural
+language
+- More emrging applications: medical diagnosis, financial services, transportation, e-commerce
+
+
+
+Desiderata of ML systems:
+- Modular with proper abstraction
+- Understandable
+- Reliable
+- Fair
+- Transparent
+
+
+Empirical paradigm derivels DL: 
+- Availabilit of benchmark data
+- Compute power
+- Trail and Error
+
+Downsides of empirical paradigm
+- Difficult to differential diagnosis when something goes wrong
+- Impossible to isolate: training data, model ?
+
+Cyclic learning rate => Unprincipled, fragile, excessive tuning
+
+Batch normalization: Internal covariance shift ill defined or not defined at al
+
+- Sometimes changing the seeds changes the error
+
+- Focus: Why SGD works and when it generalizes well?
+- Test error = optimization error + generalization eror
+- Does sgd find solutions of low optimization error or generalization error?
+
+- Why challenging? Non-convex, many local optima (optimization)
+statistical: More parameters than samples, algorithm depedent
+
+
+Why is non-convex hard? Finding global minima is non-trivial and hard
+- Gradient methods will never stick around at the saddle point
+- Saddle points are unstable
+- Gradient methods do convverge to local minimizer
+- Key: All local minima of DL problems are approximately converging to global minima
+
+Landscape analysis: All local minimzers of the loss are approximate global minimizers
+
+Well behaved non-convex probmelms: CA, PCA, Matrox fatorization
+Also for these probems:
+Matrix completion
+
+# Over parameterization
+- Landscape design => Change the loss vial altering the architecture
+- First common way is to increase the layers (over parameterize)
+
+- Given a neural network architecture wiht a small network : SGD doesn't obtain local minima
+but on over parameterization (increasing the layes) leeads to global minima
+
+- Residual links: Before 2016 it used to be feedforward networks, residual
+architecture so that input feeds to other layers using an identity mapping allowing training of very deep networks
+
+- Theorem: Overparameterized residual network leads to global minima
+
+
+IF the Jacobian is rank deficient the training can get stuck. But at initialzation
+the jacobian is well conidtion (random matrices as the overparameterization ensures stability 
+overparameterization in resnets help make the jacobian well conditioned
+
+# Generalization
+
+
+Generalization error <= sqrt{parameterization error/n}	
+
+Textbook overfitting doesn't lead to higher loss but increase so generalization
+error decreases witht he na
+
+Radamacher complexity is also indo
+
+ Hoe does overparamaeterizaion affect the margin>
+ Over paramaterization will 
+ regula 
+- SGD without any 
+
+- SGD converges to solution of max margin probelm (SVD)
+
+- Tries to find a direction for SVM that maximizes the margin
+
+- Does this generalize to other deep architectures? Yet reuire
+
+- Predictor function 
+
+- Improvements come from the architectural changes
+
+
+- By changing the architecture of a net increase the trrainin 
+
+Adaptive data analysis: analyses or questions based on given data.
+

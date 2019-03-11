@@ -1,0 +1,47 @@
+# Friends are better than you: Friendship paradox and its social consequences
+
+- Networks shap behavior
+- Network with blue and yellow : identical topologies but stoll different perceptions
+Paper: K schaul: Quick puzzle to tell whether you know what people are thinking
+
+
+- Networks distorty local information: Example: college students overestimate peers' alcohol use
+- Friendship paradox: Origins; bias in directed networks, polling; 
+
+Friendship paradox: Your friends have more friends than you do, on average.
+Generalized FP: You are frinds are more X than you are on average.
+
+Strong FP: Most of your friends have more friends than you do.
+Generalized SP: Most of your friends are more X than you are
+Majority illusion: Most of your friends have a trait, even if it is rare.
+
+
+- Strong friendship paradox: 90% of the nodes in a social network provided evidence of strong 
+friendship paradox
+- Also holds for activity, diversity and virality in a social media setting
+
+FP and GFP are explained by sampling properties: long tailed distributions 
+(which the speaker calls a hetereogenous distribution)
+- The slide on PDF vs X had some serious problems: First of all
+what is a hetereogenous distribution> Median is unaffected by sample size.
+
+- First order (1k) structure: Long tailed arrises because very few nodes have high degrees
+
+
+- Degree distribution of neighbors overpowers that of the nodes.
+- Joint degree distribution for modeling degree assortavity
+- NREla world networks have third order structure?
+
+
+- Friendship paradox in directed networks?
+- Followers are more popular than the main person on twitter
+- Global popularity is different from local perception
+
+- Polling: What is the right question to ask in a poll?
+- Intent polling: b random votes: Will you vote for X?
+- Node perceltption polling: Who will your friends vote for X?
+- Follower perception polling (FPP): What fractions fo your friends will vote for X? [ b random followers]
+
+- Network strucutre is very important: can have different affect on the perception
+
+Open questions: Are freinds happiner than you are? Are your coauthors more prestigious than you are?
