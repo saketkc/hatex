@@ -22,7 +22,7 @@ public class InvertedIndex {
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException { 
       //he ‘\t’separates the key(Document ID) from the value(Document)
-      String[] tokens = value.toString().split('\\t');
+      String[] tokens = value.toString().split("\\t");
       docID.set(tokens[0]);
       docContent.set(tokens[1]);
       StringTokenizer itr = new StringTokenizer(docContent.toString());
@@ -42,12 +42,12 @@ public class InvertedIndex {
       HashMap<String,Integer> invertedIndexHMap = new HashMap<String,Integer>();
 
       for (Text val : values) {
-        String valString = val.toStrin()
+        String valString = val.toString();
         if (invertedIndexHMap.containsKey(valString)){
-          invertedIndexHMap.put(valString, invertedIndexHMap.get(valString) +1);_
+          invertedIndexHMap.put(valString, invertedIndexHMap.get(valString) + 1);
         }
         else{
-          invertedIndexHMap.put(valString, 1);_
+          invertedIndexHMap.put(valString, 1);
         }
       }
       Text result = new Text(invertedIndexHMap.toString());
