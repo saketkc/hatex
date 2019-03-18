@@ -13,7 +13,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class InvertedIndex {
+public class InvertedIndexBigram {
 
   public static class TokenizerMapper
        extends Mapper<Object, Text, Text, Text>{
@@ -28,14 +28,20 @@ public class InvertedIndex {
       docID.set(tokens[0]);
       docContent.set(tokens[1]);
       StringTokenizer itr = new StringTokenizer(docContent.toString().replaceAll("[^a-zA-Z0-9]+"," ").toLowerCase());
+      String previous = null;
       while (itr.hasMoreTokens()) {
-        word.set(itr.nextToken());
-        context.write(word, docID);
+        String current = itr.nextToken();
+	if (previous != null) {
+		word.set(previous + " " + current);
+        	context.write(word, docID);
+	}
+	previous = current;
+        //word.set();
       }
     }
   }
 
-  public static class InvertedIndexReducer
+  public static class InvertedIndexBigramReducer
        extends Reducer<Text,Text,Text,Text> {
     private Text docId = new Text();
     public void reduce(Text key, Iterable<Text> values,
@@ -69,14 +75,10 @@ public class InvertedIndex {
 
   public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
-    //conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", ":");
-    Job job = Job.getInstance(conf, "inverted index");
-    job.setJarByClass(InvertedIndex.class);
+    Job job = Job.getInstance(conf, "inverted index bigram");
+    job.setJarByClass(InvertedIndexBigram.class);
     job.setMapperClass(TokenizerMapper.class);
-    //job.setCombinerClass(InvertedIndexReducer.class);
-    job.setReducerClass(InvertedIndexReducer.class);
-    //job.setMapOutputKeyClass(Text.class);
-    //job.setMapOutputValueClass(Text.class);
+    job.setReducerClass(InvertedIndexBigramReducer.class);
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(Text.class);
     FileInputFormat.addInputPath(job, new Path(args[0]));
