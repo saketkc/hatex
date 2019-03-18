@@ -1,5 +1,7 @@
 hatex
 =====
+- [Spring 2019](2019_Spring)
+    - [CSCI 572 : Information Retrieval and Web Search Engines](2019_Spring/CSCI-572)
 - [Fall 2018](2018_Fall)
     - [EE 546 : Mathematics for high dimensional data](2018_Fall/EE-546)
 - [Spring 2018](2018_Spring)
