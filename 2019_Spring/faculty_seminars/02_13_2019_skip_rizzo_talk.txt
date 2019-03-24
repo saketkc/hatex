@@ -1,0 +1,65 @@
+Clinical Virtual Reality
+
+Evoution of virtual human agents in clinical healthcare:
+
+- Psychological, cognitive , motor issues and virtual humans
+- Confitivie: test of function in a virtual setting for testing PTSD and check
+the coginitive ability of the users to determine their fitness to go back to military/service
+- Another project for attention disorder using a VR camera attached to the child's
+eyes: throw distractions in the environment 
+- Kinect based system for making physical therapy fun and engaging => Game based rehab
+- Iculus (finger movement tracker on the front) for rehab
+- Social workers training for vetran population -> create virtual patients: social
+workers get a chance to respond to a virtual patient can be extended to allow
+epople seeking help through an online interface
+- Simcoach: Virtual human for marines
+- VR/VE/avatar growth dynamic over th years
+
+
+# Panic disorder and agoraphobia
+- Make the person enter VR and try to get over their anxiert 
+- Performs vetter than in-vivo exposure
+Suspension of disbelief?
+
+
+# Social phobia
+- 2d characters turned towards the subject to help obercome social phobia
+
+# Fear of public speaking
+- psious.com
+
+# Fear of heights
+- Character guides patient to overcome fear
+
+# VR cue explosure for addiction
+- PEople in rehab exposed to prevent their relapse
+
+# PTSD
+- Manipulate the people in a setting
+
+# Paraonia -> Introduce more characters for person 
+
+
+
+# Depression
+- Lack of self-compassion
+- Repeated cycle of seeing things from the patient's point of
+view and seeing the patient himself/herself
+
+# Autism spectrum disorder
+
+- Character for jobinterview training for 
+- Significant improvement in interview behavior
+
+# Virtual patients lab
+
+- Allow for hard cases where the human would be in a dilemma
+- Virtual wellness agent for university populations
+
+# Interviewing child by police
+
+# Distressed but unwilling to admit it
+
+# Detection and computational analysis of psychological analysis
+- Ability to detect hesistance through low gaze attention
+0 Self-repor,t physiological, behabior
