@@ -28,7 +28,7 @@ def Table(dataframe):
             # update this depending on which
             # columns you want to show links for
             # and what you want those links to be
-            if col == "URL":
+            if col == "URL" or col=='Title':
                 cell = html.Td(html.A(href=value, children=value))
             else:
                 cell = html.Td(children=value)
