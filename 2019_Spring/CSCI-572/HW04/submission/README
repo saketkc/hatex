@@ -1,0 +1,15 @@
+dash_app.py requires dependencies to be installed using:
+pip install dash==0.39.0  
+pip install dash-daq==0.1.0
+pip install solrpy
+pip install pandas
+
+For anyone to be able to run this locally will require changing these threevariables:
+1. CRAWL_DATA_DIR: Root directory location where crawl data is located
+2. CRAWL_CSV_MAP: Path to URL to HTML csv file
+3. SOLR_CONNECTION_URL: URL of the running SOLR server
+4. HOST: IP of local server
+
+
+The file itself can be run uing: python dash_app.py
+

@@ -8,12 +8,12 @@ import pandas as pd
 
 CRAWL_DATA_DIR = "/media/rna/yahoo_crawl_data/Yahoo-20190406T235503Z-001/Yahoo/yahoo"
 CRAWL_CSV_MAP = "/media/rna/yahoo_crawl_data/Yahoo-20190406T235503Z-001/Yahoo/URLtoHTML_yahoo_news.csv"
+SOLR_CONNECTION_URL = "http://nucleus.usc.edu:8983/solr/myexample"
 
 FILENAME_TO_URL_DF = pd.read_csv(CRAWL_CSV_MAP)
 
 COLUMNS = ["Title", "URL", "ID", "Description"]
 
-SOLR_CONNECTION_URL = "http://nucleus.usc.edu:8983/solr/myexample"
 SOLR = solr.SolrConnection(SOLR_CONNECTION_URL)
 
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
