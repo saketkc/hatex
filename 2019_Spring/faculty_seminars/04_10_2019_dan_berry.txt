@@ -1,0 +1,54 @@
+Models for dynamics: 
+- Models if implied synamics
+
+Self regulation: 
+	Executive function: inhibotry control, working memory, set shifting
+	Effortful control: Impulse control, emotion regulation and attetion incontext
+	
+  Parent Child Interactions: Sensitivty and co-regulation
+  School: chaso: instability, unpredictability and disorganization
+  Teacher and Teacher process
+  Stress Physiology
+  
+ - Gottileb's probabilistic epigenesis: bidirectional influences
+	- But things are not linear
+	- There is lot of interaction 
+	
+ - Waddignton's 1957 epigenetic landscape:
+	Drawn towards active state
+
+- Bronfenberure's 1979 ecological model
+
+- How to think of these dynamic processes?
+	1. Explictly model relations between the componenet parts of a broader 
+	temporal system
+		- Measure the unfolding within an individual over time
+	
+		- Specifiy a statistical model 
+		that includes parameters that explicitly adrress:
+		a) within sustem processes
+		b) beteeen systematc
+		
+		Example: longitudianl data
+		- Auto regressive cross-lagged panel model
+		- Uniterprtable parameter
+	
+		Problem: Mother spanking a child -> child's aggression increase over time -> mother's spanking increase
+		
+	Marsh Mellow examplE: Give one marshamllow immediately or wait 5 minutes for 3 and variations
+	20 observations  -> 4 nodes, each node feeds toon	
+	
+	example:  synchrony in parasympahht
+	
+	
+	Cons of explicit model: Need an explit formualtion of the model; need plausible model
+	
+	
+	2. Models of implit dynamics
+	Does cognitive challenge chng
+	
+	Remove time structure of time-series? 
+	Fractal xomplexitY?
+	Reactiomm  goes w
+		
+	
