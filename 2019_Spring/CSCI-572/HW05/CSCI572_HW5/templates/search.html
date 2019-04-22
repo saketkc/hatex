@@ -9,42 +9,8 @@
 
 <script>
     $(function() {
-      /*
-        $.ajax({
-            url: '{{ url_for("autocomplete") }}'
-            }).done(function (data){
-                $('#search_term_autocomplete').autocomplete({
-                    source: data,
-                    minLength: 2
-                });
-            });
-$("#autocomplete").autocomplete({
-  //lookup: countries,
-  serviceUrl:'{{ url_for("autocomplete") }}',
-  type:'POST',
-  width: 450, //set width
-  //callback just to show it's working
-  onSelect: function (suggestion) {
-    $('#selection').html('You selected: ' + suggestion.value + ', ' + suggestion.data);
-  },
-  showNoSuggestionNotice: true,
-  noSuggestionNotice: 'Sorry, no matching results',
-});*/
-
 $('#autocomplete').autocomplete({
    source: function (request, response) {
-     //$.post('{{ url_for("autocomplete") }}', {term: request.term}, response, 'json');
-     /*
-      $.ajax({
-              type: "POST",
-              url:'{{ url_for("autocomplete") }}',
-              data: {term:request.term},
-              success: response,
-              dataType: 'json',
-              minLength: 2,
-              delay: 100
-                  });
-    */
      var query = $("#autocomplete").val().toLowerCase();
      // Split query by space
      // so that only last term is used for auto suggestions
