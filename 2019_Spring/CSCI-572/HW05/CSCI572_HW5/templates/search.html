@@ -1,36 +1,32 @@
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
-</head>
-
-{{ form.autocomp.label }}: {{ form.autocomp }}
-
-<script>
-    $(function() {
-$('#autocomplete').autocomplete({
-   source: function (request, response) {
-     var query = $("#autocomplete").val().toLowerCase();
-     // Split query by space
-     // so that only last term is used for auto suggestions
-     var query_split = query.split(" ");
-     var search_term = "";
-     var search_prefix = "";
-     // If single term use as it is
-     if (query_split.length==1){
-       search_term = query_split[0];
-     }
-     // If multiple terms 
-     // use the last term
-     else{
-       search_term = query_split[query_split.length - 1];
-       search_prefix = query_split.slice(0, query_split.length-1).join(" ");
-       search_prefix += " "; //Add space here itself
-     }
-     console.log("search_term: "+search_term);
-     console.log("search_prefix: "+search_prefix);
-      $.ajax({
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"/>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+  <script>
+      $(function() {
+        $("#autocomplete").autocomplete({
+          source: function (request, response) {
+            var query = $("#autocomplete").val().toLowerCase();
+            // Split query by space     
+            // so that only last term is used for auto suggestions
+            var query_split = query.split(" ");
+            var search_term = "";
+            var search_prefix = "";
+            // If single term use as it is     
+            if (query_split.length==1){
+              search_term = query_split[0];
+            }
+            // If multiple terms 
+            // use the last term     
+            else{
+              search_term = query_split[query_split.length - 1];
+              search_prefix = query_split.slice(0, query_split.length-1).join(" ");
+              search_prefix += " "; //Add space here itself
+            }
+            console.log("search_term: "+search_term);
+            console.log("search_prefix: "+search_prefix);
+            $.ajax({
               url: "http://nucleus.usc.edu:8894/solr/myexample/suggest?q="+search_term+"&wt=json",
               success: function(data){
                 var suggestions = data.suggest.suggest;
@@ -40,21 +36,40 @@ $('#autocomplete').autocomplete({
                 for(var i=0;i<results.length; i++){
                   suggestions[i] = search_prefix + results[i].term;          
                 }
-
                 //console.log(result);
                 console.log(suggestions);
                 response(suggestions);
               },
-              dataType: 'jsonp',
+              dataType: "jsonp",
               minLength: 2,
               delay: 100,
               // http://xplus3.net/2010/09/21/solr-and-jsonp/
-              jsonp: 'json.wrf'
-                  });
+              jsonp: "json.wrf"
+            });
+          }
+        });
+      });
+  </script>
+</head>
 
 
-   }
-});
-});
+<body>
+<center>
+<form method=post>
+  <table>
+    <tr>
+      <td>{{ form.search_query.label }}</td>
+      <td>{{ form.search_query }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.search_strategy }}</td>
+    </tr>
+    <tr><td><input type=submit value=Submit></td></tr>
+  </table>
+</form>
 
-</script>
+{% if table %}
+{{ table|safe }}
+{% endif %}
+</center>
+</body>
