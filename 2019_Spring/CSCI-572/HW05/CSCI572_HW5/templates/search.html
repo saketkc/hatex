@@ -46,16 +46,38 @@ $('#autocomplete').autocomplete({
                   });
     */
      var query = $("#autocomplete").val().toLowerCase();
-     var correct=query.substr(0); 
+     // Split query by space
+     // so that only last term is used for auto suggestions
+     var query_split = query.split(" ");
+     var search_term = "";
+     var search_prefix = "";
+     // If single term use as it is
+     if (query_split.length==1){
+       search_term = query_split[0];
+     }
+     // If multiple terms 
+     // use the last term
+     else{
+       search_term = query_split[query_split.length - 1];
+       search_prefix = query_split.slice(0, query_split.length-1).join(" ");
+       search_prefix += " "; //Add space here itself
+     }
+     console.log("search_term: "+search_term);
+     console.log("search_prefix: "+search_prefix);
       $.ajax({
-              url:'http://nucleus.usc.edu:8894/solr/myexample/suggest?q='+query+'&wt=json',
+              url: "http://nucleus.usc.edu:8894/solr/myexample/suggest?q="+search_term+"&wt=json",
               success: function(data){
                 var suggestions = data.suggest.suggest;
                 var jsonData = JSON.parse(JSON.stringify(suggestions));
-                var result = jsonData[correct].suggestions;
+                var results = jsonData[search_term].suggestions;
+                var suggestions = [];
+                for(var i=0;i<results.length; i++){
+                  suggestions[i] = search_prefix + results[i].term;          
+                }
 
-                console.log(result);
-                for (i)
+                //console.log(result);
+                console.log(suggestions);
+                response(suggestions);
               },
               dataType: 'jsonp',
               minLength: 2,
