@@ -54,7 +54,8 @@
 
 
 <body>
-<center>
+<div>
+  <center>
 <form method=post>
   <table>
     <tr>
@@ -70,9 +71,11 @@
 {% if message %}
 {{ message|safe }}
 {% endif %}
-
+</center>
+</div>
+<div>
 {% if table %}
 {{ table|safe }}
 {% endif %}
-</center>
+</div>
 </body>
