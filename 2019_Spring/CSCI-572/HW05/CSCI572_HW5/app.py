@@ -1,7 +1,7 @@
 from flask import Flask, Response, render_template, request
 import json
 from wtforms import TextField, Form, RadioField
-from spell import candidates  # , correction
+from spell import candidates, correction
 import solr
 import pandas as pd
 
@@ -39,12 +39,33 @@ def autocomplete():
     return Response(json.dumps(options), mimetype="application/json")
 
 
+def get_corrected_search_query(search_query):
+    search_query_terms = search_query.split(" ")
+    search_query_corrected = list(map(lambda x: correction(x), search_query_terms))
+    return " ".join(search_query_corrected).lower()
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     form = SearchForm(request.form)
-    if request.method == "POST":
-        search_query = form.search_query.data
-        search_strategy = form.search_strategy.data
+    if request.method == "POST" or request.args.get("q"):
+        if request.method == "POST":
+            search_query = form.search_query.data
+            search_strategy = form.search_strategy.data
+            search_query_corrected = get_corrected_search_query(search_query)
+        elif request.method == "GET" and request.args.get("q"):
+            search_query = request.args.get("q")
+            search_strategy = request.args.get("sort")
+            search_query_corrected = get_corrected_search_query(search_query)
+            form.search_query.data = search_query
+            form.search_strategy.data = search_strategy
+
+        if search_query_corrected == search_query:
+            message = ""
+        else:
+            message = '<p> Did you mean <a href="?q={0}&sort={1}">{0}</a>?</p>'.format(
+                search_query_corrected, search_strategy
+            )
         if search_strategy == "solr":
             response = SOLR.query(search_query)
         else:
@@ -74,6 +95,7 @@ def index():
             form=form,
             table=df.to_html(classes="data", header="true"),
             titles=df.columns.values,
+            message=message,
         )
 
     return render_template("search.html", form=form)

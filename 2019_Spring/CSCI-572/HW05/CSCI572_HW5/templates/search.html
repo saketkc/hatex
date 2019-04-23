@@ -67,6 +67,9 @@
     <tr><td><input type=submit value=Submit></td></tr>
   </table>
 </form>
+{% if message %}
+{{ message|safe }}
+{% endif %}
 
 {% if table %}
 {{ table|safe }}
