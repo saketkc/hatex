@@ -1,5 +1,6 @@
 hatex
 =====
+
 - [Spring 2019](2019_Spring)
     - [CSCI 572 : Information Retrieval and Web Search Engines](2019_Spring/CSCI-572)
 - [Fall 2018](2018_Fall)
