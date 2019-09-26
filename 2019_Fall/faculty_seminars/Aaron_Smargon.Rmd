@@ -1,0 +1,58 @@
+---
+title: "Aaron Smargon"
+output: html_document
+date: 09/26/2019
+---
+
+
+- RNA biology more complex
+- Cas9 in DNA tageting form can measure many forms of the RNA during its life cycle:
+  - splicing/post transciptional modification
+  - export throughout the cell
+
+- RNA aggrefation in repat expansion disorders:
+  - Huntington's disorder, ALS, caused by repeat expansion
+  
+- Clustered regularly interspaced short palindromic repeats
+  - St1: Foreing DNa/RNA acquisition
+  - St2: CRISPS locus transcription + RNA processing
+  - St3: RNA-guided targeting of viral element
+  
+- Cas9 -> Two nuclease DNA domains that can cleave DNa and RNA
+-crRNA = Direct Repeat + Space
+-sgRNA = crRNA + tracrRNA
+
+
+- Cas13 (Type V):
+  - 5' spacer, 3' directed repeat
+
+
+RCas discovery
+- Bioinformatic pipeline is a starting point (CRISPR array)
+- Look for putatitve CAs effoectors besides the repeat
+- Filter constratints
+- group by sequence homology
+
+
+- Essential gene in E.coli
+  - Design spacers targeting essential genes
+  - Create library of spacer plasmids
+  - transform e coli 
+
+
+- Secondary strucuture impacts Cas13b targeting.
+
+- Why one class of CRISPR over others? Some will target better than others
+
+
+- Uses of RCas
+    - Live RNA tracking
+    
+    
+Applications:
+
+- Diagnostics: Detecting ssRNa
+
+
+Challenges
+ - Molecular: Design of the system; should you use Rcas or dca?
