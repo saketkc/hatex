@@ -1,0 +1,37 @@
+---
+title: "Kai_Tan"
+output: html_document
+date: "10/03/2019"
+---
+
+- Transcriptional enhancers => tissue specific
+
+
+Challenges in finding non-coding variants:
+
+- Tissue specific regulatory DNA sequences?
+- complexity of human genome (e.g.: most highest -log10 pvalue SNP
+is not necessarily the most significant)
+
+
+Operation of methods:
+
+- Genetic variants ranked with a catalogue of candidate risk variants
+- Do not consider the expression of the downstream loci
+
+
+ARVIN:
+
+- Combine sequence feature with disease relevant regulatory network
+- SNP in enhancer is annotated by epignomic feature => how to determine target?
+
+- Combine Chip-Seq, with existing SNPs (GWAS) and intersect with existing 
+dise 
+
+- SNPs in intron (common)
+- T1D finding: SNP that acts a blocker
+
+
+# Somatic mutation
+- No method to perfrom rare variants across contexts
+
