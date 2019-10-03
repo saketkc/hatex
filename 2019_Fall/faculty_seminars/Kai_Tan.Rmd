@@ -35,3 +35,7 @@ dise
 # Somatic mutation
 - No method to perfrom rare variants across contexts
 
+# TF regulon
+
+- Most TF regulons dirupted are not from TF coding mutations
+- level of TF regulon perturbnation correlates with patient progrnosis
