@@ -1,6 +1,7 @@
 hatex
 =====
-
+- [Fall 2019](2019_Fall)
+    - [EE 588: Optimization for the Information and Data Science(2019_Fall/EE-588)
 - [Spring 2019](2019_Spring)
     - [CSCI 572 : Information Retrieval and Web Search Engines](2019_Spring/CSCI-572)
 - [Fall 2018](2018_Fall)
