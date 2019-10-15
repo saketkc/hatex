@@ -1,0 +1,39 @@
+---
+title: "Jill Gallaher"
+date: 10/15/2019
+output: html_notebook
+---
+
+
+# Ssytematic dynamics of multiple metastases during adaptive therapy
+- Cancer is genotypically complex; uet phenotypically convergent
+- Phenotypes drive outomes with selective pressure at different ecosystem
+- Adaptive therapy:
+  - Continuous therapy selects for the resistant cells
+  - Adaptive therapy : reduce the dose as the therapy moves ahead: keeps the tumor at the same size
+  
+
+- Data is temporal;
+- Off lattice agent-based model of competition for space of individusl cells
+- Tradeoffs in proliferation adand drug resistance: Sensistive cells are growing
+faster than the non-sensitive cells:
+    Sensitive cells take over the space
+    - Once they starting for space in acse of high glucose => 
+    - Once resources are limited the sensitive cells will take over the edge
+- Three different treatment schedules:
+  - Continuous
+  - Dose Modulation: Number of cells incrase by a certain function increase the dosag
+  - Treatment Vacations
+  
+- Dosage delivery has a landscape based on heterogeneity and resistance
+- Can systematic dynamics predict if adaptive therapy might fail?
+
+- Multi metastases model : Several tumors which are indepedent but each treated by the system
+  - Treatment vacaition seems like a better approach
+  - More metastases => faster cycles
+  = More resstaint cells - longer drug application times but the recovery time is same as
+  
+
+- Low inter tumor heterogeneity -> (heterogeneity determined by varaince of proliferation rates)
+
+- Resistance is increasing -> Switch off the drug
