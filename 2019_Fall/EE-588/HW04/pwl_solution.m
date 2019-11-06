@@ -2,13 +2,15 @@ pwl_fit_data;
 m = length(x);
 
 
-knots = [1 2 3 4];
+%knots = [1 2 3 4 5 6 7 8 9 10];
+knots = [1 2 3 4 5];
 
 x_plot = 0:0.0001:1;
 
 m_plot = length(x_plot);
 
 y_plot = [];
+figure('DefaultAxesFontSize',20);
 plot(x, y, 'r.', 'DisplayName', 'given');
 hold on;
 for k = knots

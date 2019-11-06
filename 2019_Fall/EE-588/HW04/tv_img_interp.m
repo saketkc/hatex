@@ -4,6 +4,7 @@
 % Defines m, n, Uorig, Known.
 
 % Load original image.
+figure('DefaultAxesFontSize',20);
 Uorig = double(imread('tv_img_interp.png'));
 
 [m, n] = size(Uorig);
