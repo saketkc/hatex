@@ -1,0 +1,31 @@
+---
+title: "Alison Hill"
+output: html_document
+---
+
+- retrovirus induced -> enters into host cell
+  - specific propoerties: 
+    - reverse transcribes RNA into DNA
+    - integrates into the host cell
+
+- probelms with current HIV treatment
+  - evolution : viral load decreases and then shoots up after 6-8 years
+  
+- How to cure?
+  - Approach1: Clear out the latent virual load dormant between years 2-8
+  - Approach2: Functional cure => remove the function
+  
+- Approach1:
+    - Start therapy earlier
+    - Shock and Kill: Kill all cells that have HIV
+    - Lock and block: 
+    - Excise HIV
+
+- Approach2:
+  - Measure the cloncal multplicity based on sites of integration
+    - How much should the pool be reduced?
+    
+    - Model:
+      - Stochastic model for propogation of latent virus cells
+      - Large reduction in latent reservoir load results in viral rebound
+      - Multi log reduction in the viral pool
