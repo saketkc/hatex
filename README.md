@@ -1,6 +1,7 @@
 hatex
 =====
 
+Browsable web version: https://www.saket-choudhary.me/hatex/
 
 - [Fall 2019](2019_Fall)
     - [EE 588: Optimization for the Information and Data Science](2019_Fall/EE-588)
