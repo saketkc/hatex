@@ -4,7 +4,7 @@ hatex
 Browsable web version: https://www.saket-choudhary.me/hatex/
 
 - [Spring 2020]
-   - No courses => Self imposed break (last semester(?)).
+   - No courses => I graduated!
 - [Fall 2019](2019_Fall)
     - [EE 588: Optimization for the Information and Data Science](2019_Fall/EE-588)
 - [Spring 2019](2019_Spring)
